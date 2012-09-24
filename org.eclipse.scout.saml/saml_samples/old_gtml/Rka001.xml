@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gtml:root xmlns:gtml="http://www.ibm.com/ch/gtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ibm.com/ch/gtml gtml.xsd">
+
+	<!-- Internationalization -->
+	<translatables>
+		<translatable ref="AboutMenu"><translation lang="de" text="&amp;Info..." /></translatable>
+		<translatable ref="Abschluss"><translation lang="de" text="Abschluss" /></translatable>
+		<translatable ref="AbsichernRefinanz"><translation lang="de" text="Absichern / Refinanz." /></translatable>
+		<translatable ref="AlteNeueKONr"><translation lang="de" text="Alte / Neue KO-Nr." /></translatable>
+		<translatable ref="Anlegen"><translation lang="de" text="Anlegen" /></translatable>
+		<translatable ref="ApplicationTitle"><translation lang="de" text="Meine Applikation" /></translatable>
+		<translatable ref="Art"><translation lang="de" text="Art" /></translatable>
+		<translatable ref="AuthorizationFailed"><translation lang="de" text="Zugriff verweigert" /></translatable>
+		<translatable ref="Basiskredit"><translation lang="de" text="Basiskredit" /></translatable>
+		<translatable ref="Bearbeiten"><translation lang="de" text="Bearbeiten" /></translatable>
+		<translatable ref="Bem.F4"><translation lang="de" text="Bem.                                   F4" /></translatable>
+		<translatable ref="BeratungsModus"><translation lang="de" text="Beratungs-Modus" /></translatable>
+		<translatable ref="BetragSpesen"><translation lang="de" text="Betrag / Spesen" /></translatable>
+		<translatable ref="Buchungstext1"><translation lang="de" text="Buchungstext 1" /></translatable>
+		<translatable ref="Buchungstext2"><translation lang="de" text="Buchungstext 2" /></translatable>
+		<translatable ref="Buchungstext3"><translation lang="de" text="Buchungstext 3" /></translatable>
+		<translatable ref="CHF"><translation lang="de" text="CHF" /></translatable>
+		<translatable ref="ContactVendorMenu"><translation lang="de" text="BSI kontaktieren" /></translatable>
+		<translatable ref="DIALBA2020"><translation lang="de" text="DIALBA2020" /></translatable>
+		<translatable ref="DIALBA2020Title"><translation lang="de" text="DIALBA2020 - Backoffice  - Benutzer\: Max Muster - Bank\: Raiffeisen Landdorf" /></translatable>
+		<translatable ref="DatumEmission"><translation lang="de" text="Datum / Emission" /></translatable>
+		<translatable ref="Depot"><translation lang="de" text="Depot" /></translatable>
+		<translatable ref="DepotCode"><translation lang="de" text="Depot " /></translatable>
+		<translatable ref="DepotTwin"><translation lang="de" text="DepotTwin" /></translatable>
+		<translatable ref="Dienste"><translation lang="de" text="Dienste" /></translatable>
+		<translatable ref="EDossierStarten"><translation lang="de" text="eDossier starten" /></translatable>
+		<translatable ref="ESC"><translation lang="de" text="Ende               ESC" /></translatable>
+		<translatable ref="Emissionsabgabe"><translation lang="de" text="Emissionsabgabe" /></translatable>
+		<translatable ref="EndeESC"><translation lang="de" text="Ende                                   ESC" /></translatable>
+		<translatable ref="ExitMenu"><translation lang="de" text="&amp;Beenden" /></translatable>
+		<translatable ref="ExportToExcelDiagramMenu"><translation lang="de" text="Ausgabe in Excel &amp;Diagramm" /></translatable>
+		<translatable ref="ExportToExcelMenu"><translation lang="de" text="Ausgabe in &amp;Excel" /></translatable>
+		<translatable ref="FiT"><translation lang="de" text="FiT" /></translatable>
+		<translatable ref="FileMenu"><translation lang="de" text="&amp;Datei" /></translatable>
+		<translatable ref="Finanzieren"><translation lang="de" text="Finanzieren" /></translatable>
+		<translatable ref="FondsSparplan"><translation lang="de" text="Fonds-Sparplan" /></translatable>
+		<translatable ref="Funktionen"><translation lang="de" text="Funktionen " /></translatable>
+		<translatable ref="GesamtobligoEN"><translation lang="de" text="Gesamtobligo" /></translatable>
+		<translatable ref="HelpMenu"><translation lang="de" text="&amp;Hilfe" /></translatable>
+		<translatable ref="IndexHilfe"><translation lang="de" text="Index Hilfe" /></translatable>
+		<translatable ref="Info"><translation lang="de" text="Info" /></translatable>
+		<translatable ref="InfoF7"><translation lang="de" text="Info                                     F7" /></translatable>
+		<translatable ref="InfoUmschF7"><translation lang="de" text="Info (Umsch + F7)" /></translatable>
+		<translatable ref="Inhaber"><translation lang="de" text="Inhaber" /></translatable>
+		<translatable ref="KOEmission"><translation lang="de" text="KO Emission" /></translatable>
+		<translatable ref="KOEmissionMenu"><translation lang="de" text="KO Emission..." /></translatable>
+		<translatable ref="KOEmmissionTc200"><translation lang="de" text="200 KO Emission" /></translatable>
+		<translatable ref="Kassenobligationen"><translation lang="de" text="Kassenobligationen" /></translatable>
+		<translatable ref="KassenobligationenArt"><translation lang="de" text="Kassenobligationen Art" /></translatable>
+		<translatable ref="KontoIBAN"><translation lang="de" text="Konto / IBAN" /></translatable>
+		<translatable ref="Kontobelastung"><translation lang="de" text="Kontobelastung" /></translatable>
+		<translatable ref="Kreditkarte"><translation lang="de" text="Kreditkarte" /></translatable>
+		<translatable ref="Kunde"><translation lang="de" text="Kunde" /></translatable>
+		<translatable ref="Kurzbezeichnung"><translation lang="de" text="Kurzbezeichnung" /></translatable>
+		<translatable ref="Laufzeit"><translation lang="de" text="Laufzeit" /></translatable>
+		<translatable ref="MitTiteldruck"><translation lang="de" text="Mit Titeldruck" /></translatable>
+		<translatable ref="Namen"><translation lang="de" text="Namen" /></translatable>
+		<translatable ref="NamenMitglied"><translation lang="de" text="Namen Mitglied" /></translatable>
+		<translatable ref="ObligoF5"><translation lang="de" text="Obligo                                F5" /></translatable>
+		<translatable ref="ProgrammSuchenUmschF2EN"><translation lang="de" text="Programm suchen (Umsch + F2)" /></translatable>
+		<translatable ref="RAIweb"><translation lang="de" text="RAIweb" /></translatable>
+		<translatable ref="RIAG"><translation lang="de" text="RIAG" /></translatable>
+		<translatable ref="RaiffeisenEBanking"><translation lang="de" text="Raiffeisen E-Banking" /></translatable>
+		<translatable ref="Schnellzugriff"><translation lang="de" text="Schnellzugriff..." /></translatable>
+		<translatable ref="SchnellzugriffForm"><translation lang="de" text="Schnellzugriff" /></translatable>
+		<translatable ref="SpezialzinsF2"><translation lang="de" text="Spezialzins                         F2" /></translatable>
+		<translatable ref="StornoF6"><translation lang="de" text="Storno                                F6" /></translatable>
+		<translatable ref="TC0"><translation lang="de" text="TC ..." /></translatable>
+		<translatable ref="TC"><translation lang="de" text="TC" /></translatable>
+		<translatable ref="TCButton"><translation lang="de" text="..." /></translatable>
+		<translatable ref="Test"><translation lang="de" text="Test" /></translatable>
+		<translatable ref="TestForm"><translation lang="de" text="TestForm" /></translatable>
+		<translatable ref="ToolsMenu"><translation lang="de" text="&amp;Extras" /></translatable>
+		<translatable ref="TransactionsCodeForKOEmission"><translation lang="de" text="200 KO Emission" /></translatable>
+		<translatable ref="Transaktionscode"><translation lang="de" text="TC" /></translatable>
+		<translatable ref="TransaktionscodeTwin"><translation lang="de" text="TransaktionscodeTwin" /></translatable>
+		<translatable ref="UKVKF3"><translation lang="de" text="UK/VK                                 F3" /></translatable>
+		<translatable ref="UKVollmachtenkarte"><translation lang="de" text="UK / Vollmachtenkarte" /></translatable>
+		<translatable ref="Valorennummer"><translation lang="de" text="Valorennummer" /></translatable>
+		<translatable ref="Versicherung"><translation lang="de" text="Versicherung" /></translatable>
+		<translatable ref="Vorsorgen"><translation lang="de" text="Vorsorgen" /></translatable>
+		<translatable ref="Zahlen"><translation lang="de" text="Zahlen" /></translatable>
+		<translatable ref="Zentralregister"><translation lang="de" text="Zentralregister" /></translatable>
+		<translatable ref="ZentralregisterUmschF12"><translation lang="de" text="Zentralregister (Umsch + F12)" /></translatable> 
+		<translatable ref="Zinssatz"><translation lang="de" text="Zinssatz" /></translatable>
+		<translatable ref="ZinstermAuslauf"><translation lang="de" text="Zinsterm / Auslauf" /></translatable>
+		<translatable ref="ZregNumber"><translation lang="de" text="ZREG-Nr." /></translatable>
+		<translatable ref="ZregQuickSearchForm"><translation lang="de" text="Zreg Schnellsuche" /></translatable>
+		<translatable ref="koEmissionTitle"><translation lang="de" text="KO Emission" /></translatable>
+		<translatable ref="Rka001_gen"><translation lang="de" text="KO Emission" /></translatable>
+	</translatables>
+	
+	<codetype id="" name=""></codetype>
+	<codetype id="" name=""></codetype>
+
+	<views>
+		<view id="Rka001_gen" modal="true" type="view" title="koEmissionTitle" widthInPixel="1000">
+			<row>
+				<label id="Transaktionscode"></label>
+				<input id="BuchungsCode" type="string" enabled="false"></input>
+			</row>
+			
+			<row>
+				<label id="Zentralregister"></label>
+				<input id="Zreg" type="ZregSequenceBoxAbs"></input>
+			</row>
+			
+			<row>
+				<!-- TODO: add KOArtCodeType -->
+				<!-- TODO: Smartfield Value Type?? -->
+				<label id="Art"></label>
+				<select id="KoArt" mandatory="true"></select>
+			</row>
+				
+			<row>
+				<!-- TODO: add KOLaufzeitCodeType -->
+				<label id="Laufzeit"></label>
+				<select id="Laufzeit" mandatory="true" triggersCall="true"></select>
+			</row>
+				
+			<row>
+				<label id="Valorennummer"></label>
+				<input id="Valor" type="string" enabled="false"></input>
+			</row>
+				
+			<row>
+				<label id="Zinssatz"></label>
+				<input id="Zinssatz" type="double" enabled="false"></input>
+			</row>
+				
+			<row>
+				<!-- TODO: add KOTiteldruckCodeType -->
+				<label id="MitTiteldruck"></label>
+				<select id="MitTitel" mandatory="true" triggersCall="true"></select>
+			</row>
+			
+			<row>
+				<!-- TODO: add DepotNumberLookupCall -->
+				<!-- TODO: add Master field -->
+				<!-- TODO: enable/disable on master value change (client logic -> presentation only) -->
+				<label id="Depot"></label>
+				<select id="Depot"></select>
+			</row>
+			
+			<row>
+				<!-- TODO: add OldObliNumberLookupCall -->
+				<!-- TODO: add Master field -->
+				<label id="AlteNeueKONr"></label>
+				<select id="ObligationNrAlt" mandatory="true"></select>
+				<input id="ObligationNr" type="long" enabled="false"></input>
+			</row>
+			
+			<row>
+				<label id="DatumEmission"></label>
+				<input id="BuchungsDatum" type="date" enabled="false"></input>
+				<input id="EmissionsDatum" type="date" mandatory="true" enabled="false" triggersCall="true"></input>
+			</row>
+			
+			<row>
+				<label id="ZinstermAuslauf"></label>
+				<input id="Zinsterm" type="string" enabled="false"></input>
+				<input id="EndJahr" type="string" enabled="false"></input>
+			</row>
+			
+			<row>
+				<label id="BetragSpesen"></label>
+				<input id="Betrag" type="long" mandatory="true" triggersCall="true"></input>
+				<input id="BetragsWaehrung" type="string" enabled="false"></input>
+			</row>
+			
+			<row>
+				<label id="Emissionsabgabe"></label>
+				<input id="Emission" type="double" enabled="false"></input>
+				<input id="EmissionsWaehrung" type="string" enabled="false"></input>
+			</row>
+			
+			<row>
+				<label id="Kontobelastung"></label>
+				<!-- TODO: add KontoByZrnrLookupCall -->
+				<!-- TODO: add Master field -->
+				<select id="KontoNr" mandatory="true" triggersCall="true"></select>
+				<input id="ZregKurzbezeichnung" type="string" enabled="false"></input>
+				<input id="Kontostand" type="string" enabled="false"></input>
+			</row>
+			
+			<row>
+				<label id="Buchungstext1"></label>
+				<input id="KontoText1" type="string" enabled="false"></input>
+			</row>
+			
+			<row>
+				<label id="Buchungstext2"></label>
+				<input id="KontoText2" type="string" enabled="false"></input>
+			</row>
+			
+			<row>
+				<label id="Buchungstext3"></label>
+				<input id="KontoText3" type="string"></input>
+			</row>
+		</view>
+	</views>
+</gtml:root>
+

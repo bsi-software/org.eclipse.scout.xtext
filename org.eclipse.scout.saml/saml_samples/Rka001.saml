@@ -1,0 +1,364 @@
+module ch.raiffeisen.dialba.anlegen
+
+
+// ========================
+// TRANSLATIONS
+// ========================
+translation AboutMenu de="&amp;Info..."    
+translation Abschluss de="Abschluss" en="bla"
+translation AbsichernRefinanz de="Absichern / Refinanz."
+translation AlteNeueKONr de="Alte / Neue KO-Nr."
+translation Anlegen de="Anlegen"
+translation ApplicationTitle de="Meine Applikation"
+translation Art de="Art"
+translation AuthorizationFailed de="Zugriff verweigert"
+translation Basiskredit de="Basiskredit"
+translation Bearbeiten de="Bearbeiten"
+translation Bem.F4 de="Bem.                                   F4"
+translation BeratungsModus de="Beratungs-Modus"
+translation BetragSpesen de="Betrag / Spesen"
+translation Buchungstext1 de="Buchungstext 1"
+translation Buchungstext2 de="Buchungstext 2"
+translation Buchungstext3 de="Buchungstext 3"
+translation CHF de="CHF"
+translation ContactVendorMenu de="BSI kontaktieren"
+translation DIALBA2020 de="DIALBA2020"
+translation DIALBA2020Title de="DIALBA2020 - Backoffice  - Benutzer: Max Muster - Bank: Raiffeisen Landdorf"
+translation DatumEmission de="Datum / Emission"
+translation Depot de="Depot"
+translation DepotCode de="Depot "
+translation DepotTwin de="DepotTwin"
+translation Dienste de="Dienste"
+translation EDossierStarten de="eDossier starten"
+translation ESC de="Ende               ESC"
+translation Emissionsabgabe de="Emissionsabgabe"
+translation EndeESC de="Ende                                   ESC"
+translation ExitMenu de="&amp;Beenden"
+translation ExportToExcelDiagramMenu de="Ausgabe in Excel &amp;Diagramm"
+translation ExportToExcelMenu de="Ausgabe in &amp;Excel"
+translation FiT de="FiT"
+translation FileMenu de="&amp;Datei"
+translation Finanzieren de="Finanzieren"
+translation FondsSparplan de="Fonds-Sparplan"
+translation Funktionen de="Funktionen "
+translation GesamtobligoEN de="Gesamtobligo"
+translation HelpMenu de="&amp;Hilfe"
+translation IndexHilfe de="Index Hilfe"
+translation Info de="Info"
+translation InfoF7 de="Info                                     F7"
+translation InfoUmschF7 de="Info (Umsch + F7)"
+translation Inhaber de="Inhaber"
+translation KOEmission de="KO Emission"
+translation KOEmissionMenu de="KO Emission..."
+translation KOEmmissionTc200 de="200 KO Emission"
+translation Kassenobligationen de="Kassenobligationen"
+translation KassenobligationenArt de="Kassenobligationen Art"
+translation KontoIBAN de="Konto / IBAN"
+translation Kontobelastung de="Kontobelastung"
+translation Kreditkarte de="Kreditkarte"
+translation Kunde de="Kunde"
+translation Kurzbezeichnung de="Kurzbezeichnung"
+translation Laufzeit de="Laufzeit"
+translation MitTiteldruck de="Mit Titeldruck"
+translation Namen de="Namen"
+translation NamenMitglied de="Namen Mitglied"
+translation ObligoF5 de="Obligo                                F5"
+translation ProgrammSuchenUmschF2EN de="Programm suchen (Umsch + F2)"
+translation RAIweb de="RAIweb"
+translation RIAG de="RIAG"
+translation RaiffeisenEBanking de="Raiffeisen E-Banking"
+translation Schnellzugriff de="Schnellzugriff..."
+translation SchnellzugriffForm de="Schnellzugriff"
+translation SpezialzinsF2 de="Spezialzins                         F2"
+translation StornoF6 de="Storno                                F6"
+translation TC0 de="TC ..."
+translation TC de="TC"
+translation TCButton de="..."
+translation Test de="Test"
+translation TestForm de="TestForm"
+translation ToolsMenu de="&amp;Extras"
+translation TransactionsCodeForKOEmission de="200 KO Emission"
+translation Transaktionscode de="TC"
+translation TransaktionscodeTwin de="TransaktionscodeTwin"
+translation UKVKF3 de="UK/VK                                 F3"
+translation UKVollmachtenkarte de="UK / Vollmachtenkarte"
+translation Valorennummer de="Valorennummer"
+translation Versicherung de="Versicherung"
+translation Vorsorgen de="Vorsorgen"
+translation Zahlen de="Zahlen"
+translation Zentralregister de="Zentralregister"
+translation ZentralregisterUmschF12 de="Zentralregister (Umsch + F12)" 
+translation Zinssatz de="Zinssatz"
+translation ZinstermAuslauf de="Zinsterm / Auslauf"
+translation ZregNumber de="ZREG-Nr."
+translation ZregQuickSearchForm de="Zreg Schnellsuche"
+translation koEmissionTitle de="KO Emission"
+
+
+// ========================
+// CODE TYPES
+// ========================
+code KOArt id=1587
+code KOLaufzeit id=9687
+code KOTiteldruck id=2569
+
+
+// ========================
+// LOOKUP CALLS & SERVICES
+// ========================
+lookup DepotNumber {
+	logic type=global runat=server { "" }
+	logic type=all runat=server { "" }
+}
+
+lookup OldObliNumber {
+	logic type=global runat=server { "" }
+	logic type=all runat=server { "" }
+}
+
+lookup KontoByZrnr {
+	logic type=global runat=server { "" }
+	logic type=all runat=server { "" }
+}
+
+
+
+// ========================
+// UI TEMPLATE DEFINITIONS
+// ========================
+/*template zreg_sequence_box class=ch.raiffeisen.dialba.common.client.ui.forms.fields.Zregsequence_boxAbs replaces=sequence_box
+template dialba_smartfield class=ch.raiffeisen.dialba.common.client.ui.forms.fields.AbstractDialbaSmartField replaces=smartfield
+*/
+
+
+
+// ========================
+// FORMS
+// ========================
+form Rka001_gen modal=true text=koEmissionTitle columns=2 {
+	/* Named Java code snippets that are used more than once */
+	java EvalForm runat=client {
+		"evaluateZinstermFields();
+	     evaluateBuchungstext1And2();"
+	}
+	
+	java SetTodayValue runat=client {
+		"setValue(new Date());"
+	}
+	
+	/* form level logic */
+	logic type=global runat=client {
+		"private void evaluateBuchungstext1And2() throws ProcessingException {
+	        getKontoText1Field().setValue(evaluateBuchungstext1(getLaufzeitField().getValue(), getObligationNrField().getValue()));
+	        getKontoText2Field().setValue(evaluateBuchungstext2(getLaufzeitField().getValue(), getEmissionsDatumField().getValue()));
+	
+		}
+	
+		private void evaluateZinstermFields() {
+	
+	        Integer laufzeitValue = getLaufzeitField().getValue();
+	        if (laufzeitValue != null) {
+	
+	            // Value of ZinstermField is same Day and Month as EmissionsDatumField
+	            Date emissionDate = getEmissionsDatumField().getValue();
+	            Date calculatedZinstermDate = DateUtility.addYears(emissionDate, laufzeitValue.intValue());
+	            SimpleDateFormat sdf = new SimpleDateFormat(\"dd.MM.\");
+	            getZinstermField().setValue(sdf.format(calculatedZinstermDate));
+	
+	            // Value of EndJahrField is same Year as EmissionsDatumField plus Value of LaufzeitField
+	            sdf.applyPattern(\"YYYY\");
+	            getEndJahrField().setValue(sdf.format(calculatedZinstermDate));
+	
+	        }
+	    }"
+	}
+	
+	logic type=global runat=server {
+		"private static ZentralRegister makeZentralRegister(Rka001FormData formData) {
+	        ZentralRegister zentralRegister = new ZentralRegister();
+	        zentralRegister.setMandantId(AbstractDialbaLookupService.MANDANT_ID);
+	        zentralRegister.setZregNr(formData.getZregBox().getZregNumber().getValue());
+	        return zentralRegister;
+	    }
+	
+		private static KassenobligationBewegung makeKassenobligationBewegung(Rka001FormData formData, Integer laufNr, Integer sollHaben) {
+	        KassenobligationBewegung kassenobligationBewegung = new KassenobligationBewegung();
+	        // key parts ..
+	        kassenobligationBewegung.setMandantId(AbstractDialbaLookupService.MANDANT_ID);
+	        // kassenobligationBewegung.setKoNr(formData.getKoNr());
+	        kassenobligationBewegung.setKoArt(formData.getKoArt().getValue());
+	        kassenobligationBewegung.setBuchungsDatum(formData.getBuchungsDatum().getValue());
+	        // kassenobligationBewegung.setTransaktionsNr(formData.getTransaktionsNr());
+	        // kassenobligationBewegung.setStorno(formData.getStorno());
+	        kassenobligationBewegung.setLaufNr(laufNr);
+	
+	        // the rest ..
+	        // kassenobligationBewegung.setBetrag(betrag);
+	        kassenobligationBewegung.setValuta(formData.getEmissionsDatum().getValue());
+	        kassenobligationBewegung.setBuchungsText(formData.getKontoText1().getValue());
+	        kassenobligationBewegung.setBuchungsText2(formData.getKontoText2().getValue());
+	        kassenobligationBewegung.setBuchungsText3(formData.getKontoText3().getValue());
+	        kassenobligationBewegung.setKontoNr(formData.getKontoNr().getValue().toString());
+	        kassenobligationBewegung.setSollHaben(sollHaben);
+	        return kassenobligationBewegung;
+	    }
+	
+		private KassenobligationStamm makeKassenobligationStamm(Rka001FormData formData) {
+	        KassenobligationStamm kassenobligationStamm = new KassenobligationStamm();
+	        kassenobligationStamm.setMandantId(MANDANT_ID);
+	        // TODO ACOR: change type to Integer
+	        kassenobligationStamm.setKoNr(new Integer(formData.getObligationNr().getValue().intValue()));
+	        kassenobligationStamm.setKoArt(formData.getKoArt().getValue());
+	        kassenobligationStamm.setZregNr(formData.getZregBox().getZregNumber().getValue());
+	        kassenobligationStamm.setTitelgedruckt(formData.getMitTitel().getValue());
+	        return kassenobligationStamm;
+	    }"
+	}
+	
+	logic type=new_store runat=server {
+		"KoEmissionTc tc = new KoEmissionTc();
+	     tc.setZentralRegister(makeZentralRegister(formData));
+	     tc.setKassenobligationBewegung(makeKassenobligationBewegung(formData, LAUFNR_INITIAL, SH_SOLL));
+	     tc.setKassenobligationStamm(makeKassenobligationStamm(formData));
+	
+	     tc.setBetrag(formData.getEmission().getValue().longValue());
+	     tc.setBetragEmission(formData.getEmission().getValue().longValue());
+	     tc.setBetragSpesen(0L);
+	
+	     // service call ..
+	     getKoEmissionService().erstelleKoEmission(tc);"
+	}
+
+	sequence_box BuchungsCode {
+		string BuchungsCode text=Transaktionscode enabled=false
+	}
+	
+	sequence_box Zreg {
+		zreg_sequence_box Zreg text=Zentralregister
+	}
+
+	sequence_box KoArt {
+		smartfield KoArt text=Art mandatory=true value_type=java.lang.Integer code=KOArt
+	}
+	
+	sequence_box Laufzeit {
+		smartfield Laufzeit text=Laufzeit mandatory=true code=KOLaufzeit value_type=java.lang.Integer {
+			logic type=changed runat=server {
+				"KoStammTc koStammTc = new KoStammTc();
+				koStammTc.setKOTiteldruckCodeId(formData.getMitTitel().getValue().intValue());
+				KoStammTc koStammTcNew = getKoEmissionService().lesenKassenobligationStammMitNeuerKoNr(koStammTc);
+	
+				Rka001FormData retVal = new Rka001FormData();
+				// TODO ACOR: change form data to Integer
+				retVal.getObligationNr().setValue(new Long(koStammTcNew.getKassenobligationStammMitNeuerKoNr().getKoNr().longValue()));
+	
+				return retVal;"
+			}
+			logic type=changed exec=EvalForm
+		}
+	}
+
+	sequence_box Valor {
+		string Valor text=Valorennummer enabled=false
+	}
+	
+	sequence_box Zinssatz {
+		double Zinssatz text=Zinssatz enabled=false
+	}
+	
+	sequence_box MitTitel {
+		smartfield MitTitel text=MitTiteldruck mandatory=true code=KOTiteldruck value_type=java.lang.Integer {
+			logic type=changed runat=server {
+				"KoStammTc koStammTc = new KoStammTc();
+				koStammTc.setKOTiteldruckCodeId(formData.getMitTitel().getValue().intValue());
+				KoStammTc koStammTcNew = getKoEmissionService().lesenKassenobligationStammMitNeuerKoNr(koStammTc);
+		
+				Rka001FormData retVal = new Rka001FormData();
+				// TODO ACOR: change form data to Integer
+				retVal.getObligationNr().setValue(new Long(koStammTcNew.getKassenobligationStammMitNeuerKoNr().getKoNr().longValue()));
+		
+				return retVal;"
+			}
+			logic type=changed runat=client {
+				"evaluateBuchungstext1And2();"
+			}
+		}
+	}
+	
+	sequence_box Depot master=MitTitel	{
+		logic type=master_changed runat=client {
+			"if (newMasterValue != null) {
+				if (newMasterValue.equals(KOTiteldruckCodeType.MitTiteldruckCode.ID)) {
+					// in case 'Mit Titeldruck' is selected we disable the depotField
+	                getDepotField().setEnabled(false);
+	                getDepotField().setMandatory(false);
+	            } else {
+	                getDepotField().setEnabled(true);
+	                getDepotField().setMandatory(true);
+	            }
+			}"
+		}
+		smartfield Depot text=Depot master=Zreg lookup=DepotNumber value_type=ch.raiffeisen.dialba.common.shared.beans.DepotId
+	}
+  
+	sequence_box ObligationNrAlt {
+		smartfield ObligationNrAlt text=AlteNeueKONr mandatory=true lookup=OldObliNumber master=Zreg value_type=java.lang.Long
+		long ObligationNr enabled=false visible=false
+	}
+  
+	sequence_box BuchungsDatum {
+		date BuchungsDatum text=DatumEmission enabled=false {
+			logic type=init exec=SetTodayValue
+		}
+    	date EmissionsDatum mandatory=true {
+    		logic type=init exec=SetTodayValue
+			logic type=changed exec=EvalForm
+    	}
+	}
+  
+	sequence_box Zinsterm {
+		string Zinsterm text=ZinstermAuslauf enabled=false
+		string EndJahr enabled=false
+	}
+  
+	sequence_box Betrag {
+		long Betrag text=BetragSpesen mandatory=true {
+			logic type=changed runat=client {
+				"getEmissionField().setValue(new Float(0));"
+			}
+		}
+		string BetragsWaehrung enabled=false
+	}
+  
+	sequence_box Emission {
+		double Emission text=Emissionsabgabe enabled=false
+		string EmissionsWaehrung enabled=false
+	}
+  
+	sequence_box KontoNr {
+		smartfield KontoNr text=Kontobelastung mandatory=true lookup=KontoByZrnr master=Zreg value_type=ch.raiffeisen.dialba.common.shared.beans.KontoData {
+			logic type=changed runat=client {
+				"KontoData kontoData = getValue();
+	            if (kontoData != null) {
+	            	getZregKurzbezeichnungField().setValue(kontoData.getZregKurzBez());
+					getKontostandField().setValue(kontoData.getSaldo());
+				}"
+			}
+		}
+		string ZregKurzbezeichnung enabled=false master=KontoNr
+		string Kontostand enabled=false
+	}
+  
+	sequence_box KontoText1 {
+		string KontoText1 text=Buchungstext1 enabled=false
+	}
+  
+	sequence_box KontoText2 {
+		string KontoText2 text=Buchungstext2 enabled=false
+	}
+  
+	sequence_box KontoText3 {
+		string KontoText3 text=Buchungstext3
+	}
+} // end form Rka001
+

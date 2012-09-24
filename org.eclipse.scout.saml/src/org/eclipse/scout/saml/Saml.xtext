@@ -1,0 +1,98 @@
+grammar org.eclipse.scout.saml.Saml with org.eclipse.xtext.common.Terminals
+
+generate saml "http://www.eclipse.org/scout/saml/Saml"
+
+import "http://www.eclipse.org/xtext/common/JavaVMTypes" as jvmTypes
+
+Model:
+	elements+=RootElement*;
+	
+QualifiedName:ID ('.' ID)*;
+enum BooleanType:true|false;
+
+
+
+RootElement:ModuleElement|TranslationElement|CodeElement|LookupElement|TemplateElement|FormElement;
+
+AbstractScoutType:CodeElement|LookupElement|FormElement|AbstractFieldElement;
+
+AbstractFieldElement: AbstractValueFieldElement | AbstractContainerFieldElement;
+AbstractFieldProperties:text=TextAttribute|visible=VisibleAttribue|master=MasterAttribute|enabled=EnabledAttribue;
+TextAttribute:'text='value=[TranslationElement];
+EnabledAttribue:'enabled='value=BooleanType;
+VisibleAttribue:'visible='value=BooleanType;
+MasterAttribute:'master='value=[AbstractFieldElement];
+
+AbstractValueFieldElement:StringElement|SmartfieldElement|LongElement|DoubleElement|DateElement|ZregBoxElement;
+AbstractValueFieldProperties:AbstractFieldProperties|mandatory=MandatoryAttribue;
+MandatoryAttribue:'mandatory='value=BooleanType;
+
+
+AbstractContainerFieldElement: SequenceBoxElement;
+
+
+ModuleElement: 'module ' name=QualifiedName;
+
+	
+TranslationElement:'translation ' name=QualifiedName (translations+=TranslationAttribute)+;
+TranslationAttribute:lang=ID '=' type=STRING;
+	
+	
+JavaElement:'java ' name=ID runat=RunAtAttribute '{'source=STRING'}'; //TODO: should then be java code not a string (& there are special "hidden" input parameters)
+RunAtAttribute:'runat=' value=JavaRunAtAttributeList;
+enum JavaRunAtAttributeList:client|server;
+
+
+CodeElement:'code ' name=ID id=CodeIdAttribute;
+CodeIdAttribute:'id=' value=INT;
+	
+	
+LogicElement:'logic ' type=LogicTypeAttribute (properties+=LogicOptionalProperties)* ('{' source=STRING '}')?;
+LogicOptionalProperties:runat=RunAtAttribute|exec=LogicExecAttribute;
+LogicTypeAttribute:'type='value=LogicTypeAttributeList;
+LogicExecAttribute:'exec='value=[JavaElement];
+enum LogicTypeAttributeList:global|all|modify_load|modify_store|new_load|new_store|changed|click|master_changed|init;
+
+
+LookupElement:'lookup ' name=ID '{' (servicelogic+=(JavaElement|LogicElement))+ '}';
+
+
+TemplateElement:'template ' name=ID class=TemplateElementClassAttribute replaces=TemplateElementReplacesAttribute;
+TemplateElementClassAttribute:'class='value=QualifiedName;
+TemplateElementReplacesAttribute:'replaces='value=[AbstractScoutType];
+
+
+FormElement:'form ' name=ID modal=FormElementModalAttribute text=TextAttribute columns=FormElementColumnsAttribute
+	'{' (elements+=(LogicElement|JavaElement|AbstractFieldElement))* '}';
+FormElementModalAttribute:'modal='value=BooleanType;
+FormElementColumnsAttribute:'columns='value=INT;
+
+//TODO: inheritance of body contents?
+//TODO: it should only be possible to define a property once
+//TODO: templates?
+SequenceBoxElement:'sequence_box 'name=ID (properties+=AbstractFieldProperties)* ('{' children+=(LogicElement|AbstractFieldElement)* '}')?;
+	
+
+StringElement:'string 'name=ID (properties+=StringElementProperties)* ('{' (logic+=LogicElement)+ '}')?;
+StringElementProperties:AbstractValueFieldProperties|maxlen=StringElementMaxlenAttribute;
+StringElementMaxlenAttribute:'maxlen='value=INT;
+
+
+DoubleElement:'double 'name=ID (properties+=AbstractValueFieldProperties)* ('{' children+=(LogicElement)* '}')?;
+
+
+LongElement:'long 'name=ID (properties+=AbstractValueFieldProperties)* ('{' children+=(LogicElement)* '}')?;
+
+
+DateElement:'date 'name=ID (properties+=AbstractValueFieldProperties)* ('{' children+=(LogicElement)* '}')?;
+
+
+SmartfieldElement:'smartfield 'name=ID (properties+=SmartFieldElementProperties)* ('{' (logic+=LogicElement)+ '}')?;
+SmartFieldElementProperties:AbstractValueFieldProperties|code=SmartfieldElementCodeAttribute|value_type=SmartfieldElementValueTypeAttribute|lookup=SmartfieldElementLookupAttribute;
+SmartfieldElementCodeAttribute:'code='value=[CodeElement];
+SmartfieldElementValueTypeAttribute:'value_type='value=[jvmTypes::JvmType|QualifiedName];
+SmartfieldElementLookupAttribute:'lookup='value=[LookupElement];
+
+
+// Specific: to be removed when templates are implemented
+ZregBoxElement:'zreg_sequence_box 'name=ID (properties+=AbstractFieldProperties)* ('{' children+=(LogicElement)* '}')?;

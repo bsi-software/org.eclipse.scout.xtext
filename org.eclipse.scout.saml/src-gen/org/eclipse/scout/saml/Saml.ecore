@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="saml" nsURI="http://www.eclipse.org/scout/saml/Saml" nsPrefix="saml">
+  <eClassifiers xsi:type="ecore:EClass" name="Model">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//RootElement" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="BooleanType">
+    <eLiterals name="true" literal="true"/>
+    <eLiterals name="false" value="1" literal="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RootElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractScoutType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractFieldElement" eSuperTypes="#//AbstractScoutType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractFieldProperties" eSuperTypes="#//AbstractValueFieldProperties">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="text" eType="#//TextAttribute"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="visible" eType="#//VisibleAttribue"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="master" eType="#//MasterAttribute"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="enabled" eType="#//EnabledAttribue"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TextAttribute">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//TranslationElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EnabledAttribue">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//BooleanType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VisibleAttribue">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//BooleanType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MasterAttribute">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//AbstractFieldElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractValueFieldElement" eSuperTypes="#//AbstractFieldElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractValueFieldProperties" eSuperTypes="#//StringElementProperties #//SmartFieldElementProperties">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mandatory" eType="#//MandatoryAttribue"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MandatoryAttribue">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//BooleanType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractContainerFieldElement" eSuperTypes="#//AbstractFieldElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ModuleElement" eSuperTypes="#//RootElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TranslationElement" eSuperTypes="#//RootElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="translations" upperBound="-1"
+        eType="#//TranslationAttribute" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TranslationAttribute">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lang" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="runat" eType="#//RunAtAttribute"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="source" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RunAtAttribute">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//JavaRunAtAttributeList"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="JavaRunAtAttributeList">
+    <eLiterals name="client" literal="client"/>
+    <eLiterals name="server" value="1" literal="server"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CodeElement" eSuperTypes="#//RootElement #//AbstractScoutType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="id" eType="#//CodeIdAttribute"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CodeIdAttribute">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LogicElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//LogicTypeAttribute"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//LogicOptionalProperties" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="source" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LogicOptionalProperties">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="runat" eType="#//RunAtAttribute"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exec" eType="#//LogicExecAttribute"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LogicTypeAttribute">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//LogicTypeAttributeList"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LogicExecAttribute">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//JavaElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="LogicTypeAttributeList">
+    <eLiterals name="global" literal="global"/>
+    <eLiterals name="all" value="1" literal="all"/>
+    <eLiterals name="modify_load" value="2" literal="modify_load"/>
+    <eLiterals name="modify_store" value="3" literal="modify_store"/>
+    <eLiterals name="new_load" value="4" literal="new_load"/>
+    <eLiterals name="new_store" value="5" literal="new_store"/>
+    <eLiterals name="changed" value="6" literal="changed"/>
+    <eLiterals name="click" value="7" literal="click"/>
+    <eLiterals name="master_changed" value="8" literal="master_changed"/>
+    <eLiterals name="init" value="9" literal="init"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LookupElement" eSuperTypes="#//RootElement #//AbstractScoutType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="servicelogic" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TemplateElement" eSuperTypes="#//RootElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//TemplateElementClassAttribute"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="replaces" eType="#//TemplateElementReplacesAttribute"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TemplateElementClassAttribute">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TemplateElementReplacesAttribute">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//AbstractScoutType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FormElement" eSuperTypes="#//RootElement #//AbstractScoutType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modal" eType="#//FormElementModalAttribute"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="text" eType="#//TextAttribute"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="columns" eType="#//FormElementColumnsAttribute"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FormElementModalAttribute">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//BooleanType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FormElementColumnsAttribute">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SequenceBoxElement" eSuperTypes="#//AbstractContainerFieldElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//AbstractFieldProperties" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringElement" eSuperTypes="#//AbstractValueFieldElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//StringElementProperties" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="logic" upperBound="-1"
+        eType="#//LogicElement" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringElementProperties">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="maxlen" eType="#//StringElementMaxlenAttribute"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringElementMaxlenAttribute">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DoubleElement" eSuperTypes="#//AbstractValueFieldElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//AbstractValueFieldProperties" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//LogicElement" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LongElement" eSuperTypes="#//AbstractValueFieldElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//AbstractValueFieldProperties" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//LogicElement" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DateElement" eSuperTypes="#//AbstractValueFieldElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//AbstractValueFieldProperties" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//LogicElement" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SmartfieldElement" eSuperTypes="#//AbstractValueFieldElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//SmartFieldElementProperties" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="logic" upperBound="-1"
+        eType="#//LogicElement" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SmartFieldElementProperties">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="code" eType="#//SmartfieldElementCodeAttribute"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value_type" eType="#//SmartfieldElementValueTypeAttribute"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lookup" eType="#//SmartfieldElementLookupAttribute"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SmartfieldElementCodeAttribute">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//CodeElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SmartfieldElementValueTypeAttribute">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="ecore:EClass ../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SmartfieldElementLookupAttribute">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//LookupElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ZregBoxElement" eSuperTypes="#//AbstractValueFieldElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//AbstractFieldProperties" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//LogicElement" containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

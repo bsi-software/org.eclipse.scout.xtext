@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.eclipse.org/scout/saml/Saml" 
+       class = "org.eclipse.scout.saml.saml.SamlPackage"
+       genModel = "org/eclipse/scout/saml/Saml.genmodel" /> 
+	
+  </extension>
+
+
+
+
+</plugin>

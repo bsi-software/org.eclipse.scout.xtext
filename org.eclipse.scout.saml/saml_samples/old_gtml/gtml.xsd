@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.ibm.com/act4/presentation"
+	xmlns:gtml="http://www.ibm.com/ch/gtml" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.ibm.com/ch/gtml">
+
+
+	<!-- The complex type View contains single groups and translatables element -->
+	<xsd:include schemaLocation=""></xsd:include>
+	<xsd:complexType name="RootType">
+		<xsd:sequence maxOccurs="unbounded" minOccurs="0">
+			<xsd:element minOccurs="1" maxOccurs="1" name="translatables" type="gtml:TranslatablesType" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="views" type="gtml:ViewsType" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="actions" type="gtml:ActionsType" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<!-- Root Element -->
+	<xsd:element name="root" type="gtml:RootType" />
+
+	<!-- Base Complex Type -->
+	<xsd:complexType name="BaseType">
+		<xsd:annotation>
+			<xsd:documentation>
+
+				The base type adds a required "id" (compliant with Java identifier) attribute to
+				itself.
+
+			</xsd:documentation>
+		</xsd:annotation>
+
+		<xsd:attribute name="id" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:ID">
+					<xsd:pattern value="($|_|\p{L})(\p{L}|\p{Nd}|_|$)*" />
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	
+
+	<!-- Views Type -->
+	<xsd:complexType name="ViewsType">
+		<xsd:choice minOccurs="1" maxOccurs="unbounded">
+			<xsd:element name="view" type="gtml:ViewType" />
+		</xsd:choice>
+	</xsd:complexType>
+
+	<!-- View Type -->
+	<xsd:complexType name="ViewType">
+		<xsd:complexContent>
+			<xsd:extension base="gtml:UniqueCompoundType">
+				<xsd:attribute name="title" type="xsd:string" use="optional" />
+				<xsd:attribute name="modal" type="xsd:boolean" use="optional" />
+				<xsd:attribute name="type">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:enumeration value="view" />
+							<xsd:enumeration value="dialog" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<!-- Compound artifacts -->
+	<xsd:complexType name="CompoundType" mixed="true">
+		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="tab" type="gtml:TabType" />
+			<xsd:element name="form" type="gtml:RowType" />
+			<xsd:element name="section" type="gtml:SectionType" />
+			<xsd:element name="table" type="gtml:TableType" />
+			<xsd:element name="empty" type="gtml:EmptyType" />
+			<xsd:element name="label" type="gtml:LabelType" />
+			<xsd:element name="input" type="gtml:InputType" />
+			<xsd:element name="textarea" type="gtml:TextareaType" />
+			<xsd:element name="select" type="gtml:SelectType" />
+		</xsd:choice>
+	</xsd:complexType>
+
+	<xsd:complexType name="UniqueCompoundType" mixed="true" abstract="true">
+		<xsd:complexContent>
+			<xsd:extension base="gtml:BaseType">
+				<xsd:choice minOccurs="0" maxOccurs="unbounded">
+					<xsd:element name="tab" type="gtml:TabType" />
+					<xsd:element name="form" type="gtml:RowType" />
+					<xsd:element name="section" type="gtml:SectionType" />
+					<xsd:element name="table" type="gtml:TableType" />
+					<xsd:element name="empty" type="gtml:EmptyType" />
+					<xsd:element name="label" type="gtml:LabelType" />
+					<xsd:element name="input" type="gtml:InputType" />
+					<xsd:element name="select" type="gtml:SelectType" />
+				</xsd:choice>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="TabType">
+		<xsd:complexContent>
+			<xsd:extension base="gtml:UniqueCompoundType">
+				<xsd:attribute name="title" type="xsd:string" use="optional" />
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+
+
+	<xsd:complexType name="RowType">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="row" type="gtml:CompoundType" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="SectionType">
+		<xsd:complexContent>
+			<xsd:extension base="gtml:BaseType">
+				<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+					<xsd:element name="row" type="gtml:CompoundType" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="LabelType">
+		<xsd:complexContent>
+			<xsd:extension base="gtml:ControlType">
+				<xsd:attribute name="alignment" type="xsd:int" />
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="InputType">
+		<xsd:complexContent>
+			<xsd:extension base="gtml:ControlType">
+				<xsd:attribute name="alignment" type="xsd:int" use="optional" />
+				<xsd:attribute name="type">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:enumeration value="date" />
+							<xsd:enumeration value="integer" />
+							<xsd:enumeration value="string" />
+							<xsd:enumeration value="double" />
+							<xsd:enumeration value="checkbox" />
+							<xsd:enumeration value="button" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="TextareaType">
+		<xsd:complexContent>
+			<xsd:extension base="gtml:ControlType">
+				<xsd:attribute name="rows" type="xsd:int" use="optional" />
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="SelectType">
+		<xsd:complexContent>
+			<xsd:extension base="gtml:ControlType" />
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<!-- Table Complex Type Definition -->
+	<xsd:complexType name="TableType">
+		<xsd:complexContent>
+			<xsd:extension base="gtml:ControlType">
+				<xsd:sequence minOccurs="1" maxOccurs="1">
+					<xsd:element name="header" type="gtml:HeaderType" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="HeaderType">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="column" type="gtml:ColumnType" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="ColumnType">
+		<xsd:complexContent>
+			<xsd:extension base="gtml:BaseType">
+				<xsd:attribute name="type" use="required">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:enumeration value="date" />
+							<xsd:enumeration value="integer" />
+							<xsd:enumeration value="string" />
+							<xsd:enumeration value="double" />
+							<xsd:enumeration value="boolean" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+
+	<!-- Window Complex Type for any Windows -->
+	<xsd:complexType abstract="true" name="WindowType">
+		<xsd:attribute name="modal" type="xsd:boolean" />
+	</xsd:complexType>
+
+
+	<!-- Abstract Complex Type for Controls -->
+	<xsd:complexType abstract="true" name="ControlType">
+		<xsd:complexContent>
+			<xsd:extension base="gtml:WidgetType">
+				<xsd:attribute name="visible" type="xsd:boolean" use="optional" />
+				<xsd:attribute name="bounds" type="xsd:string" use="optional" />
+				<xsd:attribute name="enabled" type="xsd:boolean" use="optional" />
+				<xsd:attribute name="toolTipText" type="xsd:string" use="optional" />
+				<xsd:attribute name="text" type="xsd:string" use="optional" />
+				
+				<xsd:attribute name="mandatory" type="xsd:boolean" use="optional" />
+				
+				<xsd:attribute name="triggersCall" type="xsd:boolean" use="optional" />
+				<xsd:attribute name="changeRelevant" type="xsd:boolean" use="optional" />
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+
+	<!-- Abstract Complex Type Widget -->
+	<xsd:complexType abstract="true" name="WidgetType">
+		<xsd:complexContent>
+			<xsd:extension base="gtml:BaseType">
+				<xsd:attributeGroup ref="gtml:EventGroup" />
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+
+	<xsd:complexType name="EmptyType" />
+
+	<!-- Event group which holds all possible events of a RCP Widget -->
+	<xsd:attributeGroup name="EventGroup">
+		<xsd:attribute name="onFocusIn" type="xsd:IDREF" />
+		<xsd:attribute name="onKeyDown" type="xsd:IDREF" />
+		<xsd:attribute name="onKeyUp" type="xsd:IDREF" />
+		<xsd:attribute name="onSelect" type="xsd:IDREF" />
+	</xsd:attributeGroup>
+
+	<!-- Key group which lists all possible key bindings (TBD: Complete the 
+		list) -->
+	<xsd:simpleType name="KeyGroup">
+		<xsd:restriction base="xsd:string">
+			<!-- Keyboard and Mouse Masks -->
+			<xsd:enumeration value="ALT" />
+			<xsd:enumeration value="SHIFT" />
+			<xsd:enumeration value="CONTROL" />
+			<xsd:enumeration value="COMMAND" />
+			<xsd:enumeration value="LF" />
+			<xsd:enumeration value="TAB" />
+			<xsd:enumeration value="SPACE" />
+
+			<!-- Non-Numeric Keypad Keys -->
+			<xsd:enumeration value="ARROW_UP" />
+			<xsd:enumeration value="ARROW_DOWN" />
+			<xsd:enumeration value="ARROW_LEFT" />
+			<xsd:enumeration value="ARROW_RIGHT" />
+			<xsd:enumeration value="PAGE_UP" />
+			<xsd:enumeration value="PAGE_DOWN" />
+			<xsd:enumeration value="HOME" />
+			<xsd:enumeration value="END" />
+			<xsd:enumeration value="INSERT" />
+
+			<xsd:enumeration value="BS" />
+			<xsd:enumeration value="CR" />
+			<xsd:enumeration value="DEL" />
+			<xsd:enumeration value="ESC" />
+			<xsd:enumeration value="LF" />
+			<xsd:enumeration value="TAB" />
+			<xsd:enumeration value="SPACE" />
+
+			<!-- Function Keys -->
+			<xsd:enumeration value="F1" />
+			<xsd:enumeration value="F2" />
+			<xsd:enumeration value="F3" />
+			<xsd:enumeration value="F4" />
+			<xsd:enumeration value="F5" />
+			<xsd:enumeration value="F6" />
+			<xsd:enumeration value="F7" />
+			<xsd:enumeration value="F8" />
+			<xsd:enumeration value="F9" />
+			<xsd:enumeration value="F10" />
+			<xsd:enumeration value="F11" />
+			<xsd:enumeration value="F12" />
+			<xsd:enumeration value="F11" />
+			<xsd:enumeration value="F12" />
+			<xsd:enumeration value="F13" />
+			<xsd:enumeration value="F14" />
+			<xsd:enumeration value="F15" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+
+	<!-- Internationalization Support -->
+	<xsd:complexType name="TranslatableType">
+		<xsd:sequence>
+			<xsd:element name="translation" type="gtml:TranslationType" />
+		</xsd:sequence>
+		<xsd:attribute name="ref" type="xsd:IDREF" />
+	</xsd:complexType>
+
+	<xsd:complexType name="TranslationType">
+		<xsd:attribute name="lang" type="xsd:string" />
+		<xsd:attribute name="text" type="xsd:string" use="required" />
+	</xsd:complexType>
+
+	<xsd:complexType name="TranslatablesType">
+		<xsd:sequence>
+			<xsd:element name="translatable" type="gtml:TranslatableType"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+
+	<!-- ******************************************************* -->
+	<!-- Actions Support -->
+	<xsd:complexType name="ActionsType">
+		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="open" type="gtml:OpenType" />
+			<xsd:element name="action" type="gtml:ActionType" />
+		</xsd:choice>
+	</xsd:complexType>
+
+	<xsd:complexType name="ActionType">
+		<xsd:complexContent>
+			<xsd:extension base="gtml:BaseType">
+				<xsd:sequence>
+					<xsd:element name="param" type="gtml:ParamValueType" minOccurs="0" maxOccurs="unbounded">
+						<xsd:annotation>
+							<xsd:documentation>
+
+								The param element contains a name/value pair
+								as an param of an action.
+
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="OpenType">
+		<xsd:complexContent>
+			<xsd:extension base="gtml:ActionType">
+				<xsd:attribute name="ref" type="xsd:IDREF" />
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="ParamValueType">
+		<xsd:annotation>
+			<xsd:documentation>
+
+				This type is a general type that can be used to
+				declare parameter/value lists.
+
+			</xsd:documentation>
+		</xsd:annotation>
+
+		<xsd:sequence>
+			<xsd:element name="name" type="gtml:DefaultStringType">
+				<xsd:annotation>
+					<xsd:documentation>
+
+						The name element contains the name of a
+						parameter.
+
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element name="value" type="gtml:DefaultStringType">
+				<xsd:annotation>
+					<xsd:documentation>
+
+						The value element contains the value of a
+						parameter.
+
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="xsd:ID" />
+	</xsd:complexType>
+
+	<!-- ******************************************************* -->
+
+
+	<xsd:complexType name="CollapsedStringType">
+		<xsd:annotation>
+			<xsd:documentation>
+
+				This is a special string type that is defined by
+				GTML as base type for defining collapsed strings. When schemas
+				require trailing/leading space elimination as well as
+				collapsing the existing whitespace, this base type may be used.
+
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:token">
+				<xsd:attribute name="id" type="xsd:ID" />
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="DefaultStringType">
+		<xsd:annotation>
+			<xsd:documentation>
+
+				This type adds an "id" attribute to xsd:string.
+
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="id" type="xsd:ID" />
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+</xsd:schema>

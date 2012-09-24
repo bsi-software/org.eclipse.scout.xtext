@@ -1,0 +1,34 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.eclipse.scout.saml
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.eclipse.scout.saml; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext;visibility:=reexport,
+ org.eclipse.xtext.xbase;resolution:=optional;visibility:=reexport,
+ org.eclipse.xtext.generator;resolution:=optional,
+ org.apache.commons.logging;bundle-version="1.0.4";resolution:=optional,
+ org.eclipse.emf.codegen.ecore;resolution:=optional,
+ org.eclipse.emf.mwe.utils;resolution:=optional,
+ org.eclipse.emf.mwe2.launch;resolution:=optional,
+ org.eclipse.xtext.util,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common,
+ org.antlr.runtime,
+ org.eclipse.xtext.common.types
+Import-Package: org.apache.log4j,
+ org.eclipse.xtext.xbase.lib
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.eclipse.scout.saml,
+ org.eclipse.scout.saml.services,
+ org.eclipse.scout.saml.saml,
+ org.eclipse.scout.saml.saml.impl,
+ org.eclipse.scout.saml.saml.util,
+ org.eclipse.scout.saml.serializer,
+ org.eclipse.scout.saml.parser.antlr,
+ org.eclipse.scout.saml.parser.antlr.internal,
+ org.eclipse.scout.saml.validation,
+ org.eclipse.scout.saml.scoping,
+ org.eclipse.scout.saml.generator,
+ org.eclipse.scout.saml.formatting

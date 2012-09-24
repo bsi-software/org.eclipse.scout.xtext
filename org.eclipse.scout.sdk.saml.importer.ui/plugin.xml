@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension
+         point="org.eclipse.scout.sdk.ui.contextMenu">
+      <contextMenu
+            class="org.eclipse.scout.sdk.saml.importer.ui.action.SamlImportAction">
+      </contextMenu>
+   </extension>
+   <extension
+         point="org.eclipse.scout.sdk.ui.contextMenuContributor">
+      <contributor
+            class="org.eclipse.scout.sdk.saml.importer.ui.extension.SamlImportMenuContributor"
+            page="org.eclipse.scout.sdk.ui.internal.view.outline.pages.project.ProjectNodePage">
+      </contributor>
+   </extension>
+</plugin>
