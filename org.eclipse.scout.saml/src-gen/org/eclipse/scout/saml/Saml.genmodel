@@ -69,7 +69,7 @@
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//TranslationAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//TranslationAttribute/lang"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//TranslationAttribute/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//TranslationAttribute/text"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//JavaElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//JavaElement/name"/>

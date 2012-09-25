@@ -469,15 +469,15 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cLangAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cLangIDTerminalRuleCall_0_0 = (RuleCall)cLangAssignment_0.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cTypeSTRINGTerminalRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
+		private final Assignment cTextAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cTextSTRINGTerminalRuleCall_2_0 = (RuleCall)cTextAssignment_2.eContents().get(0);
 		
 		//TranslationAttribute:
 		//
-		//	lang=ID "=" type=STRING;
+		//	lang=ID "=" text=STRING;
 		public ParserRule getRule() { return rule; }
 
-		//lang=ID "=" type=STRING
+		//lang=ID "=" text=STRING
 		public Group getGroup() { return cGroup; }
 
 		//lang=ID
@@ -489,11 +489,11 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//"="
 		public Keyword getEqualsSignKeyword_1() { return cEqualsSignKeyword_1; }
 
-		//type=STRING
-		public Assignment getTypeAssignment_2() { return cTypeAssignment_2; }
+		//text=STRING
+		public Assignment getTextAssignment_2() { return cTextAssignment_2; }
 
 		//STRING
-		public RuleCall getTypeSTRINGTerminalRuleCall_2_0() { return cTypeSTRINGTerminalRuleCall_2_0; }
+		public RuleCall getTextSTRINGTerminalRuleCall_2_0() { return cTextSTRINGTerminalRuleCall_2_0; }
 	}
 
 	public class JavaElementElements extends AbstractParserRuleElementFinder {
@@ -2040,7 +2040,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 
 	//TranslationAttribute:
 	//
-	//	lang=ID "=" type=STRING;
+	//	lang=ID "=" text=STRING;
 	public TranslationAttributeElements getTranslationAttributeAccess() {
 		return (pTranslationAttribute != null) ? pTranslationAttribute : (pTranslationAttribute = new TranslationAttributeElements());
 	}

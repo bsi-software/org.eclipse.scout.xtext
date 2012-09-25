@@ -7124,31 +7124,31 @@ public class InternalSamlParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TranslationAttribute__Group__2__Impl"
-    // ../org.eclipse.scout.saml.ui/src-gen/org/eclipse/scout/saml/ui/contentassist/antlr/internal/InternalSaml.g:2476:1: rule__TranslationAttribute__Group__2__Impl : ( ( rule__TranslationAttribute__TypeAssignment_2 ) ) ;
+    // ../org.eclipse.scout.saml.ui/src-gen/org/eclipse/scout/saml/ui/contentassist/antlr/internal/InternalSaml.g:2476:1: rule__TranslationAttribute__Group__2__Impl : ( ( rule__TranslationAttribute__TextAssignment_2 ) ) ;
     public final void rule__TranslationAttribute__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.scout.saml.ui/src-gen/org/eclipse/scout/saml/ui/contentassist/antlr/internal/InternalSaml.g:2480:1: ( ( ( rule__TranslationAttribute__TypeAssignment_2 ) ) )
-            // ../org.eclipse.scout.saml.ui/src-gen/org/eclipse/scout/saml/ui/contentassist/antlr/internal/InternalSaml.g:2481:1: ( ( rule__TranslationAttribute__TypeAssignment_2 ) )
+            // ../org.eclipse.scout.saml.ui/src-gen/org/eclipse/scout/saml/ui/contentassist/antlr/internal/InternalSaml.g:2480:1: ( ( ( rule__TranslationAttribute__TextAssignment_2 ) ) )
+            // ../org.eclipse.scout.saml.ui/src-gen/org/eclipse/scout/saml/ui/contentassist/antlr/internal/InternalSaml.g:2481:1: ( ( rule__TranslationAttribute__TextAssignment_2 ) )
             {
-            // ../org.eclipse.scout.saml.ui/src-gen/org/eclipse/scout/saml/ui/contentassist/antlr/internal/InternalSaml.g:2481:1: ( ( rule__TranslationAttribute__TypeAssignment_2 ) )
-            // ../org.eclipse.scout.saml.ui/src-gen/org/eclipse/scout/saml/ui/contentassist/antlr/internal/InternalSaml.g:2482:1: ( rule__TranslationAttribute__TypeAssignment_2 )
+            // ../org.eclipse.scout.saml.ui/src-gen/org/eclipse/scout/saml/ui/contentassist/antlr/internal/InternalSaml.g:2481:1: ( ( rule__TranslationAttribute__TextAssignment_2 ) )
+            // ../org.eclipse.scout.saml.ui/src-gen/org/eclipse/scout/saml/ui/contentassist/antlr/internal/InternalSaml.g:2482:1: ( rule__TranslationAttribute__TextAssignment_2 )
             {
-             before(grammarAccess.getTranslationAttributeAccess().getTypeAssignment_2()); 
-            // ../org.eclipse.scout.saml.ui/src-gen/org/eclipse/scout/saml/ui/contentassist/antlr/internal/InternalSaml.g:2483:1: ( rule__TranslationAttribute__TypeAssignment_2 )
-            // ../org.eclipse.scout.saml.ui/src-gen/org/eclipse/scout/saml/ui/contentassist/antlr/internal/InternalSaml.g:2483:2: rule__TranslationAttribute__TypeAssignment_2
+             before(grammarAccess.getTranslationAttributeAccess().getTextAssignment_2()); 
+            // ../org.eclipse.scout.saml.ui/src-gen/org/eclipse/scout/saml/ui/contentassist/antlr/internal/InternalSaml.g:2483:1: ( rule__TranslationAttribute__TextAssignment_2 )
+            // ../org.eclipse.scout.saml.ui/src-gen/org/eclipse/scout/saml/ui/contentassist/antlr/internal/InternalSaml.g:2483:2: rule__TranslationAttribute__TextAssignment_2
             {
-            pushFollow(FOLLOW_rule__TranslationAttribute__TypeAssignment_2_in_rule__TranslationAttribute__Group__2__Impl5261);
-            rule__TranslationAttribute__TypeAssignment_2();
+            pushFollow(FOLLOW_rule__TranslationAttribute__TextAssignment_2_in_rule__TranslationAttribute__Group__2__Impl5261);
+            rule__TranslationAttribute__TextAssignment_2();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getTranslationAttributeAccess().getTypeAssignment_2()); 
+             after(grammarAccess.getTranslationAttributeAccess().getTextAssignment_2()); 
 
             }
 
@@ -16633,9 +16633,9 @@ public class InternalSamlParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__TranslationAttribute__LangAssignment_0"
 
 
-    // $ANTLR start "rule__TranslationAttribute__TypeAssignment_2"
-    // ../org.eclipse.scout.saml.ui/src-gen/org/eclipse/scout/saml/ui/contentassist/antlr/internal/InternalSaml.g:6101:1: rule__TranslationAttribute__TypeAssignment_2 : ( RULE_STRING ) ;
-    public final void rule__TranslationAttribute__TypeAssignment_2() throws RecognitionException {
+    // $ANTLR start "rule__TranslationAttribute__TextAssignment_2"
+    // ../org.eclipse.scout.saml.ui/src-gen/org/eclipse/scout/saml/ui/contentassist/antlr/internal/InternalSaml.g:6101:1: rule__TranslationAttribute__TextAssignment_2 : ( RULE_STRING ) ;
+    public final void rule__TranslationAttribute__TextAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -16646,9 +16646,9 @@ public class InternalSamlParser extends AbstractInternalContentAssistParser {
             // ../org.eclipse.scout.saml.ui/src-gen/org/eclipse/scout/saml/ui/contentassist/antlr/internal/InternalSaml.g:6106:1: ( RULE_STRING )
             // ../org.eclipse.scout.saml.ui/src-gen/org/eclipse/scout/saml/ui/contentassist/antlr/internal/InternalSaml.g:6107:1: RULE_STRING
             {
-             before(grammarAccess.getTranslationAttributeAccess().getTypeSTRINGTerminalRuleCall_2_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__TranslationAttribute__TypeAssignment_212423); 
-             after(grammarAccess.getTranslationAttributeAccess().getTypeSTRINGTerminalRuleCall_2_0()); 
+             before(grammarAccess.getTranslationAttributeAccess().getTextSTRINGTerminalRuleCall_2_0()); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__TranslationAttribute__TextAssignment_212423); 
+             after(grammarAccess.getTranslationAttributeAccess().getTextSTRINGTerminalRuleCall_2_0()); 
 
             }
 
@@ -16667,7 +16667,7 @@ public class InternalSamlParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__TranslationAttribute__TypeAssignment_2"
+    // $ANTLR end "rule__TranslationAttribute__TextAssignment_2"
 
 
     // $ANTLR start "rule__JavaElement__NameAssignment_1"
@@ -19225,7 +19225,7 @@ public class InternalSamlParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__TranslationAttribute__Group__2_in_rule__TranslationAttribute__Group__15175 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_33_in_rule__TranslationAttribute__Group__1__Impl5203 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TranslationAttribute__Group__2__Impl_in_rule__TranslationAttribute__Group__25234 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TranslationAttribute__TypeAssignment_2_in_rule__TranslationAttribute__Group__2__Impl5261 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TranslationAttribute__TextAssignment_2_in_rule__TranslationAttribute__Group__2__Impl5261 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JavaElement__Group__0__Impl_in_rule__JavaElement__Group__05297 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_rule__JavaElement__Group__1_in_rule__JavaElement__Group__05300 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_34_in_rule__JavaElement__Group__0__Impl5328 = new BitSet(new long[]{0x0000000000000002L});
@@ -19529,7 +19529,7 @@ public class InternalSamlParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_ruleQualifiedName_in_rule__TranslationElement__NameAssignment_112330 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleTranslationAttribute_in_rule__TranslationElement__TranslationsAssignment_212361 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_ID_in_rule__TranslationAttribute__LangAssignment_012392 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__TranslationAttribute__TypeAssignment_212423 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__TranslationAttribute__TextAssignment_212423 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_ID_in_rule__JavaElement__NameAssignment_112454 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleRunAtAttribute_in_rule__JavaElement__RunatAssignment_212485 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_STRING_in_rule__JavaElement__SourceAssignment_412516 = new BitSet(new long[]{0x0000000000000002L});

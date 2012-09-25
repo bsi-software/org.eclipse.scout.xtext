@@ -821,19 +821,19 @@ public class SamlSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (lang=ID type=STRING)
+	 *     (lang=ID text=STRING)
 	 */
 	protected void sequence_TranslationAttribute(EObject context, TranslationAttribute semanticObject) {
 		if(errorAcceptor != null) {
 			if(transientValues.isValueTransient(semanticObject, SamlPackage.Literals.TRANSLATION_ATTRIBUTE__LANG) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SamlPackage.Literals.TRANSLATION_ATTRIBUTE__LANG));
-			if(transientValues.isValueTransient(semanticObject, SamlPackage.Literals.TRANSLATION_ATTRIBUTE__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SamlPackage.Literals.TRANSLATION_ATTRIBUTE__TYPE));
+			if(transientValues.isValueTransient(semanticObject, SamlPackage.Literals.TRANSLATION_ATTRIBUTE__TEXT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SamlPackage.Literals.TRANSLATION_ATTRIBUTE__TEXT));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getTranslationAttributeAccess().getLangIDTerminalRuleCall_0_0(), semanticObject.getLang());
-		feeder.accept(grammarAccess.getTranslationAttributeAccess().getTypeSTRINGTerminalRuleCall_2_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getTranslationAttributeAccess().getTextSTRINGTerminalRuleCall_2_0(), semanticObject.getText());
 		feeder.finish();
 	}
 	

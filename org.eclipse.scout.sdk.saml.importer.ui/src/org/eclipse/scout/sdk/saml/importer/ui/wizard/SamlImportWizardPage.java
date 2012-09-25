@@ -44,10 +44,10 @@ public class SamlImportWizardPage extends AbstractWorkspaceWizardPage {
 
   @Override
   protected void createContent(Composite parent) {
-	  m_fileField = new FileSelectionField(parent);
-	  m_fileField.setLabelText("SAML File");
-	  m_fileField.setFolderMode(false);
-	  m_fileField.addProductSelectionListener(new IFileSelectionListener() {
+    m_fileField = new FileSelectionField(parent);
+    m_fileField.setLabelText("SAML File");
+    m_fileField.setFolderMode(false);
+    m_fileField.addProductSelectionListener(new IFileSelectionListener() {
       @Override
       public void fileSelected(File file) {
         String fileName = "";
@@ -58,7 +58,7 @@ public class SamlImportWizardPage extends AbstractWorkspaceWizardPage {
         pingStateChanging();
       }
     });
-    File defaultPath = new File("C:\\BSI\\Projects\\Raiffeisen\\SAML\\runtime-EclipseApplication\\org.eclipse.scout.saml.input\\Rka001.saml");
+    File defaultPath = new File("C:\\BSI\\Projects\\SAML\\runtime-EclipseApplication\\org.eclipse.scout.saml.input\\Rka001.saml");
     setSamlFileInternal(defaultPath.getAbsolutePath());
     m_fileField.setFile(defaultPath);
     pingStateChanging();
@@ -88,7 +88,7 @@ public class SamlImportWizardPage extends AbstractWorkspaceWizardPage {
       setStateChanging(true);
       setSamlFileInternal(f);
       if (isControlCreated()) {
-    	  m_fileField.setFileName(f);
+        m_fileField.setFileName(f);
       }
     }
     finally {

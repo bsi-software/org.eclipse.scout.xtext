@@ -2249,22 +2249,22 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTranslationAttribute"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:843:1: ruleTranslationAttribute returns [EObject current=null] : ( ( (lv_lang_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_type_2_0= RULE_STRING ) ) ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:843:1: ruleTranslationAttribute returns [EObject current=null] : ( ( (lv_lang_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_text_2_0= RULE_STRING ) ) ) ;
     public final EObject ruleTranslationAttribute() throws RecognitionException {
         EObject current = null;
 
         Token lv_lang_0_0=null;
         Token otherlv_1=null;
-        Token lv_type_2_0=null;
+        Token lv_text_2_0=null;
 
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:846:28: ( ( ( (lv_lang_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_type_2_0= RULE_STRING ) ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:847:1: ( ( (lv_lang_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_type_2_0= RULE_STRING ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:846:28: ( ( ( (lv_lang_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_text_2_0= RULE_STRING ) ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:847:1: ( ( (lv_lang_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_text_2_0= RULE_STRING ) ) )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:847:1: ( ( (lv_lang_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_type_2_0= RULE_STRING ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:847:2: ( (lv_lang_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_type_2_0= RULE_STRING ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:847:1: ( ( (lv_lang_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_text_2_0= RULE_STRING ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:847:2: ( (lv_lang_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_text_2_0= RULE_STRING ) )
             {
             // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:847:2: ( (lv_lang_0_0= RULE_ID ) )
             // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:848:1: (lv_lang_0_0= RULE_ID )
@@ -2296,15 +2296,15 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
                 	newLeafNode(otherlv_1, grammarAccess.getTranslationAttributeAccess().getEqualsSignKeyword_1());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:869:1: ( (lv_type_2_0= RULE_STRING ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:870:1: (lv_type_2_0= RULE_STRING )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:869:1: ( (lv_text_2_0= RULE_STRING ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:870:1: (lv_text_2_0= RULE_STRING )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:870:1: (lv_type_2_0= RULE_STRING )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:871:3: lv_type_2_0= RULE_STRING
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:870:1: (lv_text_2_0= RULE_STRING )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:871:3: lv_text_2_0= RULE_STRING
             {
-            lv_type_2_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleTranslationAttribute2090); 
+            lv_text_2_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleTranslationAttribute2090); 
 
-            			newLeafNode(lv_type_2_0, grammarAccess.getTranslationAttributeAccess().getTypeSTRINGTerminalRuleCall_2_0()); 
+            			newLeafNode(lv_text_2_0, grammarAccess.getTranslationAttributeAccess().getTextSTRINGTerminalRuleCall_2_0()); 
             		
 
             	        if (current==null) {
@@ -2312,8 +2312,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             	        }
                    		setWithLastConsumed(
                    			current, 
-                   			"type",
-                    		lv_type_2_0, 
+                   			"text",
+                    		lv_text_2_0, 
                     		"STRING");
             	    
 

@@ -35,7 +35,7 @@ ModuleElement: 'module ' name=QualifiedName;
 
 	
 TranslationElement:'translation ' name=QualifiedName (translations+=TranslationAttribute)+;
-TranslationAttribute:lang=ID '=' type=STRING;
+TranslationAttribute:lang=ID '=' text=STRING;
 	
 	
 JavaElement:'java ' name=ID runat=RunAtAttribute '{'source=STRING'}'; //TODO: should then be java code not a string (& there are special "hidden" input parameters)

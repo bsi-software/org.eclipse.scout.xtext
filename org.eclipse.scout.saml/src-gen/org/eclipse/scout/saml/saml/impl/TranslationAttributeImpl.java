@@ -20,7 +20,7 @@ import org.eclipse.scout.saml.saml.TranslationAttribute;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.TranslationAttributeImpl#getLang <em>Lang</em>}</li>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.TranslationAttributeImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.TranslationAttributeImpl#getText <em>Text</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,24 +49,24 @@ public class TranslationAttributeImpl extends MinimalEObjectImpl.Container imple
   protected String lang = LANG_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+   * The default value of the '{@link #getText() <em>Text</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getType()
+   * @see #getText()
    * @generated
    * @ordered
    */
-  protected static final String TYPE_EDEFAULT = null;
+  protected static final String TEXT_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+   * The cached value of the '{@link #getText() <em>Text</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getType()
+   * @see #getText()
    * @generated
    * @ordered
    */
-  protected String type = TYPE_EDEFAULT;
+  protected String text = TEXT_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -117,9 +117,9 @@ public class TranslationAttributeImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getType()
+  public String getText()
   {
-    return type;
+    return text;
   }
 
   /**
@@ -127,12 +127,12 @@ public class TranslationAttributeImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setType(String newType)
+  public void setText(String newText)
   {
-    String oldType = type;
-    type = newType;
+    String oldText = text;
+    text = newText;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.TRANSLATION_ATTRIBUTE__TYPE, oldType, type));
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.TRANSLATION_ATTRIBUTE__TEXT, oldText, text));
   }
 
   /**
@@ -147,8 +147,8 @@ public class TranslationAttributeImpl extends MinimalEObjectImpl.Container imple
     {
       case SamlPackage.TRANSLATION_ATTRIBUTE__LANG:
         return getLang();
-      case SamlPackage.TRANSLATION_ATTRIBUTE__TYPE:
-        return getType();
+      case SamlPackage.TRANSLATION_ATTRIBUTE__TEXT:
+        return getText();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -166,8 +166,8 @@ public class TranslationAttributeImpl extends MinimalEObjectImpl.Container imple
       case SamlPackage.TRANSLATION_ATTRIBUTE__LANG:
         setLang((String)newValue);
         return;
-      case SamlPackage.TRANSLATION_ATTRIBUTE__TYPE:
-        setType((String)newValue);
+      case SamlPackage.TRANSLATION_ATTRIBUTE__TEXT:
+        setText((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -186,8 +186,8 @@ public class TranslationAttributeImpl extends MinimalEObjectImpl.Container imple
       case SamlPackage.TRANSLATION_ATTRIBUTE__LANG:
         setLang(LANG_EDEFAULT);
         return;
-      case SamlPackage.TRANSLATION_ATTRIBUTE__TYPE:
-        setType(TYPE_EDEFAULT);
+      case SamlPackage.TRANSLATION_ATTRIBUTE__TEXT:
+        setText(TEXT_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -205,8 +205,8 @@ public class TranslationAttributeImpl extends MinimalEObjectImpl.Container imple
     {
       case SamlPackage.TRANSLATION_ATTRIBUTE__LANG:
         return LANG_EDEFAULT == null ? lang != null : !LANG_EDEFAULT.equals(lang);
-      case SamlPackage.TRANSLATION_ATTRIBUTE__TYPE:
-        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+      case SamlPackage.TRANSLATION_ATTRIBUTE__TEXT:
+        return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
     }
     return super.eIsSet(featureID);
   }
@@ -224,8 +224,8 @@ public class TranslationAttributeImpl extends MinimalEObjectImpl.Container imple
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (lang: ");
     result.append(lang);
-    result.append(", type: ");
-    result.append(type);
+    result.append(", text: ");
+    result.append(text);
     result.append(')');
     return result.toString();
   }

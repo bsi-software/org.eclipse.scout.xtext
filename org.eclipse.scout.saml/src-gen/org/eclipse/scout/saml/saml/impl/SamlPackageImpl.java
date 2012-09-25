@@ -780,7 +780,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTranslationAttribute_Type()
+  public EAttribute getTranslationAttribute_Text()
   {
     return (EAttribute)translationAttributeEClass.getEStructuralFeatures().get(1);
   }
@@ -1641,7 +1641,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
 
     translationAttributeEClass = createEClass(TRANSLATION_ATTRIBUTE);
     createEAttribute(translationAttributeEClass, TRANSLATION_ATTRIBUTE__LANG);
-    createEAttribute(translationAttributeEClass, TRANSLATION_ATTRIBUTE__TYPE);
+    createEAttribute(translationAttributeEClass, TRANSLATION_ATTRIBUTE__TEXT);
 
     javaElementEClass = createEClass(JAVA_ELEMENT);
     createEAttribute(javaElementEClass, JAVA_ELEMENT__NAME);
@@ -1854,7 +1854,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
 
     initEClass(translationAttributeEClass, TranslationAttribute.class, "TranslationAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTranslationAttribute_Lang(), ecorePackage.getEString(), "lang", null, 0, 1, TranslationAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTranslationAttribute_Type(), ecorePackage.getEString(), "type", null, 0, 1, TranslationAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTranslationAttribute_Text(), ecorePackage.getEString(), "text", null, 0, 1, TranslationAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(javaElementEClass, JavaElement.class, "JavaElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getJavaElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, JavaElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

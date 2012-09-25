@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.scout.saml.saml.TranslationAttribute#getLang <em>Lang</em>}</li>
- *   <li>{@link org.eclipse.scout.saml.saml.TranslationAttribute#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.TranslationAttribute#getText <em>Text</em>}</li>
  * </ul>
  * </p>
  *
@@ -50,29 +50,29 @@ public interface TranslationAttribute extends EObject
   void setLang(String value);
 
   /**
-   * Returns the value of the '<em><b>Type</b></em>' attribute.
+   * Returns the value of the '<em><b>Text</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Type</em>' attribute isn't clear,
+   * If the meaning of the '<em>Text</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' attribute.
-   * @see #setType(String)
-   * @see org.eclipse.scout.saml.saml.SamlPackage#getTranslationAttribute_Type()
+   * @return the value of the '<em>Text</em>' attribute.
+   * @see #setText(String)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getTranslationAttribute_Text()
    * @model
    * @generated
    */
-  String getType();
+  String getText();
 
   /**
-   * Sets the value of the '{@link org.eclipse.scout.saml.saml.TranslationAttribute#getType <em>Type</em>}' attribute.
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.TranslationAttribute#getText <em>Text</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' attribute.
-   * @see #getType()
+   * @param value the new value of the '<em>Text</em>' attribute.
+   * @see #getText()
    * @generated
    */
-  void setType(String value);
+  void setText(String value);
 
 } // TranslationAttribute

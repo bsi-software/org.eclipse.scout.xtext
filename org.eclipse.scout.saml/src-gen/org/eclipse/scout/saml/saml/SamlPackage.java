@@ -615,13 +615,13 @@ public interface SamlPackage extends EPackage
   int TRANSLATION_ATTRIBUTE__LANG = 0;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * The feature id for the '<em><b>Text</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TRANSLATION_ATTRIBUTE__TYPE = 1;
+  int TRANSLATION_ATTRIBUTE__TEXT = 1;
 
   /**
    * The number of structural features of the '<em>Translation Attribute</em>' class.
@@ -2006,15 +2006,15 @@ public interface SamlPackage extends EPackage
   EAttribute getTranslationAttribute_Lang();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.TranslationAttribute#getType <em>Type</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.TranslationAttribute#getText <em>Text</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type</em>'.
-   * @see org.eclipse.scout.saml.saml.TranslationAttribute#getType()
+   * @return the meta object for the attribute '<em>Text</em>'.
+   * @see org.eclipse.scout.saml.saml.TranslationAttribute#getText()
    * @see #getTranslationAttribute()
    * @generated
    */
-  EAttribute getTranslationAttribute_Type();
+  EAttribute getTranslationAttribute_Text();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.JavaElement <em>Java Element</em>}'.
@@ -3147,12 +3147,12 @@ public interface SamlPackage extends EPackage
     EAttribute TRANSLATION_ATTRIBUTE__LANG = eINSTANCE.getTranslationAttribute_Lang();
 
     /**
-     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TRANSLATION_ATTRIBUTE__TYPE = eINSTANCE.getTranslationAttribute_Type();
+    EAttribute TRANSLATION_ATTRIBUTE__TEXT = eINSTANCE.getTranslationAttribute_Text();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.JavaElementImpl <em>Java Element</em>}' class.

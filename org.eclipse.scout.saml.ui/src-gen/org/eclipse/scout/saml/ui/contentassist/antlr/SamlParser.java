@@ -110,7 +110,7 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTranslationElementAccess().getNameAssignment_1(), "rule__TranslationElement__NameAssignment_1");
 					put(grammarAccess.getTranslationElementAccess().getTranslationsAssignment_2(), "rule__TranslationElement__TranslationsAssignment_2");
 					put(grammarAccess.getTranslationAttributeAccess().getLangAssignment_0(), "rule__TranslationAttribute__LangAssignment_0");
-					put(grammarAccess.getTranslationAttributeAccess().getTypeAssignment_2(), "rule__TranslationAttribute__TypeAssignment_2");
+					put(grammarAccess.getTranslationAttributeAccess().getTextAssignment_2(), "rule__TranslationAttribute__TextAssignment_2");
 					put(grammarAccess.getJavaElementAccess().getNameAssignment_1(), "rule__JavaElement__NameAssignment_1");
 					put(grammarAccess.getJavaElementAccess().getRunatAssignment_2(), "rule__JavaElement__RunatAssignment_2");
 					put(grammarAccess.getJavaElementAccess().getSourceAssignment_4(), "rule__JavaElement__SourceAssignment_4");

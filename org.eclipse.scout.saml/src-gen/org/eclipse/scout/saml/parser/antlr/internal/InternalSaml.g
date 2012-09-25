@@ -868,9 +868,9 @@ ruleTranslationAttribute returns [EObject current=null]
     }
 (
 (
-		lv_type_2_0=RULE_STRING
+		lv_text_2_0=RULE_STRING
 		{
-			newLeafNode(lv_type_2_0, grammarAccess.getTranslationAttributeAccess().getTypeSTRINGTerminalRuleCall_2_0()); 
+			newLeafNode(lv_text_2_0, grammarAccess.getTranslationAttributeAccess().getTextSTRINGTerminalRuleCall_2_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -878,8 +878,8 @@ ruleTranslationAttribute returns [EObject current=null]
 	        }
        		setWithLastConsumed(
        			$current, 
-       			"type",
-        		lv_type_2_0, 
+       			"text",
+        		lv_text_2_0, 
         		"STRING");
 	    }
 
