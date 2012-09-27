@@ -17,6 +17,7 @@ import org.eclipse.scout.saml.saml.TemplateElement;
 import org.eclipse.scout.saml.saml.TranslationElement;
 import org.eclipse.scout.sdk.operation.IOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.codetype.CodeElementImportOperation;
+import org.eclipse.scout.sdk.saml.importer.operation.form.FormElementImportOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.lookup.LookupElementImportOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.nls.TranslationElementImportOperation;
 import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
@@ -31,6 +32,7 @@ public class SamlImportOperation implements IOperation {
   private File m_samlFile;
   private IScoutProject m_scoutRootProject;
   private IScoutProject m_currentModuleProject;
+  private SamlContext m_context;
 
   @Override
   public String getOperationName() {
@@ -69,19 +71,20 @@ public class SamlImportOperation implements IOperation {
       }
       monitor.beginTask("Importing SAML File", totalWork);
 
+      m_context = new SamlContext();
       for (EObject content : contents) {
         for (EObject root : content.eContents()) {
           if (monitor.isCanceled()) {
             return;
           }
-          dispatchRootElement(monitor, workingCopyManager, root);
+          dispatchRootElement(monitor, workingCopyManager, root, getSamlContext());
           monitor.worked(1);
         }
       }
     }
   }
 
-  private void dispatchRootElement(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, EObject o) throws CoreException, IllegalArgumentException {
+  private void dispatchRootElement(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, EObject o, SamlContext context) throws CoreException, IllegalArgumentException {
     AbstractSamlElementImportOperation op = null;
     if (o instanceof ModuleElement) {
       ModuleElement mod = (ModuleElement) o;
@@ -113,14 +116,17 @@ public class SamlImportOperation implements IOperation {
       //TODO
     }
     else if (o instanceof FormElement) {
-      //TODO
+      FormElementImportOperation feio = new FormElementImportOperation();
+      feio.setFormElement((FormElement) o);
+      op = feio;
     }
     else {
       throw new IllegalArgumentException("Unknown EObject type: " + o);
     }
 
     if (op != null) {
-      op.setCurrentScoutModule(getCurrentModuleProject());
+      context.setCurrentScoutModule(getCurrentModuleProject());
+      op.setSamlContext(context);
       op.validate();
       op.run(monitor, workingCopyManager);
     }
@@ -165,5 +171,9 @@ public class SamlImportOperation implements IOperation {
 
   public void setCurrentModuleProject(IScoutProject currentModuleProject) {
     m_currentModuleProject = currentModuleProject;
+  }
+
+  public SamlContext getSamlContext() {
+    return m_context;
   }
 }

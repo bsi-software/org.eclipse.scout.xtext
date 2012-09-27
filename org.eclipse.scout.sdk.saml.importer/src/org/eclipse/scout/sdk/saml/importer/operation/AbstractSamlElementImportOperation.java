@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.eclipse.scout.sdk.saml.importer.operation;
 
+import org.eclipse.scout.nls.sdk.model.INlsEntry;
 import org.eclipse.scout.sdk.operation.IOperation;
 import org.eclipse.scout.sdk.workspace.IScoutProject;
 
@@ -20,13 +21,21 @@ import org.eclipse.scout.sdk.workspace.IScoutProject;
  * @since 3.8.0 25.09.2012
  */
 public abstract class AbstractSamlElementImportOperation implements IOperation {
-  private IScoutProject m_currentScoutModule;
+  private SamlContext m_samlContext;
 
-  public IScoutProject getCurrentScoutModule() {
-    return m_currentScoutModule;
+  public SamlContext getSamlContext() {
+    return m_samlContext;
   }
 
-  public void setCurrentScoutModule(IScoutProject currentScoutModule) {
-    m_currentScoutModule = currentScoutModule;
+  public void setSamlContext(SamlContext samlContext) {
+    m_samlContext = samlContext;
+  }
+
+  protected IScoutProject getCurrentScoutModule() {
+    return getSamlContext().getCurrentScoutModule();
+  }
+
+  protected INlsEntry getNlsEntry(String key) {
+    return getCurrentScoutModule().getNlsProject().getEntry(key);
   }
 }
