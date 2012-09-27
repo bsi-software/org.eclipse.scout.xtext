@@ -13,6 +13,7 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.saml.saml.AbstractValueFieldProperties;
 import org.eclipse.scout.saml.saml.LongElement;
 import org.eclipse.scout.sdk.operation.form.field.LongFieldNewOperation;
@@ -49,10 +50,11 @@ public class SamlLongElementImportOperation extends AbstractSamlFormFieldElement
     o.validate();
     o.run(monitor, workingCopyManager);
     IType createdField = o.getCreatedField();
+    ITypeHierarchy h = createdField.newSupertypeHierarchy(monitor);
 
     for (AbstractValueFieldProperties p : getLongElement().getProperties()) {
-      applyMandatoryAttribute(monitor, workingCopyManager, p.getMandatory(), createdField);
-      applyAbstractFormFieldProperties(monitor, workingCopyManager, p.getFieldproperties(), createdField);
+      applyMandatoryAttribute(monitor, workingCopyManager, p.getMandatory(), createdField, h);
+      applyAbstractFormFieldProperties(monitor, workingCopyManager, p.getFieldproperties(), createdField, h);
     }
 
     fillFormFieldLogic(monitor, workingCopyManager, getLongElement().getChildren(), createdField);

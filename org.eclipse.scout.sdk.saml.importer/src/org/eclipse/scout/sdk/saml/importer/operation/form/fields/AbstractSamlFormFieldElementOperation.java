@@ -15,6 +15,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.saml.saml.AbstractFieldElement;
 import org.eclipse.scout.saml.saml.AbstractFieldProperties;
@@ -71,11 +72,11 @@ public abstract class AbstractSamlFormFieldElementOperation extends AbstractSaml
     slfo.run(monitor, workingCopyManager);
   }
 
-  protected void applyMasterAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, MasterAttribute a, IType field) throws CoreException, IllegalArgumentException {
+  protected void applyMasterAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, MasterAttribute a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
     if (a != null && a.getValue() != null) {
       String masterFieldName = a.getValue().getName() + getFieldNameSuffix(a.getValue());
-      overrideMethod(monitor, workingCopyManager, field, "getConfiguredMasterField", "return " + masterFieldName + ".class;");
-      overrideMethod(monitor, workingCopyManager, field, "getConfiguredMasterRequired", "return true;");
+      overrideMethod(monitor, workingCopyManager, field, h, "getConfiguredMasterField", "return " + masterFieldName + ".class;");
+      overrideMethod(monitor, workingCopyManager, field, h, "getConfiguredMasterRequired", "return true;");
     }
   }
 
@@ -106,55 +107,65 @@ public abstract class AbstractSamlFormFieldElementOperation extends AbstractSaml
     }
   }
 
-  protected void applyAbstractFormFieldProperties(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, EList<? extends AbstractFieldProperties> properties, IType field) throws CoreException, IllegalArgumentException {
+  protected void applyAbstractFormFieldProperties(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, EList<? extends AbstractFieldProperties> properties, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
     for (AbstractFieldProperties property : properties) {
-      applyAbstractFormFieldProperties(monitor, workingCopyManager, property, field);
+      applyAbstractFormFieldProperties(monitor, workingCopyManager, property, field, h);
     }
   }
 
-  protected void applyAbstractFormFieldProperties(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, AbstractFieldProperties property, IType field) throws CoreException, IllegalArgumentException {
+  protected void applyAbstractFormFieldProperties(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, AbstractFieldProperties property, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
     if (property != null) {
-      applyEnabledAttribute(monitor, workingCopyManager, property.getEnabled(), field);
-      applyMasterAttribute(monitor, workingCopyManager, property.getMaster(), field);
-      applyTextAttribute(monitor, workingCopyManager, property.getText(), field);
-      applyVisibleAttribute(monitor, workingCopyManager, property.getVisible(), field);
+      applyEnabledAttribute(monitor, workingCopyManager, property.getEnabled(), field, h);
+      applyMasterAttribute(monitor, workingCopyManager, property.getMaster(), field, h);
+      applyTextAttribute(monitor, workingCopyManager, property.getText(), field, h);
+      applyVisibleAttribute(monitor, workingCopyManager, property.getVisible(), field, h);
     }
   }
 
-  protected void applyTextAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, TextAttribute a, IType field) throws CoreException, IllegalArgumentException {
+  protected void applyTextAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, TextAttribute a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
     if (a != null && StringUtility.hasText(a.getValue().getName())) {
       // field has a label
-      overrideMethod(monitor, workingCopyManager, field, "getConfiguredLabel", "return TEXTS.get(\"" + a.getValue().getName() + "\");");
+      overrideMethod(monitor, workingCopyManager, field, h, "getConfiguredLabel", "return TEXTS.get(\"" + a.getValue().getName() + "\");");
     }
     else {
       // field has no label: hide it
-      overrideMethod(monitor, workingCopyManager, field, "getConfiguredLabelVisible", "return false;");
+      //overrideMethod(monitor, workingCopyManager, field, h, "getConfiguredLabelVisible", "return false;");
     }
   }
 
-  protected void applyVisibleAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, VisibleAttribue a, IType field) throws CoreException, IllegalArgumentException {
+  protected void applyVisibleAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, VisibleAttribue a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
     if (a != null && a.getValue().equals(BooleanType.FALSE)) {
-      overrideMethod(monitor, workingCopyManager, field, "getConfiguredVisible", "return false;");
+      overrideMethod(monitor, workingCopyManager, field, h, "getConfiguredVisible", "return false;");
     }
   }
 
-  protected void applyEnabledAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, EnabledAttribue a, IType field) throws CoreException, IllegalArgumentException {
+  protected void applyEnabledAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, EnabledAttribue a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
     if (a != null && a.getValue().equals(BooleanType.FALSE)) {
-      overrideMethod(monitor, workingCopyManager, field, "getConfiguredEnabled", "return false;");
+      overrideMethod(monitor, workingCopyManager, field, h, "getConfiguredEnabled", "return false;");
     }
   }
 
-  protected void applyMandatoryAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, MandatoryAttribue a, IType field) throws CoreException, IllegalArgumentException {
+  protected void applyMandatoryAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, MandatoryAttribue a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
     if (a != null && a.getValue().equals(BooleanType.TRUE)) {
-      overrideMethod(monitor, workingCopyManager, field, "getConfiguredMandatory", "return true;");
+      overrideMethod(monitor, workingCopyManager, field, h, "getConfiguredMandatory", "return true;");
     }
   }
 
-  protected void overrideMethod(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, IType declaringType, String methodName, String body) throws CoreException, IllegalArgumentException {
+  protected void overrideMethod(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, IType declaringType, ITypeHierarchy h, String methodName, String body) throws CoreException, IllegalArgumentException {
+    /*IMethod method = TypeUtility.getMethod(declaringType, methodName);
+    if (TypeUtility.exists(method)) {
+      MethodUpdateContentOperation operation = new MethodUpdateContentOperation(method, null, true);
+      operation.setSimpleBody(body);
+      operation.validate();
+      operation.run(monitor, workingCopyManager);
+    }
+    else {*/
     MethodOverrideOperation op = new MethodOverrideOperation(declaringType, methodName, true);
     op.setSimpleBody(body);
+    op.setSuperTypeHierarchy(h);
     op.validate();
     op.run(monitor, workingCopyManager);
+    //}
   }
 
   public static void dispatchFieldElements(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, AbstractFieldElement field, SamlContext context, SamlFormContext formContext) throws CoreException {

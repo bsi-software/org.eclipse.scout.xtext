@@ -13,8 +13,10 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.saml.saml.ZregBoxElement;
+import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.form.field.FormFieldNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
 import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
@@ -47,10 +49,12 @@ public class SamlZregBoxElementImportOperation extends AbstractSamlFormFieldElem
     FormFieldNewOperation newOp = new FormFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     final String typeName = getZregBoxElement().getName();
     newOp.setTypeName(typeName + SUFFIX);
-    newOp.setSuperTypeSignature(Signature.createTypeSignature("ch.raiffeisen.dialba.common.client.ui.forms.fields.ZregSequenceBoxAbs", true));
+    //newOp.setSuperTypeSignature(Signature.createTypeSignature("ch.raiffeisen.dialba.common.client.ui.forms.fields.ZregSequenceBoxAbs", true));
+    newOp.setSuperTypeSignature(Signature.createTypeSignature(RuntimeClasses.AbstractSmartField + "<java.lang.Long>", true));
     newOp.validate();
     newOp.run(monitor, workingCopyManager);
     IType createdField = newOp.getCreatedFormField();
+    ITypeHierarchy h = createdField.newSupertypeHierarchy(monitor);
 
     /*MethodOverrideOperation operation = new MethodOverrideOperation(createdField, "getBoxData", false) {
       @Override
@@ -63,10 +67,10 @@ public class SamlZregBoxElementImportOperation extends AbstractSamlFormFieldElem
     operation.run(monitor, workingCopyManager);
 
     overrideMethod(monitor, workingCopyManager, createdField, "execInitField", "getZregNumberField().setMandatory(true);\ngetZregKurzBezField().setMandatory(true);");
+     */
+    applyAbstractFormFieldProperties(monitor, workingCopyManager, getZregBoxElement().getProperties(), createdField, h);
 
-    applyAbstractFormFieldProperties(monitor, workingCopyManager, getZregBoxElement().getProperties(), createdField);
-
-    fillFormFieldLogic(monitor, workingCopyManager, getZregBoxElement().getChildren(), createdField);*/
+    fillFormFieldLogic(monitor, workingCopyManager, getZregBoxElement().getChildren(), createdField);
   }
 
   public ZregBoxElement getZregBoxElement() {

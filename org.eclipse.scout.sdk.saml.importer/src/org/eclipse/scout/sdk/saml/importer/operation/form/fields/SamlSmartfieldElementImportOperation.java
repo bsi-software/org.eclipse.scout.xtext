@@ -13,6 +13,7 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.saml.saml.SmartFieldElementProperties;
 import org.eclipse.scout.saml.saml.SmartfieldElement;
@@ -64,17 +65,19 @@ public class SamlSmartfieldElementImportOperation extends AbstractSamlFormFieldE
     o.validate();
     o.run(monitor, workingCopyManager);
     IType createdField = o.getCreatedField();
+    ITypeHierarchy h = createdField.newSupertypeHierarchy(monitor);
+
+    fillFormFieldLogic(monitor, workingCopyManager, getSmartfieldElement().getLogic(), createdField);
 
     for (SmartFieldElementProperties p : getSmartfieldElement().getProperties()) {
-      applyCodeAttribute(monitor, workingCopyManager, p.getCode(), createdField);
-      applyLookupAttribute(monitor, workingCopyManager, p.getLookup(), createdField);
+      applyCodeAttribute(monitor, workingCopyManager, p.getCode(), createdField, h);
+      applyLookupAttribute(monitor, workingCopyManager, p.getLookup(), createdField, h);
       if (p.getValueFieldProperties() != null) {
-        applyMandatoryAttribute(monitor, workingCopyManager, p.getValueFieldProperties().getMandatory(), createdField);
-        applyAbstractFormFieldProperties(monitor, workingCopyManager, p.getValueFieldProperties().getFieldproperties(), createdField);
+        applyMandatoryAttribute(monitor, workingCopyManager, p.getValueFieldProperties().getMandatory(), createdField, h);
+        applyAbstractFormFieldProperties(monitor, workingCopyManager, p.getValueFieldProperties().getFieldproperties(), createdField, h);
       }
     }
 
-    fillFormFieldLogic(monitor, workingCopyManager, getSmartfieldElement().getLogic(), createdField);
   }
 
   public SmartfieldElement getSmartfieldElement() {
@@ -85,15 +88,15 @@ public class SamlSmartfieldElementImportOperation extends AbstractSamlFormFieldE
     m_smartfieldElement = smartfieldElement;
   }
 
-  protected void applyCodeAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, SmartfieldElementCodeAttribute a, IType field) throws CoreException, IllegalArgumentException {
+  protected void applyCodeAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, SmartfieldElementCodeAttribute a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
     if (a != null) {
-      overrideMethod(monitor, workingCopyManager, field, "getConfiguredCodeType", "return " + a.getValue().getName() + "CodeType.class;");
+      overrideMethod(monitor, workingCopyManager, field, h, "getConfiguredCodeType", "return " + a.getValue().getName() + "CodeType.class;");
     }
   }
 
-  protected void applyLookupAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, SmartfieldElementLookupAttribute a, IType field) throws CoreException, IllegalArgumentException {
+  protected void applyLookupAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, SmartfieldElementLookupAttribute a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
     if (a != null) {
-      overrideMethod(monitor, workingCopyManager, field, "getConfiguredLookupCall", "return " + a.getValue().getName() + "LookupCall.class;");
+      overrideMethod(monitor, workingCopyManager, field, h, "getConfiguredLookupCall", "return " + a.getValue().getName() + "LookupCall.class;");
     }
   }
 }

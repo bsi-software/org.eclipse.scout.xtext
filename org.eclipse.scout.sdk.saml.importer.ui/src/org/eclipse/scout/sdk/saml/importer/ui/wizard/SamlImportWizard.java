@@ -17,7 +17,7 @@ public class SamlImportWizard extends AbstractWizard {
   private IScoutProject m_project;
 
   public SamlImportWizard() {
-    setWindowTitle("Act4 Importer");
+    setWindowTitle("SAML Importer");
     m_page1 = new SamlImportWizardPage();
     addPage(m_page1);
   }

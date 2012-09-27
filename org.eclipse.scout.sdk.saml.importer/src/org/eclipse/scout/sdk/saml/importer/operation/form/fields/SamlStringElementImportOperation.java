@@ -13,6 +13,7 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.saml.saml.StringElement;
 import org.eclipse.scout.saml.saml.StringElementMaxlenAttribute;
 import org.eclipse.scout.saml.saml.StringElementProperties;
@@ -43,9 +44,9 @@ public class SamlStringElementImportOperation extends AbstractSamlFormFieldEleme
     }
   }
 
-  protected void applyMaxLengthAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, StringElementMaxlenAttribute a, IType field) throws CoreException, IllegalArgumentException {
+  protected void applyMaxLengthAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, StringElementMaxlenAttribute a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
     if (a != null) {
-      overrideMethod(monitor, workingCopyManager, field, "getConfiguredMaxLength", "return " + a.getValue() + ";");
+      overrideMethod(monitor, workingCopyManager, field, h, "getConfiguredMaxLength", "return " + a.getValue() + ";");
     }
   }
 
@@ -56,11 +57,12 @@ public class SamlStringElementImportOperation extends AbstractSamlFormFieldEleme
     o.validate();
     o.run(monitor, workingCopyManager);
     IType createdField = o.getCreatedField();
+    ITypeHierarchy h = createdField.newSupertypeHierarchy(monitor);
 
     for (StringElementProperties p : getStringElement().getProperties()) {
-      applyMaxLengthAttribute(monitor, workingCopyManager, p.getMaxlen(), createdField);
-      applyMandatoryAttribute(monitor, workingCopyManager, p.getValueFieldProperties().getMandatory(), createdField);
-      applyAbstractFormFieldProperties(monitor, workingCopyManager, p.getValueFieldProperties().getFieldproperties(), createdField);
+      applyMaxLengthAttribute(monitor, workingCopyManager, p.getMaxlen(), createdField, h);
+      applyMandatoryAttribute(monitor, workingCopyManager, p.getValueFieldProperties().getMandatory(), createdField, h);
+      applyAbstractFormFieldProperties(monitor, workingCopyManager, p.getValueFieldProperties().getFieldproperties(), createdField, h);
     }
 
     fillFormFieldLogic(monitor, workingCopyManager, getStringElement().getLogic(), createdField);

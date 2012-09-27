@@ -13,6 +13,7 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields.container;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.saml.saml.SequenceBoxElement;
 import org.eclipse.scout.sdk.operation.form.field.SequenceBoxNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
@@ -48,10 +49,11 @@ public class SamlSequenceBoxElementImportOperation extends AbstractBoxElementImp
     o.validate();
     o.run(monitor, workingCopyManager);
     IType createdField = o.getCreatedField();
+    ITypeHierarchy h = createdField.newSupertypeHierarchy(monitor);
 
-    overrideMethod(monitor, workingCopyManager, createdField, "getConfiguredAutoCheckFromTo", "return false;");
+    overrideMethod(monitor, workingCopyManager, createdField, h, "getConfiguredAutoCheckFromTo", "return false;");
 
-    applyAbstractFormFieldProperties(monitor, workingCopyManager, getSequenceBoxElement().getProperties(), createdField);
+    applyAbstractFormFieldProperties(monitor, workingCopyManager, getSequenceBoxElement().getProperties(), createdField, h);
 
     fillFormFieldLogic(monitor, workingCopyManager, getSequenceBoxElement().getChildren(), createdField);
 

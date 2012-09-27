@@ -25,8 +25,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 
 /**
- * <h3>{@link Act4ImportWizardPage}</h3> ...
- * 
  * @author mvi
  * @since 3.8.0 26.03.2012
  */
