@@ -105,9 +105,6 @@ public class SamlSwitch<T> extends Switch<T>
       {
         AbstractFieldProperties abstractFieldProperties = (AbstractFieldProperties)theEObject;
         T result = caseAbstractFieldProperties(abstractFieldProperties);
-        if (result == null) result = caseAbstractValueFieldProperties(abstractFieldProperties);
-        if (result == null) result = caseStringElementProperties(abstractFieldProperties);
-        if (result == null) result = caseSmartFieldElementProperties(abstractFieldProperties);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -152,8 +149,6 @@ public class SamlSwitch<T> extends Switch<T>
       {
         AbstractValueFieldProperties abstractValueFieldProperties = (AbstractValueFieldProperties)theEObject;
         T result = caseAbstractValueFieldProperties(abstractValueFieldProperties);
-        if (result == null) result = caseStringElementProperties(abstractValueFieldProperties);
-        if (result == null) result = caseSmartFieldElementProperties(abstractValueFieldProperties);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }

@@ -2,6 +2,7 @@
  */
 package org.eclipse.scout.saml.saml;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,7 +23,7 @@ package org.eclipse.scout.saml.saml;
  * @model
  * @generated
  */
-public interface AbstractFieldProperties extends AbstractValueFieldProperties
+public interface AbstractFieldProperties extends EObject
 {
   /**
    * Returns the value of the '<em><b>Text</b></em>' containment reference.

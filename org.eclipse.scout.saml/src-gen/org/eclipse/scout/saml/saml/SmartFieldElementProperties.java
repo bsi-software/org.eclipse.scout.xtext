@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.scout.saml.saml.SmartFieldElementProperties#getValueFieldProperties <em>Value Field Properties</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.SmartFieldElementProperties#getCode <em>Code</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.SmartFieldElementProperties#getValue_type <em>Value type</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.SmartFieldElementProperties#getLookup <em>Lookup</em>}</li>
@@ -24,6 +25,32 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface SmartFieldElementProperties extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Value Field Properties</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Value Field Properties</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Value Field Properties</em>' containment reference.
+   * @see #setValueFieldProperties(AbstractValueFieldProperties)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getSmartFieldElementProperties_ValueFieldProperties()
+   * @model containment="true"
+   * @generated
+   */
+  AbstractValueFieldProperties getValueFieldProperties();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.SmartFieldElementProperties#getValueFieldProperties <em>Value Field Properties</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Value Field Properties</em>' containment reference.
+   * @see #getValueFieldProperties()
+   * @generated
+   */
+  void setValueFieldProperties(AbstractValueFieldProperties value);
+
   /**
    * Returns the value of the '<em><b>Code</b></em>' containment reference.
    * <!-- begin-user-doc -->

@@ -1349,7 +1349,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                     
             otherlv_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleMasterAttribute1198); 
 
-            		newLeafNode(otherlv_1, grammarAccess.getMasterAttributeAccess().getValueAbstractFieldElementCrossReference_1_0()); 
+            		newLeafNode(otherlv_1, grammarAccess.getMasterAttributeAccess().getValueAbstractValueFieldElementCrossReference_1_0()); 
             	
 
             }
@@ -1643,11 +1643,11 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAbstractValueFieldProperties"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:617:1: ruleAbstractValueFieldProperties returns [EObject current=null] : (this_AbstractFieldProperties_0= ruleAbstractFieldProperties | ( (lv_mandatory_1_0= ruleMandatoryAttribue ) ) ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:617:1: ruleAbstractValueFieldProperties returns [EObject current=null] : ( ( (lv_fieldproperties_0_0= ruleAbstractFieldProperties ) ) | ( (lv_mandatory_1_0= ruleMandatoryAttribue ) ) ) ;
     public final EObject ruleAbstractValueFieldProperties() throws RecognitionException {
         EObject current = null;
 
-        EObject this_AbstractFieldProperties_0 = null;
+        EObject lv_fieldproperties_0_0 = null;
 
         EObject lv_mandatory_1_0 = null;
 
@@ -1655,10 +1655,10 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:620:28: ( (this_AbstractFieldProperties_0= ruleAbstractFieldProperties | ( (lv_mandatory_1_0= ruleMandatoryAttribue ) ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:621:1: (this_AbstractFieldProperties_0= ruleAbstractFieldProperties | ( (lv_mandatory_1_0= ruleMandatoryAttribue ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:620:28: ( ( ( (lv_fieldproperties_0_0= ruleAbstractFieldProperties ) ) | ( (lv_mandatory_1_0= ruleMandatoryAttribue ) ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:621:1: ( ( (lv_fieldproperties_0_0= ruleAbstractFieldProperties ) ) | ( (lv_mandatory_1_0= ruleMandatoryAttribue ) ) )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:621:1: (this_AbstractFieldProperties_0= ruleAbstractFieldProperties | ( (lv_mandatory_1_0= ruleMandatoryAttribue ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:621:1: ( ( (lv_fieldproperties_0_0= ruleAbstractFieldProperties ) ) | ( (lv_mandatory_1_0= ruleMandatoryAttribue ) ) )
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -1676,31 +1676,50 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             }
             switch (alt7) {
                 case 1 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:622:5: this_AbstractFieldProperties_0= ruleAbstractFieldProperties
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:621:2: ( (lv_fieldproperties_0_0= ruleAbstractFieldProperties ) )
+                    {
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:621:2: ( (lv_fieldproperties_0_0= ruleAbstractFieldProperties ) )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:622:1: (lv_fieldproperties_0_0= ruleAbstractFieldProperties )
+                    {
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:622:1: (lv_fieldproperties_0_0= ruleAbstractFieldProperties )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:623:3: lv_fieldproperties_0_0= ruleAbstractFieldProperties
                     {
                      
-                            newCompositeNode(grammarAccess.getAbstractValueFieldPropertiesAccess().getAbstractFieldPropertiesParserRuleCall_0()); 
-                        
-                    pushFollow(FOLLOW_ruleAbstractFieldProperties_in_ruleAbstractValueFieldProperties1518);
-                    this_AbstractFieldProperties_0=ruleAbstractFieldProperties();
+                    	        newCompositeNode(grammarAccess.getAbstractValueFieldPropertiesAccess().getFieldpropertiesAbstractFieldPropertiesParserRuleCall_0_0()); 
+                    	    
+                    pushFollow(FOLLOW_ruleAbstractFieldProperties_in_ruleAbstractValueFieldProperties1517);
+                    lv_fieldproperties_0_0=ruleAbstractFieldProperties();
 
                     state._fsp--;
 
-                     
-                            current = this_AbstractFieldProperties_0; 
-                            afterParserOrEnumRuleCall();
-                        
+
+                    	        if (current==null) {
+                    	            current = createModelElementForParent(grammarAccess.getAbstractValueFieldPropertiesRule());
+                    	        }
+                           		set(
+                           			current, 
+                           			"fieldproperties",
+                            		lv_fieldproperties_0_0, 
+                            		"AbstractFieldProperties");
+                    	        afterParserOrEnumRuleCall();
+                    	    
+
+                    }
+
+
+                    }
+
 
                     }
                     break;
                 case 2 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:631:6: ( (lv_mandatory_1_0= ruleMandatoryAttribue ) )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:640:6: ( (lv_mandatory_1_0= ruleMandatoryAttribue ) )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:631:6: ( (lv_mandatory_1_0= ruleMandatoryAttribue ) )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:632:1: (lv_mandatory_1_0= ruleMandatoryAttribue )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:640:6: ( (lv_mandatory_1_0= ruleMandatoryAttribue ) )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:641:1: (lv_mandatory_1_0= ruleMandatoryAttribue )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:632:1: (lv_mandatory_1_0= ruleMandatoryAttribue )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:633:3: lv_mandatory_1_0= ruleMandatoryAttribue
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:641:1: (lv_mandatory_1_0= ruleMandatoryAttribue )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:642:3: lv_mandatory_1_0= ruleMandatoryAttribue
                     {
                      
                     	        newCompositeNode(grammarAccess.getAbstractValueFieldPropertiesAccess().getMandatoryMandatoryAttribueParserRuleCall_1_0()); 
@@ -1751,7 +1770,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMandatoryAttribue"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:657:1: entryRuleMandatoryAttribue returns [EObject current=null] : iv_ruleMandatoryAttribue= ruleMandatoryAttribue EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:666:1: entryRuleMandatoryAttribue returns [EObject current=null] : iv_ruleMandatoryAttribue= ruleMandatoryAttribue EOF ;
     public final EObject entryRuleMandatoryAttribue() throws RecognitionException {
         EObject current = null;
 
@@ -1759,8 +1778,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:658:2: (iv_ruleMandatoryAttribue= ruleMandatoryAttribue EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:659:2: iv_ruleMandatoryAttribue= ruleMandatoryAttribue EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:667:2: (iv_ruleMandatoryAttribue= ruleMandatoryAttribue EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:668:2: iv_ruleMandatoryAttribue= ruleMandatoryAttribue EOF
             {
              newCompositeNode(grammarAccess.getMandatoryAttribueRule()); 
             pushFollow(FOLLOW_ruleMandatoryAttribue_in_entryRuleMandatoryAttribue1580);
@@ -1787,7 +1806,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMandatoryAttribue"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:666:1: ruleMandatoryAttribue returns [EObject current=null] : (otherlv_0= 'mandatory=' ( (lv_value_1_0= ruleBooleanType ) ) ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:675:1: ruleMandatoryAttribue returns [EObject current=null] : (otherlv_0= 'mandatory=' ( (lv_value_1_0= ruleBooleanType ) ) ) ;
     public final EObject ruleMandatoryAttribue() throws RecognitionException {
         EObject current = null;
 
@@ -1798,21 +1817,21 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:669:28: ( (otherlv_0= 'mandatory=' ( (lv_value_1_0= ruleBooleanType ) ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:670:1: (otherlv_0= 'mandatory=' ( (lv_value_1_0= ruleBooleanType ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:678:28: ( (otherlv_0= 'mandatory=' ( (lv_value_1_0= ruleBooleanType ) ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:679:1: (otherlv_0= 'mandatory=' ( (lv_value_1_0= ruleBooleanType ) ) )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:670:1: (otherlv_0= 'mandatory=' ( (lv_value_1_0= ruleBooleanType ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:670:3: otherlv_0= 'mandatory=' ( (lv_value_1_0= ruleBooleanType ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:679:1: (otherlv_0= 'mandatory=' ( (lv_value_1_0= ruleBooleanType ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:679:3: otherlv_0= 'mandatory=' ( (lv_value_1_0= ruleBooleanType ) )
             {
             otherlv_0=(Token)match(input,16,FOLLOW_16_in_ruleMandatoryAttribue1627); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getMandatoryAttribueAccess().getMandatoryKeyword_0());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:674:1: ( (lv_value_1_0= ruleBooleanType ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:675:1: (lv_value_1_0= ruleBooleanType )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:683:1: ( (lv_value_1_0= ruleBooleanType ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:684:1: (lv_value_1_0= ruleBooleanType )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:675:1: (lv_value_1_0= ruleBooleanType )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:676:3: lv_value_1_0= ruleBooleanType
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:684:1: (lv_value_1_0= ruleBooleanType )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:685:3: lv_value_1_0= ruleBooleanType
             {
              
             	        newCompositeNode(grammarAccess.getMandatoryAttribueAccess().getValueBooleanTypeEnumRuleCall_1_0()); 
@@ -1860,7 +1879,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAbstractContainerFieldElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:700:1: entryRuleAbstractContainerFieldElement returns [EObject current=null] : iv_ruleAbstractContainerFieldElement= ruleAbstractContainerFieldElement EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:709:1: entryRuleAbstractContainerFieldElement returns [EObject current=null] : iv_ruleAbstractContainerFieldElement= ruleAbstractContainerFieldElement EOF ;
     public final EObject entryRuleAbstractContainerFieldElement() throws RecognitionException {
         EObject current = null;
 
@@ -1868,8 +1887,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:701:2: (iv_ruleAbstractContainerFieldElement= ruleAbstractContainerFieldElement EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:702:2: iv_ruleAbstractContainerFieldElement= ruleAbstractContainerFieldElement EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:710:2: (iv_ruleAbstractContainerFieldElement= ruleAbstractContainerFieldElement EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:711:2: iv_ruleAbstractContainerFieldElement= ruleAbstractContainerFieldElement EOF
             {
              newCompositeNode(grammarAccess.getAbstractContainerFieldElementRule()); 
             pushFollow(FOLLOW_ruleAbstractContainerFieldElement_in_entryRuleAbstractContainerFieldElement1684);
@@ -1896,7 +1915,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAbstractContainerFieldElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:709:1: ruleAbstractContainerFieldElement returns [EObject current=null] : this_SequenceBoxElement_0= ruleSequenceBoxElement ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:718:1: ruleAbstractContainerFieldElement returns [EObject current=null] : this_SequenceBoxElement_0= ruleSequenceBoxElement ;
     public final EObject ruleAbstractContainerFieldElement() throws RecognitionException {
         EObject current = null;
 
@@ -1906,8 +1925,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:712:28: (this_SequenceBoxElement_0= ruleSequenceBoxElement )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:714:5: this_SequenceBoxElement_0= ruleSequenceBoxElement
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:721:28: (this_SequenceBoxElement_0= ruleSequenceBoxElement )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:723:5: this_SequenceBoxElement_0= ruleSequenceBoxElement
             {
              
                     newCompositeNode(grammarAccess.getAbstractContainerFieldElementAccess().getSequenceBoxElementParserRuleCall()); 
@@ -1939,7 +1958,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleModuleElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:730:1: entryRuleModuleElement returns [EObject current=null] : iv_ruleModuleElement= ruleModuleElement EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:739:1: entryRuleModuleElement returns [EObject current=null] : iv_ruleModuleElement= ruleModuleElement EOF ;
     public final EObject entryRuleModuleElement() throws RecognitionException {
         EObject current = null;
 
@@ -1947,8 +1966,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:731:2: (iv_ruleModuleElement= ruleModuleElement EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:732:2: iv_ruleModuleElement= ruleModuleElement EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:740:2: (iv_ruleModuleElement= ruleModuleElement EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:741:2: iv_ruleModuleElement= ruleModuleElement EOF
             {
              newCompositeNode(grammarAccess.getModuleElementRule()); 
             pushFollow(FOLLOW_ruleModuleElement_in_entryRuleModuleElement1774);
@@ -1975,7 +1994,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleModuleElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:739:1: ruleModuleElement returns [EObject current=null] : (otherlv_0= 'module ' ( (lv_name_1_0= ruleQualifiedName ) ) ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:748:1: ruleModuleElement returns [EObject current=null] : (otherlv_0= 'module ' ( (lv_name_1_0= ruleQualifiedName ) ) ) ;
     public final EObject ruleModuleElement() throws RecognitionException {
         EObject current = null;
 
@@ -1986,21 +2005,21 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:742:28: ( (otherlv_0= 'module ' ( (lv_name_1_0= ruleQualifiedName ) ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:743:1: (otherlv_0= 'module ' ( (lv_name_1_0= ruleQualifiedName ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:751:28: ( (otherlv_0= 'module ' ( (lv_name_1_0= ruleQualifiedName ) ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:752:1: (otherlv_0= 'module ' ( (lv_name_1_0= ruleQualifiedName ) ) )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:743:1: (otherlv_0= 'module ' ( (lv_name_1_0= ruleQualifiedName ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:743:3: otherlv_0= 'module ' ( (lv_name_1_0= ruleQualifiedName ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:752:1: (otherlv_0= 'module ' ( (lv_name_1_0= ruleQualifiedName ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:752:3: otherlv_0= 'module ' ( (lv_name_1_0= ruleQualifiedName ) )
             {
             otherlv_0=(Token)match(input,17,FOLLOW_17_in_ruleModuleElement1821); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getModuleElementAccess().getModuleKeyword_0());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:747:1: ( (lv_name_1_0= ruleQualifiedName ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:748:1: (lv_name_1_0= ruleQualifiedName )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:756:1: ( (lv_name_1_0= ruleQualifiedName ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:757:1: (lv_name_1_0= ruleQualifiedName )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:748:1: (lv_name_1_0= ruleQualifiedName )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:749:3: lv_name_1_0= ruleQualifiedName
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:757:1: (lv_name_1_0= ruleQualifiedName )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:758:3: lv_name_1_0= ruleQualifiedName
             {
              
             	        newCompositeNode(grammarAccess.getModuleElementAccess().getNameQualifiedNameParserRuleCall_1_0()); 
@@ -2048,7 +2067,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleTranslationElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:773:1: entryRuleTranslationElement returns [EObject current=null] : iv_ruleTranslationElement= ruleTranslationElement EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:782:1: entryRuleTranslationElement returns [EObject current=null] : iv_ruleTranslationElement= ruleTranslationElement EOF ;
     public final EObject entryRuleTranslationElement() throws RecognitionException {
         EObject current = null;
 
@@ -2056,8 +2075,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:774:2: (iv_ruleTranslationElement= ruleTranslationElement EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:775:2: iv_ruleTranslationElement= ruleTranslationElement EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:783:2: (iv_ruleTranslationElement= ruleTranslationElement EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:784:2: iv_ruleTranslationElement= ruleTranslationElement EOF
             {
              newCompositeNode(grammarAccess.getTranslationElementRule()); 
             pushFollow(FOLLOW_ruleTranslationElement_in_entryRuleTranslationElement1878);
@@ -2084,7 +2103,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTranslationElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:782:1: ruleTranslationElement returns [EObject current=null] : (otherlv_0= 'translation ' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_translations_2_0= ruleTranslationAttribute ) )+ ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:791:1: ruleTranslationElement returns [EObject current=null] : (otherlv_0= 'translation ' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_translations_2_0= ruleTranslationAttribute ) )+ ) ;
     public final EObject ruleTranslationElement() throws RecognitionException {
         EObject current = null;
 
@@ -2097,21 +2116,21 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:785:28: ( (otherlv_0= 'translation ' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_translations_2_0= ruleTranslationAttribute ) )+ ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:786:1: (otherlv_0= 'translation ' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_translations_2_0= ruleTranslationAttribute ) )+ )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:794:28: ( (otherlv_0= 'translation ' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_translations_2_0= ruleTranslationAttribute ) )+ ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:795:1: (otherlv_0= 'translation ' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_translations_2_0= ruleTranslationAttribute ) )+ )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:786:1: (otherlv_0= 'translation ' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_translations_2_0= ruleTranslationAttribute ) )+ )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:786:3: otherlv_0= 'translation ' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_translations_2_0= ruleTranslationAttribute ) )+
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:795:1: (otherlv_0= 'translation ' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_translations_2_0= ruleTranslationAttribute ) )+ )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:795:3: otherlv_0= 'translation ' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_translations_2_0= ruleTranslationAttribute ) )+
             {
             otherlv_0=(Token)match(input,18,FOLLOW_18_in_ruleTranslationElement1925); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getTranslationElementAccess().getTranslationKeyword_0());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:790:1: ( (lv_name_1_0= ruleQualifiedName ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:791:1: (lv_name_1_0= ruleQualifiedName )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:799:1: ( (lv_name_1_0= ruleQualifiedName ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:800:1: (lv_name_1_0= ruleQualifiedName )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:791:1: (lv_name_1_0= ruleQualifiedName )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:792:3: lv_name_1_0= ruleQualifiedName
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:800:1: (lv_name_1_0= ruleQualifiedName )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:801:3: lv_name_1_0= ruleQualifiedName
             {
              
             	        newCompositeNode(grammarAccess.getTranslationElementAccess().getNameQualifiedNameParserRuleCall_1_0()); 
@@ -2138,7 +2157,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:808:2: ( (lv_translations_2_0= ruleTranslationAttribute ) )+
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:817:2: ( (lv_translations_2_0= ruleTranslationAttribute ) )+
             int cnt8=0;
             loop8:
             do {
@@ -2152,10 +2171,10 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
                 switch (alt8) {
             	case 1 :
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:809:1: (lv_translations_2_0= ruleTranslationAttribute )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:818:1: (lv_translations_2_0= ruleTranslationAttribute )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:809:1: (lv_translations_2_0= ruleTranslationAttribute )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:810:3: lv_translations_2_0= ruleTranslationAttribute
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:818:1: (lv_translations_2_0= ruleTranslationAttribute )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:819:3: lv_translations_2_0= ruleTranslationAttribute
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getTranslationElementAccess().getTranslationsTranslationAttributeParserRuleCall_2_0()); 
@@ -2213,7 +2232,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleTranslationAttribute"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:834:1: entryRuleTranslationAttribute returns [EObject current=null] : iv_ruleTranslationAttribute= ruleTranslationAttribute EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:843:1: entryRuleTranslationAttribute returns [EObject current=null] : iv_ruleTranslationAttribute= ruleTranslationAttribute EOF ;
     public final EObject entryRuleTranslationAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -2221,8 +2240,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:835:2: (iv_ruleTranslationAttribute= ruleTranslationAttribute EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:836:2: iv_ruleTranslationAttribute= ruleTranslationAttribute EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:844:2: (iv_ruleTranslationAttribute= ruleTranslationAttribute EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:845:2: iv_ruleTranslationAttribute= ruleTranslationAttribute EOF
             {
              newCompositeNode(grammarAccess.getTranslationAttributeRule()); 
             pushFollow(FOLLOW_ruleTranslationAttribute_in_entryRuleTranslationAttribute2004);
@@ -2249,7 +2268,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTranslationAttribute"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:843:1: ruleTranslationAttribute returns [EObject current=null] : ( ( (lv_lang_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_text_2_0= RULE_STRING ) ) ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:852:1: ruleTranslationAttribute returns [EObject current=null] : ( ( (lv_lang_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_text_2_0= RULE_STRING ) ) ) ;
     public final EObject ruleTranslationAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -2260,17 +2279,17 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:846:28: ( ( ( (lv_lang_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_text_2_0= RULE_STRING ) ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:847:1: ( ( (lv_lang_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_text_2_0= RULE_STRING ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:855:28: ( ( ( (lv_lang_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_text_2_0= RULE_STRING ) ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:856:1: ( ( (lv_lang_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_text_2_0= RULE_STRING ) ) )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:847:1: ( ( (lv_lang_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_text_2_0= RULE_STRING ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:847:2: ( (lv_lang_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_text_2_0= RULE_STRING ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:856:1: ( ( (lv_lang_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_text_2_0= RULE_STRING ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:856:2: ( (lv_lang_0_0= RULE_ID ) ) otherlv_1= '=' ( (lv_text_2_0= RULE_STRING ) )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:847:2: ( (lv_lang_0_0= RULE_ID ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:848:1: (lv_lang_0_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:856:2: ( (lv_lang_0_0= RULE_ID ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:857:1: (lv_lang_0_0= RULE_ID )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:848:1: (lv_lang_0_0= RULE_ID )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:849:3: lv_lang_0_0= RULE_ID
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:857:1: (lv_lang_0_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:858:3: lv_lang_0_0= RULE_ID
             {
             lv_lang_0_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleTranslationAttribute2056); 
 
@@ -2296,11 +2315,11 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
                 	newLeafNode(otherlv_1, grammarAccess.getTranslationAttributeAccess().getEqualsSignKeyword_1());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:869:1: ( (lv_text_2_0= RULE_STRING ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:870:1: (lv_text_2_0= RULE_STRING )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:878:1: ( (lv_text_2_0= RULE_STRING ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:879:1: (lv_text_2_0= RULE_STRING )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:870:1: (lv_text_2_0= RULE_STRING )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:871:3: lv_text_2_0= RULE_STRING
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:879:1: (lv_text_2_0= RULE_STRING )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:880:3: lv_text_2_0= RULE_STRING
             {
             lv_text_2_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleTranslationAttribute2090); 
 
@@ -2343,7 +2362,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJavaElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:895:1: entryRuleJavaElement returns [EObject current=null] : iv_ruleJavaElement= ruleJavaElement EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:904:1: entryRuleJavaElement returns [EObject current=null] : iv_ruleJavaElement= ruleJavaElement EOF ;
     public final EObject entryRuleJavaElement() throws RecognitionException {
         EObject current = null;
 
@@ -2351,8 +2370,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:896:2: (iv_ruleJavaElement= ruleJavaElement EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:897:2: iv_ruleJavaElement= ruleJavaElement EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:905:2: (iv_ruleJavaElement= ruleJavaElement EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:906:2: iv_ruleJavaElement= ruleJavaElement EOF
             {
              newCompositeNode(grammarAccess.getJavaElementRule()); 
             pushFollow(FOLLOW_ruleJavaElement_in_entryRuleJavaElement2131);
@@ -2379,7 +2398,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJavaElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:904:1: ruleJavaElement returns [EObject current=null] : (otherlv_0= 'java ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_runat_2_0= ruleRunAtAttribute ) ) otherlv_3= '{' ( (lv_source_4_0= RULE_STRING ) ) otherlv_5= '}' ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:913:1: ruleJavaElement returns [EObject current=null] : (otherlv_0= 'java ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_runat_2_0= ruleRunAtAttribute ) ) otherlv_3= '{' ( (lv_source_4_0= RULE_STRING ) ) otherlv_5= '}' ) ;
     public final EObject ruleJavaElement() throws RecognitionException {
         EObject current = null;
 
@@ -2394,21 +2413,21 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:907:28: ( (otherlv_0= 'java ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_runat_2_0= ruleRunAtAttribute ) ) otherlv_3= '{' ( (lv_source_4_0= RULE_STRING ) ) otherlv_5= '}' ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:908:1: (otherlv_0= 'java ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_runat_2_0= ruleRunAtAttribute ) ) otherlv_3= '{' ( (lv_source_4_0= RULE_STRING ) ) otherlv_5= '}' )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:916:28: ( (otherlv_0= 'java ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_runat_2_0= ruleRunAtAttribute ) ) otherlv_3= '{' ( (lv_source_4_0= RULE_STRING ) ) otherlv_5= '}' ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:917:1: (otherlv_0= 'java ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_runat_2_0= ruleRunAtAttribute ) ) otherlv_3= '{' ( (lv_source_4_0= RULE_STRING ) ) otherlv_5= '}' )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:908:1: (otherlv_0= 'java ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_runat_2_0= ruleRunAtAttribute ) ) otherlv_3= '{' ( (lv_source_4_0= RULE_STRING ) ) otherlv_5= '}' )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:908:3: otherlv_0= 'java ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_runat_2_0= ruleRunAtAttribute ) ) otherlv_3= '{' ( (lv_source_4_0= RULE_STRING ) ) otherlv_5= '}'
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:917:1: (otherlv_0= 'java ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_runat_2_0= ruleRunAtAttribute ) ) otherlv_3= '{' ( (lv_source_4_0= RULE_STRING ) ) otherlv_5= '}' )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:917:3: otherlv_0= 'java ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_runat_2_0= ruleRunAtAttribute ) ) otherlv_3= '{' ( (lv_source_4_0= RULE_STRING ) ) otherlv_5= '}'
             {
             otherlv_0=(Token)match(input,20,FOLLOW_20_in_ruleJavaElement2178); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getJavaElementAccess().getJavaKeyword_0());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:912:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:913:1: (lv_name_1_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:921:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:922:1: (lv_name_1_0= RULE_ID )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:913:1: (lv_name_1_0= RULE_ID )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:914:3: lv_name_1_0= RULE_ID
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:922:1: (lv_name_1_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:923:3: lv_name_1_0= RULE_ID
             {
             lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleJavaElement2195); 
 
@@ -2430,11 +2449,11 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:930:2: ( (lv_runat_2_0= ruleRunAtAttribute ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:931:1: (lv_runat_2_0= ruleRunAtAttribute )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:939:2: ( (lv_runat_2_0= ruleRunAtAttribute ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:940:1: (lv_runat_2_0= ruleRunAtAttribute )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:931:1: (lv_runat_2_0= ruleRunAtAttribute )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:932:3: lv_runat_2_0= ruleRunAtAttribute
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:940:1: (lv_runat_2_0= ruleRunAtAttribute )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:941:3: lv_runat_2_0= ruleRunAtAttribute
             {
              
             	        newCompositeNode(grammarAccess.getJavaElementAccess().getRunatRunAtAttributeParserRuleCall_2_0()); 
@@ -2465,11 +2484,11 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
                 	newLeafNode(otherlv_3, grammarAccess.getJavaElementAccess().getLeftCurlyBracketKeyword_3());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:952:1: ( (lv_source_4_0= RULE_STRING ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:953:1: (lv_source_4_0= RULE_STRING )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:961:1: ( (lv_source_4_0= RULE_STRING ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:962:1: (lv_source_4_0= RULE_STRING )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:953:1: (lv_source_4_0= RULE_STRING )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:954:3: lv_source_4_0= RULE_STRING
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:962:1: (lv_source_4_0= RULE_STRING )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:963:3: lv_source_4_0= RULE_STRING
             {
             lv_source_4_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleJavaElement2250); 
 
@@ -2516,7 +2535,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleRunAtAttribute"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:982:1: entryRuleRunAtAttribute returns [EObject current=null] : iv_ruleRunAtAttribute= ruleRunAtAttribute EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:991:1: entryRuleRunAtAttribute returns [EObject current=null] : iv_ruleRunAtAttribute= ruleRunAtAttribute EOF ;
     public final EObject entryRuleRunAtAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -2524,8 +2543,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:983:2: (iv_ruleRunAtAttribute= ruleRunAtAttribute EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:984:2: iv_ruleRunAtAttribute= ruleRunAtAttribute EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:992:2: (iv_ruleRunAtAttribute= ruleRunAtAttribute EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:993:2: iv_ruleRunAtAttribute= ruleRunAtAttribute EOF
             {
              newCompositeNode(grammarAccess.getRunAtAttributeRule()); 
             pushFollow(FOLLOW_ruleRunAtAttribute_in_entryRuleRunAtAttribute2303);
@@ -2552,7 +2571,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRunAtAttribute"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:991:1: ruleRunAtAttribute returns [EObject current=null] : (otherlv_0= 'runat=' ( (lv_value_1_0= ruleJavaRunAtAttributeList ) ) ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1000:1: ruleRunAtAttribute returns [EObject current=null] : (otherlv_0= 'runat=' ( (lv_value_1_0= ruleJavaRunAtAttributeList ) ) ) ;
     public final EObject ruleRunAtAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -2563,21 +2582,21 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:994:28: ( (otherlv_0= 'runat=' ( (lv_value_1_0= ruleJavaRunAtAttributeList ) ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:995:1: (otherlv_0= 'runat=' ( (lv_value_1_0= ruleJavaRunAtAttributeList ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1003:28: ( (otherlv_0= 'runat=' ( (lv_value_1_0= ruleJavaRunAtAttributeList ) ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1004:1: (otherlv_0= 'runat=' ( (lv_value_1_0= ruleJavaRunAtAttributeList ) ) )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:995:1: (otherlv_0= 'runat=' ( (lv_value_1_0= ruleJavaRunAtAttributeList ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:995:3: otherlv_0= 'runat=' ( (lv_value_1_0= ruleJavaRunAtAttributeList ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1004:1: (otherlv_0= 'runat=' ( (lv_value_1_0= ruleJavaRunAtAttributeList ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1004:3: otherlv_0= 'runat=' ( (lv_value_1_0= ruleJavaRunAtAttributeList ) )
             {
             otherlv_0=(Token)match(input,23,FOLLOW_23_in_ruleRunAtAttribute2350); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getRunAtAttributeAccess().getRunatKeyword_0());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:999:1: ( (lv_value_1_0= ruleJavaRunAtAttributeList ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1000:1: (lv_value_1_0= ruleJavaRunAtAttributeList )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1008:1: ( (lv_value_1_0= ruleJavaRunAtAttributeList ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1009:1: (lv_value_1_0= ruleJavaRunAtAttributeList )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1000:1: (lv_value_1_0= ruleJavaRunAtAttributeList )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1001:3: lv_value_1_0= ruleJavaRunAtAttributeList
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1009:1: (lv_value_1_0= ruleJavaRunAtAttributeList )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1010:3: lv_value_1_0= ruleJavaRunAtAttributeList
             {
              
             	        newCompositeNode(grammarAccess.getRunAtAttributeAccess().getValueJavaRunAtAttributeListEnumRuleCall_1_0()); 
@@ -2625,7 +2644,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCodeElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1025:1: entryRuleCodeElement returns [EObject current=null] : iv_ruleCodeElement= ruleCodeElement EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1034:1: entryRuleCodeElement returns [EObject current=null] : iv_ruleCodeElement= ruleCodeElement EOF ;
     public final EObject entryRuleCodeElement() throws RecognitionException {
         EObject current = null;
 
@@ -2633,8 +2652,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1026:2: (iv_ruleCodeElement= ruleCodeElement EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1027:2: iv_ruleCodeElement= ruleCodeElement EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1035:2: (iv_ruleCodeElement= ruleCodeElement EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1036:2: iv_ruleCodeElement= ruleCodeElement EOF
             {
              newCompositeNode(grammarAccess.getCodeElementRule()); 
             pushFollow(FOLLOW_ruleCodeElement_in_entryRuleCodeElement2407);
@@ -2661,7 +2680,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCodeElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1034:1: ruleCodeElement returns [EObject current=null] : (otherlv_0= 'code ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_id_2_0= ruleCodeIdAttribute ) ) ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1043:1: ruleCodeElement returns [EObject current=null] : (otherlv_0= 'code ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_id_2_0= ruleCodeIdAttribute ) ) ) ;
     public final EObject ruleCodeElement() throws RecognitionException {
         EObject current = null;
 
@@ -2673,21 +2692,21 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1037:28: ( (otherlv_0= 'code ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_id_2_0= ruleCodeIdAttribute ) ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1038:1: (otherlv_0= 'code ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_id_2_0= ruleCodeIdAttribute ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1046:28: ( (otherlv_0= 'code ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_id_2_0= ruleCodeIdAttribute ) ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1047:1: (otherlv_0= 'code ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_id_2_0= ruleCodeIdAttribute ) ) )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1038:1: (otherlv_0= 'code ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_id_2_0= ruleCodeIdAttribute ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1038:3: otherlv_0= 'code ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_id_2_0= ruleCodeIdAttribute ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1047:1: (otherlv_0= 'code ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_id_2_0= ruleCodeIdAttribute ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1047:3: otherlv_0= 'code ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_id_2_0= ruleCodeIdAttribute ) )
             {
             otherlv_0=(Token)match(input,24,FOLLOW_24_in_ruleCodeElement2454); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getCodeElementAccess().getCodeKeyword_0());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1042:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1043:1: (lv_name_1_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1051:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1052:1: (lv_name_1_0= RULE_ID )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1043:1: (lv_name_1_0= RULE_ID )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1044:3: lv_name_1_0= RULE_ID
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1052:1: (lv_name_1_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1053:3: lv_name_1_0= RULE_ID
             {
             lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleCodeElement2471); 
 
@@ -2709,11 +2728,11 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1060:2: ( (lv_id_2_0= ruleCodeIdAttribute ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1061:1: (lv_id_2_0= ruleCodeIdAttribute )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1069:2: ( (lv_id_2_0= ruleCodeIdAttribute ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1070:1: (lv_id_2_0= ruleCodeIdAttribute )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1061:1: (lv_id_2_0= ruleCodeIdAttribute )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1062:3: lv_id_2_0= ruleCodeIdAttribute
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1070:1: (lv_id_2_0= ruleCodeIdAttribute )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1071:3: lv_id_2_0= ruleCodeIdAttribute
             {
              
             	        newCompositeNode(grammarAccess.getCodeElementAccess().getIdCodeIdAttributeParserRuleCall_2_0()); 
@@ -2761,7 +2780,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCodeIdAttribute"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1086:1: entryRuleCodeIdAttribute returns [EObject current=null] : iv_ruleCodeIdAttribute= ruleCodeIdAttribute EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1095:1: entryRuleCodeIdAttribute returns [EObject current=null] : iv_ruleCodeIdAttribute= ruleCodeIdAttribute EOF ;
     public final EObject entryRuleCodeIdAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -2769,8 +2788,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1087:2: (iv_ruleCodeIdAttribute= ruleCodeIdAttribute EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1088:2: iv_ruleCodeIdAttribute= ruleCodeIdAttribute EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1096:2: (iv_ruleCodeIdAttribute= ruleCodeIdAttribute EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1097:2: iv_ruleCodeIdAttribute= ruleCodeIdAttribute EOF
             {
              newCompositeNode(grammarAccess.getCodeIdAttributeRule()); 
             pushFollow(FOLLOW_ruleCodeIdAttribute_in_entryRuleCodeIdAttribute2533);
@@ -2797,7 +2816,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCodeIdAttribute"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1095:1: ruleCodeIdAttribute returns [EObject current=null] : (otherlv_0= 'id=' ( (lv_value_1_0= RULE_INT ) ) ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1104:1: ruleCodeIdAttribute returns [EObject current=null] : (otherlv_0= 'id=' ( (lv_value_1_0= RULE_INT ) ) ) ;
     public final EObject ruleCodeIdAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -2807,21 +2826,21 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1098:28: ( (otherlv_0= 'id=' ( (lv_value_1_0= RULE_INT ) ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1099:1: (otherlv_0= 'id=' ( (lv_value_1_0= RULE_INT ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1107:28: ( (otherlv_0= 'id=' ( (lv_value_1_0= RULE_INT ) ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1108:1: (otherlv_0= 'id=' ( (lv_value_1_0= RULE_INT ) ) )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1099:1: (otherlv_0= 'id=' ( (lv_value_1_0= RULE_INT ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1099:3: otherlv_0= 'id=' ( (lv_value_1_0= RULE_INT ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1108:1: (otherlv_0= 'id=' ( (lv_value_1_0= RULE_INT ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1108:3: otherlv_0= 'id=' ( (lv_value_1_0= RULE_INT ) )
             {
             otherlv_0=(Token)match(input,25,FOLLOW_25_in_ruleCodeIdAttribute2580); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getCodeIdAttributeAccess().getIdKeyword_0());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1103:1: ( (lv_value_1_0= RULE_INT ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1104:1: (lv_value_1_0= RULE_INT )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1112:1: ( (lv_value_1_0= RULE_INT ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1113:1: (lv_value_1_0= RULE_INT )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1104:1: (lv_value_1_0= RULE_INT )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1105:3: lv_value_1_0= RULE_INT
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1113:1: (lv_value_1_0= RULE_INT )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1114:3: lv_value_1_0= RULE_INT
             {
             lv_value_1_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleCodeIdAttribute2597); 
 
@@ -2864,7 +2883,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLogicElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1129:1: entryRuleLogicElement returns [EObject current=null] : iv_ruleLogicElement= ruleLogicElement EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1138:1: entryRuleLogicElement returns [EObject current=null] : iv_ruleLogicElement= ruleLogicElement EOF ;
     public final EObject entryRuleLogicElement() throws RecognitionException {
         EObject current = null;
 
@@ -2872,8 +2891,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1130:2: (iv_ruleLogicElement= ruleLogicElement EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1131:2: iv_ruleLogicElement= ruleLogicElement EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1139:2: (iv_ruleLogicElement= ruleLogicElement EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1140:2: iv_ruleLogicElement= ruleLogicElement EOF
             {
              newCompositeNode(grammarAccess.getLogicElementRule()); 
             pushFollow(FOLLOW_ruleLogicElement_in_entryRuleLogicElement2638);
@@ -2900,7 +2919,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLogicElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1138:1: ruleLogicElement returns [EObject current=null] : (otherlv_0= 'logic ' ( (lv_type_1_0= ruleLogicTypeAttribute ) ) ( (lv_properties_2_0= ruleLogicOptionalProperties ) )* (otherlv_3= '{' ( (lv_source_4_0= RULE_STRING ) ) otherlv_5= '}' )? ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1147:1: ruleLogicElement returns [EObject current=null] : (otherlv_0= 'logic ' ( (lv_type_1_0= ruleLogicTypeAttribute ) ) ( (lv_properties_2_0= ruleLogicOptionalProperties ) )* (otherlv_3= '{' ( (lv_source_4_0= RULE_STRING ) ) otherlv_5= '}' )? ) ;
     public final EObject ruleLogicElement() throws RecognitionException {
         EObject current = null;
 
@@ -2916,21 +2935,21 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1141:28: ( (otherlv_0= 'logic ' ( (lv_type_1_0= ruleLogicTypeAttribute ) ) ( (lv_properties_2_0= ruleLogicOptionalProperties ) )* (otherlv_3= '{' ( (lv_source_4_0= RULE_STRING ) ) otherlv_5= '}' )? ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1142:1: (otherlv_0= 'logic ' ( (lv_type_1_0= ruleLogicTypeAttribute ) ) ( (lv_properties_2_0= ruleLogicOptionalProperties ) )* (otherlv_3= '{' ( (lv_source_4_0= RULE_STRING ) ) otherlv_5= '}' )? )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1150:28: ( (otherlv_0= 'logic ' ( (lv_type_1_0= ruleLogicTypeAttribute ) ) ( (lv_properties_2_0= ruleLogicOptionalProperties ) )* (otherlv_3= '{' ( (lv_source_4_0= RULE_STRING ) ) otherlv_5= '}' )? ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1151:1: (otherlv_0= 'logic ' ( (lv_type_1_0= ruleLogicTypeAttribute ) ) ( (lv_properties_2_0= ruleLogicOptionalProperties ) )* (otherlv_3= '{' ( (lv_source_4_0= RULE_STRING ) ) otherlv_5= '}' )? )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1142:1: (otherlv_0= 'logic ' ( (lv_type_1_0= ruleLogicTypeAttribute ) ) ( (lv_properties_2_0= ruleLogicOptionalProperties ) )* (otherlv_3= '{' ( (lv_source_4_0= RULE_STRING ) ) otherlv_5= '}' )? )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1142:3: otherlv_0= 'logic ' ( (lv_type_1_0= ruleLogicTypeAttribute ) ) ( (lv_properties_2_0= ruleLogicOptionalProperties ) )* (otherlv_3= '{' ( (lv_source_4_0= RULE_STRING ) ) otherlv_5= '}' )?
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1151:1: (otherlv_0= 'logic ' ( (lv_type_1_0= ruleLogicTypeAttribute ) ) ( (lv_properties_2_0= ruleLogicOptionalProperties ) )* (otherlv_3= '{' ( (lv_source_4_0= RULE_STRING ) ) otherlv_5= '}' )? )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1151:3: otherlv_0= 'logic ' ( (lv_type_1_0= ruleLogicTypeAttribute ) ) ( (lv_properties_2_0= ruleLogicOptionalProperties ) )* (otherlv_3= '{' ( (lv_source_4_0= RULE_STRING ) ) otherlv_5= '}' )?
             {
             otherlv_0=(Token)match(input,26,FOLLOW_26_in_ruleLogicElement2685); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getLogicElementAccess().getLogicKeyword_0());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1146:1: ( (lv_type_1_0= ruleLogicTypeAttribute ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1147:1: (lv_type_1_0= ruleLogicTypeAttribute )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1155:1: ( (lv_type_1_0= ruleLogicTypeAttribute ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1156:1: (lv_type_1_0= ruleLogicTypeAttribute )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1147:1: (lv_type_1_0= ruleLogicTypeAttribute )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1148:3: lv_type_1_0= ruleLogicTypeAttribute
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1156:1: (lv_type_1_0= ruleLogicTypeAttribute )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1157:3: lv_type_1_0= ruleLogicTypeAttribute
             {
              
             	        newCompositeNode(grammarAccess.getLogicElementAccess().getTypeLogicTypeAttributeParserRuleCall_1_0()); 
@@ -2957,7 +2976,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1164:2: ( (lv_properties_2_0= ruleLogicOptionalProperties ) )*
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1173:2: ( (lv_properties_2_0= ruleLogicOptionalProperties ) )*
             loop9:
             do {
                 int alt9=2;
@@ -2970,10 +2989,10 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
                 switch (alt9) {
             	case 1 :
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1165:1: (lv_properties_2_0= ruleLogicOptionalProperties )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1174:1: (lv_properties_2_0= ruleLogicOptionalProperties )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1165:1: (lv_properties_2_0= ruleLogicOptionalProperties )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1166:3: lv_properties_2_0= ruleLogicOptionalProperties
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1174:1: (lv_properties_2_0= ruleLogicOptionalProperties )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1175:3: lv_properties_2_0= ruleLogicOptionalProperties
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getLogicElementAccess().getPropertiesLogicOptionalPropertiesParserRuleCall_2_0()); 
@@ -3006,7 +3025,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1182:3: (otherlv_3= '{' ( (lv_source_4_0= RULE_STRING ) ) otherlv_5= '}' )?
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1191:3: (otherlv_3= '{' ( (lv_source_4_0= RULE_STRING ) ) otherlv_5= '}' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -3015,17 +3034,17 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             }
             switch (alt10) {
                 case 1 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1182:5: otherlv_3= '{' ( (lv_source_4_0= RULE_STRING ) ) otherlv_5= '}'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1191:5: otherlv_3= '{' ( (lv_source_4_0= RULE_STRING ) ) otherlv_5= '}'
                     {
                     otherlv_3=(Token)match(input,21,FOLLOW_21_in_ruleLogicElement2741); 
 
                         	newLeafNode(otherlv_3, grammarAccess.getLogicElementAccess().getLeftCurlyBracketKeyword_3_0());
                         
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1186:1: ( (lv_source_4_0= RULE_STRING ) )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1187:1: (lv_source_4_0= RULE_STRING )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1195:1: ( (lv_source_4_0= RULE_STRING ) )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1196:1: (lv_source_4_0= RULE_STRING )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1187:1: (lv_source_4_0= RULE_STRING )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1188:3: lv_source_4_0= RULE_STRING
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1196:1: (lv_source_4_0= RULE_STRING )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1197:3: lv_source_4_0= RULE_STRING
                     {
                     lv_source_4_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleLogicElement2758); 
 
@@ -3078,7 +3097,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLogicOptionalProperties"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1216:1: entryRuleLogicOptionalProperties returns [EObject current=null] : iv_ruleLogicOptionalProperties= ruleLogicOptionalProperties EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1225:1: entryRuleLogicOptionalProperties returns [EObject current=null] : iv_ruleLogicOptionalProperties= ruleLogicOptionalProperties EOF ;
     public final EObject entryRuleLogicOptionalProperties() throws RecognitionException {
         EObject current = null;
 
@@ -3086,8 +3105,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1217:2: (iv_ruleLogicOptionalProperties= ruleLogicOptionalProperties EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1218:2: iv_ruleLogicOptionalProperties= ruleLogicOptionalProperties EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1226:2: (iv_ruleLogicOptionalProperties= ruleLogicOptionalProperties EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1227:2: iv_ruleLogicOptionalProperties= ruleLogicOptionalProperties EOF
             {
              newCompositeNode(grammarAccess.getLogicOptionalPropertiesRule()); 
             pushFollow(FOLLOW_ruleLogicOptionalProperties_in_entryRuleLogicOptionalProperties2813);
@@ -3114,7 +3133,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLogicOptionalProperties"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1225:1: ruleLogicOptionalProperties returns [EObject current=null] : ( ( (lv_runat_0_0= ruleRunAtAttribute ) ) | ( (lv_exec_1_0= ruleLogicExecAttribute ) ) ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1234:1: ruleLogicOptionalProperties returns [EObject current=null] : ( ( (lv_runat_0_0= ruleRunAtAttribute ) ) | ( (lv_exec_1_0= ruleLogicExecAttribute ) ) ) ;
     public final EObject ruleLogicOptionalProperties() throws RecognitionException {
         EObject current = null;
 
@@ -3126,10 +3145,10 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1228:28: ( ( ( (lv_runat_0_0= ruleRunAtAttribute ) ) | ( (lv_exec_1_0= ruleLogicExecAttribute ) ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1229:1: ( ( (lv_runat_0_0= ruleRunAtAttribute ) ) | ( (lv_exec_1_0= ruleLogicExecAttribute ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1237:28: ( ( ( (lv_runat_0_0= ruleRunAtAttribute ) ) | ( (lv_exec_1_0= ruleLogicExecAttribute ) ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1238:1: ( ( (lv_runat_0_0= ruleRunAtAttribute ) ) | ( (lv_exec_1_0= ruleLogicExecAttribute ) ) )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1229:1: ( ( (lv_runat_0_0= ruleRunAtAttribute ) ) | ( (lv_exec_1_0= ruleLogicExecAttribute ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1238:1: ( ( (lv_runat_0_0= ruleRunAtAttribute ) ) | ( (lv_exec_1_0= ruleLogicExecAttribute ) ) )
             int alt11=2;
             int LA11_0 = input.LA(1);
 
@@ -3147,13 +3166,13 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             }
             switch (alt11) {
                 case 1 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1229:2: ( (lv_runat_0_0= ruleRunAtAttribute ) )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1238:2: ( (lv_runat_0_0= ruleRunAtAttribute ) )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1229:2: ( (lv_runat_0_0= ruleRunAtAttribute ) )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1230:1: (lv_runat_0_0= ruleRunAtAttribute )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1238:2: ( (lv_runat_0_0= ruleRunAtAttribute ) )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1239:1: (lv_runat_0_0= ruleRunAtAttribute )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1230:1: (lv_runat_0_0= ruleRunAtAttribute )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1231:3: lv_runat_0_0= ruleRunAtAttribute
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1239:1: (lv_runat_0_0= ruleRunAtAttribute )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1240:3: lv_runat_0_0= ruleRunAtAttribute
                     {
                      
                     	        newCompositeNode(grammarAccess.getLogicOptionalPropertiesAccess().getRunatRunAtAttributeParserRuleCall_0_0()); 
@@ -3184,13 +3203,13 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1248:6: ( (lv_exec_1_0= ruleLogicExecAttribute ) )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1257:6: ( (lv_exec_1_0= ruleLogicExecAttribute ) )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1248:6: ( (lv_exec_1_0= ruleLogicExecAttribute ) )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1249:1: (lv_exec_1_0= ruleLogicExecAttribute )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1257:6: ( (lv_exec_1_0= ruleLogicExecAttribute ) )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1258:1: (lv_exec_1_0= ruleLogicExecAttribute )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1249:1: (lv_exec_1_0= ruleLogicExecAttribute )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1250:3: lv_exec_1_0= ruleLogicExecAttribute
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1258:1: (lv_exec_1_0= ruleLogicExecAttribute )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1259:3: lv_exec_1_0= ruleLogicExecAttribute
                     {
                      
                     	        newCompositeNode(grammarAccess.getLogicOptionalPropertiesAccess().getExecLogicExecAttributeParserRuleCall_1_0()); 
@@ -3241,7 +3260,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLogicTypeAttribute"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1274:1: entryRuleLogicTypeAttribute returns [EObject current=null] : iv_ruleLogicTypeAttribute= ruleLogicTypeAttribute EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1283:1: entryRuleLogicTypeAttribute returns [EObject current=null] : iv_ruleLogicTypeAttribute= ruleLogicTypeAttribute EOF ;
     public final EObject entryRuleLogicTypeAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -3249,8 +3268,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1275:2: (iv_ruleLogicTypeAttribute= ruleLogicTypeAttribute EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1276:2: iv_ruleLogicTypeAttribute= ruleLogicTypeAttribute EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1284:2: (iv_ruleLogicTypeAttribute= ruleLogicTypeAttribute EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1285:2: iv_ruleLogicTypeAttribute= ruleLogicTypeAttribute EOF
             {
              newCompositeNode(grammarAccess.getLogicTypeAttributeRule()); 
             pushFollow(FOLLOW_ruleLogicTypeAttribute_in_entryRuleLogicTypeAttribute2932);
@@ -3277,7 +3296,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLogicTypeAttribute"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1283:1: ruleLogicTypeAttribute returns [EObject current=null] : (otherlv_0= 'type=' ( (lv_value_1_0= ruleLogicTypeAttributeList ) ) ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1292:1: ruleLogicTypeAttribute returns [EObject current=null] : (otherlv_0= 'type=' ( (lv_value_1_0= ruleLogicTypeAttributeList ) ) ) ;
     public final EObject ruleLogicTypeAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -3288,21 +3307,21 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1286:28: ( (otherlv_0= 'type=' ( (lv_value_1_0= ruleLogicTypeAttributeList ) ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1287:1: (otherlv_0= 'type=' ( (lv_value_1_0= ruleLogicTypeAttributeList ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1295:28: ( (otherlv_0= 'type=' ( (lv_value_1_0= ruleLogicTypeAttributeList ) ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1296:1: (otherlv_0= 'type=' ( (lv_value_1_0= ruleLogicTypeAttributeList ) ) )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1287:1: (otherlv_0= 'type=' ( (lv_value_1_0= ruleLogicTypeAttributeList ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1287:3: otherlv_0= 'type=' ( (lv_value_1_0= ruleLogicTypeAttributeList ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1296:1: (otherlv_0= 'type=' ( (lv_value_1_0= ruleLogicTypeAttributeList ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1296:3: otherlv_0= 'type=' ( (lv_value_1_0= ruleLogicTypeAttributeList ) )
             {
             otherlv_0=(Token)match(input,27,FOLLOW_27_in_ruleLogicTypeAttribute2979); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getLogicTypeAttributeAccess().getTypeKeyword_0());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1291:1: ( (lv_value_1_0= ruleLogicTypeAttributeList ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1292:1: (lv_value_1_0= ruleLogicTypeAttributeList )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1300:1: ( (lv_value_1_0= ruleLogicTypeAttributeList ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1301:1: (lv_value_1_0= ruleLogicTypeAttributeList )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1292:1: (lv_value_1_0= ruleLogicTypeAttributeList )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1293:3: lv_value_1_0= ruleLogicTypeAttributeList
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1301:1: (lv_value_1_0= ruleLogicTypeAttributeList )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1302:3: lv_value_1_0= ruleLogicTypeAttributeList
             {
              
             	        newCompositeNode(grammarAccess.getLogicTypeAttributeAccess().getValueLogicTypeAttributeListEnumRuleCall_1_0()); 
@@ -3350,7 +3369,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLogicExecAttribute"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1317:1: entryRuleLogicExecAttribute returns [EObject current=null] : iv_ruleLogicExecAttribute= ruleLogicExecAttribute EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1326:1: entryRuleLogicExecAttribute returns [EObject current=null] : iv_ruleLogicExecAttribute= ruleLogicExecAttribute EOF ;
     public final EObject entryRuleLogicExecAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -3358,8 +3377,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1318:2: (iv_ruleLogicExecAttribute= ruleLogicExecAttribute EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1319:2: iv_ruleLogicExecAttribute= ruleLogicExecAttribute EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1327:2: (iv_ruleLogicExecAttribute= ruleLogicExecAttribute EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1328:2: iv_ruleLogicExecAttribute= ruleLogicExecAttribute EOF
             {
              newCompositeNode(grammarAccess.getLogicExecAttributeRule()); 
             pushFollow(FOLLOW_ruleLogicExecAttribute_in_entryRuleLogicExecAttribute3036);
@@ -3386,7 +3405,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLogicExecAttribute"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1326:1: ruleLogicExecAttribute returns [EObject current=null] : (otherlv_0= 'exec=' ( (otherlv_1= RULE_ID ) ) ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1335:1: ruleLogicExecAttribute returns [EObject current=null] : (otherlv_0= 'exec=' ( (otherlv_1= RULE_ID ) ) ) ;
     public final EObject ruleLogicExecAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -3396,21 +3415,21 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1329:28: ( (otherlv_0= 'exec=' ( (otherlv_1= RULE_ID ) ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1330:1: (otherlv_0= 'exec=' ( (otherlv_1= RULE_ID ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1338:28: ( (otherlv_0= 'exec=' ( (otherlv_1= RULE_ID ) ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1339:1: (otherlv_0= 'exec=' ( (otherlv_1= RULE_ID ) ) )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1330:1: (otherlv_0= 'exec=' ( (otherlv_1= RULE_ID ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1330:3: otherlv_0= 'exec=' ( (otherlv_1= RULE_ID ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1339:1: (otherlv_0= 'exec=' ( (otherlv_1= RULE_ID ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1339:3: otherlv_0= 'exec=' ( (otherlv_1= RULE_ID ) )
             {
             otherlv_0=(Token)match(input,28,FOLLOW_28_in_ruleLogicExecAttribute3083); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getLogicExecAttributeAccess().getExecKeyword_0());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1334:1: ( (otherlv_1= RULE_ID ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1335:1: (otherlv_1= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1343:1: ( (otherlv_1= RULE_ID ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1344:1: (otherlv_1= RULE_ID )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1335:1: (otherlv_1= RULE_ID )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1336:3: otherlv_1= RULE_ID
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1344:1: (otherlv_1= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1345:3: otherlv_1= RULE_ID
             {
 
             			if (current==null) {
@@ -3448,7 +3467,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLookupElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1355:1: entryRuleLookupElement returns [EObject current=null] : iv_ruleLookupElement= ruleLookupElement EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1364:1: entryRuleLookupElement returns [EObject current=null] : iv_ruleLookupElement= ruleLookupElement EOF ;
     public final EObject entryRuleLookupElement() throws RecognitionException {
         EObject current = null;
 
@@ -3456,8 +3475,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1356:2: (iv_ruleLookupElement= ruleLookupElement EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1357:2: iv_ruleLookupElement= ruleLookupElement EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1365:2: (iv_ruleLookupElement= ruleLookupElement EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1366:2: iv_ruleLookupElement= ruleLookupElement EOF
             {
              newCompositeNode(grammarAccess.getLookupElementRule()); 
             pushFollow(FOLLOW_ruleLookupElement_in_entryRuleLookupElement3139);
@@ -3484,7 +3503,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLookupElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1364:1: ruleLookupElement returns [EObject current=null] : (otherlv_0= 'lookup ' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( ( (lv_servicelogic_3_1= ruleJavaElement | lv_servicelogic_3_2= ruleLogicElement ) ) )+ otherlv_4= '}' ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1373:1: ruleLookupElement returns [EObject current=null] : (otherlv_0= 'lookup ' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( ( (lv_servicelogic_3_1= ruleJavaElement | lv_servicelogic_3_2= ruleLogicElement ) ) )+ otherlv_4= '}' ) ;
     public final EObject ruleLookupElement() throws RecognitionException {
         EObject current = null;
 
@@ -3500,21 +3519,21 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1367:28: ( (otherlv_0= 'lookup ' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( ( (lv_servicelogic_3_1= ruleJavaElement | lv_servicelogic_3_2= ruleLogicElement ) ) )+ otherlv_4= '}' ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1368:1: (otherlv_0= 'lookup ' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( ( (lv_servicelogic_3_1= ruleJavaElement | lv_servicelogic_3_2= ruleLogicElement ) ) )+ otherlv_4= '}' )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1376:28: ( (otherlv_0= 'lookup ' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( ( (lv_servicelogic_3_1= ruleJavaElement | lv_servicelogic_3_2= ruleLogicElement ) ) )+ otherlv_4= '}' ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1377:1: (otherlv_0= 'lookup ' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( ( (lv_servicelogic_3_1= ruleJavaElement | lv_servicelogic_3_2= ruleLogicElement ) ) )+ otherlv_4= '}' )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1368:1: (otherlv_0= 'lookup ' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( ( (lv_servicelogic_3_1= ruleJavaElement | lv_servicelogic_3_2= ruleLogicElement ) ) )+ otherlv_4= '}' )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1368:3: otherlv_0= 'lookup ' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( ( (lv_servicelogic_3_1= ruleJavaElement | lv_servicelogic_3_2= ruleLogicElement ) ) )+ otherlv_4= '}'
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1377:1: (otherlv_0= 'lookup ' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( ( (lv_servicelogic_3_1= ruleJavaElement | lv_servicelogic_3_2= ruleLogicElement ) ) )+ otherlv_4= '}' )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1377:3: otherlv_0= 'lookup ' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( ( (lv_servicelogic_3_1= ruleJavaElement | lv_servicelogic_3_2= ruleLogicElement ) ) )+ otherlv_4= '}'
             {
             otherlv_0=(Token)match(input,29,FOLLOW_29_in_ruleLookupElement3186); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getLookupElementAccess().getLookupKeyword_0());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1372:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1373:1: (lv_name_1_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1381:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1382:1: (lv_name_1_0= RULE_ID )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1373:1: (lv_name_1_0= RULE_ID )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1374:3: lv_name_1_0= RULE_ID
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1382:1: (lv_name_1_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1383:3: lv_name_1_0= RULE_ID
             {
             lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleLookupElement3203); 
 
@@ -3540,7 +3559,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
                 	newLeafNode(otherlv_2, grammarAccess.getLookupElementAccess().getLeftCurlyBracketKeyword_2());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1394:1: ( ( (lv_servicelogic_3_1= ruleJavaElement | lv_servicelogic_3_2= ruleLogicElement ) ) )+
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1403:1: ( ( (lv_servicelogic_3_1= ruleJavaElement | lv_servicelogic_3_2= ruleLogicElement ) ) )+
             int cnt13=0;
             loop13:
             do {
@@ -3554,12 +3573,12 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
                 switch (alt13) {
             	case 1 :
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1395:1: ( (lv_servicelogic_3_1= ruleJavaElement | lv_servicelogic_3_2= ruleLogicElement ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1404:1: ( (lv_servicelogic_3_1= ruleJavaElement | lv_servicelogic_3_2= ruleLogicElement ) )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1395:1: ( (lv_servicelogic_3_1= ruleJavaElement | lv_servicelogic_3_2= ruleLogicElement ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1396:1: (lv_servicelogic_3_1= ruleJavaElement | lv_servicelogic_3_2= ruleLogicElement )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1404:1: ( (lv_servicelogic_3_1= ruleJavaElement | lv_servicelogic_3_2= ruleLogicElement ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1405:1: (lv_servicelogic_3_1= ruleJavaElement | lv_servicelogic_3_2= ruleLogicElement )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1396:1: (lv_servicelogic_3_1= ruleJavaElement | lv_servicelogic_3_2= ruleLogicElement )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1405:1: (lv_servicelogic_3_1= ruleJavaElement | lv_servicelogic_3_2= ruleLogicElement )
             	    int alt12=2;
             	    int LA12_0 = input.LA(1);
 
@@ -3577,7 +3596,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             	    }
             	    switch (alt12) {
             	        case 1 :
-            	            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1397:3: lv_servicelogic_3_1= ruleJavaElement
+            	            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1406:3: lv_servicelogic_3_1= ruleJavaElement
             	            {
             	             
             	            	        newCompositeNode(grammarAccess.getLookupElementAccess().getServicelogicJavaElementParserRuleCall_3_0_0()); 
@@ -3602,7 +3621,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 2 :
-            	            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1412:8: lv_servicelogic_3_2= ruleLogicElement
+            	            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1421:8: lv_servicelogic_3_2= ruleLogicElement
             	            {
             	             
             	            	        newCompositeNode(grammarAccess.getLookupElementAccess().getServicelogicLogicElementParserRuleCall_3_0_1()); 
@@ -3670,7 +3689,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleTemplateElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1442:1: entryRuleTemplateElement returns [EObject current=null] : iv_ruleTemplateElement= ruleTemplateElement EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1451:1: entryRuleTemplateElement returns [EObject current=null] : iv_ruleTemplateElement= ruleTemplateElement EOF ;
     public final EObject entryRuleTemplateElement() throws RecognitionException {
         EObject current = null;
 
@@ -3678,8 +3697,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1443:2: (iv_ruleTemplateElement= ruleTemplateElement EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1444:2: iv_ruleTemplateElement= ruleTemplateElement EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1452:2: (iv_ruleTemplateElement= ruleTemplateElement EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1453:2: iv_ruleTemplateElement= ruleTemplateElement EOF
             {
              newCompositeNode(grammarAccess.getTemplateElementRule()); 
             pushFollow(FOLLOW_ruleTemplateElement_in_entryRuleTemplateElement3314);
@@ -3706,7 +3725,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTemplateElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1451:1: ruleTemplateElement returns [EObject current=null] : (otherlv_0= 'template ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_class_2_0= ruleTemplateElementClassAttribute ) ) ( (lv_replaces_3_0= ruleTemplateElementReplacesAttribute ) ) ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1460:1: ruleTemplateElement returns [EObject current=null] : (otherlv_0= 'template ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_class_2_0= ruleTemplateElementClassAttribute ) ) ( (lv_replaces_3_0= ruleTemplateElementReplacesAttribute ) ) ) ;
     public final EObject ruleTemplateElement() throws RecognitionException {
         EObject current = null;
 
@@ -3720,21 +3739,21 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1454:28: ( (otherlv_0= 'template ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_class_2_0= ruleTemplateElementClassAttribute ) ) ( (lv_replaces_3_0= ruleTemplateElementReplacesAttribute ) ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1455:1: (otherlv_0= 'template ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_class_2_0= ruleTemplateElementClassAttribute ) ) ( (lv_replaces_3_0= ruleTemplateElementReplacesAttribute ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1463:28: ( (otherlv_0= 'template ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_class_2_0= ruleTemplateElementClassAttribute ) ) ( (lv_replaces_3_0= ruleTemplateElementReplacesAttribute ) ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1464:1: (otherlv_0= 'template ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_class_2_0= ruleTemplateElementClassAttribute ) ) ( (lv_replaces_3_0= ruleTemplateElementReplacesAttribute ) ) )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1455:1: (otherlv_0= 'template ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_class_2_0= ruleTemplateElementClassAttribute ) ) ( (lv_replaces_3_0= ruleTemplateElementReplacesAttribute ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1455:3: otherlv_0= 'template ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_class_2_0= ruleTemplateElementClassAttribute ) ) ( (lv_replaces_3_0= ruleTemplateElementReplacesAttribute ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1464:1: (otherlv_0= 'template ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_class_2_0= ruleTemplateElementClassAttribute ) ) ( (lv_replaces_3_0= ruleTemplateElementReplacesAttribute ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1464:3: otherlv_0= 'template ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_class_2_0= ruleTemplateElementClassAttribute ) ) ( (lv_replaces_3_0= ruleTemplateElementReplacesAttribute ) )
             {
             otherlv_0=(Token)match(input,30,FOLLOW_30_in_ruleTemplateElement3361); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getTemplateElementAccess().getTemplateKeyword_0());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1459:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1460:1: (lv_name_1_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1468:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1469:1: (lv_name_1_0= RULE_ID )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1460:1: (lv_name_1_0= RULE_ID )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1461:3: lv_name_1_0= RULE_ID
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1469:1: (lv_name_1_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1470:3: lv_name_1_0= RULE_ID
             {
             lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleTemplateElement3378); 
 
@@ -3756,11 +3775,11 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1477:2: ( (lv_class_2_0= ruleTemplateElementClassAttribute ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1478:1: (lv_class_2_0= ruleTemplateElementClassAttribute )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1486:2: ( (lv_class_2_0= ruleTemplateElementClassAttribute ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1487:1: (lv_class_2_0= ruleTemplateElementClassAttribute )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1478:1: (lv_class_2_0= ruleTemplateElementClassAttribute )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1479:3: lv_class_2_0= ruleTemplateElementClassAttribute
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1487:1: (lv_class_2_0= ruleTemplateElementClassAttribute )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1488:3: lv_class_2_0= ruleTemplateElementClassAttribute
             {
              
             	        newCompositeNode(grammarAccess.getTemplateElementAccess().getClassTemplateElementClassAttributeParserRuleCall_2_0()); 
@@ -3787,11 +3806,11 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1495:2: ( (lv_replaces_3_0= ruleTemplateElementReplacesAttribute ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1496:1: (lv_replaces_3_0= ruleTemplateElementReplacesAttribute )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1504:2: ( (lv_replaces_3_0= ruleTemplateElementReplacesAttribute ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1505:1: (lv_replaces_3_0= ruleTemplateElementReplacesAttribute )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1496:1: (lv_replaces_3_0= ruleTemplateElementReplacesAttribute )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1497:3: lv_replaces_3_0= ruleTemplateElementReplacesAttribute
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1505:1: (lv_replaces_3_0= ruleTemplateElementReplacesAttribute )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1506:3: lv_replaces_3_0= ruleTemplateElementReplacesAttribute
             {
              
             	        newCompositeNode(grammarAccess.getTemplateElementAccess().getReplacesTemplateElementReplacesAttributeParserRuleCall_3_0()); 
@@ -3839,7 +3858,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleTemplateElementClassAttribute"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1521:1: entryRuleTemplateElementClassAttribute returns [EObject current=null] : iv_ruleTemplateElementClassAttribute= ruleTemplateElementClassAttribute EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1530:1: entryRuleTemplateElementClassAttribute returns [EObject current=null] : iv_ruleTemplateElementClassAttribute= ruleTemplateElementClassAttribute EOF ;
     public final EObject entryRuleTemplateElementClassAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -3847,8 +3866,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1522:2: (iv_ruleTemplateElementClassAttribute= ruleTemplateElementClassAttribute EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1523:2: iv_ruleTemplateElementClassAttribute= ruleTemplateElementClassAttribute EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1531:2: (iv_ruleTemplateElementClassAttribute= ruleTemplateElementClassAttribute EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1532:2: iv_ruleTemplateElementClassAttribute= ruleTemplateElementClassAttribute EOF
             {
              newCompositeNode(grammarAccess.getTemplateElementClassAttributeRule()); 
             pushFollow(FOLLOW_ruleTemplateElementClassAttribute_in_entryRuleTemplateElementClassAttribute3461);
@@ -3875,7 +3894,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTemplateElementClassAttribute"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1530:1: ruleTemplateElementClassAttribute returns [EObject current=null] : (otherlv_0= 'class=' ( (lv_value_1_0= ruleQualifiedName ) ) ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1539:1: ruleTemplateElementClassAttribute returns [EObject current=null] : (otherlv_0= 'class=' ( (lv_value_1_0= ruleQualifiedName ) ) ) ;
     public final EObject ruleTemplateElementClassAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -3886,21 +3905,21 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1533:28: ( (otherlv_0= 'class=' ( (lv_value_1_0= ruleQualifiedName ) ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1534:1: (otherlv_0= 'class=' ( (lv_value_1_0= ruleQualifiedName ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1542:28: ( (otherlv_0= 'class=' ( (lv_value_1_0= ruleQualifiedName ) ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1543:1: (otherlv_0= 'class=' ( (lv_value_1_0= ruleQualifiedName ) ) )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1534:1: (otherlv_0= 'class=' ( (lv_value_1_0= ruleQualifiedName ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1534:3: otherlv_0= 'class=' ( (lv_value_1_0= ruleQualifiedName ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1543:1: (otherlv_0= 'class=' ( (lv_value_1_0= ruleQualifiedName ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1543:3: otherlv_0= 'class=' ( (lv_value_1_0= ruleQualifiedName ) )
             {
             otherlv_0=(Token)match(input,31,FOLLOW_31_in_ruleTemplateElementClassAttribute3508); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getTemplateElementClassAttributeAccess().getClassKeyword_0());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1538:1: ( (lv_value_1_0= ruleQualifiedName ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1539:1: (lv_value_1_0= ruleQualifiedName )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1547:1: ( (lv_value_1_0= ruleQualifiedName ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1548:1: (lv_value_1_0= ruleQualifiedName )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1539:1: (lv_value_1_0= ruleQualifiedName )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1540:3: lv_value_1_0= ruleQualifiedName
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1548:1: (lv_value_1_0= ruleQualifiedName )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1549:3: lv_value_1_0= ruleQualifiedName
             {
              
             	        newCompositeNode(grammarAccess.getTemplateElementClassAttributeAccess().getValueQualifiedNameParserRuleCall_1_0()); 
@@ -3948,7 +3967,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleTemplateElementReplacesAttribute"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1564:1: entryRuleTemplateElementReplacesAttribute returns [EObject current=null] : iv_ruleTemplateElementReplacesAttribute= ruleTemplateElementReplacesAttribute EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1573:1: entryRuleTemplateElementReplacesAttribute returns [EObject current=null] : iv_ruleTemplateElementReplacesAttribute= ruleTemplateElementReplacesAttribute EOF ;
     public final EObject entryRuleTemplateElementReplacesAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -3956,8 +3975,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1565:2: (iv_ruleTemplateElementReplacesAttribute= ruleTemplateElementReplacesAttribute EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1566:2: iv_ruleTemplateElementReplacesAttribute= ruleTemplateElementReplacesAttribute EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1574:2: (iv_ruleTemplateElementReplacesAttribute= ruleTemplateElementReplacesAttribute EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1575:2: iv_ruleTemplateElementReplacesAttribute= ruleTemplateElementReplacesAttribute EOF
             {
              newCompositeNode(grammarAccess.getTemplateElementReplacesAttributeRule()); 
             pushFollow(FOLLOW_ruleTemplateElementReplacesAttribute_in_entryRuleTemplateElementReplacesAttribute3565);
@@ -3984,7 +4003,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTemplateElementReplacesAttribute"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1573:1: ruleTemplateElementReplacesAttribute returns [EObject current=null] : (otherlv_0= 'replaces=' ( (otherlv_1= RULE_ID ) ) ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1582:1: ruleTemplateElementReplacesAttribute returns [EObject current=null] : (otherlv_0= 'replaces=' ( (otherlv_1= RULE_ID ) ) ) ;
     public final EObject ruleTemplateElementReplacesAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -3994,21 +4013,21 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1576:28: ( (otherlv_0= 'replaces=' ( (otherlv_1= RULE_ID ) ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1577:1: (otherlv_0= 'replaces=' ( (otherlv_1= RULE_ID ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1585:28: ( (otherlv_0= 'replaces=' ( (otherlv_1= RULE_ID ) ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1586:1: (otherlv_0= 'replaces=' ( (otherlv_1= RULE_ID ) ) )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1577:1: (otherlv_0= 'replaces=' ( (otherlv_1= RULE_ID ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1577:3: otherlv_0= 'replaces=' ( (otherlv_1= RULE_ID ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1586:1: (otherlv_0= 'replaces=' ( (otherlv_1= RULE_ID ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1586:3: otherlv_0= 'replaces=' ( (otherlv_1= RULE_ID ) )
             {
             otherlv_0=(Token)match(input,32,FOLLOW_32_in_ruleTemplateElementReplacesAttribute3612); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getTemplateElementReplacesAttributeAccess().getReplacesKeyword_0());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1581:1: ( (otherlv_1= RULE_ID ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1582:1: (otherlv_1= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1590:1: ( (otherlv_1= RULE_ID ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1591:1: (otherlv_1= RULE_ID )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1582:1: (otherlv_1= RULE_ID )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1583:3: otherlv_1= RULE_ID
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1591:1: (otherlv_1= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1592:3: otherlv_1= RULE_ID
             {
 
             			if (current==null) {
@@ -4046,7 +4065,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFormElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1602:1: entryRuleFormElement returns [EObject current=null] : iv_ruleFormElement= ruleFormElement EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1611:1: entryRuleFormElement returns [EObject current=null] : iv_ruleFormElement= ruleFormElement EOF ;
     public final EObject entryRuleFormElement() throws RecognitionException {
         EObject current = null;
 
@@ -4054,8 +4073,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1603:2: (iv_ruleFormElement= ruleFormElement EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1604:2: iv_ruleFormElement= ruleFormElement EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1612:2: (iv_ruleFormElement= ruleFormElement EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1613:2: iv_ruleFormElement= ruleFormElement EOF
             {
              newCompositeNode(grammarAccess.getFormElementRule()); 
             pushFollow(FOLLOW_ruleFormElement_in_entryRuleFormElement3668);
@@ -4082,7 +4101,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFormElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1611:1: ruleFormElement returns [EObject current=null] : (otherlv_0= 'form ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_modal_2_0= ruleFormElementModalAttribute ) ) ( (lv_text_3_0= ruleTextAttribute ) ) ( (lv_columns_4_0= ruleFormElementColumnsAttribute ) ) otherlv_5= '{' ( ( (lv_elements_6_1= ruleLogicElement | lv_elements_6_2= ruleJavaElement | lv_elements_6_3= ruleAbstractFieldElement ) ) )* otherlv_7= '}' ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1620:1: ruleFormElement returns [EObject current=null] : (otherlv_0= 'form ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_modal_2_0= ruleFormElementModalAttribute ) ) ( (lv_text_3_0= ruleTextAttribute ) ) ( (lv_columns_4_0= ruleFormElementColumnsAttribute ) ) otherlv_5= '{' ( ( (lv_elements_6_1= ruleLogicElement | lv_elements_6_2= ruleJavaElement | lv_elements_6_3= ruleAbstractFieldElement ) ) )* otherlv_7= '}' ) ;
     public final EObject ruleFormElement() throws RecognitionException {
         EObject current = null;
 
@@ -4106,21 +4125,21 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1614:28: ( (otherlv_0= 'form ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_modal_2_0= ruleFormElementModalAttribute ) ) ( (lv_text_3_0= ruleTextAttribute ) ) ( (lv_columns_4_0= ruleFormElementColumnsAttribute ) ) otherlv_5= '{' ( ( (lv_elements_6_1= ruleLogicElement | lv_elements_6_2= ruleJavaElement | lv_elements_6_3= ruleAbstractFieldElement ) ) )* otherlv_7= '}' ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1615:1: (otherlv_0= 'form ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_modal_2_0= ruleFormElementModalAttribute ) ) ( (lv_text_3_0= ruleTextAttribute ) ) ( (lv_columns_4_0= ruleFormElementColumnsAttribute ) ) otherlv_5= '{' ( ( (lv_elements_6_1= ruleLogicElement | lv_elements_6_2= ruleJavaElement | lv_elements_6_3= ruleAbstractFieldElement ) ) )* otherlv_7= '}' )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1623:28: ( (otherlv_0= 'form ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_modal_2_0= ruleFormElementModalAttribute ) ) ( (lv_text_3_0= ruleTextAttribute ) ) ( (lv_columns_4_0= ruleFormElementColumnsAttribute ) ) otherlv_5= '{' ( ( (lv_elements_6_1= ruleLogicElement | lv_elements_6_2= ruleJavaElement | lv_elements_6_3= ruleAbstractFieldElement ) ) )* otherlv_7= '}' ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1624:1: (otherlv_0= 'form ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_modal_2_0= ruleFormElementModalAttribute ) ) ( (lv_text_3_0= ruleTextAttribute ) ) ( (lv_columns_4_0= ruleFormElementColumnsAttribute ) ) otherlv_5= '{' ( ( (lv_elements_6_1= ruleLogicElement | lv_elements_6_2= ruleJavaElement | lv_elements_6_3= ruleAbstractFieldElement ) ) )* otherlv_7= '}' )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1615:1: (otherlv_0= 'form ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_modal_2_0= ruleFormElementModalAttribute ) ) ( (lv_text_3_0= ruleTextAttribute ) ) ( (lv_columns_4_0= ruleFormElementColumnsAttribute ) ) otherlv_5= '{' ( ( (lv_elements_6_1= ruleLogicElement | lv_elements_6_2= ruleJavaElement | lv_elements_6_3= ruleAbstractFieldElement ) ) )* otherlv_7= '}' )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1615:3: otherlv_0= 'form ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_modal_2_0= ruleFormElementModalAttribute ) ) ( (lv_text_3_0= ruleTextAttribute ) ) ( (lv_columns_4_0= ruleFormElementColumnsAttribute ) ) otherlv_5= '{' ( ( (lv_elements_6_1= ruleLogicElement | lv_elements_6_2= ruleJavaElement | lv_elements_6_3= ruleAbstractFieldElement ) ) )* otherlv_7= '}'
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1624:1: (otherlv_0= 'form ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_modal_2_0= ruleFormElementModalAttribute ) ) ( (lv_text_3_0= ruleTextAttribute ) ) ( (lv_columns_4_0= ruleFormElementColumnsAttribute ) ) otherlv_5= '{' ( ( (lv_elements_6_1= ruleLogicElement | lv_elements_6_2= ruleJavaElement | lv_elements_6_3= ruleAbstractFieldElement ) ) )* otherlv_7= '}' )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1624:3: otherlv_0= 'form ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_modal_2_0= ruleFormElementModalAttribute ) ) ( (lv_text_3_0= ruleTextAttribute ) ) ( (lv_columns_4_0= ruleFormElementColumnsAttribute ) ) otherlv_5= '{' ( ( (lv_elements_6_1= ruleLogicElement | lv_elements_6_2= ruleJavaElement | lv_elements_6_3= ruleAbstractFieldElement ) ) )* otherlv_7= '}'
             {
             otherlv_0=(Token)match(input,33,FOLLOW_33_in_ruleFormElement3715); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getFormElementAccess().getFormKeyword_0());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1619:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1620:1: (lv_name_1_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1628:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1629:1: (lv_name_1_0= RULE_ID )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1620:1: (lv_name_1_0= RULE_ID )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1621:3: lv_name_1_0= RULE_ID
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1629:1: (lv_name_1_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1630:3: lv_name_1_0= RULE_ID
             {
             lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFormElement3732); 
 
@@ -4142,11 +4161,11 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1637:2: ( (lv_modal_2_0= ruleFormElementModalAttribute ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1638:1: (lv_modal_2_0= ruleFormElementModalAttribute )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1646:2: ( (lv_modal_2_0= ruleFormElementModalAttribute ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1647:1: (lv_modal_2_0= ruleFormElementModalAttribute )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1638:1: (lv_modal_2_0= ruleFormElementModalAttribute )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1639:3: lv_modal_2_0= ruleFormElementModalAttribute
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1647:1: (lv_modal_2_0= ruleFormElementModalAttribute )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1648:3: lv_modal_2_0= ruleFormElementModalAttribute
             {
              
             	        newCompositeNode(grammarAccess.getFormElementAccess().getModalFormElementModalAttributeParserRuleCall_2_0()); 
@@ -4173,11 +4192,11 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1655:2: ( (lv_text_3_0= ruleTextAttribute ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1656:1: (lv_text_3_0= ruleTextAttribute )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1664:2: ( (lv_text_3_0= ruleTextAttribute ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1665:1: (lv_text_3_0= ruleTextAttribute )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1656:1: (lv_text_3_0= ruleTextAttribute )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1657:3: lv_text_3_0= ruleTextAttribute
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1665:1: (lv_text_3_0= ruleTextAttribute )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1666:3: lv_text_3_0= ruleTextAttribute
             {
              
             	        newCompositeNode(grammarAccess.getFormElementAccess().getTextTextAttributeParserRuleCall_3_0()); 
@@ -4204,11 +4223,11 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1673:2: ( (lv_columns_4_0= ruleFormElementColumnsAttribute ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1674:1: (lv_columns_4_0= ruleFormElementColumnsAttribute )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1682:2: ( (lv_columns_4_0= ruleFormElementColumnsAttribute ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1683:1: (lv_columns_4_0= ruleFormElementColumnsAttribute )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1674:1: (lv_columns_4_0= ruleFormElementColumnsAttribute )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1675:3: lv_columns_4_0= ruleFormElementColumnsAttribute
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1683:1: (lv_columns_4_0= ruleFormElementColumnsAttribute )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1684:3: lv_columns_4_0= ruleFormElementColumnsAttribute
             {
              
             	        newCompositeNode(grammarAccess.getFormElementAccess().getColumnsFormElementColumnsAttributeParserRuleCall_4_0()); 
@@ -4239,7 +4258,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
                 	newLeafNode(otherlv_5, grammarAccess.getFormElementAccess().getLeftCurlyBracketKeyword_5());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1695:1: ( ( (lv_elements_6_1= ruleLogicElement | lv_elements_6_2= ruleJavaElement | lv_elements_6_3= ruleAbstractFieldElement ) ) )*
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1704:1: ( ( (lv_elements_6_1= ruleLogicElement | lv_elements_6_2= ruleJavaElement | lv_elements_6_3= ruleAbstractFieldElement ) ) )*
             loop15:
             do {
                 int alt15=2;
@@ -4252,12 +4271,12 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
                 switch (alt15) {
             	case 1 :
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1696:1: ( (lv_elements_6_1= ruleLogicElement | lv_elements_6_2= ruleJavaElement | lv_elements_6_3= ruleAbstractFieldElement ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1705:1: ( (lv_elements_6_1= ruleLogicElement | lv_elements_6_2= ruleJavaElement | lv_elements_6_3= ruleAbstractFieldElement ) )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1696:1: ( (lv_elements_6_1= ruleLogicElement | lv_elements_6_2= ruleJavaElement | lv_elements_6_3= ruleAbstractFieldElement ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1697:1: (lv_elements_6_1= ruleLogicElement | lv_elements_6_2= ruleJavaElement | lv_elements_6_3= ruleAbstractFieldElement )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1705:1: ( (lv_elements_6_1= ruleLogicElement | lv_elements_6_2= ruleJavaElement | lv_elements_6_3= ruleAbstractFieldElement ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1706:1: (lv_elements_6_1= ruleLogicElement | lv_elements_6_2= ruleJavaElement | lv_elements_6_3= ruleAbstractFieldElement )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1697:1: (lv_elements_6_1= ruleLogicElement | lv_elements_6_2= ruleJavaElement | lv_elements_6_3= ruleAbstractFieldElement )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1706:1: (lv_elements_6_1= ruleLogicElement | lv_elements_6_2= ruleJavaElement | lv_elements_6_3= ruleAbstractFieldElement )
             	    int alt14=3;
             	    switch ( input.LA(1) ) {
             	    case 26:
@@ -4290,7 +4309,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
             	    switch (alt14) {
             	        case 1 :
-            	            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1698:3: lv_elements_6_1= ruleLogicElement
+            	            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1707:3: lv_elements_6_1= ruleLogicElement
             	            {
             	             
             	            	        newCompositeNode(grammarAccess.getFormElementAccess().getElementsLogicElementParserRuleCall_6_0_0()); 
@@ -4315,7 +4334,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 2 :
-            	            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1713:8: lv_elements_6_2= ruleJavaElement
+            	            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1722:8: lv_elements_6_2= ruleJavaElement
             	            {
             	             
             	            	        newCompositeNode(grammarAccess.getFormElementAccess().getElementsJavaElementParserRuleCall_6_0_1()); 
@@ -4340,7 +4359,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 3 :
-            	            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1728:8: lv_elements_6_3= ruleAbstractFieldElement
+            	            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1737:8: lv_elements_6_3= ruleAbstractFieldElement
             	            {
             	             
             	            	        newCompositeNode(grammarAccess.getFormElementAccess().getElementsAbstractFieldElementParserRuleCall_6_0_2()); 
@@ -4404,7 +4423,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFormElementModalAttribute"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1758:1: entryRuleFormElementModalAttribute returns [EObject current=null] : iv_ruleFormElementModalAttribute= ruleFormElementModalAttribute EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1767:1: entryRuleFormElementModalAttribute returns [EObject current=null] : iv_ruleFormElementModalAttribute= ruleFormElementModalAttribute EOF ;
     public final EObject entryRuleFormElementModalAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -4412,8 +4431,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1759:2: (iv_ruleFormElementModalAttribute= ruleFormElementModalAttribute EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1760:2: iv_ruleFormElementModalAttribute= ruleFormElementModalAttribute EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1768:2: (iv_ruleFormElementModalAttribute= ruleFormElementModalAttribute EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1769:2: iv_ruleFormElementModalAttribute= ruleFormElementModalAttribute EOF
             {
              newCompositeNode(grammarAccess.getFormElementModalAttributeRule()); 
             pushFollow(FOLLOW_ruleFormElementModalAttribute_in_entryRuleFormElementModalAttribute3925);
@@ -4440,7 +4459,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFormElementModalAttribute"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1767:1: ruleFormElementModalAttribute returns [EObject current=null] : (otherlv_0= 'modal=' ( (lv_value_1_0= ruleBooleanType ) ) ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1776:1: ruleFormElementModalAttribute returns [EObject current=null] : (otherlv_0= 'modal=' ( (lv_value_1_0= ruleBooleanType ) ) ) ;
     public final EObject ruleFormElementModalAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -4451,21 +4470,21 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1770:28: ( (otherlv_0= 'modal=' ( (lv_value_1_0= ruleBooleanType ) ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1771:1: (otherlv_0= 'modal=' ( (lv_value_1_0= ruleBooleanType ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1779:28: ( (otherlv_0= 'modal=' ( (lv_value_1_0= ruleBooleanType ) ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1780:1: (otherlv_0= 'modal=' ( (lv_value_1_0= ruleBooleanType ) ) )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1771:1: (otherlv_0= 'modal=' ( (lv_value_1_0= ruleBooleanType ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1771:3: otherlv_0= 'modal=' ( (lv_value_1_0= ruleBooleanType ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1780:1: (otherlv_0= 'modal=' ( (lv_value_1_0= ruleBooleanType ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1780:3: otherlv_0= 'modal=' ( (lv_value_1_0= ruleBooleanType ) )
             {
             otherlv_0=(Token)match(input,34,FOLLOW_34_in_ruleFormElementModalAttribute3972); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getFormElementModalAttributeAccess().getModalKeyword_0());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1775:1: ( (lv_value_1_0= ruleBooleanType ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1776:1: (lv_value_1_0= ruleBooleanType )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1784:1: ( (lv_value_1_0= ruleBooleanType ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1785:1: (lv_value_1_0= ruleBooleanType )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1776:1: (lv_value_1_0= ruleBooleanType )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1777:3: lv_value_1_0= ruleBooleanType
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1785:1: (lv_value_1_0= ruleBooleanType )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1786:3: lv_value_1_0= ruleBooleanType
             {
              
             	        newCompositeNode(grammarAccess.getFormElementModalAttributeAccess().getValueBooleanTypeEnumRuleCall_1_0()); 
@@ -4513,7 +4532,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFormElementColumnsAttribute"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1801:1: entryRuleFormElementColumnsAttribute returns [EObject current=null] : iv_ruleFormElementColumnsAttribute= ruleFormElementColumnsAttribute EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1810:1: entryRuleFormElementColumnsAttribute returns [EObject current=null] : iv_ruleFormElementColumnsAttribute= ruleFormElementColumnsAttribute EOF ;
     public final EObject entryRuleFormElementColumnsAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -4521,8 +4540,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1802:2: (iv_ruleFormElementColumnsAttribute= ruleFormElementColumnsAttribute EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1803:2: iv_ruleFormElementColumnsAttribute= ruleFormElementColumnsAttribute EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1811:2: (iv_ruleFormElementColumnsAttribute= ruleFormElementColumnsAttribute EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1812:2: iv_ruleFormElementColumnsAttribute= ruleFormElementColumnsAttribute EOF
             {
              newCompositeNode(grammarAccess.getFormElementColumnsAttributeRule()); 
             pushFollow(FOLLOW_ruleFormElementColumnsAttribute_in_entryRuleFormElementColumnsAttribute4029);
@@ -4549,7 +4568,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFormElementColumnsAttribute"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1810:1: ruleFormElementColumnsAttribute returns [EObject current=null] : (otherlv_0= 'columns=' ( (lv_value_1_0= RULE_INT ) ) ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1819:1: ruleFormElementColumnsAttribute returns [EObject current=null] : (otherlv_0= 'columns=' ( (lv_value_1_0= RULE_INT ) ) ) ;
     public final EObject ruleFormElementColumnsAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -4559,21 +4578,21 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1813:28: ( (otherlv_0= 'columns=' ( (lv_value_1_0= RULE_INT ) ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1814:1: (otherlv_0= 'columns=' ( (lv_value_1_0= RULE_INT ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1822:28: ( (otherlv_0= 'columns=' ( (lv_value_1_0= RULE_INT ) ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1823:1: (otherlv_0= 'columns=' ( (lv_value_1_0= RULE_INT ) ) )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1814:1: (otherlv_0= 'columns=' ( (lv_value_1_0= RULE_INT ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1814:3: otherlv_0= 'columns=' ( (lv_value_1_0= RULE_INT ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1823:1: (otherlv_0= 'columns=' ( (lv_value_1_0= RULE_INT ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1823:3: otherlv_0= 'columns=' ( (lv_value_1_0= RULE_INT ) )
             {
             otherlv_0=(Token)match(input,35,FOLLOW_35_in_ruleFormElementColumnsAttribute4076); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getFormElementColumnsAttributeAccess().getColumnsKeyword_0());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1818:1: ( (lv_value_1_0= RULE_INT ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1819:1: (lv_value_1_0= RULE_INT )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1827:1: ( (lv_value_1_0= RULE_INT ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1828:1: (lv_value_1_0= RULE_INT )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1819:1: (lv_value_1_0= RULE_INT )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1820:3: lv_value_1_0= RULE_INT
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1828:1: (lv_value_1_0= RULE_INT )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1829:3: lv_value_1_0= RULE_INT
             {
             lv_value_1_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleFormElementColumnsAttribute4093); 
 
@@ -4616,7 +4635,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSequenceBoxElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1844:1: entryRuleSequenceBoxElement returns [EObject current=null] : iv_ruleSequenceBoxElement= ruleSequenceBoxElement EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1853:1: entryRuleSequenceBoxElement returns [EObject current=null] : iv_ruleSequenceBoxElement= ruleSequenceBoxElement EOF ;
     public final EObject entryRuleSequenceBoxElement() throws RecognitionException {
         EObject current = null;
 
@@ -4624,8 +4643,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1845:2: (iv_ruleSequenceBoxElement= ruleSequenceBoxElement EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1846:2: iv_ruleSequenceBoxElement= ruleSequenceBoxElement EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1854:2: (iv_ruleSequenceBoxElement= ruleSequenceBoxElement EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1855:2: iv_ruleSequenceBoxElement= ruleSequenceBoxElement EOF
             {
              newCompositeNode(grammarAccess.getSequenceBoxElementRule()); 
             pushFollow(FOLLOW_ruleSequenceBoxElement_in_entryRuleSequenceBoxElement4134);
@@ -4652,7 +4671,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSequenceBoxElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1853:1: ruleSequenceBoxElement returns [EObject current=null] : (otherlv_0= 'sequence_box ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractFieldProperties ) )* (otherlv_3= '{' ( ( (lv_children_4_1= ruleLogicElement | lv_children_4_2= ruleAbstractFieldElement ) ) )* otherlv_5= '}' )? ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1862:1: ruleSequenceBoxElement returns [EObject current=null] : (otherlv_0= 'sequence_box ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractFieldProperties ) )* (otherlv_3= '{' ( ( (lv_children_4_1= ruleLogicElement | lv_children_4_2= ruleAbstractFieldElement ) ) )* otherlv_5= '}' )? ) ;
     public final EObject ruleSequenceBoxElement() throws RecognitionException {
         EObject current = null;
 
@@ -4670,21 +4689,21 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1856:28: ( (otherlv_0= 'sequence_box ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractFieldProperties ) )* (otherlv_3= '{' ( ( (lv_children_4_1= ruleLogicElement | lv_children_4_2= ruleAbstractFieldElement ) ) )* otherlv_5= '}' )? ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1857:1: (otherlv_0= 'sequence_box ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractFieldProperties ) )* (otherlv_3= '{' ( ( (lv_children_4_1= ruleLogicElement | lv_children_4_2= ruleAbstractFieldElement ) ) )* otherlv_5= '}' )? )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1865:28: ( (otherlv_0= 'sequence_box ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractFieldProperties ) )* (otherlv_3= '{' ( ( (lv_children_4_1= ruleLogicElement | lv_children_4_2= ruleAbstractFieldElement ) ) )* otherlv_5= '}' )? ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1866:1: (otherlv_0= 'sequence_box ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractFieldProperties ) )* (otherlv_3= '{' ( ( (lv_children_4_1= ruleLogicElement | lv_children_4_2= ruleAbstractFieldElement ) ) )* otherlv_5= '}' )? )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1857:1: (otherlv_0= 'sequence_box ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractFieldProperties ) )* (otherlv_3= '{' ( ( (lv_children_4_1= ruleLogicElement | lv_children_4_2= ruleAbstractFieldElement ) ) )* otherlv_5= '}' )? )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1857:3: otherlv_0= 'sequence_box ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractFieldProperties ) )* (otherlv_3= '{' ( ( (lv_children_4_1= ruleLogicElement | lv_children_4_2= ruleAbstractFieldElement ) ) )* otherlv_5= '}' )?
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1866:1: (otherlv_0= 'sequence_box ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractFieldProperties ) )* (otherlv_3= '{' ( ( (lv_children_4_1= ruleLogicElement | lv_children_4_2= ruleAbstractFieldElement ) ) )* otherlv_5= '}' )? )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1866:3: otherlv_0= 'sequence_box ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractFieldProperties ) )* (otherlv_3= '{' ( ( (lv_children_4_1= ruleLogicElement | lv_children_4_2= ruleAbstractFieldElement ) ) )* otherlv_5= '}' )?
             {
             otherlv_0=(Token)match(input,36,FOLLOW_36_in_ruleSequenceBoxElement4181); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getSequenceBoxElementAccess().getSequence_boxKeyword_0());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1861:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1862:1: (lv_name_1_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1870:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1871:1: (lv_name_1_0= RULE_ID )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1862:1: (lv_name_1_0= RULE_ID )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1863:3: lv_name_1_0= RULE_ID
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1871:1: (lv_name_1_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1872:3: lv_name_1_0= RULE_ID
             {
             lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSequenceBoxElement4198); 
 
@@ -4706,7 +4725,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1879:2: ( (lv_properties_2_0= ruleAbstractFieldProperties ) )*
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1888:2: ( (lv_properties_2_0= ruleAbstractFieldProperties ) )*
             loop16:
             do {
                 int alt16=2;
@@ -4719,10 +4738,10 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
                 switch (alt16) {
             	case 1 :
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1880:1: (lv_properties_2_0= ruleAbstractFieldProperties )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1889:1: (lv_properties_2_0= ruleAbstractFieldProperties )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1880:1: (lv_properties_2_0= ruleAbstractFieldProperties )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1881:3: lv_properties_2_0= ruleAbstractFieldProperties
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1889:1: (lv_properties_2_0= ruleAbstractFieldProperties )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1890:3: lv_properties_2_0= ruleAbstractFieldProperties
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getSequenceBoxElementAccess().getPropertiesAbstractFieldPropertiesParserRuleCall_2_0()); 
@@ -4755,7 +4774,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1897:3: (otherlv_3= '{' ( ( (lv_children_4_1= ruleLogicElement | lv_children_4_2= ruleAbstractFieldElement ) ) )* otherlv_5= '}' )?
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1906:3: (otherlv_3= '{' ( ( (lv_children_4_1= ruleLogicElement | lv_children_4_2= ruleAbstractFieldElement ) ) )* otherlv_5= '}' )?
             int alt19=2;
             int LA19_0 = input.LA(1);
 
@@ -4764,13 +4783,13 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             }
             switch (alt19) {
                 case 1 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1897:5: otherlv_3= '{' ( ( (lv_children_4_1= ruleLogicElement | lv_children_4_2= ruleAbstractFieldElement ) ) )* otherlv_5= '}'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1906:5: otherlv_3= '{' ( ( (lv_children_4_1= ruleLogicElement | lv_children_4_2= ruleAbstractFieldElement ) ) )* otherlv_5= '}'
                     {
                     otherlv_3=(Token)match(input,21,FOLLOW_21_in_ruleSequenceBoxElement4238); 
 
                         	newLeafNode(otherlv_3, grammarAccess.getSequenceBoxElementAccess().getLeftCurlyBracketKeyword_3_0());
                         
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1901:1: ( ( (lv_children_4_1= ruleLogicElement | lv_children_4_2= ruleAbstractFieldElement ) ) )*
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1910:1: ( ( (lv_children_4_1= ruleLogicElement | lv_children_4_2= ruleAbstractFieldElement ) ) )*
                     loop18:
                     do {
                         int alt18=2;
@@ -4783,12 +4802,12 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
                         switch (alt18) {
                     	case 1 :
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1902:1: ( (lv_children_4_1= ruleLogicElement | lv_children_4_2= ruleAbstractFieldElement ) )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1911:1: ( (lv_children_4_1= ruleLogicElement | lv_children_4_2= ruleAbstractFieldElement ) )
                     	    {
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1902:1: ( (lv_children_4_1= ruleLogicElement | lv_children_4_2= ruleAbstractFieldElement ) )
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1903:1: (lv_children_4_1= ruleLogicElement | lv_children_4_2= ruleAbstractFieldElement )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1911:1: ( (lv_children_4_1= ruleLogicElement | lv_children_4_2= ruleAbstractFieldElement ) )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1912:1: (lv_children_4_1= ruleLogicElement | lv_children_4_2= ruleAbstractFieldElement )
                     	    {
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1903:1: (lv_children_4_1= ruleLogicElement | lv_children_4_2= ruleAbstractFieldElement )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1912:1: (lv_children_4_1= ruleLogicElement | lv_children_4_2= ruleAbstractFieldElement )
                     	    int alt17=2;
                     	    int LA17_0 = input.LA(1);
 
@@ -4806,7 +4825,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                     	    }
                     	    switch (alt17) {
                     	        case 1 :
-                    	            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1904:3: lv_children_4_1= ruleLogicElement
+                    	            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1913:3: lv_children_4_1= ruleLogicElement
                     	            {
                     	             
                     	            	        newCompositeNode(grammarAccess.getSequenceBoxElementAccess().getChildrenLogicElementParserRuleCall_3_1_0_0()); 
@@ -4831,7 +4850,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                     	            }
                     	            break;
                     	        case 2 :
-                    	            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1919:8: lv_children_4_2= ruleAbstractFieldElement
+                    	            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1928:8: lv_children_4_2= ruleAbstractFieldElement
                     	            {
                     	             
                     	            	        newCompositeNode(grammarAccess.getSequenceBoxElementAccess().getChildrenAbstractFieldElementParserRuleCall_3_1_0_1()); 
@@ -4901,7 +4920,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleStringElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1949:1: entryRuleStringElement returns [EObject current=null] : iv_ruleStringElement= ruleStringElement EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1958:1: entryRuleStringElement returns [EObject current=null] : iv_ruleStringElement= ruleStringElement EOF ;
     public final EObject entryRuleStringElement() throws RecognitionException {
         EObject current = null;
 
@@ -4909,8 +4928,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1950:2: (iv_ruleStringElement= ruleStringElement EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1951:2: iv_ruleStringElement= ruleStringElement EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1959:2: (iv_ruleStringElement= ruleStringElement EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1960:2: iv_ruleStringElement= ruleStringElement EOF
             {
              newCompositeNode(grammarAccess.getStringElementRule()); 
             pushFollow(FOLLOW_ruleStringElement_in_entryRuleStringElement4334);
@@ -4937,7 +4956,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleStringElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1958:1: ruleStringElement returns [EObject current=null] : (otherlv_0= 'string ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleStringElementProperties ) )* (otherlv_3= '{' ( (lv_logic_4_0= ruleLogicElement ) )+ otherlv_5= '}' )? ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1967:1: ruleStringElement returns [EObject current=null] : (otherlv_0= 'string ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleStringElementProperties ) )* (otherlv_3= '{' ( (lv_logic_4_0= ruleLogicElement ) )+ otherlv_5= '}' )? ) ;
     public final EObject ruleStringElement() throws RecognitionException {
         EObject current = null;
 
@@ -4953,21 +4972,21 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1961:28: ( (otherlv_0= 'string ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleStringElementProperties ) )* (otherlv_3= '{' ( (lv_logic_4_0= ruleLogicElement ) )+ otherlv_5= '}' )? ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1962:1: (otherlv_0= 'string ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleStringElementProperties ) )* (otherlv_3= '{' ( (lv_logic_4_0= ruleLogicElement ) )+ otherlv_5= '}' )? )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1970:28: ( (otherlv_0= 'string ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleStringElementProperties ) )* (otherlv_3= '{' ( (lv_logic_4_0= ruleLogicElement ) )+ otherlv_5= '}' )? ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1971:1: (otherlv_0= 'string ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleStringElementProperties ) )* (otherlv_3= '{' ( (lv_logic_4_0= ruleLogicElement ) )+ otherlv_5= '}' )? )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1962:1: (otherlv_0= 'string ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleStringElementProperties ) )* (otherlv_3= '{' ( (lv_logic_4_0= ruleLogicElement ) )+ otherlv_5= '}' )? )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1962:3: otherlv_0= 'string ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleStringElementProperties ) )* (otherlv_3= '{' ( (lv_logic_4_0= ruleLogicElement ) )+ otherlv_5= '}' )?
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1971:1: (otherlv_0= 'string ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleStringElementProperties ) )* (otherlv_3= '{' ( (lv_logic_4_0= ruleLogicElement ) )+ otherlv_5= '}' )? )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1971:3: otherlv_0= 'string ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleStringElementProperties ) )* (otherlv_3= '{' ( (lv_logic_4_0= ruleLogicElement ) )+ otherlv_5= '}' )?
             {
             otherlv_0=(Token)match(input,37,FOLLOW_37_in_ruleStringElement4381); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getStringElementAccess().getStringKeyword_0());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1966:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1967:1: (lv_name_1_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1975:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1976:1: (lv_name_1_0= RULE_ID )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1967:1: (lv_name_1_0= RULE_ID )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1968:3: lv_name_1_0= RULE_ID
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1976:1: (lv_name_1_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1977:3: lv_name_1_0= RULE_ID
             {
             lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleStringElement4398); 
 
@@ -4989,7 +5008,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1984:2: ( (lv_properties_2_0= ruleStringElementProperties ) )*
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1993:2: ( (lv_properties_2_0= ruleStringElementProperties ) )*
             loop20:
             do {
                 int alt20=2;
@@ -5002,10 +5021,10 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
                 switch (alt20) {
             	case 1 :
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1985:1: (lv_properties_2_0= ruleStringElementProperties )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1994:1: (lv_properties_2_0= ruleStringElementProperties )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1985:1: (lv_properties_2_0= ruleStringElementProperties )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1986:3: lv_properties_2_0= ruleStringElementProperties
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1994:1: (lv_properties_2_0= ruleStringElementProperties )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1995:3: lv_properties_2_0= ruleStringElementProperties
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getStringElementAccess().getPropertiesStringElementPropertiesParserRuleCall_2_0()); 
@@ -5038,7 +5057,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2002:3: (otherlv_3= '{' ( (lv_logic_4_0= ruleLogicElement ) )+ otherlv_5= '}' )?
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2011:3: (otherlv_3= '{' ( (lv_logic_4_0= ruleLogicElement ) )+ otherlv_5= '}' )?
             int alt22=2;
             int LA22_0 = input.LA(1);
 
@@ -5047,13 +5066,13 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             }
             switch (alt22) {
                 case 1 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2002:5: otherlv_3= '{' ( (lv_logic_4_0= ruleLogicElement ) )+ otherlv_5= '}'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2011:5: otherlv_3= '{' ( (lv_logic_4_0= ruleLogicElement ) )+ otherlv_5= '}'
                     {
                     otherlv_3=(Token)match(input,21,FOLLOW_21_in_ruleStringElement4438); 
 
                         	newLeafNode(otherlv_3, grammarAccess.getStringElementAccess().getLeftCurlyBracketKeyword_3_0());
                         
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2006:1: ( (lv_logic_4_0= ruleLogicElement ) )+
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2015:1: ( (lv_logic_4_0= ruleLogicElement ) )+
                     int cnt21=0;
                     loop21:
                     do {
@@ -5067,10 +5086,10 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
                         switch (alt21) {
                     	case 1 :
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2007:1: (lv_logic_4_0= ruleLogicElement )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2016:1: (lv_logic_4_0= ruleLogicElement )
                     	    {
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2007:1: (lv_logic_4_0= ruleLogicElement )
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2008:3: lv_logic_4_0= ruleLogicElement
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2016:1: (lv_logic_4_0= ruleLogicElement )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2017:3: lv_logic_4_0= ruleLogicElement
                     	    {
                     	     
                     	    	        newCompositeNode(grammarAccess.getStringElementAccess().getLogicLogicElementParserRuleCall_3_1_0()); 
@@ -5138,7 +5157,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleStringElementProperties"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2036:1: entryRuleStringElementProperties returns [EObject current=null] : iv_ruleStringElementProperties= ruleStringElementProperties EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2045:1: entryRuleStringElementProperties returns [EObject current=null] : iv_ruleStringElementProperties= ruleStringElementProperties EOF ;
     public final EObject entryRuleStringElementProperties() throws RecognitionException {
         EObject current = null;
 
@@ -5146,8 +5165,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2037:2: (iv_ruleStringElementProperties= ruleStringElementProperties EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2038:2: iv_ruleStringElementProperties= ruleStringElementProperties EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2046:2: (iv_ruleStringElementProperties= ruleStringElementProperties EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2047:2: iv_ruleStringElementProperties= ruleStringElementProperties EOF
             {
              newCompositeNode(grammarAccess.getStringElementPropertiesRule()); 
             pushFollow(FOLLOW_ruleStringElementProperties_in_entryRuleStringElementProperties4510);
@@ -5174,11 +5193,11 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleStringElementProperties"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2045:1: ruleStringElementProperties returns [EObject current=null] : (this_AbstractValueFieldProperties_0= ruleAbstractValueFieldProperties | ( (lv_maxlen_1_0= ruleStringElementMaxlenAttribute ) ) ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2054:1: ruleStringElementProperties returns [EObject current=null] : ( ( (lv_valueFieldProperties_0_0= ruleAbstractValueFieldProperties ) ) | ( (lv_maxlen_1_0= ruleStringElementMaxlenAttribute ) ) ) ;
     public final EObject ruleStringElementProperties() throws RecognitionException {
         EObject current = null;
 
-        EObject this_AbstractValueFieldProperties_0 = null;
+        EObject lv_valueFieldProperties_0_0 = null;
 
         EObject lv_maxlen_1_0 = null;
 
@@ -5186,10 +5205,10 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2048:28: ( (this_AbstractValueFieldProperties_0= ruleAbstractValueFieldProperties | ( (lv_maxlen_1_0= ruleStringElementMaxlenAttribute ) ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2049:1: (this_AbstractValueFieldProperties_0= ruleAbstractValueFieldProperties | ( (lv_maxlen_1_0= ruleStringElementMaxlenAttribute ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2057:28: ( ( ( (lv_valueFieldProperties_0_0= ruleAbstractValueFieldProperties ) ) | ( (lv_maxlen_1_0= ruleStringElementMaxlenAttribute ) ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2058:1: ( ( (lv_valueFieldProperties_0_0= ruleAbstractValueFieldProperties ) ) | ( (lv_maxlen_1_0= ruleStringElementMaxlenAttribute ) ) )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2049:1: (this_AbstractValueFieldProperties_0= ruleAbstractValueFieldProperties | ( (lv_maxlen_1_0= ruleStringElementMaxlenAttribute ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2058:1: ( ( (lv_valueFieldProperties_0_0= ruleAbstractValueFieldProperties ) ) | ( (lv_maxlen_1_0= ruleStringElementMaxlenAttribute ) ) )
             int alt23=2;
             int LA23_0 = input.LA(1);
 
@@ -5207,31 +5226,50 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             }
             switch (alt23) {
                 case 1 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2050:5: this_AbstractValueFieldProperties_0= ruleAbstractValueFieldProperties
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2058:2: ( (lv_valueFieldProperties_0_0= ruleAbstractValueFieldProperties ) )
+                    {
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2058:2: ( (lv_valueFieldProperties_0_0= ruleAbstractValueFieldProperties ) )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2059:1: (lv_valueFieldProperties_0_0= ruleAbstractValueFieldProperties )
+                    {
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2059:1: (lv_valueFieldProperties_0_0= ruleAbstractValueFieldProperties )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2060:3: lv_valueFieldProperties_0_0= ruleAbstractValueFieldProperties
                     {
                      
-                            newCompositeNode(grammarAccess.getStringElementPropertiesAccess().getAbstractValueFieldPropertiesParserRuleCall_0()); 
-                        
-                    pushFollow(FOLLOW_ruleAbstractValueFieldProperties_in_ruleStringElementProperties4567);
-                    this_AbstractValueFieldProperties_0=ruleAbstractValueFieldProperties();
+                    	        newCompositeNode(grammarAccess.getStringElementPropertiesAccess().getValueFieldPropertiesAbstractValueFieldPropertiesParserRuleCall_0_0()); 
+                    	    
+                    pushFollow(FOLLOW_ruleAbstractValueFieldProperties_in_ruleStringElementProperties4566);
+                    lv_valueFieldProperties_0_0=ruleAbstractValueFieldProperties();
 
                     state._fsp--;
 
-                     
-                            current = this_AbstractValueFieldProperties_0; 
-                            afterParserOrEnumRuleCall();
-                        
+
+                    	        if (current==null) {
+                    	            current = createModelElementForParent(grammarAccess.getStringElementPropertiesRule());
+                    	        }
+                           		set(
+                           			current, 
+                           			"valueFieldProperties",
+                            		lv_valueFieldProperties_0_0, 
+                            		"AbstractValueFieldProperties");
+                    	        afterParserOrEnumRuleCall();
+                    	    
+
+                    }
+
+
+                    }
+
 
                     }
                     break;
                 case 2 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2059:6: ( (lv_maxlen_1_0= ruleStringElementMaxlenAttribute ) )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2077:6: ( (lv_maxlen_1_0= ruleStringElementMaxlenAttribute ) )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2059:6: ( (lv_maxlen_1_0= ruleStringElementMaxlenAttribute ) )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2060:1: (lv_maxlen_1_0= ruleStringElementMaxlenAttribute )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2077:6: ( (lv_maxlen_1_0= ruleStringElementMaxlenAttribute ) )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2078:1: (lv_maxlen_1_0= ruleStringElementMaxlenAttribute )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2060:1: (lv_maxlen_1_0= ruleStringElementMaxlenAttribute )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2061:3: lv_maxlen_1_0= ruleStringElementMaxlenAttribute
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2078:1: (lv_maxlen_1_0= ruleStringElementMaxlenAttribute )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2079:3: lv_maxlen_1_0= ruleStringElementMaxlenAttribute
                     {
                      
                     	        newCompositeNode(grammarAccess.getStringElementPropertiesAccess().getMaxlenStringElementMaxlenAttributeParserRuleCall_1_0()); 
@@ -5282,7 +5320,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleStringElementMaxlenAttribute"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2085:1: entryRuleStringElementMaxlenAttribute returns [EObject current=null] : iv_ruleStringElementMaxlenAttribute= ruleStringElementMaxlenAttribute EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2103:1: entryRuleStringElementMaxlenAttribute returns [EObject current=null] : iv_ruleStringElementMaxlenAttribute= ruleStringElementMaxlenAttribute EOF ;
     public final EObject entryRuleStringElementMaxlenAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -5290,8 +5328,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2086:2: (iv_ruleStringElementMaxlenAttribute= ruleStringElementMaxlenAttribute EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2087:2: iv_ruleStringElementMaxlenAttribute= ruleStringElementMaxlenAttribute EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2104:2: (iv_ruleStringElementMaxlenAttribute= ruleStringElementMaxlenAttribute EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2105:2: iv_ruleStringElementMaxlenAttribute= ruleStringElementMaxlenAttribute EOF
             {
              newCompositeNode(grammarAccess.getStringElementMaxlenAttributeRule()); 
             pushFollow(FOLLOW_ruleStringElementMaxlenAttribute_in_entryRuleStringElementMaxlenAttribute4629);
@@ -5318,7 +5356,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleStringElementMaxlenAttribute"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2094:1: ruleStringElementMaxlenAttribute returns [EObject current=null] : (otherlv_0= 'maxlen=' ( (lv_value_1_0= RULE_INT ) ) ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2112:1: ruleStringElementMaxlenAttribute returns [EObject current=null] : (otherlv_0= 'maxlen=' ( (lv_value_1_0= RULE_INT ) ) ) ;
     public final EObject ruleStringElementMaxlenAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -5328,21 +5366,21 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2097:28: ( (otherlv_0= 'maxlen=' ( (lv_value_1_0= RULE_INT ) ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2098:1: (otherlv_0= 'maxlen=' ( (lv_value_1_0= RULE_INT ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2115:28: ( (otherlv_0= 'maxlen=' ( (lv_value_1_0= RULE_INT ) ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2116:1: (otherlv_0= 'maxlen=' ( (lv_value_1_0= RULE_INT ) ) )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2098:1: (otherlv_0= 'maxlen=' ( (lv_value_1_0= RULE_INT ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2098:3: otherlv_0= 'maxlen=' ( (lv_value_1_0= RULE_INT ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2116:1: (otherlv_0= 'maxlen=' ( (lv_value_1_0= RULE_INT ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2116:3: otherlv_0= 'maxlen=' ( (lv_value_1_0= RULE_INT ) )
             {
             otherlv_0=(Token)match(input,38,FOLLOW_38_in_ruleStringElementMaxlenAttribute4676); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getStringElementMaxlenAttributeAccess().getMaxlenKeyword_0());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2102:1: ( (lv_value_1_0= RULE_INT ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2103:1: (lv_value_1_0= RULE_INT )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2120:1: ( (lv_value_1_0= RULE_INT ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2121:1: (lv_value_1_0= RULE_INT )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2103:1: (lv_value_1_0= RULE_INT )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2104:3: lv_value_1_0= RULE_INT
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2121:1: (lv_value_1_0= RULE_INT )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2122:3: lv_value_1_0= RULE_INT
             {
             lv_value_1_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleStringElementMaxlenAttribute4693); 
 
@@ -5385,7 +5423,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDoubleElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2128:1: entryRuleDoubleElement returns [EObject current=null] : iv_ruleDoubleElement= ruleDoubleElement EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2146:1: entryRuleDoubleElement returns [EObject current=null] : iv_ruleDoubleElement= ruleDoubleElement EOF ;
     public final EObject entryRuleDoubleElement() throws RecognitionException {
         EObject current = null;
 
@@ -5393,8 +5431,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2129:2: (iv_ruleDoubleElement= ruleDoubleElement EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2130:2: iv_ruleDoubleElement= ruleDoubleElement EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2147:2: (iv_ruleDoubleElement= ruleDoubleElement EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2148:2: iv_ruleDoubleElement= ruleDoubleElement EOF
             {
              newCompositeNode(grammarAccess.getDoubleElementRule()); 
             pushFollow(FOLLOW_ruleDoubleElement_in_entryRuleDoubleElement4734);
@@ -5421,7 +5459,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDoubleElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2137:1: ruleDoubleElement returns [EObject current=null] : (otherlv_0= 'double ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2155:1: ruleDoubleElement returns [EObject current=null] : (otherlv_0= 'double ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? ) ;
     public final EObject ruleDoubleElement() throws RecognitionException {
         EObject current = null;
 
@@ -5437,21 +5475,21 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2140:28: ( (otherlv_0= 'double ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2141:1: (otherlv_0= 'double ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2158:28: ( (otherlv_0= 'double ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2159:1: (otherlv_0= 'double ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2141:1: (otherlv_0= 'double ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2141:3: otherlv_0= 'double ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )?
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2159:1: (otherlv_0= 'double ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2159:3: otherlv_0= 'double ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )?
             {
             otherlv_0=(Token)match(input,39,FOLLOW_39_in_ruleDoubleElement4781); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getDoubleElementAccess().getDoubleKeyword_0());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2145:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2146:1: (lv_name_1_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2163:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2164:1: (lv_name_1_0= RULE_ID )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2146:1: (lv_name_1_0= RULE_ID )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2147:3: lv_name_1_0= RULE_ID
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2164:1: (lv_name_1_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2165:3: lv_name_1_0= RULE_ID
             {
             lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleDoubleElement4798); 
 
@@ -5473,7 +5511,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2163:2: ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )*
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2181:2: ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )*
             loop24:
             do {
                 int alt24=2;
@@ -5486,10 +5524,10 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
                 switch (alt24) {
             	case 1 :
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2164:1: (lv_properties_2_0= ruleAbstractValueFieldProperties )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2182:1: (lv_properties_2_0= ruleAbstractValueFieldProperties )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2164:1: (lv_properties_2_0= ruleAbstractValueFieldProperties )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2165:3: lv_properties_2_0= ruleAbstractValueFieldProperties
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2182:1: (lv_properties_2_0= ruleAbstractValueFieldProperties )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2183:3: lv_properties_2_0= ruleAbstractValueFieldProperties
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getDoubleElementAccess().getPropertiesAbstractValueFieldPropertiesParserRuleCall_2_0()); 
@@ -5522,7 +5560,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2181:3: (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )?
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2199:3: (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )?
             int alt26=2;
             int LA26_0 = input.LA(1);
 
@@ -5531,13 +5569,13 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             }
             switch (alt26) {
                 case 1 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2181:5: otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2199:5: otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}'
                     {
                     otherlv_3=(Token)match(input,21,FOLLOW_21_in_ruleDoubleElement4838); 
 
                         	newLeafNode(otherlv_3, grammarAccess.getDoubleElementAccess().getLeftCurlyBracketKeyword_3_0());
                         
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2185:1: ( (lv_children_4_0= ruleLogicElement ) )*
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2203:1: ( (lv_children_4_0= ruleLogicElement ) )*
                     loop25:
                     do {
                         int alt25=2;
@@ -5550,10 +5588,10 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
                         switch (alt25) {
                     	case 1 :
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2186:1: (lv_children_4_0= ruleLogicElement )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2204:1: (lv_children_4_0= ruleLogicElement )
                     	    {
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2186:1: (lv_children_4_0= ruleLogicElement )
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2187:3: lv_children_4_0= ruleLogicElement
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2204:1: (lv_children_4_0= ruleLogicElement )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2205:3: lv_children_4_0= ruleLogicElement
                     	    {
                     	     
                     	    	        newCompositeNode(grammarAccess.getDoubleElementAccess().getChildrenLogicElementParserRuleCall_3_1_0()); 
@@ -5617,7 +5655,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLongElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2215:1: entryRuleLongElement returns [EObject current=null] : iv_ruleLongElement= ruleLongElement EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2233:1: entryRuleLongElement returns [EObject current=null] : iv_ruleLongElement= ruleLongElement EOF ;
     public final EObject entryRuleLongElement() throws RecognitionException {
         EObject current = null;
 
@@ -5625,8 +5663,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2216:2: (iv_ruleLongElement= ruleLongElement EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2217:2: iv_ruleLongElement= ruleLongElement EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2234:2: (iv_ruleLongElement= ruleLongElement EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2235:2: iv_ruleLongElement= ruleLongElement EOF
             {
              newCompositeNode(grammarAccess.getLongElementRule()); 
             pushFollow(FOLLOW_ruleLongElement_in_entryRuleLongElement4910);
@@ -5653,7 +5691,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLongElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2224:1: ruleLongElement returns [EObject current=null] : (otherlv_0= 'long ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2242:1: ruleLongElement returns [EObject current=null] : (otherlv_0= 'long ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? ) ;
     public final EObject ruleLongElement() throws RecognitionException {
         EObject current = null;
 
@@ -5669,21 +5707,21 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2227:28: ( (otherlv_0= 'long ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2228:1: (otherlv_0= 'long ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2245:28: ( (otherlv_0= 'long ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2246:1: (otherlv_0= 'long ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2228:1: (otherlv_0= 'long ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2228:3: otherlv_0= 'long ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )?
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2246:1: (otherlv_0= 'long ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2246:3: otherlv_0= 'long ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )?
             {
             otherlv_0=(Token)match(input,40,FOLLOW_40_in_ruleLongElement4957); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getLongElementAccess().getLongKeyword_0());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2232:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2233:1: (lv_name_1_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2250:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2251:1: (lv_name_1_0= RULE_ID )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2233:1: (lv_name_1_0= RULE_ID )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2234:3: lv_name_1_0= RULE_ID
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2251:1: (lv_name_1_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2252:3: lv_name_1_0= RULE_ID
             {
             lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleLongElement4974); 
 
@@ -5705,7 +5743,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2250:2: ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )*
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2268:2: ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )*
             loop27:
             do {
                 int alt27=2;
@@ -5718,10 +5756,10 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
                 switch (alt27) {
             	case 1 :
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2251:1: (lv_properties_2_0= ruleAbstractValueFieldProperties )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2269:1: (lv_properties_2_0= ruleAbstractValueFieldProperties )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2251:1: (lv_properties_2_0= ruleAbstractValueFieldProperties )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2252:3: lv_properties_2_0= ruleAbstractValueFieldProperties
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2269:1: (lv_properties_2_0= ruleAbstractValueFieldProperties )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2270:3: lv_properties_2_0= ruleAbstractValueFieldProperties
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getLongElementAccess().getPropertiesAbstractValueFieldPropertiesParserRuleCall_2_0()); 
@@ -5754,7 +5792,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2268:3: (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )?
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2286:3: (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )?
             int alt29=2;
             int LA29_0 = input.LA(1);
 
@@ -5763,13 +5801,13 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             }
             switch (alt29) {
                 case 1 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2268:5: otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2286:5: otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}'
                     {
                     otherlv_3=(Token)match(input,21,FOLLOW_21_in_ruleLongElement5014); 
 
                         	newLeafNode(otherlv_3, grammarAccess.getLongElementAccess().getLeftCurlyBracketKeyword_3_0());
                         
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2272:1: ( (lv_children_4_0= ruleLogicElement ) )*
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2290:1: ( (lv_children_4_0= ruleLogicElement ) )*
                     loop28:
                     do {
                         int alt28=2;
@@ -5782,10 +5820,10 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
                         switch (alt28) {
                     	case 1 :
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2273:1: (lv_children_4_0= ruleLogicElement )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2291:1: (lv_children_4_0= ruleLogicElement )
                     	    {
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2273:1: (lv_children_4_0= ruleLogicElement )
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2274:3: lv_children_4_0= ruleLogicElement
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2291:1: (lv_children_4_0= ruleLogicElement )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2292:3: lv_children_4_0= ruleLogicElement
                     	    {
                     	     
                     	    	        newCompositeNode(grammarAccess.getLongElementAccess().getChildrenLogicElementParserRuleCall_3_1_0()); 
@@ -5849,7 +5887,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDateElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2302:1: entryRuleDateElement returns [EObject current=null] : iv_ruleDateElement= ruleDateElement EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2320:1: entryRuleDateElement returns [EObject current=null] : iv_ruleDateElement= ruleDateElement EOF ;
     public final EObject entryRuleDateElement() throws RecognitionException {
         EObject current = null;
 
@@ -5857,8 +5895,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2303:2: (iv_ruleDateElement= ruleDateElement EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2304:2: iv_ruleDateElement= ruleDateElement EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2321:2: (iv_ruleDateElement= ruleDateElement EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2322:2: iv_ruleDateElement= ruleDateElement EOF
             {
              newCompositeNode(grammarAccess.getDateElementRule()); 
             pushFollow(FOLLOW_ruleDateElement_in_entryRuleDateElement5086);
@@ -5885,7 +5923,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDateElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2311:1: ruleDateElement returns [EObject current=null] : (otherlv_0= 'date ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2329:1: ruleDateElement returns [EObject current=null] : (otherlv_0= 'date ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? ) ;
     public final EObject ruleDateElement() throws RecognitionException {
         EObject current = null;
 
@@ -5901,21 +5939,21 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2314:28: ( (otherlv_0= 'date ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2315:1: (otherlv_0= 'date ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2332:28: ( (otherlv_0= 'date ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2333:1: (otherlv_0= 'date ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2315:1: (otherlv_0= 'date ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2315:3: otherlv_0= 'date ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )?
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2333:1: (otherlv_0= 'date ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2333:3: otherlv_0= 'date ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )?
             {
             otherlv_0=(Token)match(input,41,FOLLOW_41_in_ruleDateElement5133); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getDateElementAccess().getDateKeyword_0());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2319:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2320:1: (lv_name_1_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2337:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2338:1: (lv_name_1_0= RULE_ID )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2320:1: (lv_name_1_0= RULE_ID )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2321:3: lv_name_1_0= RULE_ID
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2338:1: (lv_name_1_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2339:3: lv_name_1_0= RULE_ID
             {
             lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleDateElement5150); 
 
@@ -5937,7 +5975,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2337:2: ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )*
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2355:2: ( (lv_properties_2_0= ruleAbstractValueFieldProperties ) )*
             loop30:
             do {
                 int alt30=2;
@@ -5950,10 +5988,10 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
                 switch (alt30) {
             	case 1 :
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2338:1: (lv_properties_2_0= ruleAbstractValueFieldProperties )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2356:1: (lv_properties_2_0= ruleAbstractValueFieldProperties )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2338:1: (lv_properties_2_0= ruleAbstractValueFieldProperties )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2339:3: lv_properties_2_0= ruleAbstractValueFieldProperties
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2356:1: (lv_properties_2_0= ruleAbstractValueFieldProperties )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2357:3: lv_properties_2_0= ruleAbstractValueFieldProperties
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getDateElementAccess().getPropertiesAbstractValueFieldPropertiesParserRuleCall_2_0()); 
@@ -5986,7 +6024,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2355:3: (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )?
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2373:3: (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )?
             int alt32=2;
             int LA32_0 = input.LA(1);
 
@@ -5995,13 +6033,13 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             }
             switch (alt32) {
                 case 1 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2355:5: otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2373:5: otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}'
                     {
                     otherlv_3=(Token)match(input,21,FOLLOW_21_in_ruleDateElement5190); 
 
                         	newLeafNode(otherlv_3, grammarAccess.getDateElementAccess().getLeftCurlyBracketKeyword_3_0());
                         
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2359:1: ( (lv_children_4_0= ruleLogicElement ) )*
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2377:1: ( (lv_children_4_0= ruleLogicElement ) )*
                     loop31:
                     do {
                         int alt31=2;
@@ -6014,10 +6052,10 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
                         switch (alt31) {
                     	case 1 :
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2360:1: (lv_children_4_0= ruleLogicElement )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2378:1: (lv_children_4_0= ruleLogicElement )
                     	    {
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2360:1: (lv_children_4_0= ruleLogicElement )
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2361:3: lv_children_4_0= ruleLogicElement
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2378:1: (lv_children_4_0= ruleLogicElement )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2379:3: lv_children_4_0= ruleLogicElement
                     	    {
                     	     
                     	    	        newCompositeNode(grammarAccess.getDateElementAccess().getChildrenLogicElementParserRuleCall_3_1_0()); 
@@ -6081,7 +6119,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSmartfieldElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2389:1: entryRuleSmartfieldElement returns [EObject current=null] : iv_ruleSmartfieldElement= ruleSmartfieldElement EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2407:1: entryRuleSmartfieldElement returns [EObject current=null] : iv_ruleSmartfieldElement= ruleSmartfieldElement EOF ;
     public final EObject entryRuleSmartfieldElement() throws RecognitionException {
         EObject current = null;
 
@@ -6089,8 +6127,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2390:2: (iv_ruleSmartfieldElement= ruleSmartfieldElement EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2391:2: iv_ruleSmartfieldElement= ruleSmartfieldElement EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2408:2: (iv_ruleSmartfieldElement= ruleSmartfieldElement EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2409:2: iv_ruleSmartfieldElement= ruleSmartfieldElement EOF
             {
              newCompositeNode(grammarAccess.getSmartfieldElementRule()); 
             pushFollow(FOLLOW_ruleSmartfieldElement_in_entryRuleSmartfieldElement5262);
@@ -6117,7 +6155,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSmartfieldElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2398:1: ruleSmartfieldElement returns [EObject current=null] : (otherlv_0= 'smartfield ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleSmartFieldElementProperties ) )* (otherlv_3= '{' ( (lv_logic_4_0= ruleLogicElement ) )+ otherlv_5= '}' )? ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2416:1: ruleSmartfieldElement returns [EObject current=null] : (otherlv_0= 'smartfield ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleSmartFieldElementProperties ) )* (otherlv_3= '{' ( (lv_logic_4_0= ruleLogicElement ) )+ otherlv_5= '}' )? ) ;
     public final EObject ruleSmartfieldElement() throws RecognitionException {
         EObject current = null;
 
@@ -6133,21 +6171,21 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2401:28: ( (otherlv_0= 'smartfield ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleSmartFieldElementProperties ) )* (otherlv_3= '{' ( (lv_logic_4_0= ruleLogicElement ) )+ otherlv_5= '}' )? ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2402:1: (otherlv_0= 'smartfield ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleSmartFieldElementProperties ) )* (otherlv_3= '{' ( (lv_logic_4_0= ruleLogicElement ) )+ otherlv_5= '}' )? )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2419:28: ( (otherlv_0= 'smartfield ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleSmartFieldElementProperties ) )* (otherlv_3= '{' ( (lv_logic_4_0= ruleLogicElement ) )+ otherlv_5= '}' )? ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2420:1: (otherlv_0= 'smartfield ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleSmartFieldElementProperties ) )* (otherlv_3= '{' ( (lv_logic_4_0= ruleLogicElement ) )+ otherlv_5= '}' )? )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2402:1: (otherlv_0= 'smartfield ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleSmartFieldElementProperties ) )* (otherlv_3= '{' ( (lv_logic_4_0= ruleLogicElement ) )+ otherlv_5= '}' )? )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2402:3: otherlv_0= 'smartfield ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleSmartFieldElementProperties ) )* (otherlv_3= '{' ( (lv_logic_4_0= ruleLogicElement ) )+ otherlv_5= '}' )?
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2420:1: (otherlv_0= 'smartfield ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleSmartFieldElementProperties ) )* (otherlv_3= '{' ( (lv_logic_4_0= ruleLogicElement ) )+ otherlv_5= '}' )? )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2420:3: otherlv_0= 'smartfield ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleSmartFieldElementProperties ) )* (otherlv_3= '{' ( (lv_logic_4_0= ruleLogicElement ) )+ otherlv_5= '}' )?
             {
             otherlv_0=(Token)match(input,42,FOLLOW_42_in_ruleSmartfieldElement5309); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getSmartfieldElementAccess().getSmartfieldKeyword_0());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2406:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2407:1: (lv_name_1_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2424:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2425:1: (lv_name_1_0= RULE_ID )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2407:1: (lv_name_1_0= RULE_ID )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2408:3: lv_name_1_0= RULE_ID
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2425:1: (lv_name_1_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2426:3: lv_name_1_0= RULE_ID
             {
             lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSmartfieldElement5326); 
 
@@ -6169,7 +6207,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2424:2: ( (lv_properties_2_0= ruleSmartFieldElementProperties ) )*
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2442:2: ( (lv_properties_2_0= ruleSmartFieldElementProperties ) )*
             loop33:
             do {
                 int alt33=2;
@@ -6182,10 +6220,10 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
                 switch (alt33) {
             	case 1 :
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2425:1: (lv_properties_2_0= ruleSmartFieldElementProperties )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2443:1: (lv_properties_2_0= ruleSmartFieldElementProperties )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2425:1: (lv_properties_2_0= ruleSmartFieldElementProperties )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2426:3: lv_properties_2_0= ruleSmartFieldElementProperties
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2443:1: (lv_properties_2_0= ruleSmartFieldElementProperties )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2444:3: lv_properties_2_0= ruleSmartFieldElementProperties
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getSmartfieldElementAccess().getPropertiesSmartFieldElementPropertiesParserRuleCall_2_0()); 
@@ -6218,7 +6256,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2442:3: (otherlv_3= '{' ( (lv_logic_4_0= ruleLogicElement ) )+ otherlv_5= '}' )?
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2460:3: (otherlv_3= '{' ( (lv_logic_4_0= ruleLogicElement ) )+ otherlv_5= '}' )?
             int alt35=2;
             int LA35_0 = input.LA(1);
 
@@ -6227,13 +6265,13 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             }
             switch (alt35) {
                 case 1 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2442:5: otherlv_3= '{' ( (lv_logic_4_0= ruleLogicElement ) )+ otherlv_5= '}'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2460:5: otherlv_3= '{' ( (lv_logic_4_0= ruleLogicElement ) )+ otherlv_5= '}'
                     {
                     otherlv_3=(Token)match(input,21,FOLLOW_21_in_ruleSmartfieldElement5366); 
 
                         	newLeafNode(otherlv_3, grammarAccess.getSmartfieldElementAccess().getLeftCurlyBracketKeyword_3_0());
                         
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2446:1: ( (lv_logic_4_0= ruleLogicElement ) )+
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2464:1: ( (lv_logic_4_0= ruleLogicElement ) )+
                     int cnt34=0;
                     loop34:
                     do {
@@ -6247,10 +6285,10 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
                         switch (alt34) {
                     	case 1 :
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2447:1: (lv_logic_4_0= ruleLogicElement )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2465:1: (lv_logic_4_0= ruleLogicElement )
                     	    {
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2447:1: (lv_logic_4_0= ruleLogicElement )
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2448:3: lv_logic_4_0= ruleLogicElement
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2465:1: (lv_logic_4_0= ruleLogicElement )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2466:3: lv_logic_4_0= ruleLogicElement
                     	    {
                     	     
                     	    	        newCompositeNode(grammarAccess.getSmartfieldElementAccess().getLogicLogicElementParserRuleCall_3_1_0()); 
@@ -6318,7 +6356,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSmartFieldElementProperties"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2476:1: entryRuleSmartFieldElementProperties returns [EObject current=null] : iv_ruleSmartFieldElementProperties= ruleSmartFieldElementProperties EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2494:1: entryRuleSmartFieldElementProperties returns [EObject current=null] : iv_ruleSmartFieldElementProperties= ruleSmartFieldElementProperties EOF ;
     public final EObject entryRuleSmartFieldElementProperties() throws RecognitionException {
         EObject current = null;
 
@@ -6326,8 +6364,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2477:2: (iv_ruleSmartFieldElementProperties= ruleSmartFieldElementProperties EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2478:2: iv_ruleSmartFieldElementProperties= ruleSmartFieldElementProperties EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2495:2: (iv_ruleSmartFieldElementProperties= ruleSmartFieldElementProperties EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2496:2: iv_ruleSmartFieldElementProperties= ruleSmartFieldElementProperties EOF
             {
              newCompositeNode(grammarAccess.getSmartFieldElementPropertiesRule()); 
             pushFollow(FOLLOW_ruleSmartFieldElementProperties_in_entryRuleSmartFieldElementProperties5438);
@@ -6354,11 +6392,11 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSmartFieldElementProperties"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2485:1: ruleSmartFieldElementProperties returns [EObject current=null] : (this_AbstractValueFieldProperties_0= ruleAbstractValueFieldProperties | ( (lv_code_1_0= ruleSmartfieldElementCodeAttribute ) ) | ( (lv_value_type_2_0= ruleSmartfieldElementValueTypeAttribute ) ) | ( (lv_lookup_3_0= ruleSmartfieldElementLookupAttribute ) ) ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2503:1: ruleSmartFieldElementProperties returns [EObject current=null] : ( ( (lv_valueFieldProperties_0_0= ruleAbstractValueFieldProperties ) ) | ( (lv_code_1_0= ruleSmartfieldElementCodeAttribute ) ) | ( (lv_value_type_2_0= ruleSmartfieldElementValueTypeAttribute ) ) | ( (lv_lookup_3_0= ruleSmartfieldElementLookupAttribute ) ) ) ;
     public final EObject ruleSmartFieldElementProperties() throws RecognitionException {
         EObject current = null;
 
-        EObject this_AbstractValueFieldProperties_0 = null;
+        EObject lv_valueFieldProperties_0_0 = null;
 
         EObject lv_code_1_0 = null;
 
@@ -6370,10 +6408,10 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2488:28: ( (this_AbstractValueFieldProperties_0= ruleAbstractValueFieldProperties | ( (lv_code_1_0= ruleSmartfieldElementCodeAttribute ) ) | ( (lv_value_type_2_0= ruleSmartfieldElementValueTypeAttribute ) ) | ( (lv_lookup_3_0= ruleSmartfieldElementLookupAttribute ) ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2489:1: (this_AbstractValueFieldProperties_0= ruleAbstractValueFieldProperties | ( (lv_code_1_0= ruleSmartfieldElementCodeAttribute ) ) | ( (lv_value_type_2_0= ruleSmartfieldElementValueTypeAttribute ) ) | ( (lv_lookup_3_0= ruleSmartfieldElementLookupAttribute ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2506:28: ( ( ( (lv_valueFieldProperties_0_0= ruleAbstractValueFieldProperties ) ) | ( (lv_code_1_0= ruleSmartfieldElementCodeAttribute ) ) | ( (lv_value_type_2_0= ruleSmartfieldElementValueTypeAttribute ) ) | ( (lv_lookup_3_0= ruleSmartfieldElementLookupAttribute ) ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2507:1: ( ( (lv_valueFieldProperties_0_0= ruleAbstractValueFieldProperties ) ) | ( (lv_code_1_0= ruleSmartfieldElementCodeAttribute ) ) | ( (lv_value_type_2_0= ruleSmartfieldElementValueTypeAttribute ) ) | ( (lv_lookup_3_0= ruleSmartfieldElementLookupAttribute ) ) )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2489:1: (this_AbstractValueFieldProperties_0= ruleAbstractValueFieldProperties | ( (lv_code_1_0= ruleSmartfieldElementCodeAttribute ) ) | ( (lv_value_type_2_0= ruleSmartfieldElementValueTypeAttribute ) ) | ( (lv_lookup_3_0= ruleSmartfieldElementLookupAttribute ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2507:1: ( ( (lv_valueFieldProperties_0_0= ruleAbstractValueFieldProperties ) ) | ( (lv_code_1_0= ruleSmartfieldElementCodeAttribute ) ) | ( (lv_value_type_2_0= ruleSmartfieldElementValueTypeAttribute ) ) | ( (lv_lookup_3_0= ruleSmartfieldElementLookupAttribute ) ) )
             int alt36=4;
             switch ( input.LA(1) ) {
             case 12:
@@ -6409,31 +6447,50 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
             switch (alt36) {
                 case 1 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2490:5: this_AbstractValueFieldProperties_0= ruleAbstractValueFieldProperties
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2507:2: ( (lv_valueFieldProperties_0_0= ruleAbstractValueFieldProperties ) )
+                    {
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2507:2: ( (lv_valueFieldProperties_0_0= ruleAbstractValueFieldProperties ) )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2508:1: (lv_valueFieldProperties_0_0= ruleAbstractValueFieldProperties )
+                    {
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2508:1: (lv_valueFieldProperties_0_0= ruleAbstractValueFieldProperties )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2509:3: lv_valueFieldProperties_0_0= ruleAbstractValueFieldProperties
                     {
                      
-                            newCompositeNode(grammarAccess.getSmartFieldElementPropertiesAccess().getAbstractValueFieldPropertiesParserRuleCall_0()); 
-                        
-                    pushFollow(FOLLOW_ruleAbstractValueFieldProperties_in_ruleSmartFieldElementProperties5495);
-                    this_AbstractValueFieldProperties_0=ruleAbstractValueFieldProperties();
+                    	        newCompositeNode(grammarAccess.getSmartFieldElementPropertiesAccess().getValueFieldPropertiesAbstractValueFieldPropertiesParserRuleCall_0_0()); 
+                    	    
+                    pushFollow(FOLLOW_ruleAbstractValueFieldProperties_in_ruleSmartFieldElementProperties5494);
+                    lv_valueFieldProperties_0_0=ruleAbstractValueFieldProperties();
 
                     state._fsp--;
 
-                     
-                            current = this_AbstractValueFieldProperties_0; 
-                            afterParserOrEnumRuleCall();
-                        
+
+                    	        if (current==null) {
+                    	            current = createModelElementForParent(grammarAccess.getSmartFieldElementPropertiesRule());
+                    	        }
+                           		set(
+                           			current, 
+                           			"valueFieldProperties",
+                            		lv_valueFieldProperties_0_0, 
+                            		"AbstractValueFieldProperties");
+                    	        afterParserOrEnumRuleCall();
+                    	    
+
+                    }
+
+
+                    }
+
 
                     }
                     break;
                 case 2 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2499:6: ( (lv_code_1_0= ruleSmartfieldElementCodeAttribute ) )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2526:6: ( (lv_code_1_0= ruleSmartfieldElementCodeAttribute ) )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2499:6: ( (lv_code_1_0= ruleSmartfieldElementCodeAttribute ) )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2500:1: (lv_code_1_0= ruleSmartfieldElementCodeAttribute )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2526:6: ( (lv_code_1_0= ruleSmartfieldElementCodeAttribute ) )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2527:1: (lv_code_1_0= ruleSmartfieldElementCodeAttribute )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2500:1: (lv_code_1_0= ruleSmartfieldElementCodeAttribute )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2501:3: lv_code_1_0= ruleSmartfieldElementCodeAttribute
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2527:1: (lv_code_1_0= ruleSmartfieldElementCodeAttribute )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2528:3: lv_code_1_0= ruleSmartfieldElementCodeAttribute
                     {
                      
                     	        newCompositeNode(grammarAccess.getSmartFieldElementPropertiesAccess().getCodeSmartfieldElementCodeAttributeParserRuleCall_1_0()); 
@@ -6464,13 +6521,13 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2518:6: ( (lv_value_type_2_0= ruleSmartfieldElementValueTypeAttribute ) )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2545:6: ( (lv_value_type_2_0= ruleSmartfieldElementValueTypeAttribute ) )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2518:6: ( (lv_value_type_2_0= ruleSmartfieldElementValueTypeAttribute ) )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2519:1: (lv_value_type_2_0= ruleSmartfieldElementValueTypeAttribute )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2545:6: ( (lv_value_type_2_0= ruleSmartfieldElementValueTypeAttribute ) )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2546:1: (lv_value_type_2_0= ruleSmartfieldElementValueTypeAttribute )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2519:1: (lv_value_type_2_0= ruleSmartfieldElementValueTypeAttribute )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2520:3: lv_value_type_2_0= ruleSmartfieldElementValueTypeAttribute
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2546:1: (lv_value_type_2_0= ruleSmartfieldElementValueTypeAttribute )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2547:3: lv_value_type_2_0= ruleSmartfieldElementValueTypeAttribute
                     {
                      
                     	        newCompositeNode(grammarAccess.getSmartFieldElementPropertiesAccess().getValue_typeSmartfieldElementValueTypeAttributeParserRuleCall_2_0()); 
@@ -6501,13 +6558,13 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2537:6: ( (lv_lookup_3_0= ruleSmartfieldElementLookupAttribute ) )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2564:6: ( (lv_lookup_3_0= ruleSmartfieldElementLookupAttribute ) )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2537:6: ( (lv_lookup_3_0= ruleSmartfieldElementLookupAttribute ) )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2538:1: (lv_lookup_3_0= ruleSmartfieldElementLookupAttribute )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2564:6: ( (lv_lookup_3_0= ruleSmartfieldElementLookupAttribute ) )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2565:1: (lv_lookup_3_0= ruleSmartfieldElementLookupAttribute )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2538:1: (lv_lookup_3_0= ruleSmartfieldElementLookupAttribute )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2539:3: lv_lookup_3_0= ruleSmartfieldElementLookupAttribute
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2565:1: (lv_lookup_3_0= ruleSmartfieldElementLookupAttribute )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2566:3: lv_lookup_3_0= ruleSmartfieldElementLookupAttribute
                     {
                      
                     	        newCompositeNode(grammarAccess.getSmartFieldElementPropertiesAccess().getLookupSmartfieldElementLookupAttributeParserRuleCall_3_0()); 
@@ -6558,7 +6615,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSmartfieldElementCodeAttribute"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2563:1: entryRuleSmartfieldElementCodeAttribute returns [EObject current=null] : iv_ruleSmartfieldElementCodeAttribute= ruleSmartfieldElementCodeAttribute EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2590:1: entryRuleSmartfieldElementCodeAttribute returns [EObject current=null] : iv_ruleSmartfieldElementCodeAttribute= ruleSmartfieldElementCodeAttribute EOF ;
     public final EObject entryRuleSmartfieldElementCodeAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -6566,8 +6623,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2564:2: (iv_ruleSmartfieldElementCodeAttribute= ruleSmartfieldElementCodeAttribute EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2565:2: iv_ruleSmartfieldElementCodeAttribute= ruleSmartfieldElementCodeAttribute EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2591:2: (iv_ruleSmartfieldElementCodeAttribute= ruleSmartfieldElementCodeAttribute EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2592:2: iv_ruleSmartfieldElementCodeAttribute= ruleSmartfieldElementCodeAttribute EOF
             {
              newCompositeNode(grammarAccess.getSmartfieldElementCodeAttributeRule()); 
             pushFollow(FOLLOW_ruleSmartfieldElementCodeAttribute_in_entryRuleSmartfieldElementCodeAttribute5611);
@@ -6594,7 +6651,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSmartfieldElementCodeAttribute"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2572:1: ruleSmartfieldElementCodeAttribute returns [EObject current=null] : (otherlv_0= 'code=' ( (otherlv_1= RULE_ID ) ) ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2599:1: ruleSmartfieldElementCodeAttribute returns [EObject current=null] : (otherlv_0= 'code=' ( (otherlv_1= RULE_ID ) ) ) ;
     public final EObject ruleSmartfieldElementCodeAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -6604,21 +6661,21 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2575:28: ( (otherlv_0= 'code=' ( (otherlv_1= RULE_ID ) ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2576:1: (otherlv_0= 'code=' ( (otherlv_1= RULE_ID ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2602:28: ( (otherlv_0= 'code=' ( (otherlv_1= RULE_ID ) ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2603:1: (otherlv_0= 'code=' ( (otherlv_1= RULE_ID ) ) )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2576:1: (otherlv_0= 'code=' ( (otherlv_1= RULE_ID ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2576:3: otherlv_0= 'code=' ( (otherlv_1= RULE_ID ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2603:1: (otherlv_0= 'code=' ( (otherlv_1= RULE_ID ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2603:3: otherlv_0= 'code=' ( (otherlv_1= RULE_ID ) )
             {
             otherlv_0=(Token)match(input,43,FOLLOW_43_in_ruleSmartfieldElementCodeAttribute5658); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getSmartfieldElementCodeAttributeAccess().getCodeKeyword_0());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2580:1: ( (otherlv_1= RULE_ID ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2581:1: (otherlv_1= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2607:1: ( (otherlv_1= RULE_ID ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2608:1: (otherlv_1= RULE_ID )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2581:1: (otherlv_1= RULE_ID )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2582:3: otherlv_1= RULE_ID
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2608:1: (otherlv_1= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2609:3: otherlv_1= RULE_ID
             {
 
             			if (current==null) {
@@ -6656,7 +6713,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSmartfieldElementValueTypeAttribute"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2601:1: entryRuleSmartfieldElementValueTypeAttribute returns [EObject current=null] : iv_ruleSmartfieldElementValueTypeAttribute= ruleSmartfieldElementValueTypeAttribute EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2628:1: entryRuleSmartfieldElementValueTypeAttribute returns [EObject current=null] : iv_ruleSmartfieldElementValueTypeAttribute= ruleSmartfieldElementValueTypeAttribute EOF ;
     public final EObject entryRuleSmartfieldElementValueTypeAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -6664,8 +6721,8 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2602:2: (iv_ruleSmartfieldElementValueTypeAttribute= ruleSmartfieldElementValueTypeAttribute EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2603:2: iv_ruleSmartfieldElementValueTypeAttribute= ruleSmartfieldElementValueTypeAttribute EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2629:2: (iv_ruleSmartfieldElementValueTypeAttribute= ruleSmartfieldElementValueTypeAttribute EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2630:2: iv_ruleSmartfieldElementValueTypeAttribute= ruleSmartfieldElementValueTypeAttribute EOF
             {
              newCompositeNode(grammarAccess.getSmartfieldElementValueTypeAttributeRule()); 
             pushFollow(FOLLOW_ruleSmartfieldElementValueTypeAttribute_in_entryRuleSmartfieldElementValueTypeAttribute5714);
@@ -6692,46 +6749,45 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSmartfieldElementValueTypeAttribute"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2610:1: ruleSmartfieldElementValueTypeAttribute returns [EObject current=null] : (otherlv_0= 'value_type=' ( ( ruleQualifiedName ) ) ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2637:1: ruleSmartfieldElementValueTypeAttribute returns [EObject current=null] : (otherlv_0= 'value_type=' ( (lv_value_1_0= RULE_STRING ) ) ) ;
     public final EObject ruleSmartfieldElementValueTypeAttribute() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
+        Token lv_value_1_0=null;
 
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2613:28: ( (otherlv_0= 'value_type=' ( ( ruleQualifiedName ) ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2614:1: (otherlv_0= 'value_type=' ( ( ruleQualifiedName ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2640:28: ( (otherlv_0= 'value_type=' ( (lv_value_1_0= RULE_STRING ) ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2641:1: (otherlv_0= 'value_type=' ( (lv_value_1_0= RULE_STRING ) ) )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2614:1: (otherlv_0= 'value_type=' ( ( ruleQualifiedName ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2614:3: otherlv_0= 'value_type=' ( ( ruleQualifiedName ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2641:1: (otherlv_0= 'value_type=' ( (lv_value_1_0= RULE_STRING ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2641:3: otherlv_0= 'value_type=' ( (lv_value_1_0= RULE_STRING ) )
             {
             otherlv_0=(Token)match(input,44,FOLLOW_44_in_ruleSmartfieldElementValueTypeAttribute5761); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getSmartfieldElementValueTypeAttributeAccess().getValue_typeKeyword_0());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2618:1: ( ( ruleQualifiedName ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2619:1: ( ruleQualifiedName )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2645:1: ( (lv_value_1_0= RULE_STRING ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2646:1: (lv_value_1_0= RULE_STRING )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2619:1: ( ruleQualifiedName )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2620:3: ruleQualifiedName
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2646:1: (lv_value_1_0= RULE_STRING )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2647:3: lv_value_1_0= RULE_STRING
             {
+            lv_value_1_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleSmartfieldElementValueTypeAttribute5778); 
 
-            			if (current==null) {
+            			newLeafNode(lv_value_1_0, grammarAccess.getSmartfieldElementValueTypeAttributeAccess().getValueSTRINGTerminalRuleCall_1_0()); 
+            		
+
+            	        if (current==null) {
             	            current = createModelElement(grammarAccess.getSmartfieldElementValueTypeAttributeRule());
             	        }
-                    
-             
-            	        newCompositeNode(grammarAccess.getSmartfieldElementValueTypeAttributeAccess().getValueJvmTypeCrossReference_1_0()); 
-            	    
-            pushFollow(FOLLOW_ruleQualifiedName_in_ruleSmartfieldElementValueTypeAttribute5784);
-            ruleQualifiedName();
-
-            state._fsp--;
-
-             
-            	        afterParserOrEnumRuleCall();
+                   		setWithLastConsumed(
+                   			current, 
+                   			"value",
+                    		lv_value_1_0, 
+                    		"STRING");
             	    
 
             }
@@ -6760,7 +6816,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSmartfieldElementLookupAttribute"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2641:1: entryRuleSmartfieldElementLookupAttribute returns [EObject current=null] : iv_ruleSmartfieldElementLookupAttribute= ruleSmartfieldElementLookupAttribute EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2671:1: entryRuleSmartfieldElementLookupAttribute returns [EObject current=null] : iv_ruleSmartfieldElementLookupAttribute= ruleSmartfieldElementLookupAttribute EOF ;
     public final EObject entryRuleSmartfieldElementLookupAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -6768,17 +6824,17 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2642:2: (iv_ruleSmartfieldElementLookupAttribute= ruleSmartfieldElementLookupAttribute EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2643:2: iv_ruleSmartfieldElementLookupAttribute= ruleSmartfieldElementLookupAttribute EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2672:2: (iv_ruleSmartfieldElementLookupAttribute= ruleSmartfieldElementLookupAttribute EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2673:2: iv_ruleSmartfieldElementLookupAttribute= ruleSmartfieldElementLookupAttribute EOF
             {
              newCompositeNode(grammarAccess.getSmartfieldElementLookupAttributeRule()); 
-            pushFollow(FOLLOW_ruleSmartfieldElementLookupAttribute_in_entryRuleSmartfieldElementLookupAttribute5820);
+            pushFollow(FOLLOW_ruleSmartfieldElementLookupAttribute_in_entryRuleSmartfieldElementLookupAttribute5819);
             iv_ruleSmartfieldElementLookupAttribute=ruleSmartfieldElementLookupAttribute();
 
             state._fsp--;
 
              current =iv_ruleSmartfieldElementLookupAttribute; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleSmartfieldElementLookupAttribute5830); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleSmartfieldElementLookupAttribute5829); 
 
             }
 
@@ -6796,7 +6852,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSmartfieldElementLookupAttribute"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2650:1: ruleSmartfieldElementLookupAttribute returns [EObject current=null] : (otherlv_0= 'lookup=' ( (otherlv_1= RULE_ID ) ) ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2680:1: ruleSmartfieldElementLookupAttribute returns [EObject current=null] : (otherlv_0= 'lookup=' ( (otherlv_1= RULE_ID ) ) ) ;
     public final EObject ruleSmartfieldElementLookupAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -6806,28 +6862,28 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2653:28: ( (otherlv_0= 'lookup=' ( (otherlv_1= RULE_ID ) ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2654:1: (otherlv_0= 'lookup=' ( (otherlv_1= RULE_ID ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2683:28: ( (otherlv_0= 'lookup=' ( (otherlv_1= RULE_ID ) ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2684:1: (otherlv_0= 'lookup=' ( (otherlv_1= RULE_ID ) ) )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2654:1: (otherlv_0= 'lookup=' ( (otherlv_1= RULE_ID ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2654:3: otherlv_0= 'lookup=' ( (otherlv_1= RULE_ID ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2684:1: (otherlv_0= 'lookup=' ( (otherlv_1= RULE_ID ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2684:3: otherlv_0= 'lookup=' ( (otherlv_1= RULE_ID ) )
             {
-            otherlv_0=(Token)match(input,45,FOLLOW_45_in_ruleSmartfieldElementLookupAttribute5867); 
+            otherlv_0=(Token)match(input,45,FOLLOW_45_in_ruleSmartfieldElementLookupAttribute5866); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getSmartfieldElementLookupAttributeAccess().getLookupKeyword_0());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2658:1: ( (otherlv_1= RULE_ID ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2659:1: (otherlv_1= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2688:1: ( (otherlv_1= RULE_ID ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2689:1: (otherlv_1= RULE_ID )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2659:1: (otherlv_1= RULE_ID )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2660:3: otherlv_1= RULE_ID
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2689:1: (otherlv_1= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2690:3: otherlv_1= RULE_ID
             {
 
             			if (current==null) {
             	            current = createModelElement(grammarAccess.getSmartfieldElementLookupAttributeRule());
             	        }
                     
-            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSmartfieldElementLookupAttribute5887); 
+            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSmartfieldElementLookupAttribute5886); 
 
             		newLeafNode(otherlv_1, grammarAccess.getSmartfieldElementLookupAttributeAccess().getValueLookupElementCrossReference_1_0()); 
             	
@@ -6858,7 +6914,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleZregBoxElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2679:1: entryRuleZregBoxElement returns [EObject current=null] : iv_ruleZregBoxElement= ruleZregBoxElement EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2709:1: entryRuleZregBoxElement returns [EObject current=null] : iv_ruleZregBoxElement= ruleZregBoxElement EOF ;
     public final EObject entryRuleZregBoxElement() throws RecognitionException {
         EObject current = null;
 
@@ -6866,17 +6922,17 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2680:2: (iv_ruleZregBoxElement= ruleZregBoxElement EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2681:2: iv_ruleZregBoxElement= ruleZregBoxElement EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2710:2: (iv_ruleZregBoxElement= ruleZregBoxElement EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2711:2: iv_ruleZregBoxElement= ruleZregBoxElement EOF
             {
              newCompositeNode(grammarAccess.getZregBoxElementRule()); 
-            pushFollow(FOLLOW_ruleZregBoxElement_in_entryRuleZregBoxElement5923);
+            pushFollow(FOLLOW_ruleZregBoxElement_in_entryRuleZregBoxElement5922);
             iv_ruleZregBoxElement=ruleZregBoxElement();
 
             state._fsp--;
 
              current =iv_ruleZregBoxElement; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleZregBoxElement5933); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleZregBoxElement5932); 
 
             }
 
@@ -6894,7 +6950,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleZregBoxElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2688:1: ruleZregBoxElement returns [EObject current=null] : (otherlv_0= 'zreg_sequence_box ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2718:1: ruleZregBoxElement returns [EObject current=null] : (otherlv_0= 'zreg_sequence_box ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? ) ;
     public final EObject ruleZregBoxElement() throws RecognitionException {
         EObject current = null;
 
@@ -6910,23 +6966,23 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2691:28: ( (otherlv_0= 'zreg_sequence_box ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2692:1: (otherlv_0= 'zreg_sequence_box ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2721:28: ( (otherlv_0= 'zreg_sequence_box ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2722:1: (otherlv_0= 'zreg_sequence_box ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2692:1: (otherlv_0= 'zreg_sequence_box ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2692:3: otherlv_0= 'zreg_sequence_box ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )?
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2722:1: (otherlv_0= 'zreg_sequence_box ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )? )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2722:3: otherlv_0= 'zreg_sequence_box ' ( (lv_name_1_0= RULE_ID ) ) ( (lv_properties_2_0= ruleAbstractFieldProperties ) )* (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )?
             {
-            otherlv_0=(Token)match(input,46,FOLLOW_46_in_ruleZregBoxElement5970); 
+            otherlv_0=(Token)match(input,46,FOLLOW_46_in_ruleZregBoxElement5969); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getZregBoxElementAccess().getZreg_sequence_boxKeyword_0());
                 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2696:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2697:1: (lv_name_1_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2726:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2727:1: (lv_name_1_0= RULE_ID )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2697:1: (lv_name_1_0= RULE_ID )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2698:3: lv_name_1_0= RULE_ID
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2727:1: (lv_name_1_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2728:3: lv_name_1_0= RULE_ID
             {
-            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleZregBoxElement5987); 
+            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleZregBoxElement5986); 
 
             			newLeafNode(lv_name_1_0, grammarAccess.getZregBoxElementAccess().getNameIDTerminalRuleCall_1_0()); 
             		
@@ -6946,7 +7002,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2714:2: ( (lv_properties_2_0= ruleAbstractFieldProperties ) )*
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2744:2: ( (lv_properties_2_0= ruleAbstractFieldProperties ) )*
             loop37:
             do {
                 int alt37=2;
@@ -6959,15 +7015,15 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
                 switch (alt37) {
             	case 1 :
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2715:1: (lv_properties_2_0= ruleAbstractFieldProperties )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2745:1: (lv_properties_2_0= ruleAbstractFieldProperties )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2715:1: (lv_properties_2_0= ruleAbstractFieldProperties )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2716:3: lv_properties_2_0= ruleAbstractFieldProperties
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2745:1: (lv_properties_2_0= ruleAbstractFieldProperties )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2746:3: lv_properties_2_0= ruleAbstractFieldProperties
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getZregBoxElementAccess().getPropertiesAbstractFieldPropertiesParserRuleCall_2_0()); 
             	    	    
-            	    pushFollow(FOLLOW_ruleAbstractFieldProperties_in_ruleZregBoxElement6013);
+            	    pushFollow(FOLLOW_ruleAbstractFieldProperties_in_ruleZregBoxElement6012);
             	    lv_properties_2_0=ruleAbstractFieldProperties();
 
             	    state._fsp--;
@@ -6995,7 +7051,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2732:3: (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )?
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2762:3: (otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}' )?
             int alt39=2;
             int LA39_0 = input.LA(1);
 
@@ -7004,13 +7060,13 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             }
             switch (alt39) {
                 case 1 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2732:5: otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2762:5: otherlv_3= '{' ( (lv_children_4_0= ruleLogicElement ) )* otherlv_5= '}'
                     {
-                    otherlv_3=(Token)match(input,21,FOLLOW_21_in_ruleZregBoxElement6027); 
+                    otherlv_3=(Token)match(input,21,FOLLOW_21_in_ruleZregBoxElement6026); 
 
                         	newLeafNode(otherlv_3, grammarAccess.getZregBoxElementAccess().getLeftCurlyBracketKeyword_3_0());
                         
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2736:1: ( (lv_children_4_0= ruleLogicElement ) )*
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2766:1: ( (lv_children_4_0= ruleLogicElement ) )*
                     loop38:
                     do {
                         int alt38=2;
@@ -7023,15 +7079,15 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
                         switch (alt38) {
                     	case 1 :
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2737:1: (lv_children_4_0= ruleLogicElement )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2767:1: (lv_children_4_0= ruleLogicElement )
                     	    {
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2737:1: (lv_children_4_0= ruleLogicElement )
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2738:3: lv_children_4_0= ruleLogicElement
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2767:1: (lv_children_4_0= ruleLogicElement )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2768:3: lv_children_4_0= ruleLogicElement
                     	    {
                     	     
                     	    	        newCompositeNode(grammarAccess.getZregBoxElementAccess().getChildrenLogicElementParserRuleCall_3_1_0()); 
                     	    	    
-                    	    pushFollow(FOLLOW_ruleLogicElement_in_ruleZregBoxElement6048);
+                    	    pushFollow(FOLLOW_ruleLogicElement_in_ruleZregBoxElement6047);
                     	    lv_children_4_0=ruleLogicElement();
 
                     	    state._fsp--;
@@ -7059,7 +7115,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                         }
                     } while (true);
 
-                    otherlv_5=(Token)match(input,22,FOLLOW_22_in_ruleZregBoxElement6061); 
+                    otherlv_5=(Token)match(input,22,FOLLOW_22_in_ruleZregBoxElement6060); 
 
                         	newLeafNode(otherlv_5, grammarAccess.getZregBoxElementAccess().getRightCurlyBracketKeyword_3_2());
                         
@@ -7090,7 +7146,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBooleanType"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2766:1: ruleBooleanType returns [Enumerator current=null] : ( (enumLiteral_0= 'true' ) | (enumLiteral_1= 'false' ) ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2796:1: ruleBooleanType returns [Enumerator current=null] : ( (enumLiteral_0= 'true' ) | (enumLiteral_1= 'false' ) ) ;
     public final Enumerator ruleBooleanType() throws RecognitionException {
         Enumerator current = null;
 
@@ -7099,10 +7155,10 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2768:28: ( ( (enumLiteral_0= 'true' ) | (enumLiteral_1= 'false' ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2769:1: ( (enumLiteral_0= 'true' ) | (enumLiteral_1= 'false' ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2798:28: ( ( (enumLiteral_0= 'true' ) | (enumLiteral_1= 'false' ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2799:1: ( (enumLiteral_0= 'true' ) | (enumLiteral_1= 'false' ) )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2769:1: ( (enumLiteral_0= 'true' ) | (enumLiteral_1= 'false' ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2799:1: ( (enumLiteral_0= 'true' ) | (enumLiteral_1= 'false' ) )
             int alt40=2;
             int LA40_0 = input.LA(1);
 
@@ -7120,12 +7176,12 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             }
             switch (alt40) {
                 case 1 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2769:2: (enumLiteral_0= 'true' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2799:2: (enumLiteral_0= 'true' )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2769:2: (enumLiteral_0= 'true' )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2769:4: enumLiteral_0= 'true'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2799:2: (enumLiteral_0= 'true' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2799:4: enumLiteral_0= 'true'
                     {
-                    enumLiteral_0=(Token)match(input,47,FOLLOW_47_in_ruleBooleanType6113); 
+                    enumLiteral_0=(Token)match(input,47,FOLLOW_47_in_ruleBooleanType6112); 
 
                             current = grammarAccess.getBooleanTypeAccess().getTrueEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_0, grammarAccess.getBooleanTypeAccess().getTrueEnumLiteralDeclaration_0()); 
@@ -7137,12 +7193,12 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2775:6: (enumLiteral_1= 'false' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2805:6: (enumLiteral_1= 'false' )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2775:6: (enumLiteral_1= 'false' )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2775:8: enumLiteral_1= 'false'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2805:6: (enumLiteral_1= 'false' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2805:8: enumLiteral_1= 'false'
                     {
-                    enumLiteral_1=(Token)match(input,48,FOLLOW_48_in_ruleBooleanType6130); 
+                    enumLiteral_1=(Token)match(input,48,FOLLOW_48_in_ruleBooleanType6129); 
 
                             current = grammarAccess.getBooleanTypeAccess().getFalseEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_1, grammarAccess.getBooleanTypeAccess().getFalseEnumLiteralDeclaration_1()); 
@@ -7174,7 +7230,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJavaRunAtAttributeList"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2785:1: ruleJavaRunAtAttributeList returns [Enumerator current=null] : ( (enumLiteral_0= 'client' ) | (enumLiteral_1= 'server' ) ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2815:1: ruleJavaRunAtAttributeList returns [Enumerator current=null] : ( (enumLiteral_0= 'client' ) | (enumLiteral_1= 'server' ) ) ;
     public final Enumerator ruleJavaRunAtAttributeList() throws RecognitionException {
         Enumerator current = null;
 
@@ -7183,10 +7239,10 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2787:28: ( ( (enumLiteral_0= 'client' ) | (enumLiteral_1= 'server' ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2788:1: ( (enumLiteral_0= 'client' ) | (enumLiteral_1= 'server' ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2817:28: ( ( (enumLiteral_0= 'client' ) | (enumLiteral_1= 'server' ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2818:1: ( (enumLiteral_0= 'client' ) | (enumLiteral_1= 'server' ) )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2788:1: ( (enumLiteral_0= 'client' ) | (enumLiteral_1= 'server' ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2818:1: ( (enumLiteral_0= 'client' ) | (enumLiteral_1= 'server' ) )
             int alt41=2;
             int LA41_0 = input.LA(1);
 
@@ -7204,12 +7260,12 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             }
             switch (alt41) {
                 case 1 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2788:2: (enumLiteral_0= 'client' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2818:2: (enumLiteral_0= 'client' )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2788:2: (enumLiteral_0= 'client' )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2788:4: enumLiteral_0= 'client'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2818:2: (enumLiteral_0= 'client' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2818:4: enumLiteral_0= 'client'
                     {
-                    enumLiteral_0=(Token)match(input,49,FOLLOW_49_in_ruleJavaRunAtAttributeList6175); 
+                    enumLiteral_0=(Token)match(input,49,FOLLOW_49_in_ruleJavaRunAtAttributeList6174); 
 
                             current = grammarAccess.getJavaRunAtAttributeListAccess().getClientEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_0, grammarAccess.getJavaRunAtAttributeListAccess().getClientEnumLiteralDeclaration_0()); 
@@ -7221,12 +7277,12 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2794:6: (enumLiteral_1= 'server' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2824:6: (enumLiteral_1= 'server' )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2794:6: (enumLiteral_1= 'server' )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2794:8: enumLiteral_1= 'server'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2824:6: (enumLiteral_1= 'server' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2824:8: enumLiteral_1= 'server'
                     {
-                    enumLiteral_1=(Token)match(input,50,FOLLOW_50_in_ruleJavaRunAtAttributeList6192); 
+                    enumLiteral_1=(Token)match(input,50,FOLLOW_50_in_ruleJavaRunAtAttributeList6191); 
 
                             current = grammarAccess.getJavaRunAtAttributeListAccess().getServerEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_1, grammarAccess.getJavaRunAtAttributeListAccess().getServerEnumLiteralDeclaration_1()); 
@@ -7258,7 +7314,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLogicTypeAttributeList"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2804:1: ruleLogicTypeAttributeList returns [Enumerator current=null] : ( (enumLiteral_0= 'global' ) | (enumLiteral_1= 'all' ) | (enumLiteral_2= 'modify_load' ) | (enumLiteral_3= 'modify_store' ) | (enumLiteral_4= 'new_load' ) | (enumLiteral_5= 'new_store' ) | (enumLiteral_6= 'changed' ) | (enumLiteral_7= 'click' ) | (enumLiteral_8= 'master_changed' ) | (enumLiteral_9= 'init' ) ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2834:1: ruleLogicTypeAttributeList returns [Enumerator current=null] : ( (enumLiteral_0= 'global' ) | (enumLiteral_1= 'all' ) | (enumLiteral_2= 'modify_load' ) | (enumLiteral_3= 'modify_store' ) | (enumLiteral_4= 'new_load' ) | (enumLiteral_5= 'new_store' ) | (enumLiteral_6= 'changed' ) | (enumLiteral_7= 'click' ) | (enumLiteral_8= 'master_changed' ) | (enumLiteral_9= 'init' ) ) ;
     public final Enumerator ruleLogicTypeAttributeList() throws RecognitionException {
         Enumerator current = null;
 
@@ -7275,10 +7331,10 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2806:28: ( ( (enumLiteral_0= 'global' ) | (enumLiteral_1= 'all' ) | (enumLiteral_2= 'modify_load' ) | (enumLiteral_3= 'modify_store' ) | (enumLiteral_4= 'new_load' ) | (enumLiteral_5= 'new_store' ) | (enumLiteral_6= 'changed' ) | (enumLiteral_7= 'click' ) | (enumLiteral_8= 'master_changed' ) | (enumLiteral_9= 'init' ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2807:1: ( (enumLiteral_0= 'global' ) | (enumLiteral_1= 'all' ) | (enumLiteral_2= 'modify_load' ) | (enumLiteral_3= 'modify_store' ) | (enumLiteral_4= 'new_load' ) | (enumLiteral_5= 'new_store' ) | (enumLiteral_6= 'changed' ) | (enumLiteral_7= 'click' ) | (enumLiteral_8= 'master_changed' ) | (enumLiteral_9= 'init' ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2836:28: ( ( (enumLiteral_0= 'global' ) | (enumLiteral_1= 'all' ) | (enumLiteral_2= 'modify_load' ) | (enumLiteral_3= 'modify_store' ) | (enumLiteral_4= 'new_load' ) | (enumLiteral_5= 'new_store' ) | (enumLiteral_6= 'changed' ) | (enumLiteral_7= 'click' ) | (enumLiteral_8= 'master_changed' ) | (enumLiteral_9= 'init' ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2837:1: ( (enumLiteral_0= 'global' ) | (enumLiteral_1= 'all' ) | (enumLiteral_2= 'modify_load' ) | (enumLiteral_3= 'modify_store' ) | (enumLiteral_4= 'new_load' ) | (enumLiteral_5= 'new_store' ) | (enumLiteral_6= 'changed' ) | (enumLiteral_7= 'click' ) | (enumLiteral_8= 'master_changed' ) | (enumLiteral_9= 'init' ) )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2807:1: ( (enumLiteral_0= 'global' ) | (enumLiteral_1= 'all' ) | (enumLiteral_2= 'modify_load' ) | (enumLiteral_3= 'modify_store' ) | (enumLiteral_4= 'new_load' ) | (enumLiteral_5= 'new_store' ) | (enumLiteral_6= 'changed' ) | (enumLiteral_7= 'click' ) | (enumLiteral_8= 'master_changed' ) | (enumLiteral_9= 'init' ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2837:1: ( (enumLiteral_0= 'global' ) | (enumLiteral_1= 'all' ) | (enumLiteral_2= 'modify_load' ) | (enumLiteral_3= 'modify_store' ) | (enumLiteral_4= 'new_load' ) | (enumLiteral_5= 'new_store' ) | (enumLiteral_6= 'changed' ) | (enumLiteral_7= 'click' ) | (enumLiteral_8= 'master_changed' ) | (enumLiteral_9= 'init' ) )
             int alt42=10;
             switch ( input.LA(1) ) {
             case 51:
@@ -7340,12 +7396,12 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
             switch (alt42) {
                 case 1 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2807:2: (enumLiteral_0= 'global' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2837:2: (enumLiteral_0= 'global' )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2807:2: (enumLiteral_0= 'global' )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2807:4: enumLiteral_0= 'global'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2837:2: (enumLiteral_0= 'global' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2837:4: enumLiteral_0= 'global'
                     {
-                    enumLiteral_0=(Token)match(input,51,FOLLOW_51_in_ruleLogicTypeAttributeList6237); 
+                    enumLiteral_0=(Token)match(input,51,FOLLOW_51_in_ruleLogicTypeAttributeList6236); 
 
                             current = grammarAccess.getLogicTypeAttributeListAccess().getGlobalEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_0, grammarAccess.getLogicTypeAttributeListAccess().getGlobalEnumLiteralDeclaration_0()); 
@@ -7357,12 +7413,12 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2813:6: (enumLiteral_1= 'all' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2843:6: (enumLiteral_1= 'all' )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2813:6: (enumLiteral_1= 'all' )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2813:8: enumLiteral_1= 'all'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2843:6: (enumLiteral_1= 'all' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2843:8: enumLiteral_1= 'all'
                     {
-                    enumLiteral_1=(Token)match(input,52,FOLLOW_52_in_ruleLogicTypeAttributeList6254); 
+                    enumLiteral_1=(Token)match(input,52,FOLLOW_52_in_ruleLogicTypeAttributeList6253); 
 
                             current = grammarAccess.getLogicTypeAttributeListAccess().getAllEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_1, grammarAccess.getLogicTypeAttributeListAccess().getAllEnumLiteralDeclaration_1()); 
@@ -7374,12 +7430,12 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2819:6: (enumLiteral_2= 'modify_load' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2849:6: (enumLiteral_2= 'modify_load' )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2819:6: (enumLiteral_2= 'modify_load' )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2819:8: enumLiteral_2= 'modify_load'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2849:6: (enumLiteral_2= 'modify_load' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2849:8: enumLiteral_2= 'modify_load'
                     {
-                    enumLiteral_2=(Token)match(input,53,FOLLOW_53_in_ruleLogicTypeAttributeList6271); 
+                    enumLiteral_2=(Token)match(input,53,FOLLOW_53_in_ruleLogicTypeAttributeList6270); 
 
                             current = grammarAccess.getLogicTypeAttributeListAccess().getModify_loadEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_2, grammarAccess.getLogicTypeAttributeListAccess().getModify_loadEnumLiteralDeclaration_2()); 
@@ -7391,12 +7447,12 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2825:6: (enumLiteral_3= 'modify_store' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2855:6: (enumLiteral_3= 'modify_store' )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2825:6: (enumLiteral_3= 'modify_store' )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2825:8: enumLiteral_3= 'modify_store'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2855:6: (enumLiteral_3= 'modify_store' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2855:8: enumLiteral_3= 'modify_store'
                     {
-                    enumLiteral_3=(Token)match(input,54,FOLLOW_54_in_ruleLogicTypeAttributeList6288); 
+                    enumLiteral_3=(Token)match(input,54,FOLLOW_54_in_ruleLogicTypeAttributeList6287); 
 
                             current = grammarAccess.getLogicTypeAttributeListAccess().getModify_storeEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_3, grammarAccess.getLogicTypeAttributeListAccess().getModify_storeEnumLiteralDeclaration_3()); 
@@ -7408,12 +7464,12 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2831:6: (enumLiteral_4= 'new_load' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2861:6: (enumLiteral_4= 'new_load' )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2831:6: (enumLiteral_4= 'new_load' )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2831:8: enumLiteral_4= 'new_load'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2861:6: (enumLiteral_4= 'new_load' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2861:8: enumLiteral_4= 'new_load'
                     {
-                    enumLiteral_4=(Token)match(input,55,FOLLOW_55_in_ruleLogicTypeAttributeList6305); 
+                    enumLiteral_4=(Token)match(input,55,FOLLOW_55_in_ruleLogicTypeAttributeList6304); 
 
                             current = grammarAccess.getLogicTypeAttributeListAccess().getNew_loadEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_4, grammarAccess.getLogicTypeAttributeListAccess().getNew_loadEnumLiteralDeclaration_4()); 
@@ -7425,12 +7481,12 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2837:6: (enumLiteral_5= 'new_store' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2867:6: (enumLiteral_5= 'new_store' )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2837:6: (enumLiteral_5= 'new_store' )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2837:8: enumLiteral_5= 'new_store'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2867:6: (enumLiteral_5= 'new_store' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2867:8: enumLiteral_5= 'new_store'
                     {
-                    enumLiteral_5=(Token)match(input,56,FOLLOW_56_in_ruleLogicTypeAttributeList6322); 
+                    enumLiteral_5=(Token)match(input,56,FOLLOW_56_in_ruleLogicTypeAttributeList6321); 
 
                             current = grammarAccess.getLogicTypeAttributeListAccess().getNew_storeEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_5, grammarAccess.getLogicTypeAttributeListAccess().getNew_storeEnumLiteralDeclaration_5()); 
@@ -7442,12 +7498,12 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2843:6: (enumLiteral_6= 'changed' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2873:6: (enumLiteral_6= 'changed' )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2843:6: (enumLiteral_6= 'changed' )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2843:8: enumLiteral_6= 'changed'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2873:6: (enumLiteral_6= 'changed' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2873:8: enumLiteral_6= 'changed'
                     {
-                    enumLiteral_6=(Token)match(input,57,FOLLOW_57_in_ruleLogicTypeAttributeList6339); 
+                    enumLiteral_6=(Token)match(input,57,FOLLOW_57_in_ruleLogicTypeAttributeList6338); 
 
                             current = grammarAccess.getLogicTypeAttributeListAccess().getChangedEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_6, grammarAccess.getLogicTypeAttributeListAccess().getChangedEnumLiteralDeclaration_6()); 
@@ -7459,12 +7515,12 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 8 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2849:6: (enumLiteral_7= 'click' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2879:6: (enumLiteral_7= 'click' )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2849:6: (enumLiteral_7= 'click' )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2849:8: enumLiteral_7= 'click'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2879:6: (enumLiteral_7= 'click' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2879:8: enumLiteral_7= 'click'
                     {
-                    enumLiteral_7=(Token)match(input,58,FOLLOW_58_in_ruleLogicTypeAttributeList6356); 
+                    enumLiteral_7=(Token)match(input,58,FOLLOW_58_in_ruleLogicTypeAttributeList6355); 
 
                             current = grammarAccess.getLogicTypeAttributeListAccess().getClickEnumLiteralDeclaration_7().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_7, grammarAccess.getLogicTypeAttributeListAccess().getClickEnumLiteralDeclaration_7()); 
@@ -7476,12 +7532,12 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 9 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2855:6: (enumLiteral_8= 'master_changed' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2885:6: (enumLiteral_8= 'master_changed' )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2855:6: (enumLiteral_8= 'master_changed' )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2855:8: enumLiteral_8= 'master_changed'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2885:6: (enumLiteral_8= 'master_changed' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2885:8: enumLiteral_8= 'master_changed'
                     {
-                    enumLiteral_8=(Token)match(input,59,FOLLOW_59_in_ruleLogicTypeAttributeList6373); 
+                    enumLiteral_8=(Token)match(input,59,FOLLOW_59_in_ruleLogicTypeAttributeList6372); 
 
                             current = grammarAccess.getLogicTypeAttributeListAccess().getMaster_changedEnumLiteralDeclaration_8().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_8, grammarAccess.getLogicTypeAttributeListAccess().getMaster_changedEnumLiteralDeclaration_8()); 
@@ -7493,12 +7549,12 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 10 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2861:6: (enumLiteral_9= 'init' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2891:6: (enumLiteral_9= 'init' )
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2861:6: (enumLiteral_9= 'init' )
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2861:8: enumLiteral_9= 'init'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2891:6: (enumLiteral_9= 'init' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:2891:8: enumLiteral_9= 'init'
                     {
-                    enumLiteral_9=(Token)match(input,60,FOLLOW_60_in_ruleLogicTypeAttributeList6390); 
+                    enumLiteral_9=(Token)match(input,60,FOLLOW_60_in_ruleLogicTypeAttributeList6389); 
 
                             current = grammarAccess.getLogicTypeAttributeListAccess().getInitEnumLiteralDeclaration_9().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_9, grammarAccess.getLogicTypeAttributeListAccess().getInitEnumLiteralDeclaration_9()); 
@@ -7585,7 +7641,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleZregBoxElement_in_ruleAbstractValueFieldElement1426 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleAbstractValueFieldProperties_in_entryRuleAbstractValueFieldProperties1461 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleAbstractValueFieldProperties1471 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAbstractFieldProperties_in_ruleAbstractValueFieldProperties1518 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAbstractFieldProperties_in_ruleAbstractValueFieldProperties1517 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleMandatoryAttribue_in_ruleAbstractValueFieldProperties1544 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleMandatoryAttribue_in_entryRuleMandatoryAttribue1580 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleMandatoryAttribue1590 = new BitSet(new long[]{0x0000000000000002L});
@@ -7710,7 +7766,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_22_in_ruleStringElement4472 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleStringElementProperties_in_entryRuleStringElementProperties4510 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleStringElementProperties4520 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAbstractValueFieldProperties_in_ruleStringElementProperties4567 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAbstractValueFieldProperties_in_ruleStringElementProperties4566 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleStringElementMaxlenAttribute_in_ruleStringElementProperties4593 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleStringElementMaxlenAttribute_in_entryRuleStringElementMaxlenAttribute4629 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleStringElementMaxlenAttribute4639 = new BitSet(new long[]{0x0000000000000002L});
@@ -7750,7 +7806,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_22_in_ruleSmartfieldElement5400 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleSmartFieldElementProperties_in_entryRuleSmartFieldElementProperties5438 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleSmartFieldElementProperties5448 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAbstractValueFieldProperties_in_ruleSmartFieldElementProperties5495 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAbstractValueFieldProperties_in_ruleSmartFieldElementProperties5494 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleSmartfieldElementCodeAttribute_in_ruleSmartFieldElementProperties5521 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleSmartfieldElementValueTypeAttribute_in_ruleSmartFieldElementProperties5548 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleSmartfieldElementLookupAttribute_in_ruleSmartFieldElementProperties5575 = new BitSet(new long[]{0x0000000000000002L});
@@ -7760,33 +7816,33 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_RULE_ID_in_ruleSmartfieldElementCodeAttribute5678 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleSmartfieldElementValueTypeAttribute_in_entryRuleSmartfieldElementValueTypeAttribute5714 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleSmartfieldElementValueTypeAttribute5724 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_44_in_ruleSmartfieldElementValueTypeAttribute5761 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleSmartfieldElementValueTypeAttribute5784 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSmartfieldElementLookupAttribute_in_entryRuleSmartfieldElementLookupAttribute5820 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleSmartfieldElementLookupAttribute5830 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_45_in_ruleSmartfieldElementLookupAttribute5867 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleSmartfieldElementLookupAttribute5887 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleZregBoxElement_in_entryRuleZregBoxElement5923 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleZregBoxElement5933 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_46_in_ruleZregBoxElement5970 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleZregBoxElement5987 = new BitSet(new long[]{0x000000000020F002L});
-    public static final BitSet FOLLOW_ruleAbstractFieldProperties_in_ruleZregBoxElement6013 = new BitSet(new long[]{0x000000000020F002L});
-    public static final BitSet FOLLOW_21_in_ruleZregBoxElement6027 = new BitSet(new long[]{0x0000000004500000L});
-    public static final BitSet FOLLOW_ruleLogicElement_in_ruleZregBoxElement6048 = new BitSet(new long[]{0x0000000004500000L});
-    public static final BitSet FOLLOW_22_in_ruleZregBoxElement6061 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_47_in_ruleBooleanType6113 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_48_in_ruleBooleanType6130 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_49_in_ruleJavaRunAtAttributeList6175 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_50_in_ruleJavaRunAtAttributeList6192 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_51_in_ruleLogicTypeAttributeList6237 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_52_in_ruleLogicTypeAttributeList6254 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_53_in_ruleLogicTypeAttributeList6271 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_54_in_ruleLogicTypeAttributeList6288 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_55_in_ruleLogicTypeAttributeList6305 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_56_in_ruleLogicTypeAttributeList6322 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_57_in_ruleLogicTypeAttributeList6339 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_58_in_ruleLogicTypeAttributeList6356 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_59_in_ruleLogicTypeAttributeList6373 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_60_in_ruleLogicTypeAttributeList6390 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_44_in_ruleSmartfieldElementValueTypeAttribute5761 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleSmartfieldElementValueTypeAttribute5778 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSmartfieldElementLookupAttribute_in_entryRuleSmartfieldElementLookupAttribute5819 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleSmartfieldElementLookupAttribute5829 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_45_in_ruleSmartfieldElementLookupAttribute5866 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleSmartfieldElementLookupAttribute5886 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleZregBoxElement_in_entryRuleZregBoxElement5922 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleZregBoxElement5932 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_46_in_ruleZregBoxElement5969 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleZregBoxElement5986 = new BitSet(new long[]{0x000000000020F002L});
+    public static final BitSet FOLLOW_ruleAbstractFieldProperties_in_ruleZregBoxElement6012 = new BitSet(new long[]{0x000000000020F002L});
+    public static final BitSet FOLLOW_21_in_ruleZregBoxElement6026 = new BitSet(new long[]{0x0000000004500000L});
+    public static final BitSet FOLLOW_ruleLogicElement_in_ruleZregBoxElement6047 = new BitSet(new long[]{0x0000000004500000L});
+    public static final BitSet FOLLOW_22_in_ruleZregBoxElement6060 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_47_in_ruleBooleanType6112 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_48_in_ruleBooleanType6129 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_49_in_ruleJavaRunAtAttributeList6174 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_50_in_ruleJavaRunAtAttributeList6191 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_51_in_ruleLogicTypeAttributeList6236 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_52_in_ruleLogicTypeAttributeList6253 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_53_in_ruleLogicTypeAttributeList6270 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_54_in_ruleLogicTypeAttributeList6287 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_55_in_ruleLogicTypeAttributeList6304 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_56_in_ruleLogicTypeAttributeList6321 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_57_in_ruleLogicTypeAttributeList6338 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_58_in_ruleLogicTypeAttributeList6355 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_59_in_ruleLogicTypeAttributeList6372 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_60_in_ruleLogicTypeAttributeList6389 = new BitSet(new long[]{0x0000000000000002L});
 
 }

@@ -4,9 +4,6 @@
     <metamodelDeclarations xsi:type="xtext:GeneratedMetamodel" name="saml">
       <ePackage href="http://www.eclipse.org/scout/saml/Saml#/"/>
     </metamodelDeclarations>
-    <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="jvmTypes">
-      <ePackage href="http://www.eclipse.org/xtext/common/JavaVMTypes#/"/>
-    </metamodelDeclarations>
     <rules xsi:type="xtext:ParserRule" name="Model">
       <type metamodel="/0/@metamodelDeclarations.0">
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//Model"/>
@@ -141,7 +138,7 @@
         <elements xsi:type="xtext:Assignment" feature="value" operator="=">
           <terminal xsi:type="xtext:CrossReference">
             <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//AbstractFieldElement"/>
+              <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//AbstractValueFieldElement"/>
             </type>
             <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
           </terminal>
@@ -166,7 +163,9 @@
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//AbstractValueFieldProperties"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.6"/>
+        <elements xsi:type="xtext:Assignment" feature="fieldproperties" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.6"/>
+        </elements>
         <elements xsi:type="xtext:Assignment" feature="mandatory" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.13"/>
         </elements>
@@ -570,7 +569,9 @@
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//StringElementProperties"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.12"/>
+        <elements xsi:type="xtext:Assignment" feature="valueFieldProperties" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.12"/>
+        </elements>
         <elements xsi:type="xtext:Assignment" feature="maxlen" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.38"/>
         </elements>
@@ -676,7 +677,9 @@
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//SmartFieldElementProperties"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.12"/>
+        <elements xsi:type="xtext:Assignment" feature="valueFieldProperties" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.12"/>
+        </elements>
         <elements xsi:type="xtext:Assignment" feature="code" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.44"/>
         </elements>
@@ -711,12 +714,7 @@
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="value_type="/>
         <elements xsi:type="xtext:Assignment" feature="value" operator="=">
-          <terminal xsi:type="xtext:CrossReference">
-            <type metamodel="/0/@metamodelDeclarations.1">
-              <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/common/JavaVMTypes#//JvmType"/>
-            </type>
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.1"/>
-          </terminal>
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
         </elements>
       </alternatives>
     </rules>

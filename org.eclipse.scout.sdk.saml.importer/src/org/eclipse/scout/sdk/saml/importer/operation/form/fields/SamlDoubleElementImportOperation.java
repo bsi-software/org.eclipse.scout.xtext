@@ -12,7 +12,11 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.jdt.core.IType;
+import org.eclipse.scout.saml.saml.AbstractValueFieldProperties;
 import org.eclipse.scout.saml.saml.DoubleElement;
+import org.eclipse.scout.sdk.operation.form.field.DoubleFieldNewOperation;
+import org.eclipse.scout.sdk.util.SdkProperties;
 import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 
 /**
@@ -24,6 +28,7 @@ import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 public class SamlDoubleElementImportOperation extends AbstractSamlFormFieldElementOperation {
 
   private DoubleElement m_doubleElement;
+  public static final String SUFFIX = SdkProperties.SUFFIX_FORM_FIELD;
 
   @Override
   public String getOperationName() {
@@ -39,6 +44,18 @@ public class SamlDoubleElementImportOperation extends AbstractSamlFormFieldEleme
 
   @Override
   public void run(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException, IllegalArgumentException {
+    DoubleFieldNewOperation o = new DoubleFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
+    o.setTypeName(getDoubleElement().getName() + SUFFIX);
+    o.validate();
+    o.run(monitor, workingCopyManager);
+    IType createdField = o.getCreatedField();
+
+    for (AbstractValueFieldProperties p : getDoubleElement().getProperties()) {
+      applyMandatoryAttribute(monitor, workingCopyManager, p.getMandatory(), createdField);
+      applyAbstractFormFieldProperties(monitor, workingCopyManager, p.getFieldproperties(), createdField);
+    }
+
+    fillFormFieldLogic(monitor, workingCopyManager, getDoubleElement().getChildren(), createdField);
   }
 
   public DoubleElement getDoubleElement() {

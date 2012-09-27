@@ -31,12 +31,12 @@ public interface MasterAttribute extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value</em>' reference.
-   * @see #setValue(AbstractFieldElement)
+   * @see #setValue(AbstractValueFieldElement)
    * @see org.eclipse.scout.saml.saml.SamlPackage#getMasterAttribute_Value()
    * @model
    * @generated
    */
-  AbstractFieldElement getValue();
+  AbstractValueFieldElement getValue();
 
   /**
    * Sets the value of the '{@link org.eclipse.scout.saml.saml.MasterAttribute#getValue <em>Value</em>}' reference.
@@ -46,6 +46,6 @@ public interface MasterAttribute extends EObject
    * @see #getValue()
    * @generated
    */
-  void setValue(AbstractFieldElement value);
+  void setValue(AbstractValueFieldElement value);
 
 } // MasterAttribute

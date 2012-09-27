@@ -104,6 +104,7 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEnabledAttribueAccess().getValueAssignment_1(), "rule__EnabledAttribue__ValueAssignment_1");
 					put(grammarAccess.getVisibleAttribueAccess().getValueAssignment_1(), "rule__VisibleAttribue__ValueAssignment_1");
 					put(grammarAccess.getMasterAttributeAccess().getValueAssignment_1(), "rule__MasterAttribute__ValueAssignment_1");
+					put(grammarAccess.getAbstractValueFieldPropertiesAccess().getFieldpropertiesAssignment_0(), "rule__AbstractValueFieldProperties__FieldpropertiesAssignment_0");
 					put(grammarAccess.getAbstractValueFieldPropertiesAccess().getMandatoryAssignment_1(), "rule__AbstractValueFieldProperties__MandatoryAssignment_1");
 					put(grammarAccess.getMandatoryAttribueAccess().getValueAssignment_1(), "rule__MandatoryAttribue__ValueAssignment_1");
 					put(grammarAccess.getModuleElementAccess().getNameAssignment_1(), "rule__ModuleElement__NameAssignment_1");
@@ -145,6 +146,7 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getStringElementAccess().getNameAssignment_1(), "rule__StringElement__NameAssignment_1");
 					put(grammarAccess.getStringElementAccess().getPropertiesAssignment_2(), "rule__StringElement__PropertiesAssignment_2");
 					put(grammarAccess.getStringElementAccess().getLogicAssignment_3_1(), "rule__StringElement__LogicAssignment_3_1");
+					put(grammarAccess.getStringElementPropertiesAccess().getValueFieldPropertiesAssignment_0(), "rule__StringElementProperties__ValueFieldPropertiesAssignment_0");
 					put(grammarAccess.getStringElementPropertiesAccess().getMaxlenAssignment_1(), "rule__StringElementProperties__MaxlenAssignment_1");
 					put(grammarAccess.getStringElementMaxlenAttributeAccess().getValueAssignment_1(), "rule__StringElementMaxlenAttribute__ValueAssignment_1");
 					put(grammarAccess.getDoubleElementAccess().getNameAssignment_1(), "rule__DoubleElement__NameAssignment_1");
@@ -159,6 +161,7 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getSmartfieldElementAccess().getNameAssignment_1(), "rule__SmartfieldElement__NameAssignment_1");
 					put(grammarAccess.getSmartfieldElementAccess().getPropertiesAssignment_2(), "rule__SmartfieldElement__PropertiesAssignment_2");
 					put(grammarAccess.getSmartfieldElementAccess().getLogicAssignment_3_1(), "rule__SmartfieldElement__LogicAssignment_3_1");
+					put(grammarAccess.getSmartFieldElementPropertiesAccess().getValueFieldPropertiesAssignment_0(), "rule__SmartFieldElementProperties__ValueFieldPropertiesAssignment_0");
 					put(grammarAccess.getSmartFieldElementPropertiesAccess().getCodeAssignment_1(), "rule__SmartFieldElementProperties__CodeAssignment_1");
 					put(grammarAccess.getSmartFieldElementPropertiesAccess().getValue_typeAssignment_2(), "rule__SmartFieldElementProperties__Value_typeAssignment_2");
 					put(grammarAccess.getSmartFieldElementPropertiesAccess().getLookupAssignment_3(), "rule__SmartFieldElementProperties__LookupAssignment_3");

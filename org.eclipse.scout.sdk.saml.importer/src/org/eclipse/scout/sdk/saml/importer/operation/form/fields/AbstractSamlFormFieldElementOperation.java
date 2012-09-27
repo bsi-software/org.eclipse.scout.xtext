@@ -12,18 +12,32 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jdt.core.IType;
+import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.saml.saml.AbstractFieldElement;
+import org.eclipse.scout.saml.saml.AbstractFieldProperties;
+import org.eclipse.scout.saml.saml.AbstractValueFieldElement;
+import org.eclipse.scout.saml.saml.BooleanType;
 import org.eclipse.scout.saml.saml.DateElement;
 import org.eclipse.scout.saml.saml.DoubleElement;
+import org.eclipse.scout.saml.saml.EnabledAttribue;
 import org.eclipse.scout.saml.saml.LongElement;
+import org.eclipse.scout.saml.saml.MandatoryAttribue;
+import org.eclipse.scout.saml.saml.MasterAttribute;
 import org.eclipse.scout.saml.saml.SequenceBoxElement;
 import org.eclipse.scout.saml.saml.SmartfieldElement;
 import org.eclipse.scout.saml.saml.StringElement;
+import org.eclipse.scout.saml.saml.TextAttribute;
+import org.eclipse.scout.saml.saml.VisibleAttribue;
 import org.eclipse.scout.saml.saml.ZregBoxElement;
+import org.eclipse.scout.sdk.operation.method.MethodOverrideOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.SamlContext;
 import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
 import org.eclipse.scout.sdk.saml.importer.operation.form.fields.container.SamlSequenceBoxElementImportOperation;
+import org.eclipse.scout.sdk.saml.importer.operation.logic.SamlLogicFillOperation;
 import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 
 /**
@@ -37,8 +51,110 @@ public abstract class AbstractSamlFormFieldElementOperation extends AbstractSaml
   private SamlFormContext m_samlContext;
   private AbstractFieldElement m_fieldElement;
 
-  public SamlFormContext getSamlFormContext() {
-    return m_samlContext;
+  protected void fillFormFieldLogic(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, EList<? extends EObject> children, IType createdField) throws CoreException, IllegalArgumentException {
+    SamlLogicFillOperation slfo = new SamlLogicFillOperation();
+    //TODO: should be part of abstractfield: remove children param and iterate over m_fieldelement
+    slfo.setLogicSourceType(createdField);
+    slfo.setSamlContext(getSamlContext());
+    slfo.setChildElements(children);
+
+    slfo.setClientType(getSamlFormContext().getClientType());
+    slfo.setClientInterface(getSamlFormContext().getClientInterface());
+
+    slfo.setServerType(getSamlFormContext().getServerType());
+    slfo.setServerInterface(getSamlFormContext().getServerInterface());
+
+    slfo.setFormDataType(getSamlFormContext().getFormDataType());
+    slfo.setFormType(getSamlFormContext().getFormType());
+
+    slfo.validate();
+    slfo.run(monitor, workingCopyManager);
+  }
+
+  protected void applyMasterAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, MasterAttribute a, IType field) throws CoreException, IllegalArgumentException {
+    if (a != null && a.getValue() != null) {
+      String masterFieldName = a.getValue().getName() + getFieldNameSuffix(a.getValue());
+      overrideMethod(monitor, workingCopyManager, field, "getConfiguredMasterField", "return " + masterFieldName + ".class;");
+      overrideMethod(monitor, workingCopyManager, field, "getConfiguredMasterRequired", "return true;");
+    }
+  }
+
+  private String getFieldNameSuffix(AbstractValueFieldElement field) {
+    if (field instanceof SequenceBoxElement) {
+      return SamlSequenceBoxElementImportOperation.SUFFIX;
+    }
+    else if (field instanceof StringElement) {
+      return SamlStringElementImportOperation.SUFFIX;
+    }
+    else if (field instanceof DoubleElement) {
+      return SamlDoubleElementImportOperation.SUFFIX;
+    }
+    else if (field instanceof LongElement) {
+      return SamlLongElementImportOperation.SUFFIX;
+    }
+    else if (field instanceof DateElement) {
+      return SamlDateElementImportOperation.SUFFIX;
+    }
+    else if (field instanceof SmartfieldElement) {
+      return SamlSmartfieldElementImportOperation.SUFFIX;
+    }
+    else if (field instanceof ZregBoxElement) {
+      return SamlZregBoxElementImportOperation.SUFFIX;
+    }
+    else {
+      throw new IllegalArgumentException("Unknown EObject field type: " + field.getName());
+    }
+  }
+
+  protected void applyAbstractFormFieldProperties(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, EList<? extends AbstractFieldProperties> properties, IType field) throws CoreException, IllegalArgumentException {
+    for (AbstractFieldProperties property : properties) {
+      applyAbstractFormFieldProperties(monitor, workingCopyManager, property, field);
+    }
+  }
+
+  protected void applyAbstractFormFieldProperties(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, AbstractFieldProperties property, IType field) throws CoreException, IllegalArgumentException {
+    if (property != null) {
+      applyEnabledAttribute(monitor, workingCopyManager, property.getEnabled(), field);
+      applyMasterAttribute(monitor, workingCopyManager, property.getMaster(), field);
+      applyTextAttribute(monitor, workingCopyManager, property.getText(), field);
+      applyVisibleAttribute(monitor, workingCopyManager, property.getVisible(), field);
+    }
+  }
+
+  protected void applyTextAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, TextAttribute a, IType field) throws CoreException, IllegalArgumentException {
+    if (a != null && StringUtility.hasText(a.getValue().getName())) {
+      // field has a label
+      overrideMethod(monitor, workingCopyManager, field, "getConfiguredLabel", "return TEXTS.get(\"" + a.getValue().getName() + "\");");
+    }
+    else {
+      // field has no label: hide it
+      overrideMethod(monitor, workingCopyManager, field, "getConfiguredLabelVisible", "return false;");
+    }
+  }
+
+  protected void applyVisibleAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, VisibleAttribue a, IType field) throws CoreException, IllegalArgumentException {
+    if (a != null && a.getValue().equals(BooleanType.FALSE)) {
+      overrideMethod(monitor, workingCopyManager, field, "getConfiguredVisible", "return false;");
+    }
+  }
+
+  protected void applyEnabledAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, EnabledAttribue a, IType field) throws CoreException, IllegalArgumentException {
+    if (a != null && a.getValue().equals(BooleanType.FALSE)) {
+      overrideMethod(monitor, workingCopyManager, field, "getConfiguredEnabled", "return false;");
+    }
+  }
+
+  protected void applyMandatoryAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, MandatoryAttribue a, IType field) throws CoreException, IllegalArgumentException {
+    if (a != null && a.getValue().equals(BooleanType.TRUE)) {
+      overrideMethod(monitor, workingCopyManager, field, "getConfiguredMandatory", "return true;");
+    }
+  }
+
+  protected void overrideMethod(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, IType declaringType, String methodName, String body) throws CoreException, IllegalArgumentException {
+    MethodOverrideOperation op = new MethodOverrideOperation(declaringType, methodName, true);
+    op.setSimpleBody(body);
+    op.validate();
+    op.run(monitor, workingCopyManager);
   }
 
   public static void dispatchFieldElements(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, AbstractFieldElement field, SamlContext context, SamlFormContext formContext) throws CoreException {
@@ -89,6 +205,10 @@ public abstract class AbstractSamlFormFieldElementOperation extends AbstractSaml
       op.validate();
       op.run(monitor, workingCopyManager);
     }
+  }
+
+  public SamlFormContext getSamlFormContext() {
+    return m_samlContext;
   }
 
   public void setSamlFormContext(SamlFormContext samlContext) {

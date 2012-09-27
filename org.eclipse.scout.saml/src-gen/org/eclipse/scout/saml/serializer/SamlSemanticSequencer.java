@@ -64,18 +64,13 @@ public class SamlSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == SamlPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
 			case SamlPackage.ABSTRACT_FIELD_PROPERTIES:
-				if(context == grammarAccess.getAbstractFieldPropertiesRule() ||
-				   context == grammarAccess.getAbstractValueFieldPropertiesRule() ||
-				   context == grammarAccess.getSmartFieldElementPropertiesRule() ||
-				   context == grammarAccess.getStringElementPropertiesRule()) {
+				if(context == grammarAccess.getAbstractFieldPropertiesRule()) {
 					sequence_AbstractFieldProperties(context, (AbstractFieldProperties) semanticObject); 
 					return; 
 				}
 				else break;
 			case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES:
-				if(context == grammarAccess.getAbstractValueFieldPropertiesRule() ||
-				   context == grammarAccess.getSmartFieldElementPropertiesRule() ||
-				   context == grammarAccess.getStringElementPropertiesRule()) {
+				if(context == grammarAccess.getAbstractValueFieldPropertiesRule()) {
 					sequence_AbstractValueFieldProperties(context, (AbstractValueFieldProperties) semanticObject); 
 					return; 
 				}
@@ -347,7 +342,7 @@ public class SamlSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     mandatory=MandatoryAttribue
+	 *     (fieldproperties=AbstractFieldProperties | mandatory=MandatoryAttribue)
 	 */
 	protected void sequence_AbstractValueFieldProperties(EObject context, AbstractValueFieldProperties semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -578,7 +573,7 @@ public class SamlSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     value=[AbstractFieldElement|ID]
+	 *     value=[AbstractValueFieldElement|ID]
 	 */
 	protected void sequence_MasterAttribute(EObject context, MasterAttribute semanticObject) {
 		if(errorAcceptor != null) {
@@ -587,7 +582,7 @@ public class SamlSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getMasterAttributeAccess().getValueAbstractFieldElementIDTerminalRuleCall_1_0_1(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getMasterAttributeAccess().getValueAbstractValueFieldElementIDTerminalRuleCall_1_0_1(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -644,7 +639,12 @@ public class SamlSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (code=SmartfieldElementCodeAttribute | value_type=SmartfieldElementValueTypeAttribute | lookup=SmartfieldElementLookupAttribute)
+	 *     (
+	 *         valueFieldProperties=AbstractValueFieldProperties | 
+	 *         code=SmartfieldElementCodeAttribute | 
+	 *         value_type=SmartfieldElementValueTypeAttribute | 
+	 *         lookup=SmartfieldElementLookupAttribute
+	 *     )
 	 */
 	protected void sequence_SmartFieldElementProperties(EObject context, SmartFieldElementProperties semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -685,7 +685,7 @@ public class SamlSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     value=[JvmType|QualifiedName]
+	 *     value=STRING
 	 */
 	protected void sequence_SmartfieldElementValueTypeAttribute(EObject context, SmartfieldElementValueTypeAttribute semanticObject) {
 		if(errorAcceptor != null) {
@@ -694,7 +694,7 @@ public class SamlSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getSmartfieldElementValueTypeAttributeAccess().getValueJvmTypeQualifiedNameParserRuleCall_1_0_1(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getSmartfieldElementValueTypeAttributeAccess().getValueSTRINGTerminalRuleCall_1_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -726,17 +726,10 @@ public class SamlSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     maxlen=StringElementMaxlenAttribute
+	 *     (valueFieldProperties=AbstractValueFieldProperties | maxlen=StringElementMaxlenAttribute)
 	 */
 	protected void sequence_StringElementProperties(EObject context, StringElementProperties semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, SamlPackage.Literals.STRING_ELEMENT_PROPERTIES__MAXLEN) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SamlPackage.Literals.STRING_ELEMENT_PROPERTIES__MAXLEN));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getStringElementPropertiesAccess().getMaxlenStringElementMaxlenAttributeParserRuleCall_1_0(), semanticObject.getMaxlen());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

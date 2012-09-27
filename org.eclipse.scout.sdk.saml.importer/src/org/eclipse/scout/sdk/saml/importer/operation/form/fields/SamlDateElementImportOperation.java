@@ -12,7 +12,11 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.jdt.core.IType;
+import org.eclipse.scout.saml.saml.AbstractValueFieldProperties;
 import org.eclipse.scout.saml.saml.DateElement;
+import org.eclipse.scout.sdk.operation.form.field.DateFieldNewOperation;
+import org.eclipse.scout.sdk.util.SdkProperties;
 import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 
 /**
@@ -24,6 +28,7 @@ import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 public class SamlDateElementImportOperation extends AbstractSamlFormFieldElementOperation {
 
   private DateElement m_dateElement;
+  public static final String SUFFIX = SdkProperties.SUFFIX_FORM_FIELD;
 
   @Override
   public String getOperationName() {
@@ -39,6 +44,18 @@ public class SamlDateElementImportOperation extends AbstractSamlFormFieldElement
 
   @Override
   public void run(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException, IllegalArgumentException {
+    DateFieldNewOperation o = new DateFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
+    o.setTypeName(getDateElement().getName() + SUFFIX);
+    o.validate();
+    o.run(monitor, workingCopyManager);
+    IType createdField = o.getCreatedField();
+
+    for (AbstractValueFieldProperties p : getDateElement().getProperties()) {
+      applyMandatoryAttribute(monitor, workingCopyManager, p.getMandatory(), createdField);
+      applyAbstractFormFieldProperties(monitor, workingCopyManager, p.getFieldproperties(), createdField);
+    }
+
+    fillFormFieldLogic(monitor, workingCopyManager, getDateElement().getChildren(), createdField);
   }
 
   public DateElement getDateElement() {
@@ -48,5 +65,4 @@ public class SamlDateElementImportOperation extends AbstractSamlFormFieldElement
   public void setDateElement(DateElement dateElement) {
     m_dateElement = dateElement;
   }
-
 }

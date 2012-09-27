@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.scout.saml.saml.AbstractFieldElement;
+import org.eclipse.scout.saml.saml.AbstractValueFieldElement;
 import org.eclipse.scout.saml.saml.MasterAttribute;
 import org.eclipse.scout.saml.saml.SamlPackage;
 
@@ -37,7 +37,7 @@ public class MasterAttributeImpl extends MinimalEObjectImpl.Container implements
    * @generated
    * @ordered
    */
-  protected AbstractFieldElement value;
+  protected AbstractValueFieldElement value;
 
   /**
    * <!-- begin-user-doc -->
@@ -65,12 +65,12 @@ public class MasterAttributeImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public AbstractFieldElement getValue()
+  public AbstractValueFieldElement getValue()
   {
     if (value != null && value.eIsProxy())
     {
       InternalEObject oldValue = (InternalEObject)value;
-      value = (AbstractFieldElement)eResolveProxy(oldValue);
+      value = (AbstractValueFieldElement)eResolveProxy(oldValue);
       if (value != oldValue)
       {
         if (eNotificationRequired())
@@ -85,7 +85,7 @@ public class MasterAttributeImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public AbstractFieldElement basicGetValue()
+  public AbstractValueFieldElement basicGetValue()
   {
     return value;
   }
@@ -95,9 +95,9 @@ public class MasterAttributeImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(AbstractFieldElement newValue)
+  public void setValue(AbstractValueFieldElement newValue)
   {
-    AbstractFieldElement oldValue = value;
+    AbstractValueFieldElement oldValue = value;
     value = newValue;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.MASTER_ATTRIBUTE__VALUE, oldValue, value));
@@ -131,7 +131,7 @@ public class MasterAttributeImpl extends MinimalEObjectImpl.Container implements
     switch (featureID)
     {
       case SamlPackage.MASTER_ATTRIBUTE__VALUE:
-        setValue((AbstractFieldElement)newValue);
+        setValue((AbstractValueFieldElement)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -148,7 +148,7 @@ public class MasterAttributeImpl extends MinimalEObjectImpl.Container implements
     switch (featureID)
     {
       case SamlPackage.MASTER_ATTRIBUTE__VALUE:
-        setValue((AbstractFieldElement)null);
+        setValue((AbstractValueFieldElement)null);
         return;
     }
     super.eUnset(featureID);

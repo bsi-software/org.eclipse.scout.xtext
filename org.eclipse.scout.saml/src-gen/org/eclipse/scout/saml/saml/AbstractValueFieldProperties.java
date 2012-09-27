@@ -2,6 +2,7 @@
  */
 package org.eclipse.scout.saml.saml;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -11,6 +12,7 @@ package org.eclipse.scout.saml.saml;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.scout.saml.saml.AbstractValueFieldProperties#getFieldproperties <em>Fieldproperties</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.AbstractValueFieldProperties#getMandatory <em>Mandatory</em>}</li>
  * </ul>
  * </p>
@@ -19,8 +21,34 @@ package org.eclipse.scout.saml.saml;
  * @model
  * @generated
  */
-public interface AbstractValueFieldProperties extends StringElementProperties, SmartFieldElementProperties
+public interface AbstractValueFieldProperties extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Fieldproperties</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Fieldproperties</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Fieldproperties</em>' containment reference.
+   * @see #setFieldproperties(AbstractFieldProperties)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getAbstractValueFieldProperties_Fieldproperties()
+   * @model containment="true"
+   * @generated
+   */
+  AbstractFieldProperties getFieldproperties();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.AbstractValueFieldProperties#getFieldproperties <em>Fieldproperties</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Fieldproperties</em>' containment reference.
+   * @see #getFieldproperties()
+   * @generated
+   */
+  void setFieldproperties(AbstractFieldProperties value);
+
   /**
    * Returns the value of the '<em><b>Mandatory</b></em>' containment reference.
    * <!-- begin-user-doc -->

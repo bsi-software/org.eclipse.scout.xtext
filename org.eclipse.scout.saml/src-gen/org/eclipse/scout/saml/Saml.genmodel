@@ -4,7 +4,7 @@
     editorDirectory="/org.eclipse.scout.saml.editor/src" modelPluginID="org.eclipse.scout.saml"
     forceOverwrite="true" modelName="Saml" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="org.eclipse.scout.saml.edit"
-    editorPluginID="org.eclipse.scout.saml.editor" runtimeVersion="2.8" usedGenPackages="../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types">
+    editorPluginID="org.eclipse.scout.saml.editor" runtimeVersion="2.8">
   <genPackages prefix="Saml" basePackage="org.eclipse.scout.saml" disposableProviderFactory="true"
       ecorePackage="Saml.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Saml.ecore#//BooleanType">
@@ -57,6 +57,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//AbstractValueFieldElement/name"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//AbstractValueFieldProperties">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//AbstractValueFieldProperties/fieldproperties"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//AbstractValueFieldProperties/mandatory"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//MandatoryAttribue">
@@ -135,6 +136,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//StringElement/logic"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//StringElementProperties">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//StringElementProperties/valueFieldProperties"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//StringElementProperties/maxlen"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//StringElementMaxlenAttribute">
@@ -157,6 +159,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartfieldElement/logic"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//SmartFieldElementProperties">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartFieldElementProperties/valueFieldProperties"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartFieldElementProperties/code"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartFieldElementProperties/value_type"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartFieldElementProperties/lookup"/>
@@ -165,7 +168,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartfieldElementCodeAttribute/value"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//SmartfieldElementValueTypeAttribute">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartfieldElementValueTypeAttribute/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//SmartfieldElementValueTypeAttribute/value"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//SmartfieldElementLookupAttribute">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartfieldElementLookupAttribute/value"/>

@@ -27,6 +27,7 @@ import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 public class SamlSequenceBoxElementImportOperation extends AbstractBoxElementImportOperation {
 
   private SequenceBoxElement m_sequenceBoxElement;
+  public static final String SUFFIX = SdkProperties.SUFFIX_BOX;
 
   @Override
   public String getOperationName() {
@@ -43,10 +44,18 @@ public class SamlSequenceBoxElementImportOperation extends AbstractBoxElementImp
   @Override
   public IType createBox(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException, IllegalArgumentException {
     SequenceBoxNewOperation o = new SequenceBoxNewOperation(getSamlFormContext().getCurrentParentBox(), false);
-    o.setTypeName(getSequenceBoxElement().getName() + SdkProperties.SUFFIX_BOX);
+    o.setTypeName(getSequenceBoxElement().getName() + SUFFIX);
     o.validate();
     o.run(monitor, workingCopyManager);
-    return o.getCreatedField();
+    IType createdField = o.getCreatedField();
+
+    overrideMethod(monitor, workingCopyManager, createdField, "getConfiguredAutoCheckFromTo", "return false;");
+
+    applyAbstractFormFieldProperties(monitor, workingCopyManager, getSequenceBoxElement().getProperties(), createdField);
+
+    fillFormFieldLogic(monitor, workingCopyManager, getSequenceBoxElement().getChildren(), createdField);
+
+    return createdField;
   }
 
   public SequenceBoxElement getSequenceBoxElement() {

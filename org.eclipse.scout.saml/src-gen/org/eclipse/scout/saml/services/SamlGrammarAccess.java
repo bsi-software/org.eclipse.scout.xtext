@@ -24,6 +24,8 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cElementsAssignment = (Assignment)rule.eContents().get(1);
 		private final RuleCall cElementsRootElementParserRuleCall_0 = (RuleCall)cElementsAssignment.eContents().get(0);
 		
+		////import "http://www.eclipse.org/xtext/common/JavaVMTypes" as jvmTypes
+		//
 		//Model:
 		//
 		//	elements+=RootElement*;
@@ -281,28 +283,28 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cMasterKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final CrossReference cValueAbstractFieldElementCrossReference_1_0 = (CrossReference)cValueAssignment_1.eContents().get(0);
-		private final RuleCall cValueAbstractFieldElementIDTerminalRuleCall_1_0_1 = (RuleCall)cValueAbstractFieldElementCrossReference_1_0.eContents().get(1);
+		private final CrossReference cValueAbstractValueFieldElementCrossReference_1_0 = (CrossReference)cValueAssignment_1.eContents().get(0);
+		private final RuleCall cValueAbstractValueFieldElementIDTerminalRuleCall_1_0_1 = (RuleCall)cValueAbstractValueFieldElementCrossReference_1_0.eContents().get(1);
 		
 		//MasterAttribute:
 		//
-		//	"master=" value=[AbstractFieldElement];
+		//	"master=" value=[AbstractValueFieldElement];
 		public ParserRule getRule() { return rule; }
 
-		//"master=" value=[AbstractFieldElement]
+		//"master=" value=[AbstractValueFieldElement]
 		public Group getGroup() { return cGroup; }
 
 		//"master="
 		public Keyword getMasterKeyword_0() { return cMasterKeyword_0; }
 
-		//value=[AbstractFieldElement]
+		//value=[AbstractValueFieldElement]
 		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
 
-		//[AbstractFieldElement]
-		public CrossReference getValueAbstractFieldElementCrossReference_1_0() { return cValueAbstractFieldElementCrossReference_1_0; }
+		//[AbstractValueFieldElement]
+		public CrossReference getValueAbstractValueFieldElementCrossReference_1_0() { return cValueAbstractValueFieldElementCrossReference_1_0; }
 
 		//ID
-		public RuleCall getValueAbstractFieldElementIDTerminalRuleCall_1_0_1() { return cValueAbstractFieldElementIDTerminalRuleCall_1_0_1; }
+		public RuleCall getValueAbstractValueFieldElementIDTerminalRuleCall_1_0_1() { return cValueAbstractValueFieldElementIDTerminalRuleCall_1_0_1; }
 	}
 
 	public class AbstractValueFieldElementElements extends AbstractParserRuleElementFinder {
@@ -345,20 +347,24 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	public class AbstractValueFieldPropertiesElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "AbstractValueFieldProperties");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cAbstractFieldPropertiesParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final Assignment cFieldpropertiesAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final RuleCall cFieldpropertiesAbstractFieldPropertiesParserRuleCall_0_0 = (RuleCall)cFieldpropertiesAssignment_0.eContents().get(0);
 		private final Assignment cMandatoryAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
 		private final RuleCall cMandatoryMandatoryAttribueParserRuleCall_1_0 = (RuleCall)cMandatoryAssignment_1.eContents().get(0);
 		
 		//AbstractValueFieldProperties:
 		//
-		//	AbstractFieldProperties | mandatory=MandatoryAttribue;
+		//	fieldproperties=AbstractFieldProperties | mandatory=MandatoryAttribue;
 		public ParserRule getRule() { return rule; }
 
-		//AbstractFieldProperties | mandatory=MandatoryAttribue
+		//fieldproperties=AbstractFieldProperties | mandatory=MandatoryAttribue
 		public Alternatives getAlternatives() { return cAlternatives; }
 
+		//fieldproperties=AbstractFieldProperties
+		public Assignment getFieldpropertiesAssignment_0() { return cFieldpropertiesAssignment_0; }
+
 		//AbstractFieldProperties
-		public RuleCall getAbstractFieldPropertiesParserRuleCall_0() { return cAbstractFieldPropertiesParserRuleCall_0; }
+		public RuleCall getFieldpropertiesAbstractFieldPropertiesParserRuleCall_0_0() { return cFieldpropertiesAbstractFieldPropertiesParserRuleCall_0_0; }
 
 		//mandatory=MandatoryAttribue
 		public Assignment getMandatoryAssignment_1() { return cMandatoryAssignment_1; }
@@ -1166,20 +1172,24 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	public class StringElementPropertiesElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "StringElementProperties");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cAbstractValueFieldPropertiesParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final Assignment cValueFieldPropertiesAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final RuleCall cValueFieldPropertiesAbstractValueFieldPropertiesParserRuleCall_0_0 = (RuleCall)cValueFieldPropertiesAssignment_0.eContents().get(0);
 		private final Assignment cMaxlenAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
 		private final RuleCall cMaxlenStringElementMaxlenAttributeParserRuleCall_1_0 = (RuleCall)cMaxlenAssignment_1.eContents().get(0);
 		
 		//StringElementProperties:
 		//
-		//	AbstractValueFieldProperties | maxlen=StringElementMaxlenAttribute;
+		//	valueFieldProperties=AbstractValueFieldProperties | maxlen=StringElementMaxlenAttribute;
 		public ParserRule getRule() { return rule; }
 
-		//AbstractValueFieldProperties | maxlen=StringElementMaxlenAttribute
+		//valueFieldProperties=AbstractValueFieldProperties | maxlen=StringElementMaxlenAttribute
 		public Alternatives getAlternatives() { return cAlternatives; }
 
+		//valueFieldProperties=AbstractValueFieldProperties
+		public Assignment getValueFieldPropertiesAssignment_0() { return cValueFieldPropertiesAssignment_0; }
+
 		//AbstractValueFieldProperties
-		public RuleCall getAbstractValueFieldPropertiesParserRuleCall_0() { return cAbstractValueFieldPropertiesParserRuleCall_0; }
+		public RuleCall getValueFieldPropertiesAbstractValueFieldPropertiesParserRuleCall_0_0() { return cValueFieldPropertiesAbstractValueFieldPropertiesParserRuleCall_0_0; }
 
 		//maxlen=StringElementMaxlenAttribute
 		public Assignment getMaxlenAssignment_1() { return cMaxlenAssignment_1; }
@@ -1428,7 +1438,8 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	public class SmartFieldElementPropertiesElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SmartFieldElementProperties");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cAbstractValueFieldPropertiesParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final Assignment cValueFieldPropertiesAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final RuleCall cValueFieldPropertiesAbstractValueFieldPropertiesParserRuleCall_0_0 = (RuleCall)cValueFieldPropertiesAssignment_0.eContents().get(0);
 		private final Assignment cCodeAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
 		private final RuleCall cCodeSmartfieldElementCodeAttributeParserRuleCall_1_0 = (RuleCall)cCodeAssignment_1.eContents().get(0);
 		private final Assignment cValue_typeAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
@@ -1438,18 +1449,21 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//SmartFieldElementProperties:
 		//
-		//	AbstractValueFieldProperties | code=SmartfieldElementCodeAttribute | value_type=SmartfieldElementValueTypeAttribute |
+		//	valueFieldProperties=AbstractValueFieldProperties | code=SmartfieldElementCodeAttribute |
 		//
-		//	lookup=SmartfieldElementLookupAttribute;
+		//	value_type=SmartfieldElementValueTypeAttribute | lookup=SmartfieldElementLookupAttribute;
 		public ParserRule getRule() { return rule; }
 
-		//AbstractValueFieldProperties | code=SmartfieldElementCodeAttribute | value_type=SmartfieldElementValueTypeAttribute |
+		//valueFieldProperties=AbstractValueFieldProperties | code=SmartfieldElementCodeAttribute |
 		//
-		//lookup=SmartfieldElementLookupAttribute
+		//value_type=SmartfieldElementValueTypeAttribute | lookup=SmartfieldElementLookupAttribute
 		public Alternatives getAlternatives() { return cAlternatives; }
 
+		//valueFieldProperties=AbstractValueFieldProperties
+		public Assignment getValueFieldPropertiesAssignment_0() { return cValueFieldPropertiesAssignment_0; }
+
 		//AbstractValueFieldProperties
-		public RuleCall getAbstractValueFieldPropertiesParserRuleCall_0() { return cAbstractValueFieldPropertiesParserRuleCall_0; }
+		public RuleCall getValueFieldPropertiesAbstractValueFieldPropertiesParserRuleCall_0_0() { return cValueFieldPropertiesAbstractValueFieldPropertiesParserRuleCall_0_0; }
 
 		//code=SmartfieldElementCodeAttribute
 		public Assignment getCodeAssignment_1() { return cCodeAssignment_1; }
@@ -1504,28 +1518,26 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cValue_typeKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final CrossReference cValueJvmTypeCrossReference_1_0 = (CrossReference)cValueAssignment_1.eContents().get(0);
-		private final RuleCall cValueJvmTypeQualifiedNameParserRuleCall_1_0_1 = (RuleCall)cValueJvmTypeCrossReference_1_0.eContents().get(1);
+		private final RuleCall cValueSTRINGTerminalRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
 		
+		////[jvmTypes::JvmType|QualifiedName];
+		//
 		//SmartfieldElementValueTypeAttribute:
 		//
-		//	"value_type=" value=[jvmTypes::JvmType|QualifiedName];
+		//	"value_type=" value=STRING;
 		public ParserRule getRule() { return rule; }
 
-		//"value_type=" value=[jvmTypes::JvmType|QualifiedName]
+		//"value_type=" value=STRING
 		public Group getGroup() { return cGroup; }
 
 		//"value_type="
 		public Keyword getValue_typeKeyword_0() { return cValue_typeKeyword_0; }
 
-		//value=[jvmTypes::JvmType|QualifiedName]
+		//value=STRING
 		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
 
-		//[jvmTypes::JvmType|QualifiedName]
-		public CrossReference getValueJvmTypeCrossReference_1_0() { return cValueJvmTypeCrossReference_1_0; }
-
-		//QualifiedName
-		public RuleCall getValueJvmTypeQualifiedNameParserRuleCall_1_0_1() { return cValueJvmTypeQualifiedNameParserRuleCall_1_0_1; }
+		//STRING
+		public RuleCall getValueSTRINGTerminalRuleCall_1_0() { return cValueSTRINGTerminalRuleCall_1_0; }
 	}
 
 	public class SmartfieldElementLookupAttributeElements extends AbstractParserRuleElementFinder {
@@ -1851,6 +1863,8 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
+	////import "http://www.eclipse.org/xtext/common/JavaVMTypes" as jvmTypes
+	//
 	//Model:
 	//
 	//	elements+=RootElement*;
@@ -1963,7 +1977,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 
 	//MasterAttribute:
 	//
-	//	"master=" value=[AbstractFieldElement];
+	//	"master=" value=[AbstractValueFieldElement];
 	public MasterAttributeElements getMasterAttributeAccess() {
 		return (pMasterAttribute != null) ? pMasterAttribute : (pMasterAttribute = new MasterAttributeElements());
 	}
@@ -1985,7 +1999,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 
 	//AbstractValueFieldProperties:
 	//
-	//	AbstractFieldProperties | mandatory=MandatoryAttribue;
+	//	fieldproperties=AbstractFieldProperties | mandatory=MandatoryAttribue;
 	public AbstractValueFieldPropertiesElements getAbstractValueFieldPropertiesAccess() {
 		return (pAbstractValueFieldProperties != null) ? pAbstractValueFieldProperties : (pAbstractValueFieldProperties = new AbstractValueFieldPropertiesElements());
 	}
@@ -2272,7 +2286,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 
 	//StringElementProperties:
 	//
-	//	AbstractValueFieldProperties | maxlen=StringElementMaxlenAttribute;
+	//	valueFieldProperties=AbstractValueFieldProperties | maxlen=StringElementMaxlenAttribute;
 	public StringElementPropertiesElements getStringElementPropertiesAccess() {
 		return (pStringElementProperties != null) ? pStringElementProperties : (pStringElementProperties = new StringElementPropertiesElements());
 	}
@@ -2338,9 +2352,9 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 
 	//SmartFieldElementProperties:
 	//
-	//	AbstractValueFieldProperties | code=SmartfieldElementCodeAttribute | value_type=SmartfieldElementValueTypeAttribute |
+	//	valueFieldProperties=AbstractValueFieldProperties | code=SmartfieldElementCodeAttribute |
 	//
-	//	lookup=SmartfieldElementLookupAttribute;
+	//	value_type=SmartfieldElementValueTypeAttribute | lookup=SmartfieldElementLookupAttribute;
 	public SmartFieldElementPropertiesElements getSmartFieldElementPropertiesAccess() {
 		return (pSmartFieldElementProperties != null) ? pSmartFieldElementProperties : (pSmartFieldElementProperties = new SmartFieldElementPropertiesElements());
 	}
@@ -2360,9 +2374,11 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		return getSmartfieldElementCodeAttributeAccess().getRule();
 	}
 
+	////[jvmTypes::JvmType|QualifiedName];
+	//
 	//SmartfieldElementValueTypeAttribute:
 	//
-	//	"value_type=" value=[jvmTypes::JvmType|QualifiedName];
+	//	"value_type=" value=STRING;
 	public SmartfieldElementValueTypeAttributeElements getSmartfieldElementValueTypeAttributeAccess() {
 		return (pSmartfieldElementValueTypeAttribute != null) ? pSmartfieldElementValueTypeAttribute : (pSmartfieldElementValueTypeAttribute = new SmartfieldElementValueTypeAttributeElements());
 	}

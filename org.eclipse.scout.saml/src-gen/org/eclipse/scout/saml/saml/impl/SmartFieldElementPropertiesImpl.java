@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.scout.saml.saml.AbstractValueFieldProperties;
 import org.eclipse.scout.saml.saml.SamlPackage;
 import org.eclipse.scout.saml.saml.SmartFieldElementProperties;
 import org.eclipse.scout.saml.saml.SmartfieldElementCodeAttribute;
@@ -24,6 +25,7 @@ import org.eclipse.scout.saml.saml.SmartfieldElementValueTypeAttribute;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.SmartFieldElementPropertiesImpl#getValueFieldProperties <em>Value Field Properties</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.SmartFieldElementPropertiesImpl#getCode <em>Code</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.SmartFieldElementPropertiesImpl#getValue_type <em>Value type</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.SmartFieldElementPropertiesImpl#getLookup <em>Lookup</em>}</li>
@@ -34,6 +36,16 @@ import org.eclipse.scout.saml.saml.SmartfieldElementValueTypeAttribute;
  */
 public class SmartFieldElementPropertiesImpl extends MinimalEObjectImpl.Container implements SmartFieldElementProperties
 {
+  /**
+   * The cached value of the '{@link #getValueFieldProperties() <em>Value Field Properties</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getValueFieldProperties()
+   * @generated
+   * @ordered
+   */
+  protected AbstractValueFieldProperties valueFieldProperties;
+
   /**
    * The cached value of the '{@link #getCode() <em>Code</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -83,6 +95,54 @@ public class SmartFieldElementPropertiesImpl extends MinimalEObjectImpl.Containe
   protected EClass eStaticClass()
   {
     return SamlPackage.Literals.SMART_FIELD_ELEMENT_PROPERTIES;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AbstractValueFieldProperties getValueFieldProperties()
+  {
+    return valueFieldProperties;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetValueFieldProperties(AbstractValueFieldProperties newValueFieldProperties, NotificationChain msgs)
+  {
+    AbstractValueFieldProperties oldValueFieldProperties = valueFieldProperties;
+    valueFieldProperties = newValueFieldProperties;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SamlPackage.SMART_FIELD_ELEMENT_PROPERTIES__VALUE_FIELD_PROPERTIES, oldValueFieldProperties, newValueFieldProperties);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setValueFieldProperties(AbstractValueFieldProperties newValueFieldProperties)
+  {
+    if (newValueFieldProperties != valueFieldProperties)
+    {
+      NotificationChain msgs = null;
+      if (valueFieldProperties != null)
+        msgs = ((InternalEObject)valueFieldProperties).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SamlPackage.SMART_FIELD_ELEMENT_PROPERTIES__VALUE_FIELD_PROPERTIES, null, msgs);
+      if (newValueFieldProperties != null)
+        msgs = ((InternalEObject)newValueFieldProperties).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SamlPackage.SMART_FIELD_ELEMENT_PROPERTIES__VALUE_FIELD_PROPERTIES, null, msgs);
+      msgs = basicSetValueFieldProperties(newValueFieldProperties, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.SMART_FIELD_ELEMENT_PROPERTIES__VALUE_FIELD_PROPERTIES, newValueFieldProperties, newValueFieldProperties));
   }
 
   /**
@@ -239,6 +299,8 @@ public class SmartFieldElementPropertiesImpl extends MinimalEObjectImpl.Containe
   {
     switch (featureID)
     {
+      case SamlPackage.SMART_FIELD_ELEMENT_PROPERTIES__VALUE_FIELD_PROPERTIES:
+        return basicSetValueFieldProperties(null, msgs);
       case SamlPackage.SMART_FIELD_ELEMENT_PROPERTIES__CODE:
         return basicSetCode(null, msgs);
       case SamlPackage.SMART_FIELD_ELEMENT_PROPERTIES__VALUE_TYPE:
@@ -259,6 +321,8 @@ public class SmartFieldElementPropertiesImpl extends MinimalEObjectImpl.Containe
   {
     switch (featureID)
     {
+      case SamlPackage.SMART_FIELD_ELEMENT_PROPERTIES__VALUE_FIELD_PROPERTIES:
+        return getValueFieldProperties();
       case SamlPackage.SMART_FIELD_ELEMENT_PROPERTIES__CODE:
         return getCode();
       case SamlPackage.SMART_FIELD_ELEMENT_PROPERTIES__VALUE_TYPE:
@@ -279,6 +343,9 @@ public class SmartFieldElementPropertiesImpl extends MinimalEObjectImpl.Containe
   {
     switch (featureID)
     {
+      case SamlPackage.SMART_FIELD_ELEMENT_PROPERTIES__VALUE_FIELD_PROPERTIES:
+        setValueFieldProperties((AbstractValueFieldProperties)newValue);
+        return;
       case SamlPackage.SMART_FIELD_ELEMENT_PROPERTIES__CODE:
         setCode((SmartfieldElementCodeAttribute)newValue);
         return;
@@ -302,6 +369,9 @@ public class SmartFieldElementPropertiesImpl extends MinimalEObjectImpl.Containe
   {
     switch (featureID)
     {
+      case SamlPackage.SMART_FIELD_ELEMENT_PROPERTIES__VALUE_FIELD_PROPERTIES:
+        setValueFieldProperties((AbstractValueFieldProperties)null);
+        return;
       case SamlPackage.SMART_FIELD_ELEMENT_PROPERTIES__CODE:
         setCode((SmartfieldElementCodeAttribute)null);
         return;
@@ -325,6 +395,8 @@ public class SmartFieldElementPropertiesImpl extends MinimalEObjectImpl.Containe
   {
     switch (featureID)
     {
+      case SamlPackage.SMART_FIELD_ELEMENT_PROPERTIES__VALUE_FIELD_PROPERTIES:
+        return valueFieldProperties != null;
       case SamlPackage.SMART_FIELD_ELEMENT_PROPERTIES__CODE:
         return code != null;
       case SamlPackage.SMART_FIELD_ELEMENT_PROPERTIES__VALUE_TYPE:

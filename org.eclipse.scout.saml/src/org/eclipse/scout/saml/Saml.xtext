@@ -2,7 +2,7 @@ grammar org.eclipse.scout.saml.Saml with org.eclipse.xtext.common.Terminals
 
 generate saml "http://www.eclipse.org/scout/saml/Saml"
 
-import "http://www.eclipse.org/xtext/common/JavaVMTypes" as jvmTypes
+//import "http://www.eclipse.org/xtext/common/JavaVMTypes" as jvmTypes
 
 Model:
 	elements+=RootElement*;
@@ -21,10 +21,10 @@ AbstractFieldProperties:text=TextAttribute|visible=VisibleAttribue|master=Master
 TextAttribute:'text='value=[TranslationElement];
 EnabledAttribue:'enabled='value=BooleanType;
 VisibleAttribue:'visible='value=BooleanType;
-MasterAttribute:'master='value=[AbstractFieldElement];
+MasterAttribute:'master='value=[AbstractValueFieldElement];
 
 AbstractValueFieldElement:StringElement|SmartfieldElement|LongElement|DoubleElement|DateElement|ZregBoxElement;
-AbstractValueFieldProperties:AbstractFieldProperties|mandatory=MandatoryAttribue;
+AbstractValueFieldProperties:fieldproperties=AbstractFieldProperties|mandatory=MandatoryAttribue;
 MandatoryAttribue:'mandatory='value=BooleanType;
 
 
@@ -74,7 +74,7 @@ SequenceBoxElement:'sequence_box 'name=ID (properties+=AbstractFieldProperties)*
 	
 
 StringElement:'string 'name=ID (properties+=StringElementProperties)* ('{' (logic+=LogicElement)+ '}')?;
-StringElementProperties:AbstractValueFieldProperties|maxlen=StringElementMaxlenAttribute;
+StringElementProperties:valueFieldProperties=AbstractValueFieldProperties|maxlen=StringElementMaxlenAttribute;
 StringElementMaxlenAttribute:'maxlen='value=INT;
 
 
@@ -88,9 +88,9 @@ DateElement:'date 'name=ID (properties+=AbstractValueFieldProperties)* ('{' chil
 
 
 SmartfieldElement:'smartfield 'name=ID (properties+=SmartFieldElementProperties)* ('{' (logic+=LogicElement)+ '}')?;
-SmartFieldElementProperties:AbstractValueFieldProperties|code=SmartfieldElementCodeAttribute|value_type=SmartfieldElementValueTypeAttribute|lookup=SmartfieldElementLookupAttribute;
+SmartFieldElementProperties:valueFieldProperties=AbstractValueFieldProperties|code=SmartfieldElementCodeAttribute|value_type=SmartfieldElementValueTypeAttribute|lookup=SmartfieldElementLookupAttribute;
 SmartfieldElementCodeAttribute:'code='value=[CodeElement];
-SmartfieldElementValueTypeAttribute:'value_type='value=[jvmTypes::JvmType|QualifiedName];
+SmartfieldElementValueTypeAttribute:'value_type='value=STRING;//[jvmTypes::JvmType|QualifiedName];
 SmartfieldElementLookupAttribute:'lookup='value=[LookupElement];
 
 

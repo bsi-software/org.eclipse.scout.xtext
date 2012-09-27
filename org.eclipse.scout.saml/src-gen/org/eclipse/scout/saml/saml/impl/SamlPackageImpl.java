@@ -60,8 +60,6 @@ import org.eclipse.scout.saml.saml.TranslationElement;
 import org.eclipse.scout.saml.saml.VisibleAttribue;
 import org.eclipse.scout.saml.saml.ZregBoxElement;
 
-import org.eclipse.xtext.common.types.TypesPackage;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Package</b>.
@@ -447,9 +445,6 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
 
     isInited = true;
 
-    // Initialize simple dependencies
-    TypesPackage.eINSTANCE.eClass();
-
     // Create package meta-data objects
     theSamlPackage.createPackageContents();
 
@@ -690,9 +685,19 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAbstractValueFieldProperties_Mandatory()
+  public EReference getAbstractValueFieldProperties_Fieldproperties()
   {
     return (EReference)abstractValueFieldPropertiesEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAbstractValueFieldProperties_Mandatory()
+  {
+    return (EReference)abstractValueFieldPropertiesEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1260,9 +1265,19 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getStringElementProperties_Maxlen()
+  public EReference getStringElementProperties_ValueFieldProperties()
   {
     return (EReference)stringElementPropertiesEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getStringElementProperties_Maxlen()
+  {
+    return (EReference)stringElementPropertiesEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1420,7 +1435,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSmartFieldElementProperties_Code()
+  public EReference getSmartFieldElementProperties_ValueFieldProperties()
   {
     return (EReference)smartFieldElementPropertiesEClass.getEStructuralFeatures().get(0);
   }
@@ -1430,7 +1445,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSmartFieldElementProperties_Value_type()
+  public EReference getSmartFieldElementProperties_Code()
   {
     return (EReference)smartFieldElementPropertiesEClass.getEStructuralFeatures().get(1);
   }
@@ -1440,9 +1455,19 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSmartFieldElementProperties_Lookup()
+  public EReference getSmartFieldElementProperties_Value_type()
   {
     return (EReference)smartFieldElementPropertiesEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSmartFieldElementProperties_Lookup()
+  {
+    return (EReference)smartFieldElementPropertiesEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -1480,9 +1505,9 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSmartfieldElementValueTypeAttribute_Value()
+  public EAttribute getSmartfieldElementValueTypeAttribute_Value()
   {
-    return (EReference)smartfieldElementValueTypeAttributeEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)smartfieldElementValueTypeAttributeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1627,6 +1652,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     createEAttribute(abstractValueFieldElementEClass, ABSTRACT_VALUE_FIELD_ELEMENT__NAME);
 
     abstractValueFieldPropertiesEClass = createEClass(ABSTRACT_VALUE_FIELD_PROPERTIES);
+    createEReference(abstractValueFieldPropertiesEClass, ABSTRACT_VALUE_FIELD_PROPERTIES__FIELDPROPERTIES);
     createEReference(abstractValueFieldPropertiesEClass, ABSTRACT_VALUE_FIELD_PROPERTIES__MANDATORY);
 
     mandatoryAttribueEClass = createEClass(MANDATORY_ATTRIBUE);
@@ -1707,6 +1733,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     createEReference(stringElementEClass, STRING_ELEMENT__LOGIC);
 
     stringElementPropertiesEClass = createEClass(STRING_ELEMENT_PROPERTIES);
+    createEReference(stringElementPropertiesEClass, STRING_ELEMENT_PROPERTIES__VALUE_FIELD_PROPERTIES);
     createEReference(stringElementPropertiesEClass, STRING_ELEMENT_PROPERTIES__MAXLEN);
 
     stringElementMaxlenAttributeEClass = createEClass(STRING_ELEMENT_MAXLEN_ATTRIBUTE);
@@ -1729,6 +1756,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     createEReference(smartfieldElementEClass, SMARTFIELD_ELEMENT__LOGIC);
 
     smartFieldElementPropertiesEClass = createEClass(SMART_FIELD_ELEMENT_PROPERTIES);
+    createEReference(smartFieldElementPropertiesEClass, SMART_FIELD_ELEMENT_PROPERTIES__VALUE_FIELD_PROPERTIES);
     createEReference(smartFieldElementPropertiesEClass, SMART_FIELD_ELEMENT_PROPERTIES__CODE);
     createEReference(smartFieldElementPropertiesEClass, SMART_FIELD_ELEMENT_PROPERTIES__VALUE_TYPE);
     createEReference(smartFieldElementPropertiesEClass, SMART_FIELD_ELEMENT_PROPERTIES__LOOKUP);
@@ -1737,7 +1765,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     createEReference(smartfieldElementCodeAttributeEClass, SMARTFIELD_ELEMENT_CODE_ATTRIBUTE__VALUE);
 
     smartfieldElementValueTypeAttributeEClass = createEClass(SMARTFIELD_ELEMENT_VALUE_TYPE_ATTRIBUTE);
-    createEReference(smartfieldElementValueTypeAttributeEClass, SMARTFIELD_ELEMENT_VALUE_TYPE_ATTRIBUTE__VALUE);
+    createEAttribute(smartfieldElementValueTypeAttributeEClass, SMARTFIELD_ELEMENT_VALUE_TYPE_ATTRIBUTE__VALUE);
 
     smartfieldElementLookupAttributeEClass = createEClass(SMARTFIELD_ELEMENT_LOOKUP_ATTRIBUTE);
     createEReference(smartfieldElementLookupAttributeEClass, SMARTFIELD_ELEMENT_LOOKUP_ATTRIBUTE__VALUE);
@@ -1776,19 +1804,13 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     setNsPrefix(eNS_PREFIX);
     setNsURI(eNS_URI);
 
-    // Obtain other dependent packages
-    TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
-
     // Create type parameters
 
     // Set bounds for type parameters
 
     // Add supertypes to classes
     abstractFieldElementEClass.getESuperTypes().add(this.getAbstractScoutType());
-    abstractFieldPropertiesEClass.getESuperTypes().add(this.getAbstractValueFieldProperties());
     abstractValueFieldElementEClass.getESuperTypes().add(this.getAbstractFieldElement());
-    abstractValueFieldPropertiesEClass.getESuperTypes().add(this.getStringElementProperties());
-    abstractValueFieldPropertiesEClass.getESuperTypes().add(this.getSmartFieldElementProperties());
     abstractContainerFieldElementEClass.getESuperTypes().add(this.getAbstractFieldElement());
     moduleElementEClass.getESuperTypes().add(this.getRootElement());
     translationElementEClass.getESuperTypes().add(this.getRootElement());
@@ -1834,12 +1856,13 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEAttribute(getVisibleAttribue_Value(), this.getBooleanType(), "value", null, 0, 1, VisibleAttribue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(masterAttributeEClass, MasterAttribute.class, "MasterAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getMasterAttribute_Value(), this.getAbstractFieldElement(), null, "value", null, 0, 1, MasterAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMasterAttribute_Value(), this.getAbstractValueFieldElement(), null, "value", null, 0, 1, MasterAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(abstractValueFieldElementEClass, AbstractValueFieldElement.class, "AbstractValueFieldElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAbstractValueFieldElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, AbstractValueFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(abstractValueFieldPropertiesEClass, AbstractValueFieldProperties.class, "AbstractValueFieldProperties", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAbstractValueFieldProperties_Fieldproperties(), this.getAbstractFieldProperties(), null, "fieldproperties", null, 0, 1, AbstractValueFieldProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAbstractValueFieldProperties_Mandatory(), this.getMandatoryAttribue(), null, "mandatory", null, 0, 1, AbstractValueFieldProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(mandatoryAttribueEClass, MandatoryAttribue.class, "MandatoryAttribue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1920,6 +1943,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEReference(getStringElement_Logic(), this.getLogicElement(), null, "logic", null, 0, -1, StringElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(stringElementPropertiesEClass, StringElementProperties.class, "StringElementProperties", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getStringElementProperties_ValueFieldProperties(), this.getAbstractValueFieldProperties(), null, "valueFieldProperties", null, 0, 1, StringElementProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getStringElementProperties_Maxlen(), this.getStringElementMaxlenAttribute(), null, "maxlen", null, 0, 1, StringElementProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(stringElementMaxlenAttributeEClass, StringElementMaxlenAttribute.class, "StringElementMaxlenAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1942,6 +1966,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEReference(getSmartfieldElement_Logic(), this.getLogicElement(), null, "logic", null, 0, -1, SmartfieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(smartFieldElementPropertiesEClass, SmartFieldElementProperties.class, "SmartFieldElementProperties", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSmartFieldElementProperties_ValueFieldProperties(), this.getAbstractValueFieldProperties(), null, "valueFieldProperties", null, 0, 1, SmartFieldElementProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSmartFieldElementProperties_Code(), this.getSmartfieldElementCodeAttribute(), null, "code", null, 0, 1, SmartFieldElementProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSmartFieldElementProperties_Value_type(), this.getSmartfieldElementValueTypeAttribute(), null, "value_type", null, 0, 1, SmartFieldElementProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSmartFieldElementProperties_Lookup(), this.getSmartfieldElementLookupAttribute(), null, "lookup", null, 0, 1, SmartFieldElementProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1950,7 +1975,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEReference(getSmartfieldElementCodeAttribute_Value(), this.getCodeElement(), null, "value", null, 0, 1, SmartfieldElementCodeAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(smartfieldElementValueTypeAttributeEClass, SmartfieldElementValueTypeAttribute.class, "SmartfieldElementValueTypeAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getSmartfieldElementValueTypeAttribute_Value(), theTypesPackage.getJvmType(), null, "value", null, 0, 1, SmartfieldElementValueTypeAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSmartfieldElementValueTypeAttribute_Value(), ecorePackage.getEString(), "value", null, 0, 1, SmartfieldElementValueTypeAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(smartfieldElementLookupAttributeEClass, SmartfieldElementLookupAttribute.class, "SmartfieldElementLookupAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSmartfieldElementLookupAttribute_Value(), this.getLookupElement(), null, "value", null, 0, 1, SmartfieldElementLookupAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

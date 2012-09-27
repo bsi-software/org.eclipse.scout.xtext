@@ -12,7 +12,11 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.saml.saml.ZregBoxElement;
+import org.eclipse.scout.sdk.operation.form.field.FormFieldNewOperation;
+import org.eclipse.scout.sdk.util.SdkProperties;
 import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 
 /**
@@ -24,6 +28,7 @@ import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 public class SamlZregBoxElementImportOperation extends AbstractSamlFormFieldElementOperation {
 
   private ZregBoxElement m_zregBoxElement;
+  public static final String SUFFIX = SdkProperties.SUFFIX_BOX;
 
   @Override
   public String getOperationName() {
@@ -39,6 +44,29 @@ public class SamlZregBoxElementImportOperation extends AbstractSamlFormFieldElem
 
   @Override
   public void run(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException, IllegalArgumentException {
+    FormFieldNewOperation newOp = new FormFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
+    final String typeName = getZregBoxElement().getName();
+    newOp.setTypeName(typeName + SUFFIX);
+    newOp.setSuperTypeSignature(Signature.createTypeSignature("ch.raiffeisen.dialba.common.client.ui.forms.fields.ZregSequenceBoxAbs", true));
+    newOp.validate();
+    newOp.run(monitor, workingCopyManager);
+    IType createdField = newOp.getCreatedFormField();
+
+    /*MethodOverrideOperation operation = new MethodOverrideOperation(createdField, "getBoxData", false) {
+      @Override
+      protected String createMethodBody(IImportValidator validator) throws JavaModelException {
+        String formData = validator.getTypeName(Signature.createTypeSignature(getSamlFormContext().getFormDataType().getFullyQualifiedName(), true));
+        return "return new " + formData + "().get" + typeName + "Box();";
+      }
+    };
+    operation.validate();
+    operation.run(monitor, workingCopyManager);
+
+    overrideMethod(monitor, workingCopyManager, createdField, "execInitField", "getZregNumberField().setMandatory(true);\ngetZregKurzBezField().setMandatory(true);");
+
+    applyAbstractFormFieldProperties(monitor, workingCopyManager, getZregBoxElement().getProperties(), createdField);
+
+    fillFormFieldLogic(monitor, workingCopyManager, getZregBoxElement().getChildren(), createdField);*/
   }
 
   public ZregBoxElement getZregBoxElement() {

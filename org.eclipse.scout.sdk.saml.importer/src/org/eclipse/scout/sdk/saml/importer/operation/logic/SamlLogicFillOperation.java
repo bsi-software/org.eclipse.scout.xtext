@@ -38,7 +38,7 @@ import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
  */
 public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
 
-  private EList<EObject> m_childElements;
+  private EList<? extends EObject> m_childElements;
 
   private IType m_serverType;
   private IType m_clientType;
@@ -57,9 +57,6 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
   public void validate() throws IllegalArgumentException {
     if (getChildElements() == null) {
       throw new IllegalArgumentException("Child elements cannot be null.");
-    }
-    if (getChildElements().size() < 1) {
-      throw new IllegalArgumentException("No child elements could be found.");
     }
     if (!TypeUtility.exists(getServerType())) {
       throw new IllegalArgumentException("Server type cannot be null.");
@@ -94,7 +91,7 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
 
   private void appendMethodLogic(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, final IMethod method, final String logic) throws CoreException, IllegalArgumentException {
     final boolean visited = getSamlContext().isMethodChanged(method);
-    MethodUpdateContentOperation op = new MethodUpdateContentOperation(method, null, false) {
+    MethodUpdateContentOperation op = new MethodUpdateContentOperation(method, null, true) {
       @Override
       protected String createMethodBody(String originalBody, IImportValidator validator) throws JavaModelException {
         if (visited) {
@@ -172,7 +169,7 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
       return method;
     }
     else {
-      MethodOverrideOperation op = new MethodOverrideOperation(info.getSourceType(), info.getSourceMethodName(), false);
+      MethodOverrideOperation op = new MethodOverrideOperation(info.getSourceType(), info.getSourceMethodName(), true);
       op.setSimpleBody("");
       op.validate();
       op.run(monitor, workingCopyManager);
@@ -181,11 +178,11 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
     }
   }
 
-  public EList<EObject> getChildElements() {
+  public EList<? extends EObject> getChildElements() {
     return m_childElements;
   }
 
-  public void setChildElements(EList<EObject> childElements) {
+  public void setChildElements(EList<? extends EObject> childElements) {
     m_childElements = childElements;
   }
 

@@ -5,15 +5,12 @@ package org.eclipse.scout.saml.saml.impl;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.scout.saml.saml.SamlPackage;
 import org.eclipse.scout.saml.saml.SmartfieldElementValueTypeAttribute;
-
-import org.eclipse.xtext.common.types.JvmType;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,14 +28,24 @@ import org.eclipse.xtext.common.types.JvmType;
 public class SmartfieldElementValueTypeAttributeImpl extends MinimalEObjectImpl.Container implements SmartfieldElementValueTypeAttribute
 {
   /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' reference.
+   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getValue()
    * @generated
    * @ordered
    */
-  protected JvmType value;
+  protected static final String VALUE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getValue()
+   * @generated
+   * @ordered
+   */
+  protected String value = VALUE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -66,27 +73,7 @@ public class SmartfieldElementValueTypeAttributeImpl extends MinimalEObjectImpl.
    * <!-- end-user-doc -->
    * @generated
    */
-  public JvmType getValue()
-  {
-    if (value != null && value.eIsProxy())
-    {
-      InternalEObject oldValue = (InternalEObject)value;
-      value = (JvmType)eResolveProxy(oldValue);
-      if (value != oldValue)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SamlPackage.SMARTFIELD_ELEMENT_VALUE_TYPE_ATTRIBUTE__VALUE, oldValue, value));
-      }
-    }
-    return value;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public JvmType basicGetValue()
+  public String getValue()
   {
     return value;
   }
@@ -96,9 +83,9 @@ public class SmartfieldElementValueTypeAttributeImpl extends MinimalEObjectImpl.
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(JvmType newValue)
+  public void setValue(String newValue)
   {
-    JvmType oldValue = value;
+    String oldValue = value;
     value = newValue;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.SMARTFIELD_ELEMENT_VALUE_TYPE_ATTRIBUTE__VALUE, oldValue, value));
@@ -115,8 +102,7 @@ public class SmartfieldElementValueTypeAttributeImpl extends MinimalEObjectImpl.
     switch (featureID)
     {
       case SamlPackage.SMARTFIELD_ELEMENT_VALUE_TYPE_ATTRIBUTE__VALUE:
-        if (resolve) return getValue();
-        return basicGetValue();
+        return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -132,7 +118,7 @@ public class SmartfieldElementValueTypeAttributeImpl extends MinimalEObjectImpl.
     switch (featureID)
     {
       case SamlPackage.SMARTFIELD_ELEMENT_VALUE_TYPE_ATTRIBUTE__VALUE:
-        setValue((JvmType)newValue);
+        setValue((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -149,7 +135,7 @@ public class SmartfieldElementValueTypeAttributeImpl extends MinimalEObjectImpl.
     switch (featureID)
     {
       case SamlPackage.SMARTFIELD_ELEMENT_VALUE_TYPE_ATTRIBUTE__VALUE:
-        setValue((JvmType)null);
+        setValue(VALUE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -166,9 +152,26 @@ public class SmartfieldElementValueTypeAttributeImpl extends MinimalEObjectImpl.
     switch (featureID)
     {
       case SamlPackage.SMARTFIELD_ELEMENT_VALUE_TYPE_ATTRIBUTE__VALUE:
-        return value != null;
+        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (value: ");
+    result.append(value);
+    result.append(')');
+    return result.toString();
   }
 
 } //SmartfieldElementValueTypeAttributeImpl

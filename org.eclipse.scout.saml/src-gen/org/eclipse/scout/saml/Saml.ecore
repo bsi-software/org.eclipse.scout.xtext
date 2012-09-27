@@ -14,7 +14,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractScoutType"/>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractFieldElement" eSuperTypes="#//AbstractScoutType"/>
-  <eClassifiers xsi:type="ecore:EClass" name="AbstractFieldProperties" eSuperTypes="#//AbstractValueFieldProperties">
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractFieldProperties">
     <eStructuralFeatures xsi:type="ecore:EReference" name="text" eType="#//TextAttribute"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="visible" eType="#//VisibleAttribue"
@@ -34,12 +34,14 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//BooleanType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MasterAttribute">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//AbstractFieldElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//AbstractValueFieldElement"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractValueFieldElement" eSuperTypes="#//AbstractFieldElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AbstractValueFieldProperties" eSuperTypes="#//StringElementProperties #//SmartFieldElementProperties">
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractValueFieldProperties">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fieldproperties" eType="#//AbstractFieldProperties"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mandatory" eType="#//MandatoryAttribue"
         containment="true"/>
   </eClassifiers>
@@ -153,6 +155,8 @@
         eType="#//LogicElement" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StringElementProperties">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valueFieldProperties" eType="#//AbstractValueFieldProperties"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="maxlen" eType="#//StringElementMaxlenAttribute"
         containment="true"/>
   </eClassifiers>
@@ -184,6 +188,8 @@
         eType="#//LogicElement" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SmartFieldElementProperties">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valueFieldProperties" eType="#//AbstractValueFieldProperties"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="code" eType="#//SmartfieldElementCodeAttribute"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="value_type" eType="#//SmartfieldElementValueTypeAttribute"
@@ -195,7 +201,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//CodeElement"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SmartfieldElementValueTypeAttribute">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="ecore:EClass ../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SmartfieldElementLookupAttribute">
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//LookupElement"/>

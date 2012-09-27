@@ -9,14 +9,12 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.scout.saml.saml.AbstractFieldProperties;
 import org.eclipse.scout.saml.saml.AbstractValueFieldProperties;
 import org.eclipse.scout.saml.saml.MandatoryAttribue;
 import org.eclipse.scout.saml.saml.SamlPackage;
-import org.eclipse.scout.saml.saml.SmartFieldElementProperties;
-import org.eclipse.scout.saml.saml.SmartfieldElementCodeAttribute;
-import org.eclipse.scout.saml.saml.SmartfieldElementLookupAttribute;
-import org.eclipse.scout.saml.saml.SmartfieldElementValueTypeAttribute;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,46 +23,24 @@ import org.eclipse.scout.saml.saml.SmartfieldElementValueTypeAttribute;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.AbstractValueFieldPropertiesImpl#getCode <em>Code</em>}</li>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.AbstractValueFieldPropertiesImpl#getValue_type <em>Value type</em>}</li>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.AbstractValueFieldPropertiesImpl#getLookup <em>Lookup</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.AbstractValueFieldPropertiesImpl#getFieldproperties <em>Fieldproperties</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.AbstractValueFieldPropertiesImpl#getMandatory <em>Mandatory</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class AbstractValueFieldPropertiesImpl extends StringElementPropertiesImpl implements AbstractValueFieldProperties
+public class AbstractValueFieldPropertiesImpl extends MinimalEObjectImpl.Container implements AbstractValueFieldProperties
 {
   /**
-   * The cached value of the '{@link #getCode() <em>Code</em>}' containment reference.
+   * The cached value of the '{@link #getFieldproperties() <em>Fieldproperties</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getCode()
+   * @see #getFieldproperties()
    * @generated
    * @ordered
    */
-  protected SmartfieldElementCodeAttribute code;
-
-  /**
-   * The cached value of the '{@link #getValue_type() <em>Value type</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getValue_type()
-   * @generated
-   * @ordered
-   */
-  protected SmartfieldElementValueTypeAttribute value_type;
-
-  /**
-   * The cached value of the '{@link #getLookup() <em>Lookup</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getLookup()
-   * @generated
-   * @ordered
-   */
-  protected SmartfieldElementLookupAttribute lookup;
+  protected AbstractFieldProperties fieldproperties;
 
   /**
    * The cached value of the '{@link #getMandatory() <em>Mandatory</em>}' containment reference.
@@ -102,9 +78,9 @@ public class AbstractValueFieldPropertiesImpl extends StringElementPropertiesImp
    * <!-- end-user-doc -->
    * @generated
    */
-  public SmartfieldElementCodeAttribute getCode()
+  public AbstractFieldProperties getFieldproperties()
   {
-    return code;
+    return fieldproperties;
   }
 
   /**
@@ -112,13 +88,13 @@ public class AbstractValueFieldPropertiesImpl extends StringElementPropertiesImp
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetCode(SmartfieldElementCodeAttribute newCode, NotificationChain msgs)
+  public NotificationChain basicSetFieldproperties(AbstractFieldProperties newFieldproperties, NotificationChain msgs)
   {
-    SmartfieldElementCodeAttribute oldCode = code;
-    code = newCode;
+    AbstractFieldProperties oldFieldproperties = fieldproperties;
+    fieldproperties = newFieldproperties;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__CODE, oldCode, newCode);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__FIELDPROPERTIES, oldFieldproperties, newFieldproperties);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -129,116 +105,20 @@ public class AbstractValueFieldPropertiesImpl extends StringElementPropertiesImp
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCode(SmartfieldElementCodeAttribute newCode)
+  public void setFieldproperties(AbstractFieldProperties newFieldproperties)
   {
-    if (newCode != code)
+    if (newFieldproperties != fieldproperties)
     {
       NotificationChain msgs = null;
-      if (code != null)
-        msgs = ((InternalEObject)code).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__CODE, null, msgs);
-      if (newCode != null)
-        msgs = ((InternalEObject)newCode).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__CODE, null, msgs);
-      msgs = basicSetCode(newCode, msgs);
+      if (fieldproperties != null)
+        msgs = ((InternalEObject)fieldproperties).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__FIELDPROPERTIES, null, msgs);
+      if (newFieldproperties != null)
+        msgs = ((InternalEObject)newFieldproperties).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__FIELDPROPERTIES, null, msgs);
+      msgs = basicSetFieldproperties(newFieldproperties, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__CODE, newCode, newCode));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public SmartfieldElementValueTypeAttribute getValue_type()
-  {
-    return value_type;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetValue_type(SmartfieldElementValueTypeAttribute newValue_type, NotificationChain msgs)
-  {
-    SmartfieldElementValueTypeAttribute oldValue_type = value_type;
-    value_type = newValue_type;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__VALUE_TYPE, oldValue_type, newValue_type);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setValue_type(SmartfieldElementValueTypeAttribute newValue_type)
-  {
-    if (newValue_type != value_type)
-    {
-      NotificationChain msgs = null;
-      if (value_type != null)
-        msgs = ((InternalEObject)value_type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__VALUE_TYPE, null, msgs);
-      if (newValue_type != null)
-        msgs = ((InternalEObject)newValue_type).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__VALUE_TYPE, null, msgs);
-      msgs = basicSetValue_type(newValue_type, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__VALUE_TYPE, newValue_type, newValue_type));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public SmartfieldElementLookupAttribute getLookup()
-  {
-    return lookup;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetLookup(SmartfieldElementLookupAttribute newLookup, NotificationChain msgs)
-  {
-    SmartfieldElementLookupAttribute oldLookup = lookup;
-    lookup = newLookup;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__LOOKUP, oldLookup, newLookup);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setLookup(SmartfieldElementLookupAttribute newLookup)
-  {
-    if (newLookup != lookup)
-    {
-      NotificationChain msgs = null;
-      if (lookup != null)
-        msgs = ((InternalEObject)lookup).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__LOOKUP, null, msgs);
-      if (newLookup != null)
-        msgs = ((InternalEObject)newLookup).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__LOOKUP, null, msgs);
-      msgs = basicSetLookup(newLookup, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__LOOKUP, newLookup, newLookup));
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__FIELDPROPERTIES, newFieldproperties, newFieldproperties));
   }
 
   /**
@@ -299,12 +179,8 @@ public class AbstractValueFieldPropertiesImpl extends StringElementPropertiesImp
   {
     switch (featureID)
     {
-      case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__CODE:
-        return basicSetCode(null, msgs);
-      case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__VALUE_TYPE:
-        return basicSetValue_type(null, msgs);
-      case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__LOOKUP:
-        return basicSetLookup(null, msgs);
+      case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__FIELDPROPERTIES:
+        return basicSetFieldproperties(null, msgs);
       case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__MANDATORY:
         return basicSetMandatory(null, msgs);
     }
@@ -321,12 +197,8 @@ public class AbstractValueFieldPropertiesImpl extends StringElementPropertiesImp
   {
     switch (featureID)
     {
-      case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__CODE:
-        return getCode();
-      case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__VALUE_TYPE:
-        return getValue_type();
-      case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__LOOKUP:
-        return getLookup();
+      case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__FIELDPROPERTIES:
+        return getFieldproperties();
       case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__MANDATORY:
         return getMandatory();
     }
@@ -343,14 +215,8 @@ public class AbstractValueFieldPropertiesImpl extends StringElementPropertiesImp
   {
     switch (featureID)
     {
-      case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__CODE:
-        setCode((SmartfieldElementCodeAttribute)newValue);
-        return;
-      case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__VALUE_TYPE:
-        setValue_type((SmartfieldElementValueTypeAttribute)newValue);
-        return;
-      case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__LOOKUP:
-        setLookup((SmartfieldElementLookupAttribute)newValue);
+      case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__FIELDPROPERTIES:
+        setFieldproperties((AbstractFieldProperties)newValue);
         return;
       case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__MANDATORY:
         setMandatory((MandatoryAttribue)newValue);
@@ -369,14 +235,8 @@ public class AbstractValueFieldPropertiesImpl extends StringElementPropertiesImp
   {
     switch (featureID)
     {
-      case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__CODE:
-        setCode((SmartfieldElementCodeAttribute)null);
-        return;
-      case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__VALUE_TYPE:
-        setValue_type((SmartfieldElementValueTypeAttribute)null);
-        return;
-      case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__LOOKUP:
-        setLookup((SmartfieldElementLookupAttribute)null);
+      case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__FIELDPROPERTIES:
+        setFieldproperties((AbstractFieldProperties)null);
         return;
       case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__MANDATORY:
         setMandatory((MandatoryAttribue)null);
@@ -395,58 +255,12 @@ public class AbstractValueFieldPropertiesImpl extends StringElementPropertiesImp
   {
     switch (featureID)
     {
-      case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__CODE:
-        return code != null;
-      case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__VALUE_TYPE:
-        return value_type != null;
-      case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__LOOKUP:
-        return lookup != null;
+      case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__FIELDPROPERTIES:
+        return fieldproperties != null;
       case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__MANDATORY:
         return mandatory != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == SmartFieldElementProperties.class)
-    {
-      switch (derivedFeatureID)
-      {
-        case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__CODE: return SamlPackage.SMART_FIELD_ELEMENT_PROPERTIES__CODE;
-        case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__VALUE_TYPE: return SamlPackage.SMART_FIELD_ELEMENT_PROPERTIES__VALUE_TYPE;
-        case SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__LOOKUP: return SamlPackage.SMART_FIELD_ELEMENT_PROPERTIES__LOOKUP;
-        default: return -1;
-      }
-    }
-    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == SmartFieldElementProperties.class)
-    {
-      switch (baseFeatureID)
-      {
-        case SamlPackage.SMART_FIELD_ELEMENT_PROPERTIES__CODE: return SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__CODE;
-        case SamlPackage.SMART_FIELD_ELEMENT_PROPERTIES__VALUE_TYPE: return SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__VALUE_TYPE;
-        case SamlPackage.SMART_FIELD_ELEMENT_PROPERTIES__LOOKUP: return SamlPackage.ABSTRACT_VALUE_FIELD_PROPERTIES__LOOKUP;
-        default: return -1;
-      }
-    }
-    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
   }
 
 } //AbstractValueFieldPropertiesImpl

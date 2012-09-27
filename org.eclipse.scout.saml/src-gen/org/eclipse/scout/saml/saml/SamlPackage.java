@@ -152,98 +152,6 @@ public interface SamlPackage extends EPackage
   int ABSTRACT_FIELD_ELEMENT_FEATURE_COUNT = ABSTRACT_SCOUT_TYPE_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.StringElementPropertiesImpl <em>String Element Properties</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.scout.saml.saml.impl.StringElementPropertiesImpl
-   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getStringElementProperties()
-   * @generated
-   */
-  int STRING_ELEMENT_PROPERTIES = 33;
-
-  /**
-   * The feature id for the '<em><b>Maxlen</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_ELEMENT_PROPERTIES__MAXLEN = 0;
-
-  /**
-   * The number of structural features of the '<em>String Element Properties</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_ELEMENT_PROPERTIES_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.AbstractValueFieldPropertiesImpl <em>Abstract Value Field Properties</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.scout.saml.saml.impl.AbstractValueFieldPropertiesImpl
-   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getAbstractValueFieldProperties()
-   * @generated
-   */
-  int ABSTRACT_VALUE_FIELD_PROPERTIES = 10;
-
-  /**
-   * The feature id for the '<em><b>Maxlen</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ABSTRACT_VALUE_FIELD_PROPERTIES__MAXLEN = STRING_ELEMENT_PROPERTIES__MAXLEN;
-
-  /**
-   * The feature id for the '<em><b>Code</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ABSTRACT_VALUE_FIELD_PROPERTIES__CODE = STRING_ELEMENT_PROPERTIES_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Value type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ABSTRACT_VALUE_FIELD_PROPERTIES__VALUE_TYPE = STRING_ELEMENT_PROPERTIES_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Lookup</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ABSTRACT_VALUE_FIELD_PROPERTIES__LOOKUP = STRING_ELEMENT_PROPERTIES_FEATURE_COUNT + 2;
-
-  /**
-   * The feature id for the '<em><b>Mandatory</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ABSTRACT_VALUE_FIELD_PROPERTIES__MANDATORY = STRING_ELEMENT_PROPERTIES_FEATURE_COUNT + 3;
-
-  /**
-   * The number of structural features of the '<em>Abstract Value Field Properties</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ABSTRACT_VALUE_FIELD_PROPERTIES_FEATURE_COUNT = STRING_ELEMENT_PROPERTIES_FEATURE_COUNT + 4;
-
-  /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.AbstractFieldPropertiesImpl <em>Abstract Field Properties</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -254,58 +162,13 @@ public interface SamlPackage extends EPackage
   int ABSTRACT_FIELD_PROPERTIES = 4;
 
   /**
-   * The feature id for the '<em><b>Maxlen</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ABSTRACT_FIELD_PROPERTIES__MAXLEN = ABSTRACT_VALUE_FIELD_PROPERTIES__MAXLEN;
-
-  /**
-   * The feature id for the '<em><b>Code</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ABSTRACT_FIELD_PROPERTIES__CODE = ABSTRACT_VALUE_FIELD_PROPERTIES__CODE;
-
-  /**
-   * The feature id for the '<em><b>Value type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ABSTRACT_FIELD_PROPERTIES__VALUE_TYPE = ABSTRACT_VALUE_FIELD_PROPERTIES__VALUE_TYPE;
-
-  /**
-   * The feature id for the '<em><b>Lookup</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ABSTRACT_FIELD_PROPERTIES__LOOKUP = ABSTRACT_VALUE_FIELD_PROPERTIES__LOOKUP;
-
-  /**
-   * The feature id for the '<em><b>Mandatory</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ABSTRACT_FIELD_PROPERTIES__MANDATORY = ABSTRACT_VALUE_FIELD_PROPERTIES__MANDATORY;
-
-  /**
    * The feature id for the '<em><b>Text</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ABSTRACT_FIELD_PROPERTIES__TEXT = ABSTRACT_VALUE_FIELD_PROPERTIES_FEATURE_COUNT + 0;
+  int ABSTRACT_FIELD_PROPERTIES__TEXT = 0;
 
   /**
    * The feature id for the '<em><b>Visible</b></em>' containment reference.
@@ -314,7 +177,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ABSTRACT_FIELD_PROPERTIES__VISIBLE = ABSTRACT_VALUE_FIELD_PROPERTIES_FEATURE_COUNT + 1;
+  int ABSTRACT_FIELD_PROPERTIES__VISIBLE = 1;
 
   /**
    * The feature id for the '<em><b>Master</b></em>' containment reference.
@@ -323,7 +186,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ABSTRACT_FIELD_PROPERTIES__MASTER = ABSTRACT_VALUE_FIELD_PROPERTIES_FEATURE_COUNT + 2;
+  int ABSTRACT_FIELD_PROPERTIES__MASTER = 2;
 
   /**
    * The feature id for the '<em><b>Enabled</b></em>' containment reference.
@@ -332,7 +195,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ABSTRACT_FIELD_PROPERTIES__ENABLED = ABSTRACT_VALUE_FIELD_PROPERTIES_FEATURE_COUNT + 3;
+  int ABSTRACT_FIELD_PROPERTIES__ENABLED = 3;
 
   /**
    * The number of structural features of the '<em>Abstract Field Properties</em>' class.
@@ -341,7 +204,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ABSTRACT_FIELD_PROPERTIES_FEATURE_COUNT = ABSTRACT_VALUE_FIELD_PROPERTIES_FEATURE_COUNT + 4;
+  int ABSTRACT_FIELD_PROPERTIES_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.TextAttributeImpl <em>Text Attribute</em>}' class.
@@ -482,6 +345,43 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int ABSTRACT_VALUE_FIELD_ELEMENT_FEATURE_COUNT = ABSTRACT_FIELD_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.AbstractValueFieldPropertiesImpl <em>Abstract Value Field Properties</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.AbstractValueFieldPropertiesImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getAbstractValueFieldProperties()
+   * @generated
+   */
+  int ABSTRACT_VALUE_FIELD_PROPERTIES = 10;
+
+  /**
+   * The feature id for the '<em><b>Fieldproperties</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ABSTRACT_VALUE_FIELD_PROPERTIES__FIELDPROPERTIES = 0;
+
+  /**
+   * The feature id for the '<em><b>Mandatory</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ABSTRACT_VALUE_FIELD_PROPERTIES__MANDATORY = 1;
+
+  /**
+   * The number of structural features of the '<em>Abstract Value Field Properties</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ABSTRACT_VALUE_FIELD_PROPERTIES_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.MandatoryAttribueImpl <em>Mandatory Attribue</em>}' class.
@@ -1262,6 +1162,43 @@ public interface SamlPackage extends EPackage
   int STRING_ELEMENT_FEATURE_COUNT = ABSTRACT_VALUE_FIELD_ELEMENT_FEATURE_COUNT + 2;
 
   /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.StringElementPropertiesImpl <em>String Element Properties</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.StringElementPropertiesImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getStringElementProperties()
+   * @generated
+   */
+  int STRING_ELEMENT_PROPERTIES = 33;
+
+  /**
+   * The feature id for the '<em><b>Value Field Properties</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT_PROPERTIES__VALUE_FIELD_PROPERTIES = 0;
+
+  /**
+   * The feature id for the '<em><b>Maxlen</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT_PROPERTIES__MAXLEN = 1;
+
+  /**
+   * The number of structural features of the '<em>String Element Properties</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT_PROPERTIES_FEATURE_COUNT = 2;
+
+  /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.StringElementMaxlenAttributeImpl <em>String Element Maxlen Attribute</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1484,13 +1421,22 @@ public interface SamlPackage extends EPackage
   int SMART_FIELD_ELEMENT_PROPERTIES = 39;
 
   /**
+   * The feature id for the '<em><b>Value Field Properties</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SMART_FIELD_ELEMENT_PROPERTIES__VALUE_FIELD_PROPERTIES = 0;
+
+  /**
    * The feature id for the '<em><b>Code</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SMART_FIELD_ELEMENT_PROPERTIES__CODE = 0;
+  int SMART_FIELD_ELEMENT_PROPERTIES__CODE = 1;
 
   /**
    * The feature id for the '<em><b>Value type</b></em>' containment reference.
@@ -1499,7 +1445,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMART_FIELD_ELEMENT_PROPERTIES__VALUE_TYPE = 1;
+  int SMART_FIELD_ELEMENT_PROPERTIES__VALUE_TYPE = 2;
 
   /**
    * The feature id for the '<em><b>Lookup</b></em>' containment reference.
@@ -1508,7 +1454,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMART_FIELD_ELEMENT_PROPERTIES__LOOKUP = 2;
+  int SMART_FIELD_ELEMENT_PROPERTIES__LOOKUP = 3;
 
   /**
    * The number of structural features of the '<em>Smart Field Element Properties</em>' class.
@@ -1517,7 +1463,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMART_FIELD_ELEMENT_PROPERTIES_FEATURE_COUNT = 3;
+  int SMART_FIELD_ELEMENT_PROPERTIES_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.SmartfieldElementCodeAttributeImpl <em>Smartfield Element Code Attribute</em>}' class.
@@ -1558,7 +1504,7 @@ public interface SamlPackage extends EPackage
   int SMARTFIELD_ELEMENT_VALUE_TYPE_ATTRIBUTE = 41;
 
   /**
-   * The feature id for the '<em><b>Value</b></em>' reference.
+   * The feature id for the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1910,6 +1856,17 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EClass getAbstractValueFieldProperties();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.AbstractValueFieldProperties#getFieldproperties <em>Fieldproperties</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Fieldproperties</em>'.
+   * @see org.eclipse.scout.saml.saml.AbstractValueFieldProperties#getFieldproperties()
+   * @see #getAbstractValueFieldProperties()
+   * @generated
+   */
+  EReference getAbstractValueFieldProperties_Fieldproperties();
 
   /**
    * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.AbstractValueFieldProperties#getMandatory <em>Mandatory</em>}'.
@@ -2516,6 +2473,17 @@ public interface SamlPackage extends EPackage
   EClass getStringElementProperties();
 
   /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.StringElementProperties#getValueFieldProperties <em>Value Field Properties</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Value Field Properties</em>'.
+   * @see org.eclipse.scout.saml.saml.StringElementProperties#getValueFieldProperties()
+   * @see #getStringElementProperties()
+   * @generated
+   */
+  EReference getStringElementProperties_ValueFieldProperties();
+
+  /**
    * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.StringElementProperties#getMaxlen <em>Maxlen</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2686,6 +2654,17 @@ public interface SamlPackage extends EPackage
   EClass getSmartFieldElementProperties();
 
   /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.SmartFieldElementProperties#getValueFieldProperties <em>Value Field Properties</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Value Field Properties</em>'.
+   * @see org.eclipse.scout.saml.saml.SmartFieldElementProperties#getValueFieldProperties()
+   * @see #getSmartFieldElementProperties()
+   * @generated
+   */
+  EReference getSmartFieldElementProperties_ValueFieldProperties();
+
+  /**
    * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.SmartFieldElementProperties#getCode <em>Code</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2750,15 +2729,15 @@ public interface SamlPackage extends EPackage
   EClass getSmartfieldElementValueTypeAttribute();
 
   /**
-   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.SmartfieldElementValueTypeAttribute#getValue <em>Value</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.SmartfieldElementValueTypeAttribute#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Value</em>'.
+   * @return the meta object for the attribute '<em>Value</em>'.
    * @see org.eclipse.scout.saml.saml.SmartfieldElementValueTypeAttribute#getValue()
    * @see #getSmartfieldElementValueTypeAttribute()
    * @generated
    */
-  EReference getSmartfieldElementValueTypeAttribute_Value();
+  EAttribute getSmartfieldElementValueTypeAttribute_Value();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.SmartfieldElementLookupAttribute <em>Smartfield Element Lookup Attribute</em>}'.
@@ -3063,6 +3042,14 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EClass ABSTRACT_VALUE_FIELD_PROPERTIES = eINSTANCE.getAbstractValueFieldProperties();
+
+    /**
+     * The meta object literal for the '<em><b>Fieldproperties</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ABSTRACT_VALUE_FIELD_PROPERTIES__FIELDPROPERTIES = eINSTANCE.getAbstractValueFieldProperties_Fieldproperties();
 
     /**
      * The meta object literal for the '<em><b>Mandatory</b></em>' containment reference feature.
@@ -3567,6 +3554,14 @@ public interface SamlPackage extends EPackage
     EClass STRING_ELEMENT_PROPERTIES = eINSTANCE.getStringElementProperties();
 
     /**
+     * The meta object literal for the '<em><b>Value Field Properties</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference STRING_ELEMENT_PROPERTIES__VALUE_FIELD_PROPERTIES = eINSTANCE.getStringElementProperties_ValueFieldProperties();
+
+    /**
      * The meta object literal for the '<em><b>Maxlen</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3707,6 +3702,14 @@ public interface SamlPackage extends EPackage
     EClass SMART_FIELD_ELEMENT_PROPERTIES = eINSTANCE.getSmartFieldElementProperties();
 
     /**
+     * The meta object literal for the '<em><b>Value Field Properties</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SMART_FIELD_ELEMENT_PROPERTIES__VALUE_FIELD_PROPERTIES = eINSTANCE.getSmartFieldElementProperties_ValueFieldProperties();
+
+    /**
      * The meta object literal for the '<em><b>Code</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3759,12 +3762,12 @@ public interface SamlPackage extends EPackage
     EClass SMARTFIELD_ELEMENT_VALUE_TYPE_ATTRIBUTE = eINSTANCE.getSmartfieldElementValueTypeAttribute();
 
     /**
-     * The meta object literal for the '<em><b>Value</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference SMARTFIELD_ELEMENT_VALUE_TYPE_ATTRIBUTE__VALUE = eINSTANCE.getSmartfieldElementValueTypeAttribute_Value();
+    EAttribute SMARTFIELD_ELEMENT_VALUE_TYPE_ATTRIBUTE__VALUE = eINSTANCE.getSmartfieldElementValueTypeAttribute_Value();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.SmartfieldElementLookupAttributeImpl <em>Smartfield Element Lookup Attribute</em>}' class.

@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.scout.saml.saml.AbstractFieldProperties;
 import org.eclipse.scout.saml.saml.EnabledAttribue;
@@ -33,7 +34,7 @@ import org.eclipse.scout.saml.saml.VisibleAttribue;
  *
  * @generated
  */
-public class AbstractFieldPropertiesImpl extends AbstractValueFieldPropertiesImpl implements AbstractFieldProperties
+public class AbstractFieldPropertiesImpl extends MinimalEObjectImpl.Container implements AbstractFieldProperties
 {
   /**
    * The cached value of the '{@link #getText() <em>Text</em>}' containment reference.

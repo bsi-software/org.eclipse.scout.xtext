@@ -4,8 +4,6 @@ package org.eclipse.scout.saml.saml;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.xtext.common.types.JvmType;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Smartfield Element Value Type Attribute</b></em>'.
@@ -25,29 +23,29 @@ import org.eclipse.xtext.common.types.JvmType;
 public interface SmartfieldElementValueTypeAttribute extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Value</b></em>' reference.
+   * Returns the value of the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Value</em>' reference isn't clear,
+   * If the meaning of the '<em>Value</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Value</em>' reference.
-   * @see #setValue(JvmType)
+   * @return the value of the '<em>Value</em>' attribute.
+   * @see #setValue(String)
    * @see org.eclipse.scout.saml.saml.SamlPackage#getSmartfieldElementValueTypeAttribute_Value()
    * @model
    * @generated
    */
-  JvmType getValue();
+  String getValue();
 
   /**
-   * Sets the value of the '{@link org.eclipse.scout.saml.saml.SmartfieldElementValueTypeAttribute#getValue <em>Value</em>}' reference.
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.SmartfieldElementValueTypeAttribute#getValue <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Value</em>' reference.
+   * @param value the new value of the '<em>Value</em>' attribute.
    * @see #getValue()
    * @generated
    */
-  void setValue(JvmType value);
+  void setValue(String value);
 
 } // SmartfieldElementValueTypeAttribute

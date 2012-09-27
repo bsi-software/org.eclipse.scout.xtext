@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.scout.saml.saml.AbstractValueFieldProperties;
 import org.eclipse.scout.saml.saml.SamlPackage;
 import org.eclipse.scout.saml.saml.StringElementMaxlenAttribute;
 import org.eclipse.scout.saml.saml.StringElementProperties;
@@ -22,6 +23,7 @@ import org.eclipse.scout.saml.saml.StringElementProperties;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.StringElementPropertiesImpl#getValueFieldProperties <em>Value Field Properties</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.StringElementPropertiesImpl#getMaxlen <em>Maxlen</em>}</li>
  * </ul>
  * </p>
@@ -30,6 +32,16 @@ import org.eclipse.scout.saml.saml.StringElementProperties;
  */
 public class StringElementPropertiesImpl extends MinimalEObjectImpl.Container implements StringElementProperties
 {
+  /**
+   * The cached value of the '{@link #getValueFieldProperties() <em>Value Field Properties</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getValueFieldProperties()
+   * @generated
+   * @ordered
+   */
+  protected AbstractValueFieldProperties valueFieldProperties;
+
   /**
    * The cached value of the '{@link #getMaxlen() <em>Maxlen</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -59,6 +71,54 @@ public class StringElementPropertiesImpl extends MinimalEObjectImpl.Container im
   protected EClass eStaticClass()
   {
     return SamlPackage.Literals.STRING_ELEMENT_PROPERTIES;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AbstractValueFieldProperties getValueFieldProperties()
+  {
+    return valueFieldProperties;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetValueFieldProperties(AbstractValueFieldProperties newValueFieldProperties, NotificationChain msgs)
+  {
+    AbstractValueFieldProperties oldValueFieldProperties = valueFieldProperties;
+    valueFieldProperties = newValueFieldProperties;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SamlPackage.STRING_ELEMENT_PROPERTIES__VALUE_FIELD_PROPERTIES, oldValueFieldProperties, newValueFieldProperties);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setValueFieldProperties(AbstractValueFieldProperties newValueFieldProperties)
+  {
+    if (newValueFieldProperties != valueFieldProperties)
+    {
+      NotificationChain msgs = null;
+      if (valueFieldProperties != null)
+        msgs = ((InternalEObject)valueFieldProperties).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SamlPackage.STRING_ELEMENT_PROPERTIES__VALUE_FIELD_PROPERTIES, null, msgs);
+      if (newValueFieldProperties != null)
+        msgs = ((InternalEObject)newValueFieldProperties).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SamlPackage.STRING_ELEMENT_PROPERTIES__VALUE_FIELD_PROPERTIES, null, msgs);
+      msgs = basicSetValueFieldProperties(newValueFieldProperties, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.STRING_ELEMENT_PROPERTIES__VALUE_FIELD_PROPERTIES, newValueFieldProperties, newValueFieldProperties));
   }
 
   /**
@@ -119,6 +179,8 @@ public class StringElementPropertiesImpl extends MinimalEObjectImpl.Container im
   {
     switch (featureID)
     {
+      case SamlPackage.STRING_ELEMENT_PROPERTIES__VALUE_FIELD_PROPERTIES:
+        return basicSetValueFieldProperties(null, msgs);
       case SamlPackage.STRING_ELEMENT_PROPERTIES__MAXLEN:
         return basicSetMaxlen(null, msgs);
     }
@@ -135,6 +197,8 @@ public class StringElementPropertiesImpl extends MinimalEObjectImpl.Container im
   {
     switch (featureID)
     {
+      case SamlPackage.STRING_ELEMENT_PROPERTIES__VALUE_FIELD_PROPERTIES:
+        return getValueFieldProperties();
       case SamlPackage.STRING_ELEMENT_PROPERTIES__MAXLEN:
         return getMaxlen();
     }
@@ -151,6 +215,9 @@ public class StringElementPropertiesImpl extends MinimalEObjectImpl.Container im
   {
     switch (featureID)
     {
+      case SamlPackage.STRING_ELEMENT_PROPERTIES__VALUE_FIELD_PROPERTIES:
+        setValueFieldProperties((AbstractValueFieldProperties)newValue);
+        return;
       case SamlPackage.STRING_ELEMENT_PROPERTIES__MAXLEN:
         setMaxlen((StringElementMaxlenAttribute)newValue);
         return;
@@ -168,6 +235,9 @@ public class StringElementPropertiesImpl extends MinimalEObjectImpl.Container im
   {
     switch (featureID)
     {
+      case SamlPackage.STRING_ELEMENT_PROPERTIES__VALUE_FIELD_PROPERTIES:
+        setValueFieldProperties((AbstractValueFieldProperties)null);
+        return;
       case SamlPackage.STRING_ELEMENT_PROPERTIES__MAXLEN:
         setMaxlen((StringElementMaxlenAttribute)null);
         return;
@@ -185,6 +255,8 @@ public class StringElementPropertiesImpl extends MinimalEObjectImpl.Container im
   {
     switch (featureID)
     {
+      case SamlPackage.STRING_ELEMENT_PROPERTIES__VALUE_FIELD_PROPERTIES:
+        return valueFieldProperties != null;
       case SamlPackage.STRING_ELEMENT_PROPERTIES__MAXLEN:
         return maxlen != null;
     }

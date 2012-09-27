@@ -513,7 +513,7 @@ ruleMasterAttribute returns [EObject current=null]
         }
 	otherlv_1=RULE_ID
 	{
-		newLeafNode(otherlv_1, grammarAccess.getMasterAttributeAccess().getValueAbstractFieldElementCrossReference_1_0()); 
+		newLeafNode(otherlv_1, grammarAccess.getMasterAttributeAccess().getValueAbstractValueFieldElementCrossReference_1_0()); 
 	}
 
 )
@@ -618,16 +618,25 @@ ruleAbstractValueFieldProperties returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
+((
 (
-    { 
-        newCompositeNode(grammarAccess.getAbstractValueFieldPropertiesAccess().getAbstractFieldPropertiesParserRuleCall_0()); 
-    }
-    this_AbstractFieldProperties_0=ruleAbstractFieldProperties
-    { 
-        $current = $this_AbstractFieldProperties_0.current; 
-        afterParserOrEnumRuleCall();
-    }
+		{ 
+	        newCompositeNode(grammarAccess.getAbstractValueFieldPropertiesAccess().getFieldpropertiesAbstractFieldPropertiesParserRuleCall_0_0()); 
+	    }
+		lv_fieldproperties_0_0=ruleAbstractFieldProperties		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getAbstractValueFieldPropertiesRule());
+	        }
+       		set(
+       			$current, 
+       			"fieldproperties",
+        		lv_fieldproperties_0_0, 
+        		"AbstractFieldProperties");
+	        afterParserOrEnumRuleCall();
+	    }
 
+)
+)
     |(
 (
 		{ 
@@ -2046,16 +2055,25 @@ ruleStringElementProperties returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
+((
 (
-    { 
-        newCompositeNode(grammarAccess.getStringElementPropertiesAccess().getAbstractValueFieldPropertiesParserRuleCall_0()); 
-    }
-    this_AbstractValueFieldProperties_0=ruleAbstractValueFieldProperties
-    { 
-        $current = $this_AbstractValueFieldProperties_0.current; 
-        afterParserOrEnumRuleCall();
-    }
+		{ 
+	        newCompositeNode(grammarAccess.getStringElementPropertiesAccess().getValueFieldPropertiesAbstractValueFieldPropertiesParserRuleCall_0_0()); 
+	    }
+		lv_valueFieldProperties_0_0=ruleAbstractValueFieldProperties		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getStringElementPropertiesRule());
+	        }
+       		set(
+       			$current, 
+       			"valueFieldProperties",
+        		lv_valueFieldProperties_0_0, 
+        		"AbstractValueFieldProperties");
+	        afterParserOrEnumRuleCall();
+	    }
 
+)
+)
     |(
 (
 		{ 
@@ -2486,16 +2504,25 @@ ruleSmartFieldElementProperties returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
+((
 (
-    { 
-        newCompositeNode(grammarAccess.getSmartFieldElementPropertiesAccess().getAbstractValueFieldPropertiesParserRuleCall_0()); 
-    }
-    this_AbstractValueFieldProperties_0=ruleAbstractValueFieldProperties
-    { 
-        $current = $this_AbstractValueFieldProperties_0.current; 
-        afterParserOrEnumRuleCall();
-    }
+		{ 
+	        newCompositeNode(grammarAccess.getSmartFieldElementPropertiesAccess().getValueFieldPropertiesAbstractValueFieldPropertiesParserRuleCall_0_0()); 
+	    }
+		lv_valueFieldProperties_0_0=ruleAbstractValueFieldProperties		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getSmartFieldElementPropertiesRule());
+	        }
+       		set(
+       			$current, 
+       			"valueFieldProperties",
+        		lv_valueFieldProperties_0_0, 
+        		"AbstractValueFieldProperties");
+	        afterParserOrEnumRuleCall();
+	    }
 
+)
+)
     |(
 (
 		{ 
@@ -2617,16 +2644,19 @@ ruleSmartfieldElementValueTypeAttribute returns [EObject current=null]
     }
 (
 (
+		lv_value_1_0=RULE_STRING
 		{
-			if ($current==null) {
+			newLeafNode(lv_value_1_0, grammarAccess.getSmartfieldElementValueTypeAttributeAccess().getValueSTRINGTerminalRuleCall_1_0()); 
+		}
+		{
+	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getSmartfieldElementValueTypeAttributeRule());
 	        }
-        }
-		{ 
-	        newCompositeNode(grammarAccess.getSmartfieldElementValueTypeAttributeAccess().getValueJvmTypeCrossReference_1_0()); 
-	    }
-		ruleQualifiedName		{ 
-	        afterParserOrEnumRuleCall();
+       		setWithLastConsumed(
+       			$current, 
+       			"value",
+        		lv_value_1_0, 
+        		"STRING");
 	    }
 
 )
