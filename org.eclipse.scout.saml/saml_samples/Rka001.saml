@@ -206,6 +206,7 @@ form Rka001_gen modal=true text=koEmissionTitle columns=2 {
 
 	sequence_box ValorSequence {
 		string Valor text=Valorennummer enabled=false
+		zreg_sequence_box mynewbox enabled=false
 	}
 	
 	sequence_box ZinssatzSequence {

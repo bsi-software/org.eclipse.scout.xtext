@@ -1,28 +1,22 @@
-grammar org.eclipse.scout.saml.Saml  with org.eclipse.xtext.xbase.Xbase
+grammar org.eclipse.scout.saml.Saml with org.eclipse.xtext.common.Terminals
 
 generate saml "http://www.eclipse.org/scout/saml/Saml"
 
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as jvmTypes
 
 Model:
-	imports+=Import*
-	elements+=JavaElement*;
+	elements+=RootElement*;
+	
+QualifiedName:ID ('.' ID)*;
+enum BooleanType:true|false;
 
-Import:
-	'import' importedNamespace=QualifiedNameWithWildCard;
 
-QualifiedNameWithWildCard :
-	QualifiedName  ('.' '*')?;
 
-JavaElement: 'code' name=ID source=XBlockExpression;
-
-/*
 RootElement:ModuleElement|TranslationElement|CodeElement|LookupElement|TemplateElement|FormElement;
 
 AbstractScoutType:CodeElement|LookupElement|FormElement|AbstractFieldElement;
 
 AbstractFieldElement: AbstractValueFieldElement | AbstractContainerFieldElement;
-
 AbstractFieldProperties:text=TextAttribute|visible=VisibleAttribue|master=MasterAttribute|enabled=EnabledAttribue;
 TextAttribute:'text' '='value=[TranslationElement];
 EnabledAttribue:'enabled='value=BooleanType;
@@ -68,11 +62,13 @@ TemplateElementClassAttribute:'class='value=QualifiedName;
 TemplateElementReplacesAttribute:'replaces='value=[AbstractScoutType];
 
 
+FormElement:'form ' name=ID modal=FormElementModalAttribute text=TextAttribute columns=FormElementColumnsAttribute
+	'{' (elements+=(LogicElement|JavaElement|AbstractFieldElement))* '}';
+FormElementModalAttribute:'modal='value=BooleanType;
+FormElementColumnsAttribute:'columns='value=INT;
 
-FormElement:'form' name=ID (('modal' '=' modal=BooleanType)? & ('columns' '=' columns=INT)?) ('{' children+=(LogicElement|AbstractFieldElement)+ '}')?;
-
-
-
+//TODO: inheritance of body contents?
+//TODO: it should only be possible to define a property once
 //TODO: templates?
 SequenceBoxElement:'sequence_box 'name=ID (properties+=AbstractFieldProperties)* ('{' children+=(LogicElement|AbstractFieldElement)* '}')?;
 	
@@ -82,24 +78,21 @@ StringElementProperties:valueFieldProperties=AbstractValueFieldProperties|maxlen
 StringElementMaxlenAttribute:'maxlen='value=INT;
 
 
-DoubleElement:'double 'name=ID common=MyCommonRule;
+DoubleElement:'double 'name=ID (properties+=AbstractValueFieldProperties)* ('{' children+=(LogicElement)* '}')?;
 
 
-LongElement:'long 'name=ID common=MyCommonRule;
+LongElement:'long 'name=ID (properties+=AbstractValueFieldProperties)* ('{' children+=(LogicElement)* '}')?;
 
 
-DateElement:'date 'name=ID common=MyCommonRule;
+DateElement:'date 'name=ID (properties+=AbstractValueFieldProperties)* ('{' children+=(LogicElement)* '}')?;
 
-
-MyCommonRule: {MyCommonRule} (properties+=AbstractValueFieldProperties)* ('{' children+=(LogicElement)* '}')?;
 
 SmartfieldElement:'smartfield 'name=ID (properties+=SmartFieldElementProperties)* ('{' (logic+=LogicElement)+ '}')?;
 SmartFieldElementProperties:valueFieldProperties=AbstractValueFieldProperties|code=SmartfieldElementCodeAttribute|value_type=SmartfieldElementValueTypeAttribute|lookup=SmartfieldElementLookupAttribute;
 SmartfieldElementCodeAttribute:'code='value=[CodeElement];
-SmartfieldElementValueTypeAttribute:'value_type='value=[jvmTypes::JvmType|QualifiedName];
+SmartfieldElementValueTypeAttribute:'value_type='value=/*STRING;*/[jvmTypes::JvmType|QualifiedName];
 SmartfieldElementLookupAttribute:'lookup='value=[LookupElement];
 
 
 // Specific: to be removed when templates are implemented
 ZregBoxElement:'zreg_sequence_box 'name=ID (properties+=AbstractFieldProperties)* ('{' children+=(LogicElement)* '}')?;
-*/

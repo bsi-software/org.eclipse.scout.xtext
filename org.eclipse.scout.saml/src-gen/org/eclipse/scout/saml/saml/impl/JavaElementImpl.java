@@ -12,8 +12,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.scout.saml.saml.JavaElement;
-import org.eclipse.scout.saml.saml.RunAtAttribute;
 import org.eclipse.scout.saml.saml.SamlPackage;
+
+import org.eclipse.xtext.xbase.XExpression;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,7 +24,6 @@ import org.eclipse.scout.saml.saml.SamlPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.JavaElementImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.JavaElementImpl#getRunat <em>Runat</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.JavaElementImpl#getSource <em>Source</em>}</li>
  * </ul>
  * </p>
@@ -53,34 +53,14 @@ public class JavaElementImpl extends MinimalEObjectImpl.Container implements Jav
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getRunat() <em>Runat</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getRunat()
-   * @generated
-   * @ordered
-   */
-  protected RunAtAttribute runat;
-
-  /**
-   * The default value of the '{@link #getSource() <em>Source</em>}' attribute.
+   * The cached value of the '{@link #getSource() <em>Source</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getSource()
    * @generated
    * @ordered
    */
-  protected static final String SOURCE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getSource() <em>Source</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSource()
-   * @generated
-   * @ordered
-   */
-  protected String source = SOURCE_EDEFAULT;
+  protected XExpression source;
 
   /**
    * <!-- begin-user-doc -->
@@ -131,9 +111,9 @@ public class JavaElementImpl extends MinimalEObjectImpl.Container implements Jav
    * <!-- end-user-doc -->
    * @generated
    */
-  public RunAtAttribute getRunat()
+  public XExpression getSource()
   {
-    return runat;
+    return source;
   }
 
   /**
@@ -141,13 +121,13 @@ public class JavaElementImpl extends MinimalEObjectImpl.Container implements Jav
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRunat(RunAtAttribute newRunat, NotificationChain msgs)
+  public NotificationChain basicSetSource(XExpression newSource, NotificationChain msgs)
   {
-    RunAtAttribute oldRunat = runat;
-    runat = newRunat;
+    XExpression oldSource = source;
+    source = newSource;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SamlPackage.JAVA_ELEMENT__RUNAT, oldRunat, newRunat);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SamlPackage.JAVA_ELEMENT__SOURCE, oldSource, newSource);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -158,43 +138,20 @@ public class JavaElementImpl extends MinimalEObjectImpl.Container implements Jav
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRunat(RunAtAttribute newRunat)
+  public void setSource(XExpression newSource)
   {
-    if (newRunat != runat)
+    if (newSource != source)
     {
       NotificationChain msgs = null;
-      if (runat != null)
-        msgs = ((InternalEObject)runat).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SamlPackage.JAVA_ELEMENT__RUNAT, null, msgs);
-      if (newRunat != null)
-        msgs = ((InternalEObject)newRunat).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SamlPackage.JAVA_ELEMENT__RUNAT, null, msgs);
-      msgs = basicSetRunat(newRunat, msgs);
+      if (source != null)
+        msgs = ((InternalEObject)source).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SamlPackage.JAVA_ELEMENT__SOURCE, null, msgs);
+      if (newSource != null)
+        msgs = ((InternalEObject)newSource).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SamlPackage.JAVA_ELEMENT__SOURCE, null, msgs);
+      msgs = basicSetSource(newSource, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.JAVA_ELEMENT__RUNAT, newRunat, newRunat));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getSource()
-  {
-    return source;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setSource(String newSource)
-  {
-    String oldSource = source;
-    source = newSource;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.JAVA_ELEMENT__SOURCE, oldSource, source));
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.JAVA_ELEMENT__SOURCE, newSource, newSource));
   }
 
   /**
@@ -207,8 +164,8 @@ public class JavaElementImpl extends MinimalEObjectImpl.Container implements Jav
   {
     switch (featureID)
     {
-      case SamlPackage.JAVA_ELEMENT__RUNAT:
-        return basicSetRunat(null, msgs);
+      case SamlPackage.JAVA_ELEMENT__SOURCE:
+        return basicSetSource(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -225,8 +182,6 @@ public class JavaElementImpl extends MinimalEObjectImpl.Container implements Jav
     {
       case SamlPackage.JAVA_ELEMENT__NAME:
         return getName();
-      case SamlPackage.JAVA_ELEMENT__RUNAT:
-        return getRunat();
       case SamlPackage.JAVA_ELEMENT__SOURCE:
         return getSource();
     }
@@ -246,11 +201,8 @@ public class JavaElementImpl extends MinimalEObjectImpl.Container implements Jav
       case SamlPackage.JAVA_ELEMENT__NAME:
         setName((String)newValue);
         return;
-      case SamlPackage.JAVA_ELEMENT__RUNAT:
-        setRunat((RunAtAttribute)newValue);
-        return;
       case SamlPackage.JAVA_ELEMENT__SOURCE:
-        setSource((String)newValue);
+        setSource((XExpression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -269,11 +221,8 @@ public class JavaElementImpl extends MinimalEObjectImpl.Container implements Jav
       case SamlPackage.JAVA_ELEMENT__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case SamlPackage.JAVA_ELEMENT__RUNAT:
-        setRunat((RunAtAttribute)null);
-        return;
       case SamlPackage.JAVA_ELEMENT__SOURCE:
-        setSource(SOURCE_EDEFAULT);
+        setSource((XExpression)null);
         return;
     }
     super.eUnset(featureID);
@@ -291,10 +240,8 @@ public class JavaElementImpl extends MinimalEObjectImpl.Container implements Jav
     {
       case SamlPackage.JAVA_ELEMENT__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case SamlPackage.JAVA_ELEMENT__RUNAT:
-        return runat != null;
       case SamlPackage.JAVA_ELEMENT__SOURCE:
-        return SOURCE_EDEFAULT == null ? source != null : !SOURCE_EDEFAULT.equals(source);
+        return source != null;
     }
     return super.eIsSet(featureID);
   }
@@ -312,8 +259,6 @@ public class JavaElementImpl extends MinimalEObjectImpl.Container implements Jav
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", source: ");
-    result.append(source);
     result.append(')');
     return result.toString();
   }

@@ -50,7 +50,7 @@ public class SamlSmartfieldElementImportOperation extends AbstractSamlFormFieldE
   private String getValueType() {
     for (SmartFieldElementProperties p : getSmartfieldElement().getProperties()) {
       if (p.getValue_type() != null) {
-        return p.getValue_type().getValue();//.getQualifiedName('.');
+        return p.getValue_type().getValue().getQualifiedName();//.getQualifiedName('.');
       }
     }
     return Object.class.getName();

@@ -9,50 +9,50 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.scout.saml.saml.Import;
 import org.eclipse.scout.saml.saml.SamlPackage;
-import org.eclipse.scout.saml.saml.StringElementMaxlenAttribute;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>String Element Maxlen Attribute</b></em>'.
+ * An implementation of the model object '<em><b>Import</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.StringElementMaxlenAttributeImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.ImportImpl#getImportedNamespace <em>Imported Namespace</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class StringElementMaxlenAttributeImpl extends MinimalEObjectImpl.Container implements StringElementMaxlenAttribute
+public class ImportImpl extends MinimalEObjectImpl.Container implements Import
 {
   /**
-   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The default value of the '{@link #getImportedNamespace() <em>Imported Namespace</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getImportedNamespace()
    * @generated
    * @ordered
    */
-  protected static final int VALUE_EDEFAULT = 0;
+  protected static final String IMPORTED_NAMESPACE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The cached value of the '{@link #getImportedNamespace() <em>Imported Namespace</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getImportedNamespace()
    * @generated
    * @ordered
    */
-  protected int value = VALUE_EDEFAULT;
+  protected String importedNamespace = IMPORTED_NAMESPACE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected StringElementMaxlenAttributeImpl()
+  protected ImportImpl()
   {
     super();
   }
@@ -65,7 +65,7 @@ public class StringElementMaxlenAttributeImpl extends MinimalEObjectImpl.Contain
   @Override
   protected EClass eStaticClass()
   {
-    return SamlPackage.Literals.STRING_ELEMENT_MAXLEN_ATTRIBUTE;
+    return SamlPackage.Literals.IMPORT;
   }
 
   /**
@@ -73,9 +73,9 @@ public class StringElementMaxlenAttributeImpl extends MinimalEObjectImpl.Contain
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getValue()
+  public String getImportedNamespace()
   {
-    return value;
+    return importedNamespace;
   }
 
   /**
@@ -83,12 +83,12 @@ public class StringElementMaxlenAttributeImpl extends MinimalEObjectImpl.Contain
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(int newValue)
+  public void setImportedNamespace(String newImportedNamespace)
   {
-    int oldValue = value;
-    value = newValue;
+    String oldImportedNamespace = importedNamespace;
+    importedNamespace = newImportedNamespace;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.STRING_ELEMENT_MAXLEN_ATTRIBUTE__VALUE, oldValue, value));
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.IMPORT__IMPORTED_NAMESPACE, oldImportedNamespace, importedNamespace));
   }
 
   /**
@@ -101,8 +101,8 @@ public class StringElementMaxlenAttributeImpl extends MinimalEObjectImpl.Contain
   {
     switch (featureID)
     {
-      case SamlPackage.STRING_ELEMENT_MAXLEN_ATTRIBUTE__VALUE:
-        return getValue();
+      case SamlPackage.IMPORT__IMPORTED_NAMESPACE:
+        return getImportedNamespace();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -117,8 +117,8 @@ public class StringElementMaxlenAttributeImpl extends MinimalEObjectImpl.Contain
   {
     switch (featureID)
     {
-      case SamlPackage.STRING_ELEMENT_MAXLEN_ATTRIBUTE__VALUE:
-        setValue((Integer)newValue);
+      case SamlPackage.IMPORT__IMPORTED_NAMESPACE:
+        setImportedNamespace((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -134,8 +134,8 @@ public class StringElementMaxlenAttributeImpl extends MinimalEObjectImpl.Contain
   {
     switch (featureID)
     {
-      case SamlPackage.STRING_ELEMENT_MAXLEN_ATTRIBUTE__VALUE:
-        setValue(VALUE_EDEFAULT);
+      case SamlPackage.IMPORT__IMPORTED_NAMESPACE:
+        setImportedNamespace(IMPORTED_NAMESPACE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -151,8 +151,8 @@ public class StringElementMaxlenAttributeImpl extends MinimalEObjectImpl.Contain
   {
     switch (featureID)
     {
-      case SamlPackage.STRING_ELEMENT_MAXLEN_ATTRIBUTE__VALUE:
-        return value != VALUE_EDEFAULT;
+      case SamlPackage.IMPORT__IMPORTED_NAMESPACE:
+        return IMPORTED_NAMESPACE_EDEFAULT == null ? importedNamespace != null : !IMPORTED_NAMESPACE_EDEFAULT.equals(importedNamespace);
     }
     return super.eIsSet(featureID);
   }
@@ -168,10 +168,10 @@ public class StringElementMaxlenAttributeImpl extends MinimalEObjectImpl.Contain
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (value: ");
-    result.append(value);
+    result.append(" (importedNamespace: ");
+    result.append(importedNamespace);
     result.append(')');
     return result.toString();
   }
 
-} //StringElementMaxlenAttributeImpl
+} //ImportImpl
