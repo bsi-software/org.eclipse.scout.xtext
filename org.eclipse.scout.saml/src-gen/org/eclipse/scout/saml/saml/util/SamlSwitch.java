@@ -79,17 +79,139 @@ public class SamlSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SamlPackage.IMPORT:
+      case SamlPackage.MODULE_ELEMENT:
       {
-        Import import_ = (Import)theEObject;
-        T result = caseImport(import_);
+        ModuleElement moduleElement = (ModuleElement)theEObject;
+        T result = caseModuleElement(moduleElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SamlPackage.JAVA_ELEMENT:
+      case SamlPackage.IMPORT_ELEMENT:
       {
-        JavaElement javaElement = (JavaElement)theEObject;
-        T result = caseJavaElement(javaElement);
+        ImportElement importElement = (ImportElement)theEObject;
+        T result = caseImportElement(importElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.JAVA_CODE_ELEMENT:
+      {
+        JavaCodeElement javaCodeElement = (JavaCodeElement)theEObject;
+        T result = caseJavaCodeElement(javaCodeElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.LOGIC_ELEMENT:
+      {
+        LogicElement logicElement = (LogicElement)theEObject;
+        T result = caseLogicElement(logicElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.CODE_ELEMENT:
+      {
+        CodeElement codeElement = (CodeElement)theEObject;
+        T result = caseCodeElement(codeElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.TRANSLATION_ELEMENT:
+      {
+        TranslationElement translationElement = (TranslationElement)theEObject;
+        T result = caseTranslationElement(translationElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.LANGUAGE_ATTRIBUTE:
+      {
+        LanguageAttribute languageAttribute = (LanguageAttribute)theEObject;
+        T result = caseLanguageAttribute(languageAttribute);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.LOOKUP_ELEMENT:
+      {
+        LookupElement lookupElement = (LookupElement)theEObject;
+        T result = caseLookupElement(lookupElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.FORM_ELEMENT:
+      {
+        FormElement formElement = (FormElement)theEObject;
+        T result = caseFormElement(formElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.CONTROL_ELEMENT:
+      {
+        ControlElement controlElement = (ControlElement)theEObject;
+        T result = caseControlElement(controlElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.CONTROL_ELEMENT_RULE:
+      {
+        ControlElementRule controlElementRule = (ControlElementRule)theEObject;
+        T result = caseControlElementRule(controlElementRule);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.COMPOSITE_ELEMENT:
+      {
+        CompositeElement compositeElement = (CompositeElement)theEObject;
+        T result = caseCompositeElement(compositeElement);
+        if (result == null) result = caseControlElement(compositeElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.COMPOSITE_ELEMENT_RULE:
+      {
+        CompositeElementRule compositeElementRule = (CompositeElementRule)theEObject;
+        T result = caseCompositeElementRule(compositeElementRule);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.LEAF_ELEMENT:
+      {
+        LeafElement leafElement = (LeafElement)theEObject;
+        T result = caseLeafElement(leafElement);
+        if (result == null) result = caseControlElement(leafElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.STRING_ELEMENT:
+      {
+        StringElement stringElement = (StringElement)theEObject;
+        T result = caseStringElement(stringElement);
+        if (result == null) result = caseLeafElement(stringElement);
+        if (result == null) result = caseControlElement(stringElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.DOUBLE_ELEMENT:
+      {
+        DoubleElement doubleElement = (DoubleElement)theEObject;
+        T result = caseDoubleElement(doubleElement);
+        if (result == null) result = caseLeafElement(doubleElement);
+        if (result == null) result = caseControlElement(doubleElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.LONG_ELEMENT:
+      {
+        LongElement longElement = (LongElement)theEObject;
+        T result = caseLongElement(longElement);
+        if (result == null) result = caseLeafElement(longElement);
+        if (result == null) result = caseControlElement(longElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.SEQUENCE_BOX_ELEMENT:
+      {
+        SequenceBoxElement sequenceBoxElement = (SequenceBoxElement)theEObject;
+        T result = caseSequenceBoxElement(sequenceBoxElement);
+        if (result == null) result = caseCompositeElement(sequenceBoxElement);
+        if (result == null) result = caseControlElement(sequenceBoxElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -114,33 +236,289 @@ public class SamlSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Import</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Module Element</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Import</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Module Element</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseImport(Import object)
+  public T caseModuleElement(ModuleElement object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Java Element</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Import Element</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Java Element</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Import Element</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseJavaElement(JavaElement object)
+  public T caseImportElement(ImportElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Java Code Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Java Code Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseJavaCodeElement(JavaCodeElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Logic Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Logic Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLogicElement(LogicElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Code Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Code Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCodeElement(CodeElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Translation Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Translation Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTranslationElement(TranslationElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Language Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Language Attribute</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLanguageAttribute(LanguageAttribute object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Lookup Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Lookup Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLookupElement(LookupElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Form Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Form Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFormElement(FormElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Control Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Control Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseControlElement(ControlElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Control Element Rule</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Control Element Rule</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseControlElementRule(ControlElementRule object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Composite Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Composite Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCompositeElement(CompositeElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Composite Element Rule</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Composite Element Rule</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCompositeElementRule(CompositeElementRule object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Leaf Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Leaf Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLeafElement(LeafElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>String Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>String Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStringElement(StringElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Double Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Double Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDoubleElement(DoubleElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Long Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Long Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLongElement(LongElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Sequence Box Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Sequence Box Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSequenceBoxElement(SequenceBoxElement object)
   {
     return null;
   }

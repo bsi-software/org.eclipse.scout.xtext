@@ -9,23 +9,23 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.scout.saml.saml.Import;
+import org.eclipse.scout.saml.saml.ImportElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Import</b></em>'.
+ * An implementation of the model object '<em><b>Import Element</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.ImportImpl#getImportedNamespace <em>Imported Namespace</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.ImportElementImpl#getImportedNamespace <em>Imported Namespace</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ImportImpl extends MinimalEObjectImpl.Container implements Import
+public class ImportElementImpl extends MinimalEObjectImpl.Container implements ImportElement
 {
   /**
    * The default value of the '{@link #getImportedNamespace() <em>Imported Namespace</em>}' attribute.
@@ -52,7 +52,7 @@ public class ImportImpl extends MinimalEObjectImpl.Container implements Import
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ImportImpl()
+  protected ImportElementImpl()
   {
     super();
   }
@@ -65,7 +65,7 @@ public class ImportImpl extends MinimalEObjectImpl.Container implements Import
   @Override
   protected EClass eStaticClass()
   {
-    return SamlPackage.Literals.IMPORT;
+    return SamlPackage.Literals.IMPORT_ELEMENT;
   }
 
   /**
@@ -88,7 +88,7 @@ public class ImportImpl extends MinimalEObjectImpl.Container implements Import
     String oldImportedNamespace = importedNamespace;
     importedNamespace = newImportedNamespace;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.IMPORT__IMPORTED_NAMESPACE, oldImportedNamespace, importedNamespace));
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.IMPORT_ELEMENT__IMPORTED_NAMESPACE, oldImportedNamespace, importedNamespace));
   }
 
   /**
@@ -101,7 +101,7 @@ public class ImportImpl extends MinimalEObjectImpl.Container implements Import
   {
     switch (featureID)
     {
-      case SamlPackage.IMPORT__IMPORTED_NAMESPACE:
+      case SamlPackage.IMPORT_ELEMENT__IMPORTED_NAMESPACE:
         return getImportedNamespace();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -117,7 +117,7 @@ public class ImportImpl extends MinimalEObjectImpl.Container implements Import
   {
     switch (featureID)
     {
-      case SamlPackage.IMPORT__IMPORTED_NAMESPACE:
+      case SamlPackage.IMPORT_ELEMENT__IMPORTED_NAMESPACE:
         setImportedNamespace((String)newValue);
         return;
     }
@@ -134,7 +134,7 @@ public class ImportImpl extends MinimalEObjectImpl.Container implements Import
   {
     switch (featureID)
     {
-      case SamlPackage.IMPORT__IMPORTED_NAMESPACE:
+      case SamlPackage.IMPORT_ELEMENT__IMPORTED_NAMESPACE:
         setImportedNamespace(IMPORTED_NAMESPACE_EDEFAULT);
         return;
     }
@@ -151,7 +151,7 @@ public class ImportImpl extends MinimalEObjectImpl.Container implements Import
   {
     switch (featureID)
     {
-      case SamlPackage.IMPORT__IMPORTED_NAMESPACE:
+      case SamlPackage.IMPORT_ELEMENT__IMPORTED_NAMESPACE:
         return IMPORTED_NAMESPACE_EDEFAULT == null ? importedNamespace != null : !IMPORTED_NAMESPACE_EDEFAULT.equals(importedNamespace);
     }
     return super.eIsSet(featureID);
@@ -174,4 +174,4 @@ public class ImportImpl extends MinimalEObjectImpl.Container implements Import
     return result.toString();
   }
 
-} //ImportImpl
+} //ImportElementImpl

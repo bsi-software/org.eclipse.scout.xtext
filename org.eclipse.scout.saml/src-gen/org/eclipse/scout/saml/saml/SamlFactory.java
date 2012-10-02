@@ -32,22 +32,166 @@ public interface SamlFactory extends EFactory
   Model createModel();
 
   /**
-   * Returns a new object of class '<em>Import</em>'.
+   * Returns a new object of class '<em>Module Element</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Import</em>'.
+   * @return a new object of class '<em>Module Element</em>'.
    * @generated
    */
-  Import createImport();
+  ModuleElement createModuleElement();
 
   /**
-   * Returns a new object of class '<em>Java Element</em>'.
+   * Returns a new object of class '<em>Import Element</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Java Element</em>'.
+   * @return a new object of class '<em>Import Element</em>'.
    * @generated
    */
-  JavaElement createJavaElement();
+  ImportElement createImportElement();
+
+  /**
+   * Returns a new object of class '<em>Java Code Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Java Code Element</em>'.
+   * @generated
+   */
+  JavaCodeElement createJavaCodeElement();
+
+  /**
+   * Returns a new object of class '<em>Logic Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Logic Element</em>'.
+   * @generated
+   */
+  LogicElement createLogicElement();
+
+  /**
+   * Returns a new object of class '<em>Code Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Code Element</em>'.
+   * @generated
+   */
+  CodeElement createCodeElement();
+
+  /**
+   * Returns a new object of class '<em>Translation Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Translation Element</em>'.
+   * @generated
+   */
+  TranslationElement createTranslationElement();
+
+  /**
+   * Returns a new object of class '<em>Language Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Language Attribute</em>'.
+   * @generated
+   */
+  LanguageAttribute createLanguageAttribute();
+
+  /**
+   * Returns a new object of class '<em>Lookup Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Lookup Element</em>'.
+   * @generated
+   */
+  LookupElement createLookupElement();
+
+  /**
+   * Returns a new object of class '<em>Form Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Form Element</em>'.
+   * @generated
+   */
+  FormElement createFormElement();
+
+  /**
+   * Returns a new object of class '<em>Control Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Control Element</em>'.
+   * @generated
+   */
+  ControlElement createControlElement();
+
+  /**
+   * Returns a new object of class '<em>Control Element Rule</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Control Element Rule</em>'.
+   * @generated
+   */
+  ControlElementRule createControlElementRule();
+
+  /**
+   * Returns a new object of class '<em>Composite Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Composite Element</em>'.
+   * @generated
+   */
+  CompositeElement createCompositeElement();
+
+  /**
+   * Returns a new object of class '<em>Composite Element Rule</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Composite Element Rule</em>'.
+   * @generated
+   */
+  CompositeElementRule createCompositeElementRule();
+
+  /**
+   * Returns a new object of class '<em>Leaf Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Leaf Element</em>'.
+   * @generated
+   */
+  LeafElement createLeafElement();
+
+  /**
+   * Returns a new object of class '<em>String Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>String Element</em>'.
+   * @generated
+   */
+  StringElement createStringElement();
+
+  /**
+   * Returns a new object of class '<em>Double Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Double Element</em>'.
+   * @generated
+   */
+  DoubleElement createDoubleElement();
+
+  /**
+   * Returns a new object of class '<em>Long Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Long Element</em>'.
+   * @generated
+   */
+  LongElement createLongElement();
+
+  /**
+   * Returns a new object of class '<em>Sequence Box Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Sequence Box Element</em>'.
+   * @generated
+   */
+  SequenceBoxElement createSequenceBoxElement();
 
   /**
    * Returns the package supported by this factory.

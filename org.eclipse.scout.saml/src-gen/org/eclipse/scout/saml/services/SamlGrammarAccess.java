@@ -23,55 +23,84 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	public class ModelElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Model");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cImportsAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cImportsImportParserRuleCall_0_0 = (RuleCall)cImportsAssignment_0.eContents().get(0);
-		private final Assignment cElementsAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cElementsJavaElementParserRuleCall_1_0 = (RuleCall)cElementsAssignment_1.eContents().get(0);
+		private final Assignment cModuleAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cModuleModuleElementParserRuleCall_0_0 = (RuleCall)cModuleAssignment_0.eContents().get(0);
+		private final Assignment cImportsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cImportsImportElementParserRuleCall_1_0 = (RuleCall)cImportsAssignment_1.eContents().get(0);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Assignment cCodesAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
+		private final RuleCall cCodesJavaCodeElementParserRuleCall_2_0_0 = (RuleCall)cCodesAssignment_2_0.eContents().get(0);
+		private final Assignment cTranslationsAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
+		private final RuleCall cTranslationsTranslationElementParserRuleCall_2_1_0 = (RuleCall)cTranslationsAssignment_2_1.eContents().get(0);
+		private final Assignment cCodesAssignment_2_2 = (Assignment)cAlternatives_2.eContents().get(2);
+		private final RuleCall cCodesCodeElementParserRuleCall_2_2_0 = (RuleCall)cCodesAssignment_2_2.eContents().get(0);
+		private final Assignment cLookupsAssignment_2_3 = (Assignment)cAlternatives_2.eContents().get(3);
+		private final RuleCall cLookupsLookupElementParserRuleCall_2_3_0 = (RuleCall)cLookupsAssignment_2_3.eContents().get(0);
+		private final Assignment cFormsAssignment_2_4 = (Assignment)cAlternatives_2.eContents().get(4);
+		private final RuleCall cFormsFormElementParserRuleCall_2_4_0 = (RuleCall)cFormsAssignment_2_4.eContents().get(0);
 		
+		////=====================================================================================================================
+		//
+		////TODO: plain java code in XBlockExpression?
+		//
 		//Model:
 		//
-		//	imports+=Import* elements+=JavaElement*;
-		public ParserRule getRule() { return rule; }
-
-		//imports+=Import* elements+=JavaElement*
-		public Group getGroup() { return cGroup; }
-
-		//imports+=Import*
-		public Assignment getImportsAssignment_0() { return cImportsAssignment_0; }
-
-		//Import
-		public RuleCall getImportsImportParserRuleCall_0_0() { return cImportsImportParserRuleCall_0_0; }
-
-		//elements+=JavaElement*
-		public Assignment getElementsAssignment_1() { return cElementsAssignment_1; }
-
-		//JavaElement
-		public RuleCall getElementsJavaElementParserRuleCall_1_0() { return cElementsJavaElementParserRuleCall_1_0; }
-	}
-
-	public class ImportElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Import");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cImportKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cImportedNamespaceAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cImportedNamespaceQualifiedNameWithWildCardParserRuleCall_1_0 = (RuleCall)cImportedNamespaceAssignment_1.eContents().get(0);
-		
-		//Import:
+		//	module=ModuleElement imports+=ImportElement* (codes+=JavaCodeElement | translations+=TranslationElement |
 		//
-		//	"import" importedNamespace=QualifiedNameWithWildCard;
+		//	codes+=CodeElement | lookups+=LookupElement | forms+=FormElement)*;
 		public ParserRule getRule() { return rule; }
 
-		//"import" importedNamespace=QualifiedNameWithWildCard
+		//module=ModuleElement imports+=ImportElement* (codes+=JavaCodeElement | translations+=TranslationElement |
+		//
+		//codes+=CodeElement | lookups+=LookupElement | forms+=FormElement)*
 		public Group getGroup() { return cGroup; }
 
-		//"import"
-		public Keyword getImportKeyword_0() { return cImportKeyword_0; }
+		//module=ModuleElement
+		public Assignment getModuleAssignment_0() { return cModuleAssignment_0; }
 
-		//importedNamespace=QualifiedNameWithWildCard
-		public Assignment getImportedNamespaceAssignment_1() { return cImportedNamespaceAssignment_1; }
+		//ModuleElement
+		public RuleCall getModuleModuleElementParserRuleCall_0_0() { return cModuleModuleElementParserRuleCall_0_0; }
 
-		//QualifiedNameWithWildCard
-		public RuleCall getImportedNamespaceQualifiedNameWithWildCardParserRuleCall_1_0() { return cImportedNamespaceQualifiedNameWithWildCardParserRuleCall_1_0; }
+		//imports+=ImportElement*
+		public Assignment getImportsAssignment_1() { return cImportsAssignment_1; }
+
+		//ImportElement
+		public RuleCall getImportsImportElementParserRuleCall_1_0() { return cImportsImportElementParserRuleCall_1_0; }
+
+		//(codes+=JavaCodeElement | translations+=TranslationElement | codes+=CodeElement | lookups+=LookupElement |
+		//
+		//forms+=FormElement)*
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+
+		//codes+=JavaCodeElement
+		public Assignment getCodesAssignment_2_0() { return cCodesAssignment_2_0; }
+
+		//JavaCodeElement
+		public RuleCall getCodesJavaCodeElementParserRuleCall_2_0_0() { return cCodesJavaCodeElementParserRuleCall_2_0_0; }
+
+		//translations+=TranslationElement
+		public Assignment getTranslationsAssignment_2_1() { return cTranslationsAssignment_2_1; }
+
+		//TranslationElement
+		public RuleCall getTranslationsTranslationElementParserRuleCall_2_1_0() { return cTranslationsTranslationElementParserRuleCall_2_1_0; }
+
+		//codes+=CodeElement
+		public Assignment getCodesAssignment_2_2() { return cCodesAssignment_2_2; }
+
+		//CodeElement
+		public RuleCall getCodesCodeElementParserRuleCall_2_2_0() { return cCodesCodeElementParserRuleCall_2_2_0; }
+
+		//lookups+=LookupElement
+		public Assignment getLookupsAssignment_2_3() { return cLookupsAssignment_2_3; }
+
+		//LookupElement
+		public RuleCall getLookupsLookupElementParserRuleCall_2_3_0() { return cLookupsLookupElementParserRuleCall_2_3_0; }
+
+		//forms+=FormElement
+		public Assignment getFormsAssignment_2_4() { return cFormsAssignment_2_4; }
+
+		//FormElement
+		public RuleCall getFormsFormElementParserRuleCall_2_4_0() { return cFormsFormElementParserRuleCall_2_4_0; }
 	}
 
 	public class QualifiedNameWithWildCardElements extends AbstractParserRuleElementFinder {
@@ -103,365 +132,240 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getAsteriskKeyword_1_1() { return cAsteriskKeyword_1_1; }
 	}
 
-	public class JavaElementElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "JavaElement");
+	public class ModuleElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ModuleElement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cModuleKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameQualifiedNameParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		
+		//ModuleElement:
+		//
+		//	"module" name=QualifiedName;
+		public ParserRule getRule() { return rule; }
+
+		//"module" name=QualifiedName
+		public Group getGroup() { return cGroup; }
+
+		//"module"
+		public Keyword getModuleKeyword_0() { return cModuleKeyword_0; }
+
+		//name=QualifiedName
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//QualifiedName
+		public RuleCall getNameQualifiedNameParserRuleCall_1_0() { return cNameQualifiedNameParserRuleCall_1_0; }
+	}
+
+	public class ImportElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ImportElement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cImportKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cImportedNamespaceAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cImportedNamespaceQualifiedNameWithWildCardParserRuleCall_1_0 = (RuleCall)cImportedNamespaceAssignment_1.eContents().get(0);
+		
+		//ImportElement:
+		//
+		//	"import" importedNamespace=QualifiedNameWithWildCard;
+		public ParserRule getRule() { return rule; }
+
+		//"import" importedNamespace=QualifiedNameWithWildCard
+		public Group getGroup() { return cGroup; }
+
+		//"import"
+		public Keyword getImportKeyword_0() { return cImportKeyword_0; }
+
+		//importedNamespace=QualifiedNameWithWildCard
+		public Assignment getImportedNamespaceAssignment_1() { return cImportedNamespaceAssignment_1; }
+
+		//QualifiedNameWithWildCard
+		public RuleCall getImportedNamespaceQualifiedNameWithWildCardParserRuleCall_1_0() { return cImportedNamespaceQualifiedNameWithWildCardParserRuleCall_1_0; }
+	}
+
+	public class JavaCodeElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "JavaCodeElement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cJava_codeKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cRunatKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cEqualsSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cRunatAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cRunatRunAtTypeParserRuleCall_4_0 = (RuleCall)cRunatAssignment_4.eContents().get(0);
+		private final Assignment cSourceAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cSourceXBlockExpressionParserRuleCall_5_0 = (RuleCall)cSourceAssignment_5.eContents().get(0);
+		
+		//JavaCodeElement:
+		//
+		//	"java_code" name=ID "runat" "=" runat=RunAtType source=XBlockExpression;
+		public ParserRule getRule() { return rule; }
+
+		//"java_code" name=ID "runat" "=" runat=RunAtType source=XBlockExpression
+		public Group getGroup() { return cGroup; }
+
+		//"java_code"
+		public Keyword getJava_codeKeyword_0() { return cJava_codeKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//"runat"
+		public Keyword getRunatKeyword_2() { return cRunatKeyword_2; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_3() { return cEqualsSignKeyword_3; }
+
+		//runat=RunAtType
+		public Assignment getRunatAssignment_4() { return cRunatAssignment_4; }
+
+		//RunAtType
+		public RuleCall getRunatRunAtTypeParserRuleCall_4_0() { return cRunatRunAtTypeParserRuleCall_4_0; }
+
+		//source=XBlockExpression
+		public Assignment getSourceAssignment_5() { return cSourceAssignment_5; }
+
+		//XBlockExpression
+		public RuleCall getSourceXBlockExpressionParserRuleCall_5_0() { return cSourceXBlockExpressionParserRuleCall_5_0; }
+	}
+
+	public class RunAtTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RunAtType");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Keyword cClientKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Keyword cServerKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		
+		//RunAtType:
+		//
+		//	"client" | "server";
+		public ParserRule getRule() { return rule; }
+
+		//"client" | "server"
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//"client"
+		public Keyword getClientKeyword_0() { return cClientKeyword_0; }
+
+		//"server"
+		public Keyword getServerKeyword_1() { return cServerKeyword_1; }
+	}
+
+	public class LogicElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "LogicElement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLogicKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final UnorderedGroup cUnorderedGroup_1 = (UnorderedGroup)cGroup.eContents().get(1);
+		private final Group cGroup_1_0 = (Group)cUnorderedGroup_1.eContents().get(0);
+		private final Keyword cEventKeyword_1_0_0 = (Keyword)cGroup_1_0.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_1_0_1 = (Keyword)cGroup_1_0.eContents().get(1);
+		private final Assignment cEventAssignment_1_0_2 = (Assignment)cGroup_1_0.eContents().get(2);
+		private final RuleCall cEventLogicTypeEnumRuleCall_1_0_2_0 = (RuleCall)cEventAssignment_1_0_2.eContents().get(0);
+		private final Group cGroup_1_1 = (Group)cUnorderedGroup_1.eContents().get(1);
+		private final Keyword cRunatKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_1_1_1 = (Keyword)cGroup_1_1.eContents().get(1);
+		private final Assignment cRunatAssignment_1_1_2 = (Assignment)cGroup_1_1.eContents().get(2);
+		private final RuleCall cRunatRunAtTypeParserRuleCall_1_1_2_0 = (RuleCall)cRunatAssignment_1_1_2.eContents().get(0);
+		private final Group cGroup_1_2 = (Group)cUnorderedGroup_1.eContents().get(2);
+		private final Keyword cExecKeyword_1_2_0 = (Keyword)cGroup_1_2.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_1_2_1 = (Keyword)cGroup_1_2.eContents().get(1);
+		private final Assignment cExecAssignment_1_2_2 = (Assignment)cGroup_1_2.eContents().get(2);
+		private final CrossReference cExecJavaCodeElementCrossReference_1_2_2_0 = (CrossReference)cExecAssignment_1_2_2.eContents().get(0);
+		private final RuleCall cExecJavaCodeElementIDTerminalRuleCall_1_2_2_0_1 = (RuleCall)cExecJavaCodeElementCrossReference_1_2_2_0.eContents().get(1);
+		private final Assignment cSourceAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cSourceXBlockExpressionParserRuleCall_2_0 = (RuleCall)cSourceAssignment_2.eContents().get(0);
+		
+		//LogicElement:
+		//
+		//	"logic" ("event" "=" event=LogicType & ("runat" "=" runat=RunAtType)? & ("exec" "=" exec=[JavaCodeElement])?)
+		//
+		//	source=XBlockExpression?;
+		public ParserRule getRule() { return rule; }
+
+		//"logic" ("event" "=" event=LogicType & ("runat" "=" runat=RunAtType)? & ("exec" "=" exec=[JavaCodeElement])?)
+		//
+		//source=XBlockExpression?
+		public Group getGroup() { return cGroup; }
+
+		//"logic"
+		public Keyword getLogicKeyword_0() { return cLogicKeyword_0; }
+
+		//"event" "=" event=LogicType & ("runat" "=" runat=RunAtType)? & ("exec" "=" exec=[JavaCodeElement])?
+		public UnorderedGroup getUnorderedGroup_1() { return cUnorderedGroup_1; }
+
+		//"event" "=" event=LogicType
+		public Group getGroup_1_0() { return cGroup_1_0; }
+
+		//"event"
+		public Keyword getEventKeyword_1_0_0() { return cEventKeyword_1_0_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_1_0_1() { return cEqualsSignKeyword_1_0_1; }
+
+		//event=LogicType
+		public Assignment getEventAssignment_1_0_2() { return cEventAssignment_1_0_2; }
+
+		//LogicType
+		public RuleCall getEventLogicTypeEnumRuleCall_1_0_2_0() { return cEventLogicTypeEnumRuleCall_1_0_2_0; }
+
+		//("runat" "=" runat=RunAtType)?
+		public Group getGroup_1_1() { return cGroup_1_1; }
+
+		//"runat"
+		public Keyword getRunatKeyword_1_1_0() { return cRunatKeyword_1_1_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_1_1_1() { return cEqualsSignKeyword_1_1_1; }
+
+		//runat=RunAtType
+		public Assignment getRunatAssignment_1_1_2() { return cRunatAssignment_1_1_2; }
+
+		//RunAtType
+		public RuleCall getRunatRunAtTypeParserRuleCall_1_1_2_0() { return cRunatRunAtTypeParserRuleCall_1_1_2_0; }
+
+		//("exec" "=" exec=[JavaCodeElement])?
+		public Group getGroup_1_2() { return cGroup_1_2; }
+
+		//"exec"
+		public Keyword getExecKeyword_1_2_0() { return cExecKeyword_1_2_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_1_2_1() { return cEqualsSignKeyword_1_2_1; }
+
+		//exec=[JavaCodeElement]
+		public Assignment getExecAssignment_1_2_2() { return cExecAssignment_1_2_2; }
+
+		//[JavaCodeElement]
+		public CrossReference getExecJavaCodeElementCrossReference_1_2_2_0() { return cExecJavaCodeElementCrossReference_1_2_2_0; }
+
+		//ID
+		public RuleCall getExecJavaCodeElementIDTerminalRuleCall_1_2_2_0_1() { return cExecJavaCodeElementIDTerminalRuleCall_1_2_2_0_1; }
+
+		//source=XBlockExpression?
+		public Assignment getSourceAssignment_2() { return cSourceAssignment_2; }
+
+		//XBlockExpression
+		public RuleCall getSourceXBlockExpressionParserRuleCall_2_0() { return cSourceXBlockExpressionParserRuleCall_2_0; }
+	}
+
+	public class CodeElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CodeElement");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cCodeKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cSourceAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cSourceXBlockExpressionParserRuleCall_2_0 = (RuleCall)cSourceAssignment_2.eContents().get(0);
+		private final Keyword cIdKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cEqualsSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cIdAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cIdINTTerminalRuleCall_4_0 = (RuleCall)cIdAssignment_4.eContents().get(0);
 		
-		/// *
+		//CodeElement:
 		//
-		//RootElement:ModuleElement|TranslationElement|CodeElement|LookupElement|TemplateElement|FormElement;
-		//
-		//
-		//
-		//AbstractScoutType:CodeElement|LookupElement|FormElement|AbstractFieldElement;
-		//
-		//
-		//
-		//AbstractFieldElement: AbstractValueFieldElement | AbstractContainerFieldElement;
-		//
-		//
-		//
-		//AbstractFieldProperties:text=TextAttribute|visible=VisibleAttribue|master=MasterAttribute|enabled=EnabledAttribue;
-		//
-		//TextAttribute:'text' '='value=[TranslationElement];
-		//
-		//EnabledAttribue:'enabled='value=BooleanType;
-		//
-		//VisibleAttribue:'visible='value=BooleanType;
-		//
-		//MasterAttribute:'master='value=[AbstractValueFieldElement];
-		//
-		//
-		//
-		//AbstractValueFieldElement:StringElement|SmartfieldElement|LongElement|DoubleElement|DateElement|ZregBoxElement;
-		//
-		//AbstractValueFieldProperties:fieldproperties=AbstractFieldProperties|mandatory=MandatoryAttribue;
-		//
-		//MandatoryAttribue:'mandatory='value=BooleanType;
-		//
-		//
-		//
-		//
-		//
-		//AbstractContainerFieldElement: SequenceBoxElement;
-		//
-		//
-		//
-		//
-		//
-		//ModuleElement: 'module' name=QualifiedName;
-		//
-		//
-		//
-		//	
-		//
-		//TranslationElement:'translation' name=QualifiedName (translations+=TranslationAttribute)+;
-		//
-		//TranslationAttribute:lang=ID '=' text=STRING;
-		//
-		//	
-		//
-		//	
-		//
-		//JavaElement:'java ' name=ID runat=RunAtAttribute '{'source=STRING'}'; //TODO: should then be java code not a string (& there are special "hidden" input parameters)
-		//
-		//RunAtAttribute:'runat=' value=JavaRunAtAttributeList;
-		//
-		//enum JavaRunAtAttributeList:client|server;
-		//
-		//
-		//
-		//
-		//
-		//CodeElement:'code ' name=ID id=CodeIdAttribute;
-		//
-		//CodeIdAttribute:'id=' value=INT;
-		//
-		//	
-		//
-		//	
-		//
-		//LogicElement:'logic ' type=LogicTypeAttribute (properties+=LogicOptionalProperties)* ('{' source=STRING '}')?;
-		//
-		//LogicOptionalProperties:runat=RunAtAttribute|exec=LogicExecAttribute;
-		//
-		//LogicTypeAttribute:'type='value=LogicTypeAttributeList;
-		//
-		//LogicExecAttribute:'exec='value=[JavaElement];
-		//
-		//enum LogicTypeAttributeList:global|all|modify_load|modify_store|new_load|new_store|changed|click|master_changed|init;
-		//
-		//
-		//
-		//
-		//
-		//LookupElement:'lookup ' name=ID '{' (servicelogic+=(JavaElement|LogicElement))+ '}';
-		//
-		//
-		//
-		//
-		//
-		//TemplateElement:'template ' name=ID class=TemplateElementClassAttribute replaces=TemplateElementReplacesAttribute;
-		//
-		//TemplateElementClassAttribute:'class='value=QualifiedName;
-		//
-		//TemplateElementReplacesAttribute:'replaces='value=[AbstractScoutType];
-		//
-		//
-		//
-		//
-		//
-		//
-		//
-		//FormElement:'form' name=ID (('modal' '=' modal=BooleanType)? & ('columns' '=' columns=INT)?) ('{' children+=(LogicElement|AbstractFieldElement)+ '}')?;
-		//
-		//
-		//
-		//
-		//
-		//
-		//
-		////TODO: templates?
-		//
-		//SequenceBoxElement:'sequence_box 'name=ID (properties+=AbstractFieldProperties)* ('{' children+=(LogicElement|AbstractFieldElement)* '}')?;
-		//
-		//	
-		//
-		//
-		//
-		//StringElement:'string 'name=ID (properties+=StringElementProperties)* ('{' (logic+=LogicElement)+ '}')?;
-		//
-		//StringElementProperties:valueFieldProperties=AbstractValueFieldProperties|maxlen=StringElementMaxlenAttribute;
-		//
-		//StringElementMaxlenAttribute:'maxlen='value=INT;
-		//
-		//
-		//
-		//
-		//
-		//DoubleElement:'double 'name=ID common=MyCommonRule;
-		//
-		//
-		//
-		//
-		//
-		//LongElement:'long 'name=ID common=MyCommonRule;
-		//
-		//
-		//
-		//
-		//
-		//DateElement:'date 'name=ID common=MyCommonRule;
-		//
-		//
-		//
-		//
-		//
-		//MyCommonRule: {MyCommonRule} (properties+=AbstractValueFieldProperties)* ('{' children+=(LogicElement)* '}')?;
-		//
-		//
-		//
-		//SmartfieldElement:'smartfield 'name=ID (properties+=SmartFieldElementProperties)* ('{' (logic+=LogicElement)+ '}')?;
-		//
-		//SmartFieldElementProperties:valueFieldProperties=AbstractValueFieldProperties|code=SmartfieldElementCodeAttribute|value_type=SmartfieldElementValueTypeAttribute|lookup=SmartfieldElementLookupAttribute;
-		//
-		//SmartfieldElementCodeAttribute:'code='value=[CodeElement];
-		//
-		//SmartfieldElementValueTypeAttribute:'value_type='value=[jvmTypes::JvmType|QualifiedName];
-		//
-		//SmartfieldElementLookupAttribute:'lookup='value=[LookupElement];
-		//
-		//
-		//
-		//
-		//
-		//// Specific: to be removed when templates are implemented
-		//
-		//ZregBoxElement:'zreg_sequence_box 'name=ID (properties+=AbstractFieldProperties)* ('{' children+=(LogicElement)* '}')?;
-		//
-		// * / JavaElement:
-		//
-		//	"code" name=ID source=XBlockExpression;
+		//	"code" name=ID "id" "=" id=INT;
 		public ParserRule getRule() { return rule; }
 
-		//"code" name=ID source=XBlockExpression / *
-		//
-		//RootElement:ModuleElement|TranslationElement|CodeElement|LookupElement|TemplateElement|FormElement;
-		//
-		//
-		//
-		//AbstractScoutType:CodeElement|LookupElement|FormElement|AbstractFieldElement;
-		//
-		//
-		//
-		//AbstractFieldElement: AbstractValueFieldElement | AbstractContainerFieldElement;
-		//
-		//
-		//
-		//AbstractFieldProperties:text=TextAttribute|visible=VisibleAttribue|master=MasterAttribute|enabled=EnabledAttribue;
-		//
-		//TextAttribute:'text' '='value=[TranslationElement];
-		//
-		//EnabledAttribue:'enabled='value=BooleanType;
-		//
-		//VisibleAttribue:'visible='value=BooleanType;
-		//
-		//MasterAttribute:'master='value=[AbstractValueFieldElement];
-		//
-		//
-		//
-		//AbstractValueFieldElement:StringElement|SmartfieldElement|LongElement|DoubleElement|DateElement|ZregBoxElement;
-		//
-		//AbstractValueFieldProperties:fieldproperties=AbstractFieldProperties|mandatory=MandatoryAttribue;
-		//
-		//MandatoryAttribue:'mandatory='value=BooleanType;
-		//
-		//
-		//
-		//
-		//
-		//AbstractContainerFieldElement: SequenceBoxElement;
-		//
-		//
-		//
-		//
-		//
-		//ModuleElement: 'module' name=QualifiedName;
-		//
-		//
-		//
-		//	
-		//
-		//TranslationElement:'translation' name=QualifiedName (translations+=TranslationAttribute)+;
-		//
-		//TranslationAttribute:lang=ID '=' text=STRING;
-		//
-		//	
-		//
-		//	
-		//
-		//JavaElement:'java ' name=ID runat=RunAtAttribute '{'source=STRING'}'; //TODO: should then be java code not a string (& there are special "hidden" input parameters)
-		//
-		//RunAtAttribute:'runat=' value=JavaRunAtAttributeList;
-		//
-		//enum JavaRunAtAttributeList:client|server;
-		//
-		//
-		//
-		//
-		//
-		//CodeElement:'code ' name=ID id=CodeIdAttribute;
-		//
-		//CodeIdAttribute:'id=' value=INT;
-		//
-		//	
-		//
-		//	
-		//
-		//LogicElement:'logic ' type=LogicTypeAttribute (properties+=LogicOptionalProperties)* ('{' source=STRING '}')?;
-		//
-		//LogicOptionalProperties:runat=RunAtAttribute|exec=LogicExecAttribute;
-		//
-		//LogicTypeAttribute:'type='value=LogicTypeAttributeList;
-		//
-		//LogicExecAttribute:'exec='value=[JavaElement];
-		//
-		//enum LogicTypeAttributeList:global|all|modify_load|modify_store|new_load|new_store|changed|click|master_changed|init;
-		//
-		//
-		//
-		//
-		//
-		//LookupElement:'lookup ' name=ID '{' (servicelogic+=(JavaElement|LogicElement))+ '}';
-		//
-		//
-		//
-		//
-		//
-		//TemplateElement:'template ' name=ID class=TemplateElementClassAttribute replaces=TemplateElementReplacesAttribute;
-		//
-		//TemplateElementClassAttribute:'class='value=QualifiedName;
-		//
-		//TemplateElementReplacesAttribute:'replaces='value=[AbstractScoutType];
-		//
-		//
-		//
-		//
-		//
-		//
-		//
-		//FormElement:'form' name=ID (('modal' '=' modal=BooleanType)? & ('columns' '=' columns=INT)?) ('{' children+=(LogicElement|AbstractFieldElement)+ '}')?;
-		//
-		//
-		//
-		//
-		//
-		//
-		//
-		////TODO: templates?
-		//
-		//SequenceBoxElement:'sequence_box 'name=ID (properties+=AbstractFieldProperties)* ('{' children+=(LogicElement|AbstractFieldElement)* '}')?;
-		//
-		//	
-		//
-		//
-		//
-		//StringElement:'string 'name=ID (properties+=StringElementProperties)* ('{' (logic+=LogicElement)+ '}')?;
-		//
-		//StringElementProperties:valueFieldProperties=AbstractValueFieldProperties|maxlen=StringElementMaxlenAttribute;
-		//
-		//StringElementMaxlenAttribute:'maxlen='value=INT;
-		//
-		//
-		//
-		//
-		//
-		//DoubleElement:'double 'name=ID common=MyCommonRule;
-		//
-		//
-		//
-		//
-		//
-		//LongElement:'long 'name=ID common=MyCommonRule;
-		//
-		//
-		//
-		//
-		//
-		//DateElement:'date 'name=ID common=MyCommonRule;
-		//
-		//
-		//
-		//
-		//
-		//MyCommonRule: {MyCommonRule} (properties+=AbstractValueFieldProperties)* ('{' children+=(LogicElement)* '}')?;
-		//
-		//
-		//
-		//SmartfieldElement:'smartfield 'name=ID (properties+=SmartFieldElementProperties)* ('{' (logic+=LogicElement)+ '}')?;
-		//
-		//SmartFieldElementProperties:valueFieldProperties=AbstractValueFieldProperties|code=SmartfieldElementCodeAttribute|value_type=SmartfieldElementValueTypeAttribute|lookup=SmartfieldElementLookupAttribute;
-		//
-		//SmartfieldElementCodeAttribute:'code='value=[CodeElement];
-		//
-		//SmartfieldElementValueTypeAttribute:'value_type='value=[jvmTypes::JvmType|QualifiedName];
-		//
-		//SmartfieldElementLookupAttribute:'lookup='value=[LookupElement];
-		//
-		//
-		//
-		//
-		//
-		//// Specific: to be removed when templates are implemented
-		//
-		//ZregBoxElement:'zreg_sequence_box 'name=ID (properties+=AbstractFieldProperties)* ('{' children+=(LogicElement)* '}')?;
-		//
-		// * /
+		//"code" name=ID "id" "=" id=INT
 		public Group getGroup() { return cGroup; }
 
 		//"code"
@@ -473,362 +377,1108 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		/// *
-		//
-		//RootElement:ModuleElement|TranslationElement|CodeElement|LookupElement|TemplateElement|FormElement;
-		//
-		//
-		//
-		//AbstractScoutType:CodeElement|LookupElement|FormElement|AbstractFieldElement;
-		//
-		//
-		//
-		//AbstractFieldElement: AbstractValueFieldElement | AbstractContainerFieldElement;
-		//
-		//
-		//
-		//AbstractFieldProperties:text=TextAttribute|visible=VisibleAttribue|master=MasterAttribute|enabled=EnabledAttribue;
-		//
-		//TextAttribute:'text' '='value=[TranslationElement];
-		//
-		//EnabledAttribue:'enabled='value=BooleanType;
-		//
-		//VisibleAttribue:'visible='value=BooleanType;
-		//
-		//MasterAttribute:'master='value=[AbstractValueFieldElement];
-		//
-		//
-		//
-		//AbstractValueFieldElement:StringElement|SmartfieldElement|LongElement|DoubleElement|DateElement|ZregBoxElement;
-		//
-		//AbstractValueFieldProperties:fieldproperties=AbstractFieldProperties|mandatory=MandatoryAttribue;
-		//
-		//MandatoryAttribue:'mandatory='value=BooleanType;
-		//
-		//
-		//
-		//
-		//
-		//AbstractContainerFieldElement: SequenceBoxElement;
-		//
-		//
-		//
-		//
-		//
-		//ModuleElement: 'module' name=QualifiedName;
-		//
-		//
-		//
-		//	
-		//
-		//TranslationElement:'translation' name=QualifiedName (translations+=TranslationAttribute)+;
-		//
-		//TranslationAttribute:lang=ID '=' text=STRING;
-		//
-		//	
-		//
-		//	
-		//
-		//JavaElement:'java ' name=ID runat=RunAtAttribute '{'source=STRING'}'; //TODO: should then be java code not a string (& there are special "hidden" input parameters)
-		//
-		//RunAtAttribute:'runat=' value=JavaRunAtAttributeList;
-		//
-		//enum JavaRunAtAttributeList:client|server;
-		//
-		//
-		//
-		//
-		//
-		//CodeElement:'code ' name=ID id=CodeIdAttribute;
-		//
-		//CodeIdAttribute:'id=' value=INT;
-		//
-		//	
-		//
-		//	
-		//
-		//LogicElement:'logic ' type=LogicTypeAttribute (properties+=LogicOptionalProperties)* ('{' source=STRING '}')?;
-		//
-		//LogicOptionalProperties:runat=RunAtAttribute|exec=LogicExecAttribute;
-		//
-		//LogicTypeAttribute:'type='value=LogicTypeAttributeList;
-		//
-		//LogicExecAttribute:'exec='value=[JavaElement];
-		//
-		//enum LogicTypeAttributeList:global|all|modify_load|modify_store|new_load|new_store|changed|click|master_changed|init;
-		//
-		//
-		//
-		//
-		//
-		//LookupElement:'lookup ' name=ID '{' (servicelogic+=(JavaElement|LogicElement))+ '}';
-		//
-		//
-		//
-		//
-		//
-		//TemplateElement:'template ' name=ID class=TemplateElementClassAttribute replaces=TemplateElementReplacesAttribute;
-		//
-		//TemplateElementClassAttribute:'class='value=QualifiedName;
-		//
-		//TemplateElementReplacesAttribute:'replaces='value=[AbstractScoutType];
-		//
-		//
-		//
-		//
-		//
-		//
-		//
-		//FormElement:'form' name=ID (('modal' '=' modal=BooleanType)? & ('columns' '=' columns=INT)?) ('{' children+=(LogicElement|AbstractFieldElement)+ '}')?;
-		//
-		//
-		//
-		//
-		//
-		//
-		//
-		////TODO: templates?
-		//
-		//SequenceBoxElement:'sequence_box 'name=ID (properties+=AbstractFieldProperties)* ('{' children+=(LogicElement|AbstractFieldElement)* '}')?;
-		//
-		//	
-		//
-		//
-		//
-		//StringElement:'string 'name=ID (properties+=StringElementProperties)* ('{' (logic+=LogicElement)+ '}')?;
-		//
-		//StringElementProperties:valueFieldProperties=AbstractValueFieldProperties|maxlen=StringElementMaxlenAttribute;
-		//
-		//StringElementMaxlenAttribute:'maxlen='value=INT;
-		//
-		//
-		//
-		//
-		//
-		//DoubleElement:'double 'name=ID common=MyCommonRule;
-		//
-		//
-		//
-		//
-		//
-		//LongElement:'long 'name=ID common=MyCommonRule;
-		//
-		//
-		//
-		//
-		//
-		//DateElement:'date 'name=ID common=MyCommonRule;
-		//
-		//
-		//
-		//
-		//
-		//MyCommonRule: {MyCommonRule} (properties+=AbstractValueFieldProperties)* ('{' children+=(LogicElement)* '}')?;
-		//
-		//
-		//
-		//SmartfieldElement:'smartfield 'name=ID (properties+=SmartFieldElementProperties)* ('{' (logic+=LogicElement)+ '}')?;
-		//
-		//SmartFieldElementProperties:valueFieldProperties=AbstractValueFieldProperties|code=SmartfieldElementCodeAttribute|value_type=SmartfieldElementValueTypeAttribute|lookup=SmartfieldElementLookupAttribute;
-		//
-		//SmartfieldElementCodeAttribute:'code='value=[CodeElement];
-		//
-		//SmartfieldElementValueTypeAttribute:'value_type='value=[jvmTypes::JvmType|QualifiedName];
-		//
-		//SmartfieldElementLookupAttribute:'lookup='value=[LookupElement];
-		//
-		//
-		//
-		//
-		//
-		//// Specific: to be removed when templates are implemented
-		//
-		//ZregBoxElement:'zreg_sequence_box 'name=ID (properties+=AbstractFieldProperties)* ('{' children+=(LogicElement)* '}')?;
-		//
-		// * / source=XBlockExpression
-		public Assignment getSourceAssignment_2() { return cSourceAssignment_2; }
+		//"id"
+		public Keyword getIdKeyword_2() { return cIdKeyword_2; }
 
-		/// *
-		//
-		//RootElement:ModuleElement|TranslationElement|CodeElement|LookupElement|TemplateElement|FormElement;
-		//
-		//
-		//
-		//AbstractScoutType:CodeElement|LookupElement|FormElement|AbstractFieldElement;
-		//
-		//
-		//
-		//AbstractFieldElement: AbstractValueFieldElement | AbstractContainerFieldElement;
-		//
-		//
-		//
-		//AbstractFieldProperties:text=TextAttribute|visible=VisibleAttribue|master=MasterAttribute|enabled=EnabledAttribue;
-		//
-		//TextAttribute:'text' '='value=[TranslationElement];
-		//
-		//EnabledAttribue:'enabled='value=BooleanType;
-		//
-		//VisibleAttribue:'visible='value=BooleanType;
-		//
-		//MasterAttribute:'master='value=[AbstractValueFieldElement];
-		//
-		//
-		//
-		//AbstractValueFieldElement:StringElement|SmartfieldElement|LongElement|DoubleElement|DateElement|ZregBoxElement;
-		//
-		//AbstractValueFieldProperties:fieldproperties=AbstractFieldProperties|mandatory=MandatoryAttribue;
-		//
-		//MandatoryAttribue:'mandatory='value=BooleanType;
-		//
-		//
-		//
-		//
-		//
-		//AbstractContainerFieldElement: SequenceBoxElement;
-		//
-		//
-		//
-		//
-		//
-		//ModuleElement: 'module' name=QualifiedName;
-		//
-		//
-		//
-		//	
-		//
-		//TranslationElement:'translation' name=QualifiedName (translations+=TranslationAttribute)+;
-		//
-		//TranslationAttribute:lang=ID '=' text=STRING;
-		//
-		//	
-		//
-		//	
-		//
-		//JavaElement:'java ' name=ID runat=RunAtAttribute '{'source=STRING'}'; //TODO: should then be java code not a string (& there are special "hidden" input parameters)
-		//
-		//RunAtAttribute:'runat=' value=JavaRunAtAttributeList;
-		//
-		//enum JavaRunAtAttributeList:client|server;
-		//
-		//
-		//
-		//
-		//
-		//CodeElement:'code ' name=ID id=CodeIdAttribute;
-		//
-		//CodeIdAttribute:'id=' value=INT;
-		//
-		//	
-		//
-		//	
-		//
-		//LogicElement:'logic ' type=LogicTypeAttribute (properties+=LogicOptionalProperties)* ('{' source=STRING '}')?;
-		//
-		//LogicOptionalProperties:runat=RunAtAttribute|exec=LogicExecAttribute;
-		//
-		//LogicTypeAttribute:'type='value=LogicTypeAttributeList;
-		//
-		//LogicExecAttribute:'exec='value=[JavaElement];
-		//
-		//enum LogicTypeAttributeList:global|all|modify_load|modify_store|new_load|new_store|changed|click|master_changed|init;
-		//
-		//
-		//
-		//
-		//
-		//LookupElement:'lookup ' name=ID '{' (servicelogic+=(JavaElement|LogicElement))+ '}';
-		//
-		//
-		//
-		//
-		//
-		//TemplateElement:'template ' name=ID class=TemplateElementClassAttribute replaces=TemplateElementReplacesAttribute;
-		//
-		//TemplateElementClassAttribute:'class='value=QualifiedName;
-		//
-		//TemplateElementReplacesAttribute:'replaces='value=[AbstractScoutType];
-		//
-		//
-		//
-		//
-		//
-		//
-		//
-		//FormElement:'form' name=ID (('modal' '=' modal=BooleanType)? & ('columns' '=' columns=INT)?) ('{' children+=(LogicElement|AbstractFieldElement)+ '}')?;
-		//
-		//
-		//
-		//
-		//
-		//
-		//
-		////TODO: templates?
-		//
-		//SequenceBoxElement:'sequence_box 'name=ID (properties+=AbstractFieldProperties)* ('{' children+=(LogicElement|AbstractFieldElement)* '}')?;
-		//
-		//	
-		//
-		//
-		//
-		//StringElement:'string 'name=ID (properties+=StringElementProperties)* ('{' (logic+=LogicElement)+ '}')?;
-		//
-		//StringElementProperties:valueFieldProperties=AbstractValueFieldProperties|maxlen=StringElementMaxlenAttribute;
-		//
-		//StringElementMaxlenAttribute:'maxlen='value=INT;
-		//
-		//
-		//
-		//
-		//
-		//DoubleElement:'double 'name=ID common=MyCommonRule;
-		//
-		//
-		//
-		//
-		//
-		//LongElement:'long 'name=ID common=MyCommonRule;
-		//
-		//
-		//
-		//
-		//
-		//DateElement:'date 'name=ID common=MyCommonRule;
-		//
-		//
-		//
-		//
-		//
-		//MyCommonRule: {MyCommonRule} (properties+=AbstractValueFieldProperties)* ('{' children+=(LogicElement)* '}')?;
-		//
-		//
-		//
-		//SmartfieldElement:'smartfield 'name=ID (properties+=SmartFieldElementProperties)* ('{' (logic+=LogicElement)+ '}')?;
-		//
-		//SmartFieldElementProperties:valueFieldProperties=AbstractValueFieldProperties|code=SmartfieldElementCodeAttribute|value_type=SmartfieldElementValueTypeAttribute|lookup=SmartfieldElementLookupAttribute;
-		//
-		//SmartfieldElementCodeAttribute:'code='value=[CodeElement];
-		//
-		//SmartfieldElementValueTypeAttribute:'value_type='value=[jvmTypes::JvmType|QualifiedName];
-		//
-		//SmartfieldElementLookupAttribute:'lookup='value=[LookupElement];
-		//
-		//
-		//
-		//
-		//
-		//// Specific: to be removed when templates are implemented
-		//
-		//ZregBoxElement:'zreg_sequence_box 'name=ID (properties+=AbstractFieldProperties)* ('{' children+=(LogicElement)* '}')?;
-		//
-		// * / XBlockExpression
-		public RuleCall getSourceXBlockExpressionParserRuleCall_2_0() { return cSourceXBlockExpressionParserRuleCall_2_0; }
+		//"="
+		public Keyword getEqualsSignKeyword_3() { return cEqualsSignKeyword_3; }
+
+		//id=INT
+		public Assignment getIdAssignment_4() { return cIdAssignment_4; }
+
+		//INT
+		public RuleCall getIdINTTerminalRuleCall_4_0() { return cIdINTTerminalRuleCall_4_0; }
+	}
+
+	public class TranslationElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "TranslationElement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cTranslationKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameQualifiedNameParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cTranslationsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cTranslationsLanguageAttributeParserRuleCall_2_0 = (RuleCall)cTranslationsAssignment_2.eContents().get(0);
+		
+		//TranslationElement:
+		//
+		//	"translation" name=QualifiedName translations+=LanguageAttribute+;
+		public ParserRule getRule() { return rule; }
+
+		//"translation" name=QualifiedName translations+=LanguageAttribute+
+		public Group getGroup() { return cGroup; }
+
+		//"translation"
+		public Keyword getTranslationKeyword_0() { return cTranslationKeyword_0; }
+
+		//name=QualifiedName
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//QualifiedName
+		public RuleCall getNameQualifiedNameParserRuleCall_1_0() { return cNameQualifiedNameParserRuleCall_1_0; }
+
+		//translations+=LanguageAttribute+
+		public Assignment getTranslationsAssignment_2() { return cTranslationsAssignment_2; }
+
+		//LanguageAttribute
+		public RuleCall getTranslationsLanguageAttributeParserRuleCall_2_0() { return cTranslationsLanguageAttributeParserRuleCall_2_0; }
+	}
+
+	public class LanguageAttributeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "LanguageAttribute");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cLangAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cLangIDTerminalRuleCall_0_0 = (RuleCall)cLangAssignment_0.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cTextAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cTextSTRINGTerminalRuleCall_2_0 = (RuleCall)cTextAssignment_2.eContents().get(0);
+		
+		//LanguageAttribute:
+		//
+		//	lang=ID "=" text=STRING;
+		public ParserRule getRule() { return rule; }
+
+		//lang=ID "=" text=STRING
+		public Group getGroup() { return cGroup; }
+
+		//lang=ID
+		public Assignment getLangAssignment_0() { return cLangAssignment_0; }
+
+		//ID
+		public RuleCall getLangIDTerminalRuleCall_0_0() { return cLangIDTerminalRuleCall_0_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_1() { return cEqualsSignKeyword_1; }
+
+		//text=STRING
+		public Assignment getTextAssignment_2() { return cTextAssignment_2; }
+
+		//STRING
+		public RuleCall getTextSTRINGTerminalRuleCall_2_0() { return cTextSTRINGTerminalRuleCall_2_0; }
+	}
+
+	public class LookupElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "LookupElement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLookupKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
+		private final Assignment cLogicAssignment_3_0 = (Assignment)cAlternatives_3.eContents().get(0);
+		private final RuleCall cLogicLogicElementParserRuleCall_3_0_0 = (RuleCall)cLogicAssignment_3_0.eContents().get(0);
+		private final Assignment cJavacodeAssignment_3_1 = (Assignment)cAlternatives_3.eContents().get(1);
+		private final RuleCall cJavacodeJavaCodeElementParserRuleCall_3_1_0 = (RuleCall)cJavacodeAssignment_3_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//LookupElement:
+		//
+		//	"lookup" name=ID "{" (logic+=LogicElement | javacode+=JavaCodeElement)* "}";
+		public ParserRule getRule() { return rule; }
+
+		//"lookup" name=ID "{" (logic+=LogicElement | javacode+=JavaCodeElement)* "}"
+		public Group getGroup() { return cGroup; }
+
+		//"lookup"
+		public Keyword getLookupKeyword_0() { return cLookupKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+
+		//(logic+=LogicElement | javacode+=JavaCodeElement)*
+		public Alternatives getAlternatives_3() { return cAlternatives_3; }
+
+		//logic+=LogicElement
+		public Assignment getLogicAssignment_3_0() { return cLogicAssignment_3_0; }
+
+		//LogicElement
+		public RuleCall getLogicLogicElementParserRuleCall_3_0_0() { return cLogicLogicElementParserRuleCall_3_0_0; }
+
+		//javacode+=JavaCodeElement
+		public Assignment getJavacodeAssignment_3_1() { return cJavacodeAssignment_3_1; }
+
+		//JavaCodeElement
+		public RuleCall getJavacodeJavaCodeElementParserRuleCall_3_1_0() { return cJavacodeJavaCodeElementParserRuleCall_3_1_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+	}
+
+	public class FormElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FormElement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cFormKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final UnorderedGroup cUnorderedGroup_2 = (UnorderedGroup)cGroup.eContents().get(2);
+		private final Group cGroup_2_0 = (Group)cUnorderedGroup_2.eContents().get(0);
+		private final Keyword cModalKeyword_2_0_0 = (Keyword)cGroup_2_0.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_0_1 = (Keyword)cGroup_2_0.eContents().get(1);
+		private final Assignment cModalAssignment_2_0_2 = (Assignment)cGroup_2_0.eContents().get(2);
+		private final RuleCall cModalBooleanTypeEnumRuleCall_2_0_2_0 = (RuleCall)cModalAssignment_2_0_2.eContents().get(0);
+		private final Group cGroup_2_1 = (Group)cUnorderedGroup_2.eContents().get(1);
+		private final Keyword cColumnsKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_1_1 = (Keyword)cGroup_2_1.eContents().get(1);
+		private final Assignment cColumnsAssignment_2_1_2 = (Assignment)cGroup_2_1.eContents().get(2);
+		private final RuleCall cColumnsINTTerminalRuleCall_2_1_2_0 = (RuleCall)cColumnsAssignment_2_1_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cLeftCurlyBracketKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Alternatives cAlternatives_3_1 = (Alternatives)cGroup_3.eContents().get(1);
+		private final Assignment cLogicAssignment_3_1_0 = (Assignment)cAlternatives_3_1.eContents().get(0);
+		private final RuleCall cLogicLogicElementParserRuleCall_3_1_0_0 = (RuleCall)cLogicAssignment_3_1_0.eContents().get(0);
+		private final Assignment cFieldsAssignment_3_1_1 = (Assignment)cAlternatives_3_1.eContents().get(1);
+		private final RuleCall cFieldsControlElementParserRuleCall_3_1_1_0 = (RuleCall)cFieldsAssignment_3_1_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
+		
+		//FormElement:
+		//
+		//	"form" name=ID (("modal" "=" modal=BooleanType)? & ("columns" "=" columns=INT)?) ("{" (logic+=LogicElement |
+		//
+		//	fields+=ControlElement)* "}")?;
+		public ParserRule getRule() { return rule; }
+
+		//"form" name=ID (("modal" "=" modal=BooleanType)? & ("columns" "=" columns=INT)?) ("{" (logic+=LogicElement |
+		//
+		//fields+=ControlElement)* "}")?
+		public Group getGroup() { return cGroup; }
+
+		//"form"
+		public Keyword getFormKeyword_0() { return cFormKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//("modal" "=" modal=BooleanType)? & ("columns" "=" columns=INT)?
+		public UnorderedGroup getUnorderedGroup_2() { return cUnorderedGroup_2; }
+
+		//("modal" "=" modal=BooleanType)?
+		public Group getGroup_2_0() { return cGroup_2_0; }
+
+		//"modal"
+		public Keyword getModalKeyword_2_0_0() { return cModalKeyword_2_0_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_2_0_1() { return cEqualsSignKeyword_2_0_1; }
+
+		//modal=BooleanType
+		public Assignment getModalAssignment_2_0_2() { return cModalAssignment_2_0_2; }
+
+		//BooleanType
+		public RuleCall getModalBooleanTypeEnumRuleCall_2_0_2_0() { return cModalBooleanTypeEnumRuleCall_2_0_2_0; }
+
+		//("columns" "=" columns=INT)?
+		public Group getGroup_2_1() { return cGroup_2_1; }
+
+		//"columns"
+		public Keyword getColumnsKeyword_2_1_0() { return cColumnsKeyword_2_1_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_2_1_1() { return cEqualsSignKeyword_2_1_1; }
+
+		//columns=INT
+		public Assignment getColumnsAssignment_2_1_2() { return cColumnsAssignment_2_1_2; }
+
+		//INT
+		public RuleCall getColumnsINTTerminalRuleCall_2_1_2_0() { return cColumnsINTTerminalRuleCall_2_1_2_0; }
+
+		//("{" (logic+=LogicElement | fields+=ControlElement)* "}")?
+		public Group getGroup_3() { return cGroup_3; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_3_0() { return cLeftCurlyBracketKeyword_3_0; }
+
+		//(logic+=LogicElement | fields+=ControlElement)*
+		public Alternatives getAlternatives_3_1() { return cAlternatives_3_1; }
+
+		//logic+=LogicElement
+		public Assignment getLogicAssignment_3_1_0() { return cLogicAssignment_3_1_0; }
+
+		//LogicElement
+		public RuleCall getLogicLogicElementParserRuleCall_3_1_0_0() { return cLogicLogicElementParserRuleCall_3_1_0_0; }
+
+		//fields+=ControlElement
+		public Assignment getFieldsAssignment_3_1_1() { return cFieldsAssignment_3_1_1; }
+
+		//ControlElement
+		public RuleCall getFieldsControlElementParserRuleCall_3_1_1_0() { return cFieldsControlElementParserRuleCall_3_1_1_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_3_2() { return cRightCurlyBracketKeyword_3_2; }
+	}
+
+	public class ControlElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ControlElement");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cCompositeElementParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cLeafElementParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//ControlElement:
+		//
+		//	CompositeElement | LeafElement;
+		public ParserRule getRule() { return rule; }
+
+		//CompositeElement | LeafElement
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//CompositeElement
+		public RuleCall getCompositeElementParserRuleCall_0() { return cCompositeElementParserRuleCall_0; }
+
+		//LeafElement
+		public RuleCall getLeafElementParserRuleCall_1() { return cLeafElementParserRuleCall_1; }
+	}
+
+	public class ControlElementRuleElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ControlElementRule");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cControlElementRuleAction_0 = (Action)cGroup.eContents().get(0);
+		private final UnorderedGroup cUnorderedGroup_1 = (UnorderedGroup)cGroup.eContents().get(1);
+		private final Group cGroup_1_0 = (Group)cUnorderedGroup_1.eContents().get(0);
+		private final Keyword cTextKeyword_1_0_0 = (Keyword)cGroup_1_0.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_1_0_1 = (Keyword)cGroup_1_0.eContents().get(1);
+		private final Assignment cTextAssignment_1_0_2 = (Assignment)cGroup_1_0.eContents().get(2);
+		private final CrossReference cTextTranslationElementCrossReference_1_0_2_0 = (CrossReference)cTextAssignment_1_0_2.eContents().get(0);
+		private final RuleCall cTextTranslationElementIDTerminalRuleCall_1_0_2_0_1 = (RuleCall)cTextTranslationElementCrossReference_1_0_2_0.eContents().get(1);
+		private final Group cGroup_1_1 = (Group)cUnorderedGroup_1.eContents().get(1);
+		private final Keyword cEnabledKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_1_1_1 = (Keyword)cGroup_1_1.eContents().get(1);
+		private final Assignment cEnabledAssignment_1_1_2 = (Assignment)cGroup_1_1.eContents().get(2);
+		private final RuleCall cEnabledBooleanTypeEnumRuleCall_1_1_2_0 = (RuleCall)cEnabledAssignment_1_1_2.eContents().get(0);
+		private final Group cGroup_1_2 = (Group)cUnorderedGroup_1.eContents().get(2);
+		private final Keyword cVisibleKeyword_1_2_0 = (Keyword)cGroup_1_2.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_1_2_1 = (Keyword)cGroup_1_2.eContents().get(1);
+		private final Assignment cVisibleAssignment_1_2_2 = (Assignment)cGroup_1_2.eContents().get(2);
+		private final RuleCall cVisibleBooleanTypeEnumRuleCall_1_2_2_0 = (RuleCall)cVisibleAssignment_1_2_2.eContents().get(0);
+		
+		//ControlElementRule:
+		//
+		//	{ControlElementRule} (("text" "=" text=[TranslationElement])? & ("enabled" "=" enabled=BooleanType)? & ("visible" "="
+		//
+		//	visible=BooleanType)?);
+		public ParserRule getRule() { return rule; }
+
+		//{ControlElementRule} (("text" "=" text=[TranslationElement])? & ("enabled" "=" enabled=BooleanType)? & ("visible" "="
+		//
+		//visible=BooleanType)?)
+		public Group getGroup() { return cGroup; }
+
+		//{ControlElementRule}
+		public Action getControlElementRuleAction_0() { return cControlElementRuleAction_0; }
+
+		//("text" "=" text=[TranslationElement])? & ("enabled" "=" enabled=BooleanType)? & ("visible" "=" visible=BooleanType)?
+		public UnorderedGroup getUnorderedGroup_1() { return cUnorderedGroup_1; }
+
+		//("text" "=" text=[TranslationElement])?
+		public Group getGroup_1_0() { return cGroup_1_0; }
+
+		//"text"
+		public Keyword getTextKeyword_1_0_0() { return cTextKeyword_1_0_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_1_0_1() { return cEqualsSignKeyword_1_0_1; }
+
+		//text=[TranslationElement]
+		public Assignment getTextAssignment_1_0_2() { return cTextAssignment_1_0_2; }
+
+		//[TranslationElement]
+		public CrossReference getTextTranslationElementCrossReference_1_0_2_0() { return cTextTranslationElementCrossReference_1_0_2_0; }
+
+		//ID
+		public RuleCall getTextTranslationElementIDTerminalRuleCall_1_0_2_0_1() { return cTextTranslationElementIDTerminalRuleCall_1_0_2_0_1; }
+
+		//("enabled" "=" enabled=BooleanType)?
+		public Group getGroup_1_1() { return cGroup_1_1; }
+
+		//"enabled"
+		public Keyword getEnabledKeyword_1_1_0() { return cEnabledKeyword_1_1_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_1_1_1() { return cEqualsSignKeyword_1_1_1; }
+
+		//enabled=BooleanType
+		public Assignment getEnabledAssignment_1_1_2() { return cEnabledAssignment_1_1_2; }
+
+		//BooleanType
+		public RuleCall getEnabledBooleanTypeEnumRuleCall_1_1_2_0() { return cEnabledBooleanTypeEnumRuleCall_1_1_2_0; }
+
+		//("visible" "=" visible=BooleanType)?
+		public Group getGroup_1_2() { return cGroup_1_2; }
+
+		//"visible"
+		public Keyword getVisibleKeyword_1_2_0() { return cVisibleKeyword_1_2_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_1_2_1() { return cEqualsSignKeyword_1_2_1; }
+
+		//visible=BooleanType
+		public Assignment getVisibleAssignment_1_2_2() { return cVisibleAssignment_1_2_2; }
+
+		//BooleanType
+		public RuleCall getVisibleBooleanTypeEnumRuleCall_1_2_2_0() { return cVisibleBooleanTypeEnumRuleCall_1_2_2_0; }
+	}
+
+	public class CompositeElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CompositeElement");
+		private final RuleCall cSequenceBoxElementParserRuleCall = (RuleCall)rule.eContents().get(1);
+		
+		//CompositeElement:
+		//
+		//	SequenceBoxElement;
+		public ParserRule getRule() { return rule; }
+
+		//SequenceBoxElement
+		public RuleCall getSequenceBoxElementParserRuleCall() { return cSequenceBoxElementParserRuleCall; }
+	}
+
+	public class CompositeElementRuleElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CompositeElementRule");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cRuleAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cRuleControlElementRuleParserRuleCall_0_0 = (RuleCall)cRuleAssignment_0.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Assignment cLogicAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
+		private final RuleCall cLogicLogicElementParserRuleCall_2_0_0 = (RuleCall)cLogicAssignment_2_0.eContents().get(0);
+		private final Assignment cChildreAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
+		private final RuleCall cChildreControlElementParserRuleCall_2_1_0 = (RuleCall)cChildreAssignment_2_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//CompositeElementRule:
+		//
+		//	rule=ControlElementRule "{" (logic+=LogicElement | childre+=ControlElement)* "}";
+		public ParserRule getRule() { return rule; }
+
+		//rule=ControlElementRule "{" (logic+=LogicElement | childre+=ControlElement)* "}"
+		public Group getGroup() { return cGroup; }
+
+		//rule=ControlElementRule
+		public Assignment getRuleAssignment_0() { return cRuleAssignment_0; }
+
+		//ControlElementRule
+		public RuleCall getRuleControlElementRuleParserRuleCall_0_0() { return cRuleControlElementRuleParserRuleCall_0_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+
+		//(logic+=LogicElement | childre+=ControlElement)*
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+
+		//logic+=LogicElement
+		public Assignment getLogicAssignment_2_0() { return cLogicAssignment_2_0; }
+
+		//LogicElement
+		public RuleCall getLogicLogicElementParserRuleCall_2_0_0() { return cLogicLogicElementParserRuleCall_2_0_0; }
+
+		//childre+=ControlElement
+		public Assignment getChildreAssignment_2_1() { return cChildreAssignment_2_1; }
+
+		//ControlElement
+		public RuleCall getChildreControlElementParserRuleCall_2_1_0() { return cChildreControlElementParserRuleCall_2_1_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
+	}
+
+	public class LeafElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "LeafElement");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cStringElementParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cDoubleElementParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cLongElementParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		
+		//LeafElement:
+		//
+		//	StringElement | DoubleElement | LongElement;
+		public ParserRule getRule() { return rule; }
+
+		//StringElement | DoubleElement | LongElement
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//StringElement
+		public RuleCall getStringElementParserRuleCall_0() { return cStringElementParserRuleCall_0; }
+
+		//DoubleElement
+		public RuleCall getDoubleElementParserRuleCall_1() { return cDoubleElementParserRuleCall_1; }
+
+		//LongElement
+		public RuleCall getLongElementParserRuleCall_2() { return cLongElementParserRuleCall_2; }
+	}
+
+	public class StringElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "StringElement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cStringKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final UnorderedGroup cUnorderedGroup_2 = (UnorderedGroup)cGroup.eContents().get(2);
+		private final Assignment cFieldRuleAssignment_2_0 = (Assignment)cUnorderedGroup_2.eContents().get(0);
+		private final RuleCall cFieldRuleControlElementRuleParserRuleCall_2_0_0 = (RuleCall)cFieldRuleAssignment_2_0.eContents().get(0);
+		private final Group cGroup_2_1 = (Group)cUnorderedGroup_2.eContents().get(1);
+		private final Keyword cMandatoryKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_1_1 = (Keyword)cGroup_2_1.eContents().get(1);
+		private final Assignment cMandatoryAssignment_2_1_2 = (Assignment)cGroup_2_1.eContents().get(2);
+		private final RuleCall cMandatoryBooleanTypeEnumRuleCall_2_1_2_0 = (RuleCall)cMandatoryAssignment_2_1_2.eContents().get(0);
+		private final Group cGroup_2_2 = (Group)cUnorderedGroup_2.eContents().get(2);
+		private final Keyword cMasterKeyword_2_2_0 = (Keyword)cGroup_2_2.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_2_1 = (Keyword)cGroup_2_2.eContents().get(1);
+		private final Assignment cMasterAssignment_2_2_2 = (Assignment)cGroup_2_2.eContents().get(2);
+		private final CrossReference cMasterLeafElementCrossReference_2_2_2_0 = (CrossReference)cMasterAssignment_2_2_2.eContents().get(0);
+		private final RuleCall cMasterLeafElementIDTerminalRuleCall_2_2_2_0_1 = (RuleCall)cMasterLeafElementCrossReference_2_2_2_0.eContents().get(1);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cLeftCurlyBracketKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cLogicAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cLogicLogicElementParserRuleCall_3_1_0 = (RuleCall)cLogicAssignment_3_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
+		
+		//StringElement:
+		//
+		//	"string" name=ID (fieldRule=ControlElementRule & ("mandatory" "=" mandatory=BooleanType)? & ("master" "="
+		//
+		//	master=[LeafElement])?) ("{" logic+=LogicElement* "}")?;
+		public ParserRule getRule() { return rule; }
+
+		//"string" name=ID (fieldRule=ControlElementRule & ("mandatory" "=" mandatory=BooleanType)? & ("master" "="
+		//
+		//master=[LeafElement])?) ("{" logic+=LogicElement* "}")?
+		public Group getGroup() { return cGroup; }
+
+		//"string"
+		public Keyword getStringKeyword_0() { return cStringKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//fieldRule=ControlElementRule & ("mandatory" "=" mandatory=BooleanType)? & ("master" "=" master=[LeafElement])?
+		public UnorderedGroup getUnorderedGroup_2() { return cUnorderedGroup_2; }
+
+		//fieldRule=ControlElementRule
+		public Assignment getFieldRuleAssignment_2_0() { return cFieldRuleAssignment_2_0; }
+
+		//ControlElementRule
+		public RuleCall getFieldRuleControlElementRuleParserRuleCall_2_0_0() { return cFieldRuleControlElementRuleParserRuleCall_2_0_0; }
+
+		//("mandatory" "=" mandatory=BooleanType)?
+		public Group getGroup_2_1() { return cGroup_2_1; }
+
+		//"mandatory"
+		public Keyword getMandatoryKeyword_2_1_0() { return cMandatoryKeyword_2_1_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_2_1_1() { return cEqualsSignKeyword_2_1_1; }
+
+		//mandatory=BooleanType
+		public Assignment getMandatoryAssignment_2_1_2() { return cMandatoryAssignment_2_1_2; }
+
+		//BooleanType
+		public RuleCall getMandatoryBooleanTypeEnumRuleCall_2_1_2_0() { return cMandatoryBooleanTypeEnumRuleCall_2_1_2_0; }
+
+		//("master" "=" master=[LeafElement])?
+		public Group getGroup_2_2() { return cGroup_2_2; }
+
+		//"master"
+		public Keyword getMasterKeyword_2_2_0() { return cMasterKeyword_2_2_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_2_2_1() { return cEqualsSignKeyword_2_2_1; }
+
+		//master=[LeafElement]
+		public Assignment getMasterAssignment_2_2_2() { return cMasterAssignment_2_2_2; }
+
+		//[LeafElement]
+		public CrossReference getMasterLeafElementCrossReference_2_2_2_0() { return cMasterLeafElementCrossReference_2_2_2_0; }
+
+		//ID
+		public RuleCall getMasterLeafElementIDTerminalRuleCall_2_2_2_0_1() { return cMasterLeafElementIDTerminalRuleCall_2_2_2_0_1; }
+
+		//("{" logic+=LogicElement* "}")?
+		public Group getGroup_3() { return cGroup_3; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_3_0() { return cLeftCurlyBracketKeyword_3_0; }
+
+		//logic+=LogicElement*
+		public Assignment getLogicAssignment_3_1() { return cLogicAssignment_3_1; }
+
+		//LogicElement
+		public RuleCall getLogicLogicElementParserRuleCall_3_1_0() { return cLogicLogicElementParserRuleCall_3_1_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_3_2() { return cRightCurlyBracketKeyword_3_2; }
+	}
+
+	public class DoubleElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DoubleElement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cDoubleKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final UnorderedGroup cUnorderedGroup_2 = (UnorderedGroup)cGroup.eContents().get(2);
+		private final Assignment cFieldRuleAssignment_2_0 = (Assignment)cUnorderedGroup_2.eContents().get(0);
+		private final RuleCall cFieldRuleControlElementRuleParserRuleCall_2_0_0 = (RuleCall)cFieldRuleAssignment_2_0.eContents().get(0);
+		private final Group cGroup_2_1 = (Group)cUnorderedGroup_2.eContents().get(1);
+		private final Keyword cMandatoryKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_1_1 = (Keyword)cGroup_2_1.eContents().get(1);
+		private final Assignment cMandatoryAssignment_2_1_2 = (Assignment)cGroup_2_1.eContents().get(2);
+		private final RuleCall cMandatoryBooleanTypeEnumRuleCall_2_1_2_0 = (RuleCall)cMandatoryAssignment_2_1_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cLeftCurlyBracketKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cLogicAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cLogicLogicElementParserRuleCall_3_1_0 = (RuleCall)cLogicAssignment_3_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
+		
+		//DoubleElement:
+		//
+		//	"double" name=ID (fieldRule=ControlElementRule & ("mandatory" "=" mandatory=BooleanType)?) ("{" logic+=LogicElement*
+		//
+		//	"}")?;
+		public ParserRule getRule() { return rule; }
+
+		//"double" name=ID (fieldRule=ControlElementRule & ("mandatory" "=" mandatory=BooleanType)?) ("{" logic+=LogicElement*
+		//
+		//"}")?
+		public Group getGroup() { return cGroup; }
+
+		//"double"
+		public Keyword getDoubleKeyword_0() { return cDoubleKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//fieldRule=ControlElementRule & ("mandatory" "=" mandatory=BooleanType)?
+		public UnorderedGroup getUnorderedGroup_2() { return cUnorderedGroup_2; }
+
+		//fieldRule=ControlElementRule
+		public Assignment getFieldRuleAssignment_2_0() { return cFieldRuleAssignment_2_0; }
+
+		//ControlElementRule
+		public RuleCall getFieldRuleControlElementRuleParserRuleCall_2_0_0() { return cFieldRuleControlElementRuleParserRuleCall_2_0_0; }
+
+		//("mandatory" "=" mandatory=BooleanType)?
+		public Group getGroup_2_1() { return cGroup_2_1; }
+
+		//"mandatory"
+		public Keyword getMandatoryKeyword_2_1_0() { return cMandatoryKeyword_2_1_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_2_1_1() { return cEqualsSignKeyword_2_1_1; }
+
+		//mandatory=BooleanType
+		public Assignment getMandatoryAssignment_2_1_2() { return cMandatoryAssignment_2_1_2; }
+
+		//BooleanType
+		public RuleCall getMandatoryBooleanTypeEnumRuleCall_2_1_2_0() { return cMandatoryBooleanTypeEnumRuleCall_2_1_2_0; }
+
+		//("{" logic+=LogicElement* "}")?
+		public Group getGroup_3() { return cGroup_3; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_3_0() { return cLeftCurlyBracketKeyword_3_0; }
+
+		//logic+=LogicElement*
+		public Assignment getLogicAssignment_3_1() { return cLogicAssignment_3_1; }
+
+		//LogicElement
+		public RuleCall getLogicLogicElementParserRuleCall_3_1_0() { return cLogicLogicElementParserRuleCall_3_1_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_3_2() { return cRightCurlyBracketKeyword_3_2; }
+	}
+
+	public class LongElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "LongElement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLongKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final UnorderedGroup cUnorderedGroup_2 = (UnorderedGroup)cGroup.eContents().get(2);
+		private final Assignment cFieldRuleAssignment_2_0 = (Assignment)cUnorderedGroup_2.eContents().get(0);
+		private final RuleCall cFieldRuleControlElementRuleParserRuleCall_2_0_0 = (RuleCall)cFieldRuleAssignment_2_0.eContents().get(0);
+		private final Group cGroup_2_1 = (Group)cUnorderedGroup_2.eContents().get(1);
+		private final Keyword cMandatoryKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_1_1 = (Keyword)cGroup_2_1.eContents().get(1);
+		private final Assignment cMandatoryAssignment_2_1_2 = (Assignment)cGroup_2_1.eContents().get(2);
+		private final RuleCall cMandatoryBooleanTypeEnumRuleCall_2_1_2_0 = (RuleCall)cMandatoryAssignment_2_1_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cLeftCurlyBracketKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cLogicAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cLogicLogicElementParserRuleCall_3_1_0 = (RuleCall)cLogicAssignment_3_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
+		
+		//LongElement:
+		//
+		//	"long" name=ID (fieldRule=ControlElementRule & ("mandatory" "=" mandatory=BooleanType)?) ("{" logic+=LogicElement*
+		//
+		//	"}")?;
+		public ParserRule getRule() { return rule; }
+
+		//"long" name=ID (fieldRule=ControlElementRule & ("mandatory" "=" mandatory=BooleanType)?) ("{" logic+=LogicElement* "}")?
+		public Group getGroup() { return cGroup; }
+
+		//"long"
+		public Keyword getLongKeyword_0() { return cLongKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//fieldRule=ControlElementRule & ("mandatory" "=" mandatory=BooleanType)?
+		public UnorderedGroup getUnorderedGroup_2() { return cUnorderedGroup_2; }
+
+		//fieldRule=ControlElementRule
+		public Assignment getFieldRuleAssignment_2_0() { return cFieldRuleAssignment_2_0; }
+
+		//ControlElementRule
+		public RuleCall getFieldRuleControlElementRuleParserRuleCall_2_0_0() { return cFieldRuleControlElementRuleParserRuleCall_2_0_0; }
+
+		//("mandatory" "=" mandatory=BooleanType)?
+		public Group getGroup_2_1() { return cGroup_2_1; }
+
+		//"mandatory"
+		public Keyword getMandatoryKeyword_2_1_0() { return cMandatoryKeyword_2_1_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_2_1_1() { return cEqualsSignKeyword_2_1_1; }
+
+		//mandatory=BooleanType
+		public Assignment getMandatoryAssignment_2_1_2() { return cMandatoryAssignment_2_1_2; }
+
+		//BooleanType
+		public RuleCall getMandatoryBooleanTypeEnumRuleCall_2_1_2_0() { return cMandatoryBooleanTypeEnumRuleCall_2_1_2_0; }
+
+		//("{" logic+=LogicElement* "}")?
+		public Group getGroup_3() { return cGroup_3; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_3_0() { return cLeftCurlyBracketKeyword_3_0; }
+
+		//logic+=LogicElement*
+		public Assignment getLogicAssignment_3_1() { return cLogicAssignment_3_1; }
+
+		//LogicElement
+		public RuleCall getLogicLogicElementParserRuleCall_3_1_0() { return cLogicLogicElementParserRuleCall_3_1_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_3_2() { return cRightCurlyBracketKeyword_3_2; }
+	}
+
+	public class SequenceBoxElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SequenceBoxElement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cSequence_boxKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cFieldRuleAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cFieldRuleCompositeElementRuleParserRuleCall_2_0 = (RuleCall)cFieldRuleAssignment_2.eContents().get(0);
+		
+		////XLiteral returns xbase::XExpression:
+		//
+		////	XBooleanLiteral |
+		//
+		////	XNumberLiteral |
+		//
+		////	XNullLiteral |
+		//
+		////	XStringLiteral |
+		//
+		////	XTypeLiteral
+		//
+		////;
+		//
+		////
+		//
+		////XTypeLiteral returns xbase::XTypeLiteral :
+		//
+		////	{XTypeLiteral} type=[types::JvmType|QualifiedName] '.' 'class'
+		//
+		////;
+		//
+		////XCastedExpression returns xbase::XCastedExpression :
+		//
+		////	{XCastedExpression}
+		//
+		////	'(' type=JvmTypeReference ')' target=XMemberFeatureCall 
+		//
+		////;
+		//
+		////XMemberFeatureCall returns xbase::XMemberFeatureCall:
+		//
+		////	XPrimaryExpression
+		//
+		////	(=>({XAssignment.assignable=current} '.' feature=[types::JvmIdentifiableElement|ValidID] OpSingleAssign) value=XAssignment
+		//
+		////	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|spreading?="*.")) 
+		//
+		////		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
+		//
+		////		feature=[types::JvmIdentifiableElement|ValidID] (
+		//
+		////			=>explicitOperationCall?='(' 
+		//
+		////				(
+		//
+		////				    memberCallArguments+=XShortClosure
+		//
+		////				  |	memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
+		//
+		////				)? 
+		//
+		////			')')?
+		//
+		////			memberCallArguments+=XClosure?
+		//
+		////		)*; SequenceBoxElement:
+		//
+		//	"sequence_box" name=ID fieldRule=CompositeElementRule;
+		public ParserRule getRule() { return rule; }
+
+		//"sequence_box" name=ID fieldRule=CompositeElementRule //XLiteral returns xbase::XExpression:
+		//
+		////	XBooleanLiteral |
+		//
+		////	XNumberLiteral |
+		//
+		////	XNullLiteral |
+		//
+		////	XStringLiteral |
+		//
+		////	XTypeLiteral
+		//
+		////;
+		//
+		////
+		//
+		////XTypeLiteral returns xbase::XTypeLiteral :
+		//
+		////	{XTypeLiteral} type=[types::JvmType|QualifiedName] '.' 'class'
+		//
+		////;
+		//
+		////XCastedExpression returns xbase::XCastedExpression :
+		//
+		////	{XCastedExpression}
+		//
+		////	'(' type=JvmTypeReference ')' target=XMemberFeatureCall 
+		//
+		////;
+		//
+		////XMemberFeatureCall returns xbase::XMemberFeatureCall:
+		//
+		////	XPrimaryExpression
+		//
+		////	(=>({XAssignment.assignable=current} '.' feature=[types::JvmIdentifiableElement|ValidID] OpSingleAssign) value=XAssignment
+		//
+		////	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|spreading?="*.")) 
+		//
+		////		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
+		//
+		////		feature=[types::JvmIdentifiableElement|ValidID] (
+		//
+		////			=>explicitOperationCall?='(' 
+		//
+		////				(
+		//
+		////				    memberCallArguments+=XShortClosure
+		//
+		////				  |	memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
+		//
+		////				)? 
+		//
+		////			')')?
+		//
+		////			memberCallArguments+=XClosure?
+		//
+		////		)*;
+		public Group getGroup() { return cGroup; }
+
+		//"sequence_box"
+		public Keyword getSequence_boxKeyword_0() { return cSequence_boxKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		////XLiteral returns xbase::XExpression:
+		//
+		////	XBooleanLiteral |
+		//
+		////	XNumberLiteral |
+		//
+		////	XNullLiteral |
+		//
+		////	XStringLiteral |
+		//
+		////	XTypeLiteral
+		//
+		////;
+		//
+		////
+		//
+		////XTypeLiteral returns xbase::XTypeLiteral :
+		//
+		////	{XTypeLiteral} type=[types::JvmType|QualifiedName] '.' 'class'
+		//
+		////;
+		//
+		////XCastedExpression returns xbase::XCastedExpression :
+		//
+		////	{XCastedExpression}
+		//
+		////	'(' type=JvmTypeReference ')' target=XMemberFeatureCall 
+		//
+		////;
+		//
+		////XMemberFeatureCall returns xbase::XMemberFeatureCall:
+		//
+		////	XPrimaryExpression
+		//
+		////	(=>({XAssignment.assignable=current} '.' feature=[types::JvmIdentifiableElement|ValidID] OpSingleAssign) value=XAssignment
+		//
+		////	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|spreading?="*.")) 
+		//
+		////		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
+		//
+		////		feature=[types::JvmIdentifiableElement|ValidID] (
+		//
+		////			=>explicitOperationCall?='(' 
+		//
+		////				(
+		//
+		////				    memberCallArguments+=XShortClosure
+		//
+		////				  |	memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
+		//
+		////				)? 
+		//
+		////			')')?
+		//
+		////			memberCallArguments+=XClosure?
+		//
+		////		)*; fieldRule=CompositeElementRule
+		public Assignment getFieldRuleAssignment_2() { return cFieldRuleAssignment_2; }
+
+		////XLiteral returns xbase::XExpression:
+		//
+		////	XBooleanLiteral |
+		//
+		////	XNumberLiteral |
+		//
+		////	XNullLiteral |
+		//
+		////	XStringLiteral |
+		//
+		////	XTypeLiteral
+		//
+		////;
+		//
+		////
+		//
+		////XTypeLiteral returns xbase::XTypeLiteral :
+		//
+		////	{XTypeLiteral} type=[types::JvmType|QualifiedName] '.' 'class'
+		//
+		////;
+		//
+		////XCastedExpression returns xbase::XCastedExpression :
+		//
+		////	{XCastedExpression}
+		//
+		////	'(' type=JvmTypeReference ')' target=XMemberFeatureCall 
+		//
+		////;
+		//
+		////XMemberFeatureCall returns xbase::XMemberFeatureCall:
+		//
+		////	XPrimaryExpression
+		//
+		////	(=>({XAssignment.assignable=current} '.' feature=[types::JvmIdentifiableElement|ValidID] OpSingleAssign) value=XAssignment
+		//
+		////	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|spreading?="*.")) 
+		//
+		////		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
+		//
+		////		feature=[types::JvmIdentifiableElement|ValidID] (
+		//
+		////			=>explicitOperationCall?='(' 
+		//
+		////				(
+		//
+		////				    memberCallArguments+=XShortClosure
+		//
+		////				  |	memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
+		//
+		////				)? 
+		//
+		////			')')?
+		//
+		////			memberCallArguments+=XClosure?
+		//
+		////		)*; CompositeElementRule
+		public RuleCall getFieldRuleCompositeElementRuleParserRuleCall_2_0() { return cFieldRuleCompositeElementRuleParserRuleCall_2_0; }
 	}
 	
 	
+	public class BooleanTypeElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "BooleanType");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cTrueEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cTrueTrueKeyword_0_0 = (Keyword)cTrueEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cFalseEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cFalseFalseKeyword_1_0 = (Keyword)cFalseEnumLiteralDeclaration_1.eContents().get(0);
+		
+		//enum BooleanType:
+		//
+		//	true | false;
+		public EnumRule getRule() { return rule; }
+
+		//true | false
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//true
+		public EnumLiteralDeclaration getTrueEnumLiteralDeclaration_0() { return cTrueEnumLiteralDeclaration_0; }
+
+		//"true"
+		public Keyword getTrueTrueKeyword_0_0() { return cTrueTrueKeyword_0_0; }
+
+		//false
+		public EnumLiteralDeclaration getFalseEnumLiteralDeclaration_1() { return cFalseEnumLiteralDeclaration_1; }
+
+		//"false"
+		public Keyword getFalseFalseKeyword_1_0() { return cFalseFalseKeyword_1_0; }
+	}
+
+	public class LogicTypeElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "LogicType");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cGlobalEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cGlobalGlobalKeyword_0_0 = (Keyword)cGlobalEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cAllEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cAllAllKeyword_1_0 = (Keyword)cAllEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cModify_loadEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cModify_loadModify_loadKeyword_2_0 = (Keyword)cModify_loadEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cModify_storeEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cModify_storeModify_storeKeyword_3_0 = (Keyword)cModify_storeEnumLiteralDeclaration_3.eContents().get(0);
+		private final EnumLiteralDeclaration cNew_loadEnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
+		private final Keyword cNew_loadNew_loadKeyword_4_0 = (Keyword)cNew_loadEnumLiteralDeclaration_4.eContents().get(0);
+		private final EnumLiteralDeclaration cNew_storeEnumLiteralDeclaration_5 = (EnumLiteralDeclaration)cAlternatives.eContents().get(5);
+		private final Keyword cNew_storeNew_storeKeyword_5_0 = (Keyword)cNew_storeEnumLiteralDeclaration_5.eContents().get(0);
+		private final EnumLiteralDeclaration cChangedEnumLiteralDeclaration_6 = (EnumLiteralDeclaration)cAlternatives.eContents().get(6);
+		private final Keyword cChangedChangedKeyword_6_0 = (Keyword)cChangedEnumLiteralDeclaration_6.eContents().get(0);
+		private final EnumLiteralDeclaration cClickEnumLiteralDeclaration_7 = (EnumLiteralDeclaration)cAlternatives.eContents().get(7);
+		private final Keyword cClickClickKeyword_7_0 = (Keyword)cClickEnumLiteralDeclaration_7.eContents().get(0);
+		private final EnumLiteralDeclaration cMaster_changedEnumLiteralDeclaration_8 = (EnumLiteralDeclaration)cAlternatives.eContents().get(8);
+		private final Keyword cMaster_changedMaster_changedKeyword_8_0 = (Keyword)cMaster_changedEnumLiteralDeclaration_8.eContents().get(0);
+		private final EnumLiteralDeclaration cInitEnumLiteralDeclaration_9 = (EnumLiteralDeclaration)cAlternatives.eContents().get(9);
+		private final Keyword cInitInitKeyword_9_0 = (Keyword)cInitEnumLiteralDeclaration_9.eContents().get(0);
+		
+		//enum LogicType:
+		//
+		//	global | all | modify_load | modify_store | new_load | new_store | changed | click | master_changed | init;
+		public EnumRule getRule() { return rule; }
+
+		//global | all | modify_load | modify_store | new_load | new_store | changed | click | master_changed | init
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//global
+		public EnumLiteralDeclaration getGlobalEnumLiteralDeclaration_0() { return cGlobalEnumLiteralDeclaration_0; }
+
+		//"global"
+		public Keyword getGlobalGlobalKeyword_0_0() { return cGlobalGlobalKeyword_0_0; }
+
+		//all
+		public EnumLiteralDeclaration getAllEnumLiteralDeclaration_1() { return cAllEnumLiteralDeclaration_1; }
+
+		//"all"
+		public Keyword getAllAllKeyword_1_0() { return cAllAllKeyword_1_0; }
+
+		//modify_load
+		public EnumLiteralDeclaration getModify_loadEnumLiteralDeclaration_2() { return cModify_loadEnumLiteralDeclaration_2; }
+
+		//"modify_load"
+		public Keyword getModify_loadModify_loadKeyword_2_0() { return cModify_loadModify_loadKeyword_2_0; }
+
+		//modify_store
+		public EnumLiteralDeclaration getModify_storeEnumLiteralDeclaration_3() { return cModify_storeEnumLiteralDeclaration_3; }
+
+		//"modify_store"
+		public Keyword getModify_storeModify_storeKeyword_3_0() { return cModify_storeModify_storeKeyword_3_0; }
+
+		//new_load
+		public EnumLiteralDeclaration getNew_loadEnumLiteralDeclaration_4() { return cNew_loadEnumLiteralDeclaration_4; }
+
+		//"new_load"
+		public Keyword getNew_loadNew_loadKeyword_4_0() { return cNew_loadNew_loadKeyword_4_0; }
+
+		//new_store
+		public EnumLiteralDeclaration getNew_storeEnumLiteralDeclaration_5() { return cNew_storeEnumLiteralDeclaration_5; }
+
+		//"new_store"
+		public Keyword getNew_storeNew_storeKeyword_5_0() { return cNew_storeNew_storeKeyword_5_0; }
+
+		//changed
+		public EnumLiteralDeclaration getChangedEnumLiteralDeclaration_6() { return cChangedEnumLiteralDeclaration_6; }
+
+		//"changed"
+		public Keyword getChangedChangedKeyword_6_0() { return cChangedChangedKeyword_6_0; }
+
+		//click
+		public EnumLiteralDeclaration getClickEnumLiteralDeclaration_7() { return cClickEnumLiteralDeclaration_7; }
+
+		//"click"
+		public Keyword getClickClickKeyword_7_0() { return cClickClickKeyword_7_0; }
+
+		//master_changed
+		public EnumLiteralDeclaration getMaster_changedEnumLiteralDeclaration_8() { return cMaster_changedEnumLiteralDeclaration_8; }
+
+		//"master_changed"
+		public Keyword getMaster_changedMaster_changedKeyword_8_0() { return cMaster_changedMaster_changedKeyword_8_0; }
+
+		//init
+		public EnumLiteralDeclaration getInitEnumLiteralDeclaration_9() { return cInitEnumLiteralDeclaration_9; }
+
+		//"init"
+		public Keyword getInitInitKeyword_9_0() { return cInitInitKeyword_9_0; }
+	}
+	
 	private ModelElements pModel;
-	private ImportElements pImport;
 	private QualifiedNameWithWildCardElements pQualifiedNameWithWildCard;
-	private JavaElementElements pJavaElement;
+	private BooleanTypeElements unknownRuleBooleanType;
+	private ModuleElementElements pModuleElement;
+	private ImportElementElements pImportElement;
+	private JavaCodeElementElements pJavaCodeElement;
+	private RunAtTypeElements pRunAtType;
+	private LogicElementElements pLogicElement;
+	private LogicTypeElements unknownRuleLogicType;
+	private CodeElementElements pCodeElement;
+	private TranslationElementElements pTranslationElement;
+	private LanguageAttributeElements pLanguageAttribute;
+	private LookupElementElements pLookupElement;
+	private FormElementElements pFormElement;
+	private ControlElementElements pControlElement;
+	private ControlElementRuleElements pControlElementRule;
+	private CompositeElementElements pCompositeElement;
+	private CompositeElementRuleElements pCompositeElementRule;
+	private LeafElementElements pLeafElement;
+	private StringElementElements pStringElement;
+	private DoubleElementElements pDoubleElement;
+	private LongElementElements pLongElement;
+	private SequenceBoxElementElements pSequenceBoxElement;
 	
 	private final Grammar grammar;
 
@@ -868,26 +1518,21 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
+	////=====================================================================================================================
+	//
+	////TODO: plain java code in XBlockExpression?
+	//
 	//Model:
 	//
-	//	imports+=Import* elements+=JavaElement*;
+	//	module=ModuleElement imports+=ImportElement* (codes+=JavaCodeElement | translations+=TranslationElement |
+	//
+	//	codes+=CodeElement | lookups+=LookupElement | forms+=FormElement)*;
 	public ModelElements getModelAccess() {
 		return (pModel != null) ? pModel : (pModel = new ModelElements());
 	}
 	
 	public ParserRule getModelRule() {
 		return getModelAccess().getRule();
-	}
-
-	//Import:
-	//
-	//	"import" importedNamespace=QualifiedNameWithWildCard;
-	public ImportElements getImportAccess() {
-		return (pImport != null) ? pImport : (pImport = new ImportElements());
-	}
-	
-	public ParserRule getImportRule() {
-		return getImportAccess().getRule();
 	}
 
 	//QualifiedNameWithWildCard:
@@ -901,187 +1546,303 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		return getQualifiedNameWithWildCardAccess().getRule();
 	}
 
-	/// *
-	//
-	//RootElement:ModuleElement|TranslationElement|CodeElement|LookupElement|TemplateElement|FormElement;
-	//
-	//
-	//
-	//AbstractScoutType:CodeElement|LookupElement|FormElement|AbstractFieldElement;
-	//
-	//
-	//
-	//AbstractFieldElement: AbstractValueFieldElement | AbstractContainerFieldElement;
-	//
-	//
-	//
-	//AbstractFieldProperties:text=TextAttribute|visible=VisibleAttribue|master=MasterAttribute|enabled=EnabledAttribue;
-	//
-	//TextAttribute:'text' '='value=[TranslationElement];
-	//
-	//EnabledAttribue:'enabled='value=BooleanType;
-	//
-	//VisibleAttribue:'visible='value=BooleanType;
-	//
-	//MasterAttribute:'master='value=[AbstractValueFieldElement];
-	//
-	//
-	//
-	//AbstractValueFieldElement:StringElement|SmartfieldElement|LongElement|DoubleElement|DateElement|ZregBoxElement;
-	//
-	//AbstractValueFieldProperties:fieldproperties=AbstractFieldProperties|mandatory=MandatoryAttribue;
-	//
-	//MandatoryAttribue:'mandatory='value=BooleanType;
-	//
-	//
-	//
-	//
-	//
-	//AbstractContainerFieldElement: SequenceBoxElement;
-	//
-	//
-	//
-	//
-	//
-	//ModuleElement: 'module' name=QualifiedName;
-	//
-	//
-	//
-	//	
-	//
-	//TranslationElement:'translation' name=QualifiedName (translations+=TranslationAttribute)+;
-	//
-	//TranslationAttribute:lang=ID '=' text=STRING;
-	//
-	//	
-	//
-	//	
-	//
-	//JavaElement:'java ' name=ID runat=RunAtAttribute '{'source=STRING'}'; //TODO: should then be java code not a string (& there are special "hidden" input parameters)
-	//
-	//RunAtAttribute:'runat=' value=JavaRunAtAttributeList;
-	//
-	//enum JavaRunAtAttributeList:client|server;
-	//
-	//
-	//
-	//
-	//
-	//CodeElement:'code ' name=ID id=CodeIdAttribute;
-	//
-	//CodeIdAttribute:'id=' value=INT;
-	//
-	//	
-	//
-	//	
-	//
-	//LogicElement:'logic ' type=LogicTypeAttribute (properties+=LogicOptionalProperties)* ('{' source=STRING '}')?;
-	//
-	//LogicOptionalProperties:runat=RunAtAttribute|exec=LogicExecAttribute;
-	//
-	//LogicTypeAttribute:'type='value=LogicTypeAttributeList;
-	//
-	//LogicExecAttribute:'exec='value=[JavaElement];
-	//
-	//enum LogicTypeAttributeList:global|all|modify_load|modify_store|new_load|new_store|changed|click|master_changed|init;
-	//
-	//
-	//
-	//
-	//
-	//LookupElement:'lookup ' name=ID '{' (servicelogic+=(JavaElement|LogicElement))+ '}';
-	//
-	//
-	//
-	//
-	//
-	//TemplateElement:'template ' name=ID class=TemplateElementClassAttribute replaces=TemplateElementReplacesAttribute;
-	//
-	//TemplateElementClassAttribute:'class='value=QualifiedName;
-	//
-	//TemplateElementReplacesAttribute:'replaces='value=[AbstractScoutType];
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//FormElement:'form' name=ID (('modal' '=' modal=BooleanType)? & ('columns' '=' columns=INT)?) ('{' children+=(LogicElement|AbstractFieldElement)+ '}')?;
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	////TODO: templates?
-	//
-	//SequenceBoxElement:'sequence_box 'name=ID (properties+=AbstractFieldProperties)* ('{' children+=(LogicElement|AbstractFieldElement)* '}')?;
-	//
-	//	
-	//
-	//
-	//
-	//StringElement:'string 'name=ID (properties+=StringElementProperties)* ('{' (logic+=LogicElement)+ '}')?;
-	//
-	//StringElementProperties:valueFieldProperties=AbstractValueFieldProperties|maxlen=StringElementMaxlenAttribute;
-	//
-	//StringElementMaxlenAttribute:'maxlen='value=INT;
-	//
-	//
-	//
-	//
-	//
-	//DoubleElement:'double 'name=ID common=MyCommonRule;
-	//
-	//
-	//
-	//
-	//
-	//LongElement:'long 'name=ID common=MyCommonRule;
-	//
-	//
-	//
-	//
-	//
-	//DateElement:'date 'name=ID common=MyCommonRule;
-	//
-	//
-	//
-	//
-	//
-	//MyCommonRule: {MyCommonRule} (properties+=AbstractValueFieldProperties)* ('{' children+=(LogicElement)* '}')?;
-	//
-	//
-	//
-	//SmartfieldElement:'smartfield 'name=ID (properties+=SmartFieldElementProperties)* ('{' (logic+=LogicElement)+ '}')?;
-	//
-	//SmartFieldElementProperties:valueFieldProperties=AbstractValueFieldProperties|code=SmartfieldElementCodeAttribute|value_type=SmartfieldElementValueTypeAttribute|lookup=SmartfieldElementLookupAttribute;
-	//
-	//SmartfieldElementCodeAttribute:'code='value=[CodeElement];
-	//
-	//SmartfieldElementValueTypeAttribute:'value_type='value=[jvmTypes::JvmType|QualifiedName];
-	//
-	//SmartfieldElementLookupAttribute:'lookup='value=[LookupElement];
-	//
-	//
-	//
-	//
-	//
-	//// Specific: to be removed when templates are implemented
-	//
-	//ZregBoxElement:'zreg_sequence_box 'name=ID (properties+=AbstractFieldProperties)* ('{' children+=(LogicElement)* '}')?;
-	//
-	// * / JavaElement:
-	//
-	//	"code" name=ID source=XBlockExpression;
-	public JavaElementElements getJavaElementAccess() {
-		return (pJavaElement != null) ? pJavaElement : (pJavaElement = new JavaElementElements());
+	//enum BooleanType:
+	//
+	//	true | false;
+	public BooleanTypeElements getBooleanTypeAccess() {
+		return (unknownRuleBooleanType != null) ? unknownRuleBooleanType : (unknownRuleBooleanType = new BooleanTypeElements());
 	}
 	
-	public ParserRule getJavaElementRule() {
-		return getJavaElementAccess().getRule();
+	public EnumRule getBooleanTypeRule() {
+		return getBooleanTypeAccess().getRule();
+	}
+
+	//ModuleElement:
+	//
+	//	"module" name=QualifiedName;
+	public ModuleElementElements getModuleElementAccess() {
+		return (pModuleElement != null) ? pModuleElement : (pModuleElement = new ModuleElementElements());
+	}
+	
+	public ParserRule getModuleElementRule() {
+		return getModuleElementAccess().getRule();
+	}
+
+	//ImportElement:
+	//
+	//	"import" importedNamespace=QualifiedNameWithWildCard;
+	public ImportElementElements getImportElementAccess() {
+		return (pImportElement != null) ? pImportElement : (pImportElement = new ImportElementElements());
+	}
+	
+	public ParserRule getImportElementRule() {
+		return getImportElementAccess().getRule();
+	}
+
+	//JavaCodeElement:
+	//
+	//	"java_code" name=ID "runat" "=" runat=RunAtType source=XBlockExpression;
+	public JavaCodeElementElements getJavaCodeElementAccess() {
+		return (pJavaCodeElement != null) ? pJavaCodeElement : (pJavaCodeElement = new JavaCodeElementElements());
+	}
+	
+	public ParserRule getJavaCodeElementRule() {
+		return getJavaCodeElementAccess().getRule();
+	}
+
+	//RunAtType:
+	//
+	//	"client" | "server";
+	public RunAtTypeElements getRunAtTypeAccess() {
+		return (pRunAtType != null) ? pRunAtType : (pRunAtType = new RunAtTypeElements());
+	}
+	
+	public ParserRule getRunAtTypeRule() {
+		return getRunAtTypeAccess().getRule();
+	}
+
+	//LogicElement:
+	//
+	//	"logic" ("event" "=" event=LogicType & ("runat" "=" runat=RunAtType)? & ("exec" "=" exec=[JavaCodeElement])?)
+	//
+	//	source=XBlockExpression?;
+	public LogicElementElements getLogicElementAccess() {
+		return (pLogicElement != null) ? pLogicElement : (pLogicElement = new LogicElementElements());
+	}
+	
+	public ParserRule getLogicElementRule() {
+		return getLogicElementAccess().getRule();
+	}
+
+	//enum LogicType:
+	//
+	//	global | all | modify_load | modify_store | new_load | new_store | changed | click | master_changed | init;
+	public LogicTypeElements getLogicTypeAccess() {
+		return (unknownRuleLogicType != null) ? unknownRuleLogicType : (unknownRuleLogicType = new LogicTypeElements());
+	}
+	
+	public EnumRule getLogicTypeRule() {
+		return getLogicTypeAccess().getRule();
+	}
+
+	//CodeElement:
+	//
+	//	"code" name=ID "id" "=" id=INT;
+	public CodeElementElements getCodeElementAccess() {
+		return (pCodeElement != null) ? pCodeElement : (pCodeElement = new CodeElementElements());
+	}
+	
+	public ParserRule getCodeElementRule() {
+		return getCodeElementAccess().getRule();
+	}
+
+	//TranslationElement:
+	//
+	//	"translation" name=QualifiedName translations+=LanguageAttribute+;
+	public TranslationElementElements getTranslationElementAccess() {
+		return (pTranslationElement != null) ? pTranslationElement : (pTranslationElement = new TranslationElementElements());
+	}
+	
+	public ParserRule getTranslationElementRule() {
+		return getTranslationElementAccess().getRule();
+	}
+
+	//LanguageAttribute:
+	//
+	//	lang=ID "=" text=STRING;
+	public LanguageAttributeElements getLanguageAttributeAccess() {
+		return (pLanguageAttribute != null) ? pLanguageAttribute : (pLanguageAttribute = new LanguageAttributeElements());
+	}
+	
+	public ParserRule getLanguageAttributeRule() {
+		return getLanguageAttributeAccess().getRule();
+	}
+
+	//LookupElement:
+	//
+	//	"lookup" name=ID "{" (logic+=LogicElement | javacode+=JavaCodeElement)* "}";
+	public LookupElementElements getLookupElementAccess() {
+		return (pLookupElement != null) ? pLookupElement : (pLookupElement = new LookupElementElements());
+	}
+	
+	public ParserRule getLookupElementRule() {
+		return getLookupElementAccess().getRule();
+	}
+
+	//FormElement:
+	//
+	//	"form" name=ID (("modal" "=" modal=BooleanType)? & ("columns" "=" columns=INT)?) ("{" (logic+=LogicElement |
+	//
+	//	fields+=ControlElement)* "}")?;
+	public FormElementElements getFormElementAccess() {
+		return (pFormElement != null) ? pFormElement : (pFormElement = new FormElementElements());
+	}
+	
+	public ParserRule getFormElementRule() {
+		return getFormElementAccess().getRule();
+	}
+
+	//ControlElement:
+	//
+	//	CompositeElement | LeafElement;
+	public ControlElementElements getControlElementAccess() {
+		return (pControlElement != null) ? pControlElement : (pControlElement = new ControlElementElements());
+	}
+	
+	public ParserRule getControlElementRule() {
+		return getControlElementAccess().getRule();
+	}
+
+	//ControlElementRule:
+	//
+	//	{ControlElementRule} (("text" "=" text=[TranslationElement])? & ("enabled" "=" enabled=BooleanType)? & ("visible" "="
+	//
+	//	visible=BooleanType)?);
+	public ControlElementRuleElements getControlElementRuleAccess() {
+		return (pControlElementRule != null) ? pControlElementRule : (pControlElementRule = new ControlElementRuleElements());
+	}
+	
+	public ParserRule getControlElementRuleRule() {
+		return getControlElementRuleAccess().getRule();
+	}
+
+	//CompositeElement:
+	//
+	//	SequenceBoxElement;
+	public CompositeElementElements getCompositeElementAccess() {
+		return (pCompositeElement != null) ? pCompositeElement : (pCompositeElement = new CompositeElementElements());
+	}
+	
+	public ParserRule getCompositeElementRule() {
+		return getCompositeElementAccess().getRule();
+	}
+
+	//CompositeElementRule:
+	//
+	//	rule=ControlElementRule "{" (logic+=LogicElement | childre+=ControlElement)* "}";
+	public CompositeElementRuleElements getCompositeElementRuleAccess() {
+		return (pCompositeElementRule != null) ? pCompositeElementRule : (pCompositeElementRule = new CompositeElementRuleElements());
+	}
+	
+	public ParserRule getCompositeElementRuleRule() {
+		return getCompositeElementRuleAccess().getRule();
+	}
+
+	//LeafElement:
+	//
+	//	StringElement | DoubleElement | LongElement;
+	public LeafElementElements getLeafElementAccess() {
+		return (pLeafElement != null) ? pLeafElement : (pLeafElement = new LeafElementElements());
+	}
+	
+	public ParserRule getLeafElementRule() {
+		return getLeafElementAccess().getRule();
+	}
+
+	//StringElement:
+	//
+	//	"string" name=ID (fieldRule=ControlElementRule & ("mandatory" "=" mandatory=BooleanType)? & ("master" "="
+	//
+	//	master=[LeafElement])?) ("{" logic+=LogicElement* "}")?;
+	public StringElementElements getStringElementAccess() {
+		return (pStringElement != null) ? pStringElement : (pStringElement = new StringElementElements());
+	}
+	
+	public ParserRule getStringElementRule() {
+		return getStringElementAccess().getRule();
+	}
+
+	//DoubleElement:
+	//
+	//	"double" name=ID (fieldRule=ControlElementRule & ("mandatory" "=" mandatory=BooleanType)?) ("{" logic+=LogicElement*
+	//
+	//	"}")?;
+	public DoubleElementElements getDoubleElementAccess() {
+		return (pDoubleElement != null) ? pDoubleElement : (pDoubleElement = new DoubleElementElements());
+	}
+	
+	public ParserRule getDoubleElementRule() {
+		return getDoubleElementAccess().getRule();
+	}
+
+	//LongElement:
+	//
+	//	"long" name=ID (fieldRule=ControlElementRule & ("mandatory" "=" mandatory=BooleanType)?) ("{" logic+=LogicElement*
+	//
+	//	"}")?;
+	public LongElementElements getLongElementAccess() {
+		return (pLongElement != null) ? pLongElement : (pLongElement = new LongElementElements());
+	}
+	
+	public ParserRule getLongElementRule() {
+		return getLongElementAccess().getRule();
+	}
+
+	////XLiteral returns xbase::XExpression:
+	//
+	////	XBooleanLiteral |
+	//
+	////	XNumberLiteral |
+	//
+	////	XNullLiteral |
+	//
+	////	XStringLiteral |
+	//
+	////	XTypeLiteral
+	//
+	////;
+	//
+	////
+	//
+	////XTypeLiteral returns xbase::XTypeLiteral :
+	//
+	////	{XTypeLiteral} type=[types::JvmType|QualifiedName] '.' 'class'
+	//
+	////;
+	//
+	////XCastedExpression returns xbase::XCastedExpression :
+	//
+	////	{XCastedExpression}
+	//
+	////	'(' type=JvmTypeReference ')' target=XMemberFeatureCall 
+	//
+	////;
+	//
+	////XMemberFeatureCall returns xbase::XMemberFeatureCall:
+	//
+	////	XPrimaryExpression
+	//
+	////	(=>({XAssignment.assignable=current} '.' feature=[types::JvmIdentifiableElement|ValidID] OpSingleAssign) value=XAssignment
+	//
+	////	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|spreading?="*.")) 
+	//
+	////		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
+	//
+	////		feature=[types::JvmIdentifiableElement|ValidID] (
+	//
+	////			=>explicitOperationCall?='(' 
+	//
+	////				(
+	//
+	////				    memberCallArguments+=XShortClosure
+	//
+	////				  |	memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
+	//
+	////				)? 
+	//
+	////			')')?
+	//
+	////			memberCallArguments+=XClosure?
+	//
+	////		)*; SequenceBoxElement:
+	//
+	//	"sequence_box" name=ID fieldRule=CompositeElementRule;
+	public SequenceBoxElementElements getSequenceBoxElementAccess() {
+		return (pSequenceBoxElement != null) ? pSequenceBoxElement : (pSequenceBoxElement = new SequenceBoxElementElements());
+	}
+	
+	public ParserRule getSequenceBoxElementRule() {
+		return getSequenceBoxElementAccess().getRule();
 	}
 
 	//XExpression:

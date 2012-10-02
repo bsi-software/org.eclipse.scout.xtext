@@ -4,7 +4,9 @@
 package org.eclipse.scout.saml;
 
 import org.eclipse.scout.saml.generator.SamlGenerator;
+import org.eclipse.scout.saml.scoping.SamlScopeProvider;
 import org.eclipse.xtext.generator.IGenerator;
+import org.eclipse.xtext.scoping.IScopeProvider;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
@@ -13,5 +15,10 @@ public class SamlRuntimeModule extends org.eclipse.scout.saml.AbstractSamlRuntim
   @Override
   public Class<? extends IGenerator> bindIGenerator() {
     return SamlGenerator.class;
+  }
+
+  @Override
+  public Class<? extends IScopeProvider> bindIScopeProvider() {
+    return SamlScopeProvider.class;
   }
 }

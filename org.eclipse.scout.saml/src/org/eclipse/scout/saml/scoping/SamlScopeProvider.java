@@ -3,15 +3,37 @@
  */
 package org.eclipse.scout.saml.scoping;
 
-import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.scout.saml.saml.SamlPackage;
+import org.eclipse.scout.saml.saml.StringElement;
+import org.eclipse.scout.saml.validation.SamlJavaValidatorHelper;
+import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.scoping.Scopes;
+import org.eclipse.xtext.xbase.scoping.XbaseScopeProvider;
+
+import com.google.inject.Inject;
 
 /**
  * This class contains custom scoping description.
- * 
  * see : http://www.eclipse.org/Xtext/documentation/latest/xtext.html#scoping
- * on how and when to use it 
- *
+ * on how and when to use it
  */
-public class SamlScopeProvider extends AbstractDeclarativeScopeProvider {
+@SuppressWarnings("restriction")
+public class SamlScopeProvider extends XbaseScopeProvider {
 
+  @Inject
+  SamlJavaValidatorHelper helper;
+
+  @Override
+  public IScope getScope(EObject context, EReference reference) {
+    if (context instanceof StringElement) {
+      StringElement stringElement = (StringElement) context;
+      if (reference == SamlPackage.Literals.STRING_ELEMENT__MASTER) {
+        return Scopes.scopeFor(helper.leafNodes(stringElement));
+      }
+    }
+
+    return super.getScope(context, reference);
+  }
 }

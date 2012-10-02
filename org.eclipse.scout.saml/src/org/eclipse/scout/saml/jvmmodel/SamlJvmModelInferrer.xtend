@@ -1,12 +1,11 @@
 package org.eclipse.scout.saml.jvmmodel
 
 import com.google.inject.Inject
+import org.eclipse.scout.saml.saml.JavaCodeElement
+import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.eclipse.scout.saml.saml.Model
-import org.eclipse.xtext.naming.IQualifiedNameProvider
-import org.eclipse.scout.saml.saml.JavaElement
 import org.eclipse.scout.rt.shared.services.lookup.LookupRow
 
 /**
@@ -48,7 +47,7 @@ class SamlJvmModelInferrer extends AbstractModelInferrer {
 	 *            rely on linking using the index if isPreIndexingPhase is
 	 *            <code>true</code>.
 	 */
-   	def dispatch void infer(JavaElement element, IJvmDeclaredTypeAcceptor acceptor, boolean isPreIndexingPhase) {
+   	def dispatch void infer(JavaCodeElement element, IJvmDeclaredTypeAcceptor acceptor, boolean isPreIndexingPhase) {
    		// Here you explain how your model is mapped to Java elements, by writing the actual translation code.
    		
    		// An implementation for the initial hello world example could look like this:
@@ -63,13 +62,13 @@ class SamlJvmModelInferrer extends AbstractModelInferrer {
 //   				}
 //   			])
 
-		acceptor.accept(
+ 		acceptor.accept(
 			element.toClass(element.fullyQualifiedName)
 		).initializeLater [
 			members += element.source.toMethod("getDataByAll",
 				element.newTypeRef(typeof(LookupRow)).addArrayTypeDimension) [
 				
-				parameters += element.source.toParameter("a", element.newTypeRef(typeof(String)))
+				//parameters += element.source.toParameter("a", element.newTypeRef(typeof(String)))
 				
 				body = element.source
 			]

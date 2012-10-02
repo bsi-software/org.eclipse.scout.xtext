@@ -3,10 +3,23 @@ package org.eclipse.scout.saml.serializer;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.scout.saml.saml.Import;
-import org.eclipse.scout.saml.saml.JavaElement;
+import org.eclipse.scout.saml.saml.CodeElement;
+import org.eclipse.scout.saml.saml.CompositeElementRule;
+import org.eclipse.scout.saml.saml.ControlElementRule;
+import org.eclipse.scout.saml.saml.DoubleElement;
+import org.eclipse.scout.saml.saml.FormElement;
+import org.eclipse.scout.saml.saml.ImportElement;
+import org.eclipse.scout.saml.saml.JavaCodeElement;
+import org.eclipse.scout.saml.saml.LanguageAttribute;
+import org.eclipse.scout.saml.saml.LogicElement;
+import org.eclipse.scout.saml.saml.LongElement;
+import org.eclipse.scout.saml.saml.LookupElement;
 import org.eclipse.scout.saml.saml.Model;
+import org.eclipse.scout.saml.saml.ModuleElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
+import org.eclipse.scout.saml.saml.SequenceBoxElement;
+import org.eclipse.scout.saml.saml.StringElement;
+import org.eclipse.scout.saml.saml.TranslationElement;
 import org.eclipse.scout.saml.services.SamlGrammarAccess;
 import org.eclipse.xtext.common.types.JvmFormalParameter;
 import org.eclipse.xtext.common.types.JvmGenericArrayTypeReference;
@@ -64,21 +77,107 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == SamlPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
-			case SamlPackage.IMPORT:
-				if(context == grammarAccess.getImportRule()) {
-					sequence_Import(context, (Import) semanticObject); 
+			case SamlPackage.CODE_ELEMENT:
+				if(context == grammarAccess.getCodeElementRule()) {
+					sequence_CodeElement(context, (CodeElement) semanticObject); 
 					return; 
 				}
 				else break;
-			case SamlPackage.JAVA_ELEMENT:
-				if(context == grammarAccess.getJavaElementRule()) {
-					sequence_JavaElement(context, (JavaElement) semanticObject); 
+			case SamlPackage.COMPOSITE_ELEMENT_RULE:
+				if(context == grammarAccess.getCompositeElementRuleRule()) {
+					sequence_CompositeElementRule(context, (CompositeElementRule) semanticObject); 
+					return; 
+				}
+				else break;
+			case SamlPackage.CONTROL_ELEMENT_RULE:
+				if(context == grammarAccess.getControlElementRuleRule()) {
+					sequence_ControlElementRule(context, (ControlElementRule) semanticObject); 
+					return; 
+				}
+				else break;
+			case SamlPackage.DOUBLE_ELEMENT:
+				if(context == grammarAccess.getControlElementRule() ||
+				   context == grammarAccess.getDoubleElementRule() ||
+				   context == grammarAccess.getLeafElementRule()) {
+					sequence_DoubleElement(context, (DoubleElement) semanticObject); 
+					return; 
+				}
+				else break;
+			case SamlPackage.FORM_ELEMENT:
+				if(context == grammarAccess.getFormElementRule()) {
+					sequence_FormElement(context, (FormElement) semanticObject); 
+					return; 
+				}
+				else break;
+			case SamlPackage.IMPORT_ELEMENT:
+				if(context == grammarAccess.getImportElementRule()) {
+					sequence_ImportElement(context, (ImportElement) semanticObject); 
+					return; 
+				}
+				else break;
+			case SamlPackage.JAVA_CODE_ELEMENT:
+				if(context == grammarAccess.getJavaCodeElementRule()) {
+					sequence_JavaCodeElement(context, (JavaCodeElement) semanticObject); 
+					return; 
+				}
+				else break;
+			case SamlPackage.LANGUAGE_ATTRIBUTE:
+				if(context == grammarAccess.getLanguageAttributeRule()) {
+					sequence_LanguageAttribute(context, (LanguageAttribute) semanticObject); 
+					return; 
+				}
+				else break;
+			case SamlPackage.LOGIC_ELEMENT:
+				if(context == grammarAccess.getLogicElementRule()) {
+					sequence_LogicElement(context, (LogicElement) semanticObject); 
+					return; 
+				}
+				else break;
+			case SamlPackage.LONG_ELEMENT:
+				if(context == grammarAccess.getControlElementRule() ||
+				   context == grammarAccess.getLeafElementRule() ||
+				   context == grammarAccess.getLongElementRule()) {
+					sequence_LongElement(context, (LongElement) semanticObject); 
+					return; 
+				}
+				else break;
+			case SamlPackage.LOOKUP_ELEMENT:
+				if(context == grammarAccess.getLookupElementRule()) {
+					sequence_LookupElement(context, (LookupElement) semanticObject); 
 					return; 
 				}
 				else break;
 			case SamlPackage.MODEL:
 				if(context == grammarAccess.getModelRule()) {
 					sequence_Model(context, (Model) semanticObject); 
+					return; 
+				}
+				else break;
+			case SamlPackage.MODULE_ELEMENT:
+				if(context == grammarAccess.getModuleElementRule()) {
+					sequence_ModuleElement(context, (ModuleElement) semanticObject); 
+					return; 
+				}
+				else break;
+			case SamlPackage.SEQUENCE_BOX_ELEMENT:
+				if(context == grammarAccess.getCompositeElementRule() ||
+				   context == grammarAccess.getControlElementRule() ||
+				   context == grammarAccess.getSequenceBoxElementRule()) {
+					sequence_SequenceBoxElement(context, (SequenceBoxElement) semanticObject); 
+					return; 
+				}
+				else break;
+			case SamlPackage.STRING_ELEMENT:
+				if(context == grammarAccess.getControlElementRule() ||
+				   context == grammarAccess.getLeafElementRule() ||
+				   context == grammarAccess.getStringElementRule()) {
+					sequence_StringElement(context, (StringElement) semanticObject); 
+					return; 
+				}
+				else break;
+			case SamlPackage.TRANSLATION_ELEMENT:
+				if(context == grammarAccess.getTranslationElementRule()) {
+					sequence_TranslationElement(context, (TranslationElement) semanticObject); 
 					return; 
 				}
 				else break;
@@ -944,44 +1043,205 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     (name=ID id=INT)
+	 */
+	protected void sequence_CodeElement(EObject context, CodeElement semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, SamlPackage.Literals.CODE_ELEMENT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SamlPackage.Literals.CODE_ELEMENT__NAME));
+			if(transientValues.isValueTransient(semanticObject, SamlPackage.Literals.CODE_ELEMENT__ID) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SamlPackage.Literals.CODE_ELEMENT__ID));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getCodeElementAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getCodeElementAccess().getIdINTTerminalRuleCall_4_0(), semanticObject.getId());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (rule=ControlElementRule (logic+=LogicElement | childre+=ControlElement)*)
+	 */
+	protected void sequence_CompositeElementRule(EObject context, CompositeElementRule semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (text=[TranslationElement|ID]? enabled=BooleanType? visible=BooleanType?)
+	 */
+	protected void sequence_ControlElementRule(EObject context, ControlElementRule semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=ID fieldRule=ControlElementRule mandatory=BooleanType? logic+=LogicElement*)
+	 */
+	protected void sequence_DoubleElement(EObject context, DoubleElement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=ID modal=BooleanType? columns=INT? (logic+=LogicElement | fields+=ControlElement)*)
+	 */
+	protected void sequence_FormElement(EObject context, FormElement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     importedNamespace=QualifiedNameWithWildCard
 	 */
-	protected void sequence_Import(EObject context, Import semanticObject) {
+	protected void sequence_ImportElement(EObject context, ImportElement semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, SamlPackage.Literals.IMPORT__IMPORTED_NAMESPACE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SamlPackage.Literals.IMPORT__IMPORTED_NAMESPACE));
+			if(transientValues.isValueTransient(semanticObject, SamlPackage.Literals.IMPORT_ELEMENT__IMPORTED_NAMESPACE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SamlPackage.Literals.IMPORT_ELEMENT__IMPORTED_NAMESPACE));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getImportAccess().getImportedNamespaceQualifiedNameWithWildCardParserRuleCall_1_0(), semanticObject.getImportedNamespace());
+		feeder.accept(grammarAccess.getImportElementAccess().getImportedNamespaceQualifiedNameWithWildCardParserRuleCall_1_0(), semanticObject.getImportedNamespace());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (name=ID source=XBlockExpression)
+	 *     (name=ID runat=RunAtType source=XBlockExpression)
 	 */
-	protected void sequence_JavaElement(EObject context, JavaElement semanticObject) {
+	protected void sequence_JavaCodeElement(EObject context, JavaCodeElement semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, SamlPackage.Literals.JAVA_ELEMENT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SamlPackage.Literals.JAVA_ELEMENT__NAME));
-			if(transientValues.isValueTransient(semanticObject, SamlPackage.Literals.JAVA_ELEMENT__SOURCE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SamlPackage.Literals.JAVA_ELEMENT__SOURCE));
+			if(transientValues.isValueTransient(semanticObject, SamlPackage.Literals.JAVA_CODE_ELEMENT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SamlPackage.Literals.JAVA_CODE_ELEMENT__NAME));
+			if(transientValues.isValueTransient(semanticObject, SamlPackage.Literals.JAVA_CODE_ELEMENT__RUNAT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SamlPackage.Literals.JAVA_CODE_ELEMENT__RUNAT));
+			if(transientValues.isValueTransient(semanticObject, SamlPackage.Literals.JAVA_CODE_ELEMENT__SOURCE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SamlPackage.Literals.JAVA_CODE_ELEMENT__SOURCE));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getJavaElementAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getJavaElementAccess().getSourceXBlockExpressionParserRuleCall_2_0(), semanticObject.getSource());
+		feeder.accept(grammarAccess.getJavaCodeElementAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getJavaCodeElementAccess().getRunatRunAtTypeParserRuleCall_4_0(), semanticObject.getRunat());
+		feeder.accept(grammarAccess.getJavaCodeElementAccess().getSourceXBlockExpressionParserRuleCall_5_0(), semanticObject.getSource());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (imports+=Import* elements+=JavaElement*)
+	 *     (lang=ID text=STRING)
+	 */
+	protected void sequence_LanguageAttribute(EObject context, LanguageAttribute semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, SamlPackage.Literals.LANGUAGE_ATTRIBUTE__LANG) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SamlPackage.Literals.LANGUAGE_ATTRIBUTE__LANG));
+			if(transientValues.isValueTransient(semanticObject, SamlPackage.Literals.LANGUAGE_ATTRIBUTE__TEXT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SamlPackage.Literals.LANGUAGE_ATTRIBUTE__TEXT));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getLanguageAttributeAccess().getLangIDTerminalRuleCall_0_0(), semanticObject.getLang());
+		feeder.accept(grammarAccess.getLanguageAttributeAccess().getTextSTRINGTerminalRuleCall_2_0(), semanticObject.getText());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (event=LogicType runat=RunAtType? exec=[JavaCodeElement|ID]? source=XBlockExpression?)
+	 */
+	protected void sequence_LogicElement(EObject context, LogicElement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=ID fieldRule=ControlElementRule mandatory=BooleanType? logic+=LogicElement*)
+	 */
+	protected void sequence_LongElement(EObject context, LongElement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=ID (logic+=LogicElement | javacode+=JavaCodeElement)*)
+	 */
+	protected void sequence_LookupElement(EObject context, LookupElement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         module=ModuleElement 
+	 *         imports+=ImportElement* 
+	 *         (codes+=JavaCodeElement | translations+=TranslationElement | codes+=CodeElement | lookups+=LookupElement | forms+=FormElement)*
+	 *     )
 	 */
 	protected void sequence_Model(EObject context, Model semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     name=QualifiedName
+	 */
+	protected void sequence_ModuleElement(EObject context, ModuleElement semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, SamlPackage.Literals.MODULE_ELEMENT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SamlPackage.Literals.MODULE_ELEMENT__NAME));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getModuleElementAccess().getNameQualifiedNameParserRuleCall_1_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=ID fieldRule=CompositeElementRule)
+	 */
+	protected void sequence_SequenceBoxElement(EObject context, SequenceBoxElement semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, SamlPackage.Literals.SEQUENCE_BOX_ELEMENT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SamlPackage.Literals.SEQUENCE_BOX_ELEMENT__NAME));
+			if(transientValues.isValueTransient(semanticObject, SamlPackage.Literals.SEQUENCE_BOX_ELEMENT__FIELD_RULE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SamlPackage.Literals.SEQUENCE_BOX_ELEMENT__FIELD_RULE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getSequenceBoxElementAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getSequenceBoxElementAccess().getFieldRuleCompositeElementRuleParserRuleCall_2_0(), semanticObject.getFieldRule());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=ID fieldRule=ControlElementRule mandatory=BooleanType? master=[LeafElement|ID]? logic+=LogicElement*)
+	 */
+	protected void sequence_StringElement(EObject context, StringElement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=QualifiedName translations+=LanguageAttribute+)
+	 */
+	protected void sequence_TranslationElement(EObject context, TranslationElement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 }

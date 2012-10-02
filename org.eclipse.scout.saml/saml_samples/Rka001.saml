@@ -136,8 +136,11 @@ lookup KontoByZrnr {
 // ========================
 // UI TEMPLATE DEFINITIONS
 // ========================
-/*template zreg_sequence_box class=ch.raiffeisen.dialba.common.client.ui.forms.fields.Zregsequence_boxAbs replaces=sequence_box
+/*
+
+template zreg_sequence_box class=ch.raiffeisen.dialba.common.client.ui.forms.fields.Zregsequence_boxAbs replaces=sequence_box
 template dialba_smartfield class=ch.raiffeisen.dialba.common.client.ui.forms.fields.AbstractDialbaSmartField replaces=smartfield
+
 */
 
 
@@ -182,7 +185,7 @@ form Rka001_gen modal=true text=koEmissionTitle columns=2 {
 		 return formData;"
 	}
 
-	sequence_box BuchungsCodeSequence {
+	sequence_box BuchungsCodeSequence template=zreg_sequence_box {
 		string BuchungsCode text=Transaktionscode enabled=false
 	}
 	

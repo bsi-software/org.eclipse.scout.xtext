@@ -2,15 +2,13 @@ grammar org.eclipse.scout.saml.Saml  with org.eclipse.xtext.xbase.Xbase
 
 generate saml "http://www.eclipse.org/scout/saml/Saml"
 
-import "http://www.eclipse.org/xtext/common/JavaVMTypes" as jvmTypes
+import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
+import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
 
-//TODO: file splitting?
-//TODO: unique constraints (scope)?
-//TODO: conditional properties?
+//=====================================================================================================================
+
 
 //TODO: plain java code in XBlockExpression?
-//TODO: creating saml files API?
-//TODO: templates
 
 
 Model:
@@ -39,10 +37,14 @@ ImportElement: 'import' importedNamespace=QualifiedNameWithWildCard;
 
 
 JavaCodeElement:'java_code' name=ID 'runat' '=' runat=RunAtType source=XBlockExpression;
-enum RunAtType:client|server;
+RunAtType:'client'|'server';
 
 LogicElement:'logic' (('event' '=' event=LogicType) & ('runat' '=' runat=RunAtType)? & ('exec' '=' exec=[JavaCodeElement])?) (source=XBlockExpression)?;
 enum LogicType:global|all|modify_load|modify_store|new_load|new_store|changed|click|master_changed|init;
+
+
+
+
 
 
 
@@ -54,31 +56,61 @@ LanguageAttribute:lang=ID '=' text=STRING;
 
 LookupElement:'lookup' name=ID '{' (logic+=LogicElement |  javacode+=JavaCodeElement)* '}';
 
-FormElement:'form' name=ID (('modal' '=' modal=BooleanType)? & ('columns' '=' columns=INT)?) ('{' (logic+=LogicElement | fields+=AbstractFieldElement )* '}')?;
+FormElement:'form' name=ID (('modal' '=' modal=BooleanType)? & ('columns' '=' columns=INT)?) 
+	('{' (logic+=LogicElement | fields+=ControlElement )* '}')?
+;
 
-AbstractFieldElement: /*AbstractValueFieldElement | */AbstractContainerFieldElement;
-AbstractFieldRule: {AbstractFieldRule} 
-	(('text' '='text=[TranslationElement])? & ('enabled' '=' enabled=BooleanType)? & ('visible' '=' visible=BooleanType)? /*& ('master' '=' master=[AbstractValueFieldElement])? */);
+ControlElement:CompositeElement | LeafElement;
+ControlElementRule: {ControlElementRule}
+	(('text' '='text=[TranslationElement])? & ('enabled' '=' enabled=BooleanType)? & ('visible' '=' visible=BooleanType)?);
 
-AbstractContainerFieldElement: SequenceBoxElement;
-AbstractContainerFieldRule: {AbstractContainerFieldRule} 
-	fieldRule=AbstractFieldRule ('{' (logic+=LogicElement | fields+=AbstractFieldElement)* '}')?;
-	/*
-AbstractValueFieldElement:StringElement|SmartfieldElement|LongElement|DoubleElement|DateElement;
-AbstractValueFieldRule: {AbstractValueFieldRule} 
-	(fieldRule=AbstractFieldRule & ('mandatory' '=' mandatory=BooleanType)?)
+CompositeElement:SequenceBoxElement;
+CompositeElementRule:rule=ControlElementRule 
+	'{'  (logic+=LogicElement | childre+=ControlElement)* '}';
+
+LeafElement:StringElement|DoubleElement|LongElement;
+
+StringElement:'string' name=ID (fieldRule=ControlElementRule & ('mandatory' '=' mandatory=BooleanType)? & ('master' '='master=[LeafElement])?)
 	('{' logic+=LogicElement* '}')?;
-*/
-SequenceBoxElement:'sequence_box' name=ID rule=AbstractContainerFieldRule;
-/*
-StringElement:'string' name=ID (rule=AbstractValueFieldRule & ('maxlen' '=' maxlen=INT)?);
 
-DoubleElement:'double' name=ID rule=AbstractValueFieldRule;
+DoubleElement:'double' name=ID (fieldRule=ControlElementRule & ('mandatory' '=' mandatory=BooleanType)?)
+	('{' logic+=LogicElement* '}')?;
 
-LongElement:'long' name=ID rule=AbstractValueFieldRule;
+LongElement:'long' name=ID (fieldRule=ControlElementRule & ('mandatory' '=' mandatory=BooleanType)?)
+	('{' logic+=LogicElement* '}')?;
 
-DateElement:'date' name=ID rule=AbstractValueFieldRule;
+SequenceBoxElement:'sequence_box'name=ID fieldRule=CompositeElementRule;
 
-SmartfieldElement:'smartfield' name=ID
-	(rule=AbstractValueFieldRule & ('code' '=' code=[CodeElement])? & ('value_type' '=' valueType=[jvmTypes::JvmType])? & ('lookup' '=' lookup=[LookupElement])?);
- */
+
+//XLiteral returns xbase::XExpression:
+//	XBooleanLiteral |
+//	XNumberLiteral |
+//	XNullLiteral |
+//	XStringLiteral |
+//	XTypeLiteral
+//;
+//
+//XTypeLiteral returns xbase::XTypeLiteral :
+//	{XTypeLiteral} type=[types::JvmType|QualifiedName] '.' 'class'
+//;
+
+//XCastedExpression returns xbase::XCastedExpression :
+//	{XCastedExpression}
+//	'(' type=JvmTypeReference ')' target=XMemberFeatureCall 
+//;
+
+
+//XMemberFeatureCall returns xbase::XMemberFeatureCall:
+//	XPrimaryExpression
+//	(=>({XAssignment.assignable=current} '.' feature=[types::JvmIdentifiableElement|ValidID] OpSingleAssign) value=XAssignment
+//	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|spreading?="*.")) 
+//		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
+//		feature=[types::JvmIdentifiableElement|ValidID] (
+//			=>explicitOperationCall?='(' 
+//				(
+//				    memberCallArguments+=XShortClosure
+//				  |	memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
+//				)? 
+//			')')?
+//			memberCallArguments+=XClosure?
+//		)*;

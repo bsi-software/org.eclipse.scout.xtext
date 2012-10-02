@@ -7,16 +7,97 @@
     editorPluginID="org.eclipse.scout.saml.editor" runtimeVersion="2.8" usedGenPackages="../../../../../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase">
   <genPackages prefix="Saml" basePackage="org.eclipse.scout.saml" disposableProviderFactory="true"
       ecorePackage="Saml.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Saml.ecore#//BooleanType">
+      <genEnumLiterals ecoreEnumLiteral="Saml.ecore#//BooleanType/true"/>
+      <genEnumLiterals ecoreEnumLiteral="Saml.ecore#//BooleanType/false"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Saml.ecore#//LogicType">
+      <genEnumLiterals ecoreEnumLiteral="Saml.ecore#//LogicType/global"/>
+      <genEnumLiterals ecoreEnumLiteral="Saml.ecore#//LogicType/all"/>
+      <genEnumLiterals ecoreEnumLiteral="Saml.ecore#//LogicType/modify_load"/>
+      <genEnumLiterals ecoreEnumLiteral="Saml.ecore#//LogicType/modify_store"/>
+      <genEnumLiterals ecoreEnumLiteral="Saml.ecore#//LogicType/new_load"/>
+      <genEnumLiterals ecoreEnumLiteral="Saml.ecore#//LogicType/new_store"/>
+      <genEnumLiterals ecoreEnumLiteral="Saml.ecore#//LogicType/changed"/>
+      <genEnumLiterals ecoreEnumLiteral="Saml.ecore#//LogicType/click"/>
+      <genEnumLiterals ecoreEnumLiteral="Saml.ecore#//LogicType/master_changed"/>
+      <genEnumLiterals ecoreEnumLiteral="Saml.ecore#//LogicType/init"/>
+    </genEnums>
     <genClasses ecoreClass="Saml.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//Model/module"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//Model/imports"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//Model/elements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//Model/codes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//Model/translations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//Model/lookups"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//Model/forms"/>
     </genClasses>
-    <genClasses ecoreClass="Saml.ecore#//Import">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//Import/importedNamespace"/>
+    <genClasses ecoreClass="Saml.ecore#//ModuleElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//ModuleElement/name"/>
     </genClasses>
-    <genClasses ecoreClass="Saml.ecore#//JavaElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//JavaElement/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//JavaElement/source"/>
+    <genClasses ecoreClass="Saml.ecore#//ImportElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//ImportElement/importedNamespace"/>
+    </genClasses>
+    <genClasses ecoreClass="Saml.ecore#//JavaCodeElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//JavaCodeElement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//JavaCodeElement/runat"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//JavaCodeElement/source"/>
+    </genClasses>
+    <genClasses ecoreClass="Saml.ecore#//LogicElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LogicElement/event"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LogicElement/runat"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//LogicElement/exec"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//LogicElement/source"/>
+    </genClasses>
+    <genClasses ecoreClass="Saml.ecore#//CodeElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//CodeElement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//CodeElement/id"/>
+    </genClasses>
+    <genClasses ecoreClass="Saml.ecore#//TranslationElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//TranslationElement/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//TranslationElement/translations"/>
+    </genClasses>
+    <genClasses ecoreClass="Saml.ecore#//LanguageAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LanguageAttribute/lang"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LanguageAttribute/text"/>
+    </genClasses>
+    <genClasses ecoreClass="Saml.ecore#//LookupElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LookupElement/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//LookupElement/logic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//LookupElement/javacode"/>
+    </genClasses>
+    <genClasses ecoreClass="Saml.ecore#//FormElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//FormElement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//FormElement/modal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//FormElement/columns"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//FormElement/logic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//FormElement/fields"/>
+    </genClasses>
+    <genClasses ecoreClass="Saml.ecore#//ControlElement"/>
+    <genClasses ecoreClass="Saml.ecore#//ControlElementRule">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//ControlElementRule/text"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//ControlElementRule/enabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//ControlElementRule/visible"/>
+    </genClasses>
+    <genClasses ecoreClass="Saml.ecore#//CompositeElement"/>
+    <genClasses ecoreClass="Saml.ecore#//CompositeElementRule">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//CompositeElementRule/rule"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//CompositeElementRule/logic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//CompositeElementRule/childre"/>
+    </genClasses>
+    <genClasses ecoreClass="Saml.ecore#//LeafElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LeafElement/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//LeafElement/fieldRule"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LeafElement/mandatory"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//LeafElement/logic"/>
+    </genClasses>
+    <genClasses ecoreClass="Saml.ecore#//StringElement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//StringElement/master"/>
+    </genClasses>
+    <genClasses ecoreClass="Saml.ecore#//DoubleElement"/>
+    <genClasses ecoreClass="Saml.ecore#//LongElement"/>
+    <genClasses ecoreClass="Saml.ecore#//SequenceBoxElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//SequenceBoxElement/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//SequenceBoxElement/fieldRule"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
