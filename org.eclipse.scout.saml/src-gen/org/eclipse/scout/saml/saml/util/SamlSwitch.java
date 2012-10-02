@@ -238,6 +238,15 @@ public class SamlSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case SamlPackage.XTYPE_LITERAL:
+      {
+        XTypeLiteral xTypeLiteral = (XTypeLiteral)theEObject;
+        T result = caseXTypeLiteral(xTypeLiteral);
+        if (result == null) result = caseXbase_XTypeLiteral(xTypeLiteral);
+        if (result == null) result = caseXExpression(xTypeLiteral);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -579,6 +588,22 @@ public class SamlSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>XType Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>XType Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseXTypeLiteral(XTypeLiteral object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>XExpression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -638,6 +663,22 @@ public class SamlSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseXbase_XVariableDeclaration(org.eclipse.xtext.xbase.XVariableDeclaration object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>XType Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>XType Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseXbase_XTypeLiteral(org.eclipse.xtext.xbase.XTypeLiteral object)
   {
     return null;
   }

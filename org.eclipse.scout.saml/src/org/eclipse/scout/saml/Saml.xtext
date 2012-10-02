@@ -101,10 +101,10 @@ XLiteral returns xbase::XExpression:
 	XStringLiteral |
 	XTypeLiteral
 ;
-//
-//XTypeLiteral returns xbase::XTypeLiteral :
-//	{XTypeLiteral} type=[types::JvmType|QualifiedName] '.' 'class'
-//;
+
+XTypeLiteral returns xbase::XTypeLiteral :
+	{XTypeLiteral} type=[types::JvmType|QualifiedName] '.' 'class'
+;
 
 //XCastedExpression returns xbase::XCastedExpression :
 //	{XCastedExpression}

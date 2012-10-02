@@ -2258,6 +2258,56 @@ ruleXLiteral returns [EObject current=null]
 
 
 
+// Entry rule entryRuleXTypeLiteral
+entryRuleXTypeLiteral returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getXTypeLiteralRule()); }
+	 iv_ruleXTypeLiteral=ruleXTypeLiteral 
+	 { $current=$iv_ruleXTypeLiteral.current; } 
+	 EOF 
+;
+
+// Rule XTypeLiteral
+ruleXTypeLiteral returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getXTypeLiteralAccess().getXTypeLiteralAction_0(),
+            $current);
+    }
+)(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getXTypeLiteralRule());
+	        }
+        }
+		{ 
+	        newCompositeNode(grammarAccess.getXTypeLiteralAccess().getTypeJvmTypeCrossReference_1_0()); 
+	    }
+		ruleQualifiedName		{ 
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_2='.' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getXTypeLiteralAccess().getFullStopKeyword_2());
+    }
+	otherlv_3='class' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getXTypeLiteralAccess().getClassKeyword_3());
+    }
+)
+;
+
+
+
+
+
 // Entry rule entryRuleXExpression
 entryRuleXExpression returns [EObject current=null] 
 	:
@@ -5723,60 +5773,6 @@ ruleXStringLiteral returns [EObject current=null]
 
 )
 ))
-;
-
-
-
-
-
-// Entry rule entryRuleXTypeLiteral
-entryRuleXTypeLiteral returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getXTypeLiteralRule()); }
-	 iv_ruleXTypeLiteral=ruleXTypeLiteral 
-	 { $current=$iv_ruleXTypeLiteral.current; } 
-	 EOF 
-;
-
-// Rule XTypeLiteral
-ruleXTypeLiteral returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-((
-    {
-        $current = forceCreateModelElement(
-            grammarAccess.getXTypeLiteralAccess().getXTypeLiteralAction_0(),
-            $current);
-    }
-)	otherlv_1='typeof' 
-    {
-    	newLeafNode(otherlv_1, grammarAccess.getXTypeLiteralAccess().getTypeofKeyword_1());
-    }
-	otherlv_2='(' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getXTypeLiteralAccess().getLeftParenthesisKeyword_2());
-    }
-(
-(
-		{
-			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getXTypeLiteralRule());
-	        }
-        }
-		{ 
-	        newCompositeNode(grammarAccess.getXTypeLiteralAccess().getTypeJvmTypeCrossReference_3_0()); 
-	    }
-		ruleQualifiedName		{ 
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)	otherlv_4=')' 
-    {
-    	newLeafNode(otherlv_4, grammarAccess.getXTypeLiteralAccess().getRightParenthesisKeyword_4());
-    }
-)
 ;
 
 

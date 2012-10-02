@@ -146,7 +146,7 @@ translation TransTest2 en="en" de="de" de_CH="de_CH"
 	}
 
 	@Test
-	def void testVariableDeclarations() {
+	def void testXVariableDeclaration() {
 '''
 module a.b
 
@@ -160,5 +160,22 @@ java_code Foo runat=server {
 }
 '''.parse.assertNoErrors
 	}
+
+	@Test
+	def void testXTypeLiteral() {
+'''
+module a.b
+
+import java.util.List
+import org.eclipse.xtext.EcoreUtil2
+
+java_code Foo runat=server {
+	List<String> strings =
+		EcoreUtil2::typeSelect
+			(new java.util.LinkedList<String>(), String.class) ;
+	return null;
+}'''.parse.assertNoErrors
+	}
+
 	
 }
