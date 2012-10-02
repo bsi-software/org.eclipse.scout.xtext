@@ -177,5 +177,21 @@ java_code Foo runat=server {
 }'''.parse.assertNoErrors
 	}
 
+	@Test
+	def void testXUnaryOperation() {
+'''
+module a.b
+
+import java.util.List
+import org.eclipse.xtext.EcoreUtil2
+
+java_code Foo runat=server {
+	boolean isItTrue =
+		!(EcoreUtil2::typeSelect
+			(new java.util.LinkedList<String>(), String.class).size() > 0) ;
+	return null;
+}'''.parse.assertNoErrors
+	}
+
 	
 }

@@ -1224,11 +1224,53 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cFullStopKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Keyword cClassKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
-		////XCastedExpression returns xbase::XCastedExpression :
+		//XTypeLiteral returns xbase::XTypeLiteral:
+		//	{XTypeLiteral} type=[types::JvmType|QualifiedName] "." "class";
+		public ParserRule getRule() { return rule; }
+
+		//{XTypeLiteral} type=[types::JvmType|QualifiedName] "." "class"
+		public Group getGroup() { return cGroup; }
+
+		//{XTypeLiteral}
+		public Action getXTypeLiteralAction_0() { return cXTypeLiteralAction_0; }
+
+		//type=[types::JvmType|QualifiedName]
+		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
+
+		//[types::JvmType|QualifiedName]
+		public CrossReference getTypeJvmTypeCrossReference_1_0() { return cTypeJvmTypeCrossReference_1_0; }
+
+		//QualifiedName
+		public RuleCall getTypeJvmTypeQualifiedNameParserRuleCall_1_0_1() { return cTypeJvmTypeQualifiedNameParserRuleCall_1_0_1; }
+
+		//"."
+		public Keyword getFullStopKeyword_2() { return cFullStopKeyword_2; }
+
+		//"class"
+		public Keyword getClassKeyword_3() { return cClassKeyword_3; }
+	}
+
+	public class XUnaryOperationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XUnaryOperation");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Action cXUnaryOperationAction_0_0 = (Action)cGroup_0.eContents().get(0);
+		private final Assignment cFeatureAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final CrossReference cFeatureJvmIdentifiableElementCrossReference_0_1_0 = (CrossReference)cFeatureAssignment_0_1.eContents().get(0);
+		private final RuleCall cFeatureJvmIdentifiableElementOpUnaryParserRuleCall_0_1_0_1 = (RuleCall)cFeatureJvmIdentifiableElementCrossReference_0_1_0.eContents().get(1);
+		private final Assignment cOperandAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
+		private final RuleCall cOperandXMemberFeatureCallParserRuleCall_0_2_0 = (RuleCall)cOperandAssignment_0_2.eContents().get(0);
+		private final RuleCall cXMemberFeatureCallParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		////XCastedExpression returns xbase::XExpression :
 		//
-		////	{XCastedExpression}
+		////	{XCastedExpression} 
 		//
-		////	'(' type=JvmTypeReference ')' target=XMemberFeatureCall 
+		////	=>('(' type=JvmTypeReference ')' target=XMemberFeatureCall)
+		//
+		////	|
+		//
+		////	XMemberFeatureCall
 		//
 		////;
 		//
@@ -1258,30 +1300,113 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//
 		////			memberCallArguments+=XClosure?
 		//
-		////		)*; XTypeLiteral returns xbase::XTypeLiteral:
-		//	{XTypeLiteral} type=[types::JvmType|QualifiedName] "." "class";
+		////		)*; XUnaryOperation returns xbase::XExpression:
+		//	{xbase::XUnaryOperation} feature=[types::JvmIdentifiableElement|OpUnary] operand=XMemberFeatureCall |
+		//	XMemberFeatureCall;
 		public ParserRule getRule() { return rule; }
 
-		//{XTypeLiteral} type=[types::JvmType|QualifiedName] "." "class"
-		public Group getGroup() { return cGroup; }
+		//{xbase::XUnaryOperation} feature=[types::JvmIdentifiableElement|OpUnary] operand=XMemberFeatureCall //XCastedExpression returns xbase::XExpression :
+		//
+		////	{XCastedExpression} 
+		//
+		////	=>('(' type=JvmTypeReference ')' target=XMemberFeatureCall)
+		//
+		////	|
+		//
+		////	XMemberFeatureCall
+		//
+		////;
+		//
+		////XMemberFeatureCall returns xbase::XMemberFeatureCall:
+		//
+		////	XPrimaryExpression
+		//
+		////	(=>({XAssignment.assignable=current} '.' feature=[types::JvmIdentifiableElement|ValidID] OpSingleAssign) value=XAssignment
+		//
+		////	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|spreading?="*.")) 
+		//
+		////		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
+		//
+		////		feature=[types::JvmIdentifiableElement|ValidID] (
+		//
+		////			=>explicitOperationCall?='(' 
+		//
+		////				(
+		//
+		////				    memberCallArguments+=XShortClosure
+		//
+		////				  |	memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
+		//
+		////				)? 
+		//
+		////			')')?
+		//
+		////			memberCallArguments+=XClosure?
+		//
+		////		)*; | XMemberFeatureCall
+		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//{XTypeLiteral}
-		public Action getXTypeLiteralAction_0() { return cXTypeLiteralAction_0; }
+		//{xbase::XUnaryOperation} feature=[types::JvmIdentifiableElement|OpUnary] operand=XMemberFeatureCall
+		public Group getGroup_0() { return cGroup_0; }
 
-		//type=[types::JvmType|QualifiedName]
-		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
+		//{xbase::XUnaryOperation}
+		public Action getXUnaryOperationAction_0_0() { return cXUnaryOperationAction_0_0; }
 
-		//[types::JvmType|QualifiedName]
-		public CrossReference getTypeJvmTypeCrossReference_1_0() { return cTypeJvmTypeCrossReference_1_0; }
+		//feature=[types::JvmIdentifiableElement|OpUnary]
+		public Assignment getFeatureAssignment_0_1() { return cFeatureAssignment_0_1; }
 
-		//QualifiedName
-		public RuleCall getTypeJvmTypeQualifiedNameParserRuleCall_1_0_1() { return cTypeJvmTypeQualifiedNameParserRuleCall_1_0_1; }
+		//[types::JvmIdentifiableElement|OpUnary]
+		public CrossReference getFeatureJvmIdentifiableElementCrossReference_0_1_0() { return cFeatureJvmIdentifiableElementCrossReference_0_1_0; }
 
-		//"."
-		public Keyword getFullStopKeyword_2() { return cFullStopKeyword_2; }
+		//OpUnary
+		public RuleCall getFeatureJvmIdentifiableElementOpUnaryParserRuleCall_0_1_0_1() { return cFeatureJvmIdentifiableElementOpUnaryParserRuleCall_0_1_0_1; }
 
-		//"class"
-		public Keyword getClassKeyword_3() { return cClassKeyword_3; }
+		//operand=XMemberFeatureCall
+		public Assignment getOperandAssignment_0_2() { return cOperandAssignment_0_2; }
+
+		//XMemberFeatureCall
+		public RuleCall getOperandXMemberFeatureCallParserRuleCall_0_2_0() { return cOperandXMemberFeatureCallParserRuleCall_0_2_0; }
+
+		////XCastedExpression returns xbase::XExpression :
+		//
+		////	{XCastedExpression} 
+		//
+		////	=>('(' type=JvmTypeReference ')' target=XMemberFeatureCall)
+		//
+		////	|
+		//
+		////	XMemberFeatureCall
+		//
+		////;
+		//
+		////XMemberFeatureCall returns xbase::XMemberFeatureCall:
+		//
+		////	XPrimaryExpression
+		//
+		////	(=>({XAssignment.assignable=current} '.' feature=[types::JvmIdentifiableElement|ValidID] OpSingleAssign) value=XAssignment
+		//
+		////	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|spreading?="*.")) 
+		//
+		////		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
+		//
+		////		feature=[types::JvmIdentifiableElement|ValidID] (
+		//
+		////			=>explicitOperationCall?='(' 
+		//
+		////				(
+		//
+		////				    memberCallArguments+=XShortClosure
+		//
+		////				  |	memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
+		//
+		////				)? 
+		//
+		////			')')?
+		//
+		////			memberCallArguments+=XClosure?
+		//
+		////		)*; XMemberFeatureCall
+		public RuleCall getXMemberFeatureCallParserRuleCall_1() { return cXMemberFeatureCallParserRuleCall_1; }
 	}
 	
 	
@@ -1433,6 +1558,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	private XVariableDeclarationElements pXVariableDeclaration;
 	private XLiteralElements pXLiteral;
 	private XTypeLiteralElements pXTypeLiteral;
+	private XUnaryOperationElements pXUnaryOperation;
 	
 	private final Grammar grammar;
 
@@ -1753,11 +1879,25 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		return getXLiteralAccess().getRule();
 	}
 
-	////XCastedExpression returns xbase::XCastedExpression :
+	//XTypeLiteral returns xbase::XTypeLiteral:
+	//	{XTypeLiteral} type=[types::JvmType|QualifiedName] "." "class";
+	public XTypeLiteralElements getXTypeLiteralAccess() {
+		return (pXTypeLiteral != null) ? pXTypeLiteral : (pXTypeLiteral = new XTypeLiteralElements());
+	}
+	
+	public ParserRule getXTypeLiteralRule() {
+		return getXTypeLiteralAccess().getRule();
+	}
+
+	////XCastedExpression returns xbase::XExpression :
 	//
-	////	{XCastedExpression}
+	////	{XCastedExpression} 
 	//
-	////	'(' type=JvmTypeReference ')' target=XMemberFeatureCall 
+	////	=>('(' type=JvmTypeReference ')' target=XMemberFeatureCall)
+	//
+	////	|
+	//
+	////	XMemberFeatureCall
 	//
 	////;
 	//
@@ -1787,14 +1927,15 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	////			memberCallArguments+=XClosure?
 	//
-	////		)*; XTypeLiteral returns xbase::XTypeLiteral:
-	//	{XTypeLiteral} type=[types::JvmType|QualifiedName] "." "class";
-	public XTypeLiteralElements getXTypeLiteralAccess() {
-		return (pXTypeLiteral != null) ? pXTypeLiteral : (pXTypeLiteral = new XTypeLiteralElements());
+	////		)*; XUnaryOperation returns xbase::XExpression:
+	//	{xbase::XUnaryOperation} feature=[types::JvmIdentifiableElement|OpUnary] operand=XMemberFeatureCall |
+	//	XMemberFeatureCall;
+	public XUnaryOperationElements getXUnaryOperationAccess() {
+		return (pXUnaryOperation != null) ? pXUnaryOperation : (pXUnaryOperation = new XUnaryOperationElements());
 	}
 	
-	public ParserRule getXTypeLiteralRule() {
-		return getXTypeLiteralAccess().getRule();
+	public ParserRule getXUnaryOperationRule() {
+		return getXUnaryOperationAccess().getRule();
 	}
 
 	//XExpression:
@@ -1985,16 +2126,6 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getOpMultiRule() {
 		return getOpMultiAccess().getRule();
-	}
-
-	//XUnaryOperation returns XExpression:
-	//	{XUnaryOperation} feature=[types::JvmIdentifiableElement|OpUnary] operand=XCastedExpression | XCastedExpression;
-	public XbaseGrammarAccess.XUnaryOperationElements getXUnaryOperationAccess() {
-		return gaXbase.getXUnaryOperationAccess();
-	}
-	
-	public ParserRule getXUnaryOperationRule() {
-		return getXUnaryOperationAccess().getRule();
 	}
 
 	//OpUnary:

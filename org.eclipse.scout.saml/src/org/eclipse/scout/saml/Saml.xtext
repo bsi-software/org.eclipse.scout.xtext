@@ -106,9 +106,16 @@ XTypeLiteral returns xbase::XTypeLiteral :
 	{XTypeLiteral} type=[types::JvmType|QualifiedName] '.' 'class'
 ;
 
-//XCastedExpression returns xbase::XCastedExpression :
-//	{XCastedExpression}
-//	'(' type=JvmTypeReference ')' target=XMemberFeatureCall 
+XUnaryOperation returns xbase::XExpression:
+	{xbase::XUnaryOperation} feature=[types::JvmIdentifiableElement|OpUnary] operand=XMemberFeatureCall
+	| XMemberFeatureCall;
+
+
+//XCastedExpression returns xbase::XExpression :
+//	{XCastedExpression} 
+//	=>('(' type=JvmTypeReference ')' target=XMemberFeatureCall)
+//	|
+//	XMemberFeatureCall
 //;
 
 

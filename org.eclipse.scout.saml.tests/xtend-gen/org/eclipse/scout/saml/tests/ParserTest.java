@@ -346,4 +346,38 @@ public class ParserTest {
       throw Exceptions.sneakyThrow(_e);
     }
   }
+  
+  @Test
+  public void testXUnaryOperation() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module a.b");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("import java.util.List");
+      _builder.newLine();
+      _builder.append("import org.eclipse.xtext.EcoreUtil2");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("java_code Foo runat=server {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("boolean isItTrue =");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("!(EcoreUtil2::typeSelect");
+      _builder.newLine();
+      _builder.append("\t\t\t");
+      _builder.append("(new java.util.LinkedList<String>(), String.class).size() > 0) ;");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("return null;");
+      _builder.newLine();
+      _builder.append("}");
+      Model _parse = this._parseHelper.parse(_builder);
+      this._validationTestHelper.assertNoErrors(_parse);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
 }

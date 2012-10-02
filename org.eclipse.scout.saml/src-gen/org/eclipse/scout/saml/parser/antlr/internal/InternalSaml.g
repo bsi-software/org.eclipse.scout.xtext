@@ -2308,6 +2308,76 @@ ruleXTypeLiteral returns [EObject current=null]
 
 
 
+// Entry rule entryRuleXUnaryOperation
+entryRuleXUnaryOperation returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getXUnaryOperationRule()); }
+	 iv_ruleXUnaryOperation=ruleXUnaryOperation 
+	 { $current=$iv_ruleXUnaryOperation.current; } 
+	 EOF 
+;
+
+// Rule XUnaryOperation
+ruleXUnaryOperation returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getXUnaryOperationAccess().getXUnaryOperationAction_0_0(),
+            $current);
+    }
+)(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getXUnaryOperationRule());
+	        }
+        }
+		{ 
+	        newCompositeNode(grammarAccess.getXUnaryOperationAccess().getFeatureJvmIdentifiableElementCrossReference_0_1_0()); 
+	    }
+		ruleOpUnary		{ 
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getXUnaryOperationAccess().getOperandXMemberFeatureCallParserRuleCall_0_2_0()); 
+	    }
+		lv_operand_2_0=ruleXMemberFeatureCall		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getXUnaryOperationRule());
+	        }
+       		set(
+       			$current, 
+       			"operand",
+        		lv_operand_2_0, 
+        		"XMemberFeatureCall");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))
+    |
+    { 
+        newCompositeNode(grammarAccess.getXUnaryOperationAccess().getXMemberFeatureCallParserRuleCall_1()); 
+    }
+    this_XMemberFeatureCall_3=ruleXMemberFeatureCall
+    { 
+        $current = $this_XMemberFeatureCall_3.current; 
+        afterParserOrEnumRuleCall();
+    }
+)
+;
+
+
+
+
+
 // Entry rule entryRuleXExpression
 entryRuleXExpression returns [EObject current=null] 
 	:
@@ -3403,76 +3473,6 @@ ruleOpMulti returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()
 
 
 
-// Entry rule entryRuleXUnaryOperation
-entryRuleXUnaryOperation returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getXUnaryOperationRule()); }
-	 iv_ruleXUnaryOperation=ruleXUnaryOperation 
-	 { $current=$iv_ruleXUnaryOperation.current; } 
-	 EOF 
-;
-
-// Rule XUnaryOperation
-ruleXUnaryOperation returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(((
-    {
-        $current = forceCreateModelElement(
-            grammarAccess.getXUnaryOperationAccess().getXUnaryOperationAction_0_0(),
-            $current);
-    }
-)(
-(
-		{
-			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getXUnaryOperationRule());
-	        }
-        }
-		{ 
-	        newCompositeNode(grammarAccess.getXUnaryOperationAccess().getFeatureJvmIdentifiableElementCrossReference_0_1_0()); 
-	    }
-		ruleOpUnary		{ 
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getXUnaryOperationAccess().getOperandXCastedExpressionParserRuleCall_0_2_0()); 
-	    }
-		lv_operand_2_0=ruleXCastedExpression		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getXUnaryOperationRule());
-	        }
-       		set(
-       			$current, 
-       			"operand",
-        		lv_operand_2_0, 
-        		"XCastedExpression");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-))
-    |
-    { 
-        newCompositeNode(grammarAccess.getXUnaryOperationAccess().getXCastedExpressionParserRuleCall_1()); 
-    }
-    this_XCastedExpression_3=ruleXCastedExpression
-    { 
-        $current = $this_XCastedExpression_3.current; 
-        afterParserOrEnumRuleCall();
-    }
-)
-;
-
-
-
-
-
 // Entry rule entryRuleOpUnary
 entryRuleOpUnary returns [String current=null] 
 	:
@@ -3511,64 +3511,6 @@ ruleOpUnary returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()
     ;
 
 
-
-
-
-// Entry rule entryRuleXCastedExpression
-entryRuleXCastedExpression returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getXCastedExpressionRule()); }
-	 iv_ruleXCastedExpression=ruleXCastedExpression 
-	 { $current=$iv_ruleXCastedExpression.current; } 
-	 EOF 
-;
-
-// Rule XCastedExpression
-ruleXCastedExpression returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(
-    { 
-        newCompositeNode(grammarAccess.getXCastedExpressionAccess().getXMemberFeatureCallParserRuleCall_0()); 
-    }
-    this_XMemberFeatureCall_0=ruleXMemberFeatureCall
-    { 
-        $current = $this_XMemberFeatureCall_0.current; 
-        afterParserOrEnumRuleCall();
-    }
-(((((
-)	'as' 
-))=>((
-    {
-        $current = forceCreateModelElementAndSet(
-            grammarAccess.getXCastedExpressionAccess().getXCastedExpressionTargetAction_1_0_0_0(),
-            $current);
-    }
-)	otherlv_2='as' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getXCastedExpressionAccess().getAsKeyword_1_0_0_1());
-    }
-))(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getXCastedExpressionAccess().getTypeJvmTypeReferenceParserRuleCall_1_1_0()); 
-	    }
-		lv_type_3_0=ruleJvmTypeReference		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getXCastedExpressionRule());
-	        }
-       		set(
-       			$current, 
-       			"type",
-        		lv_type_3_0, 
-        		"JvmTypeReference");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-))*)
-;
 
 
 
