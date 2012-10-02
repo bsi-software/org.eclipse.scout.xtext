@@ -94,13 +94,13 @@ XVariableDeclaration returns xbase::XVariableDeclaration:
 	{XVariableDeclaration}
 	type=JvmTypeReference name=ValidID ('=' right=XExpression)?;
 
-//XLiteral returns xbase::XExpression:
-//	XBooleanLiteral |
-//	XNumberLiteral |
-//	XNullLiteral |
-//	XStringLiteral |
-//	XTypeLiteral
-//;
+XLiteral returns xbase::XExpression:
+	XBooleanLiteral |
+	XNumberLiteral |
+	XNullLiteral |
+	XStringLiteral |
+	XTypeLiteral
+;
 //
 //XTypeLiteral returns xbase::XTypeLiteral :
 //	{XTypeLiteral} type=[types::JvmType|QualifiedName] '.' 'class'
