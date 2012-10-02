@@ -4,102 +4,81 @@ generate saml "http://www.eclipse.org/scout/saml/Saml"
 
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as jvmTypes
 
+//TODO: file splitting?
+//TODO: unique constraints (scope)?
+//TODO: conditional properties?
+
+//TODO: plain java code in XBlockExpression?
+//TODO: creating saml files API?
+//TODO: templates
+
+
 Model:
-	imports+=Import*
-	elements+=JavaElement*;
+	module=ModuleElement
+	(imports+=ImportElement)*
+	(
+		(codes+=JavaCodeElement)
+		|
+		(translations+=TranslationElement)
+		|
+		(codes+=CodeElement)
+		|
+		(lookups+=LookupElement)
+		|
+		(forms+=FormElement)
+	)*;
 
-Import:
-	'import' importedNamespace=QualifiedNameWithWildCard;
-
-QualifiedNameWithWildCard :
-	QualifiedName  ('.' '*')?;
-
-JavaElement: 'code' name=ID source=XBlockExpression;
-
-/*
-RootElement:ModuleElement|TranslationElement|CodeElement|LookupElement|TemplateElement|FormElement;
-
-AbstractScoutType:CodeElement|LookupElement|FormElement|AbstractFieldElement;
-
-AbstractFieldElement: AbstractValueFieldElement | AbstractContainerFieldElement;
-
-AbstractFieldProperties:text=TextAttribute|visible=VisibleAttribue|master=MasterAttribute|enabled=EnabledAttribue;
-TextAttribute:'text' '='value=[TranslationElement];
-EnabledAttribue:'enabled='value=BooleanType;
-VisibleAttribue:'visible='value=BooleanType;
-MasterAttribute:'master='value=[AbstractValueFieldElement];
-
-AbstractValueFieldElement:StringElement|SmartfieldElement|LongElement|DoubleElement|DateElement|ZregBoxElement;
-AbstractValueFieldProperties:fieldproperties=AbstractFieldProperties|mandatory=MandatoryAttribue;
-MandatoryAttribue:'mandatory='value=BooleanType;
-
-
-AbstractContainerFieldElement: SequenceBoxElement;
-
+QualifiedNameWithWildCard: QualifiedName  ('.' '*')?;
+enum BooleanType:true|false;
 
 ModuleElement: 'module' name=QualifiedName;
 
-	
-TranslationElement:'translation' name=QualifiedName (translations+=TranslationAttribute)+;
-TranslationAttribute:lang=ID '=' text=STRING;
-	
-	
-JavaElement:'java ' name=ID runat=RunAtAttribute '{'source=STRING'}'; //TODO: should then be java code not a string (& there are special "hidden" input parameters)
-RunAtAttribute:'runat=' value=JavaRunAtAttributeList;
-enum JavaRunAtAttributeList:client|server;
-
-
-CodeElement:'code ' name=ID id=CodeIdAttribute;
-CodeIdAttribute:'id=' value=INT;
-	
-	
-LogicElement:'logic ' type=LogicTypeAttribute (properties+=LogicOptionalProperties)* ('{' source=STRING '}')?;
-LogicOptionalProperties:runat=RunAtAttribute|exec=LogicExecAttribute;
-LogicTypeAttribute:'type='value=LogicTypeAttributeList;
-LogicExecAttribute:'exec='value=[JavaElement];
-enum LogicTypeAttributeList:global|all|modify_load|modify_store|new_load|new_store|changed|click|master_changed|init;
-
-
-LookupElement:'lookup ' name=ID '{' (servicelogic+=(JavaElement|LogicElement))+ '}';
-
-
-TemplateElement:'template ' name=ID class=TemplateElementClassAttribute replaces=TemplateElementReplacesAttribute;
-TemplateElementClassAttribute:'class='value=QualifiedName;
-TemplateElementReplacesAttribute:'replaces='value=[AbstractScoutType];
+ImportElement: 'import' importedNamespace=QualifiedNameWithWildCard;
 
 
 
-FormElement:'form' name=ID (('modal' '=' modal=BooleanType)? & ('columns' '=' columns=INT)?) ('{' children+=(LogicElement|AbstractFieldElement)+ '}')?;
+
+JavaCodeElement:'java_code' name=ID 'runat' '=' runat=RunAtType source=XBlockExpression;
+enum RunAtType:client|server;
+
+LogicElement:'logic' (('event' '=' event=LogicType) & ('runat' '=' runat=RunAtType)? & ('exec' '=' exec=[JavaCodeElement])?) (source=XBlockExpression)?;
+enum LogicType:global|all|modify_load|modify_store|new_load|new_store|changed|click|master_changed|init;
 
 
 
-//TODO: templates?
-SequenceBoxElement:'sequence_box 'name=ID (properties+=AbstractFieldProperties)* ('{' children+=(LogicElement|AbstractFieldElement)* '}')?;
-	
 
-StringElement:'string 'name=ID (properties+=StringElementProperties)* ('{' (logic+=LogicElement)+ '}')?;
-StringElementProperties:valueFieldProperties=AbstractValueFieldProperties|maxlen=StringElementMaxlenAttribute;
-StringElementMaxlenAttribute:'maxlen='value=INT;
+CodeElement:'code' name=ID 'id' '=' id=INT;
 
+TranslationElement:'translation' name=QualifiedName (translations+=LanguageAttribute)+;
+LanguageAttribute:lang=ID '=' text=STRING;
 
-DoubleElement:'double 'name=ID common=MyCommonRule;
+LookupElement:'lookup' name=ID '{' (logic+=LogicElement |  javacode+=JavaCodeElement)* '}';
 
+FormElement:'form' name=ID (('modal' '=' modal=BooleanType)? & ('columns' '=' columns=INT)?) ('{' (logic+=LogicElement | fields+=AbstractFieldElement )* '}')?;
 
-LongElement:'long 'name=ID common=MyCommonRule;
+AbstractFieldElement: /*AbstractValueFieldElement | */AbstractContainerFieldElement;
+AbstractFieldRule: {AbstractFieldRule} 
+	(('text' '='text=[TranslationElement])? & ('enabled' '=' enabled=BooleanType)? & ('visible' '=' visible=BooleanType)? /*& ('master' '=' master=[AbstractValueFieldElement])? */);
 
-
-DateElement:'date 'name=ID common=MyCommonRule;
-
-
-MyCommonRule: {MyCommonRule} (properties+=AbstractValueFieldProperties)* ('{' children+=(LogicElement)* '}')?;
-
-SmartfieldElement:'smartfield 'name=ID (properties+=SmartFieldElementProperties)* ('{' (logic+=LogicElement)+ '}')?;
-SmartFieldElementProperties:valueFieldProperties=AbstractValueFieldProperties|code=SmartfieldElementCodeAttribute|value_type=SmartfieldElementValueTypeAttribute|lookup=SmartfieldElementLookupAttribute;
-SmartfieldElementCodeAttribute:'code='value=[CodeElement];
-SmartfieldElementValueTypeAttribute:'value_type='value=[jvmTypes::JvmType|QualifiedName];
-SmartfieldElementLookupAttribute:'lookup='value=[LookupElement];
-
-
-// Specific: to be removed when templates are implemented
-ZregBoxElement:'zreg_sequence_box 'name=ID (properties+=AbstractFieldProperties)* ('{' children+=(LogicElement)* '}')?;
+AbstractContainerFieldElement: SequenceBoxElement;
+AbstractContainerFieldRule: {AbstractContainerFieldRule} 
+	fieldRule=AbstractFieldRule ('{' (logic+=LogicElement | fields+=AbstractFieldElement)* '}')?;
+	/*
+AbstractValueFieldElement:StringElement|SmartfieldElement|LongElement|DoubleElement|DateElement;
+AbstractValueFieldRule: {AbstractValueFieldRule} 
+	(fieldRule=AbstractFieldRule & ('mandatory' '=' mandatory=BooleanType)?)
+	('{' logic+=LogicElement* '}')?;
 */
+SequenceBoxElement:'sequence_box' name=ID rule=AbstractContainerFieldRule;
+/*
+StringElement:'string' name=ID (rule=AbstractValueFieldRule & ('maxlen' '=' maxlen=INT)?);
+
+DoubleElement:'double' name=ID rule=AbstractValueFieldRule;
+
+LongElement:'long' name=ID rule=AbstractValueFieldRule;
+
+DateElement:'date' name=ID rule=AbstractValueFieldRule;
+
+SmartfieldElement:'smartfield' name=ID
+	(rule=AbstractValueFieldRule & ('code' '=' code=[CodeElement])? & ('value_type' '=' valueType=[jvmTypes::JvmType])? & ('lookup' '=' lookup=[LookupElement])?);
+ */
