@@ -110,26 +110,35 @@ XUnaryOperation returns xbase::XExpression:
 	{xbase::XUnaryOperation} feature=[types::JvmIdentifiableElement|OpUnary] operand=XMemberFeatureCall
 	| XMemberFeatureCall;
 
+XPrimaryExpression returns xbase::XExpression:
+	XConstructorCall |
+	XFeatureCall |
+	XLiteral |
+	XIfExpression |
+	XForLoopExpression |
+	XWhileExpression |
+	XDoWhileExpression |
+	XThrowExpression |
+	XReturnExpression |
+	XTryCatchFinallyExpression |
+//	=>XCastedExpression |
+	XParenthesizedExpression;
+
 
 //XCastedExpression returns xbase::XExpression :
-//	{XCastedExpression} 
-//	=>('(' type=JvmTypeReference ')' target=XMemberFeatureCall)
-//	|
-//	XMemberFeatureCall
+//	{xbase::XCastedExpression} 
+//	'(' type=JvmTypeReference ')' target=XMemberFeatureCall
 //;
 
-
-//XMemberFeatureCall returns xbase::XMemberFeatureCall:
-//	XPrimaryExpression
-//	(=>({XAssignment.assignable=current} '.' feature=[types::JvmIdentifiableElement|ValidID] OpSingleAssign) value=XAssignment
-//	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|spreading?="*.")) 
-//		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
-//		feature=[types::JvmIdentifiableElement|ValidID] (
-//			=>explicitOperationCall?='(' 
-//				(
-//				    memberCallArguments+=XShortClosure
-//				  |	memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-//				)? 
-//			')')?
-//			memberCallArguments+=XClosure?
-//		)*;
+XMemberFeatureCall returns xbase::XExpression:
+	XPrimaryExpression
+	(=>({xbase::XAssignment.assignable=current} '.' feature=[types::JvmIdentifiableElement|ValidID] OpSingleAssign) value=XAssignment
+	|=>({xbase::XMemberFeatureCall.memberCallTarget=current} ".") 
+		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
+		feature=[types::JvmIdentifiableElement|ValidID] (
+			=>explicitOperationCall?='(' 
+				(
+				    memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
+				)? 
+			')')?
+		)*;
