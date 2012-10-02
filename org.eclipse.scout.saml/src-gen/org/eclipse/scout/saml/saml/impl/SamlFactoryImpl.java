@@ -84,6 +84,8 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
       case SamlPackage.DOUBLE_ELEMENT: return createDoubleElement();
       case SamlPackage.LONG_ELEMENT: return createLongElement();
       case SamlPackage.SEQUENCE_BOX_ELEMENT: return createSequenceBoxElement();
+      case SamlPackage.XBLOCK_EXPRESSION: return createXBlockExpression();
+      case SamlPackage.XVARIABLE_DECLARATION: return createXVariableDeclaration();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -334,6 +336,28 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
   {
     SequenceBoxElementImpl sequenceBoxElement = new SequenceBoxElementImpl();
     return sequenceBoxElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public XBlockExpression createXBlockExpression()
+  {
+    XBlockExpressionImpl xBlockExpression = new XBlockExpressionImpl();
+    return xBlockExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public XVariableDeclaration createXVariableDeclaration()
+  {
+    XVariableDeclarationImpl xVariableDeclaration = new XVariableDeclarationImpl();
+    return xVariableDeclaration;
   }
 
   /**

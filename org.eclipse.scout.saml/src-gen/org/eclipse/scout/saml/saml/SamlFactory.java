@@ -194,6 +194,24 @@ public interface SamlFactory extends EFactory
   SequenceBoxElement createSequenceBoxElement();
 
   /**
+   * Returns a new object of class '<em>XBlock Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>XBlock Expression</em>'.
+   * @generated
+   */
+  XBlockExpression createXBlockExpression();
+
+  /**
+   * Returns a new object of class '<em>XVariable Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>XVariable Declaration</em>'.
+   * @generated
+   */
+  XVariableDeclaration createXVariableDeclaration();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

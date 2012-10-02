@@ -40,16 +40,22 @@ public class ParserTest {
       _builder.newLine();
       _builder.append("java_code Foo runat=server {");
       _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("return new java.util.LinkedList<org.eclipse.scout.rt.shared.services.^lookup.LookupRow>()");
+      _builder.append("\t");
+      _builder.append("return new ");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("java.util.LinkedList<org.eclipse.scout.rt.shared.services.^lookup.LookupRow>();");
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
       _builder.newLine();
       _builder.append("java_code Foo2 runat=server {");
       _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("return new java.util.LinkedList<org.eclipse.scout.rt.shared.services.^lookup.LookupRow>()");
+      _builder.append("\t");
+      _builder.append("return new ");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("java.util.LinkedList<org.eclipse.scout.rt.shared.services.^lookup.LookupRow>();");
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
@@ -267,6 +273,38 @@ public class ParserTest {
       _builder.append("translation TransTest en=\"en\" de=\"de\" de_CH=\"de_CH\"");
       _builder.newLine();
       _builder.append("translation TransTest2 en=\"en\" de=\"de\" de_CH=\"de_CH\"");
+      _builder.newLine();
+      Model _parse = this._parseHelper.parse(_builder);
+      this._validationTestHelper.assertNoErrors(_parse);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testVariableDeclarations() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module a.b");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("import java.util.List");
+      _builder.newLine();
+      _builder.append("import org.eclipse.scout.rt.shared.services.^lookup.LookupRow");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("java_code Foo runat=server {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("String s = \"String\";");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("String s1 = \"My\" + s;");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("return new java.util.LinkedList<org.eclipse.scout.rt.shared.services.^lookup.LookupRow>();");
+      _builder.newLine();
+      _builder.append("}");
       _builder.newLine();
       Model _parse = this._parseHelper.parse(_builder);
       this._validationTestHelper.assertNoErrors(_parse);

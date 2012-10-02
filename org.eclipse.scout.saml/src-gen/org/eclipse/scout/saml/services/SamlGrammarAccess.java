@@ -1051,6 +1051,102 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cFieldRuleAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cFieldRuleCompositeElementRuleParserRuleCall_2_0 = (RuleCall)cFieldRuleAssignment_2.eContents().get(0);
 		
+		//SequenceBoxElement:
+		//	"sequence_box" name=ID fieldRule=CompositeElementRule;
+		public ParserRule getRule() { return rule; }
+
+		//"sequence_box" name=ID fieldRule=CompositeElementRule
+		public Group getGroup() { return cGroup; }
+
+		//"sequence_box"
+		public Keyword getSequence_boxKeyword_0() { return cSequence_boxKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//fieldRule=CompositeElementRule
+		public Assignment getFieldRuleAssignment_2() { return cFieldRuleAssignment_2; }
+
+		//CompositeElementRule
+		public RuleCall getFieldRuleCompositeElementRuleParserRuleCall_2_0() { return cFieldRuleCompositeElementRuleParserRuleCall_2_0; }
+	}
+
+	public class XBlockExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XBlockExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cXBlockExpressionAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Assignment cExpressionsAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
+		private final RuleCall cExpressionsXExpressionInsideBlockParserRuleCall_2_0_0 = (RuleCall)cExpressionsAssignment_2_0.eContents().get(0);
+		private final Keyword cSemicolonKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
+		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//XBlockExpression returns xbase::XBlockExpression:
+		//	{XBlockExpression} "{" (expressions+=XExpressionInsideBlock ";")* "}";
+		public ParserRule getRule() { return rule; }
+
+		//{XBlockExpression} "{" (expressions+=XExpressionInsideBlock ";")* "}"
+		public Group getGroup() { return cGroup; }
+
+		//{XBlockExpression}
+		public Action getXBlockExpressionAction_0() { return cXBlockExpressionAction_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+
+		//(expressions+=XExpressionInsideBlock ";")*
+		public Group getGroup_2() { return cGroup_2; }
+
+		//expressions+=XExpressionInsideBlock
+		public Assignment getExpressionsAssignment_2_0() { return cExpressionsAssignment_2_0; }
+
+		//XExpressionInsideBlock
+		public RuleCall getExpressionsXExpressionInsideBlockParserRuleCall_2_0_0() { return cExpressionsXExpressionInsideBlockParserRuleCall_2_0_0; }
+
+		//";"
+		public Keyword getSemicolonKeyword_2_1() { return cSemicolonKeyword_2_1; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
+	}
+
+	public class XExpressionInsideBlockElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XExpressionInsideBlock");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cXVariableDeclarationParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cXExpressionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//XExpressionInsideBlock returns xbase::XExpression:
+		//	XVariableDeclaration | XExpression;
+		public ParserRule getRule() { return rule; }
+
+		//=> XVariableDeclaration | XExpression
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//=> XVariableDeclaration
+		public RuleCall getXVariableDeclarationParserRuleCall_0() { return cXVariableDeclarationParserRuleCall_0; }
+
+		//XExpression
+		public RuleCall getXExpressionParserRuleCall_1() { return cXExpressionParserRuleCall_1; }
+	}
+
+	public class XVariableDeclarationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XVariableDeclaration");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cXVariableDeclarationAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cTypeJvmTypeReferenceParserRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameValidIDParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cEqualsSignKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cRightAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cRightXExpressionParserRuleCall_3_1_0 = (RuleCall)cRightAssignment_3_1.eContents().get(0);
+		
 		////XLiteral returns xbase::XExpression:
 		//
 		////	XBooleanLiteral |
@@ -1107,11 +1203,11 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//
 		////			memberCallArguments+=XClosure?
 		//
-		////		)*; SequenceBoxElement:
-		//	"sequence_box" name=ID fieldRule=CompositeElementRule;
+		////		)*; XVariableDeclaration returns xbase::XVariableDeclaration:
+		//	{XVariableDeclaration} type=JvmTypeReference name=ValidID ("=" right=XExpression)?;
 		public ParserRule getRule() { return rule; }
 
-		//"sequence_box" name=ID fieldRule=CompositeElementRule //XLiteral returns xbase::XExpression:
+		//{XVariableDeclaration} type=JvmTypeReference name=ValidID ("=" right=XExpression)? //XLiteral returns xbase::XExpression:
 		//
 		////	XBooleanLiteral |
 		//
@@ -1170,16 +1266,22 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		////		)*;
 		public Group getGroup() { return cGroup; }
 
-		//"sequence_box"
-		public Keyword getSequence_boxKeyword_0() { return cSequence_boxKeyword_0; }
+		//{XVariableDeclaration}
+		public Action getXVariableDeclarationAction_0() { return cXVariableDeclarationAction_0; }
 
-		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		//type=JvmTypeReference
+		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
 
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		//JvmTypeReference
+		public RuleCall getTypeJvmTypeReferenceParserRuleCall_1_0() { return cTypeJvmTypeReferenceParserRuleCall_1_0; }
 
-		////XLiteral returns xbase::XExpression:
+		//name=ValidID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+
+		//ValidID
+		public RuleCall getNameValidIDParserRuleCall_2_0() { return cNameValidIDParserRuleCall_2_0; }
+
+		//("=" right=XExpression //XLiteral returns xbase::XExpression:
 		//
 		////	XBooleanLiteral |
 		//
@@ -1235,67 +1337,17 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//
 		////			memberCallArguments+=XClosure?
 		//
-		////		)*; fieldRule=CompositeElementRule
-		public Assignment getFieldRuleAssignment_2() { return cFieldRuleAssignment_2; }
+		////		)*;)?
+		public Group getGroup_3() { return cGroup_3; }
 
-		////XLiteral returns xbase::XExpression:
-		//
-		////	XBooleanLiteral |
-		//
-		////	XNumberLiteral |
-		//
-		////	XNullLiteral |
-		//
-		////	XStringLiteral |
-		//
-		////	XTypeLiteral
-		//
-		////;
-		//
-		////
-		//
-		////XTypeLiteral returns xbase::XTypeLiteral :
-		//
-		////	{XTypeLiteral} type=[types::JvmType|QualifiedName] '.' 'class'
-		//
-		////;
-		//
-		////XCastedExpression returns xbase::XCastedExpression :
-		//
-		////	{XCastedExpression}
-		//
-		////	'(' type=JvmTypeReference ')' target=XMemberFeatureCall 
-		//
-		////;
-		//
-		////XMemberFeatureCall returns xbase::XMemberFeatureCall:
-		//
-		////	XPrimaryExpression
-		//
-		////	(=>({XAssignment.assignable=current} '.' feature=[types::JvmIdentifiableElement|ValidID] OpSingleAssign) value=XAssignment
-		//
-		////	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|spreading?="*.")) 
-		//
-		////		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
-		//
-		////		feature=[types::JvmIdentifiableElement|ValidID] (
-		//
-		////			=>explicitOperationCall?='(' 
-		//
-		////				(
-		//
-		////				    memberCallArguments+=XShortClosure
-		//
-		////				  |	memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-		//
-		////				)? 
-		//
-		////			')')?
-		//
-		////			memberCallArguments+=XClosure?
-		//
-		////		)*; CompositeElementRule
-		public RuleCall getFieldRuleCompositeElementRuleParserRuleCall_2_0() { return cFieldRuleCompositeElementRuleParserRuleCall_2_0; }
+		//"="
+		public Keyword getEqualsSignKeyword_3_0() { return cEqualsSignKeyword_3_0; }
+
+		//right=XExpression
+		public Assignment getRightAssignment_3_1() { return cRightAssignment_3_1; }
+
+		//XExpression
+		public RuleCall getRightXExpressionParserRuleCall_3_1_0() { return cRightXExpressionParserRuleCall_3_1_0; }
 	}
 	
 	
@@ -1442,6 +1494,9 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	private DoubleElementElements pDoubleElement;
 	private LongElementElements pLongElement;
 	private SequenceBoxElementElements pSequenceBoxElement;
+	private XBlockExpressionElements pXBlockExpression;
+	private XExpressionInsideBlockElements pXExpressionInsideBlock;
+	private XVariableDeclarationElements pXVariableDeclaration;
 	
 	private final Grammar grammar;
 
@@ -1712,6 +1767,36 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		return getLongElementAccess().getRule();
 	}
 
+	//SequenceBoxElement:
+	//	"sequence_box" name=ID fieldRule=CompositeElementRule;
+	public SequenceBoxElementElements getSequenceBoxElementAccess() {
+		return (pSequenceBoxElement != null) ? pSequenceBoxElement : (pSequenceBoxElement = new SequenceBoxElementElements());
+	}
+	
+	public ParserRule getSequenceBoxElementRule() {
+		return getSequenceBoxElementAccess().getRule();
+	}
+
+	//XBlockExpression returns xbase::XBlockExpression:
+	//	{XBlockExpression} "{" (expressions+=XExpressionInsideBlock ";")* "}";
+	public XBlockExpressionElements getXBlockExpressionAccess() {
+		return (pXBlockExpression != null) ? pXBlockExpression : (pXBlockExpression = new XBlockExpressionElements());
+	}
+	
+	public ParserRule getXBlockExpressionRule() {
+		return getXBlockExpressionAccess().getRule();
+	}
+
+	//XExpressionInsideBlock returns xbase::XExpression:
+	//	XVariableDeclaration | XExpression;
+	public XExpressionInsideBlockElements getXExpressionInsideBlockAccess() {
+		return (pXExpressionInsideBlock != null) ? pXExpressionInsideBlock : (pXExpressionInsideBlock = new XExpressionInsideBlockElements());
+	}
+	
+	public ParserRule getXExpressionInsideBlockRule() {
+		return getXExpressionInsideBlockAccess().getRule();
+	}
+
 	////XLiteral returns xbase::XExpression:
 	//
 	////	XBooleanLiteral |
@@ -1768,14 +1853,14 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	////			memberCallArguments+=XClosure?
 	//
-	////		)*; SequenceBoxElement:
-	//	"sequence_box" name=ID fieldRule=CompositeElementRule;
-	public SequenceBoxElementElements getSequenceBoxElementAccess() {
-		return (pSequenceBoxElement != null) ? pSequenceBoxElement : (pSequenceBoxElement = new SequenceBoxElementElements());
+	////		)*; XVariableDeclaration returns xbase::XVariableDeclaration:
+	//	{XVariableDeclaration} type=JvmTypeReference name=ValidID ("=" right=XExpression)?;
+	public XVariableDeclarationElements getXVariableDeclarationAccess() {
+		return (pXVariableDeclaration != null) ? pXVariableDeclaration : (pXVariableDeclaration = new XVariableDeclarationElements());
 	}
 	
-	public ParserRule getSequenceBoxElementRule() {
-		return getSequenceBoxElementAccess().getRule();
+	public ParserRule getXVariableDeclarationRule() {
+		return getXVariableDeclarationAccess().getRule();
 	}
 
 	//XExpression:
@@ -2136,37 +2221,6 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getXDoWhileExpressionRule() {
 		return getXDoWhileExpressionAccess().getRule();
-	}
-
-	//XBlockExpression returns XExpression:
-	//	{XBlockExpression} "{" (expressions+=XExpressionInsideBlock ";"?)* "}";
-	public XbaseGrammarAccess.XBlockExpressionElements getXBlockExpressionAccess() {
-		return gaXbase.getXBlockExpressionAccess();
-	}
-	
-	public ParserRule getXBlockExpressionRule() {
-		return getXBlockExpressionAccess().getRule();
-	}
-
-	//XExpressionInsideBlock returns XExpression:
-	//	XVariableDeclaration | XExpression;
-	public XbaseGrammarAccess.XExpressionInsideBlockElements getXExpressionInsideBlockAccess() {
-		return gaXbase.getXExpressionInsideBlockAccess();
-	}
-	
-	public ParserRule getXExpressionInsideBlockRule() {
-		return getXExpressionInsideBlockAccess().getRule();
-	}
-
-	//XVariableDeclaration returns XExpression:
-	//	{XVariableDeclaration} (writeable?="var" | "val") (=> (type=JvmTypeReference name=ValidID) | name=ValidID) ("="
-	//	right=XExpression)?;
-	public XbaseGrammarAccess.XVariableDeclarationElements getXVariableDeclarationAccess() {
-		return gaXbase.getXVariableDeclarationAccess();
-	}
-	
-	public ParserRule getXVariableDeclarationRule() {
-		return getXVariableDeclarationAccess().getRule();
 	}
 
 	//JvmFormalParameter returns types::JvmFormalParameter:

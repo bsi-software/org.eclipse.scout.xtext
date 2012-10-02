@@ -12,7 +12,7 @@ import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.naming.QualifiedName;
-import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.XBlockExpression;
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor.IPostIndexingInitializing;
@@ -68,12 +68,12 @@ public class SamlJvmModelInferrer extends AbstractModelInferrer {
     final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
         public void apply(final JvmGenericType it) {
           EList<JvmMember> _members = it.getMembers();
-          XExpression _source = element.getSource();
+          XBlockExpression _source = element.getSource();
           JvmTypeReference _newTypeRef = SamlJvmModelInferrer.this._jvmTypesBuilder.newTypeRef(element, LookupRow.class);
           JvmTypeReference _addArrayTypeDimension = SamlJvmModelInferrer.this._jvmTypesBuilder.addArrayTypeDimension(_newTypeRef);
           final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
               public void apply(final JvmOperation it) {
-                XExpression _source = element.getSource();
+                XBlockExpression _source = element.getSource();
                 SamlJvmModelInferrer.this._jvmTypesBuilder.setBody(it, _source);
               }
             };

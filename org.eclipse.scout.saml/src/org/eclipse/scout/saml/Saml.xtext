@@ -81,6 +81,18 @@ LongElement:'long' name=ID (fieldRule=ControlElementRule & ('mandatory' '=' mand
 
 SequenceBoxElement:'sequence_box'name=ID fieldRule=CompositeElementRule;
 
+XBlockExpression returns xbase::XBlockExpression: 
+	{XBlockExpression}
+	'{'
+		(expressions+=XExpressionInsideBlock ';')*
+	'}';
+
+XExpressionInsideBlock returns xbase::XExpression:
+	=>XVariableDeclaration | XExpression;
+
+XVariableDeclaration returns xbase::XVariableDeclaration:
+	{XVariableDeclaration}
+	type=JvmTypeReference name=ValidID ('=' right=XExpression)?;
 
 //XLiteral returns xbase::XExpression:
 //	XBooleanLiteral |

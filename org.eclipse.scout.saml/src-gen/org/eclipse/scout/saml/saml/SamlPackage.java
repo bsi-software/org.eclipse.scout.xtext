@@ -8,6 +8,8 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.xtext.xbase.XbasePackage;
+
 /**
  * <!-- begin-user-doc -->
  * The <b>Package</b> for the model.
@@ -905,6 +907,89 @@ public interface SamlPackage extends EPackage
   int SEQUENCE_BOX_ELEMENT_FEATURE_COUNT = COMPOSITE_ELEMENT_FEATURE_COUNT + 2;
 
   /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.XBlockExpressionImpl <em>XBlock Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.XBlockExpressionImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getXBlockExpression()
+   * @generated
+   */
+  int XBLOCK_EXPRESSION = 19;
+
+  /**
+   * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int XBLOCK_EXPRESSION__EXPRESSIONS = XbasePackage.XBLOCK_EXPRESSION__EXPRESSIONS;
+
+  /**
+   * The number of structural features of the '<em>XBlock Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int XBLOCK_EXPRESSION_FEATURE_COUNT = XbasePackage.XBLOCK_EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.XVariableDeclarationImpl <em>XVariable Declaration</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.XVariableDeclarationImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getXVariableDeclaration()
+   * @generated
+   */
+  int XVARIABLE_DECLARATION = 20;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int XVARIABLE_DECLARATION__TYPE = XbasePackage.XVARIABLE_DECLARATION__TYPE;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int XVARIABLE_DECLARATION__NAME = XbasePackage.XVARIABLE_DECLARATION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int XVARIABLE_DECLARATION__RIGHT = XbasePackage.XVARIABLE_DECLARATION__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Writeable</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int XVARIABLE_DECLARATION__WRITEABLE = XbasePackage.XVARIABLE_DECLARATION__WRITEABLE;
+
+  /**
+   * The number of structural features of the '<em>XVariable Declaration</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int XVARIABLE_DECLARATION_FEATURE_COUNT = XbasePackage.XVARIABLE_DECLARATION_FEATURE_COUNT + 0;
+
+  /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.BooleanType <em>Boolean Type</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -912,7 +997,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getBooleanType()
    * @generated
    */
-  int BOOLEAN_TYPE = 19;
+  int BOOLEAN_TYPE = 21;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.LogicType <em>Logic Type</em>}' enum.
@@ -922,7 +1007,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getLogicType()
    * @generated
    */
-  int LOGIC_TYPE = 20;
+  int LOGIC_TYPE = 22;
 
 
   /**
@@ -1578,6 +1663,26 @@ public interface SamlPackage extends EPackage
   EReference getSequenceBoxElement_FieldRule();
 
   /**
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.XBlockExpression <em>XBlock Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>XBlock Expression</em>'.
+   * @see org.eclipse.scout.saml.saml.XBlockExpression
+   * @generated
+   */
+  EClass getXBlockExpression();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.XVariableDeclaration <em>XVariable Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>XVariable Declaration</em>'.
+   * @see org.eclipse.scout.saml.saml.XVariableDeclaration
+   * @generated
+   */
+  EClass getXVariableDeclaration();
+
+  /**
    * Returns the meta object for enum '{@link org.eclipse.scout.saml.saml.BooleanType <em>Boolean Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2145,6 +2250,26 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EReference SEQUENCE_BOX_ELEMENT__FIELD_RULE = eINSTANCE.getSequenceBoxElement_FieldRule();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.XBlockExpressionImpl <em>XBlock Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.XBlockExpressionImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getXBlockExpression()
+     * @generated
+     */
+    EClass XBLOCK_EXPRESSION = eINSTANCE.getXBlockExpression();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.XVariableDeclarationImpl <em>XVariable Declaration</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.XVariableDeclarationImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getXVariableDeclaration()
+     * @generated
+     */
+    EClass XVARIABLE_DECLARATION = eINSTANCE.getXVariableDeclaration();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.BooleanType <em>Boolean Type</em>}' enum.

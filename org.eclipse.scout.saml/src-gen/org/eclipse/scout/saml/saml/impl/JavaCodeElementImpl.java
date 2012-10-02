@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.scout.saml.saml.JavaCodeElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
 
-import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.XBlockExpression;
 
 /**
  * <!-- begin-user-doc -->
@@ -81,7 +81,7 @@ public class JavaCodeElementImpl extends MinimalEObjectImpl.Container implements
    * @generated
    * @ordered
    */
-  protected XExpression source;
+  protected XBlockExpression source;
 
   /**
    * <!-- begin-user-doc -->
@@ -155,7 +155,7 @@ public class JavaCodeElementImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public XExpression getSource()
+  public XBlockExpression getSource()
   {
     return source;
   }
@@ -165,9 +165,9 @@ public class JavaCodeElementImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetSource(XExpression newSource, NotificationChain msgs)
+  public NotificationChain basicSetSource(XBlockExpression newSource, NotificationChain msgs)
   {
-    XExpression oldSource = source;
+    XBlockExpression oldSource = source;
     source = newSource;
     if (eNotificationRequired())
     {
@@ -182,7 +182,7 @@ public class JavaCodeElementImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setSource(XExpression newSource)
+  public void setSource(XBlockExpression newSource)
   {
     if (newSource != source)
     {
@@ -251,7 +251,7 @@ public class JavaCodeElementImpl extends MinimalEObjectImpl.Container implements
         setRunat((String)newValue);
         return;
       case SamlPackage.JAVA_CODE_ELEMENT__SOURCE:
-        setSource((XExpression)newValue);
+        setSource((XBlockExpression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -274,7 +274,7 @@ public class JavaCodeElementImpl extends MinimalEObjectImpl.Container implements
         setRunat(RUNAT_EDEFAULT);
         return;
       case SamlPackage.JAVA_CODE_ELEMENT__SOURCE:
-        setSource((XExpression)null);
+        setSource((XBlockExpression)null);
         return;
     }
     super.eUnset(featureID);

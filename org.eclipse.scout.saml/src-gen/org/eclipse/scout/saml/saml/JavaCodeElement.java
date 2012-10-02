@@ -4,7 +4,7 @@ package org.eclipse.scout.saml.saml;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.XBlockExpression;
 
 /**
  * <!-- begin-user-doc -->
@@ -87,12 +87,12 @@ public interface JavaCodeElement extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Source</em>' containment reference.
-   * @see #setSource(XExpression)
+   * @see #setSource(XBlockExpression)
    * @see org.eclipse.scout.saml.saml.SamlPackage#getJavaCodeElement_Source()
    * @model containment="true"
    * @generated
    */
-  XExpression getSource();
+  XBlockExpression getSource();
 
   /**
    * Sets the value of the '{@link org.eclipse.scout.saml.saml.JavaCodeElement#getSource <em>Source</em>}' containment reference.
@@ -102,6 +102,6 @@ public interface JavaCodeElement extends EObject
    * @see #getSource()
    * @generated
    */
-  void setSource(XExpression value);
+  void setSource(XBlockExpression value);
 
 } // JavaCodeElement

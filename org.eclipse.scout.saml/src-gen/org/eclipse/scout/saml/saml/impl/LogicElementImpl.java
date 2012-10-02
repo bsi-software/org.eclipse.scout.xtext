@@ -16,7 +16,7 @@ import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.saml.saml.LogicType;
 import org.eclipse.scout.saml.saml.SamlPackage;
 
-import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.XBlockExpression;
 
 /**
  * <!-- begin-user-doc -->
@@ -94,7 +94,7 @@ public class LogicElementImpl extends MinimalEObjectImpl.Container implements Lo
    * @generated
    * @ordered
    */
-  protected XExpression source;
+  protected XBlockExpression source;
 
   /**
    * <!-- begin-user-doc -->
@@ -211,7 +211,7 @@ public class LogicElementImpl extends MinimalEObjectImpl.Container implements Lo
    * <!-- end-user-doc -->
    * @generated
    */
-  public XExpression getSource()
+  public XBlockExpression getSource()
   {
     return source;
   }
@@ -221,9 +221,9 @@ public class LogicElementImpl extends MinimalEObjectImpl.Container implements Lo
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetSource(XExpression newSource, NotificationChain msgs)
+  public NotificationChain basicSetSource(XBlockExpression newSource, NotificationChain msgs)
   {
-    XExpression oldSource = source;
+    XBlockExpression oldSource = source;
     source = newSource;
     if (eNotificationRequired())
     {
@@ -238,7 +238,7 @@ public class LogicElementImpl extends MinimalEObjectImpl.Container implements Lo
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setSource(XExpression newSource)
+  public void setSource(XBlockExpression newSource)
   {
     if (newSource != source)
     {
@@ -313,7 +313,7 @@ public class LogicElementImpl extends MinimalEObjectImpl.Container implements Lo
         setExec((JavaCodeElement)newValue);
         return;
       case SamlPackage.LOGIC_ELEMENT__SOURCE:
-        setSource((XExpression)newValue);
+        setSource((XBlockExpression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -339,7 +339,7 @@ public class LogicElementImpl extends MinimalEObjectImpl.Container implements Lo
         setExec((JavaCodeElement)null);
         return;
       case SamlPackage.LOGIC_ELEMENT__SOURCE:
-        setSource((XExpression)null);
+        setSource((XBlockExpression)null);
         return;
     }
     super.eUnset(featureID);

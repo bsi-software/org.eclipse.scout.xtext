@@ -33,6 +33,8 @@ import org.eclipse.scout.saml.saml.SamlPackage;
 import org.eclipse.scout.saml.saml.SequenceBoxElement;
 import org.eclipse.scout.saml.saml.StringElement;
 import org.eclipse.scout.saml.saml.TranslationElement;
+import org.eclipse.scout.saml.saml.XBlockExpression;
+import org.eclipse.scout.saml.saml.XVariableDeclaration;
 
 import org.eclipse.xtext.xbase.XbasePackage;
 
@@ -176,6 +178,20 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * @generated
    */
   private EClass sequenceBoxElementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass xBlockExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass xVariableDeclarationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -872,6 +888,26 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getXBlockExpression()
+  {
+    return xBlockExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getXVariableDeclaration()
+  {
+    return xVariableDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EEnum getBooleanType()
   {
     return booleanTypeEEnum;
@@ -997,6 +1033,10 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     createEAttribute(sequenceBoxElementEClass, SEQUENCE_BOX_ELEMENT__NAME);
     createEReference(sequenceBoxElementEClass, SEQUENCE_BOX_ELEMENT__FIELD_RULE);
 
+    xBlockExpressionEClass = createEClass(XBLOCK_EXPRESSION);
+
+    xVariableDeclarationEClass = createEClass(XVARIABLE_DECLARATION);
+
     // Create enums
     booleanTypeEEnum = createEEnum(BOOLEAN_TYPE);
     logicTypeEEnum = createEEnum(LOGIC_TYPE);
@@ -1040,6 +1080,8 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     doubleElementEClass.getESuperTypes().add(this.getLeafElement());
     longElementEClass.getESuperTypes().add(this.getLeafElement());
     sequenceBoxElementEClass.getESuperTypes().add(this.getCompositeElement());
+    xBlockExpressionEClass.getESuperTypes().add(theXbasePackage.getXBlockExpression());
+    xVariableDeclarationEClass.getESuperTypes().add(theXbasePackage.getXVariableDeclaration());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1059,13 +1101,13 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEClass(javaCodeElementEClass, JavaCodeElement.class, "JavaCodeElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getJavaCodeElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, JavaCodeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getJavaCodeElement_Runat(), ecorePackage.getEString(), "runat", null, 0, 1, JavaCodeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getJavaCodeElement_Source(), theXbasePackage.getXExpression(), null, "source", null, 0, 1, JavaCodeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getJavaCodeElement_Source(), theXbasePackage.getXBlockExpression(), null, "source", null, 0, 1, JavaCodeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(logicElementEClass, LogicElement.class, "LogicElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLogicElement_Event(), this.getLogicType(), "event", null, 0, 1, LogicElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getLogicElement_Runat(), ecorePackage.getEString(), "runat", null, 0, 1, LogicElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLogicElement_Exec(), this.getJavaCodeElement(), null, "exec", null, 0, 1, LogicElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLogicElement_Source(), theXbasePackage.getXExpression(), null, "source", null, 0, 1, LogicElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLogicElement_Source(), theXbasePackage.getXBlockExpression(), null, "source", null, 0, 1, LogicElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(codeElementEClass, CodeElement.class, "CodeElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getCodeElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, CodeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1121,6 +1163,10 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEClass(sequenceBoxElementEClass, SequenceBoxElement.class, "SequenceBoxElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSequenceBoxElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, SequenceBoxElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSequenceBoxElement_FieldRule(), this.getCompositeElementRule(), null, "fieldRule", null, 0, 1, SequenceBoxElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(xBlockExpressionEClass, XBlockExpression.class, "XBlockExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(xVariableDeclarationEClass, XVariableDeclaration.class, "XVariableDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     // Initialize enums and add enum literals
     initEEnum(booleanTypeEEnum, BooleanType.class, "BooleanType");

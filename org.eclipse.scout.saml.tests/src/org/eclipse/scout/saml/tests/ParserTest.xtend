@@ -29,11 +29,13 @@ import org.eclipse.scout.rt.shared.services.^lookup.LookupRow
 
 
 java_code Foo runat=server {
-		return new java.util.LinkedList<org.eclipse.scout.rt.shared.services.^lookup.LookupRow>()
+	return new 
+	java.util.LinkedList<org.eclipse.scout.rt.shared.services.^lookup.LookupRow>();
 }
 
 java_code Foo2 runat=server {
-		return new java.util.LinkedList<org.eclipse.scout.rt.shared.services.^lookup.LookupRow>()
+	return new 
+	java.util.LinkedList<org.eclipse.scout.rt.shared.services.^lookup.LookupRow>();
 }
 		'''.parse.assertNoErrors
 	}
@@ -140,6 +142,22 @@ module a.b
 
 translation TransTest en="en" de="de" de_CH="de_CH"
 translation TransTest2 en="en" de="de" de_CH="de_CH"
+'''.parse.assertNoErrors
+	}
+
+	@Test
+	def void testVariableDeclarations() {
+'''
+module a.b
+
+import java.util.List
+import org.eclipse.scout.rt.shared.services.^lookup.LookupRow
+
+java_code Foo runat=server {
+	String s = "String";
+	String s1 = "My" + s;
+	return new java.util.LinkedList<org.eclipse.scout.rt.shared.services.^lookup.LookupRow>();
+}
 '''.parse.assertNoErrors
 	}
 	

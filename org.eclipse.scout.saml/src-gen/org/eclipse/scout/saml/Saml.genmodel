@@ -4,7 +4,7 @@
     editorDirectory="/org.eclipse.scout.saml.editor/src" modelPluginID="org.eclipse.scout.saml"
     forceOverwrite="true" modelName="Saml" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="org.eclipse.scout.saml.edit"
-    editorPluginID="org.eclipse.scout.saml.editor" runtimeVersion="2.8" usedGenPackages="../../../../../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase">
+    editorPluginID="org.eclipse.scout.saml.editor" runtimeVersion="2.8" usedGenPackages="../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types ../../../../../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase">
   <genPackages prefix="Saml" basePackage="org.eclipse.scout.saml" disposableProviderFactory="true"
       ecorePackage="Saml.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Saml.ecore#//BooleanType">
@@ -99,5 +99,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//SequenceBoxElement/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//SequenceBoxElement/fieldRule"/>
     </genClasses>
+    <genClasses ecoreClass="Saml.ecore#//XBlockExpression"/>
+    <genClasses ecoreClass="Saml.ecore#//XVariableDeclaration"/>
   </genPackages>
 </genmodel:GenModel>
