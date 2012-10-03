@@ -173,7 +173,7 @@ logic Foo runat=server {
 '''.parse.assertNoErrors
 	}
 
-	//@Test
+	@Test
 	def void testXTypeLiteral() {
 '''
 module a.b
@@ -194,7 +194,7 @@ logic Foo runat=server {
 '''.parse.assertNoErrors
 	}
 
-	//@Test
+	@Test
 	def void testXUnaryOperation() {
 '''
 module a.b
@@ -208,6 +208,26 @@ logic Foo runat=server {
 	boolean isItTrue =
 		!(EcoreUtil2::typeSelect
 			(new java.util.LinkedList<String>(), String.class).size() > 0) ;
+	return null;
+}
+
+}
+'''.parse.assertNoErrors
+	}
+
+	@Test
+	def void testConstructorCall() {
+'''
+module a.b
+
+import java.util.List
+import org.eclipse.xtext.EcoreUtil2
+
+form MyForm {
+
+logic Foo runat=server {
+	String s = new String();
+	String s2 = new String("test");
 	return null;
 }
 

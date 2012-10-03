@@ -329,6 +329,7 @@ public class ParserTest {
     }
   }
   
+  @Test
   public void testXTypeLiteral() {
     try {
       StringConcatenation _builder = new StringConcatenation();
@@ -369,6 +370,7 @@ public class ParserTest {
     }
   }
   
+  @Test
   public void testXUnaryOperation() {
     try {
       StringConcatenation _builder = new StringConcatenation();
@@ -393,6 +395,44 @@ public class ParserTest {
       _builder.newLine();
       _builder.append("\t\t\t");
       _builder.append("(new java.util.LinkedList<String>(), String.class).size() > 0) ;");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("return null;");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      Model _parse = this._parseHelper.parse(_builder);
+      this._validationTestHelper.assertNoErrors(_parse);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testConstructorCall() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module a.b");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("import java.util.List");
+      _builder.newLine();
+      _builder.append("import org.eclipse.xtext.EcoreUtil2");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("form MyForm {");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("logic Foo runat=server {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("String s = new String();");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("String s2 = new String(\"test\");");
       _builder.newLine();
       _builder.append("\t");
       _builder.append("return null;");

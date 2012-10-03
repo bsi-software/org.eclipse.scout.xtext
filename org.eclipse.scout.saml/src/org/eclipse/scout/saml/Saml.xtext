@@ -117,27 +117,27 @@ XLiteral returns xbase::XExpression:
 
 //
 // TODO: this makes code completion freeze for feauture access
-//XTypeLiteral returns xbase::XTypeLiteral :
-//	{XTypeLiteral} type=[types::JvmType|QualifiedName] '.' 'class'
-//;
+XTypeLiteral returns xbase::XExpression :
+	{xbase::XTypeLiteral} type=[types::JvmType|QualifiedName] '.' 'class'
+;
 
-//XUnaryOperation returns xbase::XExpression:
-//	{xbase::XUnaryOperation} feature=[types::JvmIdentifiableElement|OpUnary] operand=XMemberFeatureCall
-//	| XMemberFeatureCall;
+XUnaryOperation returns xbase::XExpression:
+	{xbase::XUnaryOperation} feature=[types::JvmIdentifiableElement|OpUnary] operand=XMemberFeatureCall
+	| XMemberFeatureCall;
 
-//XPrimaryExpression returns xbase::XExpression:
-//	XConstructorCall |
-//	XFeatureCall |
-//	XLiteral |
-//	XIfExpression |
-//	XForLoopExpression |
-//	XWhileExpression |
-//	XDoWhileExpression |
-//	XThrowExpression |
-//	XReturnExpression |
-//	XTryCatchFinallyExpression |
-////	=>XCastedExpression |
-//	XParenthesizedExpression;
+XPrimaryExpression returns xbase::XExpression:
+	XConstructorCall |
+	XFeatureCall |
+	XLiteral |
+	XIfExpression |
+	XForLoopExpression |
+	XWhileExpression |
+	XDoWhileExpression |
+	XThrowExpression |
+	XReturnExpression |
+	XTryCatchFinallyExpression |
+//	=>XCastedExpression |
+	XParenthesizedExpression;
 
 
 //XCastedExpression returns xbase::XExpression :
@@ -145,26 +145,39 @@ XLiteral returns xbase::XExpression:
 //	'(' type=JvmTypeReference ')' target=XMemberFeatureCall
 //;
 
-//XMemberFeatureCall returns xbase::XExpression:
-//	XPrimaryExpression
-//	(=>({xbase::XAssignment.assignable=current} '.' feature=[types::JvmIdentifiableElement|ValidID] OpSingleAssign) value=XAssignment
-//	|=>({xbase::XMemberFeatureCall.memberCallTarget=current} ".") 
-//		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
-//		feature=[types::JvmIdentifiableElement|ValidID] (
-//			=>explicitOperationCall?='(' 
-//				(
-//				    memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-//				)? 
-//			')')?
-//		)*;
+XMemberFeatureCall returns xbase::XExpression:
+	XPrimaryExpression
+	(=>({xbase::XAssignment.assignable=current} '.' feature=[types::JvmIdentifiableElement|ValidID] OpSingleAssign) value=XAssignment
+	|=>({xbase::XMemberFeatureCall.memberCallTarget=current} ".") 
+		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
+		feature=[types::JvmIdentifiableElement|ValidID] (
+			=>explicitOperationCall?='(' 
+				(
+				    memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
+				)? 
+			')')?
+		)*;
 
-//XFeatureCall returns xbase::XExpression:
-//	{xbase::XFeatureCall}
-//	(declaringType=[types::JvmDeclaredType|StaticQualifier])?
-//	('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')? 
-//	feature=[types::JvmIdentifiableElement|IdOrSuper] 
-//	(=>explicitOperationCall?='(' 
-//		(
-//		    featureCallArguments+=XExpression (',' featureCallArguments+=XExpression)*
-//		)? 
-//	')')?;
+XFeatureCall returns xbase::XExpression:
+	{xbase::XFeatureCall}
+	(declaringType=[types::JvmDeclaredType|StaticQualifier])?
+	('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')? 
+	feature=[types::JvmIdentifiableElement|IdOrSuper] 
+	(=>explicitOperationCall?='(' 
+		(
+		    featureCallArguments+=XExpression (',' featureCallArguments+=XExpression)*
+		)? 
+	')')?;
+
+//
+// String[] a = new String[3];
+// String[] b = new String[]{"", "", ""};
+XConstructorCall returns xbase::XExpression:
+	{xbase::XConstructorCall}
+	'new' constructor=[types::JvmConstructor|QualifiedName] 
+	(=>'<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?
+	(=>'(' 
+		(
+		    arguments+=XExpression (',' arguments+=XExpression)*
+		)? 
+	')');
