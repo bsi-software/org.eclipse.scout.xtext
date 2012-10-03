@@ -3625,15 +3625,15 @@ ruleXConstructorCall returns [EObject current=null]
     {
     	newLeafNode(otherlv_7, grammarAccess.getXConstructorCallAccess().getGreaterThanSignKeyword_3_3());
     }
-)?(((	'(' 
+)?((((	'(' 
 )=>	otherlv_8='(' 
     {
-    	newLeafNode(otherlv_8, grammarAccess.getXConstructorCallAccess().getLeftParenthesisKeyword_4_0());
+    	newLeafNode(otherlv_8, grammarAccess.getXConstructorCallAccess().getLeftParenthesisKeyword_4_0_0());
     }
 )((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getXConstructorCallAccess().getArgumentsXExpressionParserRuleCall_4_1_0_0()); 
+	        newCompositeNode(grammarAccess.getXConstructorCallAccess().getArgumentsXExpressionParserRuleCall_4_0_1_0_0()); 
 	    }
 		lv_arguments_9_0=ruleXExpression		{
 	        if ($current==null) {
@@ -3650,12 +3650,12 @@ ruleXConstructorCall returns [EObject current=null]
 )
 )(	otherlv_10=',' 
     {
-    	newLeafNode(otherlv_10, grammarAccess.getXConstructorCallAccess().getCommaKeyword_4_1_1_0());
+    	newLeafNode(otherlv_10, grammarAccess.getXConstructorCallAccess().getCommaKeyword_4_0_1_1_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getXConstructorCallAccess().getArgumentsXExpressionParserRuleCall_4_1_1_1_0()); 
+	        newCompositeNode(grammarAccess.getXConstructorCallAccess().getArgumentsXExpressionParserRuleCall_4_0_1_1_1_0()); 
 	    }
 		lv_arguments_11_0=ruleXExpression		{
 	        if ($current==null) {
@@ -3672,9 +3672,35 @@ ruleXConstructorCall returns [EObject current=null]
 )
 ))*)?	otherlv_12=')' 
     {
-    	newLeafNode(otherlv_12, grammarAccess.getXConstructorCallAccess().getRightParenthesisKeyword_4_2());
+    	newLeafNode(otherlv_12, grammarAccess.getXConstructorCallAccess().getRightParenthesisKeyword_4_0_2());
     }
-))
+)
+    |(((
+(
+	'[' 
+ 
+
+)
+)=>
+(
+		lv_isArray_13_0=	'[' 
+    {
+        newLeafNode(lv_isArray_13_0, grammarAccess.getXConstructorCallAccess().getIsArrayLeftSquareBracketKeyword_4_1_0_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getXConstructorCallRule());
+	        }
+       		setWithLastConsumed($current, "isArray", true, "[");
+	    }
+
+)
+)	otherlv_14=']' 
+    {
+    	newLeafNode(otherlv_14, grammarAccess.getXConstructorCallAccess().getRightSquareBracketKeyword_4_1_1());
+    }
+)))
 ;
 
 

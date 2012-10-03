@@ -172,12 +172,18 @@ XFeatureCall returns xbase::XExpression:
 //
 // String[] a = new String[3];
 // String[] b = new String[]{"", "", ""};
-XConstructorCall returns xbase::XExpression:
-	{xbase::XConstructorCall}
+XConstructorCall returns xbase::XConstructorCall:
+	{XConstructorCall}
 	'new' constructor=[types::JvmConstructor|QualifiedName] 
 	(=>'<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?
-	(=>'(' 
-		(
-		    arguments+=XExpression (',' arguments+=XExpression)*
-		)? 
-	')');
+	
+	(
+		(=>'(' 
+			(
+			    arguments+=XExpression (',' arguments+=XExpression)*
+			)? 
+		')')
+	|
+		(=>isArray?='[' ']')
+	)
+	;

@@ -123,4 +123,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="XBlockExpression" eSuperTypes="../../../../../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XBlockExpression"/>
   <eClassifiers xsi:type="ecore:EClass" name="XVariableDeclaration" eSuperTypes="../../../../../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XVariableDeclaration"/>
+  <eClassifiers xsi:type="ecore:EClass" name="XConstructorCall" eSuperTypes="../../../../../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XConstructorCall">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
 </ecore:EPackage>

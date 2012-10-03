@@ -53,6 +53,7 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXUnaryOperationAccess().getAlternatives(), "rule__XUnaryOperation__Alternatives");
 					put(grammarAccess.getXPrimaryExpressionAccess().getAlternatives(), "rule__XPrimaryExpression__Alternatives");
 					put(grammarAccess.getXMemberFeatureCallAccess().getAlternatives_1(), "rule__XMemberFeatureCall__Alternatives_1");
+					put(grammarAccess.getXConstructorCallAccess().getAlternatives_4(), "rule__XConstructorCall__Alternatives_4");
 					put(grammarAccess.getXAssignmentAccess().getAlternatives(), "rule__XAssignment__Alternatives");
 					put(grammarAccess.getOpEqualityAccess().getAlternatives(), "rule__OpEquality__Alternatives");
 					put(grammarAccess.getXRelationalExpressionAccess().getAlternatives_1(), "rule__XRelationalExpression__Alternatives_1");
@@ -147,9 +148,10 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXConstructorCallAccess().getGroup(), "rule__XConstructorCall__Group__0");
 					put(grammarAccess.getXConstructorCallAccess().getGroup_3(), "rule__XConstructorCall__Group_3__0");
 					put(grammarAccess.getXConstructorCallAccess().getGroup_3_2(), "rule__XConstructorCall__Group_3_2__0");
-					put(grammarAccess.getXConstructorCallAccess().getGroup_4(), "rule__XConstructorCall__Group_4__0");
+					put(grammarAccess.getXConstructorCallAccess().getGroup_4_0(), "rule__XConstructorCall__Group_4_0__0");
+					put(grammarAccess.getXConstructorCallAccess().getGroup_4_0_1(), "rule__XConstructorCall__Group_4_0_1__0");
+					put(grammarAccess.getXConstructorCallAccess().getGroup_4_0_1_1(), "rule__XConstructorCall__Group_4_0_1_1__0");
 					put(grammarAccess.getXConstructorCallAccess().getGroup_4_1(), "rule__XConstructorCall__Group_4_1__0");
-					put(grammarAccess.getXConstructorCallAccess().getGroup_4_1_1(), "rule__XConstructorCall__Group_4_1_1__0");
 					put(grammarAccess.getXAssignmentAccess().getGroup_0(), "rule__XAssignment__Group_0__0");
 					put(grammarAccess.getXAssignmentAccess().getGroup_1(), "rule__XAssignment__Group_1__0");
 					put(grammarAccess.getXAssignmentAccess().getGroup_1_1(), "rule__XAssignment__Group_1_1__0");
@@ -353,8 +355,9 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXConstructorCallAccess().getConstructorAssignment_2(), "rule__XConstructorCall__ConstructorAssignment_2");
 					put(grammarAccess.getXConstructorCallAccess().getTypeArgumentsAssignment_3_1(), "rule__XConstructorCall__TypeArgumentsAssignment_3_1");
 					put(grammarAccess.getXConstructorCallAccess().getTypeArgumentsAssignment_3_2_1(), "rule__XConstructorCall__TypeArgumentsAssignment_3_2_1");
-					put(grammarAccess.getXConstructorCallAccess().getArgumentsAssignment_4_1_0(), "rule__XConstructorCall__ArgumentsAssignment_4_1_0");
-					put(grammarAccess.getXConstructorCallAccess().getArgumentsAssignment_4_1_1_1(), "rule__XConstructorCall__ArgumentsAssignment_4_1_1_1");
+					put(grammarAccess.getXConstructorCallAccess().getArgumentsAssignment_4_0_1_0(), "rule__XConstructorCall__ArgumentsAssignment_4_0_1_0");
+					put(grammarAccess.getXConstructorCallAccess().getArgumentsAssignment_4_0_1_1_1(), "rule__XConstructorCall__ArgumentsAssignment_4_0_1_1_1");
+					put(grammarAccess.getXConstructorCallAccess().getIsArrayAssignment_4_1_0(), "rule__XConstructorCall__IsArrayAssignment_4_1_0");
 					put(grammarAccess.getXAssignmentAccess().getFeatureAssignment_0_1(), "rule__XAssignment__FeatureAssignment_0_1");
 					put(grammarAccess.getXAssignmentAccess().getValueAssignment_0_3(), "rule__XAssignment__ValueAssignment_0_3");
 					put(grammarAccess.getXAssignmentAccess().getFeatureAssignment_1_1_0_0_1(), "rule__XAssignment__FeatureAssignment_1_1_0_0_1");

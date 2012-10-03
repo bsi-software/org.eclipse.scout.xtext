@@ -429,10 +429,13 @@ public class ParserTest {
       _builder.append("logic Foo runat=server {");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("String s = new String();");
+      _builder.append("String[] s = new String[];");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("String s2 = new String(\"test\");");
+      _builder.append("//String s1 = new String();");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("//String s2 = new String(\"test\");");
       _builder.newLine();
       _builder.append("\t");
       _builder.append("return null;");

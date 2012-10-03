@@ -1262,6 +1262,79 @@ public interface SamlPackage extends EPackage
    */
   int XVARIABLE_DECLARATION_FEATURE_COUNT = XbasePackage.XVARIABLE_DECLARATION_FEATURE_COUNT + 0;
 
+  /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.XConstructorCallImpl <em>XConstructor Call</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.XConstructorCallImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getXConstructorCall()
+   * @generated
+   */
+  int XCONSTRUCTOR_CALL = 25;
+
+  /**
+   * The feature id for the '<em><b>Constructor</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int XCONSTRUCTOR_CALL__CONSTRUCTOR = XbasePackage.XCONSTRUCTOR_CALL__CONSTRUCTOR;
+
+  /**
+   * The feature id for the '<em><b>Arguments</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int XCONSTRUCTOR_CALL__ARGUMENTS = XbasePackage.XCONSTRUCTOR_CALL__ARGUMENTS;
+
+  /**
+   * The feature id for the '<em><b>Type Arguments</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int XCONSTRUCTOR_CALL__TYPE_ARGUMENTS = XbasePackage.XCONSTRUCTOR_CALL__TYPE_ARGUMENTS;
+
+  /**
+   * The feature id for the '<em><b>Invalid Feature Issue Code</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int XCONSTRUCTOR_CALL__INVALID_FEATURE_ISSUE_CODE = XbasePackage.XCONSTRUCTOR_CALL__INVALID_FEATURE_ISSUE_CODE;
+
+  /**
+   * The feature id for the '<em><b>Valid Feature</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int XCONSTRUCTOR_CALL__VALID_FEATURE = XbasePackage.XCONSTRUCTOR_CALL__VALID_FEATURE;
+
+  /**
+   * The feature id for the '<em><b>Is Array</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int XCONSTRUCTOR_CALL__IS_ARRAY = XbasePackage.XCONSTRUCTOR_CALL_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>XConstructor Call</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int XCONSTRUCTOR_CALL_FEATURE_COUNT = XbasePackage.XCONSTRUCTOR_CALL_FEATURE_COUNT + 1;
+
 
   /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.Model <em>Model</em>}'.
@@ -2086,6 +2159,27 @@ public interface SamlPackage extends EPackage
   EClass getXVariableDeclaration();
 
   /**
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.XConstructorCall <em>XConstructor Call</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>XConstructor Call</em>'.
+   * @see org.eclipse.scout.saml.saml.XConstructorCall
+   * @generated
+   */
+  EClass getXConstructorCall();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.XConstructorCall#isIsArray <em>Is Array</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Is Array</em>'.
+   * @see org.eclipse.scout.saml.saml.XConstructorCall#isIsArray()
+   * @see #getXConstructorCall()
+   * @generated
+   */
+  EAttribute getXConstructorCall_IsArray();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2773,6 +2867,24 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EClass XVARIABLE_DECLARATION = eINSTANCE.getXVariableDeclaration();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.XConstructorCallImpl <em>XConstructor Call</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.XConstructorCallImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getXConstructorCall()
+     * @generated
+     */
+    EClass XCONSTRUCTOR_CALL = eINSTANCE.getXConstructorCall();
+
+    /**
+     * The meta object literal for the '<em><b>Is Array</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute XCONSTRUCTOR_CALL__IS_ARRAY = eINSTANCE.getXConstructorCall_IsArray();
 
   }
 

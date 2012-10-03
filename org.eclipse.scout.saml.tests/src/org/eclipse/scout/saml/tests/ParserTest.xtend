@@ -226,8 +226,9 @@ import org.eclipse.xtext.EcoreUtil2
 form MyForm {
 
 logic Foo runat=server {
-	String s = new String();
-	String s2 = new String("test");
+	String[] s = new String[];
+	//String s1 = new String();
+	//String s2 = new String("test");
 	return null;
 }
 

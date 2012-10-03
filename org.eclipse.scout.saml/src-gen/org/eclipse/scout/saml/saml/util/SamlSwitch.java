@@ -274,6 +274,15 @@ public class SamlSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case SamlPackage.XCONSTRUCTOR_CALL:
+      {
+        XConstructorCall xConstructorCall = (XConstructorCall)theEObject;
+        T result = caseXConstructorCall(xConstructorCall);
+        if (result == null) result = caseXbase_XConstructorCall(xConstructorCall);
+        if (result == null) result = caseXExpression(xConstructorCall);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -679,6 +688,22 @@ public class SamlSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>XConstructor Call</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>XConstructor Call</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseXConstructorCall(XConstructorCall object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>XExpression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -738,6 +763,22 @@ public class SamlSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseXbase_XVariableDeclaration(org.eclipse.xtext.xbase.XVariableDeclaration object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>XConstructor Call</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>XConstructor Call</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseXbase_XConstructorCall(org.eclipse.xtext.xbase.XConstructorCall object)
   {
     return null;
   }

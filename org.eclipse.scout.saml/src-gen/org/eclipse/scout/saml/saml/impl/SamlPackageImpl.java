@@ -35,6 +35,7 @@ import org.eclipse.scout.saml.saml.TranslationElement;
 import org.eclipse.scout.saml.saml.ValueFieldElement;
 import org.eclipse.scout.saml.saml.ValueFieldProperties;
 import org.eclipse.scout.saml.saml.XBlockExpression;
+import org.eclipse.scout.saml.saml.XConstructorCall;
 import org.eclipse.scout.saml.saml.XVariableDeclaration;
 
 import org.eclipse.xtext.common.types.TypesPackage;
@@ -223,6 +224,13 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * @generated
    */
   private EClass xVariableDeclarationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass xConstructorCallEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -1065,6 +1073,26 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getXConstructorCall()
+  {
+    return xConstructorCallEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getXConstructorCall_IsArray()
+  {
+    return (EAttribute)xConstructorCallEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public SamlFactory getSamlFactory()
   {
     return (SamlFactory)getEFactoryInstance();
@@ -1191,6 +1219,9 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     xBlockExpressionEClass = createEClass(XBLOCK_EXPRESSION);
 
     xVariableDeclarationEClass = createEClass(XVARIABLE_DECLARATION);
+
+    xConstructorCallEClass = createEClass(XCONSTRUCTOR_CALL);
+    createEAttribute(xConstructorCallEClass, XCONSTRUCTOR_CALL__IS_ARRAY);
   }
 
   /**
@@ -1238,6 +1269,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     customFieldElementEClass.getESuperTypes().add(this.getValueFieldElement());
     xBlockExpressionEClass.getESuperTypes().add(theXbasePackage.getXBlockExpression());
     xVariableDeclarationEClass.getESuperTypes().add(theXbasePackage.getXVariableDeclaration());
+    xConstructorCallEClass.getESuperTypes().add(theXbasePackage.getXConstructorCall());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1341,6 +1373,9 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEClass(xBlockExpressionEClass, XBlockExpression.class, "XBlockExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(xVariableDeclarationEClass, XVariableDeclaration.class, "XVariableDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(xConstructorCallEClass, XConstructorCall.class, "XConstructorCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getXConstructorCall_IsArray(), ecorePackage.getEBoolean(), "isArray", null, 0, 1, XConstructorCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

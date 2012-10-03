@@ -104,5 +104,8 @@
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//XBlockExpression"/>
     <genClasses ecoreClass="Saml.ecore#//XVariableDeclaration"/>
+    <genClasses ecoreClass="Saml.ecore#//XConstructorCall">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//XConstructorCall/isArray"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>
