@@ -86,7 +86,6 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
       case SamlPackage.SEQUENCE_BOX_ELEMENT: return createSequenceBoxElement();
       case SamlPackage.XBLOCK_EXPRESSION: return createXBlockExpression();
       case SamlPackage.XVARIABLE_DECLARATION: return createXVariableDeclaration();
-      case SamlPackage.XTYPE_LITERAL: return createXTypeLiteral();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -359,17 +358,6 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
   {
     XVariableDeclarationImpl xVariableDeclaration = new XVariableDeclarationImpl();
     return xVariableDeclaration;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public XTypeLiteral createXTypeLiteral()
-  {
-    XTypeLiteralImpl xTypeLiteral = new XTypeLiteralImpl();
-    return xTypeLiteral;
   }
 
   /**

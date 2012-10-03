@@ -212,15 +212,6 @@ public interface SamlFactory extends EFactory
   XVariableDeclaration createXVariableDeclaration();
 
   /**
-   * Returns a new object of class '<em>XType Literal</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>XType Literal</em>'.
-   * @generated
-   */
-  XTypeLiteral createXTypeLiteral();
-
-  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

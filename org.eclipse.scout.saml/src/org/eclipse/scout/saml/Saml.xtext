@@ -102,27 +102,29 @@ XLiteral returns xbase::XExpression:
 	XTypeLiteral
 ;
 
-XTypeLiteral returns xbase::XTypeLiteral :
-	{XTypeLiteral} type=[types::JvmType|QualifiedName] '.' 'class'
-;
+//
+// TODO: this makes code completion freeze for feauture access
+//XTypeLiteral returns xbase::XTypeLiteral :
+//	{XTypeLiteral} type=[types::JvmType|QualifiedName] '.' 'class'
+//;
 
-XUnaryOperation returns xbase::XExpression:
-	{xbase::XUnaryOperation} feature=[types::JvmIdentifiableElement|OpUnary] operand=XMemberFeatureCall
-	| XMemberFeatureCall;
+//XUnaryOperation returns xbase::XExpression:
+//	{xbase::XUnaryOperation} feature=[types::JvmIdentifiableElement|OpUnary] operand=XMemberFeatureCall
+//	| XMemberFeatureCall;
 
-XPrimaryExpression returns xbase::XExpression:
-	XConstructorCall |
-	XFeatureCall |
-	XLiteral |
-	XIfExpression |
-	XForLoopExpression |
-	XWhileExpression |
-	XDoWhileExpression |
-	XThrowExpression |
-	XReturnExpression |
-	XTryCatchFinallyExpression |
-//	=>XCastedExpression |
-	XParenthesizedExpression;
+//XPrimaryExpression returns xbase::XExpression:
+//	XConstructorCall |
+//	XFeatureCall |
+//	XLiteral |
+//	XIfExpression |
+//	XForLoopExpression |
+//	XWhileExpression |
+//	XDoWhileExpression |
+//	XThrowExpression |
+//	XReturnExpression |
+//	XTryCatchFinallyExpression |
+////	=>XCastedExpression |
+//	XParenthesizedExpression;
 
 
 //XCastedExpression returns xbase::XExpression :
@@ -130,15 +132,26 @@ XPrimaryExpression returns xbase::XExpression:
 //	'(' type=JvmTypeReference ')' target=XMemberFeatureCall
 //;
 
-XMemberFeatureCall returns xbase::XExpression:
-	XPrimaryExpression
-	(=>({xbase::XAssignment.assignable=current} '.' feature=[types::JvmIdentifiableElement|ValidID] OpSingleAssign) value=XAssignment
-	|=>({xbase::XMemberFeatureCall.memberCallTarget=current} ".") 
-		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
-		feature=[types::JvmIdentifiableElement|ValidID] (
-			=>explicitOperationCall?='(' 
-				(
-				    memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-				)? 
-			')')?
-		)*;
+//XMemberFeatureCall returns xbase::XExpression:
+//	XPrimaryExpression
+//	(=>({xbase::XAssignment.assignable=current} '.' feature=[types::JvmIdentifiableElement|ValidID] OpSingleAssign) value=XAssignment
+//	|=>({xbase::XMemberFeatureCall.memberCallTarget=current} ".") 
+//		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
+//		feature=[types::JvmIdentifiableElement|ValidID] (
+//			=>explicitOperationCall?='(' 
+//				(
+//				    memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
+//				)? 
+//			')')?
+//		)*;
+
+//XFeatureCall returns xbase::XExpression:
+//	{xbase::XFeatureCall}
+//	(declaringType=[types::JvmDeclaredType|StaticQualifier])?
+//	('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')? 
+//	feature=[types::JvmIdentifiableElement|IdOrSuper] 
+//	(=>explicitOperationCall?='(' 
+//		(
+//		    featureCallArguments+=XExpression (',' featureCallArguments+=XExpression)*
+//		)? 
+//	')')?;

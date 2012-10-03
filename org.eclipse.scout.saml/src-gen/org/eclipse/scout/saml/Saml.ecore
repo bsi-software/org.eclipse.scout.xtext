@@ -114,5 +114,4 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="XBlockExpression" eSuperTypes="../../../../../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XBlockExpression"/>
   <eClassifiers xsi:type="ecore:EClass" name="XVariableDeclaration" eSuperTypes="../../../../../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XVariableDeclaration"/>
-  <eClassifiers xsi:type="ecore:EClass" name="XTypeLiteral" eSuperTypes="../../../../../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XTypeLiteral"/>
 </ecore:EPackage>

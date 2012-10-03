@@ -184,11 +184,6 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
         return createXVariableDeclarationAdapter();
       }
       @Override
-      public Adapter caseXTypeLiteral(XTypeLiteral object)
-      {
-        return createXTypeLiteralAdapter();
-      }
-      @Override
       public Adapter caseXExpression(XExpression object)
       {
         return createXExpressionAdapter();
@@ -207,11 +202,6 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
       public Adapter caseXbase_XVariableDeclaration(org.eclipse.xtext.xbase.XVariableDeclaration object)
       {
         return createXbase_XVariableDeclarationAdapter();
-      }
-      @Override
-      public Adapter caseXbase_XTypeLiteral(org.eclipse.xtext.xbase.XTypeLiteral object)
-      {
-        return createXbase_XTypeLiteralAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -551,21 +541,6 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.XTypeLiteral <em>XType Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.scout.saml.saml.XTypeLiteral
-   * @generated
-   */
-  public Adapter createXTypeLiteralAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link org.eclipse.xtext.xbase.XExpression <em>XExpression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -621,21 +596,6 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createXbase_XVariableDeclarationAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.xbase.XTypeLiteral <em>XType Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.xtext.xbase.XTypeLiteral
-   * @generated
-   */
-  public Adapter createXbase_XTypeLiteralAdapter()
   {
     return null;
   }

@@ -34,7 +34,6 @@ import org.eclipse.scout.saml.saml.SequenceBoxElement;
 import org.eclipse.scout.saml.saml.StringElement;
 import org.eclipse.scout.saml.saml.TranslationElement;
 import org.eclipse.scout.saml.saml.XBlockExpression;
-import org.eclipse.scout.saml.saml.XTypeLiteral;
 import org.eclipse.scout.saml.saml.XVariableDeclaration;
 
 import org.eclipse.xtext.xbase.XbasePackage;
@@ -193,13 +192,6 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * @generated
    */
   private EClass xVariableDeclarationEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass xTypeLiteralEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -916,16 +908,6 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getXTypeLiteral()
-  {
-    return xTypeLiteralEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EEnum getBooleanType()
   {
     return booleanTypeEEnum;
@@ -1055,8 +1037,6 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
 
     xVariableDeclarationEClass = createEClass(XVARIABLE_DECLARATION);
 
-    xTypeLiteralEClass = createEClass(XTYPE_LITERAL);
-
     // Create enums
     booleanTypeEEnum = createEEnum(BOOLEAN_TYPE);
     logicTypeEEnum = createEEnum(LOGIC_TYPE);
@@ -1102,7 +1082,6 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     sequenceBoxElementEClass.getESuperTypes().add(this.getCompositeElement());
     xBlockExpressionEClass.getESuperTypes().add(theXbasePackage.getXBlockExpression());
     xVariableDeclarationEClass.getESuperTypes().add(theXbasePackage.getXVariableDeclaration());
-    xTypeLiteralEClass.getESuperTypes().add(theXbasePackage.getXTypeLiteral());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1188,8 +1167,6 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEClass(xBlockExpressionEClass, XBlockExpression.class, "XBlockExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(xVariableDeclarationEClass, XVariableDeclaration.class, "XVariableDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(xTypeLiteralEClass, XTypeLiteral.class, "XTypeLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     // Initialize enums and add enum literals
     initEEnum(booleanTypeEEnum, BooleanType.class, "BooleanType");

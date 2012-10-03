@@ -990,34 +990,6 @@ public interface SamlPackage extends EPackage
   int XVARIABLE_DECLARATION_FEATURE_COUNT = XbasePackage.XVARIABLE_DECLARATION_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.XTypeLiteralImpl <em>XType Literal</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.scout.saml.saml.impl.XTypeLiteralImpl
-   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getXTypeLiteral()
-   * @generated
-   */
-  int XTYPE_LITERAL = 21;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int XTYPE_LITERAL__TYPE = XbasePackage.XTYPE_LITERAL__TYPE;
-
-  /**
-   * The number of structural features of the '<em>XType Literal</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int XTYPE_LITERAL_FEATURE_COUNT = XbasePackage.XTYPE_LITERAL_FEATURE_COUNT + 0;
-
-  /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.BooleanType <em>Boolean Type</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1025,7 +997,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getBooleanType()
    * @generated
    */
-  int BOOLEAN_TYPE = 22;
+  int BOOLEAN_TYPE = 21;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.LogicType <em>Logic Type</em>}' enum.
@@ -1035,7 +1007,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getLogicType()
    * @generated
    */
-  int LOGIC_TYPE = 23;
+  int LOGIC_TYPE = 22;
 
 
   /**
@@ -1711,16 +1683,6 @@ public interface SamlPackage extends EPackage
   EClass getXVariableDeclaration();
 
   /**
-   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.XTypeLiteral <em>XType Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>XType Literal</em>'.
-   * @see org.eclipse.scout.saml.saml.XTypeLiteral
-   * @generated
-   */
-  EClass getXTypeLiteral();
-
-  /**
    * Returns the meta object for enum '{@link org.eclipse.scout.saml.saml.BooleanType <em>Boolean Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2308,16 +2270,6 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EClass XVARIABLE_DECLARATION = eINSTANCE.getXVariableDeclaration();
-
-    /**
-     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.XTypeLiteralImpl <em>XType Literal</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.eclipse.scout.saml.saml.impl.XTypeLiteralImpl
-     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getXTypeLiteral()
-     * @generated
-     */
-    EClass XTYPE_LITERAL = eINSTANCE.getXTypeLiteral();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.BooleanType <em>Boolean Type</em>}' enum.

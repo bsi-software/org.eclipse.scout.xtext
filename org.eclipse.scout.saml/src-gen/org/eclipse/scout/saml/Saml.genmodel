@@ -101,6 +101,5 @@
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//XBlockExpression"/>
     <genClasses ecoreClass="Saml.ecore#//XVariableDeclaration"/>
-    <genClasses ecoreClass="Saml.ecore#//XTypeLiteral"/>
   </genPackages>
 </genmodel:GenModel>
