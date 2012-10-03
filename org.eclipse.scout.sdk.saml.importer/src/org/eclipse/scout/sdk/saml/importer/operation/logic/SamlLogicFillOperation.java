@@ -13,7 +13,6 @@ package org.eclipse.scout.sdk.saml.importer.operation.logic;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
@@ -23,6 +22,7 @@ import org.eclipse.scout.sdk.operation.method.MethodOverrideOperation;
 import org.eclipse.scout.sdk.operation.method.MethodUpdateContentOperation;
 import org.eclipse.scout.sdk.operation.service.ServiceOperationNewOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
+import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
 import org.eclipse.scout.sdk.util.ScoutUtility;
 import org.eclipse.scout.sdk.util.log.ScoutStatus;
 import org.eclipse.scout.sdk.util.resources.ResourceUtility;
@@ -38,15 +38,9 @@ import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
  */
 public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
 
-  private EList<? extends EObject> m_childElements;
-
-  private IType m_serverType;
-  private IType m_clientType;
-  private IType m_serverInterface;
-  private IType m_clientInterface;
+  private EList<LogicElement> m_logicElements;
   private IType m_logicSourceType;
-  private IType m_formType;
-  private IType m_formDataType;
+  private SamlFormContext m_formContext;
 
   @Override
   public String getOperationName() {
@@ -55,23 +49,20 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
 
   @Override
   public void validate() throws IllegalArgumentException {
-    if (getChildElements() == null) {
+    if (getLogicElements() == null) {
       throw new IllegalArgumentException("Child elements cannot be null.");
     }
-    if (!TypeUtility.exists(getServerType())) {
-      throw new IllegalArgumentException("Server type cannot be null.");
-    }
-    if (!TypeUtility.exists(getClientType())) {
-      throw new IllegalArgumentException("Client type cannot be null.");
+    if (getSamlContext() == null || getSamlFormContext() == null) {
+      throw new IllegalArgumentException("Context missing for logic wiring.");
     }
   }
 
   @Override
   public void run(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException, IllegalArgumentException {
-    for (EObject o : getChildElements()) {
-      if (o instanceof LogicElement) {
-        LogicElement logicElement = (LogicElement) o;
-        LogicInfo info = LogicInfoFactory.create(logicElement, getFormDataType(), getFormType(), getLogicSourceType(), getServerType(), getServerInterface(), getClientType(), getClientInterface());
+    for (LogicElement logicElement : getLogicElements()) {
+      /* logic elements with name are just named snippets used at several places. nothing to do for them. they will be referred to from a non-named element later on */
+      if (logicElement.getName() == null) {
+        LogicInfo info = LogicInfoFactory.create(logicElement, getLogicSourceType(), getSamlFormContext());
 
         if (info.isClassLevel()) {
           fillClassLevelLogic(monitor, workingCopyManager, info.getTargetType(), info.getTargetLogic());
@@ -91,7 +82,7 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
 
   private void appendMethodLogic(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, final IMethod method, final String logic) throws CoreException, IllegalArgumentException {
     final boolean visited = getSamlContext().isMethodChanged(method);
-    MethodUpdateContentOperation op = new MethodUpdateContentOperation(method, null, true) {
+    MethodUpdateContentOperation op = new MethodUpdateContentOperation(method, null, false) {
       @Override
       protected String createMethodBody(String originalBody, IImportValidator validator) throws JavaModelException {
         if (visited) {
@@ -115,7 +106,6 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
     };
     op.validate();
     op.run(monitor, workingCopyManager);
-    getSamlContext().rememberModifiedType(method.getDeclaringType());
 
     if (!visited) {
       // remember that we already replaced the content of this method
@@ -135,7 +125,6 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
       newSource.append(ResourceUtility.getLineSeparator(cu));
       newSource.append(source.substring(end));
       cu.getBuffer().setContents(newSource.toString());
-      getSamlContext().rememberModifiedType(target);
     }
     else {
       throw new CoreException(new ScoutStatus("Entry point for global business logic not found in class: " + target.getFullyQualifiedName()));
@@ -157,8 +146,6 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
       sono.setServiceInterface(info.getTargetInterfaceType());
       sono.validate();
       sono.run(monitor, workingCopyManager);
-      getSamlContext().rememberModifiedType(info.getTargetInterfaceType());
-      getSamlContext().rememberModifiedType(info.getTargetType());
       return sono.getCreatedImplementationMethod();
     }
   }
@@ -169,37 +156,12 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
       return method;
     }
     else {
-      MethodOverrideOperation op = new MethodOverrideOperation(info.getSourceType(), info.getSourceMethodName(), true);
+      MethodOverrideOperation op = new MethodOverrideOperation(info.getSourceType(), info.getSourceMethodName(), false);
       op.setSimpleBody("");
       op.validate();
       op.run(monitor, workingCopyManager);
-      getSamlContext().rememberModifiedType(info.getSourceType());
       return op.getCreatedMethod();
     }
-  }
-
-  public EList<? extends EObject> getChildElements() {
-    return m_childElements;
-  }
-
-  public void setChildElements(EList<? extends EObject> childElements) {
-    m_childElements = childElements;
-  }
-
-  public IType getServerType() {
-    return m_serverType;
-  }
-
-  public void setServerType(IType serverType) {
-    m_serverType = serverType;
-  }
-
-  public IType getClientType() {
-    return m_clientType;
-  }
-
-  public void setClientType(IType clientType) {
-    m_clientType = clientType;
   }
 
   public IType getLogicSourceType() {
@@ -210,35 +172,19 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
     m_logicSourceType = formType;
   }
 
-  public IType getServerInterface() {
-    return m_serverInterface;
+  public EList<LogicElement> getLogicElements() {
+    return m_logicElements;
   }
 
-  public void setServerInterface(IType serverInterface) {
-    m_serverInterface = serverInterface;
+  public void setLogicElements(EList<LogicElement> logicElements) {
+    m_logicElements = logicElements;
   }
 
-  public IType getClientInterface() {
-    return m_clientInterface;
+  public SamlFormContext getSamlFormContext() {
+    return m_formContext;
   }
 
-  public void setClientInterface(IType clientInterface) {
-    m_clientInterface = clientInterface;
-  }
-
-  public IType getFormType() {
-    return m_formType;
-  }
-
-  public void setFormType(IType formType) {
-    m_formType = formType;
-  }
-
-  public IType getFormDataType() {
-    return m_formDataType;
-  }
-
-  public void setFormDataType(IType formDataType) {
-    m_formDataType = formDataType;
+  public void setSamlFormContext(SamlFormContext formContext) {
+    m_formContext = formContext;
   }
 }

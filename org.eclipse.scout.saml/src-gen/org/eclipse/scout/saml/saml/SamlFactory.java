@@ -122,15 +122,6 @@ public interface SamlFactory extends EFactory
   FormFieldElement createFormFieldElement();
 
   /**
-   * Returns a new object of class '<em>Form Field Properties</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Form Field Properties</em>'.
-   * @generated
-   */
-  FormFieldProperties createFormFieldProperties();
-
-  /**
    * Returns a new object of class '<em>Composite Field Element</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -165,15 +156,6 @@ public interface SamlFactory extends EFactory
    * @generated
    */
   ValueFieldElement createValueFieldElement();
-
-  /**
-   * Returns a new object of class '<em>Value Field Properties</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Value Field Properties</em>'.
-   * @generated
-   */
-  ValueFieldProperties createValueFieldProperties();
 
   /**
    * Returns a new object of class '<em>String Element</em>'.
@@ -228,33 +210,6 @@ public interface SamlFactory extends EFactory
    * @generated
    */
   CustomFieldElement createCustomFieldElement();
-
-  /**
-   * Returns a new object of class '<em>XBlock Expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>XBlock Expression</em>'.
-   * @generated
-   */
-  XBlockExpression createXBlockExpression();
-
-  /**
-   * Returns a new object of class '<em>XVariable Declaration</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>XVariable Declaration</em>'.
-   * @generated
-   */
-  XVariableDeclaration createXVariableDeclaration();
-
-  /**
-   * Returns a new object of class '<em>XConstructor Call</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>XConstructor Call</em>'.
-   * @generated
-   */
-  XConstructorCall createXConstructorCall();
 
   /**
    * Returns the package supported by this factory.

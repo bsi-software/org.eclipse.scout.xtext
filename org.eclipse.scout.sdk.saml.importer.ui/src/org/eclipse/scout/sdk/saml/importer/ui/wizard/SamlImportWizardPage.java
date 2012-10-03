@@ -30,7 +30,7 @@ import org.eclipse.swt.widgets.Composite;
  */
 public class SamlImportWizardPage extends AbstractWorkspaceWizardPage {
 
-  private final static String PROP_SAML_FILE = "fileProp";
+  private final static String PROP_SAML_ROOT_DIRECTORY = "fileProp";
 
   private FileSelectionField m_fileField;
 
@@ -43,8 +43,8 @@ public class SamlImportWizardPage extends AbstractWorkspaceWizardPage {
   @Override
   protected void createContent(Composite parent) {
     m_fileField = new FileSelectionField(parent);
-    m_fileField.setLabelText("SAML File");
-    m_fileField.setFolderMode(false);
+    m_fileField.setLabelText("SAML Root Directory");
+    m_fileField.setFolderMode(true);
     m_fileField.addProductSelectionListener(new IFileSelectionListener() {
       @Override
       public void fileSelected(File file) {
@@ -52,12 +52,12 @@ public class SamlImportWizardPage extends AbstractWorkspaceWizardPage {
         if (file != null) {
           fileName = file.getAbsolutePath();
         }
-        setSamlFileInternal(fileName);
+        setSamlRootInternal(fileName);
         pingStateChanging();
       }
     });
-    File defaultPath = new File("C:\\BSI\\Projects\\SAML\\runtime-EclipseApplication\\org.eclipse.scout.saml.input\\Rka001.saml");
-    setSamlFileInternal(defaultPath.getAbsolutePath());
+    File defaultPath = new File("C:\\BSI\\Projects\\SAML\\runtime-EclipseApplication\\org.eclipse.scout.saml.input\\saml");
+    setSamlRootInternal(defaultPath.getAbsolutePath());
     m_fileField.setFile(defaultPath);
     pingStateChanging();
 
@@ -65,26 +65,26 @@ public class SamlImportWizardPage extends AbstractWorkspaceWizardPage {
     m_fileField.setLayoutData(new GridData(GridData.GRAB_HORIZONTAL | GridData.FILL_HORIZONTAL));
   }
 
-  public String getSamlFile() {
-    return (String) getProperty(PROP_SAML_FILE);
+  public String getSamlRoot() {
+    return (String) getProperty(PROP_SAML_ROOT_DIRECTORY);
   }
 
   @Override
   protected void validatePage(MultiStatus multiStatus) {
-    multiStatus.add(getSamlFileFileStatus());
+    multiStatus.add(getSamlRootStatus());
   }
 
-  protected IStatus getSamlFileFileStatus() {
-    if (!StringUtility.hasText(getSamlFile())) {
-      return new Status(IStatus.ERROR, ScoutSdkUi.PLUGIN_ID, "Choose a SAML file");
+  protected IStatus getSamlRootStatus() {
+    if (!StringUtility.hasText(getSamlRoot())) {
+      return new Status(IStatus.ERROR, ScoutSdkUi.PLUGIN_ID, "Choose a SAML directory");
     }
     return Status.OK_STATUS;
   }
 
-  public void setSamlFile(String f) {
+  public void setSamlRoot(String f) {
     try {
       setStateChanging(true);
-      setSamlFileInternal(f);
+      setSamlRootInternal(f);
       if (isControlCreated()) {
         m_fileField.setFileName(f);
       }
@@ -94,10 +94,10 @@ public class SamlImportWizardPage extends AbstractWorkspaceWizardPage {
     }
   }
 
-  private void setSamlFileInternal(String f) {
+  private void setSamlRootInternal(String f) {
     if (f != null) {
       f = f.trim();
     }
-    setProperty(PROP_SAML_FILE, f);
+    setProperty(PROP_SAML_ROOT_DIRECTORY, f);
   }
 }

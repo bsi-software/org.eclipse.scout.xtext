@@ -17,7 +17,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.scout.nls.sdk.model.util.Language;
 import org.eclipse.scout.nls.sdk.model.workspace.NlsEntry;
 import org.eclipse.scout.nls.sdk.model.workspace.project.INlsProject;
-import org.eclipse.scout.saml.saml.TranslationAttribute;
+import org.eclipse.scout.saml.saml.LanguageAttribute;
 import org.eclipse.scout.saml.saml.TranslationElement;
 import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
 import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
@@ -51,7 +51,7 @@ public class TranslationElementImportOperation extends AbstractSamlElementImport
     INlsProject nlsProject = getCurrentScoutModule().getNlsProject();
 
     NlsEntry entry = new NlsEntry(key, nlsProject);
-    for (TranslationAttribute lang : getTranslationElement().getTranslations()) {
+    for (LanguageAttribute lang : getTranslationElement().getTranslations()) {
       Language language = new Language(new Locale(lang.getLang()));
       entry.addTranslation(language, lang.getText());
     }

@@ -12,27 +12,18 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
-import org.eclipse.scout.commons.StringUtility;
-import org.eclipse.scout.saml.saml.AbstractFieldElement;
-import org.eclipse.scout.saml.saml.AbstractFieldProperties;
-import org.eclipse.scout.saml.saml.AbstractValueFieldElement;
-import org.eclipse.scout.saml.saml.BooleanType;
+import org.eclipse.scout.saml.saml.CustomFieldElement;
 import org.eclipse.scout.saml.saml.DateElement;
 import org.eclipse.scout.saml.saml.DoubleElement;
-import org.eclipse.scout.saml.saml.EnabledAttribue;
+import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.LongElement;
-import org.eclipse.scout.saml.saml.MandatoryAttribue;
-import org.eclipse.scout.saml.saml.MasterAttribute;
 import org.eclipse.scout.saml.saml.SequenceBoxElement;
 import org.eclipse.scout.saml.saml.SmartfieldElement;
 import org.eclipse.scout.saml.saml.StringElement;
-import org.eclipse.scout.saml.saml.TextAttribute;
-import org.eclipse.scout.saml.saml.VisibleAttribue;
-import org.eclipse.scout.saml.saml.ZregBoxElement;
+import org.eclipse.scout.saml.saml.TranslationElement;
+import org.eclipse.scout.saml.saml.ValueFieldElement;
 import org.eclipse.scout.sdk.operation.method.MethodOverrideOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.SamlContext;
@@ -50,37 +41,31 @@ import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 public abstract class AbstractSamlFormFieldElementOperation extends AbstractSamlElementImportOperation {
 
   private SamlFormContext m_samlContext;
-  private AbstractFieldElement m_fieldElement;
+  private FormFieldElement m_fieldElement;
 
-  protected void fillFormFieldLogic(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, EList<? extends EObject> children, IType createdField) throws CoreException, IllegalArgumentException {
+  protected void fillFormFieldLogic(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, IType createdField) throws CoreException, IllegalArgumentException {
     SamlLogicFillOperation slfo = new SamlLogicFillOperation();
-    //TODO: should be part of abstractfield: remove children param and iterate over m_fieldelement
     slfo.setLogicSourceType(createdField);
     slfo.setSamlContext(getSamlContext());
-    slfo.setChildElements(children);
-
-    slfo.setClientType(getSamlFormContext().getClientType());
-    slfo.setClientInterface(getSamlFormContext().getClientInterface());
-
-    slfo.setServerType(getSamlFormContext().getServerType());
-    slfo.setServerInterface(getSamlFormContext().getServerInterface());
-
-    slfo.setFormDataType(getSamlFormContext().getFormDataType());
-    slfo.setFormType(getSamlFormContext().getFormType());
+    slfo.setSamlFormContext(getSamlFormContext());
+    slfo.setLogicElements(getFieldElement().getLogic());
 
     slfo.validate();
     slfo.run(monitor, workingCopyManager);
   }
 
-  protected void applyMasterAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, MasterAttribute a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
-    if (a != null && a.getValue() != null) {
-      String masterFieldName = a.getValue().getName() + getFieldNameSuffix(a.getValue());
-      overrideMethod(monitor, workingCopyManager, field, h, "getConfiguredMasterField", "return " + masterFieldName + ".class;");
-      overrideMethod(monitor, workingCopyManager, field, h, "getConfiguredMasterRequired", "return true;");
+  protected void applyMasterAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, ValueFieldElement a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    if (a != null && a.getName() != null) {
+      String fieldNameSuffix = getFieldNameSuffix(a);
+      if (fieldNameSuffix != null) {
+        String masterFieldName = a.getName() + fieldNameSuffix;
+        overrideMethod(monitor, workingCopyManager, field, h, "getConfiguredMasterField", "return " + masterFieldName + ".class;");
+        overrideMethod(monitor, workingCopyManager, field, h, "getConfiguredMasterRequired", "return true;");
+      }
     }
   }
 
-  private String getFieldNameSuffix(AbstractValueFieldElement field) {
+  private String getFieldNameSuffix(FormFieldElement field) {
     if (field instanceof SequenceBoxElement) {
       return SamlSequenceBoxElementImportOperation.SUFFIX;
     }
@@ -99,54 +84,47 @@ public abstract class AbstractSamlFormFieldElementOperation extends AbstractSaml
     else if (field instanceof SmartfieldElement) {
       return SamlSmartfieldElementImportOperation.SUFFIX;
     }
-    else if (field instanceof ZregBoxElement) {
-      return SamlZregBoxElementImportOperation.SUFFIX;
+    else if (field instanceof CustomFieldElement) {
+      //TODO custom field
+      return null;
     }
     else {
-      throw new IllegalArgumentException("Unknown EObject field type: " + field.getName());
+      throw new IllegalArgumentException("Unknown EObject field type: " + field.getClass());
     }
   }
 
-  protected void applyAbstractFormFieldProperties(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, EList<? extends AbstractFieldProperties> properties, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
-    for (AbstractFieldProperties property : properties) {
-      applyAbstractFormFieldProperties(monitor, workingCopyManager, property, field, h);
-    }
+  protected void applyFormFieldProperties(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    applyEnabledAttribute(monitor, workingCopyManager, getFieldElement().getEnabled(), field, h);
+    applyMasterAttribute(monitor, workingCopyManager, getFieldElement().getMaster(), field, h);
+    applyTextAttribute(monitor, workingCopyManager, getFieldElement().getText(), field, h);
+    applyVisibleAttribute(monitor, workingCopyManager, getFieldElement().getVisible(), field, h);
   }
 
-  protected void applyAbstractFormFieldProperties(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, AbstractFieldProperties property, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
-    if (property != null) {
-      applyEnabledAttribute(monitor, workingCopyManager, property.getEnabled(), field, h);
-      applyMasterAttribute(monitor, workingCopyManager, property.getMaster(), field, h);
-      applyTextAttribute(monitor, workingCopyManager, property.getText(), field, h);
-      applyVisibleAttribute(monitor, workingCopyManager, property.getVisible(), field, h);
-    }
-  }
-
-  protected void applyTextAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, TextAttribute a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
-    if (a != null && StringUtility.hasText(a.getValue().getName())) {
+  protected void applyTextAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, TranslationElement a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    if (a != null) {
       // field has a label
-      overrideMethod(monitor, workingCopyManager, field, h, "getConfiguredLabel", "return TEXTS.get(\"" + a.getValue().getName() + "\");");
+      overrideMethod(monitor, workingCopyManager, field, h, "getConfiguredLabel", "return TEXTS.get(\"" + a.getName() + "\");");
     }
     else {
       // field has no label: hide it
-      //overrideMethod(monitor, workingCopyManager, field, h, "getConfiguredLabelVisible", "return false;");
+      overrideMethod(monitor, workingCopyManager, field, h, "getConfiguredLabelVisible", "return false;");
     }
   }
 
-  protected void applyVisibleAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, VisibleAttribue a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
-    if (a != null && a.getValue().equals(BooleanType.FALSE)) {
+  protected void applyVisibleAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, String a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    if ("false".equals(a)) {
       overrideMethod(monitor, workingCopyManager, field, h, "getConfiguredVisible", "return false;");
     }
   }
 
-  protected void applyEnabledAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, EnabledAttribue a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
-    if (a != null && a.getValue().equals(BooleanType.FALSE)) {
+  protected void applyEnabledAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, String a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    if ("false".equals(a)) {
       overrideMethod(monitor, workingCopyManager, field, h, "getConfiguredEnabled", "return false;");
     }
   }
 
-  protected void applyMandatoryAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, MandatoryAttribue a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
-    if (a != null && a.getValue().equals(BooleanType.TRUE)) {
+  protected void applyMandatoryAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, String a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    if ("true".equals(a)) {
       overrideMethod(monitor, workingCopyManager, field, h, "getConfiguredMandatory", "return true;");
     }
   }
@@ -160,7 +138,7 @@ public abstract class AbstractSamlFormFieldElementOperation extends AbstractSaml
       operation.run(monitor, workingCopyManager);
     }
     else {*/
-    MethodOverrideOperation op = new MethodOverrideOperation(declaringType, methodName, true);
+    MethodOverrideOperation op = new MethodOverrideOperation(declaringType, methodName, false);
     op.setSimpleBody(body);
     op.setSuperTypeHierarchy(h);
     op.validate();
@@ -168,7 +146,7 @@ public abstract class AbstractSamlFormFieldElementOperation extends AbstractSaml
     //}
   }
 
-  public static void dispatchFieldElements(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, AbstractFieldElement field, SamlContext context, SamlFormContext formContext) throws CoreException {
+  public static void dispatchFieldElements(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, FormFieldElement field, SamlContext context, SamlFormContext formContext) throws CoreException {
     AbstractSamlFormFieldElementOperation op = null;
     if (field instanceof SequenceBoxElement) {
       SamlSequenceBoxElementImportOperation ssbeio = new SamlSequenceBoxElementImportOperation();
@@ -200,13 +178,14 @@ public abstract class AbstractSamlFormFieldElementOperation extends AbstractSaml
       fieldOp.setSmartfieldElement((SmartfieldElement) field);
       op = fieldOp;
     }
-    else if (field instanceof ZregBoxElement) {
-      SamlZregBoxElementImportOperation fieldOp = new SamlZregBoxElementImportOperation();
+    else if (field instanceof CustomFieldElement) {
+      //TODO custom field
+      /*SamlZregBoxElementImportOperation fieldOp = new SamlZregBoxElementImportOperation();
       fieldOp.setZregBoxElement((ZregBoxElement) field);
-      op = fieldOp;
+      op = fieldOp;*/
     }
     else {
-      throw new IllegalArgumentException("Unknown EObject field type: " + field);
+      throw new IllegalArgumentException("Unknown EObject field type: " + field.getClass());
     }
 
     if (op != null) {
@@ -226,11 +205,11 @@ public abstract class AbstractSamlFormFieldElementOperation extends AbstractSaml
     m_samlContext = samlContext;
   }
 
-  public AbstractFieldElement getFieldElement() {
+  public FormFieldElement getFieldElement() {
     return m_fieldElement;
   }
 
-  public void setFieldElement(AbstractFieldElement fieldElement) {
+  public void setFieldElement(FormFieldElement fieldElement) {
     m_fieldElement = fieldElement;
   }
 }

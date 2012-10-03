@@ -18,8 +18,8 @@ import org.eclipse.scout.saml.saml.LookupElement;
 import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.lookupcall.LookupCallNewOperation;
 import org.eclipse.scout.sdk.operation.service.ServiceDeleteOperation;
-import org.eclipse.scout.sdk.operation.util.SourceFormatOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
+import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
 import org.eclipse.scout.sdk.saml.importer.operation.logic.SamlLogicFillOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
 import org.eclipse.scout.sdk.util.type.TypeUtility;
@@ -58,6 +58,7 @@ public class LookupElementImportOperation extends AbstractSamlElementImportOpera
     // create classes
     LookupCallNewOperation op = new LookupCallNewOperation();
     op.setLookupCallName(lookupCallName);
+    op.setFormatSource(false);
     op.setBundle(getCurrentScoutModule().getSharedBundle());
     op.setServiceInterfaceBundle(getCurrentScoutModule().getSharedBundle());
     op.setInterfaceRegistrationBundle(getCurrentScoutModule().getClientBundle());
@@ -69,21 +70,20 @@ public class LookupElementImportOperation extends AbstractSamlElementImportOpera
 
     // fill logic
     IType lookupService = TypeUtility.getType(getLookupServiceFqn(baseName));
+    SamlFormContext formContext = new SamlFormContext();
+    formContext.setClientType(op.getOutLookupCall());
+    formContext.setServerType(lookupService);
+    formContext.setSamlContext(getSamlContext());
+
+    getSamlContext().rememberModifiedType(lookupService);
+    getSamlContext().rememberModifiedType(op.getOutLookupCall());
+
     SamlLogicFillOperation logicFillOp = new SamlLogicFillOperation();
     logicFillOp.setSamlContext(getSamlContext());
-    logicFillOp.setChildElements(getLookupElement().getServicelogic());
-    logicFillOp.setClientType(op.getOutLookupCall());
-    logicFillOp.setServerType(lookupService);
+    logicFillOp.setLogicElements(getLookupElement().getLogic());
+    logicFillOp.setSamlFormContext(formContext);
     logicFillOp.validate();
     logicFillOp.run(monitor, workingCopyManager);
-
-    // format
-    SourceFormatOperation f = new SourceFormatOperation(op.getOutLookupCall());
-    f.validate();
-    f.run(monitor, workingCopyManager);
-    f = new SourceFormatOperation(lookupService);
-    f.validate();
-    f.run(monitor, workingCopyManager);
   }
 
   private String getLookupServiceFqn(String baseName) {
@@ -98,12 +98,14 @@ public class LookupElementImportOperation extends AbstractSamlElementImportOpera
     IType oldCall = TypeUtility.getType(shared.getPackageName(IScoutBundle.SHARED_PACKAGE_APPENDIX_SERVICES_LOOKUP) + "." + name + SdkProperties.SUFFIX_LOOKUP_CALL);
     IType oldServiceInterface = TypeUtility.getType(shared.getPackageName(IScoutBundle.SHARED_PACKAGE_APPENDIX_SERVICES_LOOKUP) + ".I" + name + SdkProperties.SUFFIX_LOOKUP_SERVICE);
 
-    ServiceDeleteOperation sdo = new ServiceDeleteOperation();
-    sdo.setServiceImplementation(oldService);
-    sdo.setServiceInterface(oldServiceInterface);
-    sdo.setAdditionalTypesToBeDeleted(new IType[]{oldCall});
-    sdo.validate();
-    sdo.run(monitor, workingCopyManager);
+    if (TypeUtility.exists(oldService)) {
+      ServiceDeleteOperation sdo = new ServiceDeleteOperation();
+      sdo.setServiceImplementation(oldService);
+      sdo.setServiceInterface(oldServiceInterface);
+      sdo.setAdditionalTypesToBeDeleted(new IType[]{oldCall});
+      sdo.validate();
+      sdo.run(monitor, workingCopyManager);
+    }
   }
 
   public LookupElement getLookupElement() {

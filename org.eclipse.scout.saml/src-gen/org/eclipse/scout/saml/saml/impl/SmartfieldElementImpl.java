@@ -3,7 +3,6 @@
 package org.eclipse.scout.saml.saml.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -14,9 +13,6 @@ import org.eclipse.scout.saml.saml.CodeElement;
 import org.eclipse.scout.saml.saml.LookupElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
 import org.eclipse.scout.saml.saml.SmartfieldElement;
-import org.eclipse.scout.saml.saml.ValueFieldProperties;
-
-import org.eclipse.xtext.common.types.JvmTypeReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,7 +21,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.SmartfieldElementImpl#getValueFieldProperties <em>Value Field Properties</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.SmartfieldElementImpl#getMandatory <em>Mandatory</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.SmartfieldElementImpl#getCode <em>Code</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.SmartfieldElementImpl#getValueType <em>Value Type</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.SmartfieldElementImpl#getLookup <em>Lookup</em>}</li>
@@ -37,14 +33,24 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 public class SmartfieldElementImpl extends ValueFieldElementImpl implements SmartfieldElement
 {
   /**
-   * The cached value of the '{@link #getValueFieldProperties() <em>Value Field Properties</em>}' containment reference.
+   * The default value of the '{@link #getMandatory() <em>Mandatory</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValueFieldProperties()
+   * @see #getMandatory()
    * @generated
    * @ordered
    */
-  protected ValueFieldProperties valueFieldProperties;
+  protected static final String MANDATORY_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getMandatory() <em>Mandatory</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMandatory()
+   * @generated
+   * @ordered
+   */
+  protected String mandatory = MANDATORY_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getCode() <em>Code</em>}' reference.
@@ -57,14 +63,24 @@ public class SmartfieldElementImpl extends ValueFieldElementImpl implements Smar
   protected CodeElement code;
 
   /**
-   * The cached value of the '{@link #getValueType() <em>Value Type</em>}' containment reference.
+   * The default value of the '{@link #getValueType() <em>Value Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getValueType()
    * @generated
    * @ordered
    */
-  protected JvmTypeReference valueType;
+  protected static final String VALUE_TYPE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getValueType() <em>Value Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getValueType()
+   * @generated
+   * @ordered
+   */
+  protected String valueType = VALUE_TYPE_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getLookup() <em>Lookup</em>}' reference.
@@ -102,9 +118,9 @@ public class SmartfieldElementImpl extends ValueFieldElementImpl implements Smar
    * <!-- end-user-doc -->
    * @generated
    */
-  public ValueFieldProperties getValueFieldProperties()
+  public String getMandatory()
   {
-    return valueFieldProperties;
+    return mandatory;
   }
 
   /**
@@ -112,37 +128,12 @@ public class SmartfieldElementImpl extends ValueFieldElementImpl implements Smar
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetValueFieldProperties(ValueFieldProperties newValueFieldProperties, NotificationChain msgs)
+  public void setMandatory(String newMandatory)
   {
-    ValueFieldProperties oldValueFieldProperties = valueFieldProperties;
-    valueFieldProperties = newValueFieldProperties;
+    String oldMandatory = mandatory;
+    mandatory = newMandatory;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SamlPackage.SMARTFIELD_ELEMENT__VALUE_FIELD_PROPERTIES, oldValueFieldProperties, newValueFieldProperties);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setValueFieldProperties(ValueFieldProperties newValueFieldProperties)
-  {
-    if (newValueFieldProperties != valueFieldProperties)
-    {
-      NotificationChain msgs = null;
-      if (valueFieldProperties != null)
-        msgs = ((InternalEObject)valueFieldProperties).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SamlPackage.SMARTFIELD_ELEMENT__VALUE_FIELD_PROPERTIES, null, msgs);
-      if (newValueFieldProperties != null)
-        msgs = ((InternalEObject)newValueFieldProperties).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SamlPackage.SMARTFIELD_ELEMENT__VALUE_FIELD_PROPERTIES, null, msgs);
-      msgs = basicSetValueFieldProperties(newValueFieldProperties, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.SMARTFIELD_ELEMENT__VALUE_FIELD_PROPERTIES, newValueFieldProperties, newValueFieldProperties));
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.SMARTFIELD_ELEMENT__MANDATORY, oldMandatory, mandatory));
   }
 
   /**
@@ -193,7 +184,7 @@ public class SmartfieldElementImpl extends ValueFieldElementImpl implements Smar
    * <!-- end-user-doc -->
    * @generated
    */
-  public JvmTypeReference getValueType()
+  public String getValueType()
   {
     return valueType;
   }
@@ -203,37 +194,12 @@ public class SmartfieldElementImpl extends ValueFieldElementImpl implements Smar
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetValueType(JvmTypeReference newValueType, NotificationChain msgs)
+  public void setValueType(String newValueType)
   {
-    JvmTypeReference oldValueType = valueType;
+    String oldValueType = valueType;
     valueType = newValueType;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SamlPackage.SMARTFIELD_ELEMENT__VALUE_TYPE, oldValueType, newValueType);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setValueType(JvmTypeReference newValueType)
-  {
-    if (newValueType != valueType)
-    {
-      NotificationChain msgs = null;
-      if (valueType != null)
-        msgs = ((InternalEObject)valueType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SamlPackage.SMARTFIELD_ELEMENT__VALUE_TYPE, null, msgs);
-      if (newValueType != null)
-        msgs = ((InternalEObject)newValueType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SamlPackage.SMARTFIELD_ELEMENT__VALUE_TYPE, null, msgs);
-      msgs = basicSetValueType(newValueType, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.SMARTFIELD_ELEMENT__VALUE_TYPE, newValueType, newValueType));
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.SMARTFIELD_ELEMENT__VALUE_TYPE, oldValueType, valueType));
   }
 
   /**
@@ -285,30 +251,12 @@ public class SmartfieldElementImpl extends ValueFieldElementImpl implements Smar
    * @generated
    */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case SamlPackage.SMARTFIELD_ELEMENT__VALUE_FIELD_PROPERTIES:
-        return basicSetValueFieldProperties(null, msgs);
-      case SamlPackage.SMARTFIELD_ELEMENT__VALUE_TYPE:
-        return basicSetValueType(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
-      case SamlPackage.SMARTFIELD_ELEMENT__VALUE_FIELD_PROPERTIES:
-        return getValueFieldProperties();
+      case SamlPackage.SMARTFIELD_ELEMENT__MANDATORY:
+        return getMandatory();
       case SamlPackage.SMARTFIELD_ELEMENT__CODE:
         if (resolve) return getCode();
         return basicGetCode();
@@ -331,14 +279,14 @@ public class SmartfieldElementImpl extends ValueFieldElementImpl implements Smar
   {
     switch (featureID)
     {
-      case SamlPackage.SMARTFIELD_ELEMENT__VALUE_FIELD_PROPERTIES:
-        setValueFieldProperties((ValueFieldProperties)newValue);
+      case SamlPackage.SMARTFIELD_ELEMENT__MANDATORY:
+        setMandatory((String)newValue);
         return;
       case SamlPackage.SMARTFIELD_ELEMENT__CODE:
         setCode((CodeElement)newValue);
         return;
       case SamlPackage.SMARTFIELD_ELEMENT__VALUE_TYPE:
-        setValueType((JvmTypeReference)newValue);
+        setValueType((String)newValue);
         return;
       case SamlPackage.SMARTFIELD_ELEMENT__LOOKUP:
         setLookup((LookupElement)newValue);
@@ -357,14 +305,14 @@ public class SmartfieldElementImpl extends ValueFieldElementImpl implements Smar
   {
     switch (featureID)
     {
-      case SamlPackage.SMARTFIELD_ELEMENT__VALUE_FIELD_PROPERTIES:
-        setValueFieldProperties((ValueFieldProperties)null);
+      case SamlPackage.SMARTFIELD_ELEMENT__MANDATORY:
+        setMandatory(MANDATORY_EDEFAULT);
         return;
       case SamlPackage.SMARTFIELD_ELEMENT__CODE:
         setCode((CodeElement)null);
         return;
       case SamlPackage.SMARTFIELD_ELEMENT__VALUE_TYPE:
-        setValueType((JvmTypeReference)null);
+        setValueType(VALUE_TYPE_EDEFAULT);
         return;
       case SamlPackage.SMARTFIELD_ELEMENT__LOOKUP:
         setLookup((LookupElement)null);
@@ -383,16 +331,35 @@ public class SmartfieldElementImpl extends ValueFieldElementImpl implements Smar
   {
     switch (featureID)
     {
-      case SamlPackage.SMARTFIELD_ELEMENT__VALUE_FIELD_PROPERTIES:
-        return valueFieldProperties != null;
+      case SamlPackage.SMARTFIELD_ELEMENT__MANDATORY:
+        return MANDATORY_EDEFAULT == null ? mandatory != null : !MANDATORY_EDEFAULT.equals(mandatory);
       case SamlPackage.SMARTFIELD_ELEMENT__CODE:
         return code != null;
       case SamlPackage.SMARTFIELD_ELEMENT__VALUE_TYPE:
-        return valueType != null;
+        return VALUE_TYPE_EDEFAULT == null ? valueType != null : !VALUE_TYPE_EDEFAULT.equals(valueType);
       case SamlPackage.SMARTFIELD_ELEMENT__LOOKUP:
         return lookup != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (mandatory: ");
+    result.append(mandatory);
+    result.append(", valueType: ");
+    result.append(valueType);
+    result.append(')');
+    return result.toString();
   }
 
 } //SmartfieldElementImpl

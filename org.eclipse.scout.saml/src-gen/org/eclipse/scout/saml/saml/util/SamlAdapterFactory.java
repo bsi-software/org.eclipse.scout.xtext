@@ -11,10 +11,6 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.scout.saml.saml.*;
 
-import org.eclipse.xtext.common.types.JvmIdentifiableElement;
-
-import org.eclipse.xtext.xbase.XExpression;
-
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
@@ -134,11 +130,6 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
         return createFormFieldElementAdapter();
       }
       @Override
-      public Adapter caseFormFieldProperties(FormFieldProperties object)
-      {
-        return createFormFieldPropertiesAdapter();
-      }
-      @Override
       public Adapter caseCompositeFieldElement(CompositeFieldElement object)
       {
         return createCompositeFieldElementAdapter();
@@ -157,11 +148,6 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
       public Adapter caseValueFieldElement(ValueFieldElement object)
       {
         return createValueFieldElementAdapter();
-      }
-      @Override
-      public Adapter caseValueFieldProperties(ValueFieldProperties object)
-      {
-        return createValueFieldPropertiesAdapter();
       }
       @Override
       public Adapter caseStringElement(StringElement object)
@@ -192,46 +178,6 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
       public Adapter caseCustomFieldElement(CustomFieldElement object)
       {
         return createCustomFieldElementAdapter();
-      }
-      @Override
-      public Adapter caseXBlockExpression(XBlockExpression object)
-      {
-        return createXBlockExpressionAdapter();
-      }
-      @Override
-      public Adapter caseXVariableDeclaration(XVariableDeclaration object)
-      {
-        return createXVariableDeclarationAdapter();
-      }
-      @Override
-      public Adapter caseXConstructorCall(XConstructorCall object)
-      {
-        return createXConstructorCallAdapter();
-      }
-      @Override
-      public Adapter caseXExpression(XExpression object)
-      {
-        return createXExpressionAdapter();
-      }
-      @Override
-      public Adapter caseXbase_XBlockExpression(org.eclipse.xtext.xbase.XBlockExpression object)
-      {
-        return createXbase_XBlockExpressionAdapter();
-      }
-      @Override
-      public Adapter caseJvmIdentifiableElement(JvmIdentifiableElement object)
-      {
-        return createJvmIdentifiableElementAdapter();
-      }
-      @Override
-      public Adapter caseXbase_XVariableDeclaration(org.eclipse.xtext.xbase.XVariableDeclaration object)
-      {
-        return createXbase_XVariableDeclarationAdapter();
-      }
-      @Override
-      public Adapter caseXbase_XConstructorCall(org.eclipse.xtext.xbase.XConstructorCall object)
-      {
-        return createXbase_XConstructorCallAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -421,21 +367,6 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.FormFieldProperties <em>Form Field Properties</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.scout.saml.saml.FormFieldProperties
-   * @generated
-   */
-  public Adapter createFormFieldPropertiesAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.CompositeFieldElement <em>Composite Field Element</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -491,21 +422,6 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createValueFieldElementAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.ValueFieldProperties <em>Value Field Properties</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.scout.saml.saml.ValueFieldProperties
-   * @generated
-   */
-  public Adapter createValueFieldPropertiesAdapter()
   {
     return null;
   }
@@ -596,126 +512,6 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCustomFieldElementAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.XBlockExpression <em>XBlock Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.scout.saml.saml.XBlockExpression
-   * @generated
-   */
-  public Adapter createXBlockExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.XVariableDeclaration <em>XVariable Declaration</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.scout.saml.saml.XVariableDeclaration
-   * @generated
-   */
-  public Adapter createXVariableDeclarationAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.XConstructorCall <em>XConstructor Call</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.scout.saml.saml.XConstructorCall
-   * @generated
-   */
-  public Adapter createXConstructorCallAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.xbase.XExpression <em>XExpression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.xtext.xbase.XExpression
-   * @generated
-   */
-  public Adapter createXExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.xbase.XBlockExpression <em>XBlock Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.xtext.xbase.XBlockExpression
-   * @generated
-   */
-  public Adapter createXbase_XBlockExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.common.types.JvmIdentifiableElement <em>Jvm Identifiable Element</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.xtext.common.types.JvmIdentifiableElement
-   * @generated
-   */
-  public Adapter createJvmIdentifiableElementAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.xbase.XVariableDeclaration <em>XVariable Declaration</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.xtext.xbase.XVariableDeclaration
-   * @generated
-   */
-  public Adapter createXbase_XVariableDeclarationAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.xbase.XConstructorCall <em>XConstructor Call</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.xtext.xbase.XConstructorCall
-   * @generated
-   */
-  public Adapter createXbase_XConstructorCallAdapter()
   {
     return null;
   }

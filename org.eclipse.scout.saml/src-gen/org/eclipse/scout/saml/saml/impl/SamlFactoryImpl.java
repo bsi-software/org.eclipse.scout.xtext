@@ -75,21 +75,16 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
       case SamlPackage.TEMPLATE_ELEMENT: return createTemplateElement();
       case SamlPackage.FORM_ELEMENT: return createFormElement();
       case SamlPackage.FORM_FIELD_ELEMENT: return createFormFieldElement();
-      case SamlPackage.FORM_FIELD_PROPERTIES: return createFormFieldProperties();
       case SamlPackage.COMPOSITE_FIELD_ELEMENT: return createCompositeFieldElement();
       case SamlPackage.SEQUENCE_BOX_ELEMENT: return createSequenceBoxElement();
       case SamlPackage.GROUP_BOX_ELEMENT: return createGroupBoxElement();
       case SamlPackage.VALUE_FIELD_ELEMENT: return createValueFieldElement();
-      case SamlPackage.VALUE_FIELD_PROPERTIES: return createValueFieldProperties();
       case SamlPackage.STRING_ELEMENT: return createStringElement();
       case SamlPackage.DOUBLE_ELEMENT: return createDoubleElement();
       case SamlPackage.LONG_ELEMENT: return createLongElement();
       case SamlPackage.DATE_ELEMENT: return createDateElement();
       case SamlPackage.SMARTFIELD_ELEMENT: return createSmartfieldElement();
       case SamlPackage.CUSTOM_FIELD_ELEMENT: return createCustomFieldElement();
-      case SamlPackage.XBLOCK_EXPRESSION: return createXBlockExpression();
-      case SamlPackage.XVARIABLE_DECLARATION: return createXVariableDeclaration();
-      case SamlPackage.XCONSTRUCTOR_CALL: return createXConstructorCall();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -221,17 +216,6 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public FormFieldProperties createFormFieldProperties()
-  {
-    FormFieldPropertiesImpl formFieldProperties = new FormFieldPropertiesImpl();
-    return formFieldProperties;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public CompositeFieldElement createCompositeFieldElement()
   {
     CompositeFieldElementImpl compositeFieldElement = new CompositeFieldElementImpl();
@@ -269,17 +253,6 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
   {
     ValueFieldElementImpl valueFieldElement = new ValueFieldElementImpl();
     return valueFieldElement;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ValueFieldProperties createValueFieldProperties()
-  {
-    ValueFieldPropertiesImpl valueFieldProperties = new ValueFieldPropertiesImpl();
-    return valueFieldProperties;
   }
 
   /**
@@ -346,39 +319,6 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
   {
     CustomFieldElementImpl customFieldElement = new CustomFieldElementImpl();
     return customFieldElement;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public XBlockExpression createXBlockExpression()
-  {
-    XBlockExpressionImpl xBlockExpression = new XBlockExpressionImpl();
-    return xBlockExpression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public XVariableDeclaration createXVariableDeclaration()
-  {
-    XVariableDeclarationImpl xVariableDeclaration = new XVariableDeclarationImpl();
-    return xVariableDeclaration;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public XConstructorCall createXConstructorCall()
-  {
-    XConstructorCallImpl xConstructorCall = new XConstructorCallImpl();
-    return xConstructorCall;
   }
 
   /**

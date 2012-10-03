@@ -62,17 +62,25 @@ class SamlJvmModelInferrer extends AbstractModelInferrer {
 //   				}
 //   			])
 
- 		acceptor.accept(
+ 		/*acceptor.accept(
 			element.toClass(element.fullyQualifiedName?.toString ?: "Synthetic")
 		).initializeLater [
-			members += element.source.toMethod("getDataByAll",
-				element.newTypeRef(typeof(LookupRow)).addArrayTypeDimension) [
+			if(element.event=="all") {
+				members += element.source.toMethod("getDataByAll", element.newTypeRef(typeof(LookupRow)).addArrayTypeDimension) [
+					//parameters += element.source.toParameter("a", element.newTypeRef(typeof(String)))
+					body = element.source
+				]
 				
-				//parameters += element.source.toParameter("a", element.newTypeRef(typeof(String)))
+
+//				val classLevelLogic = new LinkedList<XExpression>()
+//				element.getSiblingsOfType(typeof(LogicElement)).forEach [
+//					if(it.event == null && it.name == null && it.source != null) {
+//						classLevelLogic.add(it.source)
+//					}
+//				]
 				
-				body = element.source
-			]
-		]
+			}
+		]*/
    	}
 }
 

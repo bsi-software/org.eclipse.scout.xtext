@@ -172,8 +172,12 @@
             </elements>
           </elements>
         </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="?" feature="source" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.26"/>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" value="{"/>
+          <elements xsi:type="xtext:Assignment" feature="source" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.12"/>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="}"/>
         </elements>
       </alternatives>
     </rules>
@@ -221,7 +225,7 @@
         <elements xsi:type="xtext:Keyword" value="definition"/>
         <elements xsi:type="xtext:Keyword" value="="/>
         <elements xsi:type="xtext:Assignment" feature="definition" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.12"/>
         </elements>
       </alternatives>
     </rules>
@@ -281,19 +285,27 @@
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//FormFieldElement"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.18"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="FormFieldProperties">
+    <rules xsi:type="xtext:ParserRule" name="CompositeFieldElement">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//FormFieldProperties"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//CompositeFieldElement"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="SequenceBoxElement">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//SequenceBoxElement"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Action">
-          <type metamodel="/0/@metamodelDeclarations.0">
-            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//FormFieldProperties"/>
-          </type>
+        <elements xsi:type="xtext:Keyword" value="sequence_box"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
         </elements>
         <elements xsi:type="xtext:UnorderedGroup">
           <elements xsi:type="xtext:Group" cardinality="?">
@@ -335,29 +347,6 @@
             </elements>
           </elements>
         </elements>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="CompositeFieldElement">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//CompositeFieldElement"/>
-      </type>
-      <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="SequenceBoxElement">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//SequenceBoxElement"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="sequence_box"/>
-        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
-        </elements>
-        <elements xsi:type="xtext:Assignment" feature="formFieldProperties" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
-        </elements>
         <elements xsi:type="xtext:Group" cardinality="?">
           <elements xsi:type="xtext:Keyword" value="{"/>
           <elements xsi:type="xtext:Alternatives" cardinality="*">
@@ -381,8 +370,45 @@
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
         </elements>
-        <elements xsi:type="xtext:Assignment" feature="formFieldProperties" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
+        <elements xsi:type="xtext:UnorderedGroup">
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="text"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="text" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//TranslationElement"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+              </terminal>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="enabled"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="enabled" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="visible"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="visible" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="master"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="master" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//ValueFieldElement"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+              </terminal>
+            </elements>
+          </elements>
         </elements>
         <elements xsi:type="xtext:Group" cardinality="?">
           <elements xsi:type="xtext:Keyword" value="{"/>
@@ -403,36 +429,12 @@
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//ValueFieldElement"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.18"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.23"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.24"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.25"/>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="ValueFieldProperties">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//ValueFieldProperties"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Action">
-          <type metamodel="/0/@metamodelDeclarations.0">
-            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//ValueFieldProperties"/>
-          </type>
-        </elements>
-        <elements xsi:type="xtext:UnorderedGroup">
-          <elements xsi:type="xtext:Assignment" feature="formFieldProperties" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
-          </elements>
-          <elements xsi:type="xtext:Group" cardinality="?">
-            <elements xsi:type="xtext:Keyword" value="mandatory"/>
-            <elements xsi:type="xtext:Keyword" value="="/>
-            <elements xsi:type="xtext:Assignment" feature="mandatory" operator="=">
-              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
-            </elements>
-          </elements>
-        </elements>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="StringElement">
@@ -445,8 +447,50 @@
           <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
         </elements>
         <elements xsi:type="xtext:UnorderedGroup">
-          <elements xsi:type="xtext:Assignment" feature="valueFieldProperties" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="text"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="text" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//TranslationElement"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+              </terminal>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="enabled"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="enabled" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="visible"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="visible" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="master"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="master" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//ValueFieldElement"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+              </terminal>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="mandatory"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="mandatory" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            </elements>
           </elements>
           <elements xsi:type="xtext:Group" cardinality="?">
             <elements xsi:type="xtext:Keyword" value="maxlen"/>
@@ -474,8 +518,52 @@
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
         </elements>
-        <elements xsi:type="xtext:Assignment" feature="valueFieldProperties" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
+        <elements xsi:type="xtext:UnorderedGroup">
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="text"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="text" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//TranslationElement"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+              </terminal>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="enabled"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="enabled" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="visible"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="visible" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="master"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="master" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//ValueFieldElement"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+              </terminal>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="mandatory"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="mandatory" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            </elements>
+          </elements>
         </elements>
         <elements xsi:type="xtext:Group" cardinality="?">
           <elements xsi:type="xtext:Keyword" value="{"/>
@@ -495,8 +583,52 @@
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
         </elements>
-        <elements xsi:type="xtext:Assignment" feature="valueFieldProperties" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
+        <elements xsi:type="xtext:UnorderedGroup">
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="text"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="text" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//TranslationElement"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+              </terminal>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="enabled"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="enabled" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="visible"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="visible" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="master"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="master" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//ValueFieldElement"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+              </terminal>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="mandatory"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="mandatory" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            </elements>
+          </elements>
         </elements>
         <elements xsi:type="xtext:Group" cardinality="?">
           <elements xsi:type="xtext:Keyword" value="{"/>
@@ -516,8 +648,52 @@
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
         </elements>
-        <elements xsi:type="xtext:Assignment" feature="valueFieldProperties" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
+        <elements xsi:type="xtext:UnorderedGroup">
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="text"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="text" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//TranslationElement"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+              </terminal>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="enabled"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="enabled" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="visible"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="visible" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="master"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="master" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//ValueFieldElement"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+              </terminal>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="mandatory"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="mandatory" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            </elements>
+          </elements>
         </elements>
         <elements xsi:type="xtext:Group" cardinality="?">
           <elements xsi:type="xtext:Keyword" value="{"/>
@@ -538,8 +714,50 @@
           <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
         </elements>
         <elements xsi:type="xtext:UnorderedGroup">
-          <elements xsi:type="xtext:Assignment" cardinality="?" feature="valueFieldProperties" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="text"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="text" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//TranslationElement"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+              </terminal>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="enabled"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="enabled" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="visible"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="visible" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="master"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="master" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//ValueFieldElement"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+              </terminal>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="mandatory"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="mandatory" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            </elements>
           </elements>
           <elements xsi:type="xtext:Group" cardinality="?">
             <elements xsi:type="xtext:Keyword" value="code"/>
@@ -557,7 +775,7 @@
             <elements xsi:type="xtext:Keyword" value="value_type"/>
             <elements xsi:type="xtext:Keyword" value="="/>
             <elements xsi:type="xtext:Assignment" feature="valueType" operator="=">
-              <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+              <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.12"/>
             </elements>
           </elements>
           <elements xsi:type="xtext:Group" cardinality="?">
@@ -601,8 +819,45 @@
             <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
           </terminal>
         </elements>
-        <elements xsi:type="xtext:Assignment" feature="formFieldProperties" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
+        <elements xsi:type="xtext:UnorderedGroup">
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="text"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="text" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//TranslationElement"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+              </terminal>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="enabled"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="enabled" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="visible"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="visible" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="master"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="master" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//ValueFieldElement"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+              </terminal>
+            </elements>
+          </elements>
         </elements>
         <elements xsi:type="xtext:Group" cardinality="?">
           <elements xsi:type="xtext:Keyword" value="{"/>
@@ -615,336 +870,6 @@
             </elements>
           </elements>
           <elements xsi:type="xtext:Keyword" value="}"/>
-        </elements>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="XBlockExpression">
-      <type metamodel="/0/@metamodelDeclarations.2">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/xbase/Xbase#//XBlockExpression"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Action">
-          <type metamodel="/0/@metamodelDeclarations.0">
-            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//XBlockExpression"/>
-          </type>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value="{"/>
-        <elements xsi:type="xtext:Group" cardinality="*">
-          <elements xsi:type="xtext:Assignment" feature="expressions" operator="+=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.27"/>
-          </elements>
-          <elements xsi:type="xtext:Keyword" value=";"/>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value="}"/>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="XExpressionInsideBlock">
-      <type metamodel="/0/@metamodelDeclarations.2">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/xbase/Xbase#//XExpression"/>
-      </type>
-      <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" predicated="true" rule="/0/@rules.28"/>
-        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="XVariableDeclaration">
-      <type metamodel="/0/@metamodelDeclarations.2">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/xbase/Xbase#//XVariableDeclaration"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Action">
-          <type metamodel="/0/@metamodelDeclarations.0">
-            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//XVariableDeclaration"/>
-          </type>
-        </elements>
-        <elements xsi:type="xtext:Assignment" feature="type" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
-        </elements>
-        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.10"/>
-        </elements>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Keyword" value="="/>
-          <elements xsi:type="xtext:Assignment" feature="right" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
-          </elements>
-        </elements>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="XLiteral">
-      <type metamodel="/0/@metamodelDeclarations.2">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/xbase/Xbase#//XExpression"/>
-      </type>
-      <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.43"/>
-        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.45"/>
-        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.44"/>
-        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.46"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.30"/>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="XTypeLiteral">
-      <type metamodel="/0/@metamodelDeclarations.2">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/xbase/Xbase#//XExpression"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Action">
-          <type metamodel="/0/@metamodelDeclarations.2">
-            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/xbase/Xbase#//XTypeLiteral"/>
-          </type>
-        </elements>
-        <elements xsi:type="xtext:Assignment" feature="type" operator="=">
-          <terminal xsi:type="xtext:CrossReference">
-            <type metamodel="/0/@metamodelDeclarations.1">
-              <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/common/JavaVMTypes#//JvmType"/>
-            </type>
-            <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.52"/>
-          </terminal>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value="."/>
-        <elements xsi:type="xtext:Keyword" value="class"/>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="XUnaryOperation">
-      <type metamodel="/0/@metamodelDeclarations.2">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/xbase/Xbase#//XExpression"/>
-      </type>
-      <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Action">
-            <type metamodel="/0/@metamodelDeclarations.2">
-              <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/xbase/Xbase#//XUnaryOperation"/>
-            </type>
-          </elements>
-          <elements xsi:type="xtext:Assignment" feature="feature" operator="=">
-            <terminal xsi:type="xtext:CrossReference">
-              <type metamodel="/0/@metamodelDeclarations.1">
-                <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/common/JavaVMTypes#//JvmIdentifiableElement"/>
-              </type>
-              <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.19"/>
-            </terminal>
-          </elements>
-          <elements xsi:type="xtext:Assignment" feature="operand" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.33"/>
-          </elements>
-        </elements>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.33"/>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="XPrimaryExpression">
-      <type metamodel="/0/@metamodelDeclarations.2">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/xbase/Xbase#//XExpression"/>
-      </type>
-      <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.35"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.34"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.29"/>
-        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.28"/>
-        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.31"/>
-        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.32"/>
-        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.33"/>
-        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.48"/>
-        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.49"/>
-        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.50"/>
-        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.27"/>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="XMemberFeatureCall">
-      <type metamodel="/0/@metamodelDeclarations.2">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/xbase/Xbase#//XExpression"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.32"/>
-        <elements xsi:type="xtext:Alternatives" cardinality="*">
-          <elements xsi:type="xtext:Group">
-            <elements xsi:type="xtext:Group" predicated="true">
-              <elements xsi:type="xtext:Group">
-                <elements xsi:type="xtext:Action" feature="assignable" operator="=">
-                  <type metamodel="/0/@metamodelDeclarations.2">
-                    <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/xbase/Xbase#//XAssignment"/>
-                  </type>
-                </elements>
-                <elements xsi:type="xtext:Keyword" value="."/>
-                <elements xsi:type="xtext:Assignment" feature="feature" operator="=">
-                  <terminal xsi:type="xtext:CrossReference">
-                    <type metamodel="/0/@metamodelDeclarations.1">
-                      <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/common/JavaVMTypes#//JvmIdentifiableElement"/>
-                    </type>
-                    <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.10"/>
-                  </terminal>
-                </elements>
-                <elements xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
-              </elements>
-            </elements>
-            <elements xsi:type="xtext:Assignment" feature="value" operator="=">
-              <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.1"/>
-            </elements>
-          </elements>
-          <elements xsi:type="xtext:Group">
-            <elements xsi:type="xtext:Group" predicated="true">
-              <elements xsi:type="xtext:Group">
-                <elements xsi:type="xtext:Action" feature="memberCallTarget" operator="=">
-                  <type metamodel="/0/@metamodelDeclarations.2">
-                    <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/xbase/Xbase#//XMemberFeatureCall"/>
-                  </type>
-                </elements>
-                <elements xsi:type="xtext:Keyword" value="."/>
-              </elements>
-            </elements>
-            <elements xsi:type="xtext:Group" cardinality="?">
-              <elements xsi:type="xtext:Keyword" value="&lt;"/>
-              <elements xsi:type="xtext:Assignment" feature="typeArguments" operator="+=">
-                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.3"/>
-              </elements>
-              <elements xsi:type="xtext:Group" cardinality="*">
-                <elements xsi:type="xtext:Keyword" value=","/>
-                <elements xsi:type="xtext:Assignment" feature="typeArguments" operator="+=">
-                  <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.3"/>
-                </elements>
-              </elements>
-              <elements xsi:type="xtext:Keyword" value=">"/>
-            </elements>
-            <elements xsi:type="xtext:Assignment" feature="feature" operator="=">
-              <terminal xsi:type="xtext:CrossReference">
-                <type metamodel="/0/@metamodelDeclarations.1">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/common/JavaVMTypes#//JvmIdentifiableElement"/>
-                </type>
-                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.10"/>
-              </terminal>
-            </elements>
-            <elements xsi:type="xtext:Group" cardinality="?">
-              <elements xsi:type="xtext:Assignment" predicated="true" feature="explicitOperationCall" operator="?=">
-                <terminal xsi:type="xtext:Keyword" value="("/>
-              </elements>
-              <elements xsi:type="xtext:Group" cardinality="?">
-                <elements xsi:type="xtext:Assignment" feature="memberCallArguments" operator="+=">
-                  <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
-                </elements>
-                <elements xsi:type="xtext:Group" cardinality="*">
-                  <elements xsi:type="xtext:Keyword" value=","/>
-                  <elements xsi:type="xtext:Assignment" feature="memberCallArguments" operator="+=">
-                    <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
-                  </elements>
-                </elements>
-              </elements>
-              <elements xsi:type="xtext:Keyword" value=")"/>
-            </elements>
-          </elements>
-        </elements>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="XFeatureCall">
-      <type metamodel="/0/@metamodelDeclarations.2">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/xbase/Xbase#//XExpression"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Action">
-          <type metamodel="/0/@metamodelDeclarations.2">
-            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/xbase/Xbase#//XFeatureCall"/>
-          </type>
-        </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="?" feature="declaringType" operator="=">
-          <terminal xsi:type="xtext:CrossReference">
-            <type metamodel="/0/@metamodelDeclarations.1">
-              <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/common/JavaVMTypes#//JvmDeclaredType"/>
-            </type>
-            <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.41"/>
-          </terminal>
-        </elements>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Keyword" value="&lt;"/>
-          <elements xsi:type="xtext:Assignment" feature="typeArguments" operator="+=">
-            <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.3"/>
-          </elements>
-          <elements xsi:type="xtext:Group" cardinality="*">
-            <elements xsi:type="xtext:Keyword" value=","/>
-            <elements xsi:type="xtext:Assignment" feature="typeArguments" operator="+=">
-              <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.3"/>
-            </elements>
-          </elements>
-          <elements xsi:type="xtext:Keyword" value=">"/>
-        </elements>
-        <elements xsi:type="xtext:Assignment" feature="feature" operator="=">
-          <terminal xsi:type="xtext:CrossReference">
-            <type metamodel="/0/@metamodelDeclarations.1">
-              <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/common/JavaVMTypes#//JvmIdentifiableElement"/>
-            </type>
-            <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.40"/>
-          </terminal>
-        </elements>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Assignment" predicated="true" feature="explicitOperationCall" operator="?=">
-            <terminal xsi:type="xtext:Keyword" value="("/>
-          </elements>
-          <elements xsi:type="xtext:Group" cardinality="?">
-            <elements xsi:type="xtext:Assignment" feature="featureCallArguments" operator="+=">
-              <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
-            </elements>
-            <elements xsi:type="xtext:Group" cardinality="*">
-              <elements xsi:type="xtext:Keyword" value=","/>
-              <elements xsi:type="xtext:Assignment" feature="featureCallArguments" operator="+=">
-                <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
-              </elements>
-            </elements>
-          </elements>
-          <elements xsi:type="xtext:Keyword" value=")"/>
-        </elements>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="XConstructorCall">
-      <type metamodel="/0/@metamodelDeclarations.2">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/xbase/Xbase#//XConstructorCall"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Action">
-          <type metamodel="/0/@metamodelDeclarations.0">
-            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//XConstructorCall"/>
-          </type>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value="new"/>
-        <elements xsi:type="xtext:Assignment" feature="constructor" operator="=">
-          <terminal xsi:type="xtext:CrossReference">
-            <type metamodel="/0/@metamodelDeclarations.1">
-              <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/common/JavaVMTypes#//JvmConstructor"/>
-            </type>
-            <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.52"/>
-          </terminal>
-        </elements>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Keyword" predicated="true" value="&lt;"/>
-          <elements xsi:type="xtext:Assignment" feature="typeArguments" operator="+=">
-            <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.3"/>
-          </elements>
-          <elements xsi:type="xtext:Group" cardinality="*">
-            <elements xsi:type="xtext:Keyword" value=","/>
-            <elements xsi:type="xtext:Assignment" feature="typeArguments" operator="+=">
-              <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.3"/>
-            </elements>
-          </elements>
-          <elements xsi:type="xtext:Keyword" value=">"/>
-        </elements>
-        <elements xsi:type="xtext:Alternatives">
-          <elements xsi:type="xtext:Group">
-            <elements xsi:type="xtext:Keyword" predicated="true" value="("/>
-            <elements xsi:type="xtext:Group" cardinality="?">
-              <elements xsi:type="xtext:Assignment" feature="arguments" operator="+=">
-                <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
-              </elements>
-              <elements xsi:type="xtext:Group" cardinality="*">
-                <elements xsi:type="xtext:Keyword" value=","/>
-                <elements xsi:type="xtext:Assignment" feature="arguments" operator="+=">
-                  <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
-                </elements>
-              </elements>
-            </elements>
-            <elements xsi:type="xtext:Keyword" value=")"/>
-          </elements>
-          <elements xsi:type="xtext:Group">
-            <elements xsi:type="xtext:Assignment" predicated="true" feature="isArray" operator="?=">
-              <terminal xsi:type="xtext:Keyword" value="["/>
-            </elements>
-            <elements xsi:type="xtext:Keyword" value="]"/>
-          </elements>
         </elements>
       </alternatives>
     </rules>
@@ -1308,7 +1233,7 @@
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/xbase/Xbase#//XExpression"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.31"/>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.18"/>
         <elements xsi:type="xtext:Group" cardinality="*">
           <elements xsi:type="xtext:Group" predicated="true">
             <elements xsi:type="xtext:Group">
@@ -1328,7 +1253,7 @@
             </elements>
           </elements>
           <elements xsi:type="xtext:Assignment" feature="rightOperand" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.31"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.18"/>
           </elements>
         </elements>
       </alternatives>
@@ -1385,7 +1310,7 @@
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/xbase/Xbase#//XExpression"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.33"/>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.21"/>
         <elements xsi:type="xtext:Group" cardinality="*">
           <elements xsi:type="xtext:Group" predicated="true">
             <elements xsi:type="xtext:Group">
@@ -1408,7 +1333,7 @@
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/xbase/Xbase#//XExpression"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.32"/>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.22"/>
         <elements xsi:type="xtext:Alternatives" cardinality="*">
           <elements xsi:type="xtext:Group">
             <elements xsi:type="xtext:Group" predicated="true">
@@ -1508,11 +1433,11 @@
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/xbase/Xbase#//XExpression"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.35"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.26"/>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.42"/>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.34"/>
         <elements xsi:type="xtext:RuleCall" rule="/1/@rules.29"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.34"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.29"/>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.39"/>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.23"/>
         <elements xsi:type="xtext:RuleCall" rule="/1/@rules.28"/>
         <elements xsi:type="xtext:RuleCall" rule="/1/@rules.31"/>
         <elements xsi:type="xtext:RuleCall" rule="/1/@rules.32"/>
@@ -1533,7 +1458,7 @@
         <elements xsi:type="xtext:RuleCall" rule="/1/@rules.45"/>
         <elements xsi:type="xtext:RuleCall" rule="/1/@rules.44"/>
         <elements xsi:type="xtext:RuleCall" rule="/1/@rules.46"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.30"/>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.47"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="XClosure">
@@ -1587,7 +1512,7 @@
         </elements>
         <elements xsi:type="xtext:Group" cardinality="*">
           <elements xsi:type="xtext:Assignment" feature="expressions" operator="+=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.27"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.35"/>
           </elements>
           <elements xsi:type="xtext:Keyword" cardinality="?" value=";"/>
         </elements>
@@ -1819,7 +1744,7 @@
         <elements xsi:type="xtext:Keyword" value="{"/>
         <elements xsi:type="xtext:Group" cardinality="*">
           <elements xsi:type="xtext:Assignment" feature="expressions" operator="+=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.27"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.35"/>
           </elements>
           <elements xsi:type="xtext:Keyword" cardinality="?" value=";"/>
         </elements>
@@ -1831,7 +1756,7 @@
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/xbase/Xbase#//XExpression"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.36"/>
         <elements xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
       </alternatives>
     </rules>

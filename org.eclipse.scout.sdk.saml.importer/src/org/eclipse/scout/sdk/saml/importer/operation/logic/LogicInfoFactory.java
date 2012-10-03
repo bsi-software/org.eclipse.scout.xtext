@@ -11,18 +11,20 @@
 package org.eclipse.scout.sdk.saml.importer.operation.logic;
 
 import org.eclipse.jdt.core.IType;
-import org.eclipse.scout.saml.saml.JavaRunAtAttributeList;
 import org.eclipse.scout.saml.saml.LogicElement;
-import org.eclipse.scout.saml.saml.LogicExecAttribute;
-import org.eclipse.scout.saml.saml.LogicOptionalProperties;
-import org.eclipse.scout.saml.saml.LogicTypeAttribute;
-import org.eclipse.scout.saml.saml.LogicTypeAttributeList;
-import org.eclipse.scout.saml.saml.RunAtAttribute;
+import org.eclipse.scout.saml.services.SamlGrammarAccess;
+import org.eclipse.scout.saml.services.SamlGrammarAccess.LogicEventTypeElements;
 import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.service.ParameterArgument;
+import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
 import org.eclipse.scout.sdk.util.resources.ResourceUtility;
 import org.eclipse.scout.sdk.util.type.TypeComparators;
 import org.eclipse.scout.sdk.util.type.TypeUtility;
+import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.compiler.ImportManager;
+import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
+import org.eclipse.xtext.xbase.compiler.output.FakeTreeAppendable;
+import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 
 /**
  * <h3>{@link LogicInfoFactory}</h3> ...
@@ -30,101 +32,105 @@ import org.eclipse.scout.sdk.util.type.TypeUtility;
  * @author mvi
  * @since 3.8.0 26.09.2012
  */
+@SuppressWarnings("restriction")
 public class LogicInfoFactory {
 
   private static final String FORM_HANDLER_MODIFY = "modify";
   private static final String FORM_HANDLER_NEW = "new";
 
-  public static LogicInfo create(LogicElement element, IType formDataType, IType formType, IType sourceType, IType serverType, IType serverInterfaceType, IType clientType, IType clientInterfaceType) {
+  public static LogicInfo create(LogicElement element, IType sourceType, SamlFormContext context) {
     LogicInfo ret = new LogicInfo();
 
-    boolean isClientCall = isClientCall(element);
+    boolean isClientCall = isClientCall(element, context);
     boolean isClassLevel = isClassLevelLogic(element);
     String targetMethodName = null;
     if (!isClassLevel) {
-      targetMethodName = getTargetMethodName(element.getType(), sourceType);
+      targetMethodName = getTargetMethodName(element.getEvent(), sourceType, context);
     }
 
     IType targetType = null;
     IType targetInterfaceType = null;
     if (isClientCall) {
-      targetType = clientType;
-      targetInterfaceType = clientInterfaceType;
+      targetType = context.getClientType();
+      targetInterfaceType = context.getClientInterface();
     }
     else {
-      targetType = serverType;
-      targetInterfaceType = serverInterfaceType;
+      targetType = context.getServerType();
+      targetInterfaceType = context.getServerInterface();
     }
 
     ret.setClassLevel(isClassLevel);
     ret.setClientLogic(isClientCall);
-    ret.setFormDataType(formDataType);
-    ret.setFormType(formType);
+    ret.setFormDataType(context.getFormDataType());
+    ret.setFormType(context.getFormType());
     if (!isClassLevel) {
-      if (isClientCall && TypeUtility.exists(formType)) {
-        ret.setParameters(new ParameterArgument[]{new ParameterArgument("form", formType.getElementName())});
+      if (isClientCall && TypeUtility.exists(context.getFormType())) {
+        ret.setParameters(new ParameterArgument[]{new ParameterArgument("form", context.getFormType().getElementName())});
       }
-      else if (TypeUtility.exists(formDataType)) {
-        ret.setParameters(new ParameterArgument[]{new ParameterArgument("formData", formDataType.getElementName())});
+      else if (TypeUtility.exists(context.getFormDataType())) {
+        ret.setParameters(new ParameterArgument[]{new ParameterArgument("formData", context.getFormDataType().getElementName())});
       }
       if (isClientCall) {
         ret.setReturnType(new ParameterArgument("ret", "void"));
       }
-      else if (TypeUtility.exists(formDataType)) {
-        ret.setReturnType(new ParameterArgument("ret", formDataType.getElementName()));
+      else if (TypeUtility.exists(context.getFormDataType())) {
+        ret.setReturnType(new ParameterArgument("ret", context.getFormDataType().getElementName()));
       }
-      ret.setSourceLogic(getSourceLogic(isClientCall, targetInterfaceType, formDataType, formType, targetMethodName));
-      ret.setSourceMethodName(getSourceMethodName(element.getType()));
+      ret.setSourceLogic(getSourceLogic(isClientCall, targetInterfaceType, context.getFormDataType(), context.getFormType(), targetMethodName));
+      ret.setSourceMethodName(getSourceMethodName(element.getEvent(), context));
     }
-    if (element.getType().getValue().equals(LogicTypeAttributeList.MODIFY_LOAD) || element.getType().getValue().equals(LogicTypeAttributeList.MODIFY_STORE)) {
-      ret.setSourceType(getHandler(formType, FORM_HANDLER_MODIFY));
-    }
-    else if (element.getType().getValue().equals(LogicTypeAttributeList.NEW_LOAD) || element.getType().getValue().equals(LogicTypeAttributeList.NEW_STORE)) {
-      ret.setSourceType(getHandler(formType, FORM_HANDLER_NEW));
-    }
-    else {
-      ret.setSourceType(sourceType);
+
+    LogicEventTypeElements eventElements = context.getSamlContext().getInjector().getInstance(SamlGrammarAccess.class).getLogicEventTypeAccess();
+    ret.setSourceType(sourceType);
+    if (element.getEvent() != null) {
+      if (element.getEvent().equals(eventElements.getModify_loadKeyword_1().getValue()) ||
+          element.getEvent().equals(eventElements.getModify_storeKeyword_2().getValue())) {
+        ret.setSourceType(getHandler(context.getFormType(), FORM_HANDLER_MODIFY));
+      }
+      else if (element.getEvent().equals(eventElements.getNew_loadKeyword_3().getValue()) ||
+          element.getEvent().equals(eventElements.getNew_storeKeyword_4().getValue())) {
+        ret.setSourceType(getHandler(context.getFormType(), FORM_HANDLER_NEW));
+      }
     }
     ret.setTargetInterfaceType(targetInterfaceType);
-    ret.setTargetLogic(getTargetLogic(element));
+    ret.setTargetLogic(getTargetLogic(element, context));
     ret.setTargetMethodName(targetMethodName);
     ret.setTargetType(targetType);
 
     return ret;
   }
 
-  private static String getSourceMethodName(LogicTypeAttribute eventType) {
-    switch (eventType.getValue()) {
-      case ALL: {
-        return null;
-      }
-      case MODIFY_LOAD: {
-        return "execLoad";
-      }
-      case MODIFY_STORE: {
-        return "execStore";
-      }
-      case NEW_LOAD: {
-        return "execLoad";
-      }
-      case NEW_STORE: {
-        return "execStore";
-      }
-      case CHANGED: {
-        return "execChangedValue";
-      }
-      case CLICK: {
-        return "execAction";
-      }
-      case MASTER_CHANGED: {
-        return "execChangedMasterValue";
-      }
-      case INIT: {
-        return "execInitField";
-      }
-      default: {
-        throw new IllegalArgumentException("Unknown logic type: " + eventType.getValue());
-      }
+  private static String getSourceMethodName(String event, SamlFormContext context) {
+    LogicEventTypeElements elements = context.getSamlContext().getInjector().getInstance(SamlGrammarAccess.class).getLogicEventTypeAccess();
+    if (event.equals(elements.getAllKeyword_0().getValue())) {
+      return null;
+    }
+    else if (event.equals(elements.getModify_loadKeyword_1().getValue())) {
+      return "execLoad";
+    }
+    else if (event.equals(elements.getModify_storeKeyword_2().getValue())) {
+      return "execStore";
+    }
+    else if (event.equals(elements.getNew_loadKeyword_3().getValue())) {
+      return "execLoad";
+    }
+    else if (event.equals(elements.getNew_storeKeyword_4().getValue())) {
+      return "execStore";
+    }
+    else if (event.equals(elements.getChangedKeyword_5().getValue())) {
+      return "execChangedValue";
+    }
+    else if (event.equals(elements.getClickKeyword_6().getValue())) {
+      return "execAction";
+    }
+    else if (event.equals(elements.getMaster_changedKeyword_7().getValue())) {
+      return "execChangedMasterValue";
+    }
+    else if (event.equals(elements.getInitKeyword_8().getValue())) {
+      return "execInitField";
+    }
+    else {
+      throw new IllegalArgumentException("Unknown logic type: " + event);
     }
   }
 
@@ -148,52 +154,43 @@ public class LogicInfoFactory {
   }
 
   private static boolean isClassLevelLogic(LogicElement logicElement) {
-    return logicElement.getType().getValue().equals(LogicTypeAttributeList.GLOBAL);
+    return logicElement.getEvent() == null && logicElement.getName() == null;
   }
 
-  private static RunAtAttribute getRunAtAttribute(LogicElement logicElement) {
-    for (LogicOptionalProperties prop : logicElement.getProperties()) {
-      if (prop.getRunat() != null) {
-        return prop.getRunat();
-      }
-    }
-    return null;
+  private static String getJavaSourceFromXbaseExpression(XExpression x, SamlFormContext context) {
+    XbaseCompiler compiler = context.getSamlContext().getInjector().getInstance(XbaseCompiler.class);
+    ImportManager importManager = new ImportManager(true);
+    ITreeAppendable appendable = new FakeTreeAppendable(importManager);
+    compiler.toJavaStatement(x, appendable, false);
+    return appendable.toString();
   }
 
-  private static String getTargetLogic(LogicElement logicElement) throws IllegalArgumentException {
+  private static String getTargetLogic(LogicElement logicElement, SamlFormContext context) throws IllegalArgumentException {
     if (logicElement.getSource() != null) {
       return logicElement.getSource();
     }
     else {
       // referenced logic
-      LogicExecAttribute exec = getExecAttribute(logicElement);
+      LogicElement exec = logicElement.getExec();
       if (exec == null) {
         throw new IllegalArgumentException("Linked java element for source code could not be found. ");
       }
-      return exec.getValue().getSource();
+      return exec.getSource();
     }
   }
 
-  private static LogicExecAttribute getExecAttribute(LogicElement logicElement) {
-    for (LogicOptionalProperties prop : logicElement.getProperties()) {
-      if (prop.getExec() != null) {
-        return prop.getExec();
-      }
-    }
-    return null;
-  }
-
-  private static boolean isClientCall(LogicElement logicElement) {
-    RunAtAttribute runat = getRunAtAttribute(logicElement);
+  private static boolean isClientCall(LogicElement logicElement, SamlFormContext context) {
+    String runat = logicElement.getRunat();
     if (runat == null) {
       // not defined on logic element. may also be defined on java element
-      LogicExecAttribute exec = getExecAttribute(logicElement);
+      LogicElement exec = logicElement.getExec();
       if (exec == null) {
         throw new IllegalArgumentException("Linked java element for source code could not be found. ");
       }
-      runat = exec.getValue().getRunat();
+      runat = exec.getRunat();
     }
-    return runat.getValue().equals(JavaRunAtAttributeList.CLIENT);
+    String clientKeyWord = context.getSamlContext().getInjector().getInstance(SamlGrammarAccess.class).getLogicElementAccess().getRunatClientKeyword_3_1_2_0_0().getValue();
+    return runat.equals(clientKeyWord);
   }
 
   private static String getSourceLogic(boolean isClientLogic, IType targetInterfaceType, IType formDataType, IType formType, String targetMethodName) {
@@ -227,39 +224,37 @@ public class LogicInfoFactory {
     return sb.toString();
   }
 
-  private static String getTargetMethodName(LogicTypeAttribute eventType, IType sourceType) {
-
-    switch (eventType.getValue()) {
-      case ALL: {
-        return "getDataByAll";
-      }
-      case MODIFY_LOAD: {
-        return "load";
-      }
-      case MODIFY_STORE: {
-        return "store";
-      }
-      case NEW_LOAD: {
-        return "prepareCreate";
-      }
-      case NEW_STORE: {
-        return "create";
-      }
-      case CHANGED: {
-        return getSourceElementPrefix(sourceType) + "Changed";
-      }
-      case CLICK: {
-        return getSourceElementPrefix(sourceType) + "Clicked";
-      }
-      case MASTER_CHANGED: {
-        return getSourceElementPrefix(sourceType) + "MasterChanged";
-      }
-      case INIT: {
-        return getSourceElementPrefix(sourceType) + "Init";
-      }
-      default: {
-        throw new IllegalArgumentException("Unknown logic type: " + eventType.getValue());
-      }
+  private static String getTargetMethodName(String event, IType sourceType, SamlFormContext context) {
+    LogicEventTypeElements elements = context.getSamlContext().getInjector().getInstance(SamlGrammarAccess.class).getLogicEventTypeAccess();
+    if (event.equals(elements.getAllKeyword_0().getValue())) {
+      return "getDataByAll";
+    }
+    else if (event.equals(elements.getModify_loadKeyword_1().getValue())) {
+      return "load";
+    }
+    else if (event.equals(elements.getModify_storeKeyword_2().getValue())) {
+      return "store";
+    }
+    else if (event.equals(elements.getNew_loadKeyword_3().getValue())) {
+      return "prepareCreate";
+    }
+    else if (event.equals(elements.getNew_storeKeyword_4().getValue())) {
+      return "create";
+    }
+    else if (event.equals(elements.getChangedKeyword_5().getValue())) {
+      return getSourceElementPrefix(sourceType) + "Changed";
+    }
+    else if (event.equals(elements.getClickKeyword_6().getValue())) {
+      return getSourceElementPrefix(sourceType) + "Clicked";
+    }
+    else if (event.equals(elements.getMaster_changedKeyword_7().getValue())) {
+      return getSourceElementPrefix(sourceType) + "MasterChanged";
+    }
+    else if (event.equals(elements.getInitKeyword_8().getValue())) {
+      return getSourceElementPrefix(sourceType) + "Init";
+    }
+    else {
+      throw new IllegalArgumentException("Unknown logic type: " + event);
     }
   }
 

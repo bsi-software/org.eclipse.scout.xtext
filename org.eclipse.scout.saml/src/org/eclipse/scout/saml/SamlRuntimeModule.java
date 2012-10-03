@@ -5,10 +5,8 @@ package org.eclipse.scout.saml;
 
 import org.eclipse.scout.saml.generator.SamlGenerator;
 import org.eclipse.scout.saml.scoping.SamlScopeProvider;
-import org.eclipse.scout.saml.typing.SamlTypeProvider;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.scoping.IScopeProvider;
-import org.eclipse.xtext.xbase.typing.ITypeProvider;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
@@ -24,8 +22,8 @@ public class SamlRuntimeModule extends org.eclipse.scout.saml.AbstractSamlRuntim
     return SamlScopeProvider.class;
   }
 
-  @Override
+  /*@Override
   public Class<? extends ITypeProvider> bindITypeProvider() {
     return SamlTypeProvider.class;
-  }
+  }*/
 }

@@ -14,7 +14,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
-import org.eclipse.scout.saml.saml.AbstractValueFieldProperties;
 import org.eclipse.scout.saml.saml.DateElement;
 import org.eclipse.scout.sdk.operation.form.field.DateFieldNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
@@ -52,12 +51,9 @@ public class SamlDateElementImportOperation extends AbstractSamlFormFieldElement
     IType createdField = o.getCreatedField();
     ITypeHierarchy h = createdField.newSupertypeHierarchy(monitor);
 
-    for (AbstractValueFieldProperties p : getDateElement().getProperties()) {
-      applyMandatoryAttribute(monitor, workingCopyManager, p.getMandatory(), createdField, h);
-      applyAbstractFormFieldProperties(monitor, workingCopyManager, p.getFieldproperties(), createdField, h);
-    }
-
-    fillFormFieldLogic(monitor, workingCopyManager, getDateElement().getChildren(), createdField);
+    applyMandatoryAttribute(monitor, workingCopyManager, getDateElement().getMandatory(), createdField, h);
+    applyFormFieldProperties(monitor, workingCopyManager, createdField, h);
+    fillFormFieldLogic(monitor, workingCopyManager, createdField);
   }
 
   public DateElement getDateElement() {

@@ -7,8 +7,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
-import org.eclipse.xtext.xbase.XbasePackage;
-
 /**
  * <!-- begin-user-doc -->
  * The <b>Package</b> for the model.
@@ -317,7 +315,7 @@ public interface SamlPackage extends EPackage
   int LOGIC_ELEMENT__EXEC = 3;
 
   /**
-   * The feature id for the '<em><b>Source</b></em>' containment reference.
+   * The feature id for the '<em><b>Source</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -428,7 +426,7 @@ public interface SamlPackage extends EPackage
   int TEMPLATE_ELEMENT__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Definition</b></em>' containment reference.
+   * The feature id for the '<em><b>Definition</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -538,41 +536,13 @@ public interface SamlPackage extends EPackage
   int FORM_FIELD_ELEMENT__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Logic</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FORM_FIELD_ELEMENT__LOGIC = 1;
-
-  /**
-   * The number of structural features of the '<em>Form Field Element</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FORM_FIELD_ELEMENT_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.FormFieldPropertiesImpl <em>Form Field Properties</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.scout.saml.saml.impl.FormFieldPropertiesImpl
-   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getFormFieldProperties()
-   * @generated
-   */
-  int FORM_FIELD_PROPERTIES = 11;
-
-  /**
    * The feature id for the '<em><b>Text</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FORM_FIELD_PROPERTIES__TEXT = 0;
+  int FORM_FIELD_ELEMENT__TEXT = 1;
 
   /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -581,7 +551,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_FIELD_PROPERTIES__ENABLED = 1;
+  int FORM_FIELD_ELEMENT__ENABLED = 2;
 
   /**
    * The feature id for the '<em><b>Visible</b></em>' attribute.
@@ -590,7 +560,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_FIELD_PROPERTIES__VISIBLE = 2;
+  int FORM_FIELD_ELEMENT__VISIBLE = 3;
 
   /**
    * The feature id for the '<em><b>Master</b></em>' reference.
@@ -599,16 +569,25 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_FIELD_PROPERTIES__MASTER = 3;
+  int FORM_FIELD_ELEMENT__MASTER = 4;
 
   /**
-   * The number of structural features of the '<em>Form Field Properties</em>' class.
+   * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FORM_FIELD_PROPERTIES_FEATURE_COUNT = 4;
+  int FORM_FIELD_ELEMENT__LOGIC = 5;
+
+  /**
+   * The number of structural features of the '<em>Form Field Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORM_FIELD_ELEMENT_FEATURE_COUNT = 6;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.CompositeFieldElementImpl <em>Composite Field Element</em>}' class.
@@ -618,7 +597,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getCompositeFieldElement()
    * @generated
    */
-  int COMPOSITE_FIELD_ELEMENT = 12;
+  int COMPOSITE_FIELD_ELEMENT = 11;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -630,6 +609,42 @@ public interface SamlPackage extends EPackage
   int COMPOSITE_FIELD_ELEMENT__NAME = FORM_FIELD_ELEMENT__NAME;
 
   /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPOSITE_FIELD_ELEMENT__TEXT = FORM_FIELD_ELEMENT__TEXT;
+
+  /**
+   * The feature id for the '<em><b>Enabled</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPOSITE_FIELD_ELEMENT__ENABLED = FORM_FIELD_ELEMENT__ENABLED;
+
+  /**
+   * The feature id for the '<em><b>Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPOSITE_FIELD_ELEMENT__VISIBLE = FORM_FIELD_ELEMENT__VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Master</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPOSITE_FIELD_ELEMENT__MASTER = FORM_FIELD_ELEMENT__MASTER;
+
+  /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -639,22 +654,13 @@ public interface SamlPackage extends EPackage
   int COMPOSITE_FIELD_ELEMENT__LOGIC = FORM_FIELD_ELEMENT__LOGIC;
 
   /**
-   * The feature id for the '<em><b>Form Field Properties</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPOSITE_FIELD_ELEMENT__FORM_FIELD_PROPERTIES = FORM_FIELD_ELEMENT_FEATURE_COUNT + 0;
-
-  /**
    * The feature id for the '<em><b>Fields</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMPOSITE_FIELD_ELEMENT__FIELDS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 1;
+  int COMPOSITE_FIELD_ELEMENT__FIELDS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Composite Field Element</em>' class.
@@ -663,7 +669,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 2;
+  int COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.SequenceBoxElementImpl <em>Sequence Box Element</em>}' class.
@@ -673,7 +679,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getSequenceBoxElement()
    * @generated
    */
-  int SEQUENCE_BOX_ELEMENT = 13;
+  int SEQUENCE_BOX_ELEMENT = 12;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -685,6 +691,42 @@ public interface SamlPackage extends EPackage
   int SEQUENCE_BOX_ELEMENT__NAME = COMPOSITE_FIELD_ELEMENT__NAME;
 
   /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SEQUENCE_BOX_ELEMENT__TEXT = COMPOSITE_FIELD_ELEMENT__TEXT;
+
+  /**
+   * The feature id for the '<em><b>Enabled</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SEQUENCE_BOX_ELEMENT__ENABLED = COMPOSITE_FIELD_ELEMENT__ENABLED;
+
+  /**
+   * The feature id for the '<em><b>Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SEQUENCE_BOX_ELEMENT__VISIBLE = COMPOSITE_FIELD_ELEMENT__VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Master</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SEQUENCE_BOX_ELEMENT__MASTER = COMPOSITE_FIELD_ELEMENT__MASTER;
+
+  /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -692,15 +734,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int SEQUENCE_BOX_ELEMENT__LOGIC = COMPOSITE_FIELD_ELEMENT__LOGIC;
-
-  /**
-   * The feature id for the '<em><b>Form Field Properties</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SEQUENCE_BOX_ELEMENT__FORM_FIELD_PROPERTIES = COMPOSITE_FIELD_ELEMENT__FORM_FIELD_PROPERTIES;
 
   /**
    * The feature id for the '<em><b>Fields</b></em>' containment reference list.
@@ -728,7 +761,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getGroupBoxElement()
    * @generated
    */
-  int GROUP_BOX_ELEMENT = 14;
+  int GROUP_BOX_ELEMENT = 13;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -740,6 +773,42 @@ public interface SamlPackage extends EPackage
   int GROUP_BOX_ELEMENT__NAME = COMPOSITE_FIELD_ELEMENT__NAME;
 
   /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_BOX_ELEMENT__TEXT = COMPOSITE_FIELD_ELEMENT__TEXT;
+
+  /**
+   * The feature id for the '<em><b>Enabled</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_BOX_ELEMENT__ENABLED = COMPOSITE_FIELD_ELEMENT__ENABLED;
+
+  /**
+   * The feature id for the '<em><b>Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_BOX_ELEMENT__VISIBLE = COMPOSITE_FIELD_ELEMENT__VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Master</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_BOX_ELEMENT__MASTER = COMPOSITE_FIELD_ELEMENT__MASTER;
+
+  /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -747,15 +816,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int GROUP_BOX_ELEMENT__LOGIC = COMPOSITE_FIELD_ELEMENT__LOGIC;
-
-  /**
-   * The feature id for the '<em><b>Form Field Properties</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GROUP_BOX_ELEMENT__FORM_FIELD_PROPERTIES = COMPOSITE_FIELD_ELEMENT__FORM_FIELD_PROPERTIES;
 
   /**
    * The feature id for the '<em><b>Fields</b></em>' containment reference list.
@@ -783,7 +843,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getValueFieldElement()
    * @generated
    */
-  int VALUE_FIELD_ELEMENT = 15;
+  int VALUE_FIELD_ELEMENT = 14;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -793,6 +853,42 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int VALUE_FIELD_ELEMENT__NAME = FORM_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE_FIELD_ELEMENT__TEXT = FORM_FIELD_ELEMENT__TEXT;
+
+  /**
+   * The feature id for the '<em><b>Enabled</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE_FIELD_ELEMENT__ENABLED = FORM_FIELD_ELEMENT__ENABLED;
+
+  /**
+   * The feature id for the '<em><b>Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE_FIELD_ELEMENT__VISIBLE = FORM_FIELD_ELEMENT__VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Master</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE_FIELD_ELEMENT__MASTER = FORM_FIELD_ELEMENT__MASTER;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -813,43 +909,6 @@ public interface SamlPackage extends EPackage
   int VALUE_FIELD_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.ValueFieldPropertiesImpl <em>Value Field Properties</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.scout.saml.saml.impl.ValueFieldPropertiesImpl
-   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getValueFieldProperties()
-   * @generated
-   */
-  int VALUE_FIELD_PROPERTIES = 16;
-
-  /**
-   * The feature id for the '<em><b>Form Field Properties</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VALUE_FIELD_PROPERTIES__FORM_FIELD_PROPERTIES = 0;
-
-  /**
-   * The feature id for the '<em><b>Mandatory</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VALUE_FIELD_PROPERTIES__MANDATORY = 1;
-
-  /**
-   * The number of structural features of the '<em>Value Field Properties</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VALUE_FIELD_PROPERTIES_FEATURE_COUNT = 2;
-
-  /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.StringElementImpl <em>String Element</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -857,7 +916,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getStringElement()
    * @generated
    */
-  int STRING_ELEMENT = 17;
+  int STRING_ELEMENT = 15;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -869,6 +928,42 @@ public interface SamlPackage extends EPackage
   int STRING_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
 
   /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT__TEXT = VALUE_FIELD_ELEMENT__TEXT;
+
+  /**
+   * The feature id for the '<em><b>Enabled</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT__ENABLED = VALUE_FIELD_ELEMENT__ENABLED;
+
+  /**
+   * The feature id for the '<em><b>Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Master</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
+
+  /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -878,13 +973,13 @@ public interface SamlPackage extends EPackage
   int STRING_ELEMENT__LOGIC = VALUE_FIELD_ELEMENT__LOGIC;
 
   /**
-   * The feature id for the '<em><b>Value Field Properties</b></em>' containment reference.
+   * The feature id for the '<em><b>Mandatory</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int STRING_ELEMENT__VALUE_FIELD_PROPERTIES = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int STRING_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Maxlen</b></em>' attribute.
@@ -912,7 +1007,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getDoubleElement()
    * @generated
    */
-  int DOUBLE_ELEMENT = 18;
+  int DOUBLE_ELEMENT = 16;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -924,6 +1019,42 @@ public interface SamlPackage extends EPackage
   int DOUBLE_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
 
   /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DOUBLE_ELEMENT__TEXT = VALUE_FIELD_ELEMENT__TEXT;
+
+  /**
+   * The feature id for the '<em><b>Enabled</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DOUBLE_ELEMENT__ENABLED = VALUE_FIELD_ELEMENT__ENABLED;
+
+  /**
+   * The feature id for the '<em><b>Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DOUBLE_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Master</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DOUBLE_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
+
+  /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -933,13 +1064,13 @@ public interface SamlPackage extends EPackage
   int DOUBLE_ELEMENT__LOGIC = VALUE_FIELD_ELEMENT__LOGIC;
 
   /**
-   * The feature id for the '<em><b>Value Field Properties</b></em>' containment reference.
+   * The feature id for the '<em><b>Mandatory</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DOUBLE_ELEMENT__VALUE_FIELD_PROPERTIES = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int DOUBLE_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Double Element</em>' class.
@@ -958,7 +1089,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getLongElement()
    * @generated
    */
-  int LONG_ELEMENT = 19;
+  int LONG_ELEMENT = 17;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -970,6 +1101,42 @@ public interface SamlPackage extends EPackage
   int LONG_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
 
   /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LONG_ELEMENT__TEXT = VALUE_FIELD_ELEMENT__TEXT;
+
+  /**
+   * The feature id for the '<em><b>Enabled</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LONG_ELEMENT__ENABLED = VALUE_FIELD_ELEMENT__ENABLED;
+
+  /**
+   * The feature id for the '<em><b>Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LONG_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Master</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LONG_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
+
+  /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -979,13 +1146,13 @@ public interface SamlPackage extends EPackage
   int LONG_ELEMENT__LOGIC = VALUE_FIELD_ELEMENT__LOGIC;
 
   /**
-   * The feature id for the '<em><b>Value Field Properties</b></em>' containment reference.
+   * The feature id for the '<em><b>Mandatory</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LONG_ELEMENT__VALUE_FIELD_PROPERTIES = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int LONG_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Long Element</em>' class.
@@ -1004,7 +1171,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getDateElement()
    * @generated
    */
-  int DATE_ELEMENT = 20;
+  int DATE_ELEMENT = 18;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1016,6 +1183,42 @@ public interface SamlPackage extends EPackage
   int DATE_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
 
   /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATE_ELEMENT__TEXT = VALUE_FIELD_ELEMENT__TEXT;
+
+  /**
+   * The feature id for the '<em><b>Enabled</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATE_ELEMENT__ENABLED = VALUE_FIELD_ELEMENT__ENABLED;
+
+  /**
+   * The feature id for the '<em><b>Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATE_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Master</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATE_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
+
+  /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1025,13 +1228,13 @@ public interface SamlPackage extends EPackage
   int DATE_ELEMENT__LOGIC = VALUE_FIELD_ELEMENT__LOGIC;
 
   /**
-   * The feature id for the '<em><b>Value Field Properties</b></em>' containment reference.
+   * The feature id for the '<em><b>Mandatory</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DATE_ELEMENT__VALUE_FIELD_PROPERTIES = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int DATE_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Date Element</em>' class.
@@ -1050,7 +1253,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getSmartfieldElement()
    * @generated
    */
-  int SMARTFIELD_ELEMENT = 21;
+  int SMARTFIELD_ELEMENT = 19;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1062,6 +1265,42 @@ public interface SamlPackage extends EPackage
   int SMARTFIELD_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
 
   /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SMARTFIELD_ELEMENT__TEXT = VALUE_FIELD_ELEMENT__TEXT;
+
+  /**
+   * The feature id for the '<em><b>Enabled</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SMARTFIELD_ELEMENT__ENABLED = VALUE_FIELD_ELEMENT__ENABLED;
+
+  /**
+   * The feature id for the '<em><b>Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SMARTFIELD_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Master</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SMARTFIELD_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
+
+  /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1071,13 +1310,13 @@ public interface SamlPackage extends EPackage
   int SMARTFIELD_ELEMENT__LOGIC = VALUE_FIELD_ELEMENT__LOGIC;
 
   /**
-   * The feature id for the '<em><b>Value Field Properties</b></em>' containment reference.
+   * The feature id for the '<em><b>Mandatory</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT__VALUE_FIELD_PROPERTIES = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int SMARTFIELD_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Code</b></em>' reference.
@@ -1089,7 +1328,7 @@ public interface SamlPackage extends EPackage
   int SMARTFIELD_ELEMENT__CODE = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Value Type</b></em>' containment reference.
+   * The feature id for the '<em><b>Value Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1123,7 +1362,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getCustomFieldElement()
    * @generated
    */
-  int CUSTOM_FIELD_ELEMENT = 22;
+  int CUSTOM_FIELD_ELEMENT = 20;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1133,6 +1372,42 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int CUSTOM_FIELD_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CUSTOM_FIELD_ELEMENT__TEXT = VALUE_FIELD_ELEMENT__TEXT;
+
+  /**
+   * The feature id for the '<em><b>Enabled</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CUSTOM_FIELD_ELEMENT__ENABLED = VALUE_FIELD_ELEMENT__ENABLED;
+
+  /**
+   * The feature id for the '<em><b>Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CUSTOM_FIELD_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Master</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CUSTOM_FIELD_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -1153,22 +1428,13 @@ public interface SamlPackage extends EPackage
   int CUSTOM_FIELD_ELEMENT__TEMPLATE = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Form Field Properties</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CUSTOM_FIELD_ELEMENT__FORM_FIELD_PROPERTIES = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
-
-  /**
    * The feature id for the '<em><b>Fields</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CUSTOM_FIELD_ELEMENT__FIELDS = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 2;
+  int CUSTOM_FIELD_ELEMENT__FIELDS = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Custom Field Element</em>' class.
@@ -1177,163 +1443,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_FIELD_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 3;
-
-  /**
-   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.XBlockExpressionImpl <em>XBlock Expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.scout.saml.saml.impl.XBlockExpressionImpl
-   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getXBlockExpression()
-   * @generated
-   */
-  int XBLOCK_EXPRESSION = 23;
-
-  /**
-   * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int XBLOCK_EXPRESSION__EXPRESSIONS = XbasePackage.XBLOCK_EXPRESSION__EXPRESSIONS;
-
-  /**
-   * The number of structural features of the '<em>XBlock Expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int XBLOCK_EXPRESSION_FEATURE_COUNT = XbasePackage.XBLOCK_EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.XVariableDeclarationImpl <em>XVariable Declaration</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.scout.saml.saml.impl.XVariableDeclarationImpl
-   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getXVariableDeclaration()
-   * @generated
-   */
-  int XVARIABLE_DECLARATION = 24;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int XVARIABLE_DECLARATION__TYPE = XbasePackage.XVARIABLE_DECLARATION__TYPE;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int XVARIABLE_DECLARATION__NAME = XbasePackage.XVARIABLE_DECLARATION__NAME;
-
-  /**
-   * The feature id for the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int XVARIABLE_DECLARATION__RIGHT = XbasePackage.XVARIABLE_DECLARATION__RIGHT;
-
-  /**
-   * The feature id for the '<em><b>Writeable</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int XVARIABLE_DECLARATION__WRITEABLE = XbasePackage.XVARIABLE_DECLARATION__WRITEABLE;
-
-  /**
-   * The number of structural features of the '<em>XVariable Declaration</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int XVARIABLE_DECLARATION_FEATURE_COUNT = XbasePackage.XVARIABLE_DECLARATION_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.XConstructorCallImpl <em>XConstructor Call</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.scout.saml.saml.impl.XConstructorCallImpl
-   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getXConstructorCall()
-   * @generated
-   */
-  int XCONSTRUCTOR_CALL = 25;
-
-  /**
-   * The feature id for the '<em><b>Constructor</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int XCONSTRUCTOR_CALL__CONSTRUCTOR = XbasePackage.XCONSTRUCTOR_CALL__CONSTRUCTOR;
-
-  /**
-   * The feature id for the '<em><b>Arguments</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int XCONSTRUCTOR_CALL__ARGUMENTS = XbasePackage.XCONSTRUCTOR_CALL__ARGUMENTS;
-
-  /**
-   * The feature id for the '<em><b>Type Arguments</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int XCONSTRUCTOR_CALL__TYPE_ARGUMENTS = XbasePackage.XCONSTRUCTOR_CALL__TYPE_ARGUMENTS;
-
-  /**
-   * The feature id for the '<em><b>Invalid Feature Issue Code</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int XCONSTRUCTOR_CALL__INVALID_FEATURE_ISSUE_CODE = XbasePackage.XCONSTRUCTOR_CALL__INVALID_FEATURE_ISSUE_CODE;
-
-  /**
-   * The feature id for the '<em><b>Valid Feature</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int XCONSTRUCTOR_CALL__VALID_FEATURE = XbasePackage.XCONSTRUCTOR_CALL__VALID_FEATURE;
-
-  /**
-   * The feature id for the '<em><b>Is Array</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int XCONSTRUCTOR_CALL__IS_ARRAY = XbasePackage.XCONSTRUCTOR_CALL_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>XConstructor Call</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int XCONSTRUCTOR_CALL_FEATURE_COUNT = XbasePackage.XCONSTRUCTOR_CALL_FEATURE_COUNT + 1;
+  int CUSTOM_FIELD_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 2;
 
 
   /**
@@ -1584,15 +1694,15 @@ public interface SamlPackage extends EPackage
   EReference getLogicElement_Exec();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.LogicElement#getSource <em>Source</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.LogicElement#getSource <em>Source</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Source</em>'.
+   * @return the meta object for the attribute '<em>Source</em>'.
    * @see org.eclipse.scout.saml.saml.LogicElement#getSource()
    * @see #getLogicElement()
    * @generated
    */
-  EReference getLogicElement_Source();
+  EAttribute getLogicElement_Source();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.CodeElement <em>Code Element</em>}'.
@@ -1680,15 +1790,15 @@ public interface SamlPackage extends EPackage
   EAttribute getTemplateElement_Name();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.TemplateElement#getDefinition <em>Definition</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.TemplateElement#getDefinition <em>Definition</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Definition</em>'.
+   * @return the meta object for the attribute '<em>Definition</em>'.
    * @see org.eclipse.scout.saml.saml.TemplateElement#getDefinition()
    * @see #getTemplateElement()
    * @generated
    */
-  EReference getTemplateElement_Definition();
+  EAttribute getTemplateElement_Definition();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.FormElement <em>Form Element</em>}'.
@@ -1788,6 +1898,50 @@ public interface SamlPackage extends EPackage
   EAttribute getFormFieldElement_Name();
 
   /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.FormFieldElement#getText <em>Text</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Text</em>'.
+   * @see org.eclipse.scout.saml.saml.FormFieldElement#getText()
+   * @see #getFormFieldElement()
+   * @generated
+   */
+  EReference getFormFieldElement_Text();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FormFieldElement#getEnabled <em>Enabled</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Enabled</em>'.
+   * @see org.eclipse.scout.saml.saml.FormFieldElement#getEnabled()
+   * @see #getFormFieldElement()
+   * @generated
+   */
+  EAttribute getFormFieldElement_Enabled();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FormFieldElement#getVisible <em>Visible</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Visible</em>'.
+   * @see org.eclipse.scout.saml.saml.FormFieldElement#getVisible()
+   * @see #getFormFieldElement()
+   * @generated
+   */
+  EAttribute getFormFieldElement_Visible();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.FormFieldElement#getMaster <em>Master</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Master</em>'.
+   * @see org.eclipse.scout.saml.saml.FormFieldElement#getMaster()
+   * @see #getFormFieldElement()
+   * @generated
+   */
+  EReference getFormFieldElement_Master();
+
+  /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.FormFieldElement#getLogic <em>Logic</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1799,60 +1953,6 @@ public interface SamlPackage extends EPackage
   EReference getFormFieldElement_Logic();
 
   /**
-   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.FormFieldProperties <em>Form Field Properties</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Form Field Properties</em>'.
-   * @see org.eclipse.scout.saml.saml.FormFieldProperties
-   * @generated
-   */
-  EClass getFormFieldProperties();
-
-  /**
-   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.FormFieldProperties#getText <em>Text</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Text</em>'.
-   * @see org.eclipse.scout.saml.saml.FormFieldProperties#getText()
-   * @see #getFormFieldProperties()
-   * @generated
-   */
-  EReference getFormFieldProperties_Text();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FormFieldProperties#getEnabled <em>Enabled</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Enabled</em>'.
-   * @see org.eclipse.scout.saml.saml.FormFieldProperties#getEnabled()
-   * @see #getFormFieldProperties()
-   * @generated
-   */
-  EAttribute getFormFieldProperties_Enabled();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FormFieldProperties#getVisible <em>Visible</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Visible</em>'.
-   * @see org.eclipse.scout.saml.saml.FormFieldProperties#getVisible()
-   * @see #getFormFieldProperties()
-   * @generated
-   */
-  EAttribute getFormFieldProperties_Visible();
-
-  /**
-   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.FormFieldProperties#getMaster <em>Master</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Master</em>'.
-   * @see org.eclipse.scout.saml.saml.FormFieldProperties#getMaster()
-   * @see #getFormFieldProperties()
-   * @generated
-   */
-  EReference getFormFieldProperties_Master();
-
-  /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.CompositeFieldElement <em>Composite Field Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1861,17 +1961,6 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EClass getCompositeFieldElement();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.CompositeFieldElement#getFormFieldProperties <em>Form Field Properties</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Form Field Properties</em>'.
-   * @see org.eclipse.scout.saml.saml.CompositeFieldElement#getFormFieldProperties()
-   * @see #getCompositeFieldElement()
-   * @generated
-   */
-  EReference getCompositeFieldElement_FormFieldProperties();
 
   /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.CompositeFieldElement#getFields <em>Fields</em>}'.
@@ -1915,38 +2004,6 @@ public interface SamlPackage extends EPackage
   EClass getValueFieldElement();
 
   /**
-   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.ValueFieldProperties <em>Value Field Properties</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Value Field Properties</em>'.
-   * @see org.eclipse.scout.saml.saml.ValueFieldProperties
-   * @generated
-   */
-  EClass getValueFieldProperties();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.ValueFieldProperties#getFormFieldProperties <em>Form Field Properties</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Form Field Properties</em>'.
-   * @see org.eclipse.scout.saml.saml.ValueFieldProperties#getFormFieldProperties()
-   * @see #getValueFieldProperties()
-   * @generated
-   */
-  EReference getValueFieldProperties_FormFieldProperties();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.ValueFieldProperties#getMandatory <em>Mandatory</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Mandatory</em>'.
-   * @see org.eclipse.scout.saml.saml.ValueFieldProperties#getMandatory()
-   * @see #getValueFieldProperties()
-   * @generated
-   */
-  EAttribute getValueFieldProperties_Mandatory();
-
-  /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.StringElement <em>String Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1957,15 +2014,15 @@ public interface SamlPackage extends EPackage
   EClass getStringElement();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.StringElement#getValueFieldProperties <em>Value Field Properties</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.StringElement#getMandatory <em>Mandatory</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Value Field Properties</em>'.
-   * @see org.eclipse.scout.saml.saml.StringElement#getValueFieldProperties()
+   * @return the meta object for the attribute '<em>Mandatory</em>'.
+   * @see org.eclipse.scout.saml.saml.StringElement#getMandatory()
    * @see #getStringElement()
    * @generated
    */
-  EReference getStringElement_ValueFieldProperties();
+  EAttribute getStringElement_Mandatory();
 
   /**
    * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.StringElement#getMaxlen <em>Maxlen</em>}'.
@@ -1989,15 +2046,15 @@ public interface SamlPackage extends EPackage
   EClass getDoubleElement();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.DoubleElement#getValueFieldProperties <em>Value Field Properties</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.DoubleElement#getMandatory <em>Mandatory</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Value Field Properties</em>'.
-   * @see org.eclipse.scout.saml.saml.DoubleElement#getValueFieldProperties()
+   * @return the meta object for the attribute '<em>Mandatory</em>'.
+   * @see org.eclipse.scout.saml.saml.DoubleElement#getMandatory()
    * @see #getDoubleElement()
    * @generated
    */
-  EReference getDoubleElement_ValueFieldProperties();
+  EAttribute getDoubleElement_Mandatory();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.LongElement <em>Long Element</em>}'.
@@ -2010,15 +2067,15 @@ public interface SamlPackage extends EPackage
   EClass getLongElement();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.LongElement#getValueFieldProperties <em>Value Field Properties</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.LongElement#getMandatory <em>Mandatory</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Value Field Properties</em>'.
-   * @see org.eclipse.scout.saml.saml.LongElement#getValueFieldProperties()
+   * @return the meta object for the attribute '<em>Mandatory</em>'.
+   * @see org.eclipse.scout.saml.saml.LongElement#getMandatory()
    * @see #getLongElement()
    * @generated
    */
-  EReference getLongElement_ValueFieldProperties();
+  EAttribute getLongElement_Mandatory();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.DateElement <em>Date Element</em>}'.
@@ -2031,15 +2088,15 @@ public interface SamlPackage extends EPackage
   EClass getDateElement();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.DateElement#getValueFieldProperties <em>Value Field Properties</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.DateElement#getMandatory <em>Mandatory</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Value Field Properties</em>'.
-   * @see org.eclipse.scout.saml.saml.DateElement#getValueFieldProperties()
+   * @return the meta object for the attribute '<em>Mandatory</em>'.
+   * @see org.eclipse.scout.saml.saml.DateElement#getMandatory()
    * @see #getDateElement()
    * @generated
    */
-  EReference getDateElement_ValueFieldProperties();
+  EAttribute getDateElement_Mandatory();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.SmartfieldElement <em>Smartfield Element</em>}'.
@@ -2052,15 +2109,15 @@ public interface SamlPackage extends EPackage
   EClass getSmartfieldElement();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getValueFieldProperties <em>Value Field Properties</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getMandatory <em>Mandatory</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Value Field Properties</em>'.
-   * @see org.eclipse.scout.saml.saml.SmartfieldElement#getValueFieldProperties()
+   * @return the meta object for the attribute '<em>Mandatory</em>'.
+   * @see org.eclipse.scout.saml.saml.SmartfieldElement#getMandatory()
    * @see #getSmartfieldElement()
    * @generated
    */
-  EReference getSmartfieldElement_ValueFieldProperties();
+  EAttribute getSmartfieldElement_Mandatory();
 
   /**
    * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getCode <em>Code</em>}'.
@@ -2074,15 +2131,15 @@ public interface SamlPackage extends EPackage
   EReference getSmartfieldElement_Code();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getValueType <em>Value Type</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getValueType <em>Value Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Value Type</em>'.
+   * @return the meta object for the attribute '<em>Value Type</em>'.
    * @see org.eclipse.scout.saml.saml.SmartfieldElement#getValueType()
    * @see #getSmartfieldElement()
    * @generated
    */
-  EReference getSmartfieldElement_ValueType();
+  EAttribute getSmartfieldElement_ValueType();
 
   /**
    * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getLookup <em>Lookup</em>}'.
@@ -2117,17 +2174,6 @@ public interface SamlPackage extends EPackage
   EReference getCustomFieldElement_Template();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.CustomFieldElement#getFormFieldProperties <em>Form Field Properties</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Form Field Properties</em>'.
-   * @see org.eclipse.scout.saml.saml.CustomFieldElement#getFormFieldProperties()
-   * @see #getCustomFieldElement()
-   * @generated
-   */
-  EReference getCustomFieldElement_FormFieldProperties();
-
-  /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.CustomFieldElement#getFields <em>Fields</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2137,47 +2183,6 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EReference getCustomFieldElement_Fields();
-
-  /**
-   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.XBlockExpression <em>XBlock Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>XBlock Expression</em>'.
-   * @see org.eclipse.scout.saml.saml.XBlockExpression
-   * @generated
-   */
-  EClass getXBlockExpression();
-
-  /**
-   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.XVariableDeclaration <em>XVariable Declaration</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>XVariable Declaration</em>'.
-   * @see org.eclipse.scout.saml.saml.XVariableDeclaration
-   * @generated
-   */
-  EClass getXVariableDeclaration();
-
-  /**
-   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.XConstructorCall <em>XConstructor Call</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>XConstructor Call</em>'.
-   * @see org.eclipse.scout.saml.saml.XConstructorCall
-   * @generated
-   */
-  EClass getXConstructorCall();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.XConstructorCall#isIsArray <em>Is Array</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Is Array</em>'.
-   * @see org.eclipse.scout.saml.saml.XConstructorCall#isIsArray()
-   * @see #getXConstructorCall()
-   * @generated
-   */
-  EAttribute getXConstructorCall_IsArray();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -2399,12 +2404,12 @@ public interface SamlPackage extends EPackage
     EReference LOGIC_ELEMENT__EXEC = eINSTANCE.getLogicElement_Exec();
 
     /**
-     * The meta object literal for the '<em><b>Source</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Source</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference LOGIC_ELEMENT__SOURCE = eINSTANCE.getLogicElement_Source();
+    EAttribute LOGIC_ELEMENT__SOURCE = eINSTANCE.getLogicElement_Source();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.CodeElementImpl <em>Code Element</em>}' class.
@@ -2477,12 +2482,12 @@ public interface SamlPackage extends EPackage
     EAttribute TEMPLATE_ELEMENT__NAME = eINSTANCE.getTemplateElement_Name();
 
     /**
-     * The meta object literal for the '<em><b>Definition</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Definition</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference TEMPLATE_ELEMENT__DEFINITION = eINSTANCE.getTemplateElement_Definition();
+    EAttribute TEMPLATE_ELEMENT__DEFINITION = eINSTANCE.getTemplateElement_Definition();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.FormElementImpl <em>Form Element</em>}' class.
@@ -2561,30 +2566,12 @@ public interface SamlPackage extends EPackage
     EAttribute FORM_FIELD_ELEMENT__NAME = eINSTANCE.getFormFieldElement_Name();
 
     /**
-     * The meta object literal for the '<em><b>Logic</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference FORM_FIELD_ELEMENT__LOGIC = eINSTANCE.getFormFieldElement_Logic();
-
-    /**
-     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.FormFieldPropertiesImpl <em>Form Field Properties</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.eclipse.scout.saml.saml.impl.FormFieldPropertiesImpl
-     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getFormFieldProperties()
-     * @generated
-     */
-    EClass FORM_FIELD_PROPERTIES = eINSTANCE.getFormFieldProperties();
-
-    /**
      * The meta object literal for the '<em><b>Text</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FORM_FIELD_PROPERTIES__TEXT = eINSTANCE.getFormFieldProperties_Text();
+    EReference FORM_FIELD_ELEMENT__TEXT = eINSTANCE.getFormFieldElement_Text();
 
     /**
      * The meta object literal for the '<em><b>Enabled</b></em>' attribute feature.
@@ -2592,7 +2579,7 @@ public interface SamlPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute FORM_FIELD_PROPERTIES__ENABLED = eINSTANCE.getFormFieldProperties_Enabled();
+    EAttribute FORM_FIELD_ELEMENT__ENABLED = eINSTANCE.getFormFieldElement_Enabled();
 
     /**
      * The meta object literal for the '<em><b>Visible</b></em>' attribute feature.
@@ -2600,7 +2587,7 @@ public interface SamlPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute FORM_FIELD_PROPERTIES__VISIBLE = eINSTANCE.getFormFieldProperties_Visible();
+    EAttribute FORM_FIELD_ELEMENT__VISIBLE = eINSTANCE.getFormFieldElement_Visible();
 
     /**
      * The meta object literal for the '<em><b>Master</b></em>' reference feature.
@@ -2608,7 +2595,15 @@ public interface SamlPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FORM_FIELD_PROPERTIES__MASTER = eINSTANCE.getFormFieldProperties_Master();
+    EReference FORM_FIELD_ELEMENT__MASTER = eINSTANCE.getFormFieldElement_Master();
+
+    /**
+     * The meta object literal for the '<em><b>Logic</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FORM_FIELD_ELEMENT__LOGIC = eINSTANCE.getFormFieldElement_Logic();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.CompositeFieldElementImpl <em>Composite Field Element</em>}' class.
@@ -2619,14 +2614,6 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EClass COMPOSITE_FIELD_ELEMENT = eINSTANCE.getCompositeFieldElement();
-
-    /**
-     * The meta object literal for the '<em><b>Form Field Properties</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference COMPOSITE_FIELD_ELEMENT__FORM_FIELD_PROPERTIES = eINSTANCE.getCompositeFieldElement_FormFieldProperties();
 
     /**
      * The meta object literal for the '<em><b>Fields</b></em>' containment reference list feature.
@@ -2667,32 +2654,6 @@ public interface SamlPackage extends EPackage
     EClass VALUE_FIELD_ELEMENT = eINSTANCE.getValueFieldElement();
 
     /**
-     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.ValueFieldPropertiesImpl <em>Value Field Properties</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.eclipse.scout.saml.saml.impl.ValueFieldPropertiesImpl
-     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getValueFieldProperties()
-     * @generated
-     */
-    EClass VALUE_FIELD_PROPERTIES = eINSTANCE.getValueFieldProperties();
-
-    /**
-     * The meta object literal for the '<em><b>Form Field Properties</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference VALUE_FIELD_PROPERTIES__FORM_FIELD_PROPERTIES = eINSTANCE.getValueFieldProperties_FormFieldProperties();
-
-    /**
-     * The meta object literal for the '<em><b>Mandatory</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute VALUE_FIELD_PROPERTIES__MANDATORY = eINSTANCE.getValueFieldProperties_Mandatory();
-
-    /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.StringElementImpl <em>String Element</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2703,12 +2664,12 @@ public interface SamlPackage extends EPackage
     EClass STRING_ELEMENT = eINSTANCE.getStringElement();
 
     /**
-     * The meta object literal for the '<em><b>Value Field Properties</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Mandatory</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference STRING_ELEMENT__VALUE_FIELD_PROPERTIES = eINSTANCE.getStringElement_ValueFieldProperties();
+    EAttribute STRING_ELEMENT__MANDATORY = eINSTANCE.getStringElement_Mandatory();
 
     /**
      * The meta object literal for the '<em><b>Maxlen</b></em>' attribute feature.
@@ -2729,12 +2690,12 @@ public interface SamlPackage extends EPackage
     EClass DOUBLE_ELEMENT = eINSTANCE.getDoubleElement();
 
     /**
-     * The meta object literal for the '<em><b>Value Field Properties</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Mandatory</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference DOUBLE_ELEMENT__VALUE_FIELD_PROPERTIES = eINSTANCE.getDoubleElement_ValueFieldProperties();
+    EAttribute DOUBLE_ELEMENT__MANDATORY = eINSTANCE.getDoubleElement_Mandatory();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.LongElementImpl <em>Long Element</em>}' class.
@@ -2747,12 +2708,12 @@ public interface SamlPackage extends EPackage
     EClass LONG_ELEMENT = eINSTANCE.getLongElement();
 
     /**
-     * The meta object literal for the '<em><b>Value Field Properties</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Mandatory</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference LONG_ELEMENT__VALUE_FIELD_PROPERTIES = eINSTANCE.getLongElement_ValueFieldProperties();
+    EAttribute LONG_ELEMENT__MANDATORY = eINSTANCE.getLongElement_Mandatory();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.DateElementImpl <em>Date Element</em>}' class.
@@ -2765,12 +2726,12 @@ public interface SamlPackage extends EPackage
     EClass DATE_ELEMENT = eINSTANCE.getDateElement();
 
     /**
-     * The meta object literal for the '<em><b>Value Field Properties</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Mandatory</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference DATE_ELEMENT__VALUE_FIELD_PROPERTIES = eINSTANCE.getDateElement_ValueFieldProperties();
+    EAttribute DATE_ELEMENT__MANDATORY = eINSTANCE.getDateElement_Mandatory();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.SmartfieldElementImpl <em>Smartfield Element</em>}' class.
@@ -2783,12 +2744,12 @@ public interface SamlPackage extends EPackage
     EClass SMARTFIELD_ELEMENT = eINSTANCE.getSmartfieldElement();
 
     /**
-     * The meta object literal for the '<em><b>Value Field Properties</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Mandatory</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference SMARTFIELD_ELEMENT__VALUE_FIELD_PROPERTIES = eINSTANCE.getSmartfieldElement_ValueFieldProperties();
+    EAttribute SMARTFIELD_ELEMENT__MANDATORY = eINSTANCE.getSmartfieldElement_Mandatory();
 
     /**
      * The meta object literal for the '<em><b>Code</b></em>' reference feature.
@@ -2799,12 +2760,12 @@ public interface SamlPackage extends EPackage
     EReference SMARTFIELD_ELEMENT__CODE = eINSTANCE.getSmartfieldElement_Code();
 
     /**
-     * The meta object literal for the '<em><b>Value Type</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Value Type</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference SMARTFIELD_ELEMENT__VALUE_TYPE = eINSTANCE.getSmartfieldElement_ValueType();
+    EAttribute SMARTFIELD_ELEMENT__VALUE_TYPE = eINSTANCE.getSmartfieldElement_ValueType();
 
     /**
      * The meta object literal for the '<em><b>Lookup</b></em>' reference feature.
@@ -2833,58 +2794,12 @@ public interface SamlPackage extends EPackage
     EReference CUSTOM_FIELD_ELEMENT__TEMPLATE = eINSTANCE.getCustomFieldElement_Template();
 
     /**
-     * The meta object literal for the '<em><b>Form Field Properties</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CUSTOM_FIELD_ELEMENT__FORM_FIELD_PROPERTIES = eINSTANCE.getCustomFieldElement_FormFieldProperties();
-
-    /**
      * The meta object literal for the '<em><b>Fields</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference CUSTOM_FIELD_ELEMENT__FIELDS = eINSTANCE.getCustomFieldElement_Fields();
-
-    /**
-     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.XBlockExpressionImpl <em>XBlock Expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.eclipse.scout.saml.saml.impl.XBlockExpressionImpl
-     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getXBlockExpression()
-     * @generated
-     */
-    EClass XBLOCK_EXPRESSION = eINSTANCE.getXBlockExpression();
-
-    /**
-     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.XVariableDeclarationImpl <em>XVariable Declaration</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.eclipse.scout.saml.saml.impl.XVariableDeclarationImpl
-     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getXVariableDeclaration()
-     * @generated
-     */
-    EClass XVARIABLE_DECLARATION = eINSTANCE.getXVariableDeclaration();
-
-    /**
-     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.XConstructorCallImpl <em>XConstructor Call</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.eclipse.scout.saml.saml.impl.XConstructorCallImpl
-     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getXConstructorCall()
-     * @generated
-     */
-    EClass XCONSTRUCTOR_CALL = eINSTANCE.getXConstructorCall();
-
-    /**
-     * The meta object literal for the '<em><b>Is Array</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute XCONSTRUCTOR_CALL__IS_ARRAY = eINSTANCE.getXConstructorCall_IsArray();
 
   }
 

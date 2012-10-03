@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
+import org.eclipse.scout.saml.saml.TranslationElement;
+import org.eclipse.scout.saml.saml.ValueFieldElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,6 +32,10 @@ import org.eclipse.scout.saml.saml.SamlPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getText <em>Text</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getEnabled <em>Enabled</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getVisible <em>Visible</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getMaster <em>Master</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getLogic <em>Logic</em>}</li>
  * </ul>
  * </p>
@@ -57,6 +63,66 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getText() <em>Text</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getText()
+   * @generated
+   * @ordered
+   */
+  protected TranslationElement text;
+
+  /**
+   * The default value of the '{@link #getEnabled() <em>Enabled</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEnabled()
+   * @generated
+   * @ordered
+   */
+  protected static final String ENABLED_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getEnabled() <em>Enabled</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEnabled()
+   * @generated
+   * @ordered
+   */
+  protected String enabled = ENABLED_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getVisible() <em>Visible</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getVisible()
+   * @generated
+   * @ordered
+   */
+  protected static final String VISIBLE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getVisible() <em>Visible</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getVisible()
+   * @generated
+   * @ordered
+   */
+  protected String visible = VISIBLE_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getMaster() <em>Master</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMaster()
+   * @generated
+   * @ordered
+   */
+  protected ValueFieldElement master;
 
   /**
    * The cached value of the '{@link #getLogic() <em>Logic</em>}' containment reference list.
@@ -117,6 +183,138 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
+  public TranslationElement getText()
+  {
+    if (text != null && text.eIsProxy())
+    {
+      InternalEObject oldText = (InternalEObject)text;
+      text = (TranslationElement)eResolveProxy(oldText);
+      if (text != oldText)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SamlPackage.FORM_FIELD_ELEMENT__TEXT, oldText, text));
+      }
+    }
+    return text;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TranslationElement basicGetText()
+  {
+    return text;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setText(TranslationElement newText)
+  {
+    TranslationElement oldText = text;
+    text = newText;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.FORM_FIELD_ELEMENT__TEXT, oldText, text));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getEnabled()
+  {
+    return enabled;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setEnabled(String newEnabled)
+  {
+    String oldEnabled = enabled;
+    enabled = newEnabled;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.FORM_FIELD_ELEMENT__ENABLED, oldEnabled, enabled));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getVisible()
+  {
+    return visible;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setVisible(String newVisible)
+  {
+    String oldVisible = visible;
+    visible = newVisible;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.FORM_FIELD_ELEMENT__VISIBLE, oldVisible, visible));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ValueFieldElement getMaster()
+  {
+    if (master != null && master.eIsProxy())
+    {
+      InternalEObject oldMaster = (InternalEObject)master;
+      master = (ValueFieldElement)eResolveProxy(oldMaster);
+      if (master != oldMaster)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SamlPackage.FORM_FIELD_ELEMENT__MASTER, oldMaster, master));
+      }
+    }
+    return master;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ValueFieldElement basicGetMaster()
+  {
+    return master;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setMaster(ValueFieldElement newMaster)
+  {
+    ValueFieldElement oldMaster = master;
+    master = newMaster;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.FORM_FIELD_ELEMENT__MASTER, oldMaster, master));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<LogicElement> getLogic()
   {
     if (logic == null)
@@ -154,6 +352,16 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
     {
       case SamlPackage.FORM_FIELD_ELEMENT__NAME:
         return getName();
+      case SamlPackage.FORM_FIELD_ELEMENT__TEXT:
+        if (resolve) return getText();
+        return basicGetText();
+      case SamlPackage.FORM_FIELD_ELEMENT__ENABLED:
+        return getEnabled();
+      case SamlPackage.FORM_FIELD_ELEMENT__VISIBLE:
+        return getVisible();
+      case SamlPackage.FORM_FIELD_ELEMENT__MASTER:
+        if (resolve) return getMaster();
+        return basicGetMaster();
       case SamlPackage.FORM_FIELD_ELEMENT__LOGIC:
         return getLogic();
     }
@@ -173,6 +381,18 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
     {
       case SamlPackage.FORM_FIELD_ELEMENT__NAME:
         setName((String)newValue);
+        return;
+      case SamlPackage.FORM_FIELD_ELEMENT__TEXT:
+        setText((TranslationElement)newValue);
+        return;
+      case SamlPackage.FORM_FIELD_ELEMENT__ENABLED:
+        setEnabled((String)newValue);
+        return;
+      case SamlPackage.FORM_FIELD_ELEMENT__VISIBLE:
+        setVisible((String)newValue);
+        return;
+      case SamlPackage.FORM_FIELD_ELEMENT__MASTER:
+        setMaster((ValueFieldElement)newValue);
         return;
       case SamlPackage.FORM_FIELD_ELEMENT__LOGIC:
         getLogic().clear();
@@ -195,6 +415,18 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
       case SamlPackage.FORM_FIELD_ELEMENT__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case SamlPackage.FORM_FIELD_ELEMENT__TEXT:
+        setText((TranslationElement)null);
+        return;
+      case SamlPackage.FORM_FIELD_ELEMENT__ENABLED:
+        setEnabled(ENABLED_EDEFAULT);
+        return;
+      case SamlPackage.FORM_FIELD_ELEMENT__VISIBLE:
+        setVisible(VISIBLE_EDEFAULT);
+        return;
+      case SamlPackage.FORM_FIELD_ELEMENT__MASTER:
+        setMaster((ValueFieldElement)null);
+        return;
       case SamlPackage.FORM_FIELD_ELEMENT__LOGIC:
         getLogic().clear();
         return;
@@ -214,6 +446,14 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
     {
       case SamlPackage.FORM_FIELD_ELEMENT__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case SamlPackage.FORM_FIELD_ELEMENT__TEXT:
+        return text != null;
+      case SamlPackage.FORM_FIELD_ELEMENT__ENABLED:
+        return ENABLED_EDEFAULT == null ? enabled != null : !ENABLED_EDEFAULT.equals(enabled);
+      case SamlPackage.FORM_FIELD_ELEMENT__VISIBLE:
+        return VISIBLE_EDEFAULT == null ? visible != null : !VISIBLE_EDEFAULT.equals(visible);
+      case SamlPackage.FORM_FIELD_ELEMENT__MASTER:
+        return master != null;
       case SamlPackage.FORM_FIELD_ELEMENT__LOGIC:
         return logic != null && !logic.isEmpty();
     }
@@ -233,6 +473,10 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
+    result.append(", enabled: ");
+    result.append(enabled);
+    result.append(", visible: ");
+    result.append(visible);
     result.append(')');
     return result.toString();
   }

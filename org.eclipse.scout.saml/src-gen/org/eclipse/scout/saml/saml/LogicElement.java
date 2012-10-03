@@ -4,8 +4,6 @@ package org.eclipse.scout.saml.saml;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.xtext.xbase.XBlockExpression;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Logic Element</b></em>'.
@@ -133,29 +131,29 @@ public interface LogicElement extends EObject
   void setExec(LogicElement value);
 
   /**
-   * Returns the value of the '<em><b>Source</b></em>' containment reference.
+   * Returns the value of the '<em><b>Source</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Source</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Source</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Source</em>' containment reference.
-   * @see #setSource(XBlockExpression)
+   * @return the value of the '<em>Source</em>' attribute.
+   * @see #setSource(String)
    * @see org.eclipse.scout.saml.saml.SamlPackage#getLogicElement_Source()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  XBlockExpression getSource();
+  String getSource();
 
   /**
-   * Sets the value of the '{@link org.eclipse.scout.saml.saml.LogicElement#getSource <em>Source</em>}' containment reference.
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.LogicElement#getSource <em>Source</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Source</em>' containment reference.
+   * @param value the new value of the '<em>Source</em>' attribute.
    * @see #getSource()
    * @generated
    */
-  void setSource(XBlockExpression value);
+  void setSource(String value);
 
 } // LogicElement

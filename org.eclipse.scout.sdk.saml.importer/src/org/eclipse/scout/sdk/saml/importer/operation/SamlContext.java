@@ -17,6 +17,8 @@ import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.scout.sdk.workspace.IScoutProject;
 
+import com.google.inject.Injector;
+
 /**
  * <h3>{@link SamlContext}</h3> ...
  * 
@@ -24,6 +26,7 @@ import org.eclipse.scout.sdk.workspace.IScoutProject;
  * @since 3.8.0 26.09.2012
  */
 public class SamlContext {
+  private Injector m_injector;
   private IScoutProject m_currentScoutModule;
   private HashSet<String> m_modifiedTypes;
   private HashSet<String> m_modifiedMethods;
@@ -64,5 +67,13 @@ public class SamlContext {
 
   public void setCurrentScoutModule(IScoutProject currentScoutModule) {
     m_currentScoutModule = currentScoutModule;
+  }
+
+  public Injector getInjector() {
+    return m_injector;
+  }
+
+  public void setInjector(Injector injector) {
+    m_injector = injector;
   }
 }

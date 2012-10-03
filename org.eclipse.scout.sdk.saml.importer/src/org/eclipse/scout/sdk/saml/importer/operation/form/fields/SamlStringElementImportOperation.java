@@ -15,8 +15,6 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.saml.saml.StringElement;
-import org.eclipse.scout.saml.saml.StringElementMaxlenAttribute;
-import org.eclipse.scout.saml.saml.StringElementProperties;
 import org.eclipse.scout.sdk.operation.form.field.StringFieldNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
 import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
@@ -44,9 +42,9 @@ public class SamlStringElementImportOperation extends AbstractSamlFormFieldEleme
     }
   }
 
-  protected void applyMaxLengthAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, StringElementMaxlenAttribute a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
-    if (a != null) {
-      overrideMethod(monitor, workingCopyManager, field, h, "getConfiguredMaxLength", "return " + a.getValue() + ";");
+  protected void applyMaxLengthAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, int maxlen, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    if (maxlen != 0 && maxlen != 4000) {
+      overrideMethod(monitor, workingCopyManager, field, h, "getConfiguredMaxLength", "return " + maxlen + ";");
     }
   }
 
@@ -59,13 +57,10 @@ public class SamlStringElementImportOperation extends AbstractSamlFormFieldEleme
     IType createdField = o.getCreatedField();
     ITypeHierarchy h = createdField.newSupertypeHierarchy(monitor);
 
-    for (StringElementProperties p : getStringElement().getProperties()) {
-      applyMaxLengthAttribute(monitor, workingCopyManager, p.getMaxlen(), createdField, h);
-      applyMandatoryAttribute(monitor, workingCopyManager, p.getValueFieldProperties().getMandatory(), createdField, h);
-      applyAbstractFormFieldProperties(monitor, workingCopyManager, p.getValueFieldProperties().getFieldproperties(), createdField, h);
-    }
-
-    fillFormFieldLogic(monitor, workingCopyManager, getStringElement().getLogic(), createdField);
+    applyMaxLengthAttribute(monitor, workingCopyManager, getStringElement().getMaxlen(), createdField, h);
+    applyMandatoryAttribute(monitor, workingCopyManager, getStringElement().getMandatory(), createdField, h);
+    applyFormFieldProperties(monitor, workingCopyManager, createdField, h);
+    fillFormFieldLogic(monitor, workingCopyManager, createdField);
   }
 
   public StringElement getStringElement() {

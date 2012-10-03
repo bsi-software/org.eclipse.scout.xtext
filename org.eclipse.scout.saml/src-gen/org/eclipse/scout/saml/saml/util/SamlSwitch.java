@@ -9,10 +9,6 @@ import org.eclipse.emf.ecore.util.Switch;
 
 import org.eclipse.scout.saml.saml.*;
 
-import org.eclipse.xtext.common.types.JvmIdentifiableElement;
-
-import org.eclipse.xtext.xbase.XExpression;
-
 /**
  * <!-- begin-user-doc -->
  * The <b>Switch</b> for the model's inheritance hierarchy.
@@ -153,13 +149,6 @@ public class SamlSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SamlPackage.FORM_FIELD_PROPERTIES:
-      {
-        FormFieldProperties formFieldProperties = (FormFieldProperties)theEObject;
-        T result = caseFormFieldProperties(formFieldProperties);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case SamlPackage.COMPOSITE_FIELD_ELEMENT:
       {
         CompositeFieldElement compositeFieldElement = (CompositeFieldElement)theEObject;
@@ -191,13 +180,6 @@ public class SamlSwitch<T> extends Switch<T>
         ValueFieldElement valueFieldElement = (ValueFieldElement)theEObject;
         T result = caseValueFieldElement(valueFieldElement);
         if (result == null) result = caseFormFieldElement(valueFieldElement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SamlPackage.VALUE_FIELD_PROPERTIES:
-      {
-        ValueFieldProperties valueFieldProperties = (ValueFieldProperties)theEObject;
-        T result = caseValueFieldProperties(valueFieldProperties);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -252,34 +234,6 @@ public class SamlSwitch<T> extends Switch<T>
         T result = caseCustomFieldElement(customFieldElement);
         if (result == null) result = caseValueFieldElement(customFieldElement);
         if (result == null) result = caseFormFieldElement(customFieldElement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SamlPackage.XBLOCK_EXPRESSION:
-      {
-        XBlockExpression xBlockExpression = (XBlockExpression)theEObject;
-        T result = caseXBlockExpression(xBlockExpression);
-        if (result == null) result = caseXbase_XBlockExpression(xBlockExpression);
-        if (result == null) result = caseXExpression(xBlockExpression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SamlPackage.XVARIABLE_DECLARATION:
-      {
-        XVariableDeclaration xVariableDeclaration = (XVariableDeclaration)theEObject;
-        T result = caseXVariableDeclaration(xVariableDeclaration);
-        if (result == null) result = caseXbase_XVariableDeclaration(xVariableDeclaration);
-        if (result == null) result = caseXExpression(xVariableDeclaration);
-        if (result == null) result = caseJvmIdentifiableElement(xVariableDeclaration);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SamlPackage.XCONSTRUCTOR_CALL:
-      {
-        XConstructorCall xConstructorCall = (XConstructorCall)theEObject;
-        T result = caseXConstructorCall(xConstructorCall);
-        if (result == null) result = caseXbase_XConstructorCall(xConstructorCall);
-        if (result == null) result = caseXExpression(xConstructorCall);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -464,22 +418,6 @@ public class SamlSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Form Field Properties</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Form Field Properties</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseFormFieldProperties(FormFieldProperties object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Composite Field Element</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -539,22 +477,6 @@ public class SamlSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseValueFieldElement(ValueFieldElement object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Value Field Properties</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Value Field Properties</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseValueFieldProperties(ValueFieldProperties object)
   {
     return null;
   }
@@ -651,134 +573,6 @@ public class SamlSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCustomFieldElement(CustomFieldElement object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>XBlock Expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>XBlock Expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseXBlockExpression(XBlockExpression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>XVariable Declaration</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>XVariable Declaration</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseXVariableDeclaration(XVariableDeclaration object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>XConstructor Call</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>XConstructor Call</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseXConstructorCall(XConstructorCall object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>XExpression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>XExpression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseXExpression(XExpression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>XBlock Expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>XBlock Expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseXbase_XBlockExpression(org.eclipse.xtext.xbase.XBlockExpression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Jvm Identifiable Element</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Jvm Identifiable Element</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseJvmIdentifiableElement(JvmIdentifiableElement object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>XVariable Declaration</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>XVariable Declaration</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseXbase_XVariableDeclaration(org.eclipse.xtext.xbase.XVariableDeclaration object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>XConstructor Call</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>XConstructor Call</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseXbase_XConstructorCall(org.eclipse.xtext.xbase.XConstructorCall object)
   {
     return null;
   }

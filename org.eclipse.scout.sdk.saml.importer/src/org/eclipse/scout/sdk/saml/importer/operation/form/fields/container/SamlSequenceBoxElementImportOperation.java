@@ -53,9 +53,8 @@ public class SamlSequenceBoxElementImportOperation extends AbstractBoxElementImp
 
     overrideMethod(monitor, workingCopyManager, createdField, h, "getConfiguredAutoCheckFromTo", "return false;");
 
-    applyAbstractFormFieldProperties(monitor, workingCopyManager, getSequenceBoxElement().getProperties(), createdField, h);
-
-    fillFormFieldLogic(monitor, workingCopyManager, getSequenceBoxElement().getChildren(), createdField);
+    applyFormFieldProperties(monitor, workingCopyManager, createdField, h);
+    fillFormFieldLogic(monitor, workingCopyManager, createdField);
 
     return createdField;
   }

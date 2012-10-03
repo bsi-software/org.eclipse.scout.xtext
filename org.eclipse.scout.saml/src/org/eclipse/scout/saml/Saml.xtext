@@ -38,7 +38,7 @@ LanguageAttribute:lang=ID '=' text=STRING;
 
 
 //TODO: validation of properties, scope of exec=
-LogicElement: {LogicElement} 'logic' (name=ID)? (('event' '=' event=LogicEventType)? & ('runat' '=' runat=('client'|'server'))? & ('exec' '=' exec=[LogicElement])?) (source=XBlockExpression)?;
+LogicElement: {LogicElement} 'logic' (name=ID)? (('event' '=' event=LogicEventType)? & ('runat' '=' runat=('client'|'server'))? & ('exec' '=' exec=[LogicElement])?) ('{'source=STRING/*XBlockExpression*/'}')?;
 
 
 CodeElement:'code' name=ID 'id' '=' id=INT;
@@ -47,7 +47,7 @@ CodeElement:'code' name=ID 'id' '=' id=INT;
 LookupElement:'lookup' name=ID '{' logic+=LogicElement* '}';
 
 
-TemplateElement:'template' name=ID 'definition' '=' definition=JvmTypeReference;
+TemplateElement:'template' name=ID 'definition' '=' definition=STRING/*JvmTypeReference*/;
 
 
 
@@ -57,43 +57,100 @@ FormElement:'form' name=ID (('modal' '=' modal=BooleanType)? & ('columns' '=' co
 
 // UI FIELDS
 FormFieldElement:CompositeFieldElement | ValueFieldElement;
-FormFieldProperties: {FormFieldProperties}
-	(('text' '=' text=[TranslationElement])? & ('enabled' '=' enabled=BooleanType)? & ('visible' '=' visible=BooleanType)? & ('master' '=' master=[ValueFieldElement])?);
-
 
 // COMPOSITES
 CompositeFieldElement:SequenceBoxElement|GroupBoxElement;
-SequenceBoxElement:'sequence_box'name=ID formFieldProperties=FormFieldProperties
+SequenceBoxElement:'sequence_box' name=ID
+	(
+		('text' '=' text=[TranslationElement])? & 
+		('enabled' '=' enabled=BooleanType)? &
+		('visible' '=' visible=BooleanType)? &
+		('master' '=' master=[ValueFieldElement])?
+	)
 	('{' (logic+=LogicElement | fields+=FormFieldElement)* '}')?;
 	
-GroupBoxElement:'group_box'name=ID formFieldProperties=FormFieldProperties
+GroupBoxElement:'group_box' name=ID
+	(
+		('text' '=' text=[TranslationElement])? &
+		('enabled' '=' enabled=BooleanType)? &
+		('visible' '=' visible=BooleanType)? &
+		('master' '=' master=[ValueFieldElement])?
+	)
 	('{' (logic+=LogicElement | fields+=FormFieldElement)* '}')?;
 
 
 // VALUE FIELDS
 ValueFieldElement: StringElement|DoubleElement|LongElement|DateElement|SmartfieldElement|CustomFieldElement;
-ValueFieldProperties: {ValueFieldProperties}
-	(formFieldProperties=FormFieldProperties  & ('mandatory' '=' mandatory=BooleanType)?);
 
-StringElement:'string' name=ID (valueFieldProperties=ValueFieldProperties & ('maxlen' '=' maxlen=INT)?)
+StringElement:'string' name=ID 
+	(
+		('text' '=' text=[TranslationElement])? &
+		('enabled' '=' enabled=BooleanType)? &
+		('visible' '=' visible=BooleanType)? &
+		('master' '=' master=[ValueFieldElement])? &
+		('mandatory' '=' mandatory=BooleanType)? &
+		('maxlen' '=' maxlen=INT)?
+	)
 	('{' logic+=LogicElement* '}')?;
 
-DoubleElement:'double' name=ID (valueFieldProperties=ValueFieldProperties)
+
+DoubleElement:'double' name=ID 
+	(
+		('text' '=' text=[TranslationElement])? &
+		('enabled' '=' enabled=BooleanType)? &
+		('visible' '=' visible=BooleanType)? &
+		('master' '=' master=[ValueFieldElement])? &
+		('mandatory' '=' mandatory=BooleanType)?
+	)
 	('{' logic+=LogicElement* '}')?;
 
-LongElement:'long' name=ID (valueFieldProperties=ValueFieldProperties)
+LongElement:'long' name=ID
+	(
+		('text' '=' text=[TranslationElement])? &
+		('enabled' '=' enabled=BooleanType)? &
+		('visible' '=' visible=BooleanType)? &
+		('master' '=' master=[ValueFieldElement])? &
+		('mandatory' '=' mandatory=BooleanType)?
+	)
 	('{' logic+=LogicElement* '}')?;
 
-DateElement:'date' name=ID (valueFieldProperties=ValueFieldProperties)
+DateElement:'date' name=ID
+	(
+		('text' '=' text=[TranslationElement])? &
+		('enabled' '=' enabled=BooleanType)? &
+		('visible' '=' visible=BooleanType)? &
+		('master' '=' master=[ValueFieldElement])? &
+		('mandatory' '=' mandatory=BooleanType)?
+	)
 	('{' logic+=LogicElement* '}')?;
 
-SmartfieldElement:'smartfield' name=ID ((valueFieldProperties=ValueFieldProperties)? & ('code' '=' code=[CodeElement])? & ('value_type' '=' valueType=JvmTypeReference)? & ('lookup' '=' lookup=[LookupElement])?)
+SmartfieldElement:'smartfield' name=ID
+	(
+		('text' '=' text=[TranslationElement])? &
+		('enabled' '=' enabled=BooleanType)? &
+		('visible' '=' visible=BooleanType)? &
+		('master' '=' master=[ValueFieldElement])? &
+		('mandatory' '=' mandatory=BooleanType)? &
+		('code' '=' code=[CodeElement])? &
+		('value_type' '=' valueType=STRING/*JvmTypeReference*/)? &
+		('lookup' '=' lookup=[LookupElement])?
+	)
 	('{' logic+=LogicElement* '}')?;
 
 // CUSTOM FIELDS
-CustomFieldElement:'custom_field' name=ID 'template' '=' template=[TemplateElement] formFieldProperties=FormFieldProperties
+CustomFieldElement:'custom_field' name=ID 
+	'template' '=' template=[TemplateElement]
+	(
+		('text' '=' text=[TranslationElement])? &
+		('enabled' '=' enabled=BooleanType)? &
+		('visible' '=' visible=BooleanType)? &
+		('master' '=' master=[ValueFieldElement])?
+	)
 	('{' (logic+=LogicElement | fields+=FormFieldElement)* '}')?;
 
+
+
+/*
 XBlockExpression returns xbase::XBlockExpression: 
 	{XBlockExpression}
 	'{'
@@ -187,3 +244,4 @@ XConstructorCall returns xbase::XConstructorCall:
 		(=>isArray?='[' ']')
 	)
 	;
+ */

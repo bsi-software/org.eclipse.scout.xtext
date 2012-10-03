@@ -13,6 +13,7 @@ package org.eclipse.scout.sdk.saml.importer.operation.form;
 import java.util.Stack;
 
 import org.eclipse.jdt.core.IType;
+import org.eclipse.scout.sdk.saml.importer.operation.SamlContext;
 
 /**
  * <h3>{@link SamlFormContext}</h3> ...
@@ -28,6 +29,7 @@ public class SamlFormContext {
   private IType m_formDataType;
   private IType m_formType;
   private Stack<IType> m_parentBoxStack;
+  private SamlContext m_samlContext;
 
   public SamlFormContext() {
     m_parentBoxStack = new Stack<IType>();
@@ -91,5 +93,13 @@ public class SamlFormContext {
 
   public void setFormType(IType formType) {
     m_formType = formType;
+  }
+
+  public SamlContext getSamlContext() {
+    return m_samlContext;
+  }
+
+  public void setSamlContext(SamlContext samlContext) {
+    m_samlContext = samlContext;
   }
 }

@@ -14,8 +14,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.scout.sdk.operation.IOperation;
-import org.eclipse.scout.sdk.operation.util.OrganizeImportOperation;
-import org.eclipse.scout.sdk.operation.util.SourceFormatOperation;
+import org.eclipse.scout.sdk.operation.util.JavaElementFormatOperation;
 import org.eclipse.scout.sdk.util.type.TypeUtility;
 import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 
@@ -46,19 +45,14 @@ public class SamlImportPostProcessOperation implements IOperation {
     for (String fqn : getSamlContext().getModifiedTypes()) {
       IType t = TypeUtility.getType(fqn);
 
-      SourceFormatOperation sfo = new SourceFormatOperation(t);
-      sfo.validate();
+      JavaElementFormatOperation jefo = new JavaElementFormatOperation(t, true);
+      jefo.validate();
       try {
-        //TODO: check why some types cannot be formatted?
-        sfo.run(monitor, workingCopyManager);
+        jefo.run(monitor, workingCopyManager);
       }
       catch (Exception e) {
-
+        System.out.println("unable to format type " + t.getFullyQualifiedName());
       }
-
-      OrganizeImportOperation o = new OrganizeImportOperation(t.getCompilationUnit());
-      o.validate();
-      o.run(monitor, workingCopyManager);
     }
   }
 

@@ -14,11 +14,10 @@ import java.util.ArrayList;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.Signature;
-import org.eclipse.scout.saml.saml.AbstractFieldElement;
 import org.eclipse.scout.saml.saml.FormElement;
+import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.form.FormStackNewOperation;
 import org.eclipse.scout.sdk.operation.service.ServiceDeleteOperation;
@@ -53,6 +52,8 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
   private IType m_createdForm;
   private IType m_createdMainBox;
 
+  private SamlFormContext m_formContext;
+
   @Override
   public String getOperationName() {
     return "Create Form & corresponding services";
@@ -72,33 +73,37 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
 
     createFormStack(monitor, workingCopyManager);
 
+    createFormContext();
+
     fillFormLogic(monitor, workingCopyManager);
 
     processChildren(monitor, workingCopyManager);
   }
 
-  private void processChildren(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException {
-    SamlFormContext formContext = new SamlFormContext();
-    formContext.setClientType(getCreatedClientServiceImplementation());
-    formContext.setClientInterface(getCreatedClientServiceInterface());
-    formContext.setServerType(getCreatedServerServiceImplementation());
-    formContext.setServerInterface(getCreatedServerServiceInterface());
-    formContext.setFormDataType(getFormDataType(getFormElement().getName()));
-    formContext.setFormType(getCreatedForm());
-    formContext.pushParentBox(getCreatedMainBox());
+  private void createFormContext() {
+    m_formContext = new SamlFormContext();
+    m_formContext.setClientType(getCreatedClientServiceImplementation());
+    m_formContext.setClientInterface(getCreatedClientServiceInterface());
+    m_formContext.setServerType(getCreatedServerServiceImplementation());
+    m_formContext.setServerInterface(getCreatedServerServiceInterface());
+    m_formContext.setFormDataType(getFormDataType(getFormElement().getName()));
+    m_formContext.setFormType(getCreatedForm());
+    m_formContext.setSamlContext(getSamlContext());
+    m_formContext.pushParentBox(getCreatedMainBox());
+  }
 
-    for (EObject o : getFormElement().getElements()) {
-      if (o instanceof AbstractFieldElement) {
-        AbstractSamlFormFieldElementOperation.dispatchFieldElements(monitor, workingCopyManager, (AbstractFieldElement) o, getSamlContext(), formContext);
-      }
+  private void processChildren(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException {
+    for (FormFieldElement o : getFormElement().getFields()) {
+      AbstractSamlFormFieldElementOperation.dispatchFieldElements(monitor, workingCopyManager, o, getSamlContext(), m_formContext);
     }
   }
 
   private void createFormStack(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException {
     String formName = getFormElement().getName();
-    String nlsKey = getFormElement().getText().getValue().getName();
+    String nlsKey = getFormElement().getText().getName();
 
     FormStackNewOperation op = new FormStackNewOperation(false);
+    op.setFormatSource(false);
     op.setNlsEntry(getNlsEntry(nlsKey));
     op.setCreateButtonOk(true);
     op.setCreateButtonCancel(true);
@@ -135,9 +140,13 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
     op.run(monitor, workingCopyManager);
 
     setCreatedServerServiceImplementation(op.getOutProcessService());
+    getSamlContext().rememberModifiedType(op.getOutProcessService());
     setCreatedServerServiceInterface(op.getOutProcessServiceInterface());
+    getSamlContext().rememberModifiedType(op.getOutProcessServiceInterface());
     setCreatedMainBox(op.getOutMainBox());
     setCreatedForm(op.getOutForm());
+    getSamlContext().rememberModifiedType(op.getOutForm());
+    getSamlContext().rememberModifiedType(getFormDataType(getFormElement().getName()));
 
     // client service
     ServiceNewOperation clientSvcOp = new ServiceNewOperation();
@@ -156,7 +165,9 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
     clientSvcOp.run(monitor, workingCopyManager);
 
     setCreatedClientServiceImplementation(clientSvcOp.getCreatedServiceImplementation());
+    getSamlContext().rememberModifiedType(clientSvcOp.getCreatedServiceImplementation());
     setCreatedClientServiceInterface(clientSvcOp.getCreatedServiceInterface());
+    getSamlContext().rememberModifiedType(clientSvcOp.getCreatedServiceInterface());
   }
 
   private void fillFormLogic(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException {
@@ -164,16 +175,8 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
 
     slfo.setLogicSourceType(getCreatedForm());
     slfo.setSamlContext(getSamlContext());
-    slfo.setChildElements(getFormElement().getElements());
-
-    slfo.setClientType(getCreatedClientServiceImplementation());
-    slfo.setClientInterface(getCreatedClientServiceInterface());
-
-    slfo.setServerType(getCreatedServerServiceImplementation());
-    slfo.setServerInterface(getCreatedServerServiceInterface());
-
-    slfo.setFormDataType(getFormDataType(getFormElement().getName()));
-    slfo.setFormType(getCreatedForm());
+    slfo.setSamlFormContext(m_formContext);
+    slfo.setLogicElements(getFormElement().getLogic());
 
     slfo.validate();
     slfo.run(monitor, workingCopyManager);

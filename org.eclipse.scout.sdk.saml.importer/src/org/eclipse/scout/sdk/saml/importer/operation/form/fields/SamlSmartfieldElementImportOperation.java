@@ -15,10 +15,9 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.jdt.core.Signature;
-import org.eclipse.scout.saml.saml.SmartFieldElementProperties;
+import org.eclipse.scout.saml.saml.CodeElement;
+import org.eclipse.scout.saml.saml.LookupElement;
 import org.eclipse.scout.saml.saml.SmartfieldElement;
-import org.eclipse.scout.saml.saml.SmartfieldElementCodeAttribute;
-import org.eclipse.scout.saml.saml.SmartfieldElementLookupAttribute;
 import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.form.field.SmartFieldNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
@@ -48,10 +47,8 @@ public class SamlSmartfieldElementImportOperation extends AbstractSamlFormFieldE
   }
 
   private String getValueType() {
-    for (SmartFieldElementProperties p : getSmartfieldElement().getProperties()) {
-      if (p.getValue_type() != null) {
-        return p.getValue_type().getValue().getQualifiedName();//.getQualifiedName('.');
-      }
+    if (getSmartfieldElement().getValueType() != null) {
+      return getSmartfieldElement().getValueType()/*.getQualifiedName()*/;
     }
     return Object.class.getName();
   }
@@ -60,24 +57,17 @@ public class SamlSmartfieldElementImportOperation extends AbstractSamlFormFieldE
   public void run(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException, IllegalArgumentException {
     SmartFieldNewOperation o = new SmartFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getSmartfieldElement().getName() + SUFFIX);
-    //operation.setSuperTypeSignature(Signature.createTypeSignature("ch.raiffeisen.dialba.common.client.ui.forms.fields.AbstractDialbaSmartField<" + getValueType() + ">", true));
     o.setSuperTypeSignature(Signature.createTypeSignature(RuntimeClasses.AbstractSmartField + "<" + getValueType() + ">", true));
     o.validate();
     o.run(monitor, workingCopyManager);
     IType createdField = o.getCreatedField();
     ITypeHierarchy h = createdField.newSupertypeHierarchy(monitor);
 
-    fillFormFieldLogic(monitor, workingCopyManager, getSmartfieldElement().getLogic(), createdField);
-
-    for (SmartFieldElementProperties p : getSmartfieldElement().getProperties()) {
-      applyCodeAttribute(monitor, workingCopyManager, p.getCode(), createdField, h);
-      applyLookupAttribute(monitor, workingCopyManager, p.getLookup(), createdField, h);
-      if (p.getValueFieldProperties() != null) {
-        applyMandatoryAttribute(monitor, workingCopyManager, p.getValueFieldProperties().getMandatory(), createdField, h);
-        applyAbstractFormFieldProperties(monitor, workingCopyManager, p.getValueFieldProperties().getFieldproperties(), createdField, h);
-      }
-    }
-
+    applyCodeAttribute(monitor, workingCopyManager, getSmartfieldElement().getCode(), createdField, h);
+    applyLookupAttribute(monitor, workingCopyManager, getSmartfieldElement().getLookup(), createdField, h);
+    applyMandatoryAttribute(monitor, workingCopyManager, getSmartfieldElement().getMandatory(), createdField, h);
+    applyFormFieldProperties(monitor, workingCopyManager, createdField, h);
+    fillFormFieldLogic(monitor, workingCopyManager, createdField);
   }
 
   public SmartfieldElement getSmartfieldElement() {
@@ -88,15 +78,15 @@ public class SamlSmartfieldElementImportOperation extends AbstractSamlFormFieldE
     m_smartfieldElement = smartfieldElement;
   }
 
-  protected void applyCodeAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, SmartfieldElementCodeAttribute a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
-    if (a != null) {
-      overrideMethod(monitor, workingCopyManager, field, h, "getConfiguredCodeType", "return " + a.getValue().getName() + "CodeType.class;");
+  protected void applyCodeAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, CodeElement a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    if (a != null && a.getName() != null) {
+      overrideMethod(monitor, workingCopyManager, field, h, "getConfiguredCodeType", "return " + a.getName() + "CodeType.class;");
     }
   }
 
-  protected void applyLookupAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, SmartfieldElementLookupAttribute a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
-    if (a != null) {
-      overrideMethod(monitor, workingCopyManager, field, h, "getConfiguredLookupCall", "return " + a.getValue().getName() + "LookupCall.class;");
+  protected void applyLookupAttribute(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, LookupElement a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    if (a != null && a.getName() != null) {
+      overrideMethod(monitor, workingCopyManager, field, h, "getConfiguredLookupCall", "return " + a.getName() + "LookupCall.class;");
     }
   }
 }

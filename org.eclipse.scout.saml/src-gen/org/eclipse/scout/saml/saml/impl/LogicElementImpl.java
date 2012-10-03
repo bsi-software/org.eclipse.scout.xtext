@@ -3,7 +3,6 @@
 package org.eclipse.scout.saml.saml.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -13,8 +12,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
-
-import org.eclipse.xtext.xbase.XBlockExpression;
 
 /**
  * <!-- begin-user-doc -->
@@ -106,14 +103,24 @@ public class LogicElementImpl extends MinimalEObjectImpl.Container implements Lo
   protected LogicElement exec;
 
   /**
-   * The cached value of the '{@link #getSource() <em>Source</em>}' containment reference.
+   * The default value of the '{@link #getSource() <em>Source</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getSource()
    * @generated
    * @ordered
    */
-  protected XBlockExpression source;
+  protected static final String SOURCE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getSource() <em>Source</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSource()
+   * @generated
+   * @ordered
+   */
+  protected String source = SOURCE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -253,7 +260,7 @@ public class LogicElementImpl extends MinimalEObjectImpl.Container implements Lo
    * <!-- end-user-doc -->
    * @generated
    */
-  public XBlockExpression getSource()
+  public String getSource()
   {
     return source;
   }
@@ -263,53 +270,12 @@ public class LogicElementImpl extends MinimalEObjectImpl.Container implements Lo
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetSource(XBlockExpression newSource, NotificationChain msgs)
+  public void setSource(String newSource)
   {
-    XBlockExpression oldSource = source;
+    String oldSource = source;
     source = newSource;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SamlPackage.LOGIC_ELEMENT__SOURCE, oldSource, newSource);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setSource(XBlockExpression newSource)
-  {
-    if (newSource != source)
-    {
-      NotificationChain msgs = null;
-      if (source != null)
-        msgs = ((InternalEObject)source).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SamlPackage.LOGIC_ELEMENT__SOURCE, null, msgs);
-      if (newSource != null)
-        msgs = ((InternalEObject)newSource).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SamlPackage.LOGIC_ELEMENT__SOURCE, null, msgs);
-      msgs = basicSetSource(newSource, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.LOGIC_ELEMENT__SOURCE, newSource, newSource));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case SamlPackage.LOGIC_ELEMENT__SOURCE:
-        return basicSetSource(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.LOGIC_ELEMENT__SOURCE, oldSource, source));
   }
 
   /**
@@ -360,7 +326,7 @@ public class LogicElementImpl extends MinimalEObjectImpl.Container implements Lo
         setExec((LogicElement)newValue);
         return;
       case SamlPackage.LOGIC_ELEMENT__SOURCE:
-        setSource((XBlockExpression)newValue);
+        setSource((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -389,7 +355,7 @@ public class LogicElementImpl extends MinimalEObjectImpl.Container implements Lo
         setExec((LogicElement)null);
         return;
       case SamlPackage.LOGIC_ELEMENT__SOURCE:
-        setSource((XBlockExpression)null);
+        setSource(SOURCE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -414,7 +380,7 @@ public class LogicElementImpl extends MinimalEObjectImpl.Container implements Lo
       case SamlPackage.LOGIC_ELEMENT__EXEC:
         return exec != null;
       case SamlPackage.LOGIC_ELEMENT__SOURCE:
-        return source != null;
+        return SOURCE_EDEFAULT == null ? source != null : !SOURCE_EDEFAULT.equals(source);
     }
     return super.eIsSet(featureID);
   }
@@ -436,6 +402,8 @@ public class LogicElementImpl extends MinimalEObjectImpl.Container implements Lo
     result.append(event);
     result.append(", runat: ");
     result.append(runat);
+    result.append(", source: ");
+    result.append(source);
     result.append(')');
     return result.toString();
   }

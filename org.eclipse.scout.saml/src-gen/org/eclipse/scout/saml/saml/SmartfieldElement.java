@@ -2,7 +2,6 @@
  */
 package org.eclipse.scout.saml.saml;
 
-import org.eclipse.xtext.common.types.JvmTypeReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -12,7 +11,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.scout.saml.saml.SmartfieldElement#getValueFieldProperties <em>Value Field Properties</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.SmartfieldElement#getMandatory <em>Mandatory</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.SmartfieldElement#getCode <em>Code</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.SmartfieldElement#getValueType <em>Value Type</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.SmartfieldElement#getLookup <em>Lookup</em>}</li>
@@ -26,30 +25,30 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 public interface SmartfieldElement extends ValueFieldElement
 {
   /**
-   * Returns the value of the '<em><b>Value Field Properties</b></em>' containment reference.
+   * Returns the value of the '<em><b>Mandatory</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Value Field Properties</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Mandatory</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Value Field Properties</em>' containment reference.
-   * @see #setValueFieldProperties(ValueFieldProperties)
-   * @see org.eclipse.scout.saml.saml.SamlPackage#getSmartfieldElement_ValueFieldProperties()
-   * @model containment="true"
+   * @return the value of the '<em>Mandatory</em>' attribute.
+   * @see #setMandatory(String)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getSmartfieldElement_Mandatory()
+   * @model
    * @generated
    */
-  ValueFieldProperties getValueFieldProperties();
+  String getMandatory();
 
   /**
-   * Sets the value of the '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getValueFieldProperties <em>Value Field Properties</em>}' containment reference.
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getMandatory <em>Mandatory</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Value Field Properties</em>' containment reference.
-   * @see #getValueFieldProperties()
+   * @param value the new value of the '<em>Mandatory</em>' attribute.
+   * @see #getMandatory()
    * @generated
    */
-  void setValueFieldProperties(ValueFieldProperties value);
+  void setMandatory(String value);
 
   /**
    * Returns the value of the '<em><b>Code</b></em>' reference.
@@ -78,30 +77,30 @@ public interface SmartfieldElement extends ValueFieldElement
   void setCode(CodeElement value);
 
   /**
-   * Returns the value of the '<em><b>Value Type</b></em>' containment reference.
+   * Returns the value of the '<em><b>Value Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Value Type</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Value Type</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Value Type</em>' containment reference.
-   * @see #setValueType(JvmTypeReference)
+   * @return the value of the '<em>Value Type</em>' attribute.
+   * @see #setValueType(String)
    * @see org.eclipse.scout.saml.saml.SamlPackage#getSmartfieldElement_ValueType()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  JvmTypeReference getValueType();
+  String getValueType();
 
   /**
-   * Sets the value of the '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getValueType <em>Value Type</em>}' containment reference.
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getValueType <em>Value Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Value Type</em>' containment reference.
+   * @param value the new value of the '<em>Value Type</em>' attribute.
    * @see #getValueType()
    * @generated
    */
-  void setValueType(JvmTypeReference value);
+  void setValueType(String value);
 
   /**
    * Returns the value of the '<em><b>Lookup</b></em>' reference.

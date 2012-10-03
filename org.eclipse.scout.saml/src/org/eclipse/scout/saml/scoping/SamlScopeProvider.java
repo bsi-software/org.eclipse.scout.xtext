@@ -5,7 +5,7 @@ package org.eclipse.scout.saml.scoping;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.scout.saml.saml.FormFieldProperties;
+import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
 import org.eclipse.scout.saml.validation.SamlJavaValidatorHelper;
 import org.eclipse.xtext.scoping.IScope;
@@ -27,9 +27,9 @@ public class SamlScopeProvider extends XbaseScopeProvider {
 
   @Override
   public IScope getScope(EObject context, EReference reference) {
-    if (context instanceof FormFieldProperties) {
-      FormFieldProperties formField = (FormFieldProperties) context;
-      if (reference == SamlPackage.Literals.FORM_FIELD_PROPERTIES__MASTER) {
+    if (context instanceof FormFieldElement) {
+      FormFieldElement formField = (FormFieldElement) context;
+      if (reference == SamlPackage.Literals.FORM_FIELD_ELEMENT__MASTER) {
         return Scopes.scopeFor(helper.leafNodes(formField));
       }
     }

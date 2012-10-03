@@ -3,16 +3,13 @@
 package org.eclipse.scout.saml.saml.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.scout.saml.saml.SamlPackage;
 import org.eclipse.scout.saml.saml.StringElement;
-import org.eclipse.scout.saml.saml.ValueFieldProperties;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +18,7 @@ import org.eclipse.scout.saml.saml.ValueFieldProperties;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.StringElementImpl#getValueFieldProperties <em>Value Field Properties</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.StringElementImpl#getMandatory <em>Mandatory</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.StringElementImpl#getMaxlen <em>Maxlen</em>}</li>
  * </ul>
  * </p>
@@ -31,14 +28,24 @@ import org.eclipse.scout.saml.saml.ValueFieldProperties;
 public class StringElementImpl extends ValueFieldElementImpl implements StringElement
 {
   /**
-   * The cached value of the '{@link #getValueFieldProperties() <em>Value Field Properties</em>}' containment reference.
+   * The default value of the '{@link #getMandatory() <em>Mandatory</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValueFieldProperties()
+   * @see #getMandatory()
    * @generated
    * @ordered
    */
-  protected ValueFieldProperties valueFieldProperties;
+  protected static final String MANDATORY_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getMandatory() <em>Mandatory</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMandatory()
+   * @generated
+   * @ordered
+   */
+  protected String mandatory = MANDATORY_EDEFAULT;
 
   /**
    * The default value of the '{@link #getMaxlen() <em>Maxlen</em>}' attribute.
@@ -86,9 +93,9 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
    * <!-- end-user-doc -->
    * @generated
    */
-  public ValueFieldProperties getValueFieldProperties()
+  public String getMandatory()
   {
-    return valueFieldProperties;
+    return mandatory;
   }
 
   /**
@@ -96,37 +103,12 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetValueFieldProperties(ValueFieldProperties newValueFieldProperties, NotificationChain msgs)
+  public void setMandatory(String newMandatory)
   {
-    ValueFieldProperties oldValueFieldProperties = valueFieldProperties;
-    valueFieldProperties = newValueFieldProperties;
+    String oldMandatory = mandatory;
+    mandatory = newMandatory;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SamlPackage.STRING_ELEMENT__VALUE_FIELD_PROPERTIES, oldValueFieldProperties, newValueFieldProperties);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setValueFieldProperties(ValueFieldProperties newValueFieldProperties)
-  {
-    if (newValueFieldProperties != valueFieldProperties)
-    {
-      NotificationChain msgs = null;
-      if (valueFieldProperties != null)
-        msgs = ((InternalEObject)valueFieldProperties).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SamlPackage.STRING_ELEMENT__VALUE_FIELD_PROPERTIES, null, msgs);
-      if (newValueFieldProperties != null)
-        msgs = ((InternalEObject)newValueFieldProperties).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SamlPackage.STRING_ELEMENT__VALUE_FIELD_PROPERTIES, null, msgs);
-      msgs = basicSetValueFieldProperties(newValueFieldProperties, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.STRING_ELEMENT__VALUE_FIELD_PROPERTIES, newValueFieldProperties, newValueFieldProperties));
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.STRING_ELEMENT__MANDATORY, oldMandatory, mandatory));
   }
 
   /**
@@ -158,28 +140,12 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
    * @generated
    */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case SamlPackage.STRING_ELEMENT__VALUE_FIELD_PROPERTIES:
-        return basicSetValueFieldProperties(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
-      case SamlPackage.STRING_ELEMENT__VALUE_FIELD_PROPERTIES:
-        return getValueFieldProperties();
+      case SamlPackage.STRING_ELEMENT__MANDATORY:
+        return getMandatory();
       case SamlPackage.STRING_ELEMENT__MAXLEN:
         return getMaxlen();
     }
@@ -196,8 +162,8 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
   {
     switch (featureID)
     {
-      case SamlPackage.STRING_ELEMENT__VALUE_FIELD_PROPERTIES:
-        setValueFieldProperties((ValueFieldProperties)newValue);
+      case SamlPackage.STRING_ELEMENT__MANDATORY:
+        setMandatory((String)newValue);
         return;
       case SamlPackage.STRING_ELEMENT__MAXLEN:
         setMaxlen((Integer)newValue);
@@ -216,8 +182,8 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
   {
     switch (featureID)
     {
-      case SamlPackage.STRING_ELEMENT__VALUE_FIELD_PROPERTIES:
-        setValueFieldProperties((ValueFieldProperties)null);
+      case SamlPackage.STRING_ELEMENT__MANDATORY:
+        setMandatory(MANDATORY_EDEFAULT);
         return;
       case SamlPackage.STRING_ELEMENT__MAXLEN:
         setMaxlen(MAXLEN_EDEFAULT);
@@ -236,8 +202,8 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
   {
     switch (featureID)
     {
-      case SamlPackage.STRING_ELEMENT__VALUE_FIELD_PROPERTIES:
-        return valueFieldProperties != null;
+      case SamlPackage.STRING_ELEMENT__MANDATORY:
+        return MANDATORY_EDEFAULT == null ? mandatory != null : !MANDATORY_EDEFAULT.equals(mandatory);
       case SamlPackage.STRING_ELEMENT__MAXLEN:
         return maxlen != MAXLEN_EDEFAULT;
     }
@@ -255,7 +221,9 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (maxlen: ");
+    result.append(" (mandatory: ");
+    result.append(mandatory);
+    result.append(", maxlen: ");
     result.append(maxlen);
     result.append(')');
     return result.toString();

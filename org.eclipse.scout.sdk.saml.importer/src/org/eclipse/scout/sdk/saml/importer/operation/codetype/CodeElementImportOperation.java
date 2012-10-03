@@ -55,14 +55,16 @@ public class CodeElementImportOperation extends AbstractSamlElementImportOperati
     deleteExisting(monitor, workingCopyManager, sharedBundle, name);
 
     CodeTypeNewOperation ctno = new CodeTypeNewOperation();
-    ctno.setFormatSource(true);
-    ctno.setNextCodeId("" + getCodeElement().getId().getValue());
+    ctno.setFormatSource(false);
+    ctno.setNextCodeId("" + getCodeElement().getId());
     ctno.setSharedBundle(sharedBundle);
     ctno.setSuperTypeSignature(superSignature);
     ctno.setGenericTypeSignature(Signature.createTypeSignature(Integer.class.getName(), true));
     ctno.setTypeName(name);
     ctno.validate();
     ctno.run(monitor, workingCopyManager);
+
+    getSamlContext().rememberModifiedType(ctno.getCreatedType());
   }
 
   private void deleteExisting(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, IScoutBundle shared, String codeTypeName) throws CoreException, IllegalArgumentException {

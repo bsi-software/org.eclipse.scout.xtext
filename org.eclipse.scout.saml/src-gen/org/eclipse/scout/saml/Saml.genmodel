@@ -4,7 +4,7 @@
     editorDirectory="/org.eclipse.scout.saml.editor/src" modelPluginID="org.eclipse.scout.saml"
     forceOverwrite="true" modelName="Saml" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="org.eclipse.scout.saml.edit"
-    editorPluginID="org.eclipse.scout.saml.editor" runtimeVersion="2.8" usedGenPackages="../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types ../../../../../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase">
+    editorPluginID="org.eclipse.scout.saml.editor" runtimeVersion="2.8">
   <genPackages prefix="Saml" basePackage="org.eclipse.scout.saml" disposableProviderFactory="true"
       ecorePackage="Saml.ecore#/">
     <genClasses ecoreClass="Saml.ecore#//Model">
@@ -35,7 +35,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LogicElement/event"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LogicElement/runat"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//LogicElement/exec"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//LogicElement/source"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LogicElement/source"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//CodeElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//CodeElement/name"/>
@@ -47,7 +47,7 @@
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//TemplateElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//TemplateElement/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//TemplateElement/definition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//TemplateElement/definition"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//FormElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//FormElement/name"/>
@@ -59,53 +59,40 @@
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//FormFieldElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//FormFieldElement/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//FormFieldElement/text"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//FormFieldElement/enabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//FormFieldElement/visible"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//FormFieldElement/master"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//FormFieldElement/logic"/>
     </genClasses>
-    <genClasses ecoreClass="Saml.ecore#//FormFieldProperties">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//FormFieldProperties/text"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//FormFieldProperties/enabled"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//FormFieldProperties/visible"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//FormFieldProperties/master"/>
-    </genClasses>
     <genClasses ecoreClass="Saml.ecore#//CompositeFieldElement">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//CompositeFieldElement/formFieldProperties"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//CompositeFieldElement/fields"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//SequenceBoxElement"/>
     <genClasses ecoreClass="Saml.ecore#//GroupBoxElement"/>
     <genClasses ecoreClass="Saml.ecore#//ValueFieldElement"/>
-    <genClasses ecoreClass="Saml.ecore#//ValueFieldProperties">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//ValueFieldProperties/formFieldProperties"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//ValueFieldProperties/mandatory"/>
-    </genClasses>
     <genClasses ecoreClass="Saml.ecore#//StringElement">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//StringElement/valueFieldProperties"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//StringElement/mandatory"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//StringElement/maxlen"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//DoubleElement">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//DoubleElement/valueFieldProperties"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//DoubleElement/mandatory"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//LongElement">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//LongElement/valueFieldProperties"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LongElement/mandatory"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//DateElement">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//DateElement/valueFieldProperties"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//DateElement/mandatory"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//SmartfieldElement">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartfieldElement/valueFieldProperties"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//SmartfieldElement/mandatory"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartfieldElement/code"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartfieldElement/valueType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//SmartfieldElement/valueType"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartfieldElement/lookup"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//CustomFieldElement">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//CustomFieldElement/template"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//CustomFieldElement/formFieldProperties"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//CustomFieldElement/fields"/>
-    </genClasses>
-    <genClasses ecoreClass="Saml.ecore#//XBlockExpression"/>
-    <genClasses ecoreClass="Saml.ecore#//XVariableDeclaration"/>
-    <genClasses ecoreClass="Saml.ecore#//XConstructorCall">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//XConstructorCall/isArray"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
