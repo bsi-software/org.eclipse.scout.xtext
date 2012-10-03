@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getModal <em>Modal</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getColumns <em>Columns</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getText <em>Text</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getLogic <em>Logic</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getFields <em>Fields</em>}</li>
  * </ul>
@@ -56,7 +57,6 @@ public interface FormElement extends EObject
 
   /**
    * Returns the value of the '<em><b>Modal</b></em>' attribute.
-   * The literals are from the enumeration {@link org.eclipse.scout.saml.saml.BooleanType}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Modal</em>' attribute isn't clear,
@@ -64,24 +64,22 @@ public interface FormElement extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Modal</em>' attribute.
-   * @see org.eclipse.scout.saml.saml.BooleanType
-   * @see #setModal(BooleanType)
+   * @see #setModal(String)
    * @see org.eclipse.scout.saml.saml.SamlPackage#getFormElement_Modal()
    * @model
    * @generated
    */
-  BooleanType getModal();
+  String getModal();
 
   /**
    * Sets the value of the '{@link org.eclipse.scout.saml.saml.FormElement#getModal <em>Modal</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Modal</em>' attribute.
-   * @see org.eclipse.scout.saml.saml.BooleanType
    * @see #getModal()
    * @generated
    */
-  void setModal(BooleanType value);
+  void setModal(String value);
 
   /**
    * Returns the value of the '<em><b>Columns</b></em>' attribute.
@@ -110,6 +108,32 @@ public interface FormElement extends EObject
   void setColumns(int value);
 
   /**
+   * Returns the value of the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Text</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Text</em>' reference.
+   * @see #setText(TranslationElement)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getFormElement_Text()
+   * @model
+   * @generated
+   */
+  TranslationElement getText();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.FormElement#getText <em>Text</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Text</em>' reference.
+   * @see #getText()
+   * @generated
+   */
+  void setText(TranslationElement value);
+
+  /**
    * Returns the value of the '<em><b>Logic</b></em>' containment reference list.
    * The list contents are of type {@link org.eclipse.scout.saml.saml.LogicElement}.
    * <!-- begin-user-doc -->
@@ -127,7 +151,7 @@ public interface FormElement extends EObject
 
   /**
    * Returns the value of the '<em><b>Fields</b></em>' containment reference list.
-   * The list contents are of type {@link org.eclipse.scout.saml.saml.ControlElement}.
+   * The list contents are of type {@link org.eclipse.scout.saml.saml.FormFieldElement}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Fields</em>' containment reference list isn't clear,
@@ -139,6 +163,6 @@ public interface FormElement extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<ControlElement> getFields();
+  EList<FormFieldElement> getFields();
 
 } // FormElement

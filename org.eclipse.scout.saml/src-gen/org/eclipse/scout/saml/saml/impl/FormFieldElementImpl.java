@@ -18,25 +18,25 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.LogicElement;
-import org.eclipse.scout.saml.saml.LookupElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Lookup Element</b></em>'.
+ * An implementation of the model object '<em><b>Form Field Element</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.LookupElementImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.LookupElementImpl#getLogic <em>Logic</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getLogic <em>Logic</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class LookupElementImpl extends MinimalEObjectImpl.Container implements LookupElement
+public class FormFieldElementImpl extends MinimalEObjectImpl.Container implements FormFieldElement
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -73,7 +73,7 @@ public class LookupElementImpl extends MinimalEObjectImpl.Container implements L
    * <!-- end-user-doc -->
    * @generated
    */
-  protected LookupElementImpl()
+  protected FormFieldElementImpl()
   {
     super();
   }
@@ -86,7 +86,7 @@ public class LookupElementImpl extends MinimalEObjectImpl.Container implements L
   @Override
   protected EClass eStaticClass()
   {
-    return SamlPackage.Literals.LOOKUP_ELEMENT;
+    return SamlPackage.Literals.FORM_FIELD_ELEMENT;
   }
 
   /**
@@ -109,7 +109,7 @@ public class LookupElementImpl extends MinimalEObjectImpl.Container implements L
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.LOOKUP_ELEMENT__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.FORM_FIELD_ELEMENT__NAME, oldName, name));
   }
 
   /**
@@ -121,7 +121,7 @@ public class LookupElementImpl extends MinimalEObjectImpl.Container implements L
   {
     if (logic == null)
     {
-      logic = new EObjectContainmentEList<LogicElement>(LogicElement.class, this, SamlPackage.LOOKUP_ELEMENT__LOGIC);
+      logic = new EObjectContainmentEList<LogicElement>(LogicElement.class, this, SamlPackage.FORM_FIELD_ELEMENT__LOGIC);
     }
     return logic;
   }
@@ -136,7 +136,7 @@ public class LookupElementImpl extends MinimalEObjectImpl.Container implements L
   {
     switch (featureID)
     {
-      case SamlPackage.LOOKUP_ELEMENT__LOGIC:
+      case SamlPackage.FORM_FIELD_ELEMENT__LOGIC:
         return ((InternalEList<?>)getLogic()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -152,9 +152,9 @@ public class LookupElementImpl extends MinimalEObjectImpl.Container implements L
   {
     switch (featureID)
     {
-      case SamlPackage.LOOKUP_ELEMENT__NAME:
+      case SamlPackage.FORM_FIELD_ELEMENT__NAME:
         return getName();
-      case SamlPackage.LOOKUP_ELEMENT__LOGIC:
+      case SamlPackage.FORM_FIELD_ELEMENT__LOGIC:
         return getLogic();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -171,10 +171,10 @@ public class LookupElementImpl extends MinimalEObjectImpl.Container implements L
   {
     switch (featureID)
     {
-      case SamlPackage.LOOKUP_ELEMENT__NAME:
+      case SamlPackage.FORM_FIELD_ELEMENT__NAME:
         setName((String)newValue);
         return;
-      case SamlPackage.LOOKUP_ELEMENT__LOGIC:
+      case SamlPackage.FORM_FIELD_ELEMENT__LOGIC:
         getLogic().clear();
         getLogic().addAll((Collection<? extends LogicElement>)newValue);
         return;
@@ -192,10 +192,10 @@ public class LookupElementImpl extends MinimalEObjectImpl.Container implements L
   {
     switch (featureID)
     {
-      case SamlPackage.LOOKUP_ELEMENT__NAME:
+      case SamlPackage.FORM_FIELD_ELEMENT__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case SamlPackage.LOOKUP_ELEMENT__LOGIC:
+      case SamlPackage.FORM_FIELD_ELEMENT__LOGIC:
         getLogic().clear();
         return;
     }
@@ -212,9 +212,9 @@ public class LookupElementImpl extends MinimalEObjectImpl.Container implements L
   {
     switch (featureID)
     {
-      case SamlPackage.LOOKUP_ELEMENT__NAME:
+      case SamlPackage.FORM_FIELD_ELEMENT__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case SamlPackage.LOOKUP_ELEMENT__LOGIC:
+      case SamlPackage.FORM_FIELD_ELEMENT__LOGIC:
         return logic != null && !logic.isEmpty();
     }
     return super.eIsSet(featureID);
@@ -237,4 +237,4 @@ public class LookupElementImpl extends MinimalEObjectImpl.Container implements L
     return result.toString();
   }
 
-} //LookupElementImpl
+} //FormFieldElementImpl

@@ -11,6 +11,8 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.eclipse.scout.saml.saml.SamlPackage
 import org.eclipse.scout.saml.validation.SamlJavaValidator
+import com.google.inject.Provider
+import org.eclipse.xtext.resource.XtextResourceSet
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(SamlInjectorProvider))
@@ -18,6 +20,9 @@ class ParserTest {
 	
 	@Inject extension ParseHelper<Model>
 	@Inject extension ValidationTestHelper
+
+	@Inject
+	private Provider<XtextResourceSet> resourceSetProvider;
 
 	@Test
 	def void testParsingAndLinking() {
@@ -27,15 +32,18 @@ module a.b
 import java.util.List
 import org.eclipse.scout.rt.shared.services.^lookup.LookupRow
 
+form MyForm {
 
-java_code Foo runat=server {
+logic Foo runat=server {
 	return new 
 	java.util.LinkedList<org.eclipse.scout.rt.shared.services.^lookup.LookupRow>();
 }
 
-java_code Foo2 runat=server {
+logic Foo2 runat=server {
 	return new 
 	java.util.LinkedList<org.eclipse.scout.rt.shared.services.^lookup.LookupRow>();
+}
+
 }
 		'''.parse.assertNoErrors
 	}
@@ -153,15 +161,19 @@ module a.b
 import java.util.List
 import org.eclipse.scout.rt.shared.services.^lookup.LookupRow
 
-java_code Foo runat=server {
+form MyForm {
+
+logic Foo runat=server {
 	String s = "String";
 	String s1 = "My" + s;
 	return new java.util.LinkedList<org.eclipse.scout.rt.shared.services.^lookup.LookupRow>();
 }
+
+}
 '''.parse.assertNoErrors
 	}
 
-	@Test
+	//@Test
 	def void testXTypeLiteral() {
 '''
 module a.b
@@ -169,15 +181,20 @@ module a.b
 import java.util.List
 import org.eclipse.xtext.EcoreUtil2
 
-java_code Foo runat=server {
+form MyForm {
+
+logic Foo runat=server {
 	List<String> strings =
 		EcoreUtil2::typeSelect
 			(new java.util.LinkedList<String>(), String.class) ;
 	return null;
-}'''.parse.assertNoErrors
+}
+
+}
+'''.parse.assertNoErrors
 	}
 
-	@Test
+	//@Test
 	def void testXUnaryOperation() {
 '''
 module a.b
@@ -185,13 +202,38 @@ module a.b
 import java.util.List
 import org.eclipse.xtext.EcoreUtil2
 
-java_code Foo runat=server {
+form MyForm {
+
+logic Foo runat=server {
 	boolean isItTrue =
 		!(EcoreUtil2::typeSelect
 			(new java.util.LinkedList<String>(), String.class).size() > 0) ;
 	return null;
-}'''.parse.assertNoErrors
+}
+
+}
+'''.parse.assertNoErrors
 	}
 
+	@Test
+	def void testMultipleFiles() {
+		val resourceSet = resourceSetProvider.get()
+		'''
+module a.b
+
+translation TransTest en="en" de="de" de_CH="de_CH"
+translation TransTest2 en="en" de="de" de_CH="de_CH"
+'''.parse(resourceSet).assertNoErrors
+
+'''
+module a.b
+
+translation TransTest3 en="en"
+
+form MyForm text=TransTest {
+	
+}
+'''.parse(resourceSet).assertNoErrors
+	}
 	
 }

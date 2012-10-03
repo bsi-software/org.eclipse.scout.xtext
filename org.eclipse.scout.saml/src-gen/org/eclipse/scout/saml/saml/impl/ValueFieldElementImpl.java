@@ -4,26 +4,26 @@ package org.eclipse.scout.saml.saml.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.scout.saml.saml.CompositeElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
+import org.eclipse.scout.saml.saml.ValueFieldElement;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Composite Element</b></em>'.
+ * An implementation of the model object '<em><b>Value Field Element</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class CompositeElementImpl extends ControlElementImpl implements CompositeElement
+public class ValueFieldElementImpl extends FormFieldElementImpl implements ValueFieldElement
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected CompositeElementImpl()
+  protected ValueFieldElementImpl()
   {
     super();
   }
@@ -36,7 +36,7 @@ public class CompositeElementImpl extends ControlElementImpl implements Composit
   @Override
   protected EClass eStaticClass()
   {
-    return SamlPackage.Literals.COMPOSITE_ELEMENT;
+    return SamlPackage.Literals.VALUE_FIELD_ELEMENT;
   }
 
-} //CompositeElementImpl
+} //ValueFieldElementImpl

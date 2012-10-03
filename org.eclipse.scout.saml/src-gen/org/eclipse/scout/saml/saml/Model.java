@@ -16,9 +16,10 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.eclipse.scout.saml.saml.Model#getModule <em>Module</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.Model#getImports <em>Imports</em>}</li>
- *   <li>{@link org.eclipse.scout.saml.saml.Model#getCodes <em>Codes</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.Model#getTranslations <em>Translations</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.Model#getCodes <em>Codes</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.Model#getLookups <em>Lookups</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.Model#getTemplates <em>Templates</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.Model#getForms <em>Forms</em>}</li>
  * </ul>
  * </p>
@@ -72,22 +73,6 @@ public interface Model extends EObject
   EList<ImportElement> getImports();
 
   /**
-   * Returns the value of the '<em><b>Codes</b></em>' containment reference list.
-   * The list contents are of type {@link org.eclipse.emf.ecore.EObject}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Codes</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Codes</em>' containment reference list.
-   * @see org.eclipse.scout.saml.saml.SamlPackage#getModel_Codes()
-   * @model containment="true"
-   * @generated
-   */
-  EList<EObject> getCodes();
-
-  /**
    * Returns the value of the '<em><b>Translations</b></em>' containment reference list.
    * The list contents are of type {@link org.eclipse.scout.saml.saml.TranslationElement}.
    * <!-- begin-user-doc -->
@@ -104,6 +89,22 @@ public interface Model extends EObject
   EList<TranslationElement> getTranslations();
 
   /**
+   * Returns the value of the '<em><b>Codes</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.scout.saml.saml.CodeElement}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Codes</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Codes</em>' containment reference list.
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getModel_Codes()
+   * @model containment="true"
+   * @generated
+   */
+  EList<CodeElement> getCodes();
+
+  /**
    * Returns the value of the '<em><b>Lookups</b></em>' containment reference list.
    * The list contents are of type {@link org.eclipse.scout.saml.saml.LookupElement}.
    * <!-- begin-user-doc -->
@@ -118,6 +119,22 @@ public interface Model extends EObject
    * @generated
    */
   EList<LookupElement> getLookups();
+
+  /**
+   * Returns the value of the '<em><b>Templates</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.scout.saml.saml.TemplateElement}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Templates</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Templates</em>' containment reference list.
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getModel_Templates()
+   * @model containment="true"
+   * @generated
+   */
+  EList<TemplateElement> getTemplates();
 
   /**
    * Returns the value of the '<em><b>Forms</b></em>' containment reference list.

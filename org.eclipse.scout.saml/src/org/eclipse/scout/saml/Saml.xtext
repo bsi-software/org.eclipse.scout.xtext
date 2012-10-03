@@ -5,81 +5,94 @@ generate saml "http://www.eclipse.org/scout/saml/Saml"
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
 
-//=====================================================================================================================
-
-
-//TODO: plain java code in XBlockExpression?
-
-
 Model:
 	module=ModuleElement
 	(imports+=ImportElement)*
 	(
-		(codes+=JavaCodeElement)
-		|
 		(translations+=TranslationElement)
 		|
 		(codes+=CodeElement)
 		|
 		(lookups+=LookupElement)
 		|
+		(templates+=TemplateElement)
+		|
 		(forms+=FormElement)
 	)*;
 
+
+// TYPES
 QualifiedNameWithWildCard: QualifiedName  ('.' '*')?;
-enum BooleanType:true|false;
+BooleanType: 'true'|'false';	//TODO: code completion
+LogicEventType: 'all'|'modify_load'|'modify_store'|'new_load'|'new_store'|'changed'|'click'|'master_changed'|'init';	//TODO: code completion depending on element we are on
+
 
 ModuleElement: 'module' name=QualifiedName;
+
 
 ImportElement: 'import' importedNamespace=QualifiedNameWithWildCard;
 
 
+TranslationElement:'translation' name=QualifiedName (translations+=LanguageAttribute)+;
+LanguageAttribute:lang=ID '=' text=STRING;
 
 
-JavaCodeElement:'java_code' name=ID 'runat' '=' runat=RunAtType source=XBlockExpression;
-RunAtType:'client'|'server';
-
-LogicElement:'logic' (('event' '=' event=LogicType) & ('runat' '=' runat=RunAtType)? & ('exec' '=' exec=[JavaCodeElement])?) (source=XBlockExpression)?;
-enum LogicType:global|all|modify_load|modify_store|new_load|new_store|changed|click|master_changed|init;
-
-
-
-
-
-
+//TODO: validation of properties, scope of exec=
+LogicElement: {LogicElement} 'logic' (name=ID)? (('event' '=' event=LogicEventType)? & ('runat' '=' runat=('client'|'server'))? & ('exec' '=' exec=[LogicElement])?) (source=XBlockExpression)?;
 
 
 CodeElement:'code' name=ID 'id' '=' id=INT;
 
-TranslationElement:'translation' name=QualifiedName (translations+=LanguageAttribute)+;
-LanguageAttribute:lang=ID '=' text=STRING;
 
-LookupElement:'lookup' name=ID '{' (logic+=LogicElement |  javacode+=JavaCodeElement)* '}';
+LookupElement:'lookup' name=ID '{' logic+=LogicElement* '}';
 
-FormElement:'form' name=ID (('modal' '=' modal=BooleanType)? & ('columns' '=' columns=INT)?) 
-	('{' (logic+=LogicElement | fields+=ControlElement )* '}')?
-;
 
-ControlElement:CompositeElement | LeafElement;
-ControlElementRule: {ControlElementRule}
-	(('text' '='text=[TranslationElement])? & ('enabled' '=' enabled=BooleanType)? & ('visible' '=' visible=BooleanType)?);
+TemplateElement:'template' name=ID 'definition' '=' definition=JvmTypeReference;
 
-CompositeElement:SequenceBoxElement;
-CompositeElementRule:rule=ControlElementRule 
-	'{'  (logic+=LogicElement | childre+=ControlElement)* '}';
 
-LeafElement:StringElement|DoubleElement|LongElement;
 
-StringElement:'string' name=ID (fieldRule=ControlElementRule & ('mandatory' '=' mandatory=BooleanType)? & ('master' '='master=[LeafElement])?)
+FormElement:'form' name=ID (('modal' '=' modal=BooleanType)? & ('columns' '=' columns=INT)? & ('text' '=' text=[TranslationElement])?) 
+	('{' (logic+=LogicElement | fields+=FormFieldElement)* '}')?;
+
+
+// UI FIELDS
+FormFieldElement:CompositeFieldElement | ValueFieldElement;
+FormFieldProperties: {FormFieldProperties}
+	(('text' '=' text=[TranslationElement])? & ('enabled' '=' enabled=BooleanType)? & ('visible' '=' visible=BooleanType)? & ('master' '=' master=[ValueFieldElement])?);
+
+
+// COMPOSITES
+CompositeFieldElement:SequenceBoxElement|GroupBoxElement;
+SequenceBoxElement:'sequence_box'name=ID formFieldProperties=FormFieldProperties
+	('{' (logic+=LogicElement | fields+=FormFieldElement)* '}')?;
+	
+GroupBoxElement:'group_box'name=ID formFieldProperties=FormFieldProperties
+	('{' (logic+=LogicElement | fields+=FormFieldElement)* '}')?;
+
+
+// VALUE FIELDS
+ValueFieldElement: StringElement|DoubleElement|LongElement|DateElement|SmartfieldElement|CustomFieldElement;
+ValueFieldProperties: {ValueFieldProperties}
+	(formFieldProperties=FormFieldProperties  & ('mandatory' '=' mandatory=BooleanType)?);
+
+StringElement:'string' name=ID (valueFieldProperties=ValueFieldProperties & ('maxlen' '=' maxlen=INT)?)
 	('{' logic+=LogicElement* '}')?;
 
-DoubleElement:'double' name=ID (fieldRule=ControlElementRule & ('mandatory' '=' mandatory=BooleanType)?)
+DoubleElement:'double' name=ID (valueFieldProperties=ValueFieldProperties)
 	('{' logic+=LogicElement* '}')?;
 
-LongElement:'long' name=ID (fieldRule=ControlElementRule & ('mandatory' '=' mandatory=BooleanType)?)
+LongElement:'long' name=ID (valueFieldProperties=ValueFieldProperties)
 	('{' logic+=LogicElement* '}')?;
 
-SequenceBoxElement:'sequence_box'name=ID fieldRule=CompositeElementRule;
+DateElement:'date' name=ID (valueFieldProperties=ValueFieldProperties)
+	('{' logic+=LogicElement* '}')?;
+
+SmartfieldElement:'smartfield' name=ID ((valueFieldProperties=ValueFieldProperties)? & ('code' '=' code=[CodeElement])? & ('value_type' '=' valueType=JvmTypeReference)? & ('lookup' '=' lookup=[LookupElement])?)
+	('{' logic+=LogicElement* '}')?;
+
+// CUSTOM FIELDS
+CustomFieldElement:'custom_field' name=ID 'template' '=' template=[TemplateElement] formFieldProperties=FormFieldProperties
+	('{' (logic+=LogicElement | fields+=FormFieldElement)* '}')?;
 
 XBlockExpression returns xbase::XBlockExpression: 
 	{XBlockExpression}

@@ -1,6 +1,7 @@
 package org.eclipse.scout.saml.tests;
 
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.scout.saml.SamlInjectorProvider;
 import org.eclipse.scout.saml.saml.Model;
@@ -11,6 +12,7 @@ import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.junit4.util.ParseHelper;
 import org.eclipse.xtext.junit4.validation.ValidationTestHelper;
+import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,6 +27,9 @@ public class ParserTest {
   @Inject
   private ValidationTestHelper _validationTestHelper;
   
+  @Inject
+  private Provider<XtextResourceSet> resourceSetProvider;
+  
   @Test
   public void testParsingAndLinking() {
     try {
@@ -37,8 +42,10 @@ public class ParserTest {
       _builder.append("import org.eclipse.scout.rt.shared.services.^lookup.LookupRow");
       _builder.newLine();
       _builder.newLine();
+      _builder.append("form MyForm {");
       _builder.newLine();
-      _builder.append("java_code Foo runat=server {");
+      _builder.newLine();
+      _builder.append("logic Foo runat=server {");
       _builder.newLine();
       _builder.append("\t");
       _builder.append("return new ");
@@ -49,13 +56,16 @@ public class ParserTest {
       _builder.append("}");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("java_code Foo2 runat=server {");
+      _builder.append("logic Foo2 runat=server {");
       _builder.newLine();
       _builder.append("\t");
       _builder.append("return new ");
       _builder.newLine();
       _builder.append("\t");
       _builder.append("java.util.LinkedList<org.eclipse.scout.rt.shared.services.^lookup.LookupRow>();");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
@@ -293,7 +303,10 @@ public class ParserTest {
       _builder.append("import org.eclipse.scout.rt.shared.services.^lookup.LookupRow");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("java_code Foo runat=server {");
+      _builder.append("form MyForm {");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("logic Foo runat=server {");
       _builder.newLine();
       _builder.append("\t");
       _builder.append("String s = \"String\";");
@@ -306,6 +319,9 @@ public class ParserTest {
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
       Model _parse = this._parseHelper.parse(_builder);
       this._validationTestHelper.assertNoErrors(_parse);
     } catch (Exception _e) {
@@ -313,7 +329,6 @@ public class ParserTest {
     }
   }
   
-  @Test
   public void testXTypeLiteral() {
     try {
       StringConcatenation _builder = new StringConcatenation();
@@ -325,7 +340,10 @@ public class ParserTest {
       _builder.append("import org.eclipse.xtext.EcoreUtil2");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("java_code Foo runat=server {");
+      _builder.append("form MyForm {");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("logic Foo runat=server {");
       _builder.newLine();
       _builder.append("\t");
       _builder.append("List<String> strings =");
@@ -340,6 +358,10 @@ public class ParserTest {
       _builder.append("return null;");
       _builder.newLine();
       _builder.append("}");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
       Model _parse = this._parseHelper.parse(_builder);
       this._validationTestHelper.assertNoErrors(_parse);
     } catch (Exception _e) {
@@ -347,7 +369,6 @@ public class ParserTest {
     }
   }
   
-  @Test
   public void testXUnaryOperation() {
     try {
       StringConcatenation _builder = new StringConcatenation();
@@ -359,7 +380,10 @@ public class ParserTest {
       _builder.append("import org.eclipse.xtext.EcoreUtil2");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("java_code Foo runat=server {");
+      _builder.append("form MyForm {");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("logic Foo runat=server {");
       _builder.newLine();
       _builder.append("\t");
       _builder.append("boolean isItTrue =");
@@ -374,8 +398,46 @@ public class ParserTest {
       _builder.append("return null;");
       _builder.newLine();
       _builder.append("}");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
       Model _parse = this._parseHelper.parse(_builder);
       this._validationTestHelper.assertNoErrors(_parse);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testMultipleFiles() {
+    try {
+      final XtextResourceSet resourceSet = this.resourceSetProvider.get();
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module a.b");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("translation TransTest en=\"en\" de=\"de\" de_CH=\"de_CH\"");
+      _builder.newLine();
+      _builder.append("translation TransTest2 en=\"en\" de=\"de\" de_CH=\"de_CH\"");
+      _builder.newLine();
+      Model _parse = this._parseHelper.parse(_builder, resourceSet);
+      this._validationTestHelper.assertNoErrors(_parse);
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("module a.b");
+      _builder_1.newLine();
+      _builder_1.newLine();
+      _builder_1.append("translation TransTest3 en=\"en\"");
+      _builder_1.newLine();
+      _builder_1.newLine();
+      _builder_1.append("form MyForm text=TransTest {");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.newLine();
+      _builder_1.append("}");
+      _builder_1.newLine();
+      Model _parse_1 = this._parseHelper.parse(_builder_1, resourceSet);
+      this._validationTestHelper.assertNoErrors(_parse_1);
     } catch (Exception _e) {
       throw Exceptions.sneakyThrow(_e);
     }

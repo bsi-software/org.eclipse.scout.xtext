@@ -50,13 +50,22 @@ public interface SamlFactory extends EFactory
   ImportElement createImportElement();
 
   /**
-   * Returns a new object of class '<em>Java Code Element</em>'.
+   * Returns a new object of class '<em>Translation Element</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Java Code Element</em>'.
+   * @return a new object of class '<em>Translation Element</em>'.
    * @generated
    */
-  JavaCodeElement createJavaCodeElement();
+  TranslationElement createTranslationElement();
+
+  /**
+   * Returns a new object of class '<em>Language Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Language Attribute</em>'.
+   * @generated
+   */
+  LanguageAttribute createLanguageAttribute();
 
   /**
    * Returns a new object of class '<em>Logic Element</em>'.
@@ -77,24 +86,6 @@ public interface SamlFactory extends EFactory
   CodeElement createCodeElement();
 
   /**
-   * Returns a new object of class '<em>Translation Element</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Translation Element</em>'.
-   * @generated
-   */
-  TranslationElement createTranslationElement();
-
-  /**
-   * Returns a new object of class '<em>Language Attribute</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Language Attribute</em>'.
-   * @generated
-   */
-  LanguageAttribute createLanguageAttribute();
-
-  /**
    * Returns a new object of class '<em>Lookup Element</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -102,6 +93,15 @@ public interface SamlFactory extends EFactory
    * @generated
    */
   LookupElement createLookupElement();
+
+  /**
+   * Returns a new object of class '<em>Template Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Template Element</em>'.
+   * @generated
+   */
+  TemplateElement createTemplateElement();
 
   /**
    * Returns a new object of class '<em>Form Element</em>'.
@@ -113,49 +113,67 @@ public interface SamlFactory extends EFactory
   FormElement createFormElement();
 
   /**
-   * Returns a new object of class '<em>Control Element</em>'.
+   * Returns a new object of class '<em>Form Field Element</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Control Element</em>'.
+   * @return a new object of class '<em>Form Field Element</em>'.
    * @generated
    */
-  ControlElement createControlElement();
+  FormFieldElement createFormFieldElement();
 
   /**
-   * Returns a new object of class '<em>Control Element Rule</em>'.
+   * Returns a new object of class '<em>Form Field Properties</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Control Element Rule</em>'.
+   * @return a new object of class '<em>Form Field Properties</em>'.
    * @generated
    */
-  ControlElementRule createControlElementRule();
+  FormFieldProperties createFormFieldProperties();
 
   /**
-   * Returns a new object of class '<em>Composite Element</em>'.
+   * Returns a new object of class '<em>Composite Field Element</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Composite Element</em>'.
+   * @return a new object of class '<em>Composite Field Element</em>'.
    * @generated
    */
-  CompositeElement createCompositeElement();
+  CompositeFieldElement createCompositeFieldElement();
 
   /**
-   * Returns a new object of class '<em>Composite Element Rule</em>'.
+   * Returns a new object of class '<em>Sequence Box Element</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Composite Element Rule</em>'.
+   * @return a new object of class '<em>Sequence Box Element</em>'.
    * @generated
    */
-  CompositeElementRule createCompositeElementRule();
+  SequenceBoxElement createSequenceBoxElement();
 
   /**
-   * Returns a new object of class '<em>Leaf Element</em>'.
+   * Returns a new object of class '<em>Group Box Element</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Leaf Element</em>'.
+   * @return a new object of class '<em>Group Box Element</em>'.
    * @generated
    */
-  LeafElement createLeafElement();
+  GroupBoxElement createGroupBoxElement();
+
+  /**
+   * Returns a new object of class '<em>Value Field Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Value Field Element</em>'.
+   * @generated
+   */
+  ValueFieldElement createValueFieldElement();
+
+  /**
+   * Returns a new object of class '<em>Value Field Properties</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Value Field Properties</em>'.
+   * @generated
+   */
+  ValueFieldProperties createValueFieldProperties();
 
   /**
    * Returns a new object of class '<em>String Element</em>'.
@@ -185,13 +203,31 @@ public interface SamlFactory extends EFactory
   LongElement createLongElement();
 
   /**
-   * Returns a new object of class '<em>Sequence Box Element</em>'.
+   * Returns a new object of class '<em>Date Element</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Sequence Box Element</em>'.
+   * @return a new object of class '<em>Date Element</em>'.
    * @generated
    */
-  SequenceBoxElement createSequenceBoxElement();
+  DateElement createDateElement();
+
+  /**
+   * Returns a new object of class '<em>Smartfield Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Smartfield Element</em>'.
+   * @generated
+   */
+  SmartfieldElement createSmartfieldElement();
+
+  /**
+   * Returns a new object of class '<em>Custom Field Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Custom Field Element</em>'.
+   * @generated
+   */
+  CustomFieldElement createCustomFieldElement();
 
   /**
    * Returns a new object of class '<em>XBlock Expression</em>'.

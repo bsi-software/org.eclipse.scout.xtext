@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 module ch.raiffeisen.dialba.common
 
 
@@ -296,3 +297,215 @@ form Rka001_gen modal=true text=koEmissionTitle columns=2 {
 	}
 } // end form Rka001
 
+=======
+module ch.raiffeisen.dialba.common
+
+import ch.raiffeisen.dialba.common.shared.beans.*
+import java.util.*
+
+
+// ========================
+// CODE TYPES
+// ========================
+code KOArt id=1587999
+code KOLaufzeit id=9687
+code KOTiteldruck id=2569
+
+
+// ========================
+// LOOKUP CALLS & SERVICES
+// ========================
+lookup DepotNumber {
+	logic runat=server {
+		"private LookupRow[] createDummyData() {
+  		  return new LookupRow[]{new LookupRow(new DepotId(), \"Depot id 1\"), new LookupRow(new DepotId(), \"Depot id 2\"), new LookupRow(new DepotId(), \"Depot id 3\")};
+  		}"
+    }
+	logic event=all runat=server { "return createDummyData();" }
+}
+
+lookup OldObliNumber {
+	logic event=all runat=server {
+		val ret = new ArrayList<org.eclipse.scout.rt.shared.services.^lookup.LookupRow>()
+		ret.add(new org.eclipse.scout.rt.shared.services.^lookup.LookupRow(1L, "Value 1"))
+		ret.add(new org.eclipse.scout.rt.shared.services.^lookup.LookupRow(2L, "Value 2"))
+		ret.add(new org.eclipse.scout.rt.shared.services.^lookup.LookupRow(3L, "Value 3"))
+		return ret
+	}
+}
+
+lookup KontoByZrnr {
+	logic runat=server { 
+		"private LookupRow[] createDummyData() {
+  		  return new LookupRow[]{new LookupRow(new KontoData(), \"KontoData id 1\"), new LookupRow(new KontoData(), \"KontoData id 2\"), new LookupRow(new KontoData(), \"KontoData id 3\")};
+  		}"
+  	}
+	logic event=all runat=server { "return createDummyData();" }
+}
+
+
+
+
+// ========================
+// UI TEMPLATE DEFINITIONS
+// ========================
+template zreg_sequence_box definition=ch.raiffeisen.dialba.common.^client.ui.forms.fields.Zregsequence_boxAbs
+//template dialba_smartfield definition=ch.raiffeisen.dialba.common.^client.ui.forms.fields.AbstractDialbaSmartField
+
+
+// ========================
+// FORMS
+// ========================
+form Rka001_gen modal=true text=koEmissionTitle columns=2 {
+	/* Named Java code snippets that are used more than once */
+	logic EvalForm runat=client {
+		/*"evaluateZinstermFields();
+	     evaluateBuchungstext1And2();"*/
+	     return null;
+	}
+	
+	/* form level logic */
+	logic runat=client {
+		"private void evaluateBuchungstext1And2() throws ProcessingException {
+	        System.out.println(\"client method evaluateBuchungstext1And2\");	
+		}
+	
+		private void evaluateZinstermFields() {
+	        System.out.println(\"client method evaluateZinstermFields\");
+	    }"
+	}
+	
+	logic runat=server {
+		"private static void makeZentralRegister(Rka001_genFormData formData) {
+	        System.out.println(\"server method makeZentralRegister\");
+	    }
+	
+		private static void makeKassenobligationBewegung(Rka001_genFormData formData, Integer laufNr, Integer sollHaben) {
+	        System.out.println(\"server method makeKassenobligationBewegung\");
+	    }
+	
+		private void makeKassenobligationStamm(Rka001_genFormData formData) {
+	        System.out.println(\"server method makeKassenobligationStamm\");
+	    }"
+	}
+	
+	logic event=new_store runat=server {
+		"System.out.println(\"server call create\");
+		 return formData;"
+	}
+
+	sequence_box BuchungsCodeSequence {
+		string BuchungsCode text=Transaktionscode enabled=false
+	}
+	
+	sequence_box ZregSequence {
+		custom_field Zreg template=zreg_sequence_box text=Zentralregister {
+			logic event=init runat=client {
+				"setValue(null);"
+			}
+		}
+	}
+
+	sequence_box KoArtSequence {
+		smartfield KoArt text=Art mandatory=true value_type=Integer codetype=KOArt
+	}
+	
+	sequence_box LaufzeitSequence {
+		smartfield LaufzeitField text=Laufzeit mandatory=true codetype=KOLaufzeit value_type=Integer {
+			logic event=changed runat=server {
+				"System.out.println(\"server call LaufzeitfieldChanged\");
+				 return formData;"
+			}
+			logic event=changed exec=EvalForm
+		}
+	}
+
+	sequence_box ValorSequence {
+		string Valor text=Valorennummer enabled=false
+	}
+	
+	sequence_box ZinssatzSequence {
+		double Zinssatz text=Zinssatz enabled=false
+	}
+	
+	sequence_box MitTitelSequence {
+		smartfield MitTitel text=MitTiteldruck mandatory=true codetype=KOTiteldruck value_type=Integer {
+			logic event=changed runat=server {
+				"System.out.println(\"server call MitTitelFieldChanged\");
+				 return formData;"
+			}
+			logic event=changed runat=client {
+				"evaluateBuchungstext1And2();"
+			}
+		}
+	}
+	
+	sequence_box DepotSequence master=MitTitel	{
+		logic event=master_changed runat=client {
+			"System.out.println(\"client call DepotSequenceBoxMasterChanged\");"
+		}
+		smartfield Depot text=Depot master=Zreg lookupcall=DepotNumber value_type=DepotId
+	}
+
+	sequence_box ObligationNrAltSequence {
+		smartfield ObligationNrAlt text=AlteNeueKONr  master=Zreg mandatory=true lookupcall=OldObliNumber value_type=Long
+		long ObligationNr enabled=false visible=false
+	}
+  
+	sequence_box BuchungsDatumSequence {
+		date BuchungsDatum text=DatumEmission enabled=false {
+			logic event=init runat=client {
+				"form.getBuchungsDatumField().setValue(new java.util.Date());"
+			}
+		}
+    	date EmissionsDatum mandatory=true {
+    		logic event=init runat=client {
+				"form.getEmissionsDatumField().setValue(new java.util.Date());"
+			}
+			logic event=changed exec=EvalForm
+    	}
+	}
+  
+	sequence_box ZinstermSequence {
+		string Zinsterm text=ZinstermAuslauf enabled=false
+		string EndJahr enabled=false
+	}
+  
+	sequence_box BetragSequence {
+		long Betrag text=BetragSpesen mandatory=true {
+			logic event=changed runat=client {
+				"form.getEmissionField().setValue(0d);"
+			}
+		}
+		string BetragsWaehrung enabled=false
+	}
+  
+	sequence_box EmissionSequence {
+		double Emission text=Emissionsabgabe enabled=false
+		string EmissionsWaehrung enabled=false
+	}
+  
+	sequence_box KontoNrSequence {
+		smartfield KontoNr text=Kontobelastung master=Zreg mandatory=true lookupcall=KontoByZrnr value_type=KontoData {
+			logic event=changed runat=client {
+				"System.out.println(\"client call KontoNrFieldChanged\");"
+			}
+		}
+		string ZregKurzbezeichnung enabled=false master=KontoNr
+		string Kontostand enabled=false
+	}
+  
+	sequence_box KontoText1Sequence {
+		string KontoText1 text=Buchungstext1 enabled=false
+	}
+  
+	sequence_box KontoText2Sequence {
+		string KontoText2 text=Buchungstext2 enabled=false
+	}
+  
+	sequence_box KontoText3Sequence {
+		string KontoText3 text=Buchungstext3
+	}
+} // end form Rka001
+
+>>>>>>> refs/remotes/origin/master

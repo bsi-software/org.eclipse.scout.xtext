@@ -10,24 +10,24 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.scout.saml.saml.LongElement;
+import org.eclipse.scout.saml.saml.DateElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
 import org.eclipse.scout.saml.saml.ValueFieldProperties;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Long Element</b></em>'.
+ * An implementation of the model object '<em><b>Date Element</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.LongElementImpl#getValueFieldProperties <em>Value Field Properties</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.DateElementImpl#getValueFieldProperties <em>Value Field Properties</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class LongElementImpl extends ValueFieldElementImpl implements LongElement
+public class DateElementImpl extends ValueFieldElementImpl implements DateElement
 {
   /**
    * The cached value of the '{@link #getValueFieldProperties() <em>Value Field Properties</em>}' containment reference.
@@ -44,7 +44,7 @@ public class LongElementImpl extends ValueFieldElementImpl implements LongElemen
    * <!-- end-user-doc -->
    * @generated
    */
-  protected LongElementImpl()
+  protected DateElementImpl()
   {
     super();
   }
@@ -57,7 +57,7 @@ public class LongElementImpl extends ValueFieldElementImpl implements LongElemen
   @Override
   protected EClass eStaticClass()
   {
-    return SamlPackage.Literals.LONG_ELEMENT;
+    return SamlPackage.Literals.DATE_ELEMENT;
   }
 
   /**
@@ -81,7 +81,7 @@ public class LongElementImpl extends ValueFieldElementImpl implements LongElemen
     valueFieldProperties = newValueFieldProperties;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SamlPackage.LONG_ELEMENT__VALUE_FIELD_PROPERTIES, oldValueFieldProperties, newValueFieldProperties);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SamlPackage.DATE_ELEMENT__VALUE_FIELD_PROPERTIES, oldValueFieldProperties, newValueFieldProperties);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -98,14 +98,14 @@ public class LongElementImpl extends ValueFieldElementImpl implements LongElemen
     {
       NotificationChain msgs = null;
       if (valueFieldProperties != null)
-        msgs = ((InternalEObject)valueFieldProperties).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SamlPackage.LONG_ELEMENT__VALUE_FIELD_PROPERTIES, null, msgs);
+        msgs = ((InternalEObject)valueFieldProperties).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SamlPackage.DATE_ELEMENT__VALUE_FIELD_PROPERTIES, null, msgs);
       if (newValueFieldProperties != null)
-        msgs = ((InternalEObject)newValueFieldProperties).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SamlPackage.LONG_ELEMENT__VALUE_FIELD_PROPERTIES, null, msgs);
+        msgs = ((InternalEObject)newValueFieldProperties).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SamlPackage.DATE_ELEMENT__VALUE_FIELD_PROPERTIES, null, msgs);
       msgs = basicSetValueFieldProperties(newValueFieldProperties, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.LONG_ELEMENT__VALUE_FIELD_PROPERTIES, newValueFieldProperties, newValueFieldProperties));
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.DATE_ELEMENT__VALUE_FIELD_PROPERTIES, newValueFieldProperties, newValueFieldProperties));
   }
 
   /**
@@ -118,7 +118,7 @@ public class LongElementImpl extends ValueFieldElementImpl implements LongElemen
   {
     switch (featureID)
     {
-      case SamlPackage.LONG_ELEMENT__VALUE_FIELD_PROPERTIES:
+      case SamlPackage.DATE_ELEMENT__VALUE_FIELD_PROPERTIES:
         return basicSetValueFieldProperties(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -134,7 +134,7 @@ public class LongElementImpl extends ValueFieldElementImpl implements LongElemen
   {
     switch (featureID)
     {
-      case SamlPackage.LONG_ELEMENT__VALUE_FIELD_PROPERTIES:
+      case SamlPackage.DATE_ELEMENT__VALUE_FIELD_PROPERTIES:
         return getValueFieldProperties();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -150,7 +150,7 @@ public class LongElementImpl extends ValueFieldElementImpl implements LongElemen
   {
     switch (featureID)
     {
-      case SamlPackage.LONG_ELEMENT__VALUE_FIELD_PROPERTIES:
+      case SamlPackage.DATE_ELEMENT__VALUE_FIELD_PROPERTIES:
         setValueFieldProperties((ValueFieldProperties)newValue);
         return;
     }
@@ -167,7 +167,7 @@ public class LongElementImpl extends ValueFieldElementImpl implements LongElemen
   {
     switch (featureID)
     {
-      case SamlPackage.LONG_ELEMENT__VALUE_FIELD_PROPERTIES:
+      case SamlPackage.DATE_ELEMENT__VALUE_FIELD_PROPERTIES:
         setValueFieldProperties((ValueFieldProperties)null);
         return;
     }
@@ -184,10 +184,10 @@ public class LongElementImpl extends ValueFieldElementImpl implements LongElemen
   {
     switch (featureID)
     {
-      case SamlPackage.LONG_ELEMENT__VALUE_FIELD_PROPERTIES:
+      case SamlPackage.DATE_ELEMENT__VALUE_FIELD_PROPERTIES:
         return valueFieldProperties != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //LongElementImpl
+} //DateElementImpl

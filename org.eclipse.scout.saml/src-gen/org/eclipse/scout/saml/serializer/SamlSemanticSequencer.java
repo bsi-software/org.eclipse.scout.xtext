@@ -4,12 +4,13 @@ import com.google.inject.Inject;
 import com.google.inject.Provider;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.scout.saml.saml.CodeElement;
-import org.eclipse.scout.saml.saml.CompositeElementRule;
-import org.eclipse.scout.saml.saml.ControlElementRule;
+import org.eclipse.scout.saml.saml.CustomFieldElement;
+import org.eclipse.scout.saml.saml.DateElement;
 import org.eclipse.scout.saml.saml.DoubleElement;
 import org.eclipse.scout.saml.saml.FormElement;
+import org.eclipse.scout.saml.saml.FormFieldProperties;
+import org.eclipse.scout.saml.saml.GroupBoxElement;
 import org.eclipse.scout.saml.saml.ImportElement;
-import org.eclipse.scout.saml.saml.JavaCodeElement;
 import org.eclipse.scout.saml.saml.LanguageAttribute;
 import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.saml.saml.LongElement;
@@ -18,8 +19,11 @@ import org.eclipse.scout.saml.saml.Model;
 import org.eclipse.scout.saml.saml.ModuleElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
 import org.eclipse.scout.saml.saml.SequenceBoxElement;
+import org.eclipse.scout.saml.saml.SmartfieldElement;
 import org.eclipse.scout.saml.saml.StringElement;
+import org.eclipse.scout.saml.saml.TemplateElement;
 import org.eclipse.scout.saml.saml.TranslationElement;
+import org.eclipse.scout.saml.saml.ValueFieldProperties;
 import org.eclipse.scout.saml.saml.XBlockExpression;
 import org.eclipse.scout.saml.saml.XVariableDeclaration;
 import org.eclipse.scout.saml.services.SamlGrammarAccess;
@@ -83,22 +87,26 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 					return; 
 				}
 				else break;
-			case SamlPackage.COMPOSITE_ELEMENT_RULE:
-				if(context == grammarAccess.getCompositeElementRuleRule()) {
-					sequence_CompositeElementRule(context, (CompositeElementRule) semanticObject); 
+			case SamlPackage.CUSTOM_FIELD_ELEMENT:
+				if(context == grammarAccess.getCustomFieldElementRule() ||
+				   context == grammarAccess.getFormFieldElementRule() ||
+				   context == grammarAccess.getValueFieldElementRule()) {
+					sequence_CustomFieldElement(context, (CustomFieldElement) semanticObject); 
 					return; 
 				}
 				else break;
-			case SamlPackage.CONTROL_ELEMENT_RULE:
-				if(context == grammarAccess.getControlElementRuleRule()) {
-					sequence_ControlElementRule(context, (ControlElementRule) semanticObject); 
+			case SamlPackage.DATE_ELEMENT:
+				if(context == grammarAccess.getDateElementRule() ||
+				   context == grammarAccess.getFormFieldElementRule() ||
+				   context == grammarAccess.getValueFieldElementRule()) {
+					sequence_DateElement(context, (DateElement) semanticObject); 
 					return; 
 				}
 				else break;
 			case SamlPackage.DOUBLE_ELEMENT:
-				if(context == grammarAccess.getControlElementRule() ||
-				   context == grammarAccess.getDoubleElementRule() ||
-				   context == grammarAccess.getLeafElementRule()) {
+				if(context == grammarAccess.getDoubleElementRule() ||
+				   context == grammarAccess.getFormFieldElementRule() ||
+				   context == grammarAccess.getValueFieldElementRule()) {
 					sequence_DoubleElement(context, (DoubleElement) semanticObject); 
 					return; 
 				}
@@ -109,15 +117,23 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 					return; 
 				}
 				else break;
-			case SamlPackage.IMPORT_ELEMENT:
-				if(context == grammarAccess.getImportElementRule()) {
-					sequence_ImportElement(context, (ImportElement) semanticObject); 
+			case SamlPackage.FORM_FIELD_PROPERTIES:
+				if(context == grammarAccess.getFormFieldPropertiesRule()) {
+					sequence_FormFieldProperties(context, (FormFieldProperties) semanticObject); 
 					return; 
 				}
 				else break;
-			case SamlPackage.JAVA_CODE_ELEMENT:
-				if(context == grammarAccess.getJavaCodeElementRule()) {
-					sequence_JavaCodeElement(context, (JavaCodeElement) semanticObject); 
+			case SamlPackage.GROUP_BOX_ELEMENT:
+				if(context == grammarAccess.getCompositeFieldElementRule() ||
+				   context == grammarAccess.getFormFieldElementRule() ||
+				   context == grammarAccess.getGroupBoxElementRule()) {
+					sequence_GroupBoxElement(context, (GroupBoxElement) semanticObject); 
+					return; 
+				}
+				else break;
+			case SamlPackage.IMPORT_ELEMENT:
+				if(context == grammarAccess.getImportElementRule()) {
+					sequence_ImportElement(context, (ImportElement) semanticObject); 
 					return; 
 				}
 				else break;
@@ -134,9 +150,9 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 				}
 				else break;
 			case SamlPackage.LONG_ELEMENT:
-				if(context == grammarAccess.getControlElementRule() ||
-				   context == grammarAccess.getLeafElementRule() ||
-				   context == grammarAccess.getLongElementRule()) {
+				if(context == grammarAccess.getFormFieldElementRule() ||
+				   context == grammarAccess.getLongElementRule() ||
+				   context == grammarAccess.getValueFieldElementRule()) {
 					sequence_LongElement(context, (LongElement) semanticObject); 
 					return; 
 				}
@@ -160,24 +176,44 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 				}
 				else break;
 			case SamlPackage.SEQUENCE_BOX_ELEMENT:
-				if(context == grammarAccess.getCompositeElementRule() ||
-				   context == grammarAccess.getControlElementRule() ||
+				if(context == grammarAccess.getCompositeFieldElementRule() ||
+				   context == grammarAccess.getFormFieldElementRule() ||
 				   context == grammarAccess.getSequenceBoxElementRule()) {
 					sequence_SequenceBoxElement(context, (SequenceBoxElement) semanticObject); 
 					return; 
 				}
 				else break;
+			case SamlPackage.SMARTFIELD_ELEMENT:
+				if(context == grammarAccess.getFormFieldElementRule() ||
+				   context == grammarAccess.getSmartfieldElementRule() ||
+				   context == grammarAccess.getValueFieldElementRule()) {
+					sequence_SmartfieldElement(context, (SmartfieldElement) semanticObject); 
+					return; 
+				}
+				else break;
 			case SamlPackage.STRING_ELEMENT:
-				if(context == grammarAccess.getControlElementRule() ||
-				   context == grammarAccess.getLeafElementRule() ||
-				   context == grammarAccess.getStringElementRule()) {
+				if(context == grammarAccess.getFormFieldElementRule() ||
+				   context == grammarAccess.getStringElementRule() ||
+				   context == grammarAccess.getValueFieldElementRule()) {
 					sequence_StringElement(context, (StringElement) semanticObject); 
+					return; 
+				}
+				else break;
+			case SamlPackage.TEMPLATE_ELEMENT:
+				if(context == grammarAccess.getTemplateElementRule()) {
+					sequence_TemplateElement(context, (TemplateElement) semanticObject); 
 					return; 
 				}
 				else break;
 			case SamlPackage.TRANSLATION_ELEMENT:
 				if(context == grammarAccess.getTranslationElementRule()) {
 					sequence_TranslationElement(context, (TranslationElement) semanticObject); 
+					return; 
+				}
+				else break;
+			case SamlPackage.VALUE_FIELD_PROPERTIES:
+				if(context == grammarAccess.getValueFieldPropertiesRule()) {
+					sequence_ValueFieldProperties(context, (ValueFieldProperties) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1036,25 +1072,25 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (rule=ControlElementRule (logic+=LogicElement | childre+=ControlElement)*)
+	 *     (name=ID template=[TemplateElement|ID] formFieldProperties=FormFieldProperties (logic+=LogicElement | fields+=FormFieldElement)*)
 	 */
-	protected void sequence_CompositeElementRule(EObject context, CompositeElementRule semanticObject) {
+	protected void sequence_CustomFieldElement(EObject context, CustomFieldElement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (text=[TranslationElement|ID]? enabled=BooleanType? visible=BooleanType?)
+	 *     (name=ID valueFieldProperties=ValueFieldProperties logic+=LogicElement*)
 	 */
-	protected void sequence_ControlElementRule(EObject context, ControlElementRule semanticObject) {
+	protected void sequence_DateElement(EObject context, DateElement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (name=ID fieldRule=ControlElementRule mandatory=BooleanType? logic+=LogicElement*)
+	 *     (name=ID valueFieldProperties=ValueFieldProperties logic+=LogicElement*)
 	 */
 	protected void sequence_DoubleElement(EObject context, DoubleElement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1063,9 +1099,27 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=ID modal=BooleanType? columns=INT? (logic+=LogicElement | fields+=ControlElement)*)
+	 *     (name=ID modal=BooleanType? columns=INT? text=[TranslationElement|ID]? (logic+=LogicElement | fields+=FormFieldElement)*)
 	 */
 	protected void sequence_FormElement(EObject context, FormElement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (text=[TranslationElement|ID]? enabled=BooleanType? visible=BooleanType? master=[ValueFieldElement|ID]?)
+	 */
+	protected void sequence_FormFieldProperties(EObject context, FormFieldProperties semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=ID formFieldProperties=FormFieldProperties (logic+=LogicElement | fields+=FormFieldElement)*)
+	 */
+	protected void sequence_GroupBoxElement(EObject context, GroupBoxElement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1082,28 +1136,6 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getImportElementAccess().getImportedNamespaceQualifiedNameWithWildCardParserRuleCall_1_0(), semanticObject.getImportedNamespace());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (name=ID runat=RunAtType source=XBlockExpression)
-	 */
-	protected void sequence_JavaCodeElement(EObject context, JavaCodeElement semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, SamlPackage.Literals.JAVA_CODE_ELEMENT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SamlPackage.Literals.JAVA_CODE_ELEMENT__NAME));
-			if(transientValues.isValueTransient(semanticObject, SamlPackage.Literals.JAVA_CODE_ELEMENT__RUNAT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SamlPackage.Literals.JAVA_CODE_ELEMENT__RUNAT));
-			if(transientValues.isValueTransient(semanticObject, SamlPackage.Literals.JAVA_CODE_ELEMENT__SOURCE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SamlPackage.Literals.JAVA_CODE_ELEMENT__SOURCE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getJavaCodeElementAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getJavaCodeElementAccess().getRunatRunAtTypeParserRuleCall_4_0(), semanticObject.getRunat());
-		feeder.accept(grammarAccess.getJavaCodeElementAccess().getSourceXBlockExpressionParserRuleCall_5_0(), semanticObject.getSource());
 		feeder.finish();
 	}
 	
@@ -1129,7 +1161,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (event=LogicType runat=RunAtType? exec=[JavaCodeElement|ID]? source=XBlockExpression?)
+	 *     (name=ID? event=LogicEventType? (runat='client' | runat='server')? exec=[LogicElement|ID]? source=XBlockExpression?)
 	 */
 	protected void sequence_LogicElement(EObject context, LogicElement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1138,7 +1170,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=ID fieldRule=ControlElementRule mandatory=BooleanType? logic+=LogicElement*)
+	 *     (name=ID valueFieldProperties=ValueFieldProperties logic+=LogicElement*)
 	 */
 	protected void sequence_LongElement(EObject context, LongElement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1147,7 +1179,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=ID (logic+=LogicElement | javacode+=JavaCodeElement)*)
+	 *     (name=ID logic+=LogicElement*)
 	 */
 	protected void sequence_LookupElement(EObject context, LookupElement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1159,7 +1191,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *     (
 	 *         module=ModuleElement 
 	 *         imports+=ImportElement* 
-	 *         (codes+=JavaCodeElement | translations+=TranslationElement | codes+=CodeElement | lookups+=LookupElement | forms+=FormElement)*
+	 *         (translations+=TranslationElement | codes+=CodeElement | lookups+=LookupElement | templates+=TemplateElement | forms+=FormElement)*
 	 *     )
 	 */
 	protected void sequence_Model(EObject context, Model semanticObject) {
@@ -1185,26 +1217,32 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=ID fieldRule=CompositeElementRule)
+	 *     (name=ID formFieldProperties=FormFieldProperties (logic+=LogicElement | fields+=FormFieldElement)*)
 	 */
 	protected void sequence_SequenceBoxElement(EObject context, SequenceBoxElement semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, SamlPackage.Literals.SEQUENCE_BOX_ELEMENT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SamlPackage.Literals.SEQUENCE_BOX_ELEMENT__NAME));
-			if(transientValues.isValueTransient(semanticObject, SamlPackage.Literals.SEQUENCE_BOX_ELEMENT__FIELD_RULE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SamlPackage.Literals.SEQUENCE_BOX_ELEMENT__FIELD_RULE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getSequenceBoxElementAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getSequenceBoxElementAccess().getFieldRuleCompositeElementRuleParserRuleCall_2_0(), semanticObject.getFieldRule());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (name=ID fieldRule=ControlElementRule mandatory=BooleanType? master=[LeafElement|ID]? logic+=LogicElement*)
+	 *     (
+	 *         name=ID 
+	 *         valueFieldProperties=ValueFieldProperties? 
+	 *         code=[CodeElement|ID]? 
+	 *         valueType=JvmTypeReference? 
+	 *         lookup=[LookupElement|ID]? 
+	 *         logic+=LogicElement*
+	 *     )
+	 */
+	protected void sequence_SmartfieldElement(EObject context, SmartfieldElement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=ID valueFieldProperties=ValueFieldProperties maxlen=INT? logic+=LogicElement*)
 	 */
 	protected void sequence_StringElement(EObject context, StringElement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1213,9 +1251,37 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     (name=ID definition=JvmTypeReference)
+	 */
+	protected void sequence_TemplateElement(EObject context, TemplateElement semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, SamlPackage.Literals.TEMPLATE_ELEMENT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SamlPackage.Literals.TEMPLATE_ELEMENT__NAME));
+			if(transientValues.isValueTransient(semanticObject, SamlPackage.Literals.TEMPLATE_ELEMENT__DEFINITION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SamlPackage.Literals.TEMPLATE_ELEMENT__DEFINITION));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getTemplateElementAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getTemplateElementAccess().getDefinitionJvmTypeReferenceParserRuleCall_4_0(), semanticObject.getDefinition());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (name=QualifiedName translations+=LanguageAttribute+)
 	 */
 	protected void sequence_TranslationElement(EObject context, TranslationElement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (formFieldProperties=FormFieldProperties mandatory=BooleanType?)
+	 */
+	protected void sequence_ValueFieldProperties(EObject context, ValueFieldProperties semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

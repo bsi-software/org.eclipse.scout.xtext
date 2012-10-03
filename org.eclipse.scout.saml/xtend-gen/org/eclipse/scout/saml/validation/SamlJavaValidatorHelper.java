@@ -9,11 +9,12 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.scout.saml.saml.FormElement;
-import org.eclipse.scout.saml.saml.LeafElement;
 import org.eclipse.scout.saml.saml.Model;
 import org.eclipse.scout.saml.saml.SamlPackage;
+import org.eclipse.scout.saml.saml.ValueFieldElement;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.naming.QualifiedName;
@@ -46,13 +47,22 @@ public class SamlJavaValidatorHelper {
           boolean _and = false;
           boolean _and_1 = false;
           boolean _and_2 = false;
-          boolean _notEquals = (!Objects.equal(it, eObject));
-          if (!_notEquals) {
+          boolean _and_3 = false;
+          EClass _eClass = it.eClass();
+          EPackage _ePackage = _eClass.getEPackage();
+          boolean _equals = Objects.equal(_ePackage, SamlPackage.eINSTANCE);
+          if (!_equals) {
+            _and_3 = false;
+          } else {
+            boolean _notEquals = (!Objects.equal(it, eObject));
+            _and_3 = (_equals && _notEquals);
+          }
+          if (!_and_3) {
             _and_2 = false;
           } else {
             QualifiedName _fullyQualifiedName = SamlJavaValidatorHelper.this._iQualifiedNameProvider.getFullyQualifiedName(it);
             boolean _notEquals_1 = (!Objects.equal(_fullyQualifiedName, null));
-            _and_2 = (_notEquals && _notEquals_1);
+            _and_2 = (_and_3 && _notEquals_1);
           }
           if (!_and_2) {
             _and_1 = false;
@@ -68,8 +78,8 @@ public class SamlJavaValidatorHelper {
             String _lastSegment = _fullyQualifiedName_2.getLastSegment();
             QualifiedName _fullyQualifiedName_3 = SamlJavaValidatorHelper.this._iQualifiedNameProvider.getFullyQualifiedName(eObject);
             String _lastSegment_1 = _fullyQualifiedName_3.getLastSegment();
-            boolean _equals = Objects.equal(_lastSegment, _lastSegment_1);
-            _and = (_and_1 && _equals);
+            boolean _equals_1 = Objects.equal(_lastSegment, _lastSegment_1);
+            _and = (_and_1 && _equals_1);
           }
           return Boolean.valueOf(_and);
         }
@@ -78,9 +88,9 @@ public class SamlJavaValidatorHelper {
     return _findFirst;
   }
   
-  public List<LeafElement> leafNodes(final EObject element) {
+  public List<ValueFieldElement> leafNodes(final EObject element) {
     FormElement _containerOfType = EcoreUtil2.<FormElement>getContainerOfType(element, FormElement.class);
-    List<LeafElement> _eAllOfType = EcoreUtil2.<LeafElement>eAllOfType(_containerOfType, LeafElement.class);
+    List<ValueFieldElement> _eAllOfType = EcoreUtil2.<ValueFieldElement>eAllOfType(_containerOfType, ValueFieldElement.class);
     return _eAllOfType;
   }
   

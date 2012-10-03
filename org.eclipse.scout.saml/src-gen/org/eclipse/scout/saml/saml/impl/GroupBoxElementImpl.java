@@ -4,28 +4,26 @@ package org.eclipse.scout.saml.saml.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.scout.saml.saml.ControlElement;
+import org.eclipse.scout.saml.saml.GroupBoxElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Control Element</b></em>'.
+ * An implementation of the model object '<em><b>Group Box Element</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class ControlElementImpl extends MinimalEObjectImpl.Container implements ControlElement
+public class GroupBoxElementImpl extends CompositeFieldElementImpl implements GroupBoxElement
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ControlElementImpl()
+  protected GroupBoxElementImpl()
   {
     super();
   }
@@ -38,7 +36,7 @@ public class ControlElementImpl extends MinimalEObjectImpl.Container implements 
   @Override
   protected EClass eStaticClass()
   {
-    return SamlPackage.Literals.CONTROL_ELEMENT;
+    return SamlPackage.Literals.GROUP_BOX_ELEMENT;
   }
 
-} //ControlElementImpl
+} //GroupBoxElementImpl

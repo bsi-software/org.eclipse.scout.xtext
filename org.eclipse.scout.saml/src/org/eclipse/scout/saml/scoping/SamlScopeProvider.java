@@ -5,8 +5,8 @@ package org.eclipse.scout.saml.scoping;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.scout.saml.saml.FormFieldProperties;
 import org.eclipse.scout.saml.saml.SamlPackage;
-import org.eclipse.scout.saml.saml.StringElement;
 import org.eclipse.scout.saml.validation.SamlJavaValidatorHelper;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
@@ -27,10 +27,10 @@ public class SamlScopeProvider extends XbaseScopeProvider {
 
   @Override
   public IScope getScope(EObject context, EReference reference) {
-    if (context instanceof StringElement) {
-      StringElement stringElement = (StringElement) context;
-      if (reference == SamlPackage.Literals.STRING_ELEMENT__MASTER) {
-        return Scopes.scopeFor(helper.leafNodes(stringElement));
+    if (context instanceof FormFieldProperties) {
+      FormFieldProperties formField = (FormFieldProperties) context;
+      if (reference == SamlPackage.Literals.FORM_FIELD_PROPERTIES__MASTER) {
+        return Scopes.scopeFor(helper.leafNodes(formField));
       }
     }
 
