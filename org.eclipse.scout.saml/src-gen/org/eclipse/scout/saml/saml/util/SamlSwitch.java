@@ -93,10 +93,17 @@ public class SamlSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SamlPackage.JAVA_CODE_ELEMENT:
+      case SamlPackage.TRANSLATION_ELEMENT:
       {
-        JavaCodeElement javaCodeElement = (JavaCodeElement)theEObject;
-        T result = caseJavaCodeElement(javaCodeElement);
+        TranslationElement translationElement = (TranslationElement)theEObject;
+        T result = caseTranslationElement(translationElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.LANGUAGE_ATTRIBUTE:
+      {
+        LanguageAttribute languageAttribute = (LanguageAttribute)theEObject;
+        T result = caseLanguageAttribute(languageAttribute);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -114,24 +121,17 @@ public class SamlSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SamlPackage.TRANSLATION_ELEMENT:
-      {
-        TranslationElement translationElement = (TranslationElement)theEObject;
-        T result = caseTranslationElement(translationElement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SamlPackage.LANGUAGE_ATTRIBUTE:
-      {
-        LanguageAttribute languageAttribute = (LanguageAttribute)theEObject;
-        T result = caseLanguageAttribute(languageAttribute);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case SamlPackage.LOOKUP_ELEMENT:
       {
         LookupElement lookupElement = (LookupElement)theEObject;
         T result = caseLookupElement(lookupElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.TEMPLATE_ELEMENT:
+      {
+        TemplateElement templateElement = (TemplateElement)theEObject;
+        T result = caseTemplateElement(templateElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -142,67 +142,25 @@ public class SamlSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SamlPackage.CONTROL_ELEMENT:
+      case SamlPackage.FORM_FIELD_ELEMENT:
       {
-        ControlElement controlElement = (ControlElement)theEObject;
-        T result = caseControlElement(controlElement);
+        FormFieldElement formFieldElement = (FormFieldElement)theEObject;
+        T result = caseFormFieldElement(formFieldElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SamlPackage.CONTROL_ELEMENT_RULE:
+      case SamlPackage.FORM_FIELD_PROPERTIES:
       {
-        ControlElementRule controlElementRule = (ControlElementRule)theEObject;
-        T result = caseControlElementRule(controlElementRule);
+        FormFieldProperties formFieldProperties = (FormFieldProperties)theEObject;
+        T result = caseFormFieldProperties(formFieldProperties);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SamlPackage.COMPOSITE_ELEMENT:
+      case SamlPackage.COMPOSITE_FIELD_ELEMENT:
       {
-        CompositeElement compositeElement = (CompositeElement)theEObject;
-        T result = caseCompositeElement(compositeElement);
-        if (result == null) result = caseControlElement(compositeElement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SamlPackage.COMPOSITE_ELEMENT_RULE:
-      {
-        CompositeElementRule compositeElementRule = (CompositeElementRule)theEObject;
-        T result = caseCompositeElementRule(compositeElementRule);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SamlPackage.LEAF_ELEMENT:
-      {
-        LeafElement leafElement = (LeafElement)theEObject;
-        T result = caseLeafElement(leafElement);
-        if (result == null) result = caseControlElement(leafElement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SamlPackage.STRING_ELEMENT:
-      {
-        StringElement stringElement = (StringElement)theEObject;
-        T result = caseStringElement(stringElement);
-        if (result == null) result = caseLeafElement(stringElement);
-        if (result == null) result = caseControlElement(stringElement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SamlPackage.DOUBLE_ELEMENT:
-      {
-        DoubleElement doubleElement = (DoubleElement)theEObject;
-        T result = caseDoubleElement(doubleElement);
-        if (result == null) result = caseLeafElement(doubleElement);
-        if (result == null) result = caseControlElement(doubleElement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SamlPackage.LONG_ELEMENT:
-      {
-        LongElement longElement = (LongElement)theEObject;
-        T result = caseLongElement(longElement);
-        if (result == null) result = caseLeafElement(longElement);
-        if (result == null) result = caseControlElement(longElement);
+        CompositeFieldElement compositeFieldElement = (CompositeFieldElement)theEObject;
+        T result = caseCompositeFieldElement(compositeFieldElement);
+        if (result == null) result = caseFormFieldElement(compositeFieldElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -210,8 +168,86 @@ public class SamlSwitch<T> extends Switch<T>
       {
         SequenceBoxElement sequenceBoxElement = (SequenceBoxElement)theEObject;
         T result = caseSequenceBoxElement(sequenceBoxElement);
-        if (result == null) result = caseCompositeElement(sequenceBoxElement);
-        if (result == null) result = caseControlElement(sequenceBoxElement);
+        if (result == null) result = caseCompositeFieldElement(sequenceBoxElement);
+        if (result == null) result = caseFormFieldElement(sequenceBoxElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.GROUP_BOX_ELEMENT:
+      {
+        GroupBoxElement groupBoxElement = (GroupBoxElement)theEObject;
+        T result = caseGroupBoxElement(groupBoxElement);
+        if (result == null) result = caseCompositeFieldElement(groupBoxElement);
+        if (result == null) result = caseFormFieldElement(groupBoxElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.VALUE_FIELD_ELEMENT:
+      {
+        ValueFieldElement valueFieldElement = (ValueFieldElement)theEObject;
+        T result = caseValueFieldElement(valueFieldElement);
+        if (result == null) result = caseFormFieldElement(valueFieldElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.VALUE_FIELD_PROPERTIES:
+      {
+        ValueFieldProperties valueFieldProperties = (ValueFieldProperties)theEObject;
+        T result = caseValueFieldProperties(valueFieldProperties);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.STRING_ELEMENT:
+      {
+        StringElement stringElement = (StringElement)theEObject;
+        T result = caseStringElement(stringElement);
+        if (result == null) result = caseValueFieldElement(stringElement);
+        if (result == null) result = caseFormFieldElement(stringElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.DOUBLE_ELEMENT:
+      {
+        DoubleElement doubleElement = (DoubleElement)theEObject;
+        T result = caseDoubleElement(doubleElement);
+        if (result == null) result = caseValueFieldElement(doubleElement);
+        if (result == null) result = caseFormFieldElement(doubleElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.LONG_ELEMENT:
+      {
+        LongElement longElement = (LongElement)theEObject;
+        T result = caseLongElement(longElement);
+        if (result == null) result = caseValueFieldElement(longElement);
+        if (result == null) result = caseFormFieldElement(longElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.DATE_ELEMENT:
+      {
+        DateElement dateElement = (DateElement)theEObject;
+        T result = caseDateElement(dateElement);
+        if (result == null) result = caseValueFieldElement(dateElement);
+        if (result == null) result = caseFormFieldElement(dateElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.SMARTFIELD_ELEMENT:
+      {
+        SmartfieldElement smartfieldElement = (SmartfieldElement)theEObject;
+        T result = caseSmartfieldElement(smartfieldElement);
+        if (result == null) result = caseValueFieldElement(smartfieldElement);
+        if (result == null) result = caseFormFieldElement(smartfieldElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.CUSTOM_FIELD_ELEMENT:
+      {
+        CustomFieldElement customFieldElement = (CustomFieldElement)theEObject;
+        T result = caseCustomFieldElement(customFieldElement);
+        if (result == null) result = caseValueFieldElement(customFieldElement);
+        if (result == null) result = caseFormFieldElement(customFieldElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -268,17 +304,33 @@ public class SamlSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Java Code Element</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Translation Element</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Java Code Element</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Translation Element</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseJavaCodeElement(JavaCodeElement object)
+  public T caseTranslationElement(TranslationElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Language Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Language Attribute</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLanguageAttribute(LanguageAttribute object)
   {
     return null;
   }
@@ -316,38 +368,6 @@ public class SamlSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Translation Element</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Translation Element</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseTranslationElement(TranslationElement object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Language Attribute</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Language Attribute</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseLanguageAttribute(LanguageAttribute object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Lookup Element</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -359,6 +379,22 @@ public class SamlSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseLookupElement(LookupElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Template Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Template Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTemplateElement(TemplateElement object)
   {
     return null;
   }
@@ -380,81 +416,113 @@ public class SamlSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Control Element</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Form Field Element</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Control Element</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Form Field Element</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseControlElement(ControlElement object)
+  public T caseFormFieldElement(FormFieldElement object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Control Element Rule</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Form Field Properties</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Control Element Rule</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Form Field Properties</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseControlElementRule(ControlElementRule object)
+  public T caseFormFieldProperties(FormFieldProperties object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Composite Element</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Composite Field Element</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Composite Element</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Composite Field Element</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseCompositeElement(CompositeElement object)
+  public T caseCompositeFieldElement(CompositeFieldElement object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Composite Element Rule</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Sequence Box Element</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Composite Element Rule</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Sequence Box Element</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseCompositeElementRule(CompositeElementRule object)
+  public T caseSequenceBoxElement(SequenceBoxElement object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Leaf Element</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Group Box Element</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Leaf Element</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Group Box Element</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseLeafElement(LeafElement object)
+  public T caseGroupBoxElement(GroupBoxElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Value Field Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Value Field Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseValueFieldElement(ValueFieldElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Value Field Properties</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Value Field Properties</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseValueFieldProperties(ValueFieldProperties object)
   {
     return null;
   }
@@ -508,17 +576,49 @@ public class SamlSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Sequence Box Element</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Date Element</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Sequence Box Element</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Date Element</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseSequenceBoxElement(SequenceBoxElement object)
+  public T caseDateElement(DateElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Smartfield Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Smartfield Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSmartfieldElement(SmartfieldElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Custom Field Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Custom Field Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCustomFieldElement(CustomFieldElement object)
   {
     return null;
   }

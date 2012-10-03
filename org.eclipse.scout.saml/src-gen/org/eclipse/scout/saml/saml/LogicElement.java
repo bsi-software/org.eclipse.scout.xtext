@@ -14,6 +14,7 @@ import org.eclipse.xtext.xbase.XExpression;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.scout.saml.saml.LogicElement#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.LogicElement#getEvent <em>Event</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.LogicElement#getRunat <em>Runat</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.LogicElement#getExec <em>Exec</em>}</li>
@@ -28,8 +29,33 @@ import org.eclipse.xtext.xbase.XExpression;
 public interface LogicElement extends EObject
 {
   /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Name</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getLogicElement_Name()
+   * @model
+   * @generated
+   */
+  String getName();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.LogicElement#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
+
+  /**
    * Returns the value of the '<em><b>Event</b></em>' attribute.
-   * The literals are from the enumeration {@link org.eclipse.scout.saml.saml.LogicType}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Event</em>' attribute isn't clear,
@@ -37,24 +63,22 @@ public interface LogicElement extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Event</em>' attribute.
-   * @see org.eclipse.scout.saml.saml.LogicType
-   * @see #setEvent(LogicType)
+   * @see #setEvent(String)
    * @see org.eclipse.scout.saml.saml.SamlPackage#getLogicElement_Event()
    * @model
    * @generated
    */
-  LogicType getEvent();
+  String getEvent();
 
   /**
    * Sets the value of the '{@link org.eclipse.scout.saml.saml.LogicElement#getEvent <em>Event</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Event</em>' attribute.
-   * @see org.eclipse.scout.saml.saml.LogicType
    * @see #getEvent()
    * @generated
    */
-  void setEvent(LogicType value);
+  void setEvent(String value);
 
   /**
    * Returns the value of the '<em><b>Runat</b></em>' attribute.
@@ -91,12 +115,12 @@ public interface LogicElement extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Exec</em>' reference.
-   * @see #setExec(JavaCodeElement)
+   * @see #setExec(LogicElement)
    * @see org.eclipse.scout.saml.saml.SamlPackage#getLogicElement_Exec()
    * @model
    * @generated
    */
-  JavaCodeElement getExec();
+  LogicElement getExec();
 
   /**
    * Sets the value of the '{@link org.eclipse.scout.saml.saml.LogicElement#getExec <em>Exec</em>}' reference.
@@ -106,7 +130,7 @@ public interface LogicElement extends EObject
    * @see #getExec()
    * @generated
    */
-  void setExec(JavaCodeElement value);
+  void setExec(LogicElement value);
 
   /**
    * Returns the value of the '<em><b>Source</b></em>' containment reference.

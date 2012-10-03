@@ -8,22 +8,22 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Lookup Element</b></em>'.
+ * A representation of the model object '<em><b>Form Field Element</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.scout.saml.saml.LookupElement#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.scout.saml.saml.LookupElement#getLogic <em>Logic</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.FormFieldElement#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.FormFieldElement#getLogic <em>Logic</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.eclipse.scout.saml.saml.SamlPackage#getLookupElement()
+ * @see org.eclipse.scout.saml.saml.SamlPackage#getFormFieldElement()
  * @model
  * @generated
  */
-public interface LookupElement extends EObject
+public interface FormFieldElement extends EObject
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -35,14 +35,14 @@ public interface LookupElement extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
-   * @see org.eclipse.scout.saml.saml.SamlPackage#getLookupElement_Name()
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getFormFieldElement_Name()
    * @model
    * @generated
    */
   String getName();
 
   /**
-   * Sets the value of the '{@link org.eclipse.scout.saml.saml.LookupElement#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.FormFieldElement#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Name</em>' attribute.
@@ -61,10 +61,10 @@ public interface LookupElement extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Logic</em>' containment reference list.
-   * @see org.eclipse.scout.saml.saml.SamlPackage#getLookupElement_Logic()
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getFormFieldElement_Logic()
    * @model containment="true"
    * @generated
    */
   EList<LogicElement> getLogic();
 
-} // LookupElement
+} // FormFieldElement

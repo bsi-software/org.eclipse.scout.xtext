@@ -18,11 +18,11 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.eclipse.scout.saml.saml.BooleanType;
-import org.eclipse.scout.saml.saml.ControlElement;
 import org.eclipse.scout.saml.saml.FormElement;
+import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
+import org.eclipse.scout.saml.saml.TranslationElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,6 +34,7 @@ import org.eclipse.scout.saml.saml.SamlPackage;
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getModal <em>Modal</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getColumns <em>Columns</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getText <em>Text</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getLogic <em>Logic</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getFields <em>Fields</em>}</li>
  * </ul>
@@ -71,7 +72,7 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
    * @generated
    * @ordered
    */
-  protected static final BooleanType MODAL_EDEFAULT = BooleanType.TRUE;
+  protected static final String MODAL_EDEFAULT = null;
 
   /**
    * The cached value of the '{@link #getModal() <em>Modal</em>}' attribute.
@@ -81,7 +82,7 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
    * @generated
    * @ordered
    */
-  protected BooleanType modal = MODAL_EDEFAULT;
+  protected String modal = MODAL_EDEFAULT;
 
   /**
    * The default value of the '{@link #getColumns() <em>Columns</em>}' attribute.
@@ -104,6 +105,16 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
   protected int columns = COLUMNS_EDEFAULT;
 
   /**
+   * The cached value of the '{@link #getText() <em>Text</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getText()
+   * @generated
+   * @ordered
+   */
+  protected TranslationElement text;
+
+  /**
    * The cached value of the '{@link #getLogic() <em>Logic</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -121,7 +132,7 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
    * @generated
    * @ordered
    */
-  protected EList<ControlElement> fields;
+  protected EList<FormFieldElement> fields;
 
   /**
    * <!-- begin-user-doc -->
@@ -172,7 +183,7 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
    * <!-- end-user-doc -->
    * @generated
    */
-  public BooleanType getModal()
+  public String getModal()
   {
     return modal;
   }
@@ -182,10 +193,10 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setModal(BooleanType newModal)
+  public void setModal(String newModal)
   {
-    BooleanType oldModal = modal;
-    modal = newModal == null ? MODAL_EDEFAULT : newModal;
+    String oldModal = modal;
+    modal = newModal;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.FORM_ELEMENT__MODAL, oldModal, modal));
   }
@@ -218,6 +229,49 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
    * <!-- end-user-doc -->
    * @generated
    */
+  public TranslationElement getText()
+  {
+    if (text != null && text.eIsProxy())
+    {
+      InternalEObject oldText = (InternalEObject)text;
+      text = (TranslationElement)eResolveProxy(oldText);
+      if (text != oldText)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SamlPackage.FORM_ELEMENT__TEXT, oldText, text));
+      }
+    }
+    return text;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TranslationElement basicGetText()
+  {
+    return text;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setText(TranslationElement newText)
+  {
+    TranslationElement oldText = text;
+    text = newText;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.FORM_ELEMENT__TEXT, oldText, text));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<LogicElement> getLogic()
   {
     if (logic == null)
@@ -232,11 +286,11 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ControlElement> getFields()
+  public EList<FormFieldElement> getFields()
   {
     if (fields == null)
     {
-      fields = new EObjectContainmentEList<ControlElement>(ControlElement.class, this, SamlPackage.FORM_ELEMENT__FIELDS);
+      fields = new EObjectContainmentEList<FormFieldElement>(FormFieldElement.class, this, SamlPackage.FORM_ELEMENT__FIELDS);
     }
     return fields;
   }
@@ -275,6 +329,9 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
         return getModal();
       case SamlPackage.FORM_ELEMENT__COLUMNS:
         return getColumns();
+      case SamlPackage.FORM_ELEMENT__TEXT:
+        if (resolve) return getText();
+        return basicGetText();
       case SamlPackage.FORM_ELEMENT__LOGIC:
         return getLogic();
       case SamlPackage.FORM_ELEMENT__FIELDS:
@@ -298,10 +355,13 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
         setName((String)newValue);
         return;
       case SamlPackage.FORM_ELEMENT__MODAL:
-        setModal((BooleanType)newValue);
+        setModal((String)newValue);
         return;
       case SamlPackage.FORM_ELEMENT__COLUMNS:
         setColumns((Integer)newValue);
+        return;
+      case SamlPackage.FORM_ELEMENT__TEXT:
+        setText((TranslationElement)newValue);
         return;
       case SamlPackage.FORM_ELEMENT__LOGIC:
         getLogic().clear();
@@ -309,7 +369,7 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
         return;
       case SamlPackage.FORM_ELEMENT__FIELDS:
         getFields().clear();
-        getFields().addAll((Collection<? extends ControlElement>)newValue);
+        getFields().addAll((Collection<? extends FormFieldElement>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -334,6 +394,9 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
       case SamlPackage.FORM_ELEMENT__COLUMNS:
         setColumns(COLUMNS_EDEFAULT);
         return;
+      case SamlPackage.FORM_ELEMENT__TEXT:
+        setText((TranslationElement)null);
+        return;
       case SamlPackage.FORM_ELEMENT__LOGIC:
         getLogic().clear();
         return;
@@ -357,9 +420,11 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
       case SamlPackage.FORM_ELEMENT__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case SamlPackage.FORM_ELEMENT__MODAL:
-        return modal != MODAL_EDEFAULT;
+        return MODAL_EDEFAULT == null ? modal != null : !MODAL_EDEFAULT.equals(modal);
       case SamlPackage.FORM_ELEMENT__COLUMNS:
         return columns != COLUMNS_EDEFAULT;
+      case SamlPackage.FORM_ELEMENT__TEXT:
+        return text != null;
       case SamlPackage.FORM_ELEMENT__LOGIC:
         return logic != null && !logic.isEmpty();
       case SamlPackage.FORM_ELEMENT__FIELDS:

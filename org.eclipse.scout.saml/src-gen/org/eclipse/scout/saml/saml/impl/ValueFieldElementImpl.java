@@ -4,28 +4,26 @@ package org.eclipse.scout.saml.saml.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.scout.saml.saml.ControlElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
+import org.eclipse.scout.saml.saml.ValueFieldElement;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Control Element</b></em>'.
+ * An implementation of the model object '<em><b>Value Field Element</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class ControlElementImpl extends MinimalEObjectImpl.Container implements ControlElement
+public class ValueFieldElementImpl extends FormFieldElementImpl implements ValueFieldElement
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ControlElementImpl()
+  protected ValueFieldElementImpl()
   {
     super();
   }
@@ -38,7 +36,7 @@ public class ControlElementImpl extends MinimalEObjectImpl.Container implements 
   @Override
   protected EClass eStaticClass()
   {
-    return SamlPackage.Literals.CONTROL_ELEMENT;
+    return SamlPackage.Literals.VALUE_FIELD_ELEMENT;
   }
 
-} //ControlElementImpl
+} //ValueFieldElementImpl

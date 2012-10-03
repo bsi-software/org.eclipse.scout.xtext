@@ -11,27 +11,26 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.scout.saml.saml.JavaCodeElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
+import org.eclipse.scout.saml.saml.TemplateElement;
 
-import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.common.types.JvmTypeReference;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Java Code Element</b></em>'.
+ * An implementation of the model object '<em><b>Template Element</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.JavaCodeElementImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.JavaCodeElementImpl#getRunat <em>Runat</em>}</li>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.JavaCodeElementImpl#getSource <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.TemplateElementImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.TemplateElementImpl#getDefinition <em>Definition</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class JavaCodeElementImpl extends MinimalEObjectImpl.Container implements JavaCodeElement
+public class TemplateElementImpl extends MinimalEObjectImpl.Container implements TemplateElement
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -54,41 +53,21 @@ public class JavaCodeElementImpl extends MinimalEObjectImpl.Container implements
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getRunat() <em>Runat</em>}' attribute.
+   * The cached value of the '{@link #getDefinition() <em>Definition</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRunat()
+   * @see #getDefinition()
    * @generated
    * @ordered
    */
-  protected static final String RUNAT_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getRunat() <em>Runat</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getRunat()
-   * @generated
-   * @ordered
-   */
-  protected String runat = RUNAT_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getSource() <em>Source</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSource()
-   * @generated
-   * @ordered
-   */
-  protected XExpression source;
+  protected JvmTypeReference definition;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected JavaCodeElementImpl()
+  protected TemplateElementImpl()
   {
     super();
   }
@@ -101,7 +80,7 @@ public class JavaCodeElementImpl extends MinimalEObjectImpl.Container implements
   @Override
   protected EClass eStaticClass()
   {
-    return SamlPackage.Literals.JAVA_CODE_ELEMENT;
+    return SamlPackage.Literals.TEMPLATE_ELEMENT;
   }
 
   /**
@@ -124,7 +103,7 @@ public class JavaCodeElementImpl extends MinimalEObjectImpl.Container implements
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.JAVA_CODE_ELEMENT__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.TEMPLATE_ELEMENT__NAME, oldName, name));
   }
 
   /**
@@ -132,9 +111,9 @@ public class JavaCodeElementImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getRunat()
+  public JvmTypeReference getDefinition()
   {
-    return runat;
+    return definition;
   }
 
   /**
@@ -142,36 +121,13 @@ public class JavaCodeElementImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRunat(String newRunat)
+  public NotificationChain basicSetDefinition(JvmTypeReference newDefinition, NotificationChain msgs)
   {
-    String oldRunat = runat;
-    runat = newRunat;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.JAVA_CODE_ELEMENT__RUNAT, oldRunat, runat));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public XExpression getSource()
-  {
-    return source;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetSource(XExpression newSource, NotificationChain msgs)
-  {
-    XExpression oldSource = source;
-    source = newSource;
+    JvmTypeReference oldDefinition = definition;
+    definition = newDefinition;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SamlPackage.JAVA_CODE_ELEMENT__SOURCE, oldSource, newSource);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SamlPackage.TEMPLATE_ELEMENT__DEFINITION, oldDefinition, newDefinition);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -182,20 +138,20 @@ public class JavaCodeElementImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setSource(XExpression newSource)
+  public void setDefinition(JvmTypeReference newDefinition)
   {
-    if (newSource != source)
+    if (newDefinition != definition)
     {
       NotificationChain msgs = null;
-      if (source != null)
-        msgs = ((InternalEObject)source).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SamlPackage.JAVA_CODE_ELEMENT__SOURCE, null, msgs);
-      if (newSource != null)
-        msgs = ((InternalEObject)newSource).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SamlPackage.JAVA_CODE_ELEMENT__SOURCE, null, msgs);
-      msgs = basicSetSource(newSource, msgs);
+      if (definition != null)
+        msgs = ((InternalEObject)definition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SamlPackage.TEMPLATE_ELEMENT__DEFINITION, null, msgs);
+      if (newDefinition != null)
+        msgs = ((InternalEObject)newDefinition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SamlPackage.TEMPLATE_ELEMENT__DEFINITION, null, msgs);
+      msgs = basicSetDefinition(newDefinition, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.JAVA_CODE_ELEMENT__SOURCE, newSource, newSource));
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.TEMPLATE_ELEMENT__DEFINITION, newDefinition, newDefinition));
   }
 
   /**
@@ -208,8 +164,8 @@ public class JavaCodeElementImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case SamlPackage.JAVA_CODE_ELEMENT__SOURCE:
-        return basicSetSource(null, msgs);
+      case SamlPackage.TEMPLATE_ELEMENT__DEFINITION:
+        return basicSetDefinition(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -224,12 +180,10 @@ public class JavaCodeElementImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case SamlPackage.JAVA_CODE_ELEMENT__NAME:
+      case SamlPackage.TEMPLATE_ELEMENT__NAME:
         return getName();
-      case SamlPackage.JAVA_CODE_ELEMENT__RUNAT:
-        return getRunat();
-      case SamlPackage.JAVA_CODE_ELEMENT__SOURCE:
-        return getSource();
+      case SamlPackage.TEMPLATE_ELEMENT__DEFINITION:
+        return getDefinition();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -244,14 +198,11 @@ public class JavaCodeElementImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case SamlPackage.JAVA_CODE_ELEMENT__NAME:
+      case SamlPackage.TEMPLATE_ELEMENT__NAME:
         setName((String)newValue);
         return;
-      case SamlPackage.JAVA_CODE_ELEMENT__RUNAT:
-        setRunat((String)newValue);
-        return;
-      case SamlPackage.JAVA_CODE_ELEMENT__SOURCE:
-        setSource((XExpression)newValue);
+      case SamlPackage.TEMPLATE_ELEMENT__DEFINITION:
+        setDefinition((JvmTypeReference)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -267,14 +218,11 @@ public class JavaCodeElementImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case SamlPackage.JAVA_CODE_ELEMENT__NAME:
+      case SamlPackage.TEMPLATE_ELEMENT__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case SamlPackage.JAVA_CODE_ELEMENT__RUNAT:
-        setRunat(RUNAT_EDEFAULT);
-        return;
-      case SamlPackage.JAVA_CODE_ELEMENT__SOURCE:
-        setSource((XExpression)null);
+      case SamlPackage.TEMPLATE_ELEMENT__DEFINITION:
+        setDefinition((JvmTypeReference)null);
         return;
     }
     super.eUnset(featureID);
@@ -290,12 +238,10 @@ public class JavaCodeElementImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case SamlPackage.JAVA_CODE_ELEMENT__NAME:
+      case SamlPackage.TEMPLATE_ELEMENT__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case SamlPackage.JAVA_CODE_ELEMENT__RUNAT:
-        return RUNAT_EDEFAULT == null ? runat != null : !RUNAT_EDEFAULT.equals(runat);
-      case SamlPackage.JAVA_CODE_ELEMENT__SOURCE:
-        return source != null;
+      case SamlPackage.TEMPLATE_ELEMENT__DEFINITION:
+        return definition != null;
     }
     return super.eIsSet(featureID);
   }
@@ -313,10 +259,8 @@ public class JavaCodeElementImpl extends MinimalEObjectImpl.Container implements
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", runat: ");
-    result.append(runat);
     result.append(')');
     return result.toString();
   }
 
-} //JavaCodeElementImpl
+} //TemplateElementImpl

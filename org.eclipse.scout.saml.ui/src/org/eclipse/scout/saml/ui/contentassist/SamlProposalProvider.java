@@ -3,14 +3,9 @@
 */
 package org.eclipse.scout.saml.ui.contentassist;
 
-import static org.eclipse.xtext.EcoreUtil2.getAllContentsOfType;
-
-import java.util.List;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.scout.saml.services.SamlGrammarAccess;
 import org.eclipse.xtext.Assignment;
-import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 
@@ -26,9 +21,9 @@ public class SamlProposalProvider extends AbstractSamlProposalProvider {
 
   @Override
   public void completeLogicElement_Runat(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-    List<Keyword> completions = getAllContentsOfType(access.getRunAtTypeRule().getAlternatives(), Keyword.class);
+    /*List<Keyword> completions = getAllContentsOfType(access.getRunAtTypeRule().getAlternatives(), Keyword.class);
     for (Keyword keyword : completions) {
       acceptor.accept(createCompletionProposal(keyword.getValue(), context));
-    }
+    }*/
   }
 }

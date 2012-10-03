@@ -1,17 +1,19 @@
 package org.eclipse.scout.sdk.saml.importer.operation;
 
 import java.io.File;
-import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.scout.saml.SamlStandaloneSetup;
 import org.eclipse.scout.saml.saml.CodeElement;
 import org.eclipse.scout.saml.saml.FormElement;
 import org.eclipse.scout.saml.saml.LookupElement;
+import org.eclipse.scout.saml.saml.Model;
 import org.eclipse.scout.saml.saml.ModuleElement;
+import org.eclipse.scout.saml.saml.TemplateElement;
 import org.eclipse.scout.saml.saml.TranslationElement;
 import org.eclipse.scout.sdk.operation.IOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.codetype.CodeElementImportOperation;
@@ -22,10 +24,10 @@ import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 import org.eclipse.scout.sdk.workspace.IScoutProject;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
-import org.eclipse.xtext.util.CancelIndicator;
-import org.eclipse.xtext.validation.CheckMode;
 import org.eclipse.xtext.validation.IResourceValidator;
-import org.eclipse.xtext.validation.Issue;
+import org.eclipse.xtext.xbase.XExpression;
+
+import com.google.inject.Injector;
 
 public class SamlImportOperation implements IOperation {
 
@@ -51,7 +53,7 @@ public class SamlImportOperation implements IOperation {
 
   @Override
   public void run(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException, IllegalArgumentException {
-    //Injector injector = new SamlStandaloneSetup().createInjectorAndDoEMFRegistration();
+    Injector injector = new SamlStandaloneSetup().createInjectorAndDoEMFRegistration();
 
     //Injector injector = SamlActivator.getInstance().getInjector(SamlActivator.ORG_ECLIPSE_SCOUT_SAML_SAML);
     IResourceValidator validator = injector.getInstance(IResourceValidator.class);
@@ -59,19 +61,26 @@ public class SamlImportOperation implements IOperation {
     resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
     resourceSet.addLoadOption(XtextResource.OPTION_ENCODING, "UTF-8");
 
-    File[] filesInFolder = new File[]{};
+//    File[] filesInFolder = new File[]{};
+//
+//    for (File f : filesInFolder) {
+//      resourceSet.getResource(URI.createFileURI(f.getAbsolutePath()), true);
+//    }
+//
+//    for (Resource r : resourceSet.getResources()) {
+//      List<Issue> issues = validator.validate(r, CheckMode.ALL, CancelIndicator.NullImpl);
+//    }
+//
+//    for (Resource r : resourceSet.getResources()) {
+//      r.getContents();
+//    }
 
-    for (File f : filesInFolder) {
-      resourceSet.getResource(URI.createFileURI(f.getAbsolutePath()), true);
-    }
+    File file = new File("C:/Users/MVI/Desktop/Test.saml");
 
-    for (Resource r : resourceSet.getResources()) {
-      List<Issue> issues = validator.validate(r, CheckMode.ALL, CancelIndicator.NullImpl);
-    }
+    Resource resource = resourceSet.getResource(URI.createFileURI(file.getAbsolutePath()), true);
 
-    for (Resource r : resourceSet.getResources()) {
-      r.getContents();
-    }
+    LookupElement lookup = ((Model) resource.getContents().get(0)).getLookups().get(0);
+    XExpression source = lookup.getLogic().get(0).getSource();
 
     /*int numErrors = 0;//TODO [mvi]: resource.getErrors().size();
 

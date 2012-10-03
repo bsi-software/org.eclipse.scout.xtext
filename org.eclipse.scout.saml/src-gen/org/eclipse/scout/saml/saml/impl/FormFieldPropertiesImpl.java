@@ -10,27 +10,28 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.scout.saml.saml.BooleanType;
-import org.eclipse.scout.saml.saml.ControlElementRule;
+import org.eclipse.scout.saml.saml.FormFieldProperties;
 import org.eclipse.scout.saml.saml.SamlPackage;
 import org.eclipse.scout.saml.saml.TranslationElement;
+import org.eclipse.scout.saml.saml.ValueFieldElement;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Control Element Rule</b></em>'.
+ * An implementation of the model object '<em><b>Form Field Properties</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.ControlElementRuleImpl#getText <em>Text</em>}</li>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.ControlElementRuleImpl#getEnabled <em>Enabled</em>}</li>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.ControlElementRuleImpl#getVisible <em>Visible</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldPropertiesImpl#getText <em>Text</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldPropertiesImpl#getEnabled <em>Enabled</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldPropertiesImpl#getVisible <em>Visible</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldPropertiesImpl#getMaster <em>Master</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ControlElementRuleImpl extends MinimalEObjectImpl.Container implements ControlElementRule
+public class FormFieldPropertiesImpl extends MinimalEObjectImpl.Container implements FormFieldProperties
 {
   /**
    * The cached value of the '{@link #getText() <em>Text</em>}' reference.
@@ -50,7 +51,7 @@ public class ControlElementRuleImpl extends MinimalEObjectImpl.Container impleme
    * @generated
    * @ordered
    */
-  protected static final BooleanType ENABLED_EDEFAULT = BooleanType.TRUE;
+  protected static final String ENABLED_EDEFAULT = null;
 
   /**
    * The cached value of the '{@link #getEnabled() <em>Enabled</em>}' attribute.
@@ -60,7 +61,7 @@ public class ControlElementRuleImpl extends MinimalEObjectImpl.Container impleme
    * @generated
    * @ordered
    */
-  protected BooleanType enabled = ENABLED_EDEFAULT;
+  protected String enabled = ENABLED_EDEFAULT;
 
   /**
    * The default value of the '{@link #getVisible() <em>Visible</em>}' attribute.
@@ -70,7 +71,7 @@ public class ControlElementRuleImpl extends MinimalEObjectImpl.Container impleme
    * @generated
    * @ordered
    */
-  protected static final BooleanType VISIBLE_EDEFAULT = BooleanType.TRUE;
+  protected static final String VISIBLE_EDEFAULT = null;
 
   /**
    * The cached value of the '{@link #getVisible() <em>Visible</em>}' attribute.
@@ -80,14 +81,24 @@ public class ControlElementRuleImpl extends MinimalEObjectImpl.Container impleme
    * @generated
    * @ordered
    */
-  protected BooleanType visible = VISIBLE_EDEFAULT;
+  protected String visible = VISIBLE_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getMaster() <em>Master</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMaster()
+   * @generated
+   * @ordered
+   */
+  protected ValueFieldElement master;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ControlElementRuleImpl()
+  protected FormFieldPropertiesImpl()
   {
     super();
   }
@@ -100,7 +111,7 @@ public class ControlElementRuleImpl extends MinimalEObjectImpl.Container impleme
   @Override
   protected EClass eStaticClass()
   {
-    return SamlPackage.Literals.CONTROL_ELEMENT_RULE;
+    return SamlPackage.Literals.FORM_FIELD_PROPERTIES;
   }
 
   /**
@@ -117,7 +128,7 @@ public class ControlElementRuleImpl extends MinimalEObjectImpl.Container impleme
       if (text != oldText)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SamlPackage.CONTROL_ELEMENT_RULE__TEXT, oldText, text));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SamlPackage.FORM_FIELD_PROPERTIES__TEXT, oldText, text));
       }
     }
     return text;
@@ -143,7 +154,7 @@ public class ControlElementRuleImpl extends MinimalEObjectImpl.Container impleme
     TranslationElement oldText = text;
     text = newText;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.CONTROL_ELEMENT_RULE__TEXT, oldText, text));
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.FORM_FIELD_PROPERTIES__TEXT, oldText, text));
   }
 
   /**
@@ -151,7 +162,7 @@ public class ControlElementRuleImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public BooleanType getEnabled()
+  public String getEnabled()
   {
     return enabled;
   }
@@ -161,12 +172,12 @@ public class ControlElementRuleImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setEnabled(BooleanType newEnabled)
+  public void setEnabled(String newEnabled)
   {
-    BooleanType oldEnabled = enabled;
-    enabled = newEnabled == null ? ENABLED_EDEFAULT : newEnabled;
+    String oldEnabled = enabled;
+    enabled = newEnabled;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.CONTROL_ELEMENT_RULE__ENABLED, oldEnabled, enabled));
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.FORM_FIELD_PROPERTIES__ENABLED, oldEnabled, enabled));
   }
 
   /**
@@ -174,7 +185,7 @@ public class ControlElementRuleImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public BooleanType getVisible()
+  public String getVisible()
   {
     return visible;
   }
@@ -184,12 +195,55 @@ public class ControlElementRuleImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setVisible(BooleanType newVisible)
+  public void setVisible(String newVisible)
   {
-    BooleanType oldVisible = visible;
-    visible = newVisible == null ? VISIBLE_EDEFAULT : newVisible;
+    String oldVisible = visible;
+    visible = newVisible;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.CONTROL_ELEMENT_RULE__VISIBLE, oldVisible, visible));
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.FORM_FIELD_PROPERTIES__VISIBLE, oldVisible, visible));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ValueFieldElement getMaster()
+  {
+    if (master != null && master.eIsProxy())
+    {
+      InternalEObject oldMaster = (InternalEObject)master;
+      master = (ValueFieldElement)eResolveProxy(oldMaster);
+      if (master != oldMaster)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SamlPackage.FORM_FIELD_PROPERTIES__MASTER, oldMaster, master));
+      }
+    }
+    return master;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ValueFieldElement basicGetMaster()
+  {
+    return master;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setMaster(ValueFieldElement newMaster)
+  {
+    ValueFieldElement oldMaster = master;
+    master = newMaster;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.FORM_FIELD_PROPERTIES__MASTER, oldMaster, master));
   }
 
   /**
@@ -202,13 +256,16 @@ public class ControlElementRuleImpl extends MinimalEObjectImpl.Container impleme
   {
     switch (featureID)
     {
-      case SamlPackage.CONTROL_ELEMENT_RULE__TEXT:
+      case SamlPackage.FORM_FIELD_PROPERTIES__TEXT:
         if (resolve) return getText();
         return basicGetText();
-      case SamlPackage.CONTROL_ELEMENT_RULE__ENABLED:
+      case SamlPackage.FORM_FIELD_PROPERTIES__ENABLED:
         return getEnabled();
-      case SamlPackage.CONTROL_ELEMENT_RULE__VISIBLE:
+      case SamlPackage.FORM_FIELD_PROPERTIES__VISIBLE:
         return getVisible();
+      case SamlPackage.FORM_FIELD_PROPERTIES__MASTER:
+        if (resolve) return getMaster();
+        return basicGetMaster();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -223,14 +280,17 @@ public class ControlElementRuleImpl extends MinimalEObjectImpl.Container impleme
   {
     switch (featureID)
     {
-      case SamlPackage.CONTROL_ELEMENT_RULE__TEXT:
+      case SamlPackage.FORM_FIELD_PROPERTIES__TEXT:
         setText((TranslationElement)newValue);
         return;
-      case SamlPackage.CONTROL_ELEMENT_RULE__ENABLED:
-        setEnabled((BooleanType)newValue);
+      case SamlPackage.FORM_FIELD_PROPERTIES__ENABLED:
+        setEnabled((String)newValue);
         return;
-      case SamlPackage.CONTROL_ELEMENT_RULE__VISIBLE:
-        setVisible((BooleanType)newValue);
+      case SamlPackage.FORM_FIELD_PROPERTIES__VISIBLE:
+        setVisible((String)newValue);
+        return;
+      case SamlPackage.FORM_FIELD_PROPERTIES__MASTER:
+        setMaster((ValueFieldElement)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -246,14 +306,17 @@ public class ControlElementRuleImpl extends MinimalEObjectImpl.Container impleme
   {
     switch (featureID)
     {
-      case SamlPackage.CONTROL_ELEMENT_RULE__TEXT:
+      case SamlPackage.FORM_FIELD_PROPERTIES__TEXT:
         setText((TranslationElement)null);
         return;
-      case SamlPackage.CONTROL_ELEMENT_RULE__ENABLED:
+      case SamlPackage.FORM_FIELD_PROPERTIES__ENABLED:
         setEnabled(ENABLED_EDEFAULT);
         return;
-      case SamlPackage.CONTROL_ELEMENT_RULE__VISIBLE:
+      case SamlPackage.FORM_FIELD_PROPERTIES__VISIBLE:
         setVisible(VISIBLE_EDEFAULT);
+        return;
+      case SamlPackage.FORM_FIELD_PROPERTIES__MASTER:
+        setMaster((ValueFieldElement)null);
         return;
     }
     super.eUnset(featureID);
@@ -269,12 +332,14 @@ public class ControlElementRuleImpl extends MinimalEObjectImpl.Container impleme
   {
     switch (featureID)
     {
-      case SamlPackage.CONTROL_ELEMENT_RULE__TEXT:
+      case SamlPackage.FORM_FIELD_PROPERTIES__TEXT:
         return text != null;
-      case SamlPackage.CONTROL_ELEMENT_RULE__ENABLED:
-        return enabled != ENABLED_EDEFAULT;
-      case SamlPackage.CONTROL_ELEMENT_RULE__VISIBLE:
-        return visible != VISIBLE_EDEFAULT;
+      case SamlPackage.FORM_FIELD_PROPERTIES__ENABLED:
+        return ENABLED_EDEFAULT == null ? enabled != null : !ENABLED_EDEFAULT.equals(enabled);
+      case SamlPackage.FORM_FIELD_PROPERTIES__VISIBLE:
+        return VISIBLE_EDEFAULT == null ? visible != null : !VISIBLE_EDEFAULT.equals(visible);
+      case SamlPackage.FORM_FIELD_PROPERTIES__MASTER:
+        return master != null;
     }
     return super.eIsSet(featureID);
   }
@@ -298,4 +363,4 @@ public class ControlElementRuleImpl extends MinimalEObjectImpl.Container impleme
     return result.toString();
   }
 
-} //ControlElementRuleImpl
+} //FormFieldPropertiesImpl

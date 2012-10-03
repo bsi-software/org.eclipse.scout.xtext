@@ -90,9 +90,14 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
         return createImportElementAdapter();
       }
       @Override
-      public Adapter caseJavaCodeElement(JavaCodeElement object)
+      public Adapter caseTranslationElement(TranslationElement object)
       {
-        return createJavaCodeElementAdapter();
+        return createTranslationElementAdapter();
+      }
+      @Override
+      public Adapter caseLanguageAttribute(LanguageAttribute object)
+      {
+        return createLanguageAttributeAdapter();
       }
       @Override
       public Adapter caseLogicElement(LogicElement object)
@@ -105,19 +110,14 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
         return createCodeElementAdapter();
       }
       @Override
-      public Adapter caseTranslationElement(TranslationElement object)
-      {
-        return createTranslationElementAdapter();
-      }
-      @Override
-      public Adapter caseLanguageAttribute(LanguageAttribute object)
-      {
-        return createLanguageAttributeAdapter();
-      }
-      @Override
       public Adapter caseLookupElement(LookupElement object)
       {
         return createLookupElementAdapter();
+      }
+      @Override
+      public Adapter caseTemplateElement(TemplateElement object)
+      {
+        return createTemplateElementAdapter();
       }
       @Override
       public Adapter caseFormElement(FormElement object)
@@ -125,29 +125,39 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
         return createFormElementAdapter();
       }
       @Override
-      public Adapter caseControlElement(ControlElement object)
+      public Adapter caseFormFieldElement(FormFieldElement object)
       {
-        return createControlElementAdapter();
+        return createFormFieldElementAdapter();
       }
       @Override
-      public Adapter caseControlElementRule(ControlElementRule object)
+      public Adapter caseFormFieldProperties(FormFieldProperties object)
       {
-        return createControlElementRuleAdapter();
+        return createFormFieldPropertiesAdapter();
       }
       @Override
-      public Adapter caseCompositeElement(CompositeElement object)
+      public Adapter caseCompositeFieldElement(CompositeFieldElement object)
       {
-        return createCompositeElementAdapter();
+        return createCompositeFieldElementAdapter();
       }
       @Override
-      public Adapter caseCompositeElementRule(CompositeElementRule object)
+      public Adapter caseSequenceBoxElement(SequenceBoxElement object)
       {
-        return createCompositeElementRuleAdapter();
+        return createSequenceBoxElementAdapter();
       }
       @Override
-      public Adapter caseLeafElement(LeafElement object)
+      public Adapter caseGroupBoxElement(GroupBoxElement object)
       {
-        return createLeafElementAdapter();
+        return createGroupBoxElementAdapter();
+      }
+      @Override
+      public Adapter caseValueFieldElement(ValueFieldElement object)
+      {
+        return createValueFieldElementAdapter();
+      }
+      @Override
+      public Adapter caseValueFieldProperties(ValueFieldProperties object)
+      {
+        return createValueFieldPropertiesAdapter();
       }
       @Override
       public Adapter caseStringElement(StringElement object)
@@ -165,9 +175,19 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
         return createLongElementAdapter();
       }
       @Override
-      public Adapter caseSequenceBoxElement(SequenceBoxElement object)
+      public Adapter caseDateElement(DateElement object)
       {
-        return createSequenceBoxElementAdapter();
+        return createDateElementAdapter();
+      }
+      @Override
+      public Adapter caseSmartfieldElement(SmartfieldElement object)
+      {
+        return createSmartfieldElementAdapter();
+      }
+      @Override
+      public Adapter caseCustomFieldElement(CustomFieldElement object)
+      {
+        return createCustomFieldElementAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -237,16 +257,31 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.JavaCodeElement <em>Java Code Element</em>}'.
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.TranslationElement <em>Translation Element</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.eclipse.scout.saml.saml.JavaCodeElement
+   * @see org.eclipse.scout.saml.saml.TranslationElement
    * @generated
    */
-  public Adapter createJavaCodeElementAdapter()
+  public Adapter createTranslationElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.LanguageAttribute <em>Language Attribute</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.scout.saml.saml.LanguageAttribute
+   * @generated
+   */
+  public Adapter createLanguageAttributeAdapter()
   {
     return null;
   }
@@ -282,36 +317,6 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.TranslationElement <em>Translation Element</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.scout.saml.saml.TranslationElement
-   * @generated
-   */
-  public Adapter createTranslationElementAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.LanguageAttribute <em>Language Attribute</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.scout.saml.saml.LanguageAttribute
-   * @generated
-   */
-  public Adapter createLanguageAttributeAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.LookupElement <em>Lookup Element</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -322,6 +327,21 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createLookupElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.TemplateElement <em>Template Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.scout.saml.saml.TemplateElement
+   * @generated
+   */
+  public Adapter createTemplateElementAdapter()
   {
     return null;
   }
@@ -342,76 +362,106 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.ControlElement <em>Control Element</em>}'.
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.FormFieldElement <em>Form Field Element</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.eclipse.scout.saml.saml.ControlElement
+   * @see org.eclipse.scout.saml.saml.FormFieldElement
    * @generated
    */
-  public Adapter createControlElementAdapter()
+  public Adapter createFormFieldElementAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.ControlElementRule <em>Control Element Rule</em>}'.
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.FormFieldProperties <em>Form Field Properties</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.eclipse.scout.saml.saml.ControlElementRule
+   * @see org.eclipse.scout.saml.saml.FormFieldProperties
    * @generated
    */
-  public Adapter createControlElementRuleAdapter()
+  public Adapter createFormFieldPropertiesAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.CompositeElement <em>Composite Element</em>}'.
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.CompositeFieldElement <em>Composite Field Element</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.eclipse.scout.saml.saml.CompositeElement
+   * @see org.eclipse.scout.saml.saml.CompositeFieldElement
    * @generated
    */
-  public Adapter createCompositeElementAdapter()
+  public Adapter createCompositeFieldElementAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.CompositeElementRule <em>Composite Element Rule</em>}'.
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.SequenceBoxElement <em>Sequence Box Element</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.eclipse.scout.saml.saml.CompositeElementRule
+   * @see org.eclipse.scout.saml.saml.SequenceBoxElement
    * @generated
    */
-  public Adapter createCompositeElementRuleAdapter()
+  public Adapter createSequenceBoxElementAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.LeafElement <em>Leaf Element</em>}'.
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.GroupBoxElement <em>Group Box Element</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.eclipse.scout.saml.saml.LeafElement
+   * @see org.eclipse.scout.saml.saml.GroupBoxElement
    * @generated
    */
-  public Adapter createLeafElementAdapter()
+  public Adapter createGroupBoxElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.ValueFieldElement <em>Value Field Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.scout.saml.saml.ValueFieldElement
+   * @generated
+   */
+  public Adapter createValueFieldElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.ValueFieldProperties <em>Value Field Properties</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.scout.saml.saml.ValueFieldProperties
+   * @generated
+   */
+  public Adapter createValueFieldPropertiesAdapter()
   {
     return null;
   }
@@ -462,16 +512,46 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.SequenceBoxElement <em>Sequence Box Element</em>}'.
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.DateElement <em>Date Element</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.eclipse.scout.saml.saml.SequenceBoxElement
+   * @see org.eclipse.scout.saml.saml.DateElement
    * @generated
    */
-  public Adapter createSequenceBoxElementAdapter()
+  public Adapter createDateElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.SmartfieldElement <em>Smartfield Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.scout.saml.saml.SmartfieldElement
+   * @generated
+   */
+  public Adapter createSmartfieldElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.CustomFieldElement <em>Custom Field Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.scout.saml.saml.CustomFieldElement
+   * @generated
+   */
+  public Adapter createCustomFieldElementAdapter()
   {
     return null;
   }

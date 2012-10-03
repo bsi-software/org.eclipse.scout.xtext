@@ -10,7 +10,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -19,12 +18,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.scout.saml.saml.CodeElement;
 import org.eclipse.scout.saml.saml.FormElement;
 import org.eclipse.scout.saml.saml.ImportElement;
 import org.eclipse.scout.saml.saml.LookupElement;
 import org.eclipse.scout.saml.saml.Model;
 import org.eclipse.scout.saml.saml.ModuleElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
+import org.eclipse.scout.saml.saml.TemplateElement;
 import org.eclipse.scout.saml.saml.TranslationElement;
 
 /**
@@ -36,9 +37,10 @@ import org.eclipse.scout.saml.saml.TranslationElement;
  * <ul>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.ModelImpl#getModule <em>Module</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.ModelImpl#getImports <em>Imports</em>}</li>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.ModelImpl#getCodes <em>Codes</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.ModelImpl#getTranslations <em>Translations</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.ModelImpl#getCodes <em>Codes</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.ModelImpl#getLookups <em>Lookups</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.ModelImpl#getTemplates <em>Templates</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.ModelImpl#getForms <em>Forms</em>}</li>
  * </ul>
  * </p>
@@ -68,16 +70,6 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   protected EList<ImportElement> imports;
 
   /**
-   * The cached value of the '{@link #getCodes() <em>Codes</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getCodes()
-   * @generated
-   * @ordered
-   */
-  protected EList<EObject> codes;
-
-  /**
    * The cached value of the '{@link #getTranslations() <em>Translations</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -88,6 +80,16 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   protected EList<TranslationElement> translations;
 
   /**
+   * The cached value of the '{@link #getCodes() <em>Codes</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCodes()
+   * @generated
+   * @ordered
+   */
+  protected EList<CodeElement> codes;
+
+  /**
    * The cached value of the '{@link #getLookups() <em>Lookups</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -96,6 +98,16 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * @ordered
    */
   protected EList<LookupElement> lookups;
+
+  /**
+   * The cached value of the '{@link #getTemplates() <em>Templates</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTemplates()
+   * @generated
+   * @ordered
+   */
+  protected EList<TemplateElement> templates;
 
   /**
    * The cached value of the '{@link #getForms() <em>Forms</em>}' containment reference list.
@@ -195,20 +207,6 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<EObject> getCodes()
-  {
-    if (codes == null)
-    {
-      codes = new EObjectContainmentEList<EObject>(EObject.class, this, SamlPackage.MODEL__CODES);
-    }
-    return codes;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EList<TranslationElement> getTranslations()
   {
     if (translations == null)
@@ -223,6 +221,20 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<CodeElement> getCodes()
+  {
+    if (codes == null)
+    {
+      codes = new EObjectContainmentEList<CodeElement>(CodeElement.class, this, SamlPackage.MODEL__CODES);
+    }
+    return codes;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<LookupElement> getLookups()
   {
     if (lookups == null)
@@ -230,6 +242,20 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
       lookups = new EObjectContainmentEList<LookupElement>(LookupElement.class, this, SamlPackage.MODEL__LOOKUPS);
     }
     return lookups;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<TemplateElement> getTemplates()
+  {
+    if (templates == null)
+    {
+      templates = new EObjectContainmentEList<TemplateElement>(TemplateElement.class, this, SamlPackage.MODEL__TEMPLATES);
+    }
+    return templates;
   }
 
   /**
@@ -260,12 +286,14 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return basicSetModule(null, msgs);
       case SamlPackage.MODEL__IMPORTS:
         return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
-      case SamlPackage.MODEL__CODES:
-        return ((InternalEList<?>)getCodes()).basicRemove(otherEnd, msgs);
       case SamlPackage.MODEL__TRANSLATIONS:
         return ((InternalEList<?>)getTranslations()).basicRemove(otherEnd, msgs);
+      case SamlPackage.MODEL__CODES:
+        return ((InternalEList<?>)getCodes()).basicRemove(otherEnd, msgs);
       case SamlPackage.MODEL__LOOKUPS:
         return ((InternalEList<?>)getLookups()).basicRemove(otherEnd, msgs);
+      case SamlPackage.MODEL__TEMPLATES:
+        return ((InternalEList<?>)getTemplates()).basicRemove(otherEnd, msgs);
       case SamlPackage.MODEL__FORMS:
         return ((InternalEList<?>)getForms()).basicRemove(otherEnd, msgs);
     }
@@ -286,12 +314,14 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return getModule();
       case SamlPackage.MODEL__IMPORTS:
         return getImports();
-      case SamlPackage.MODEL__CODES:
-        return getCodes();
       case SamlPackage.MODEL__TRANSLATIONS:
         return getTranslations();
+      case SamlPackage.MODEL__CODES:
+        return getCodes();
       case SamlPackage.MODEL__LOOKUPS:
         return getLookups();
+      case SamlPackage.MODEL__TEMPLATES:
+        return getTemplates();
       case SamlPackage.MODEL__FORMS:
         return getForms();
     }
@@ -316,17 +346,21 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         getImports().clear();
         getImports().addAll((Collection<? extends ImportElement>)newValue);
         return;
-      case SamlPackage.MODEL__CODES:
-        getCodes().clear();
-        getCodes().addAll((Collection<? extends EObject>)newValue);
-        return;
       case SamlPackage.MODEL__TRANSLATIONS:
         getTranslations().clear();
         getTranslations().addAll((Collection<? extends TranslationElement>)newValue);
         return;
+      case SamlPackage.MODEL__CODES:
+        getCodes().clear();
+        getCodes().addAll((Collection<? extends CodeElement>)newValue);
+        return;
       case SamlPackage.MODEL__LOOKUPS:
         getLookups().clear();
         getLookups().addAll((Collection<? extends LookupElement>)newValue);
+        return;
+      case SamlPackage.MODEL__TEMPLATES:
+        getTemplates().clear();
+        getTemplates().addAll((Collection<? extends TemplateElement>)newValue);
         return;
       case SamlPackage.MODEL__FORMS:
         getForms().clear();
@@ -352,14 +386,17 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
       case SamlPackage.MODEL__IMPORTS:
         getImports().clear();
         return;
-      case SamlPackage.MODEL__CODES:
-        getCodes().clear();
-        return;
       case SamlPackage.MODEL__TRANSLATIONS:
         getTranslations().clear();
         return;
+      case SamlPackage.MODEL__CODES:
+        getCodes().clear();
+        return;
       case SamlPackage.MODEL__LOOKUPS:
         getLookups().clear();
+        return;
+      case SamlPackage.MODEL__TEMPLATES:
+        getTemplates().clear();
         return;
       case SamlPackage.MODEL__FORMS:
         getForms().clear();
@@ -382,12 +419,14 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return module != null;
       case SamlPackage.MODEL__IMPORTS:
         return imports != null && !imports.isEmpty();
-      case SamlPackage.MODEL__CODES:
-        return codes != null && !codes.isEmpty();
       case SamlPackage.MODEL__TRANSLATIONS:
         return translations != null && !translations.isEmpty();
+      case SamlPackage.MODEL__CODES:
+        return codes != null && !codes.isEmpty();
       case SamlPackage.MODEL__LOOKUPS:
         return lookups != null && !lookups.isEmpty();
+      case SamlPackage.MODEL__TEMPLATES:
+        return templates != null && !templates.isEmpty();
       case SamlPackage.MODEL__FORMS:
         return forms != null && !forms.isEmpty();
     }

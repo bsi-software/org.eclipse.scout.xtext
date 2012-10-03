@@ -4,7 +4,6 @@ package org.eclipse.scout.saml.saml;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -86,22 +85,22 @@ public interface SamlPackage extends EPackage
   int MODEL__IMPORTS = 1;
 
   /**
-   * The feature id for the '<em><b>Codes</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MODEL__CODES = 2;
-
-  /**
    * The feature id for the '<em><b>Translations</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL__TRANSLATIONS = 3;
+  int MODEL__TRANSLATIONS = 2;
+
+  /**
+   * The feature id for the '<em><b>Codes</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODEL__CODES = 3;
 
   /**
    * The feature id for the '<em><b>Lookups</b></em>' containment reference list.
@@ -113,13 +112,22 @@ public interface SamlPackage extends EPackage
   int MODEL__LOOKUPS = 4;
 
   /**
+   * The feature id for the '<em><b>Templates</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODEL__TEMPLATES = 5;
+
+  /**
    * The feature id for the '<em><b>Forms</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL__FORMS = 5;
+  int MODEL__FORMS = 6;
 
   /**
    * The number of structural features of the '<em>Model</em>' class.
@@ -128,7 +136,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL_FEATURE_COUNT = 6;
+  int MODEL_FEATURE_COUNT = 7;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.ModuleElementImpl <em>Module Element</em>}' class.
@@ -187,144 +195,6 @@ public interface SamlPackage extends EPackage
   int IMPORT_ELEMENT_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.JavaCodeElementImpl <em>Java Code Element</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.scout.saml.saml.impl.JavaCodeElementImpl
-   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getJavaCodeElement()
-   * @generated
-   */
-  int JAVA_CODE_ELEMENT = 3;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int JAVA_CODE_ELEMENT__NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Runat</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int JAVA_CODE_ELEMENT__RUNAT = 1;
-
-  /**
-   * The feature id for the '<em><b>Source</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int JAVA_CODE_ELEMENT__SOURCE = 2;
-
-  /**
-   * The number of structural features of the '<em>Java Code Element</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int JAVA_CODE_ELEMENT_FEATURE_COUNT = 3;
-
-  /**
-   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.LogicElementImpl <em>Logic Element</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.scout.saml.saml.impl.LogicElementImpl
-   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getLogicElement()
-   * @generated
-   */
-  int LOGIC_ELEMENT = 4;
-
-  /**
-   * The feature id for the '<em><b>Event</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOGIC_ELEMENT__EVENT = 0;
-
-  /**
-   * The feature id for the '<em><b>Runat</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOGIC_ELEMENT__RUNAT = 1;
-
-  /**
-   * The feature id for the '<em><b>Exec</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOGIC_ELEMENT__EXEC = 2;
-
-  /**
-   * The feature id for the '<em><b>Source</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOGIC_ELEMENT__SOURCE = 3;
-
-  /**
-   * The number of structural features of the '<em>Logic Element</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOGIC_ELEMENT_FEATURE_COUNT = 4;
-
-  /**
-   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.CodeElementImpl <em>Code Element</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.scout.saml.saml.impl.CodeElementImpl
-   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getCodeElement()
-   * @generated
-   */
-  int CODE_ELEMENT = 5;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CODE_ELEMENT__NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Id</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CODE_ELEMENT__ID = 1;
-
-  /**
-   * The number of structural features of the '<em>Code Element</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CODE_ELEMENT_FEATURE_COUNT = 2;
-
-  /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.TranslationElementImpl <em>Translation Element</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -332,7 +202,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getTranslationElement()
    * @generated
    */
-  int TRANSLATION_ELEMENT = 6;
+  int TRANSLATION_ELEMENT = 3;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -369,7 +239,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getLanguageAttribute()
    * @generated
    */
-  int LANGUAGE_ATTRIBUTE = 7;
+  int LANGUAGE_ATTRIBUTE = 4;
 
   /**
    * The feature id for the '<em><b>Lang</b></em>' attribute.
@@ -399,6 +269,107 @@ public interface SamlPackage extends EPackage
   int LANGUAGE_ATTRIBUTE_FEATURE_COUNT = 2;
 
   /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.LogicElementImpl <em>Logic Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.LogicElementImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getLogicElement()
+   * @generated
+   */
+  int LOGIC_ELEMENT = 5;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOGIC_ELEMENT__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Event</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOGIC_ELEMENT__EVENT = 1;
+
+  /**
+   * The feature id for the '<em><b>Runat</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOGIC_ELEMENT__RUNAT = 2;
+
+  /**
+   * The feature id for the '<em><b>Exec</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOGIC_ELEMENT__EXEC = 3;
+
+  /**
+   * The feature id for the '<em><b>Source</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOGIC_ELEMENT__SOURCE = 4;
+
+  /**
+   * The number of structural features of the '<em>Logic Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOGIC_ELEMENT_FEATURE_COUNT = 5;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.CodeElementImpl <em>Code Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.CodeElementImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getCodeElement()
+   * @generated
+   */
+  int CODE_ELEMENT = 6;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CODE_ELEMENT__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CODE_ELEMENT__ID = 1;
+
+  /**
+   * The number of structural features of the '<em>Code Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CODE_ELEMENT_FEATURE_COUNT = 2;
+
+  /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.LookupElementImpl <em>Lookup Element</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -406,7 +377,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getLookupElement()
    * @generated
    */
-  int LOOKUP_ELEMENT = 8;
+  int LOOKUP_ELEMENT = 7;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -427,22 +398,50 @@ public interface SamlPackage extends EPackage
   int LOOKUP_ELEMENT__LOGIC = 1;
 
   /**
-   * The feature id for the '<em><b>Javacode</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOOKUP_ELEMENT__JAVACODE = 2;
-
-  /**
    * The number of structural features of the '<em>Lookup Element</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LOOKUP_ELEMENT_FEATURE_COUNT = 3;
+  int LOOKUP_ELEMENT_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.TemplateElementImpl <em>Template Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.TemplateElementImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getTemplateElement()
+   * @generated
+   */
+  int TEMPLATE_ELEMENT = 8;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TEMPLATE_ELEMENT__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Definition</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TEMPLATE_ELEMENT__DEFINITION = 1;
+
+  /**
+   * The number of structural features of the '<em>Template Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TEMPLATE_ELEMENT_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.FormElementImpl <em>Form Element</em>}' class.
@@ -482,13 +481,22 @@ public interface SamlPackage extends EPackage
   int FORM_ELEMENT__COLUMNS = 2;
 
   /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORM_ELEMENT__TEXT = 3;
+
+  /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FORM_ELEMENT__LOGIC = 3;
+  int FORM_ELEMENT__LOGIC = 4;
 
   /**
    * The feature id for the '<em><b>Fields</b></em>' containment reference list.
@@ -497,7 +505,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_ELEMENT__FIELDS = 4;
+  int FORM_ELEMENT__FIELDS = 5;
 
   /**
    * The number of structural features of the '<em>Form Element</em>' class.
@@ -506,36 +514,54 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_ELEMENT_FEATURE_COUNT = 5;
+  int FORM_ELEMENT_FEATURE_COUNT = 6;
 
   /**
-   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.ControlElementImpl <em>Control Element</em>}' class.
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl <em>Form Field Element</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.eclipse.scout.saml.saml.impl.ControlElementImpl
-   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getControlElement()
+   * @see org.eclipse.scout.saml.saml.impl.FormFieldElementImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getFormFieldElement()
    * @generated
    */
-  int CONTROL_ELEMENT = 10;
+  int FORM_FIELD_ELEMENT = 10;
 
   /**
-   * The number of structural features of the '<em>Control Element</em>' class.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONTROL_ELEMENT_FEATURE_COUNT = 0;
+  int FORM_FIELD_ELEMENT__NAME = 0;
 
   /**
-   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.ControlElementRuleImpl <em>Control Element Rule</em>}' class.
+   * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.eclipse.scout.saml.saml.impl.ControlElementRuleImpl
-   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getControlElementRule()
+   * @generated
+   * @ordered
+   */
+  int FORM_FIELD_ELEMENT__LOGIC = 1;
+
+  /**
+   * The number of structural features of the '<em>Form Field Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORM_FIELD_ELEMENT_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.FormFieldPropertiesImpl <em>Form Field Properties</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.FormFieldPropertiesImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getFormFieldProperties()
    * @generated
    */
-  int CONTROL_ELEMENT_RULE = 11;
+  int FORM_FIELD_PROPERTIES = 11;
 
   /**
    * The feature id for the '<em><b>Text</b></em>' reference.
@@ -544,7 +570,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTROL_ELEMENT_RULE__TEXT = 0;
+  int FORM_FIELD_PROPERTIES__TEXT = 0;
 
   /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -553,7 +579,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTROL_ELEMENT_RULE__ENABLED = 1;
+  int FORM_FIELD_PROPERTIES__ENABLED = 1;
 
   /**
    * The feature id for the '<em><b>Visible</b></em>' attribute.
@@ -562,182 +588,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONTROL_ELEMENT_RULE__VISIBLE = 2;
-
-  /**
-   * The number of structural features of the '<em>Control Element Rule</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONTROL_ELEMENT_RULE_FEATURE_COUNT = 3;
-
-  /**
-   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.CompositeElementImpl <em>Composite Element</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.scout.saml.saml.impl.CompositeElementImpl
-   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getCompositeElement()
-   * @generated
-   */
-  int COMPOSITE_ELEMENT = 12;
-
-  /**
-   * The number of structural features of the '<em>Composite Element</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPOSITE_ELEMENT_FEATURE_COUNT = CONTROL_ELEMENT_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.CompositeElementRuleImpl <em>Composite Element Rule</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.scout.saml.saml.impl.CompositeElementRuleImpl
-   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getCompositeElementRule()
-   * @generated
-   */
-  int COMPOSITE_ELEMENT_RULE = 13;
-
-  /**
-   * The feature id for the '<em><b>Rule</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPOSITE_ELEMENT_RULE__RULE = 0;
-
-  /**
-   * The feature id for the '<em><b>Logic</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPOSITE_ELEMENT_RULE__LOGIC = 1;
-
-  /**
-   * The feature id for the '<em><b>Childre</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPOSITE_ELEMENT_RULE__CHILDRE = 2;
-
-  /**
-   * The number of structural features of the '<em>Composite Element Rule</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPOSITE_ELEMENT_RULE_FEATURE_COUNT = 3;
-
-  /**
-   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.LeafElementImpl <em>Leaf Element</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.scout.saml.saml.impl.LeafElementImpl
-   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getLeafElement()
-   * @generated
-   */
-  int LEAF_ELEMENT = 14;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LEAF_ELEMENT__NAME = CONTROL_ELEMENT_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Field Rule</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LEAF_ELEMENT__FIELD_RULE = CONTROL_ELEMENT_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Mandatory</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LEAF_ELEMENT__MANDATORY = CONTROL_ELEMENT_FEATURE_COUNT + 2;
-
-  /**
-   * The feature id for the '<em><b>Logic</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LEAF_ELEMENT__LOGIC = CONTROL_ELEMENT_FEATURE_COUNT + 3;
-
-  /**
-   * The number of structural features of the '<em>Leaf Element</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LEAF_ELEMENT_FEATURE_COUNT = CONTROL_ELEMENT_FEATURE_COUNT + 4;
-
-  /**
-   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.StringElementImpl <em>String Element</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.scout.saml.saml.impl.StringElementImpl
-   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getStringElement()
-   * @generated
-   */
-  int STRING_ELEMENT = 15;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_ELEMENT__NAME = LEAF_ELEMENT__NAME;
-
-  /**
-   * The feature id for the '<em><b>Field Rule</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_ELEMENT__FIELD_RULE = LEAF_ELEMENT__FIELD_RULE;
-
-  /**
-   * The feature id for the '<em><b>Mandatory</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_ELEMENT__MANDATORY = LEAF_ELEMENT__MANDATORY;
-
-  /**
-   * The feature id for the '<em><b>Logic</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_ELEMENT__LOGIC = LEAF_ELEMENT__LOGIC;
+  int FORM_FIELD_PROPERTIES__VISIBLE = 2;
 
   /**
    * The feature id for the '<em><b>Master</b></em>' reference.
@@ -746,26 +597,26 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STRING_ELEMENT__MASTER = LEAF_ELEMENT_FEATURE_COUNT + 0;
+  int FORM_FIELD_PROPERTIES__MASTER = 3;
 
   /**
-   * The number of structural features of the '<em>String Element</em>' class.
+   * The number of structural features of the '<em>Form Field Properties</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int STRING_ELEMENT_FEATURE_COUNT = LEAF_ELEMENT_FEATURE_COUNT + 1;
+  int FORM_FIELD_PROPERTIES_FEATURE_COUNT = 4;
 
   /**
-   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.DoubleElementImpl <em>Double Element</em>}' class.
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.CompositeFieldElementImpl <em>Composite Field Element</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.eclipse.scout.saml.saml.impl.DoubleElementImpl
-   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getDoubleElement()
+   * @see org.eclipse.scout.saml.saml.impl.CompositeFieldElementImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getCompositeFieldElement()
    * @generated
    */
-  int DOUBLE_ELEMENT = 16;
+  int COMPOSITE_FIELD_ELEMENT = 12;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -774,25 +625,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DOUBLE_ELEMENT__NAME = LEAF_ELEMENT__NAME;
-
-  /**
-   * The feature id for the '<em><b>Field Rule</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DOUBLE_ELEMENT__FIELD_RULE = LEAF_ELEMENT__FIELD_RULE;
-
-  /**
-   * The feature id for the '<em><b>Mandatory</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DOUBLE_ELEMENT__MANDATORY = LEAF_ELEMENT__MANDATORY;
+  int COMPOSITE_FIELD_ELEMENT__NAME = FORM_FIELD_ELEMENT__NAME;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -801,71 +634,34 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DOUBLE_ELEMENT__LOGIC = LEAF_ELEMENT__LOGIC;
+  int COMPOSITE_FIELD_ELEMENT__LOGIC = FORM_FIELD_ELEMENT__LOGIC;
 
   /**
-   * The number of structural features of the '<em>Double Element</em>' class.
+   * The feature id for the '<em><b>Form Field Properties</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DOUBLE_ELEMENT_FEATURE_COUNT = LEAF_ELEMENT_FEATURE_COUNT + 0;
+  int COMPOSITE_FIELD_ELEMENT__FORM_FIELD_PROPERTIES = FORM_FIELD_ELEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.LongElementImpl <em>Long Element</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.scout.saml.saml.impl.LongElementImpl
-   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getLongElement()
-   * @generated
-   */
-  int LONG_ELEMENT = 17;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * The feature id for the '<em><b>Fields</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LONG_ELEMENT__NAME = LEAF_ELEMENT__NAME;
+  int COMPOSITE_FIELD_ELEMENT__FIELDS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Field Rule</b></em>' containment reference.
+   * The number of structural features of the '<em>Composite Field Element</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LONG_ELEMENT__FIELD_RULE = LEAF_ELEMENT__FIELD_RULE;
-
-  /**
-   * The feature id for the '<em><b>Mandatory</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LONG_ELEMENT__MANDATORY = LEAF_ELEMENT__MANDATORY;
-
-  /**
-   * The feature id for the '<em><b>Logic</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LONG_ELEMENT__LOGIC = LEAF_ELEMENT__LOGIC;
-
-  /**
-   * The number of structural features of the '<em>Long Element</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LONG_ELEMENT_FEATURE_COUNT = LEAF_ELEMENT_FEATURE_COUNT + 0;
+  int COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.SequenceBoxElementImpl <em>Sequence Box Element</em>}' class.
@@ -875,7 +671,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getSequenceBoxElement()
    * @generated
    */
-  int SEQUENCE_BOX_ELEMENT = 18;
+  int SEQUENCE_BOX_ELEMENT = 13;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -884,16 +680,34 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SEQUENCE_BOX_ELEMENT__NAME = COMPOSITE_ELEMENT_FEATURE_COUNT + 0;
+  int SEQUENCE_BOX_ELEMENT__NAME = COMPOSITE_FIELD_ELEMENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Field Rule</b></em>' containment reference.
+   * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SEQUENCE_BOX_ELEMENT__FIELD_RULE = COMPOSITE_ELEMENT_FEATURE_COUNT + 1;
+  int SEQUENCE_BOX_ELEMENT__LOGIC = COMPOSITE_FIELD_ELEMENT__LOGIC;
+
+  /**
+   * The feature id for the '<em><b>Form Field Properties</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SEQUENCE_BOX_ELEMENT__FORM_FIELD_PROPERTIES = COMPOSITE_FIELD_ELEMENT__FORM_FIELD_PROPERTIES;
+
+  /**
+   * The feature id for the '<em><b>Fields</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SEQUENCE_BOX_ELEMENT__FIELDS = COMPOSITE_FIELD_ELEMENT__FIELDS;
 
   /**
    * The number of structural features of the '<em>Sequence Box Element</em>' class.
@@ -902,27 +716,466 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SEQUENCE_BOX_ELEMENT_FEATURE_COUNT = COMPOSITE_ELEMENT_FEATURE_COUNT + 2;
+  int SEQUENCE_BOX_ELEMENT_FEATURE_COUNT = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link org.eclipse.scout.saml.saml.BooleanType <em>Boolean Type</em>}' enum.
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.GroupBoxElementImpl <em>Group Box Element</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.eclipse.scout.saml.saml.BooleanType
-   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getBooleanType()
+   * @see org.eclipse.scout.saml.saml.impl.GroupBoxElementImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getGroupBoxElement()
    * @generated
    */
-  int BOOLEAN_TYPE = 19;
+  int GROUP_BOX_ELEMENT = 14;
 
   /**
-   * The meta object id for the '{@link org.eclipse.scout.saml.saml.LogicType <em>Logic Type</em>}' enum.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.eclipse.scout.saml.saml.LogicType
-   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getLogicType()
+   * @generated
+   * @ordered
+   */
+  int GROUP_BOX_ELEMENT__NAME = COMPOSITE_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Logic</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_BOX_ELEMENT__LOGIC = COMPOSITE_FIELD_ELEMENT__LOGIC;
+
+  /**
+   * The feature id for the '<em><b>Form Field Properties</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_BOX_ELEMENT__FORM_FIELD_PROPERTIES = COMPOSITE_FIELD_ELEMENT__FORM_FIELD_PROPERTIES;
+
+  /**
+   * The feature id for the '<em><b>Fields</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_BOX_ELEMENT__FIELDS = COMPOSITE_FIELD_ELEMENT__FIELDS;
+
+  /**
+   * The number of structural features of the '<em>Group Box Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_BOX_ELEMENT_FEATURE_COUNT = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.ValueFieldElementImpl <em>Value Field Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.ValueFieldElementImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getValueFieldElement()
    * @generated
    */
-  int LOGIC_TYPE = 20;
+  int VALUE_FIELD_ELEMENT = 15;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE_FIELD_ELEMENT__NAME = FORM_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Logic</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE_FIELD_ELEMENT__LOGIC = FORM_FIELD_ELEMENT__LOGIC;
+
+  /**
+   * The number of structural features of the '<em>Value Field Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE_FIELD_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.ValueFieldPropertiesImpl <em>Value Field Properties</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.ValueFieldPropertiesImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getValueFieldProperties()
+   * @generated
+   */
+  int VALUE_FIELD_PROPERTIES = 16;
+
+  /**
+   * The feature id for the '<em><b>Form Field Properties</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE_FIELD_PROPERTIES__FORM_FIELD_PROPERTIES = 0;
+
+  /**
+   * The feature id for the '<em><b>Mandatory</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE_FIELD_PROPERTIES__MANDATORY = 1;
+
+  /**
+   * The number of structural features of the '<em>Value Field Properties</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE_FIELD_PROPERTIES_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.StringElementImpl <em>String Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.StringElementImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getStringElement()
+   * @generated
+   */
+  int STRING_ELEMENT = 17;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Logic</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT__LOGIC = VALUE_FIELD_ELEMENT__LOGIC;
+
+  /**
+   * The feature id for the '<em><b>Value Field Properties</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT__VALUE_FIELD_PROPERTIES = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Maxlen</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT__MAXLEN = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>String Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.DoubleElementImpl <em>Double Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.DoubleElementImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getDoubleElement()
+   * @generated
+   */
+  int DOUBLE_ELEMENT = 18;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DOUBLE_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Logic</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DOUBLE_ELEMENT__LOGIC = VALUE_FIELD_ELEMENT__LOGIC;
+
+  /**
+   * The feature id for the '<em><b>Value Field Properties</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DOUBLE_ELEMENT__VALUE_FIELD_PROPERTIES = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Double Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DOUBLE_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.LongElementImpl <em>Long Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.LongElementImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getLongElement()
+   * @generated
+   */
+  int LONG_ELEMENT = 19;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LONG_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Logic</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LONG_ELEMENT__LOGIC = VALUE_FIELD_ELEMENT__LOGIC;
+
+  /**
+   * The feature id for the '<em><b>Value Field Properties</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LONG_ELEMENT__VALUE_FIELD_PROPERTIES = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Long Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LONG_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.DateElementImpl <em>Date Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.DateElementImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getDateElement()
+   * @generated
+   */
+  int DATE_ELEMENT = 20;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATE_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Logic</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATE_ELEMENT__LOGIC = VALUE_FIELD_ELEMENT__LOGIC;
+
+  /**
+   * The feature id for the '<em><b>Value Field Properties</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATE_ELEMENT__VALUE_FIELD_PROPERTIES = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Date Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATE_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.SmartfieldElementImpl <em>Smartfield Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.SmartfieldElementImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getSmartfieldElement()
+   * @generated
+   */
+  int SMARTFIELD_ELEMENT = 21;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SMARTFIELD_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Logic</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SMARTFIELD_ELEMENT__LOGIC = VALUE_FIELD_ELEMENT__LOGIC;
+
+  /**
+   * The feature id for the '<em><b>Value Field Properties</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SMARTFIELD_ELEMENT__VALUE_FIELD_PROPERTIES = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Code</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SMARTFIELD_ELEMENT__CODE = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Value Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SMARTFIELD_ELEMENT__VALUE_TYPE = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Lookup</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SMARTFIELD_ELEMENT__LOOKUP = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 3;
+
+  /**
+   * The number of structural features of the '<em>Smartfield Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SMARTFIELD_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 4;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.CustomFieldElementImpl <em>Custom Field Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.CustomFieldElementImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getCustomFieldElement()
+   * @generated
+   */
+  int CUSTOM_FIELD_ELEMENT = 22;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CUSTOM_FIELD_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Logic</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CUSTOM_FIELD_ELEMENT__LOGIC = VALUE_FIELD_ELEMENT__LOGIC;
+
+  /**
+   * The feature id for the '<em><b>Template</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CUSTOM_FIELD_ELEMENT__TEMPLATE = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Form Field Properties</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CUSTOM_FIELD_ELEMENT__FORM_FIELD_PROPERTIES = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Fields</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CUSTOM_FIELD_ELEMENT__FIELDS = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Custom Field Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CUSTOM_FIELD_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 3;
 
 
   /**
@@ -958,17 +1211,6 @@ public interface SamlPackage extends EPackage
   EReference getModel_Imports();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.Model#getCodes <em>Codes</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Codes</em>'.
-   * @see org.eclipse.scout.saml.saml.Model#getCodes()
-   * @see #getModel()
-   * @generated
-   */
-  EReference getModel_Codes();
-
-  /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.Model#getTranslations <em>Translations</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -980,6 +1222,17 @@ public interface SamlPackage extends EPackage
   EReference getModel_Translations();
 
   /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.Model#getCodes <em>Codes</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Codes</em>'.
+   * @see org.eclipse.scout.saml.saml.Model#getCodes()
+   * @see #getModel()
+   * @generated
+   */
+  EReference getModel_Codes();
+
+  /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.Model#getLookups <em>Lookups</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -989,6 +1242,17 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EReference getModel_Lookups();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.Model#getTemplates <em>Templates</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Templates</em>'.
+   * @see org.eclipse.scout.saml.saml.Model#getTemplates()
+   * @see #getModel()
+   * @generated
+   */
+  EReference getModel_Templates();
 
   /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.Model#getForms <em>Forms</em>}'.
@@ -1044,47 +1308,68 @@ public interface SamlPackage extends EPackage
   EAttribute getImportElement_ImportedNamespace();
 
   /**
-   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.JavaCodeElement <em>Java Code Element</em>}'.
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.TranslationElement <em>Translation Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Java Code Element</em>'.
-   * @see org.eclipse.scout.saml.saml.JavaCodeElement
+   * @return the meta object for class '<em>Translation Element</em>'.
+   * @see org.eclipse.scout.saml.saml.TranslationElement
    * @generated
    */
-  EClass getJavaCodeElement();
+  EClass getTranslationElement();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.JavaCodeElement#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.TranslationElement#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.eclipse.scout.saml.saml.JavaCodeElement#getName()
-   * @see #getJavaCodeElement()
+   * @see org.eclipse.scout.saml.saml.TranslationElement#getName()
+   * @see #getTranslationElement()
    * @generated
    */
-  EAttribute getJavaCodeElement_Name();
+  EAttribute getTranslationElement_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.JavaCodeElement#getRunat <em>Runat</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.TranslationElement#getTranslations <em>Translations</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Runat</em>'.
-   * @see org.eclipse.scout.saml.saml.JavaCodeElement#getRunat()
-   * @see #getJavaCodeElement()
+   * @return the meta object for the containment reference list '<em>Translations</em>'.
+   * @see org.eclipse.scout.saml.saml.TranslationElement#getTranslations()
+   * @see #getTranslationElement()
    * @generated
    */
-  EAttribute getJavaCodeElement_Runat();
+  EReference getTranslationElement_Translations();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.JavaCodeElement#getSource <em>Source</em>}'.
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.LanguageAttribute <em>Language Attribute</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Source</em>'.
-   * @see org.eclipse.scout.saml.saml.JavaCodeElement#getSource()
-   * @see #getJavaCodeElement()
+   * @return the meta object for class '<em>Language Attribute</em>'.
+   * @see org.eclipse.scout.saml.saml.LanguageAttribute
    * @generated
    */
-  EReference getJavaCodeElement_Source();
+  EClass getLanguageAttribute();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.LanguageAttribute#getLang <em>Lang</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Lang</em>'.
+   * @see org.eclipse.scout.saml.saml.LanguageAttribute#getLang()
+   * @see #getLanguageAttribute()
+   * @generated
+   */
+  EAttribute getLanguageAttribute_Lang();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.LanguageAttribute#getText <em>Text</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Text</em>'.
+   * @see org.eclipse.scout.saml.saml.LanguageAttribute#getText()
+   * @see #getLanguageAttribute()
+   * @generated
+   */
+  EAttribute getLanguageAttribute_Text();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.LogicElement <em>Logic Element</em>}'.
@@ -1095,6 +1380,17 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EClass getLogicElement();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.LogicElement#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.eclipse.scout.saml.saml.LogicElement#getName()
+   * @see #getLogicElement()
+   * @generated
+   */
+  EAttribute getLogicElement_Name();
 
   /**
    * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.LogicElement#getEvent <em>Event</em>}'.
@@ -1173,70 +1469,6 @@ public interface SamlPackage extends EPackage
   EAttribute getCodeElement_Id();
 
   /**
-   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.TranslationElement <em>Translation Element</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Translation Element</em>'.
-   * @see org.eclipse.scout.saml.saml.TranslationElement
-   * @generated
-   */
-  EClass getTranslationElement();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.TranslationElement#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.eclipse.scout.saml.saml.TranslationElement#getName()
-   * @see #getTranslationElement()
-   * @generated
-   */
-  EAttribute getTranslationElement_Name();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.TranslationElement#getTranslations <em>Translations</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Translations</em>'.
-   * @see org.eclipse.scout.saml.saml.TranslationElement#getTranslations()
-   * @see #getTranslationElement()
-   * @generated
-   */
-  EReference getTranslationElement_Translations();
-
-  /**
-   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.LanguageAttribute <em>Language Attribute</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Language Attribute</em>'.
-   * @see org.eclipse.scout.saml.saml.LanguageAttribute
-   * @generated
-   */
-  EClass getLanguageAttribute();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.LanguageAttribute#getLang <em>Lang</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Lang</em>'.
-   * @see org.eclipse.scout.saml.saml.LanguageAttribute#getLang()
-   * @see #getLanguageAttribute()
-   * @generated
-   */
-  EAttribute getLanguageAttribute_Lang();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.LanguageAttribute#getText <em>Text</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Text</em>'.
-   * @see org.eclipse.scout.saml.saml.LanguageAttribute#getText()
-   * @see #getLanguageAttribute()
-   * @generated
-   */
-  EAttribute getLanguageAttribute_Text();
-
-  /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.LookupElement <em>Lookup Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1269,15 +1501,36 @@ public interface SamlPackage extends EPackage
   EReference getLookupElement_Logic();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.LookupElement#getJavacode <em>Javacode</em>}'.
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.TemplateElement <em>Template Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Javacode</em>'.
-   * @see org.eclipse.scout.saml.saml.LookupElement#getJavacode()
-   * @see #getLookupElement()
+   * @return the meta object for class '<em>Template Element</em>'.
+   * @see org.eclipse.scout.saml.saml.TemplateElement
    * @generated
    */
-  EReference getLookupElement_Javacode();
+  EClass getTemplateElement();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.TemplateElement#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.eclipse.scout.saml.saml.TemplateElement#getName()
+   * @see #getTemplateElement()
+   * @generated
+   */
+  EAttribute getTemplateElement_Name();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.TemplateElement#getDefinition <em>Definition</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Definition</em>'.
+   * @see org.eclipse.scout.saml.saml.TemplateElement#getDefinition()
+   * @see #getTemplateElement()
+   * @generated
+   */
+  EReference getTemplateElement_Definition();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.FormElement <em>Form Element</em>}'.
@@ -1323,6 +1576,17 @@ public interface SamlPackage extends EPackage
   EAttribute getFormElement_Columns();
 
   /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.FormElement#getText <em>Text</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Text</em>'.
+   * @see org.eclipse.scout.saml.saml.FormElement#getText()
+   * @see #getFormElement()
+   * @generated
+   */
+  EReference getFormElement_Text();
+
+  /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.FormElement#getLogic <em>Logic</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1345,205 +1609,122 @@ public interface SamlPackage extends EPackage
   EReference getFormElement_Fields();
 
   /**
-   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.ControlElement <em>Control Element</em>}'.
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.FormFieldElement <em>Form Field Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Control Element</em>'.
-   * @see org.eclipse.scout.saml.saml.ControlElement
+   * @return the meta object for class '<em>Form Field Element</em>'.
+   * @see org.eclipse.scout.saml.saml.FormFieldElement
    * @generated
    */
-  EClass getControlElement();
+  EClass getFormFieldElement();
 
   /**
-   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.ControlElementRule <em>Control Element Rule</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Control Element Rule</em>'.
-   * @see org.eclipse.scout.saml.saml.ControlElementRule
-   * @generated
-   */
-  EClass getControlElementRule();
-
-  /**
-   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.ControlElementRule#getText <em>Text</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Text</em>'.
-   * @see org.eclipse.scout.saml.saml.ControlElementRule#getText()
-   * @see #getControlElementRule()
-   * @generated
-   */
-  EReference getControlElementRule_Text();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.ControlElementRule#getEnabled <em>Enabled</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Enabled</em>'.
-   * @see org.eclipse.scout.saml.saml.ControlElementRule#getEnabled()
-   * @see #getControlElementRule()
-   * @generated
-   */
-  EAttribute getControlElementRule_Enabled();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.ControlElementRule#getVisible <em>Visible</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Visible</em>'.
-   * @see org.eclipse.scout.saml.saml.ControlElementRule#getVisible()
-   * @see #getControlElementRule()
-   * @generated
-   */
-  EAttribute getControlElementRule_Visible();
-
-  /**
-   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.CompositeElement <em>Composite Element</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Composite Element</em>'.
-   * @see org.eclipse.scout.saml.saml.CompositeElement
-   * @generated
-   */
-  EClass getCompositeElement();
-
-  /**
-   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.CompositeElementRule <em>Composite Element Rule</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Composite Element Rule</em>'.
-   * @see org.eclipse.scout.saml.saml.CompositeElementRule
-   * @generated
-   */
-  EClass getCompositeElementRule();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.CompositeElementRule#getRule <em>Rule</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Rule</em>'.
-   * @see org.eclipse.scout.saml.saml.CompositeElementRule#getRule()
-   * @see #getCompositeElementRule()
-   * @generated
-   */
-  EReference getCompositeElementRule_Rule();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.CompositeElementRule#getLogic <em>Logic</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Logic</em>'.
-   * @see org.eclipse.scout.saml.saml.CompositeElementRule#getLogic()
-   * @see #getCompositeElementRule()
-   * @generated
-   */
-  EReference getCompositeElementRule_Logic();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.CompositeElementRule#getChildre <em>Childre</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Childre</em>'.
-   * @see org.eclipse.scout.saml.saml.CompositeElementRule#getChildre()
-   * @see #getCompositeElementRule()
-   * @generated
-   */
-  EReference getCompositeElementRule_Childre();
-
-  /**
-   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.LeafElement <em>Leaf Element</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Leaf Element</em>'.
-   * @see org.eclipse.scout.saml.saml.LeafElement
-   * @generated
-   */
-  EClass getLeafElement();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.LeafElement#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FormFieldElement#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.eclipse.scout.saml.saml.LeafElement#getName()
-   * @see #getLeafElement()
+   * @see org.eclipse.scout.saml.saml.FormFieldElement#getName()
+   * @see #getFormFieldElement()
    * @generated
    */
-  EAttribute getLeafElement_Name();
+  EAttribute getFormFieldElement_Name();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.LeafElement#getFieldRule <em>Field Rule</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Field Rule</em>'.
-   * @see org.eclipse.scout.saml.saml.LeafElement#getFieldRule()
-   * @see #getLeafElement()
-   * @generated
-   */
-  EReference getLeafElement_FieldRule();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.LeafElement#getMandatory <em>Mandatory</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Mandatory</em>'.
-   * @see org.eclipse.scout.saml.saml.LeafElement#getMandatory()
-   * @see #getLeafElement()
-   * @generated
-   */
-  EAttribute getLeafElement_Mandatory();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.LeafElement#getLogic <em>Logic</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.FormFieldElement#getLogic <em>Logic</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Logic</em>'.
-   * @see org.eclipse.scout.saml.saml.LeafElement#getLogic()
-   * @see #getLeafElement()
+   * @see org.eclipse.scout.saml.saml.FormFieldElement#getLogic()
+   * @see #getFormFieldElement()
    * @generated
    */
-  EReference getLeafElement_Logic();
+  EReference getFormFieldElement_Logic();
 
   /**
-   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.StringElement <em>String Element</em>}'.
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.FormFieldProperties <em>Form Field Properties</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>String Element</em>'.
-   * @see org.eclipse.scout.saml.saml.StringElement
+   * @return the meta object for class '<em>Form Field Properties</em>'.
+   * @see org.eclipse.scout.saml.saml.FormFieldProperties
    * @generated
    */
-  EClass getStringElement();
+  EClass getFormFieldProperties();
 
   /**
-   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.StringElement#getMaster <em>Master</em>}'.
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.FormFieldProperties#getText <em>Text</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Text</em>'.
+   * @see org.eclipse.scout.saml.saml.FormFieldProperties#getText()
+   * @see #getFormFieldProperties()
+   * @generated
+   */
+  EReference getFormFieldProperties_Text();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FormFieldProperties#getEnabled <em>Enabled</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Enabled</em>'.
+   * @see org.eclipse.scout.saml.saml.FormFieldProperties#getEnabled()
+   * @see #getFormFieldProperties()
+   * @generated
+   */
+  EAttribute getFormFieldProperties_Enabled();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FormFieldProperties#getVisible <em>Visible</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Visible</em>'.
+   * @see org.eclipse.scout.saml.saml.FormFieldProperties#getVisible()
+   * @see #getFormFieldProperties()
+   * @generated
+   */
+  EAttribute getFormFieldProperties_Visible();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.FormFieldProperties#getMaster <em>Master</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Master</em>'.
-   * @see org.eclipse.scout.saml.saml.StringElement#getMaster()
-   * @see #getStringElement()
+   * @see org.eclipse.scout.saml.saml.FormFieldProperties#getMaster()
+   * @see #getFormFieldProperties()
    * @generated
    */
-  EReference getStringElement_Master();
+  EReference getFormFieldProperties_Master();
 
   /**
-   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.DoubleElement <em>Double Element</em>}'.
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.CompositeFieldElement <em>Composite Field Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Double Element</em>'.
-   * @see org.eclipse.scout.saml.saml.DoubleElement
+   * @return the meta object for class '<em>Composite Field Element</em>'.
+   * @see org.eclipse.scout.saml.saml.CompositeFieldElement
    * @generated
    */
-  EClass getDoubleElement();
+  EClass getCompositeFieldElement();
 
   /**
-   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.LongElement <em>Long Element</em>}'.
+   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.CompositeFieldElement#getFormFieldProperties <em>Form Field Properties</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Long Element</em>'.
-   * @see org.eclipse.scout.saml.saml.LongElement
+   * @return the meta object for the containment reference '<em>Form Field Properties</em>'.
+   * @see org.eclipse.scout.saml.saml.CompositeFieldElement#getFormFieldProperties()
+   * @see #getCompositeFieldElement()
    * @generated
    */
-  EClass getLongElement();
+  EReference getCompositeFieldElement_FormFieldProperties();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.CompositeFieldElement#getFields <em>Fields</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Fields</em>'.
+   * @see org.eclipse.scout.saml.saml.CompositeFieldElement#getFields()
+   * @see #getCompositeFieldElement()
+   * @generated
+   */
+  EReference getCompositeFieldElement_Fields();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.SequenceBoxElement <em>Sequence Box Element</em>}'.
@@ -1556,46 +1737,248 @@ public interface SamlPackage extends EPackage
   EClass getSequenceBoxElement();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.SequenceBoxElement#getName <em>Name</em>}'.
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.GroupBoxElement <em>Group Box Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.eclipse.scout.saml.saml.SequenceBoxElement#getName()
-   * @see #getSequenceBoxElement()
+   * @return the meta object for class '<em>Group Box Element</em>'.
+   * @see org.eclipse.scout.saml.saml.GroupBoxElement
    * @generated
    */
-  EAttribute getSequenceBoxElement_Name();
+  EClass getGroupBoxElement();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.SequenceBoxElement#getFieldRule <em>Field Rule</em>}'.
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.ValueFieldElement <em>Value Field Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Field Rule</em>'.
-   * @see org.eclipse.scout.saml.saml.SequenceBoxElement#getFieldRule()
-   * @see #getSequenceBoxElement()
+   * @return the meta object for class '<em>Value Field Element</em>'.
+   * @see org.eclipse.scout.saml.saml.ValueFieldElement
    * @generated
    */
-  EReference getSequenceBoxElement_FieldRule();
+  EClass getValueFieldElement();
 
   /**
-   * Returns the meta object for enum '{@link org.eclipse.scout.saml.saml.BooleanType <em>Boolean Type</em>}'.
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.ValueFieldProperties <em>Value Field Properties</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Boolean Type</em>'.
-   * @see org.eclipse.scout.saml.saml.BooleanType
+   * @return the meta object for class '<em>Value Field Properties</em>'.
+   * @see org.eclipse.scout.saml.saml.ValueFieldProperties
    * @generated
    */
-  EEnum getBooleanType();
+  EClass getValueFieldProperties();
 
   /**
-   * Returns the meta object for enum '{@link org.eclipse.scout.saml.saml.LogicType <em>Logic Type</em>}'.
+   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.ValueFieldProperties#getFormFieldProperties <em>Form Field Properties</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Logic Type</em>'.
-   * @see org.eclipse.scout.saml.saml.LogicType
+   * @return the meta object for the containment reference '<em>Form Field Properties</em>'.
+   * @see org.eclipse.scout.saml.saml.ValueFieldProperties#getFormFieldProperties()
+   * @see #getValueFieldProperties()
    * @generated
    */
-  EEnum getLogicType();
+  EReference getValueFieldProperties_FormFieldProperties();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.ValueFieldProperties#getMandatory <em>Mandatory</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Mandatory</em>'.
+   * @see org.eclipse.scout.saml.saml.ValueFieldProperties#getMandatory()
+   * @see #getValueFieldProperties()
+   * @generated
+   */
+  EAttribute getValueFieldProperties_Mandatory();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.StringElement <em>String Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>String Element</em>'.
+   * @see org.eclipse.scout.saml.saml.StringElement
+   * @generated
+   */
+  EClass getStringElement();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.StringElement#getValueFieldProperties <em>Value Field Properties</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Value Field Properties</em>'.
+   * @see org.eclipse.scout.saml.saml.StringElement#getValueFieldProperties()
+   * @see #getStringElement()
+   * @generated
+   */
+  EReference getStringElement_ValueFieldProperties();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.StringElement#getMaxlen <em>Maxlen</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Maxlen</em>'.
+   * @see org.eclipse.scout.saml.saml.StringElement#getMaxlen()
+   * @see #getStringElement()
+   * @generated
+   */
+  EAttribute getStringElement_Maxlen();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.DoubleElement <em>Double Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Double Element</em>'.
+   * @see org.eclipse.scout.saml.saml.DoubleElement
+   * @generated
+   */
+  EClass getDoubleElement();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.DoubleElement#getValueFieldProperties <em>Value Field Properties</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Value Field Properties</em>'.
+   * @see org.eclipse.scout.saml.saml.DoubleElement#getValueFieldProperties()
+   * @see #getDoubleElement()
+   * @generated
+   */
+  EReference getDoubleElement_ValueFieldProperties();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.LongElement <em>Long Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Long Element</em>'.
+   * @see org.eclipse.scout.saml.saml.LongElement
+   * @generated
+   */
+  EClass getLongElement();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.LongElement#getValueFieldProperties <em>Value Field Properties</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Value Field Properties</em>'.
+   * @see org.eclipse.scout.saml.saml.LongElement#getValueFieldProperties()
+   * @see #getLongElement()
+   * @generated
+   */
+  EReference getLongElement_ValueFieldProperties();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.DateElement <em>Date Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Date Element</em>'.
+   * @see org.eclipse.scout.saml.saml.DateElement
+   * @generated
+   */
+  EClass getDateElement();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.DateElement#getValueFieldProperties <em>Value Field Properties</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Value Field Properties</em>'.
+   * @see org.eclipse.scout.saml.saml.DateElement#getValueFieldProperties()
+   * @see #getDateElement()
+   * @generated
+   */
+  EReference getDateElement_ValueFieldProperties();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.SmartfieldElement <em>Smartfield Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Smartfield Element</em>'.
+   * @see org.eclipse.scout.saml.saml.SmartfieldElement
+   * @generated
+   */
+  EClass getSmartfieldElement();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getValueFieldProperties <em>Value Field Properties</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Value Field Properties</em>'.
+   * @see org.eclipse.scout.saml.saml.SmartfieldElement#getValueFieldProperties()
+   * @see #getSmartfieldElement()
+   * @generated
+   */
+  EReference getSmartfieldElement_ValueFieldProperties();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getCode <em>Code</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Code</em>'.
+   * @see org.eclipse.scout.saml.saml.SmartfieldElement#getCode()
+   * @see #getSmartfieldElement()
+   * @generated
+   */
+  EReference getSmartfieldElement_Code();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getValueType <em>Value Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Value Type</em>'.
+   * @see org.eclipse.scout.saml.saml.SmartfieldElement#getValueType()
+   * @see #getSmartfieldElement()
+   * @generated
+   */
+  EReference getSmartfieldElement_ValueType();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getLookup <em>Lookup</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Lookup</em>'.
+   * @see org.eclipse.scout.saml.saml.SmartfieldElement#getLookup()
+   * @see #getSmartfieldElement()
+   * @generated
+   */
+  EReference getSmartfieldElement_Lookup();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.CustomFieldElement <em>Custom Field Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Custom Field Element</em>'.
+   * @see org.eclipse.scout.saml.saml.CustomFieldElement
+   * @generated
+   */
+  EClass getCustomFieldElement();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.CustomFieldElement#getTemplate <em>Template</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Template</em>'.
+   * @see org.eclipse.scout.saml.saml.CustomFieldElement#getTemplate()
+   * @see #getCustomFieldElement()
+   * @generated
+   */
+  EReference getCustomFieldElement_Template();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.CustomFieldElement#getFormFieldProperties <em>Form Field Properties</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Form Field Properties</em>'.
+   * @see org.eclipse.scout.saml.saml.CustomFieldElement#getFormFieldProperties()
+   * @see #getCustomFieldElement()
+   * @generated
+   */
+  EReference getCustomFieldElement_FormFieldProperties();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.CustomFieldElement#getFields <em>Fields</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Fields</em>'.
+   * @see org.eclipse.scout.saml.saml.CustomFieldElement#getFields()
+   * @see #getCustomFieldElement()
+   * @generated
+   */
+  EReference getCustomFieldElement_Fields();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -1647,14 +2030,6 @@ public interface SamlPackage extends EPackage
     EReference MODEL__IMPORTS = eINSTANCE.getModel_Imports();
 
     /**
-     * The meta object literal for the '<em><b>Codes</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference MODEL__CODES = eINSTANCE.getModel_Codes();
-
-    /**
      * The meta object literal for the '<em><b>Translations</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1663,12 +2038,28 @@ public interface SamlPackage extends EPackage
     EReference MODEL__TRANSLATIONS = eINSTANCE.getModel_Translations();
 
     /**
+     * The meta object literal for the '<em><b>Codes</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MODEL__CODES = eINSTANCE.getModel_Codes();
+
+    /**
      * The meta object literal for the '<em><b>Lookups</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference MODEL__LOOKUPS = eINSTANCE.getModel_Lookups();
+
+    /**
+     * The meta object literal for the '<em><b>Templates</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MODEL__TEMPLATES = eINSTANCE.getModel_Templates();
 
     /**
      * The meta object literal for the '<em><b>Forms</b></em>' containment reference list feature.
@@ -1715,14 +2106,14 @@ public interface SamlPackage extends EPackage
     EAttribute IMPORT_ELEMENT__IMPORTED_NAMESPACE = eINSTANCE.getImportElement_ImportedNamespace();
 
     /**
-     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.JavaCodeElementImpl <em>Java Code Element</em>}' class.
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.TranslationElementImpl <em>Translation Element</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.eclipse.scout.saml.saml.impl.JavaCodeElementImpl
-     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getJavaCodeElement()
+     * @see org.eclipse.scout.saml.saml.impl.TranslationElementImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getTranslationElement()
      * @generated
      */
-    EClass JAVA_CODE_ELEMENT = eINSTANCE.getJavaCodeElement();
+    EClass TRANSLATION_ELEMENT = eINSTANCE.getTranslationElement();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -1730,23 +2121,41 @@ public interface SamlPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute JAVA_CODE_ELEMENT__NAME = eINSTANCE.getJavaCodeElement_Name();
+    EAttribute TRANSLATION_ELEMENT__NAME = eINSTANCE.getTranslationElement_Name();
 
     /**
-     * The meta object literal for the '<em><b>Runat</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Translations</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute JAVA_CODE_ELEMENT__RUNAT = eINSTANCE.getJavaCodeElement_Runat();
+    EReference TRANSLATION_ELEMENT__TRANSLATIONS = eINSTANCE.getTranslationElement_Translations();
 
     /**
-     * The meta object literal for the '<em><b>Source</b></em>' containment reference feature.
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.LanguageAttributeImpl <em>Language Attribute</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.LanguageAttributeImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getLanguageAttribute()
+     * @generated
+     */
+    EClass LANGUAGE_ATTRIBUTE = eINSTANCE.getLanguageAttribute();
+
+    /**
+     * The meta object literal for the '<em><b>Lang</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference JAVA_CODE_ELEMENT__SOURCE = eINSTANCE.getJavaCodeElement_Source();
+    EAttribute LANGUAGE_ATTRIBUTE__LANG = eINSTANCE.getLanguageAttribute_Lang();
+
+    /**
+     * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LANGUAGE_ATTRIBUTE__TEXT = eINSTANCE.getLanguageAttribute_Text();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.LogicElementImpl <em>Logic Element</em>}' class.
@@ -1757,6 +2166,14 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EClass LOGIC_ELEMENT = eINSTANCE.getLogicElement();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LOGIC_ELEMENT__NAME = eINSTANCE.getLogicElement_Name();
 
     /**
      * The meta object literal for the '<em><b>Event</b></em>' attribute feature.
@@ -1817,58 +2234,6 @@ public interface SamlPackage extends EPackage
     EAttribute CODE_ELEMENT__ID = eINSTANCE.getCodeElement_Id();
 
     /**
-     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.TranslationElementImpl <em>Translation Element</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.eclipse.scout.saml.saml.impl.TranslationElementImpl
-     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getTranslationElement()
-     * @generated
-     */
-    EClass TRANSLATION_ELEMENT = eINSTANCE.getTranslationElement();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute TRANSLATION_ELEMENT__NAME = eINSTANCE.getTranslationElement_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Translations</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference TRANSLATION_ELEMENT__TRANSLATIONS = eINSTANCE.getTranslationElement_Translations();
-
-    /**
-     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.LanguageAttributeImpl <em>Language Attribute</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.eclipse.scout.saml.saml.impl.LanguageAttributeImpl
-     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getLanguageAttribute()
-     * @generated
-     */
-    EClass LANGUAGE_ATTRIBUTE = eINSTANCE.getLanguageAttribute();
-
-    /**
-     * The meta object literal for the '<em><b>Lang</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute LANGUAGE_ATTRIBUTE__LANG = eINSTANCE.getLanguageAttribute_Lang();
-
-    /**
-     * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute LANGUAGE_ATTRIBUTE__TEXT = eINSTANCE.getLanguageAttribute_Text();
-
-    /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.LookupElementImpl <em>Lookup Element</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1895,12 +2260,30 @@ public interface SamlPackage extends EPackage
     EReference LOOKUP_ELEMENT__LOGIC = eINSTANCE.getLookupElement_Logic();
 
     /**
-     * The meta object literal for the '<em><b>Javacode</b></em>' containment reference list feature.
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.TemplateElementImpl <em>Template Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.TemplateElementImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getTemplateElement()
+     * @generated
+     */
+    EClass TEMPLATE_ELEMENT = eINSTANCE.getTemplateElement();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference LOOKUP_ELEMENT__JAVACODE = eINSTANCE.getLookupElement_Javacode();
+    EAttribute TEMPLATE_ELEMENT__NAME = eINSTANCE.getTemplateElement_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Definition</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TEMPLATE_ELEMENT__DEFINITION = eINSTANCE.getTemplateElement_Definition();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.FormElementImpl <em>Form Element</em>}' class.
@@ -1937,6 +2320,14 @@ public interface SamlPackage extends EPackage
     EAttribute FORM_ELEMENT__COLUMNS = eINSTANCE.getFormElement_Columns();
 
     /**
+     * The meta object literal for the '<em><b>Text</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FORM_ELEMENT__TEXT = eINSTANCE.getFormElement_Text();
+
+    /**
      * The meta object literal for the '<em><b>Logic</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1953,102 +2344,14 @@ public interface SamlPackage extends EPackage
     EReference FORM_ELEMENT__FIELDS = eINSTANCE.getFormElement_Fields();
 
     /**
-     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.ControlElementImpl <em>Control Element</em>}' class.
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl <em>Form Field Element</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.eclipse.scout.saml.saml.impl.ControlElementImpl
-     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getControlElement()
+     * @see org.eclipse.scout.saml.saml.impl.FormFieldElementImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getFormFieldElement()
      * @generated
      */
-    EClass CONTROL_ELEMENT = eINSTANCE.getControlElement();
-
-    /**
-     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.ControlElementRuleImpl <em>Control Element Rule</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.eclipse.scout.saml.saml.impl.ControlElementRuleImpl
-     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getControlElementRule()
-     * @generated
-     */
-    EClass CONTROL_ELEMENT_RULE = eINSTANCE.getControlElementRule();
-
-    /**
-     * The meta object literal for the '<em><b>Text</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CONTROL_ELEMENT_RULE__TEXT = eINSTANCE.getControlElementRule_Text();
-
-    /**
-     * The meta object literal for the '<em><b>Enabled</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute CONTROL_ELEMENT_RULE__ENABLED = eINSTANCE.getControlElementRule_Enabled();
-
-    /**
-     * The meta object literal for the '<em><b>Visible</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute CONTROL_ELEMENT_RULE__VISIBLE = eINSTANCE.getControlElementRule_Visible();
-
-    /**
-     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.CompositeElementImpl <em>Composite Element</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.eclipse.scout.saml.saml.impl.CompositeElementImpl
-     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getCompositeElement()
-     * @generated
-     */
-    EClass COMPOSITE_ELEMENT = eINSTANCE.getCompositeElement();
-
-    /**
-     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.CompositeElementRuleImpl <em>Composite Element Rule</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.eclipse.scout.saml.saml.impl.CompositeElementRuleImpl
-     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getCompositeElementRule()
-     * @generated
-     */
-    EClass COMPOSITE_ELEMENT_RULE = eINSTANCE.getCompositeElementRule();
-
-    /**
-     * The meta object literal for the '<em><b>Rule</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference COMPOSITE_ELEMENT_RULE__RULE = eINSTANCE.getCompositeElementRule_Rule();
-
-    /**
-     * The meta object literal for the '<em><b>Logic</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference COMPOSITE_ELEMENT_RULE__LOGIC = eINSTANCE.getCompositeElementRule_Logic();
-
-    /**
-     * The meta object literal for the '<em><b>Childre</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference COMPOSITE_ELEMENT_RULE__CHILDRE = eINSTANCE.getCompositeElementRule_Childre();
-
-    /**
-     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.LeafElementImpl <em>Leaf Element</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.eclipse.scout.saml.saml.impl.LeafElementImpl
-     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getLeafElement()
-     * @generated
-     */
-    EClass LEAF_ELEMENT = eINSTANCE.getLeafElement();
+    EClass FORM_FIELD_ELEMENT = eINSTANCE.getFormFieldElement();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -2056,23 +2359,7 @@ public interface SamlPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute LEAF_ELEMENT__NAME = eINSTANCE.getLeafElement_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Field Rule</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference LEAF_ELEMENT__FIELD_RULE = eINSTANCE.getLeafElement_FieldRule();
-
-    /**
-     * The meta object literal for the '<em><b>Mandatory</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute LEAF_ELEMENT__MANDATORY = eINSTANCE.getLeafElement_Mandatory();
+    EAttribute FORM_FIELD_ELEMENT__NAME = eINSTANCE.getFormFieldElement_Name();
 
     /**
      * The meta object literal for the '<em><b>Logic</b></em>' containment reference list feature.
@@ -2080,17 +2367,41 @@ public interface SamlPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference LEAF_ELEMENT__LOGIC = eINSTANCE.getLeafElement_Logic();
+    EReference FORM_FIELD_ELEMENT__LOGIC = eINSTANCE.getFormFieldElement_Logic();
 
     /**
-     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.StringElementImpl <em>String Element</em>}' class.
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.FormFieldPropertiesImpl <em>Form Field Properties</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.eclipse.scout.saml.saml.impl.StringElementImpl
-     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getStringElement()
+     * @see org.eclipse.scout.saml.saml.impl.FormFieldPropertiesImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getFormFieldProperties()
      * @generated
      */
-    EClass STRING_ELEMENT = eINSTANCE.getStringElement();
+    EClass FORM_FIELD_PROPERTIES = eINSTANCE.getFormFieldProperties();
+
+    /**
+     * The meta object literal for the '<em><b>Text</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FORM_FIELD_PROPERTIES__TEXT = eINSTANCE.getFormFieldProperties_Text();
+
+    /**
+     * The meta object literal for the '<em><b>Enabled</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FORM_FIELD_PROPERTIES__ENABLED = eINSTANCE.getFormFieldProperties_Enabled();
+
+    /**
+     * The meta object literal for the '<em><b>Visible</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FORM_FIELD_PROPERTIES__VISIBLE = eINSTANCE.getFormFieldProperties_Visible();
 
     /**
      * The meta object literal for the '<em><b>Master</b></em>' reference feature.
@@ -2098,27 +2409,33 @@ public interface SamlPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference STRING_ELEMENT__MASTER = eINSTANCE.getStringElement_Master();
+    EReference FORM_FIELD_PROPERTIES__MASTER = eINSTANCE.getFormFieldProperties_Master();
 
     /**
-     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.DoubleElementImpl <em>Double Element</em>}' class.
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.CompositeFieldElementImpl <em>Composite Field Element</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.eclipse.scout.saml.saml.impl.DoubleElementImpl
-     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getDoubleElement()
+     * @see org.eclipse.scout.saml.saml.impl.CompositeFieldElementImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getCompositeFieldElement()
      * @generated
      */
-    EClass DOUBLE_ELEMENT = eINSTANCE.getDoubleElement();
+    EClass COMPOSITE_FIELD_ELEMENT = eINSTANCE.getCompositeFieldElement();
 
     /**
-     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.LongElementImpl <em>Long Element</em>}' class.
+     * The meta object literal for the '<em><b>Form Field Properties</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.eclipse.scout.saml.saml.impl.LongElementImpl
-     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getLongElement()
      * @generated
      */
-    EClass LONG_ELEMENT = eINSTANCE.getLongElement();
+    EReference COMPOSITE_FIELD_ELEMENT__FORM_FIELD_PROPERTIES = eINSTANCE.getCompositeFieldElement_FormFieldProperties();
+
+    /**
+     * The meta object literal for the '<em><b>Fields</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COMPOSITE_FIELD_ELEMENT__FIELDS = eINSTANCE.getCompositeFieldElement_Fields();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.SequenceBoxElementImpl <em>Sequence Box Element</em>}' class.
@@ -2131,40 +2448,206 @@ public interface SamlPackage extends EPackage
     EClass SEQUENCE_BOX_ELEMENT = eINSTANCE.getSequenceBoxElement();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.GroupBoxElementImpl <em>Group Box Element</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.GroupBoxElementImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getGroupBoxElement()
      * @generated
      */
-    EAttribute SEQUENCE_BOX_ELEMENT__NAME = eINSTANCE.getSequenceBoxElement_Name();
+    EClass GROUP_BOX_ELEMENT = eINSTANCE.getGroupBoxElement();
 
     /**
-     * The meta object literal for the '<em><b>Field Rule</b></em>' containment reference feature.
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.ValueFieldElementImpl <em>Value Field Element</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.ValueFieldElementImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getValueFieldElement()
      * @generated
      */
-    EReference SEQUENCE_BOX_ELEMENT__FIELD_RULE = eINSTANCE.getSequenceBoxElement_FieldRule();
+    EClass VALUE_FIELD_ELEMENT = eINSTANCE.getValueFieldElement();
 
     /**
-     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.BooleanType <em>Boolean Type</em>}' enum.
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.ValueFieldPropertiesImpl <em>Value Field Properties</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.eclipse.scout.saml.saml.BooleanType
-     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getBooleanType()
+     * @see org.eclipse.scout.saml.saml.impl.ValueFieldPropertiesImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getValueFieldProperties()
      * @generated
      */
-    EEnum BOOLEAN_TYPE = eINSTANCE.getBooleanType();
+    EClass VALUE_FIELD_PROPERTIES = eINSTANCE.getValueFieldProperties();
 
     /**
-     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.LogicType <em>Logic Type</em>}' enum.
+     * The meta object literal for the '<em><b>Form Field Properties</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.eclipse.scout.saml.saml.LogicType
-     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getLogicType()
      * @generated
      */
-    EEnum LOGIC_TYPE = eINSTANCE.getLogicType();
+    EReference VALUE_FIELD_PROPERTIES__FORM_FIELD_PROPERTIES = eINSTANCE.getValueFieldProperties_FormFieldProperties();
+
+    /**
+     * The meta object literal for the '<em><b>Mandatory</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VALUE_FIELD_PROPERTIES__MANDATORY = eINSTANCE.getValueFieldProperties_Mandatory();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.StringElementImpl <em>String Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.StringElementImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getStringElement()
+     * @generated
+     */
+    EClass STRING_ELEMENT = eINSTANCE.getStringElement();
+
+    /**
+     * The meta object literal for the '<em><b>Value Field Properties</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference STRING_ELEMENT__VALUE_FIELD_PROPERTIES = eINSTANCE.getStringElement_ValueFieldProperties();
+
+    /**
+     * The meta object literal for the '<em><b>Maxlen</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STRING_ELEMENT__MAXLEN = eINSTANCE.getStringElement_Maxlen();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.DoubleElementImpl <em>Double Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.DoubleElementImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getDoubleElement()
+     * @generated
+     */
+    EClass DOUBLE_ELEMENT = eINSTANCE.getDoubleElement();
+
+    /**
+     * The meta object literal for the '<em><b>Value Field Properties</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DOUBLE_ELEMENT__VALUE_FIELD_PROPERTIES = eINSTANCE.getDoubleElement_ValueFieldProperties();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.LongElementImpl <em>Long Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.LongElementImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getLongElement()
+     * @generated
+     */
+    EClass LONG_ELEMENT = eINSTANCE.getLongElement();
+
+    /**
+     * The meta object literal for the '<em><b>Value Field Properties</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LONG_ELEMENT__VALUE_FIELD_PROPERTIES = eINSTANCE.getLongElement_ValueFieldProperties();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.DateElementImpl <em>Date Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.DateElementImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getDateElement()
+     * @generated
+     */
+    EClass DATE_ELEMENT = eINSTANCE.getDateElement();
+
+    /**
+     * The meta object literal for the '<em><b>Value Field Properties</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DATE_ELEMENT__VALUE_FIELD_PROPERTIES = eINSTANCE.getDateElement_ValueFieldProperties();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.SmartfieldElementImpl <em>Smartfield Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.SmartfieldElementImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getSmartfieldElement()
+     * @generated
+     */
+    EClass SMARTFIELD_ELEMENT = eINSTANCE.getSmartfieldElement();
+
+    /**
+     * The meta object literal for the '<em><b>Value Field Properties</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SMARTFIELD_ELEMENT__VALUE_FIELD_PROPERTIES = eINSTANCE.getSmartfieldElement_ValueFieldProperties();
+
+    /**
+     * The meta object literal for the '<em><b>Code</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SMARTFIELD_ELEMENT__CODE = eINSTANCE.getSmartfieldElement_Code();
+
+    /**
+     * The meta object literal for the '<em><b>Value Type</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SMARTFIELD_ELEMENT__VALUE_TYPE = eINSTANCE.getSmartfieldElement_ValueType();
+
+    /**
+     * The meta object literal for the '<em><b>Lookup</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SMARTFIELD_ELEMENT__LOOKUP = eINSTANCE.getSmartfieldElement_Lookup();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.CustomFieldElementImpl <em>Custom Field Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.CustomFieldElementImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getCustomFieldElement()
+     * @generated
+     */
+    EClass CUSTOM_FIELD_ELEMENT = eINSTANCE.getCustomFieldElement();
+
+    /**
+     * The meta object literal for the '<em><b>Template</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CUSTOM_FIELD_ELEMENT__TEMPLATE = eINSTANCE.getCustomFieldElement_Template();
+
+    /**
+     * The meta object literal for the '<em><b>Form Field Properties</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CUSTOM_FIELD_ELEMENT__FORM_FIELD_PROPERTIES = eINSTANCE.getCustomFieldElement_FormFieldProperties();
+
+    /**
+     * The meta object literal for the '<em><b>Fields</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CUSTOM_FIELD_ELEMENT__FIELDS = eINSTANCE.getCustomFieldElement_Fields();
 
   }
 

@@ -3,7 +3,6 @@
 package org.eclipse.scout.saml.saml.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -68,62 +67,28 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
       case SamlPackage.MODEL: return createModel();
       case SamlPackage.MODULE_ELEMENT: return createModuleElement();
       case SamlPackage.IMPORT_ELEMENT: return createImportElement();
-      case SamlPackage.JAVA_CODE_ELEMENT: return createJavaCodeElement();
-      case SamlPackage.LOGIC_ELEMENT: return createLogicElement();
-      case SamlPackage.CODE_ELEMENT: return createCodeElement();
       case SamlPackage.TRANSLATION_ELEMENT: return createTranslationElement();
       case SamlPackage.LANGUAGE_ATTRIBUTE: return createLanguageAttribute();
+      case SamlPackage.LOGIC_ELEMENT: return createLogicElement();
+      case SamlPackage.CODE_ELEMENT: return createCodeElement();
       case SamlPackage.LOOKUP_ELEMENT: return createLookupElement();
+      case SamlPackage.TEMPLATE_ELEMENT: return createTemplateElement();
       case SamlPackage.FORM_ELEMENT: return createFormElement();
-      case SamlPackage.CONTROL_ELEMENT: return createControlElement();
-      case SamlPackage.CONTROL_ELEMENT_RULE: return createControlElementRule();
-      case SamlPackage.COMPOSITE_ELEMENT: return createCompositeElement();
-      case SamlPackage.COMPOSITE_ELEMENT_RULE: return createCompositeElementRule();
-      case SamlPackage.LEAF_ELEMENT: return createLeafElement();
+      case SamlPackage.FORM_FIELD_ELEMENT: return createFormFieldElement();
+      case SamlPackage.FORM_FIELD_PROPERTIES: return createFormFieldProperties();
+      case SamlPackage.COMPOSITE_FIELD_ELEMENT: return createCompositeFieldElement();
+      case SamlPackage.SEQUENCE_BOX_ELEMENT: return createSequenceBoxElement();
+      case SamlPackage.GROUP_BOX_ELEMENT: return createGroupBoxElement();
+      case SamlPackage.VALUE_FIELD_ELEMENT: return createValueFieldElement();
+      case SamlPackage.VALUE_FIELD_PROPERTIES: return createValueFieldProperties();
       case SamlPackage.STRING_ELEMENT: return createStringElement();
       case SamlPackage.DOUBLE_ELEMENT: return createDoubleElement();
       case SamlPackage.LONG_ELEMENT: return createLongElement();
-      case SamlPackage.SEQUENCE_BOX_ELEMENT: return createSequenceBoxElement();
+      case SamlPackage.DATE_ELEMENT: return createDateElement();
+      case SamlPackage.SMARTFIELD_ELEMENT: return createSmartfieldElement();
+      case SamlPackage.CUSTOM_FIELD_ELEMENT: return createCustomFieldElement();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-    }
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Object createFromString(EDataType eDataType, String initialValue)
-  {
-    switch (eDataType.getClassifierID())
-    {
-      case SamlPackage.BOOLEAN_TYPE:
-        return createBooleanTypeFromString(eDataType, initialValue);
-      case SamlPackage.LOGIC_TYPE:
-        return createLogicTypeFromString(eDataType, initialValue);
-      default:
-        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-    }
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String convertToString(EDataType eDataType, Object instanceValue)
-  {
-    switch (eDataType.getClassifierID())
-    {
-      case SamlPackage.BOOLEAN_TYPE:
-        return convertBooleanTypeToString(eDataType, instanceValue);
-      case SamlPackage.LOGIC_TYPE:
-        return convertLogicTypeToString(eDataType, instanceValue);
-      default:
-        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
   }
 
@@ -165,10 +130,21 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public JavaCodeElement createJavaCodeElement()
+  public TranslationElement createTranslationElement()
   {
-    JavaCodeElementImpl javaCodeElement = new JavaCodeElementImpl();
-    return javaCodeElement;
+    TranslationElementImpl translationElement = new TranslationElementImpl();
+    return translationElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LanguageAttribute createLanguageAttribute()
+  {
+    LanguageAttributeImpl languageAttribute = new LanguageAttributeImpl();
+    return languageAttribute;
   }
 
   /**
@@ -198,32 +174,21 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public TranslationElement createTranslationElement()
-  {
-    TranslationElementImpl translationElement = new TranslationElementImpl();
-    return translationElement;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public LanguageAttribute createLanguageAttribute()
-  {
-    LanguageAttributeImpl languageAttribute = new LanguageAttributeImpl();
-    return languageAttribute;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public LookupElement createLookupElement()
   {
     LookupElementImpl lookupElement = new LookupElementImpl();
     return lookupElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TemplateElement createTemplateElement()
+  {
+    TemplateElementImpl templateElement = new TemplateElementImpl();
+    return templateElement;
   }
 
   /**
@@ -242,10 +207,10 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ControlElement createControlElement()
+  public FormFieldElement createFormFieldElement()
   {
-    ControlElementImpl controlElement = new ControlElementImpl();
-    return controlElement;
+    FormFieldElementImpl formFieldElement = new FormFieldElementImpl();
+    return formFieldElement;
   }
 
   /**
@@ -253,10 +218,10 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ControlElementRule createControlElementRule()
+  public FormFieldProperties createFormFieldProperties()
   {
-    ControlElementRuleImpl controlElementRule = new ControlElementRuleImpl();
-    return controlElementRule;
+    FormFieldPropertiesImpl formFieldProperties = new FormFieldPropertiesImpl();
+    return formFieldProperties;
   }
 
   /**
@@ -264,10 +229,10 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public CompositeElement createCompositeElement()
+  public CompositeFieldElement createCompositeFieldElement()
   {
-    CompositeElementImpl compositeElement = new CompositeElementImpl();
-    return compositeElement;
+    CompositeFieldElementImpl compositeFieldElement = new CompositeFieldElementImpl();
+    return compositeFieldElement;
   }
 
   /**
@@ -275,10 +240,10 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public CompositeElementRule createCompositeElementRule()
+  public SequenceBoxElement createSequenceBoxElement()
   {
-    CompositeElementRuleImpl compositeElementRule = new CompositeElementRuleImpl();
-    return compositeElementRule;
+    SequenceBoxElementImpl sequenceBoxElement = new SequenceBoxElementImpl();
+    return sequenceBoxElement;
   }
 
   /**
@@ -286,10 +251,32 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public LeafElement createLeafElement()
+  public GroupBoxElement createGroupBoxElement()
   {
-    LeafElementImpl leafElement = new LeafElementImpl();
-    return leafElement;
+    GroupBoxElementImpl groupBoxElement = new GroupBoxElementImpl();
+    return groupBoxElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ValueFieldElement createValueFieldElement()
+  {
+    ValueFieldElementImpl valueFieldElement = new ValueFieldElementImpl();
+    return valueFieldElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ValueFieldProperties createValueFieldProperties()
+  {
+    ValueFieldPropertiesImpl valueFieldProperties = new ValueFieldPropertiesImpl();
+    return valueFieldProperties;
   }
 
   /**
@@ -330,10 +317,10 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public SequenceBoxElement createSequenceBoxElement()
+  public DateElement createDateElement()
   {
-    SequenceBoxElementImpl sequenceBoxElement = new SequenceBoxElementImpl();
-    return sequenceBoxElement;
+    DateElementImpl dateElement = new DateElementImpl();
+    return dateElement;
   }
 
   /**
@@ -341,11 +328,10 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public BooleanType createBooleanTypeFromString(EDataType eDataType, String initialValue)
+  public SmartfieldElement createSmartfieldElement()
   {
-    BooleanType result = BooleanType.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
+    SmartfieldElementImpl smartfieldElement = new SmartfieldElementImpl();
+    return smartfieldElement;
   }
 
   /**
@@ -353,31 +339,10 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public String convertBooleanTypeToString(EDataType eDataType, Object instanceValue)
+  public CustomFieldElement createCustomFieldElement()
   {
-    return instanceValue == null ? null : instanceValue.toString();
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public LogicType createLogicTypeFromString(EDataType eDataType, String initialValue)
-  {
-    LogicType result = LogicType.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String convertLogicTypeToString(EDataType eDataType, Object instanceValue)
-  {
-    return instanceValue == null ? null : instanceValue.toString();
+    CustomFieldElementImpl customFieldElement = new CustomFieldElementImpl();
+    return customFieldElement;
   }
 
   /**

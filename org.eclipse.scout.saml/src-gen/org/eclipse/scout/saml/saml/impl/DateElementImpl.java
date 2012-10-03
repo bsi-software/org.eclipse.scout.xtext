@@ -10,25 +10,24 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.scout.saml.saml.DateElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
-import org.eclipse.scout.saml.saml.StringElement;
 import org.eclipse.scout.saml.saml.ValueFieldProperties;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>String Element</b></em>'.
+ * An implementation of the model object '<em><b>Date Element</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.StringElementImpl#getValueFieldProperties <em>Value Field Properties</em>}</li>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.StringElementImpl#getMaxlen <em>Maxlen</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.DateElementImpl#getValueFieldProperties <em>Value Field Properties</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class StringElementImpl extends ValueFieldElementImpl implements StringElement
+public class DateElementImpl extends ValueFieldElementImpl implements DateElement
 {
   /**
    * The cached value of the '{@link #getValueFieldProperties() <em>Value Field Properties</em>}' containment reference.
@@ -41,31 +40,11 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
   protected ValueFieldProperties valueFieldProperties;
 
   /**
-   * The default value of the '{@link #getMaxlen() <em>Maxlen</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getMaxlen()
-   * @generated
-   * @ordered
-   */
-  protected static final int MAXLEN_EDEFAULT = 0;
-
-  /**
-   * The cached value of the '{@link #getMaxlen() <em>Maxlen</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getMaxlen()
-   * @generated
-   * @ordered
-   */
-  protected int maxlen = MAXLEN_EDEFAULT;
-
-  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected StringElementImpl()
+  protected DateElementImpl()
   {
     super();
   }
@@ -78,7 +57,7 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
   @Override
   protected EClass eStaticClass()
   {
-    return SamlPackage.Literals.STRING_ELEMENT;
+    return SamlPackage.Literals.DATE_ELEMENT;
   }
 
   /**
@@ -102,7 +81,7 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
     valueFieldProperties = newValueFieldProperties;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SamlPackage.STRING_ELEMENT__VALUE_FIELD_PROPERTIES, oldValueFieldProperties, newValueFieldProperties);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SamlPackage.DATE_ELEMENT__VALUE_FIELD_PROPERTIES, oldValueFieldProperties, newValueFieldProperties);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -119,37 +98,14 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
     {
       NotificationChain msgs = null;
       if (valueFieldProperties != null)
-        msgs = ((InternalEObject)valueFieldProperties).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SamlPackage.STRING_ELEMENT__VALUE_FIELD_PROPERTIES, null, msgs);
+        msgs = ((InternalEObject)valueFieldProperties).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SamlPackage.DATE_ELEMENT__VALUE_FIELD_PROPERTIES, null, msgs);
       if (newValueFieldProperties != null)
-        msgs = ((InternalEObject)newValueFieldProperties).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SamlPackage.STRING_ELEMENT__VALUE_FIELD_PROPERTIES, null, msgs);
+        msgs = ((InternalEObject)newValueFieldProperties).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SamlPackage.DATE_ELEMENT__VALUE_FIELD_PROPERTIES, null, msgs);
       msgs = basicSetValueFieldProperties(newValueFieldProperties, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.STRING_ELEMENT__VALUE_FIELD_PROPERTIES, newValueFieldProperties, newValueFieldProperties));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public int getMaxlen()
-  {
-    return maxlen;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setMaxlen(int newMaxlen)
-  {
-    int oldMaxlen = maxlen;
-    maxlen = newMaxlen;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.STRING_ELEMENT__MAXLEN, oldMaxlen, maxlen));
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.DATE_ELEMENT__VALUE_FIELD_PROPERTIES, newValueFieldProperties, newValueFieldProperties));
   }
 
   /**
@@ -162,7 +118,7 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
   {
     switch (featureID)
     {
-      case SamlPackage.STRING_ELEMENT__VALUE_FIELD_PROPERTIES:
+      case SamlPackage.DATE_ELEMENT__VALUE_FIELD_PROPERTIES:
         return basicSetValueFieldProperties(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -178,10 +134,8 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
   {
     switch (featureID)
     {
-      case SamlPackage.STRING_ELEMENT__VALUE_FIELD_PROPERTIES:
+      case SamlPackage.DATE_ELEMENT__VALUE_FIELD_PROPERTIES:
         return getValueFieldProperties();
-      case SamlPackage.STRING_ELEMENT__MAXLEN:
-        return getMaxlen();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -196,11 +150,8 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
   {
     switch (featureID)
     {
-      case SamlPackage.STRING_ELEMENT__VALUE_FIELD_PROPERTIES:
+      case SamlPackage.DATE_ELEMENT__VALUE_FIELD_PROPERTIES:
         setValueFieldProperties((ValueFieldProperties)newValue);
-        return;
-      case SamlPackage.STRING_ELEMENT__MAXLEN:
-        setMaxlen((Integer)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -216,11 +167,8 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
   {
     switch (featureID)
     {
-      case SamlPackage.STRING_ELEMENT__VALUE_FIELD_PROPERTIES:
+      case SamlPackage.DATE_ELEMENT__VALUE_FIELD_PROPERTIES:
         setValueFieldProperties((ValueFieldProperties)null);
-        return;
-      case SamlPackage.STRING_ELEMENT__MAXLEN:
-        setMaxlen(MAXLEN_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -236,29 +184,10 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
   {
     switch (featureID)
     {
-      case SamlPackage.STRING_ELEMENT__VALUE_FIELD_PROPERTIES:
+      case SamlPackage.DATE_ELEMENT__VALUE_FIELD_PROPERTIES:
         return valueFieldProperties != null;
-      case SamlPackage.STRING_ELEMENT__MAXLEN:
-        return maxlen != MAXLEN_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (maxlen: ");
-    result.append(maxlen);
-    result.append(')');
-    return result.toString();
-  }
-
-} //StringElementImpl
+} //DateElementImpl

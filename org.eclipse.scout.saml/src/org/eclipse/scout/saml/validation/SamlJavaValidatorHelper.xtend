@@ -4,9 +4,9 @@ import com.google.inject.Inject
 import java.util.HashSet
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.scout.saml.saml.FormElement
-import org.eclipse.scout.saml.saml.LeafElement
 import org.eclipse.scout.saml.saml.Model
 import org.eclipse.scout.saml.saml.SamlPackage
+import org.eclipse.scout.saml.saml.ValueFieldElement
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.resource.IContainer
 import org.eclipse.xtext.resource.IContainer$Manager
@@ -28,6 +28,7 @@ class SamlJavaValidatorHelper {
 	def hasDuplicates(EObject eObject) {
 		eObject.getContainerOfType(typeof(Model)).
 			eAll.findFirst [ 
+				it.eClass.EPackage == SamlPackage::eINSTANCE &&
 				it != eObject && 
 				it.fullyQualifiedName != null &&
 				eObject.fullyQualifiedName != null && 
@@ -36,7 +37,7 @@ class SamlJavaValidatorHelper {
 	}
 	
 	def leafNodes(EObject element) {
-		element.getContainerOfType(typeof(FormElement)).eAllOfType(typeof(LeafElement))
+		element.getContainerOfType(typeof(FormElement)).eAllOfType(typeof(ValueFieldElement))
 	}
 	
 	def allTranslations(EObject context) {

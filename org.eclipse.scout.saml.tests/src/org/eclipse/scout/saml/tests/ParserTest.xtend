@@ -11,6 +11,8 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.eclipse.scout.saml.saml.SamlPackage
 import org.eclipse.scout.saml.validation.SamlJavaValidator
+import com.google.inject.Provider
+import org.eclipse.xtext.resource.XtextResourceSet
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(SamlInjectorProvider))
@@ -18,6 +20,9 @@ class ParserTest {
 	
 	@Inject extension ParseHelper<Model>
 	@Inject extension ValidationTestHelper
+	
+	@Inject
+	private Provider<XtextResourceSet> resourceSetProvider;
 
 	@Test
 	def void testParsingAndLinking() {
@@ -27,13 +32,14 @@ module a.b
 import java.util.List
 import org.eclipse.scout.rt.shared.services.^lookup.LookupRow
 
-
-java_code Foo runat=server {
-		return new java.util.LinkedList<org.eclipse.scout.rt.shared.services.^lookup.LookupRow>()
-}
-
-java_code Foo2 runat=server {
-		return new java.util.LinkedList<org.eclipse.scout.rt.shared.services.^lookup.LookupRow>()
+lookup MyLookup {
+	logic Foo runat=server {
+			return new java.util.LinkedList<org.eclipse.scout.rt.shared.services.^lookup.LookupRow>()
+	}
+	
+	logic Foo2 runat=server {
+			return new java.util.LinkedList<org.eclipse.scout.rt.shared.services.^lookup.LookupRow>()
+	}
 }
 		'''.parse.assertNoErrors
 	}
@@ -141,6 +147,27 @@ module a.b
 translation TransTest en="en" de="de" de_CH="de_CH"
 translation TransTest2 en="en" de="de" de_CH="de_CH"
 '''.parse.assertNoErrors
+	}
+
+	@Test
+	def void testMultipleFiles() {
+		val resourceSet = resourceSetProvider.get()
+		'''
+module a.b
+
+translation TransTest en="en" de="de" de_CH="de_CH"
+translation TransTest2 en="en" de="de" de_CH="de_CH"
+'''.parse(resourceSet).assertNoErrors
+
+'''
+module a.b
+
+translation TransTest3 en="en"
+
+form MyForm text=TransTest {
+	
+}
+'''.parse(resourceSet).assertNoErrors
 	}
 	
 }

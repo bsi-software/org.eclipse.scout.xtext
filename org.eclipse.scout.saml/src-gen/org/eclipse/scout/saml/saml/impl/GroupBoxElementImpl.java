@@ -4,26 +4,26 @@ package org.eclipse.scout.saml.saml.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.scout.saml.saml.CompositeElement;
+import org.eclipse.scout.saml.saml.GroupBoxElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Composite Element</b></em>'.
+ * An implementation of the model object '<em><b>Group Box Element</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class CompositeElementImpl extends ControlElementImpl implements CompositeElement
+public class GroupBoxElementImpl extends CompositeFieldElementImpl implements GroupBoxElement
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected CompositeElementImpl()
+  protected GroupBoxElementImpl()
   {
     super();
   }
@@ -36,7 +36,7 @@ public class CompositeElementImpl extends ControlElementImpl implements Composit
   @Override
   protected EClass eStaticClass()
   {
-    return SamlPackage.Literals.COMPOSITE_ELEMENT;
+    return SamlPackage.Literals.GROUP_BOX_ELEMENT;
   }
 
-} //CompositeElementImpl
+} //GroupBoxElementImpl
