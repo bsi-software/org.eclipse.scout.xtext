@@ -11,7 +11,6 @@
 package org.eclipse.scout.sdk.saml.importer.operation.lookup;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.saml.saml.LookupElement;
@@ -23,7 +22,6 @@ import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
 import org.eclipse.scout.sdk.saml.importer.operation.logic.SamlLogicFillOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
 import org.eclipse.scout.sdk.util.type.TypeUtility;
-import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 import org.eclipse.scout.sdk.workspace.IScoutBundle;
 
 /**
@@ -49,11 +47,11 @@ public class LookupElementImportOperation extends AbstractSamlElementImportOpera
   }
 
   @Override
-  public void run(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException, IllegalArgumentException {
+  public void run() throws CoreException, IllegalArgumentException {
     String baseName = getLookupElement().getName();
     String lookupCallName = baseName + SdkProperties.SUFFIX_LOOKUP_CALL;
 
-    deleteExisting(monitor, workingCopyManager, baseName);
+    deleteExisting(baseName);
 
     // create classes
     LookupCallNewOperation op = new LookupCallNewOperation();
@@ -66,7 +64,7 @@ public class LookupElementImportOperation extends AbstractSamlElementImportOpera
     op.setServiceImplementationBundle(getCurrentScoutModule().getServerBundle());
     op.setServiceSuperTypeSignature(Signature.createTypeSignature(RuntimeClasses.AbstractLookupService, true));
     op.validate();
-    op.run(monitor, workingCopyManager);
+    op.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
 
     // fill logic
     IType lookupService = TypeUtility.getType(getLookupServiceFqn(baseName));
@@ -83,7 +81,7 @@ public class LookupElementImportOperation extends AbstractSamlElementImportOpera
     logicFillOp.setLogicElements(getLookupElement().getLogic());
     logicFillOp.setSamlFormContext(formContext);
     logicFillOp.validate();
-    logicFillOp.run(monitor, workingCopyManager);
+    logicFillOp.run();
   }
 
   private String getLookupServiceFqn(String baseName) {
@@ -91,7 +89,7 @@ public class LookupElementImportOperation extends AbstractSamlElementImportOpera
     return server.getPackageName(IScoutBundle.SERVER_PACKAGE_APPENDIX_SERVICES_LOOKUP) + "." + baseName + SdkProperties.SUFFIX_LOOKUP_SERVICE;
   }
 
-  private void deleteExisting(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, String name) throws CoreException, IllegalArgumentException {
+  private void deleteExisting(String name) throws CoreException, IllegalArgumentException {
     IScoutBundle shared = getCurrentScoutModule().getSharedBundle();
 
     IType oldService = TypeUtility.getType(getLookupServiceFqn(name));
@@ -104,7 +102,7 @@ public class LookupElementImportOperation extends AbstractSamlElementImportOpera
       sdo.setServiceInterface(oldServiceInterface);
       sdo.setAdditionalTypesToBeDeleted(new IType[]{oldCall});
       sdo.validate();
-      sdo.run(monitor, workingCopyManager);
+      sdo.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
     }
   }
 

@@ -12,9 +12,12 @@ package org.eclipse.scout.sdk.saml.importer.operation;
 
 import java.util.HashSet;
 
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaModelException;
+import org.eclipse.scout.saml.services.SamlGrammarAccess;
+import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 import org.eclipse.scout.sdk.workspace.IScoutProject;
 
 import com.google.inject.Injector;
@@ -26,12 +29,19 @@ import com.google.inject.Injector;
  * @since 3.8.0 26.09.2012
  */
 public class SamlContext {
-  private Injector m_injector;
+  private final IProgressMonitor m_monitor;
+  private final IWorkingCopyManager m_workingCopyManager;
+  private final Injector m_injector;
+  private final HashSet<String> m_modifiedTypes;
+  private final HashSet<String> m_modifiedMethods;
+  private final SamlGrammarAccess m_grammarAccess;
   private IScoutProject m_currentScoutModule;
-  private HashSet<String> m_modifiedTypes;
-  private HashSet<String> m_modifiedMethods;
 
-  public SamlContext() {
+  public SamlContext(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, Injector injector) {
+    m_monitor = monitor;
+    m_workingCopyManager = workingCopyManager;
+    m_injector = injector;
+    m_grammarAccess = m_injector.getInstance(SamlGrammarAccess.class);
     m_modifiedTypes = new HashSet<String>();
     m_modifiedMethods = new HashSet<String>();
   }
@@ -73,7 +83,15 @@ public class SamlContext {
     return m_injector;
   }
 
-  public void setInjector(Injector injector) {
-    m_injector = injector;
+  public IProgressMonitor getMonitor() {
+    return m_monitor;
+  }
+
+  public IWorkingCopyManager getWorkingCopyManager() {
+    return m_workingCopyManager;
+  }
+
+  public SamlGrammarAccess getGrammarAccess() {
+    return m_grammarAccess;
   }
 }

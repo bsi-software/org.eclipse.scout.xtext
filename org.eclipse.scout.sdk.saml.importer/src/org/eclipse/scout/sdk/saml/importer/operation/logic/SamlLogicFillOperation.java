@@ -11,7 +11,6 @@
 package org.eclipse.scout.sdk.saml.importer.operation.logic;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IMethod;
@@ -28,7 +27,6 @@ import org.eclipse.scout.sdk.util.log.ScoutStatus;
 import org.eclipse.scout.sdk.util.resources.ResourceUtility;
 import org.eclipse.scout.sdk.util.signature.IImportValidator;
 import org.eclipse.scout.sdk.util.type.TypeUtility;
-import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 
 /**
  * <h3>{@link SamlLogicFillOperation}</h3> ...
@@ -58,29 +56,29 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
   }
 
   @Override
-  public void run(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException, IllegalArgumentException {
+  public void run() throws CoreException, IllegalArgumentException {
     for (LogicElement logicElement : getLogicElements()) {
       /* logic elements with name are just named snippets used at several places. nothing to do for them. they will be referred to from a non-named element later on */
       if (logicElement.getName() == null) {
         LogicInfo info = LogicInfoFactory.create(logicElement, getLogicSourceType(), getSamlFormContext());
 
         if (info.isClassLevel()) {
-          fillClassLevelLogic(monitor, workingCopyManager, info.getTargetType(), info.getTargetLogic());
+          fillClassLevelLogic(info.getTargetType(), info.getTargetLogic());
         }
         else {
-          IMethod target = createTargetMethod(monitor, workingCopyManager, info);
-          appendMethodLogic(monitor, workingCopyManager, target, info.getTargetLogic());
+          IMethod target = createTargetMethod(info);
+          appendMethodLogic(target, info.getTargetLogic());
 
           if (TypeUtility.exists(info.getSourceType())) {
-            IMethod source = createSourceMethod(monitor, workingCopyManager, info);
-            appendMethodLogic(monitor, workingCopyManager, source, info.getSourceLogic());
+            IMethod source = createSourceMethod(info);
+            appendMethodLogic(source, info.getSourceLogic());
           }
         }
       }
     }
   }
 
-  private void appendMethodLogic(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, final IMethod method, final String logic) throws CoreException, IllegalArgumentException {
+  private void appendMethodLogic(final IMethod method, final String logic) throws CoreException, IllegalArgumentException {
     final boolean visited = getSamlContext().isMethodChanged(method);
     MethodUpdateContentOperation op = new MethodUpdateContentOperation(method, null, false) {
       @Override
@@ -105,7 +103,7 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
       }
     };
     op.validate();
-    op.run(monitor, workingCopyManager);
+    op.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
 
     if (!visited) {
       // remember that we already replaced the content of this method
@@ -113,7 +111,7 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
     }
   }
 
-  private void fillClassLevelLogic(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, IType target, String addSource) throws CoreException, IllegalArgumentException {
+  private void fillClassLevelLogic(IType target, String addSource) throws CoreException, IllegalArgumentException {
     ICompilationUnit cu = target.getCompilationUnit();
     String source = cu.getSource();
 
@@ -131,7 +129,7 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
     }
   }
 
-  private IMethod createTargetMethod(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, LogicInfo info) throws CoreException, IllegalArgumentException {
+  private IMethod createTargetMethod(LogicInfo info) throws CoreException, IllegalArgumentException {
     // always in a service class
     IMethod method = TypeUtility.getMethod(info.getTargetType(), info.getTargetMethodName());
     if (TypeUtility.exists(method)) {
@@ -145,12 +143,12 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
       sono.setArguments(info.getParameters());
       sono.setServiceInterface(info.getTargetInterfaceType());
       sono.validate();
-      sono.run(monitor, workingCopyManager);
+      sono.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
       return sono.getCreatedImplementationMethod();
     }
   }
 
-  private IMethod createSourceMethod(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, LogicInfo info) throws CoreException, IllegalArgumentException {
+  private IMethod createSourceMethod(LogicInfo info) throws CoreException, IllegalArgumentException {
     IMethod method = TypeUtility.getMethod(info.getSourceType(), info.getSourceMethodName());
     if (TypeUtility.exists(method)) {
       return method;
@@ -159,7 +157,7 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
       MethodOverrideOperation op = new MethodOverrideOperation(info.getSourceType(), info.getSourceMethodName(), false);
       op.setSimpleBody("");
       op.validate();
-      op.run(monitor, workingCopyManager);
+      op.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
       return op.getCreatedMethod();
     }
   }

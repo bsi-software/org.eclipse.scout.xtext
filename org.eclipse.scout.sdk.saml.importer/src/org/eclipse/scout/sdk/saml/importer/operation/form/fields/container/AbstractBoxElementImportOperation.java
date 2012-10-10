@@ -11,12 +11,10 @@
 package org.eclipse.scout.sdk.saml.importer.operation.form.fields.container;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.scout.saml.saml.CompositeFieldElement;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.sdk.saml.importer.operation.form.fields.AbstractSamlFormFieldElementOperation;
-import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 
 /**
  * <h3>{@link AbstractBoxElementImportOperation}</h3> ...
@@ -26,17 +24,17 @@ import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
  */
 public abstract class AbstractBoxElementImportOperation extends AbstractSamlFormFieldElementOperation {
   @Override
-  public final void run(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException, IllegalArgumentException {
-    IType box = createBox(monitor, workingCopyManager);
+  public final void run() throws CoreException, IllegalArgumentException {
+    IType box = createBox();
 
     getSamlFormContext().pushParentBox(box);
     CompositeFieldElement container = (CompositeFieldElement) getFieldElement();
     for (FormFieldElement o : container.getFields()) {
-      dispatchFieldElements(monitor, workingCopyManager, o, getSamlContext(), getSamlFormContext());
+      dispatchFieldElements(o, getSamlContext(), getSamlFormContext());
     }
     getSamlFormContext().popParentBox();
   }
 
-  protected abstract IType createBox(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException, IllegalArgumentException;
+  protected abstract IType createBox() throws CoreException, IllegalArgumentException;
 
 }

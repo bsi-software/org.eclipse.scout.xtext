@@ -1624,9 +1624,9 @@ ruleGroupBoxElement returns [EObject current=null]
 					{ 
 	 				  getUnorderedGroupHelper().select(grammarAccess.getGroupBoxElementAccess().getUnorderedGroup_2(), 1);
 	 				}
-					({true}?=>(	otherlv_6='enabled' 
+					({true}?=>(	otherlv_6='columns' 
     {
-    	newLeafNode(otherlv_6, grammarAccess.getGroupBoxElementAccess().getEnabledKeyword_2_1_0());
+    	newLeafNode(otherlv_6, grammarAccess.getGroupBoxElementAccess().getColumnsKeyword_2_1_0());
     }
 	otherlv_7='=' 
     {
@@ -1634,19 +1634,19 @@ ruleGroupBoxElement returns [EObject current=null]
     }
 (
 (
-		{ 
-	        newCompositeNode(grammarAccess.getGroupBoxElementAccess().getEnabledBooleanTypeParserRuleCall_2_1_2_0()); 
-	    }
-		lv_enabled_8_0=ruleBooleanType		{
+		lv_columns_8_0=RULE_INT
+		{
+			newLeafNode(lv_columns_8_0, grammarAccess.getGroupBoxElementAccess().getColumnsINTTerminalRuleCall_2_1_2_0()); 
+		}
+		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getGroupBoxElementRule());
+	            $current = createModelElement(grammarAccess.getGroupBoxElementRule());
 	        }
-       		set(
+       		setWithLastConsumed(
        			$current, 
-       			"enabled",
-        		lv_enabled_8_0, 
-        		"BooleanType");
-	        afterParserOrEnumRuleCall();
+       			"columns",
+        		lv_columns_8_0, 
+        		"INT");
 	    }
 
 )
@@ -1662,9 +1662,9 @@ ruleGroupBoxElement returns [EObject current=null]
 					{ 
 	 				  getUnorderedGroupHelper().select(grammarAccess.getGroupBoxElementAccess().getUnorderedGroup_2(), 2);
 	 				}
-					({true}?=>(	otherlv_9='visible' 
+					({true}?=>(	otherlv_9='enabled' 
     {
-    	newLeafNode(otherlv_9, grammarAccess.getGroupBoxElementAccess().getVisibleKeyword_2_2_0());
+    	newLeafNode(otherlv_9, grammarAccess.getGroupBoxElementAccess().getEnabledKeyword_2_2_0());
     }
 	otherlv_10='=' 
     {
@@ -1673,16 +1673,16 @@ ruleGroupBoxElement returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getGroupBoxElementAccess().getVisibleBooleanTypeParserRuleCall_2_2_2_0()); 
+	        newCompositeNode(grammarAccess.getGroupBoxElementAccess().getEnabledBooleanTypeParserRuleCall_2_2_2_0()); 
 	    }
-		lv_visible_11_0=ruleBooleanType		{
+		lv_enabled_11_0=ruleBooleanType		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getGroupBoxElementRule());
 	        }
        		set(
        			$current, 
-       			"visible",
-        		lv_visible_11_0, 
+       			"enabled",
+        		lv_enabled_11_0, 
         		"BooleanType");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -1700,13 +1700,51 @@ ruleGroupBoxElement returns [EObject current=null]
 					{ 
 	 				  getUnorderedGroupHelper().select(grammarAccess.getGroupBoxElementAccess().getUnorderedGroup_2(), 3);
 	 				}
-					({true}?=>(	otherlv_12='master' 
+					({true}?=>(	otherlv_12='visible' 
     {
-    	newLeafNode(otherlv_12, grammarAccess.getGroupBoxElementAccess().getMasterKeyword_2_3_0());
+    	newLeafNode(otherlv_12, grammarAccess.getGroupBoxElementAccess().getVisibleKeyword_2_3_0());
     }
 	otherlv_13='=' 
     {
     	newLeafNode(otherlv_13, grammarAccess.getGroupBoxElementAccess().getEqualsSignKeyword_2_3_1());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getGroupBoxElementAccess().getVisibleBooleanTypeParserRuleCall_2_3_2_0()); 
+	    }
+		lv_visible_14_0=ruleBooleanType		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getGroupBoxElementRule());
+	        }
+       		set(
+       			$current, 
+       			"visible",
+        		lv_visible_14_0, 
+        		"BooleanType");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getGroupBoxElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getGroupBoxElementAccess().getUnorderedGroup_2(), 4)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getGroupBoxElementAccess().getUnorderedGroup_2(), 4);
+	 				}
+					({true}?=>(	otherlv_15='master' 
+    {
+    	newLeafNode(otherlv_15, grammarAccess.getGroupBoxElementAccess().getMasterKeyword_2_4_0());
+    }
+	otherlv_16='=' 
+    {
+    	newLeafNode(otherlv_16, grammarAccess.getGroupBoxElementAccess().getEqualsSignKeyword_2_4_1());
     }
 (
 (
@@ -1715,9 +1753,9 @@ ruleGroupBoxElement returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getGroupBoxElementRule());
 	        }
         }
-	otherlv_14=RULE_ID
+	otherlv_17=RULE_ID
 	{
-		newLeafNode(otherlv_14, grammarAccess.getGroupBoxElementAccess().getMasterValueFieldElementCrossReference_2_3_2_0()); 
+		newLeafNode(otherlv_17, grammarAccess.getGroupBoxElementAccess().getMasterValueFieldElementCrossReference_2_4_2_0()); 
 	}
 
 )
@@ -1735,23 +1773,23 @@ ruleGroupBoxElement returns [EObject current=null]
 	  getUnorderedGroupHelper().leave(grammarAccess.getGroupBoxElementAccess().getUnorderedGroup_2());
 	}
 
-)(	otherlv_15='{' 
+)(	otherlv_18='{' 
     {
-    	newLeafNode(otherlv_15, grammarAccess.getGroupBoxElementAccess().getLeftCurlyBracketKeyword_3_0());
+    	newLeafNode(otherlv_18, grammarAccess.getGroupBoxElementAccess().getLeftCurlyBracketKeyword_3_0());
     }
 ((
 (
 		{ 
 	        newCompositeNode(grammarAccess.getGroupBoxElementAccess().getLogicLogicElementParserRuleCall_3_1_0_0()); 
 	    }
-		lv_logic_16_0=ruleLogicElement		{
+		lv_logic_19_0=ruleLogicElement		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getGroupBoxElementRule());
 	        }
        		add(
        			$current, 
        			"logic",
-        		lv_logic_16_0, 
+        		lv_logic_19_0, 
         		"LogicElement");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -1763,22 +1801,22 @@ ruleGroupBoxElement returns [EObject current=null]
 		{ 
 	        newCompositeNode(grammarAccess.getGroupBoxElementAccess().getFieldsFormFieldElementParserRuleCall_3_1_1_0()); 
 	    }
-		lv_fields_17_0=ruleFormFieldElement		{
+		lv_fields_20_0=ruleFormFieldElement		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getGroupBoxElementRule());
 	        }
        		add(
        			$current, 
        			"fields",
-        		lv_fields_17_0, 
+        		lv_fields_20_0, 
         		"FormFieldElement");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))*	otherlv_18='}' 
+))*	otherlv_21='}' 
     {
-    	newLeafNode(otherlv_18, grammarAccess.getGroupBoxElementAccess().getRightCurlyBracketKeyword_3_2());
+    	newLeafNode(otherlv_21, grammarAccess.getGroupBoxElementAccess().getRightCurlyBracketKeyword_3_2());
     }
 )?)
 ;

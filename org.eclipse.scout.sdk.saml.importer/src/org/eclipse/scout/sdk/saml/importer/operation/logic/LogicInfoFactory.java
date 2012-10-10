@@ -12,13 +12,11 @@ package org.eclipse.scout.sdk.saml.importer.operation.logic;
 
 import org.eclipse.jdt.core.IType;
 import org.eclipse.scout.saml.saml.LogicElement;
-import org.eclipse.scout.saml.services.SamlGrammarAccess;
 import org.eclipse.scout.saml.services.SamlGrammarAccess.LogicEventTypeElements;
-import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.service.ParameterArgument;
 import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
+import org.eclipse.scout.sdk.saml.importer.util.SamlImportUtility;
 import org.eclipse.scout.sdk.util.resources.ResourceUtility;
-import org.eclipse.scout.sdk.util.type.TypeComparators;
 import org.eclipse.scout.sdk.util.type.TypeUtility;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.compiler.ImportManager;
@@ -34,9 +32,6 @@ import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
  */
 @SuppressWarnings("restriction")
 public class LogicInfoFactory {
-
-  private static final String FORM_HANDLER_MODIFY = "modify";
-  private static final String FORM_HANDLER_NEW = "new";
 
   public static LogicInfo create(LogicElement element, IType sourceType, SamlFormContext context) {
     LogicInfo ret = new LogicInfo();
@@ -80,16 +75,16 @@ public class LogicInfoFactory {
       ret.setSourceMethodName(getSourceMethodName(element.getEvent(), context));
     }
 
-    LogicEventTypeElements eventElements = context.getSamlContext().getInjector().getInstance(SamlGrammarAccess.class).getLogicEventTypeAccess();
+    LogicEventTypeElements eventElements = context.getSamlContext().getGrammarAccess().getLogicEventTypeAccess();
     ret.setSourceType(sourceType);
     if (element.getEvent() != null) {
       if (element.getEvent().equals(eventElements.getModify_loadKeyword_1().getValue()) ||
           element.getEvent().equals(eventElements.getModify_storeKeyword_2().getValue())) {
-        ret.setSourceType(getHandler(context.getFormType(), FORM_HANDLER_MODIFY));
+        ret.setSourceType(getHandler(context.getFormType(), SamlImportUtility.FORM_HANDLER_MODIFY));
       }
       else if (element.getEvent().equals(eventElements.getNew_loadKeyword_3().getValue()) ||
           element.getEvent().equals(eventElements.getNew_storeKeyword_4().getValue())) {
-        ret.setSourceType(getHandler(context.getFormType(), FORM_HANDLER_NEW));
+        ret.setSourceType(getHandler(context.getFormType(), SamlImportUtility.FORM_HANDLER_NEW));
       }
     }
     ret.setTargetInterfaceType(targetInterfaceType);
@@ -101,7 +96,7 @@ public class LogicInfoFactory {
   }
 
   private static String getSourceMethodName(String event, SamlFormContext context) {
-    LogicEventTypeElements elements = context.getSamlContext().getInjector().getInstance(SamlGrammarAccess.class).getLogicEventTypeAccess();
+    LogicEventTypeElements elements = context.getSamlContext().getGrammarAccess().getLogicEventTypeAccess();
     if (event.equals(elements.getAllKeyword_0().getValue())) {
       return null;
     }
@@ -135,18 +130,7 @@ public class LogicInfoFactory {
   }
 
   private static IType getHandler(IType formType, String handlerType) {
-    if (!TypeUtility.exists(formType)) {
-      throw new IllegalArgumentException("form could not be found.");
-    }
-    IType result = null;
-    IType[] handlers = TypeUtility.getInnerTypesOrdered(formType, TypeUtility.getType(RuntimeClasses.IFormHandler), TypeComparators.getTypeNameComparator());
-    for (IType handler : handlers) {
-      if (handler.getElementName().toLowerCase().startsWith(handlerType.toLowerCase())) {
-        result = handler;
-        break;
-      }
-    }
-
+    IType result = SamlImportUtility.getFormHandler(formType, handlerType);
     if (!TypeUtility.exists(result)) {
       throw new IllegalArgumentException("handler could not be found.");
     }
@@ -189,7 +173,7 @@ public class LogicInfoFactory {
       }
       runat = exec.getRunat();
     }
-    String clientKeyWord = context.getSamlContext().getInjector().getInstance(SamlGrammarAccess.class).getLogicElementAccess().getRunatClientKeyword_3_1_2_0_0().getValue();
+    String clientKeyWord = context.getSamlContext().getGrammarAccess().getLogicElementAccess().getRunatClientKeyword_3_1_2_0_0().getValue();
     return runat.equals(clientKeyWord);
   }
 
@@ -225,7 +209,7 @@ public class LogicInfoFactory {
   }
 
   private static String getTargetMethodName(String event, IType sourceType, SamlFormContext context) {
-    LogicEventTypeElements elements = context.getSamlContext().getInjector().getInstance(SamlGrammarAccess.class).getLogicEventTypeAccess();
+    LogicEventTypeElements elements = context.getSamlContext().getGrammarAccess().getLogicEventTypeAccess();
     if (event.equals(elements.getAllKeyword_0().getValue())) {
       return "getDataByAll";
     }

@@ -1147,6 +1147,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *     (
 	 *         name=ID 
 	 *         text=[TranslationElement|ID]? 
+	 *         columns=INT? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
 	 *         master=[ValueFieldElement|ID]? 

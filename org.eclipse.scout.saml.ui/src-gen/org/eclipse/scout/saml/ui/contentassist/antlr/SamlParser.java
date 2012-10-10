@@ -111,6 +111,7 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGroupBoxElementAccess().getGroup_2_1(), "rule__GroupBoxElement__Group_2_1__0");
 					put(grammarAccess.getGroupBoxElementAccess().getGroup_2_2(), "rule__GroupBoxElement__Group_2_2__0");
 					put(grammarAccess.getGroupBoxElementAccess().getGroup_2_3(), "rule__GroupBoxElement__Group_2_3__0");
+					put(grammarAccess.getGroupBoxElementAccess().getGroup_2_4(), "rule__GroupBoxElement__Group_2_4__0");
 					put(grammarAccess.getGroupBoxElementAccess().getGroup_3(), "rule__GroupBoxElement__Group_3__0");
 					put(grammarAccess.getStringElementAccess().getGroup(), "rule__StringElement__Group__0");
 					put(grammarAccess.getStringElementAccess().getGroup_2_0(), "rule__StringElement__Group_2_0__0");
@@ -338,9 +339,10 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getSequenceBoxElementAccess().getFieldsAssignment_3_1_1(), "rule__SequenceBoxElement__FieldsAssignment_3_1_1");
 					put(grammarAccess.getGroupBoxElementAccess().getNameAssignment_1(), "rule__GroupBoxElement__NameAssignment_1");
 					put(grammarAccess.getGroupBoxElementAccess().getTextAssignment_2_0_2(), "rule__GroupBoxElement__TextAssignment_2_0_2");
-					put(grammarAccess.getGroupBoxElementAccess().getEnabledAssignment_2_1_2(), "rule__GroupBoxElement__EnabledAssignment_2_1_2");
-					put(grammarAccess.getGroupBoxElementAccess().getVisibleAssignment_2_2_2(), "rule__GroupBoxElement__VisibleAssignment_2_2_2");
-					put(grammarAccess.getGroupBoxElementAccess().getMasterAssignment_2_3_2(), "rule__GroupBoxElement__MasterAssignment_2_3_2");
+					put(grammarAccess.getGroupBoxElementAccess().getColumnsAssignment_2_1_2(), "rule__GroupBoxElement__ColumnsAssignment_2_1_2");
+					put(grammarAccess.getGroupBoxElementAccess().getEnabledAssignment_2_2_2(), "rule__GroupBoxElement__EnabledAssignment_2_2_2");
+					put(grammarAccess.getGroupBoxElementAccess().getVisibleAssignment_2_3_2(), "rule__GroupBoxElement__VisibleAssignment_2_3_2");
+					put(grammarAccess.getGroupBoxElementAccess().getMasterAssignment_2_4_2(), "rule__GroupBoxElement__MasterAssignment_2_4_2");
 					put(grammarAccess.getGroupBoxElementAccess().getLogicAssignment_3_1_0(), "rule__GroupBoxElement__LogicAssignment_3_1_0");
 					put(grammarAccess.getGroupBoxElementAccess().getFieldsAssignment_3_1_1(), "rule__GroupBoxElement__FieldsAssignment_3_1_1");
 					put(grammarAccess.getStringElementAccess().getNameAssignment_1(), "rule__StringElement__NameAssignment_1");

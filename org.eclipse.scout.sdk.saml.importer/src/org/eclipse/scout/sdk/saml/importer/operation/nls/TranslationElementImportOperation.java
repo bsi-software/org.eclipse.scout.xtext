@@ -13,14 +13,12 @@ package org.eclipse.scout.sdk.saml.importer.operation.nls;
 import java.util.Locale;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.scout.nls.sdk.model.util.Language;
 import org.eclipse.scout.nls.sdk.model.workspace.NlsEntry;
 import org.eclipse.scout.nls.sdk.model.workspace.project.INlsProject;
 import org.eclipse.scout.saml.saml.LanguageAttribute;
 import org.eclipse.scout.saml.saml.TranslationElement;
 import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
-import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 
 /**
  * <h3>{@link TranslationElementImportOperation}</h3> ...
@@ -45,7 +43,7 @@ public class TranslationElementImportOperation extends AbstractSamlElementImport
   }
 
   @Override
-  public void run(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException, IllegalArgumentException {
+  public void run() throws CoreException, IllegalArgumentException {
     String key = getTranslationElement().getName();
 
     INlsProject nlsProject = getCurrentScoutModule().getNlsProject();
@@ -55,7 +53,7 @@ public class TranslationElementImportOperation extends AbstractSamlElementImport
       Language language = new Language(new Locale(lang.getLang()));
       entry.addTranslation(language, lang.getText());
     }
-    nlsProject.updateRow(entry, monitor);
+    nlsProject.updateRow(entry, getSamlContext().getMonitor());
   }
 
   public TranslationElement getTranslationElement() {

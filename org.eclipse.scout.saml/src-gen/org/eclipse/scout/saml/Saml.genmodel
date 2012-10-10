@@ -69,7 +69,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//CompositeFieldElement/fields"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//SequenceBoxElement"/>
-    <genClasses ecoreClass="Saml.ecore#//GroupBoxElement"/>
+    <genClasses ecoreClass="Saml.ecore#//GroupBoxElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//GroupBoxElement/columns"/>
+    </genClasses>
     <genClasses ecoreClass="Saml.ecore#//ValueFieldElement"/>
     <genClasses ecoreClass="Saml.ecore#//StringElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//StringElement/mandatory"/>

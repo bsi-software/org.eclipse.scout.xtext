@@ -76,7 +76,9 @@
         eType="#//FormFieldElement" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SequenceBoxElement" eSuperTypes="#//CompositeFieldElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="GroupBoxElement" eSuperTypes="#//CompositeFieldElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GroupBoxElement" eSuperTypes="#//CompositeFieldElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="columns" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ValueFieldElement" eSuperTypes="#//FormFieldElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="StringElement" eSuperTypes="#//ValueFieldElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mandatory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

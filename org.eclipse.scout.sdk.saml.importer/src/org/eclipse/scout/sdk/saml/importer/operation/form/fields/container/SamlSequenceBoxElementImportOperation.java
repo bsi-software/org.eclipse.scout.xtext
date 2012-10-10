@@ -11,13 +11,11 @@
 package org.eclipse.scout.sdk.saml.importer.operation.form.fields.container;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.saml.saml.SequenceBoxElement;
 import org.eclipse.scout.sdk.operation.form.field.SequenceBoxNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
-import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 
 /**
  * <h3>{@link SamlSequenceBoxElementImportOperation}</h3> ...
@@ -43,18 +41,18 @@ public class SamlSequenceBoxElementImportOperation extends AbstractBoxElementImp
   }
 
   @Override
-  public IType createBox(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException, IllegalArgumentException {
+  public IType createBox() throws CoreException, IllegalArgumentException {
     SequenceBoxNewOperation o = new SequenceBoxNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getSequenceBoxElement().getName() + SUFFIX);
     o.validate();
-    o.run(monitor, workingCopyManager);
+    o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
     IType createdField = o.getCreatedField();
-    ITypeHierarchy h = createdField.newSupertypeHierarchy(monitor);
+    ITypeHierarchy h = createdField.newSupertypeHierarchy(getSamlContext().getMonitor());
 
-    overrideMethod(monitor, workingCopyManager, createdField, h, "getConfiguredAutoCheckFromTo", "return false;");
+    overrideMethod(createdField, h, "getConfiguredAutoCheckFromTo", "return false;");
 
-    applyFormFieldProperties(monitor, workingCopyManager, createdField, h);
-    fillFormFieldLogic(monitor, workingCopyManager, createdField);
+    applyFormFieldProperties(createdField, h);
+    fillFormFieldLogic(createdField);
 
     return createdField;
   }

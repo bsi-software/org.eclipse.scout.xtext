@@ -916,21 +916,26 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final CrossReference cTextTranslationElementCrossReference_2_0_2_0 = (CrossReference)cTextAssignment_2_0_2.eContents().get(0);
 		private final RuleCall cTextTranslationElementIDTerminalRuleCall_2_0_2_0_1 = (RuleCall)cTextTranslationElementCrossReference_2_0_2_0.eContents().get(1);
 		private final Group cGroup_2_1 = (Group)cUnorderedGroup_2.eContents().get(1);
-		private final Keyword cEnabledKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
+		private final Keyword cColumnsKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_1_1 = (Keyword)cGroup_2_1.eContents().get(1);
-		private final Assignment cEnabledAssignment_2_1_2 = (Assignment)cGroup_2_1.eContents().get(2);
-		private final RuleCall cEnabledBooleanTypeParserRuleCall_2_1_2_0 = (RuleCall)cEnabledAssignment_2_1_2.eContents().get(0);
+		private final Assignment cColumnsAssignment_2_1_2 = (Assignment)cGroup_2_1.eContents().get(2);
+		private final RuleCall cColumnsINTTerminalRuleCall_2_1_2_0 = (RuleCall)cColumnsAssignment_2_1_2.eContents().get(0);
 		private final Group cGroup_2_2 = (Group)cUnorderedGroup_2.eContents().get(2);
-		private final Keyword cVisibleKeyword_2_2_0 = (Keyword)cGroup_2_2.eContents().get(0);
+		private final Keyword cEnabledKeyword_2_2_0 = (Keyword)cGroup_2_2.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_2_1 = (Keyword)cGroup_2_2.eContents().get(1);
-		private final Assignment cVisibleAssignment_2_2_2 = (Assignment)cGroup_2_2.eContents().get(2);
-		private final RuleCall cVisibleBooleanTypeParserRuleCall_2_2_2_0 = (RuleCall)cVisibleAssignment_2_2_2.eContents().get(0);
+		private final Assignment cEnabledAssignment_2_2_2 = (Assignment)cGroup_2_2.eContents().get(2);
+		private final RuleCall cEnabledBooleanTypeParserRuleCall_2_2_2_0 = (RuleCall)cEnabledAssignment_2_2_2.eContents().get(0);
 		private final Group cGroup_2_3 = (Group)cUnorderedGroup_2.eContents().get(3);
-		private final Keyword cMasterKeyword_2_3_0 = (Keyword)cGroup_2_3.eContents().get(0);
+		private final Keyword cVisibleKeyword_2_3_0 = (Keyword)cGroup_2_3.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_3_1 = (Keyword)cGroup_2_3.eContents().get(1);
-		private final Assignment cMasterAssignment_2_3_2 = (Assignment)cGroup_2_3.eContents().get(2);
-		private final CrossReference cMasterValueFieldElementCrossReference_2_3_2_0 = (CrossReference)cMasterAssignment_2_3_2.eContents().get(0);
-		private final RuleCall cMasterValueFieldElementIDTerminalRuleCall_2_3_2_0_1 = (RuleCall)cMasterValueFieldElementCrossReference_2_3_2_0.eContents().get(1);
+		private final Assignment cVisibleAssignment_2_3_2 = (Assignment)cGroup_2_3.eContents().get(2);
+		private final RuleCall cVisibleBooleanTypeParserRuleCall_2_3_2_0 = (RuleCall)cVisibleAssignment_2_3_2.eContents().get(0);
+		private final Group cGroup_2_4 = (Group)cUnorderedGroup_2.eContents().get(4);
+		private final Keyword cMasterKeyword_2_4_0 = (Keyword)cGroup_2_4.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_4_1 = (Keyword)cGroup_2_4.eContents().get(1);
+		private final Assignment cMasterAssignment_2_4_2 = (Assignment)cGroup_2_4.eContents().get(2);
+		private final CrossReference cMasterValueFieldElementCrossReference_2_4_2_0 = (CrossReference)cMasterAssignment_2_4_2.eContents().get(0);
+		private final RuleCall cMasterValueFieldElementIDTerminalRuleCall_2_4_2_0_1 = (RuleCall)cMasterValueFieldElementCrossReference_2_4_2_0.eContents().get(1);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Keyword cLeftCurlyBracketKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Alternatives cAlternatives_3_1 = (Alternatives)cGroup_3.eContents().get(1);
@@ -942,18 +947,18 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//GroupBoxElement:
 		//
-		//	"group_box" name=ID (("text" "=" text=[TranslationElement])? & ("enabled" "=" enabled=BooleanType)? & ("visible" "="
+		//	"group_box" name=ID (("text" "=" text=[TranslationElement])? & ("columns" "=" columns=INT)? & ("enabled" "="
 		//
-		//	visible=BooleanType)? & ("master" "=" master=[ValueFieldElement])?) ("{" (logic+=LogicElement |
+		//	enabled=BooleanType)? & ("visible" "=" visible=BooleanType)? & ("master" "=" master=[ValueFieldElement])?) ("{"
 		//
-		//	fields+=FormFieldElement)* "}")?;
+		//	(logic+=LogicElement | fields+=FormFieldElement)* "}")?;
 		public ParserRule getRule() { return rule; }
 
-		//"group_box" name=ID (("text" "=" text=[TranslationElement])? & ("enabled" "=" enabled=BooleanType)? & ("visible" "="
+		//"group_box" name=ID (("text" "=" text=[TranslationElement])? & ("columns" "=" columns=INT)? & ("enabled" "="
 		//
-		//visible=BooleanType)? & ("master" "=" master=[ValueFieldElement])?) ("{" (logic+=LogicElement |
+		//enabled=BooleanType)? & ("visible" "=" visible=BooleanType)? & ("master" "=" master=[ValueFieldElement])?) ("{"
 		//
-		//fields+=FormFieldElement)* "}")?
+		//(logic+=LogicElement | fields+=FormFieldElement)* "}")?
 		public Group getGroup() { return cGroup; }
 
 		//"group_box"
@@ -965,9 +970,9 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//("text" "=" text=[TranslationElement])? & ("enabled" "=" enabled=BooleanType)? & ("visible" "=" visible=BooleanType)? &
+		//("text" "=" text=[TranslationElement])? & ("columns" "=" columns=INT)? & ("enabled" "=" enabled=BooleanType)? &
 		//
-		//("master" "=" master=[ValueFieldElement])?
+		//("visible" "=" visible=BooleanType)? & ("master" "=" master=[ValueFieldElement])?
 		public UnorderedGroup getUnorderedGroup_2() { return cUnorderedGroup_2; }
 
 		//("text" "=" text=[TranslationElement])?
@@ -988,53 +993,68 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getTextTranslationElementIDTerminalRuleCall_2_0_2_0_1() { return cTextTranslationElementIDTerminalRuleCall_2_0_2_0_1; }
 
-		//("enabled" "=" enabled=BooleanType)?
+		//("columns" "=" columns=INT)?
 		public Group getGroup_2_1() { return cGroup_2_1; }
 
-		//"enabled"
-		public Keyword getEnabledKeyword_2_1_0() { return cEnabledKeyword_2_1_0; }
+		//"columns"
+		public Keyword getColumnsKeyword_2_1_0() { return cColumnsKeyword_2_1_0; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_2_1_1() { return cEqualsSignKeyword_2_1_1; }
 
-		//enabled=BooleanType
-		public Assignment getEnabledAssignment_2_1_2() { return cEnabledAssignment_2_1_2; }
+		//columns=INT
+		public Assignment getColumnsAssignment_2_1_2() { return cColumnsAssignment_2_1_2; }
 
-		//BooleanType
-		public RuleCall getEnabledBooleanTypeParserRuleCall_2_1_2_0() { return cEnabledBooleanTypeParserRuleCall_2_1_2_0; }
+		//INT
+		public RuleCall getColumnsINTTerminalRuleCall_2_1_2_0() { return cColumnsINTTerminalRuleCall_2_1_2_0; }
 
-		//("visible" "=" visible=BooleanType)?
+		//("enabled" "=" enabled=BooleanType)?
 		public Group getGroup_2_2() { return cGroup_2_2; }
 
-		//"visible"
-		public Keyword getVisibleKeyword_2_2_0() { return cVisibleKeyword_2_2_0; }
+		//"enabled"
+		public Keyword getEnabledKeyword_2_2_0() { return cEnabledKeyword_2_2_0; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_2_2_1() { return cEqualsSignKeyword_2_2_1; }
 
-		//visible=BooleanType
-		public Assignment getVisibleAssignment_2_2_2() { return cVisibleAssignment_2_2_2; }
+		//enabled=BooleanType
+		public Assignment getEnabledAssignment_2_2_2() { return cEnabledAssignment_2_2_2; }
 
 		//BooleanType
-		public RuleCall getVisibleBooleanTypeParserRuleCall_2_2_2_0() { return cVisibleBooleanTypeParserRuleCall_2_2_2_0; }
+		public RuleCall getEnabledBooleanTypeParserRuleCall_2_2_2_0() { return cEnabledBooleanTypeParserRuleCall_2_2_2_0; }
 
-		//("master" "=" master=[ValueFieldElement])?
+		//("visible" "=" visible=BooleanType)?
 		public Group getGroup_2_3() { return cGroup_2_3; }
 
-		//"master"
-		public Keyword getMasterKeyword_2_3_0() { return cMasterKeyword_2_3_0; }
+		//"visible"
+		public Keyword getVisibleKeyword_2_3_0() { return cVisibleKeyword_2_3_0; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_2_3_1() { return cEqualsSignKeyword_2_3_1; }
 
+		//visible=BooleanType
+		public Assignment getVisibleAssignment_2_3_2() { return cVisibleAssignment_2_3_2; }
+
+		//BooleanType
+		public RuleCall getVisibleBooleanTypeParserRuleCall_2_3_2_0() { return cVisibleBooleanTypeParserRuleCall_2_3_2_0; }
+
+		//("master" "=" master=[ValueFieldElement])?
+		public Group getGroup_2_4() { return cGroup_2_4; }
+
+		//"master"
+		public Keyword getMasterKeyword_2_4_0() { return cMasterKeyword_2_4_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_2_4_1() { return cEqualsSignKeyword_2_4_1; }
+
 		//master=[ValueFieldElement]
-		public Assignment getMasterAssignment_2_3_2() { return cMasterAssignment_2_3_2; }
+		public Assignment getMasterAssignment_2_4_2() { return cMasterAssignment_2_4_2; }
 
 		//[ValueFieldElement]
-		public CrossReference getMasterValueFieldElementCrossReference_2_3_2_0() { return cMasterValueFieldElementCrossReference_2_3_2_0; }
+		public CrossReference getMasterValueFieldElementCrossReference_2_4_2_0() { return cMasterValueFieldElementCrossReference_2_4_2_0; }
 
 		//ID
-		public RuleCall getMasterValueFieldElementIDTerminalRuleCall_2_3_2_0_1() { return cMasterValueFieldElementIDTerminalRuleCall_2_3_2_0_1; }
+		public RuleCall getMasterValueFieldElementIDTerminalRuleCall_2_4_2_0_1() { return cMasterValueFieldElementIDTerminalRuleCall_2_4_2_0_1; }
 
 		//("{" (logic+=LogicElement | fields+=FormFieldElement)* "}")?
 		public Group getGroup_3() { return cGroup_3; }
@@ -2756,11 +2776,11 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 
 	//GroupBoxElement:
 	//
-	//	"group_box" name=ID (("text" "=" text=[TranslationElement])? & ("enabled" "=" enabled=BooleanType)? & ("visible" "="
+	//	"group_box" name=ID (("text" "=" text=[TranslationElement])? & ("columns" "=" columns=INT)? & ("enabled" "="
 	//
-	//	visible=BooleanType)? & ("master" "=" master=[ValueFieldElement])?) ("{" (logic+=LogicElement |
+	//	enabled=BooleanType)? & ("visible" "=" visible=BooleanType)? & ("master" "=" master=[ValueFieldElement])?) ("{"
 	//
-	//	fields+=FormFieldElement)* "}")?;
+	//	(logic+=LogicElement | fields+=FormFieldElement)* "}")?;
 	public GroupBoxElementElements getGroupBoxElementAccess() {
 		return (pGroupBoxElement != null) ? pGroupBoxElement : (pGroupBoxElement = new GroupBoxElementElements());
 	}

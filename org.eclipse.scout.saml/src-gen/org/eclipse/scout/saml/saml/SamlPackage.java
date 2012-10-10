@@ -827,13 +827,22 @@ public interface SamlPackage extends EPackage
   int GROUP_BOX_ELEMENT__FIELDS = COMPOSITE_FIELD_ELEMENT__FIELDS;
 
   /**
+   * The feature id for the '<em><b>Columns</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_BOX_ELEMENT__COLUMNS = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
    * The number of structural features of the '<em>Group Box Element</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GROUP_BOX_ELEMENT_FEATURE_COUNT = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int GROUP_BOX_ELEMENT_FEATURE_COUNT = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.ValueFieldElementImpl <em>Value Field Element</em>}' class.
@@ -1994,6 +2003,17 @@ public interface SamlPackage extends EPackage
   EClass getGroupBoxElement();
 
   /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.GroupBoxElement#getColumns <em>Columns</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Columns</em>'.
+   * @see org.eclipse.scout.saml.saml.GroupBoxElement#getColumns()
+   * @see #getGroupBoxElement()
+   * @generated
+   */
+  EAttribute getGroupBoxElement_Columns();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.ValueFieldElement <em>Value Field Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2642,6 +2662,14 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EClass GROUP_BOX_ELEMENT = eINSTANCE.getGroupBoxElement();
+
+    /**
+     * The meta object literal for the '<em><b>Columns</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GROUP_BOX_ELEMENT__COLUMNS = eINSTANCE.getGroupBoxElement_Columns();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.ValueFieldElementImpl <em>Value Field Element</em>}' class.

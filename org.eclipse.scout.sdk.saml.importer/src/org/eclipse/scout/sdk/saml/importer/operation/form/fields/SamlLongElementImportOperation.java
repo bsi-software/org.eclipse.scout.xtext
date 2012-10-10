@@ -11,13 +11,11 @@
 package org.eclipse.scout.sdk.saml.importer.operation.form.fields;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.saml.saml.LongElement;
 import org.eclipse.scout.sdk.operation.form.field.LongFieldNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
-import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 
 /**
  * <h3>{@link SamlLongElementImportOperation}</h3> ...
@@ -43,18 +41,18 @@ public class SamlLongElementImportOperation extends AbstractSamlFormFieldElement
   }
 
   @Override
-  public void run(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException, IllegalArgumentException {
+  public void run() throws CoreException, IllegalArgumentException {
     LongFieldNewOperation o = new LongFieldNewOperation(getSamlFormContext().getCurrentParentBox());
     o.setFormatSource(false);
     o.setTypeName(getLongElement().getName() + SUFFIX);
     o.validate();
-    o.run(monitor, workingCopyManager);
+    o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
     IType createdField = o.getCreatedField();
-    ITypeHierarchy h = createdField.newSupertypeHierarchy(monitor);
+    ITypeHierarchy h = createdField.newSupertypeHierarchy(getSamlContext().getMonitor());
 
-    applyMandatoryAttribute(monitor, workingCopyManager, getLongElement().getMandatory(), createdField, h);
-    applyFormFieldProperties(monitor, workingCopyManager, createdField, h);
-    fillFormFieldLogic(monitor, workingCopyManager, createdField);
+    applyMandatoryAttribute(getLongElement().getMandatory(), createdField, h);
+    applyFormFieldProperties(createdField, h);
+    fillFormFieldLogic(createdField);
   }
 
   public LongElement getLongElement() {

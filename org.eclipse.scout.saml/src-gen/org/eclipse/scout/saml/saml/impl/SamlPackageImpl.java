@@ -766,6 +766,16 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getGroupBoxElement_Columns()
+  {
+    return (EAttribute)groupBoxElementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getValueFieldElement()
   {
     return valueFieldElementEClass;
@@ -1035,6 +1045,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     sequenceBoxElementEClass = createEClass(SEQUENCE_BOX_ELEMENT);
 
     groupBoxElementEClass = createEClass(GROUP_BOX_ELEMENT);
+    createEAttribute(groupBoxElementEClass, GROUP_BOX_ELEMENT__COLUMNS);
 
     valueFieldElementEClass = createEClass(VALUE_FIELD_ELEMENT);
 
@@ -1167,6 +1178,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEClass(sequenceBoxElementEClass, SequenceBoxElement.class, "SequenceBoxElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(groupBoxElementEClass, GroupBoxElement.class, "GroupBoxElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getGroupBoxElement_Columns(), ecorePackage.getEInt(), "columns", null, 0, 1, GroupBoxElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(valueFieldElementEClass, ValueFieldElement.class, "ValueFieldElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

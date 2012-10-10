@@ -11,7 +11,6 @@
 package org.eclipse.scout.sdk.saml.importer.operation.codetype;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.saml.saml.CodeElement;
@@ -21,7 +20,6 @@ import org.eclipse.scout.sdk.operation.util.TypeDeleteOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
 import org.eclipse.scout.sdk.util.type.TypeUtility;
-import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 import org.eclipse.scout.sdk.workspace.IScoutBundle;
 
 /**
@@ -47,12 +45,12 @@ public class CodeElementImportOperation extends AbstractSamlElementImportOperati
   }
 
   @Override
-  public void run(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException, IllegalArgumentException {
+  public void run() throws CoreException, IllegalArgumentException {
     String superSignature = Signature.createTypeSignature(RuntimeClasses.AbstractCodeType + "<" + Integer.class.getName() + ">", true);
     IScoutBundle sharedBundle = getCurrentScoutModule().getSharedBundle();
     String name = getCodeElement().getName() + SdkProperties.SUFFIX_CODE_TYPE;
 
-    deleteExisting(monitor, workingCopyManager, sharedBundle, name);
+    deleteExisting(sharedBundle, name);
 
     CodeTypeNewOperation ctno = new CodeTypeNewOperation();
     ctno.setFormatSource(false);
@@ -62,17 +60,17 @@ public class CodeElementImportOperation extends AbstractSamlElementImportOperati
     ctno.setGenericTypeSignature(Signature.createTypeSignature(Integer.class.getName(), true));
     ctno.setTypeName(name);
     ctno.validate();
-    ctno.run(monitor, workingCopyManager);
+    ctno.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
 
     getSamlContext().rememberModifiedType(ctno.getCreatedType());
   }
 
-  private void deleteExisting(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, IScoutBundle shared, String codeTypeName) throws CoreException, IllegalArgumentException {
+  private void deleteExisting(IScoutBundle shared, String codeTypeName) throws CoreException, IllegalArgumentException {
     IType old = TypeUtility.getType(shared.getPackageName(IScoutBundle.SHARED_PACKAGE_APPENDIX_SERVICES_CODE) + "." + codeTypeName);
     if (TypeUtility.exists(old)) {
       TypeDeleteOperation delete = new TypeDeleteOperation(old);
       delete.validate();
-      delete.run(monitor, workingCopyManager);
+      delete.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
     }
   }
 

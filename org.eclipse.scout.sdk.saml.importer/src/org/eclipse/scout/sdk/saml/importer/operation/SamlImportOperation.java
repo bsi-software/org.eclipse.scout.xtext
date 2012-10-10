@@ -86,8 +86,7 @@ public class SamlImportOperation implements IOperation {
         throw new IllegalArgumentException("SAML files are not valid. " + parsingIssues.size() + " Error(s) have been found. Please check input files. ");
       }
       else {
-        m_context = new SamlContext();
-        getSamlContext().setInjector(getInjector());
+        m_context = new SamlContext(monitor, workingCopyManager, getInjector());
 
         for (Resource r : resourceSet.getResources()) {
           EList<EObject> contents = r.getContents();
@@ -147,7 +146,7 @@ public class SamlImportOperation implements IOperation {
       op = leio;
     }
     else if (o instanceof TemplateElement) {
-      //TODO template element
+      //nop. will then be used by the custom_field which references the template
     }
     else if (o instanceof FormElement) {
       FormElementImportOperation feio = new FormElementImportOperation();

@@ -13,11 +13,11 @@ package org.eclipse.scout.sdk.saml.importer.operation.form;
 import java.util.ArrayList;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.saml.saml.FormElement;
 import org.eclipse.scout.saml.saml.FormFieldElement;
+import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.form.FormStackNewOperation;
 import org.eclipse.scout.sdk.operation.service.ServiceDeleteOperation;
@@ -25,10 +25,12 @@ import org.eclipse.scout.sdk.operation.service.ServiceNewOperation;
 import org.eclipse.scout.sdk.operation.util.JavaElementDeleteOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.form.fields.AbstractSamlFormFieldElementOperation;
+import org.eclipse.scout.sdk.saml.importer.operation.form.fields.container.SamlGroupBoxElementImportOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.logic.SamlLogicFillOperation;
+import org.eclipse.scout.sdk.saml.importer.util.IItemVisitor;
+import org.eclipse.scout.sdk.saml.importer.util.SamlImportUtility;
 import org.eclipse.scout.sdk.util.SdkProperties;
 import org.eclipse.scout.sdk.util.type.TypeUtility;
-import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 import org.eclipse.scout.sdk.workspace.IScoutBundle;
 
 /**
@@ -66,18 +68,25 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
     }
   }
 
+  private void applyModalAttribute(String a, IType form) throws CoreException, IllegalArgumentException {
+    if ("false".equals(a)) {
+      overrideMethod(form, null, "getConfiguredModal", "return false;");
+    }
+  }
+
   @Override
-  public void run(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException, IllegalArgumentException {
+  public void run() throws CoreException, IllegalArgumentException {
+    deleteExistingForm();
 
-    deleteExistingForm(monitor, workingCopyManager);
+    createFormStack();
 
-    createFormStack(monitor, workingCopyManager);
+    applyFormAttributes();
 
     createFormContext();
 
-    fillFormLogic(monitor, workingCopyManager);
+    fillFormLogic();
 
-    processChildren(monitor, workingCopyManager);
+    processChildren();
   }
 
   private void createFormContext() {
@@ -92,13 +101,28 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
     m_formContext.pushParentBox(getCreatedMainBox());
   }
 
-  private void processChildren(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException {
+  private void processChildren() throws CoreException {
     for (FormFieldElement o : getFormElement().getFields()) {
-      AbstractSamlFormFieldElementOperation.dispatchFieldElements(monitor, workingCopyManager, o, getSamlContext(), m_formContext);
+      AbstractSamlFormFieldElementOperation.dispatchFieldElements(o, getSamlContext(), m_formContext);
     }
   }
 
-  private void createFormStack(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException {
+  private boolean hasOneOfHandlers(final String[] handlerTypes) {
+    LogicElement handler = SamlImportUtility.findFirst(getFormElement().getLogic(), new IItemVisitor<LogicElement>() {
+      @Override
+      public boolean visit(LogicElement t) {
+        for (String handlerType : handlerTypes) {
+          if (t.getEvent().equals(handlerType)) {
+            return true;
+          }
+        }
+        return false;
+      }
+    });
+    return handler != null;
+  }
+
+  private void createFormStack() throws CoreException {
     String formName = getFormElement().getName();
     String nlsKey = getFormElement().getText().getName();
 
@@ -108,11 +132,14 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
     op.setCreateButtonOk(true);
     op.setCreateButtonCancel(true);
 
-    // TODO: only the handlers that have logic
-    // TODO: modal?
-    // TODO: columns
-    op.setCreateModifyHandler(true);
-    op.setCreateNewHandler(true);
+    op.setCreateModifyHandler(hasOneOfHandlers(new String[]{
+        getSamlContext().getGrammarAccess().getLogicEventTypeAccess().getModify_loadKeyword_1().getValue(),
+        getSamlContext().getGrammarAccess().getLogicEventTypeAccess().getModify_storeKeyword_2().getValue()
+    }));
+    op.setCreateNewHandler(hasOneOfHandlers(new String[]{
+        getSamlContext().getGrammarAccess().getLogicEventTypeAccess().getNew_loadKeyword_3().getValue(),
+        getSamlContext().getGrammarAccess().getLogicEventTypeAccess().getNew_storeKeyword_4().getValue()
+    }));
 
     op.setFormBundle(getCurrentScoutModule().getClientBundle());
     op.setFormDataBundle(getCurrentScoutModule().getSharedBundle());
@@ -137,7 +164,7 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
     op.setFormName(formName + SdkProperties.SUFFIX_FORM);
 
     op.validate();
-    op.run(monitor, workingCopyManager);
+    op.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
 
     setCreatedServerServiceImplementation(op.getOutProcessService());
     getSamlContext().rememberModifiedType(op.getOutProcessService());
@@ -162,7 +189,7 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
     clientSvcOp.addServiceRegistrationBundle(getCurrentScoutModule().getClientBundle());
 
     clientSvcOp.validate();
-    clientSvcOp.run(monitor, workingCopyManager);
+    clientSvcOp.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
 
     setCreatedClientServiceImplementation(clientSvcOp.getCreatedServiceImplementation());
     getSamlContext().rememberModifiedType(clientSvcOp.getCreatedServiceImplementation());
@@ -170,7 +197,12 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
     getSamlContext().rememberModifiedType(clientSvcOp.getCreatedServiceInterface());
   }
 
-  private void fillFormLogic(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException {
+  private void applyFormAttributes() throws IllegalArgumentException, CoreException {
+    applyModalAttribute(getFormElement().getModal(), getCreatedForm());
+    SamlGroupBoxElementImportOperation.applyColumnsAttribute(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager(), getFormElement().getColumns(), getCreatedMainBox());
+  }
+
+  private void fillFormLogic() throws CoreException {
     SamlLogicFillOperation slfo = new SamlLogicFillOperation();
 
     slfo.setLogicSourceType(getCreatedForm());
@@ -179,14 +211,14 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
     slfo.setLogicElements(getFormElement().getLogic());
 
     slfo.validate();
-    slfo.run(monitor, workingCopyManager);
+    slfo.run();
   }
 
   private IType getFormDataType(String formName) {
     return TypeUtility.getType(getCurrentScoutModule().getSharedBundle().getPackageName(IScoutBundle.SHARED_PACKAGE_APPENDIX_SERVICES_PROCESS) + "." + formName + SdkProperties.SUFFIX_FORM_DATA);
   }
 
-  private void deleteExistingForm(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException {
+  private void deleteExistingForm() throws CoreException {
     String formName = getFormElement().getName();
 
     IType formData = getFormDataType(formName);
@@ -209,7 +241,7 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
       JavaElementDeleteOperation jedo = new JavaElementDeleteOperation();
       jedo.setMembers(formArtifacts.toArray(new IType[formArtifacts.size()]));
       jedo.validate();
-      jedo.run(monitor, workingCopyManager);
+      jedo.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
     }
 
     if (TypeUtility.exists(serverService) || TypeUtility.exists(serverSvcInterface)) {
@@ -217,7 +249,7 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
       sdo.setServiceImplementation(serverService);
       sdo.setServiceInterface(serverSvcInterface);
       sdo.validate();
-      sdo.run(monitor, workingCopyManager);
+      sdo.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
     }
 
     if (TypeUtility.exists(clientService) || TypeUtility.exists(clientSvcInterface)) {
@@ -225,7 +257,7 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
       sdo.setServiceImplementation(clientService);
       sdo.setServiceInterface(clientSvcInterface);
       sdo.validate();
-      sdo.run(monitor, workingCopyManager);
+      sdo.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
     }
   }
 

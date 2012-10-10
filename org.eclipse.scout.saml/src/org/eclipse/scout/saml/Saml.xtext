@@ -72,6 +72,7 @@ SequenceBoxElement:'sequence_box' name=ID
 GroupBoxElement:'group_box' name=ID
 	(
 		('text' '=' text=[TranslationElement])? &
+		('columns' '=' columns=INT)? &
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
 		('master' '=' master=[ValueFieldElement])?
