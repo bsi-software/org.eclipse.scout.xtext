@@ -85,6 +85,8 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
       case SamlPackage.DATE_ELEMENT: return createDateElement();
       case SamlPackage.SMARTFIELD_ELEMENT: return createSmartfieldElement();
       case SamlPackage.CUSTOM_FIELD_ELEMENT: return createCustomFieldElement();
+      case SamlPackage.BUTTON_ELEMENT: return createButtonElement();
+      case SamlPackage.MENU_ELEMENT: return createMenuElement();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -319,6 +321,28 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
   {
     CustomFieldElementImpl customFieldElement = new CustomFieldElementImpl();
     return customFieldElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ButtonElement createButtonElement()
+  {
+    ButtonElementImpl buttonElement = new ButtonElementImpl();
+    return buttonElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MenuElement createMenuElement()
+  {
+    MenuElementImpl menuElement = new MenuElementImpl();
+    return menuElement;
   }
 
   /**

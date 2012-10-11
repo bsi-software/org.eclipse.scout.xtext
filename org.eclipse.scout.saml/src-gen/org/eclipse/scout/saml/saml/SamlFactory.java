@@ -212,6 +212,24 @@ public interface SamlFactory extends EFactory
   CustomFieldElement createCustomFieldElement();
 
   /**
+   * Returns a new object of class '<em>Button Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Button Element</em>'.
+   * @generated
+   */
+  ButtonElement createButtonElement();
+
+  /**
+   * Returns a new object of class '<em>Menu Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Menu Element</em>'.
+   * @generated
+   */
+  MenuElement createMenuElement();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

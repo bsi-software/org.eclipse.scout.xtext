@@ -3,6 +3,7 @@ package org.eclipse.scout.saml.serializer;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.scout.saml.saml.ButtonElement;
 import org.eclipse.scout.saml.saml.CodeElement;
 import org.eclipse.scout.saml.saml.CustomFieldElement;
 import org.eclipse.scout.saml.saml.DateElement;
@@ -14,6 +15,7 @@ import org.eclipse.scout.saml.saml.LanguageAttribute;
 import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.saml.saml.LongElement;
 import org.eclipse.scout.saml.saml.LookupElement;
+import org.eclipse.scout.saml.saml.MenuElement;
 import org.eclipse.scout.saml.saml.Model;
 import org.eclipse.scout.saml.saml.ModuleElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
@@ -79,6 +81,13 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == SamlPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case SamlPackage.BUTTON_ELEMENT:
+				if(context == grammarAccess.getButtonElementRule() ||
+				   context == grammarAccess.getFormFieldElementRule()) {
+					sequence_ButtonElement(context, (ButtonElement) semanticObject); 
+					return; 
+				}
+				else break;
 			case SamlPackage.CODE_ELEMENT:
 				if(context == grammarAccess.getCodeElementRule()) {
 					sequence_CodeElement(context, (CodeElement) semanticObject); 
@@ -151,6 +160,12 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 			case SamlPackage.LOOKUP_ELEMENT:
 				if(context == grammarAccess.getLookupElementRule()) {
 					sequence_LookupElement(context, (LookupElement) semanticObject); 
+					return; 
+				}
+				else break;
+			case SamlPackage.MENU_ELEMENT:
+				if(context == grammarAccess.getMenuElementRule()) {
+					sequence_MenuElement(context, (MenuElement) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1064,6 +1079,24 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     (
+	 *         name=ID 
+	 *         text=[TranslationElement|ID]? 
+	 *         enabled=BooleanType? 
+	 *         visible=BooleanType? 
+	 *         labelVisible=BooleanType? 
+	 *         master=[FormFieldElement|ID]? 
+	 *         processButton=BooleanType? 
+	 *         (logic+=LogicElement | menus+=MenuElement)*
+	 *     )
+	 */
+	protected void sequence_ButtonElement(EObject context, ButtonElement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (name=ID id=INT)
 	 */
 	protected void sequence_CodeElement(EObject context, CodeElement semanticObject) {
@@ -1089,6 +1122,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         text=[TranslationElement|ID]? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
+	 *         labelVisible=BooleanType? 
 	 *         master=[FormFieldElement|ID]? 
 	 *         (logic+=LogicElement | fields+=FormFieldElement)*
 	 *     )
@@ -1105,6 +1139,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         text=[TranslationElement|ID]? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
+	 *         labelVisible=BooleanType? 
 	 *         master=[FormFieldElement|ID]? 
 	 *         mandatory=BooleanType? 
 	 *         logic+=LogicElement*
@@ -1122,6 +1157,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         text=[TranslationElement|ID]? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
+	 *         labelVisible=BooleanType? 
 	 *         master=[FormFieldElement|ID]? 
 	 *         mandatory=BooleanType? 
 	 *         logic+=LogicElement*
@@ -1134,7 +1170,14 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=ID modal=BooleanType? columns=INT? text=[TranslationElement|ID]? (logic+=LogicElement | fields+=FormFieldElement)*)
+	 *     (
+	 *         name=ID 
+	 *         modal=BooleanType? 
+	 *         columns=INT? 
+	 *         title=[TranslationElement|ID]? 
+	 *         subtitle=[TranslationElement|ID]? 
+	 *         (logic+=LogicElement | fields+=FormFieldElement)*
+	 *     )
 	 */
 	protected void sequence_FormElement(EObject context, FormElement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1149,6 +1192,9 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         columns=INT? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
+	 *         labelVisible=BooleanType? 
+	 *         borderVisible=BooleanType? 
+	 *         (borderDecoration='empty' | borderDecoration='line' | borderDecoration='section' | borderDecoration='auto') 
 	 *         master=[FormFieldElement|ID]? 
 	 *         (logic+=LogicElement | fields+=FormFieldElement)*
 	 *     )
@@ -1209,6 +1255,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         text=[TranslationElement|ID]? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
+	 *         labelVisible=BooleanType? 
 	 *         master=[FormFieldElement|ID]? 
 	 *         mandatory=BooleanType? 
 	 *         logic+=LogicElement*
@@ -1224,6 +1271,15 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *     (name=ID logic+=LogicElement*)
 	 */
 	protected void sequence_LookupElement(EObject context, LookupElement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=ID text=[TranslationElement|ID]? logic+=LogicElement*)
+	 */
+	protected void sequence_MenuElement(EObject context, MenuElement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1264,6 +1320,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         text=[TranslationElement|ID]? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
+	 *         labelVisible=BooleanType? 
 	 *         master=[FormFieldElement|ID]? 
 	 *         (logic+=LogicElement | fields+=FormFieldElement)*
 	 *     )
@@ -1280,6 +1337,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         text=[TranslationElement|ID]? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
+	 *         labelVisible=BooleanType? 
 	 *         master=[FormFieldElement|ID]? 
 	 *         mandatory=BooleanType? 
 	 *         code=[CodeElement|ID]? 
@@ -1300,6 +1358,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         text=[TranslationElement|ID]? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
+	 *         labelVisible=BooleanType? 
 	 *         master=[FormFieldElement|ID]? 
 	 *         mandatory=BooleanType? 
 	 *         maxlen=INT? 
@@ -1332,7 +1391,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=QualifiedName translations+=LanguageAttribute+)
+	 *     (name=ID translations+=LanguageAttribute+)
 	 */
 	protected void sequence_TranslationElement(EObject context, TranslationElement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

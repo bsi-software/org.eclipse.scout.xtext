@@ -12,6 +12,8 @@ package org.eclipse.scout.saml.saml;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.scout.saml.saml.GroupBoxElement#getColumns <em>Columns</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.GroupBoxElement#getBorderVisible <em>Border Visible</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.GroupBoxElement#getBorderDecoration <em>Border Decoration</em>}</li>
  * </ul>
  * </p>
  *
@@ -46,5 +48,57 @@ public interface GroupBoxElement extends CompositeFieldElement
    * @generated
    */
   void setColumns(int value);
+
+  /**
+   * Returns the value of the '<em><b>Border Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Border Visible</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Border Visible</em>' attribute.
+   * @see #setBorderVisible(String)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getGroupBoxElement_BorderVisible()
+   * @model
+   * @generated
+   */
+  String getBorderVisible();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.GroupBoxElement#getBorderVisible <em>Border Visible</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Border Visible</em>' attribute.
+   * @see #getBorderVisible()
+   * @generated
+   */
+  void setBorderVisible(String value);
+
+  /**
+   * Returns the value of the '<em><b>Border Decoration</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Border Decoration</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Border Decoration</em>' attribute.
+   * @see #setBorderDecoration(String)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getGroupBoxElement_BorderDecoration()
+   * @model
+   * @generated
+   */
+  String getBorderDecoration();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.GroupBoxElement#getBorderDecoration <em>Border Decoration</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Border Decoration</em>' attribute.
+   * @see #getBorderDecoration()
+   * @generated
+   */
+  void setBorderDecoration(String value);
 
 } // GroupBoxElement

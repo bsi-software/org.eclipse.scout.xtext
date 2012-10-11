@@ -33,7 +33,7 @@ ModuleElement: 'module' name=QualifiedName;
 ImportElement: 'import' importedNamespace=QualifiedNameWithWildCard;
 
 
-TranslationElement:'translation' name=QualifiedName (translations+=LanguageAttribute)+;
+TranslationElement:'translation' name=ID (translations+=LanguageAttribute)+;
 LanguageAttribute:lang=ID '=' text=STRING;
 
 
@@ -51,12 +51,13 @@ TemplateElement:'template' name=ID 'definition' '=' definition=STRING/*JvmTypeRe
 
 
 
-FormElement:'form' name=ID (('modal' '=' modal=BooleanType)? & ('columns' '=' columns=INT)? & ('text' '=' text=[TranslationElement])?) 
+FormElement:'form' name=ID (('modal' '=' modal=BooleanType)? & ('columns' '=' columns=INT)? & ('title' '=' title=[TranslationElement])? & ('subtitle' '=' subtitle=[TranslationElement])?)
 	('{' (logic+=LogicElement | fields+=FormFieldElement)* '}')?;
 
 
 // UI FIELDS
-FormFieldElement:CompositeFieldElement | ValueFieldElement | CustomFieldElement;
+
+FormFieldElement:CompositeFieldElement | ValueFieldElement | CustomFieldElement | ButtonElement;
 
 // COMPOSITES
 CompositeFieldElement:SequenceBoxElement|GroupBoxElement;
@@ -65,6 +66,7 @@ SequenceBoxElement:'sequence_box' name=ID
 		('text' '=' text=[TranslationElement])? & 
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
+		('label_visible' '=' labelVisible=BooleanType)? &
 		('master' '=' master=[FormFieldElement])?
 	)
 	('{' (logic+=LogicElement | fields+=FormFieldElement)* '}')?;
@@ -75,6 +77,9 @@ GroupBoxElement:'group_box' name=ID
 		('columns' '=' columns=INT)? &
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
+		('label_visible' '=' labelVisible=BooleanType)? &
+		('border_visible' '=' borderVisible=BooleanType)? &
+		('border_decoration' '=' borderDecoration=('empty'|'line'|'section'|'auto'))
 		('master' '=' master=[FormFieldElement])?
 	)
 	('{' (logic+=LogicElement | fields+=FormFieldElement)* '}')?;
@@ -88,6 +93,7 @@ StringElement:'string' name=ID
 		('text' '=' text=[TranslationElement])? &
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
+		('label_visible' '=' labelVisible=BooleanType)? &
 		('master' '=' master=[FormFieldElement])? &
 		('mandatory' '=' mandatory=BooleanType)? &
 		('maxlen' '=' maxlen=INT)?
@@ -100,6 +106,7 @@ DoubleElement:'double' name=ID
 		('text' '=' text=[TranslationElement])? &
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
+		('label_visible' '=' labelVisible=BooleanType)? &
 		('master' '=' master=[FormFieldElement])? &
 		('mandatory' '=' mandatory=BooleanType)?
 	)
@@ -110,6 +117,7 @@ LongElement:'long' name=ID
 		('text' '=' text=[TranslationElement])? &
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
+		('label_visible' '=' labelVisible=BooleanType)? &
 		('master' '=' master=[FormFieldElement])? &
 		('mandatory' '=' mandatory=BooleanType)?
 	)
@@ -120,6 +128,7 @@ DateElement:'date' name=ID
 		('text' '=' text=[TranslationElement])? &
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
+		('label_visible' '=' labelVisible=BooleanType)? &
 		('master' '=' master=[FormFieldElement])? &
 		('mandatory' '=' mandatory=BooleanType)?
 	)
@@ -130,6 +139,7 @@ SmartfieldElement:'smartfield' name=ID
 		('text' '=' text=[TranslationElement])? &
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
+		('label_visible' '=' labelVisible=BooleanType)? &
 		('master' '=' master=[FormFieldElement])? &
 		('mandatory' '=' mandatory=BooleanType)? &
 		('code' '=' code=[CodeElement])? &
@@ -145,104 +155,29 @@ CustomFieldElement:'custom_field' name=ID
 		('text' '=' text=[TranslationElement])? &
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
+		('label_visible' '=' labelVisible=BooleanType)? &
 		('master' '=' master=[FormFieldElement])?
 	)
 	('{' (logic+=LogicElement | fields+=FormFieldElement)* '}')?;
 
 
-
-/*
-XBlockExpression returns xbase::XBlockExpression: 
-	{XBlockExpression}
-	'{'
-		(expressions+=XExpressionInsideBlock ';')*
-	'}';
-
-XExpressionInsideBlock returns xbase::XExpression:
-	=>XVariableDeclaration | XExpression;
-
-XVariableDeclaration returns xbase::XVariableDeclaration:
-	{XVariableDeclaration}
-	type=JvmTypeReference name=ValidID ('=' right=XExpression)?;
-
-XLiteral returns xbase::XExpression:
-	XBooleanLiteral |
-	XNumberLiteral |
-	XNullLiteral |
-	XStringLiteral |
-	XTypeLiteral
-;
-
-//
-// TODO: this makes code completion freeze for feauture access
-XTypeLiteral returns xbase::XExpression :
-	{xbase::XTypeLiteral} type=[types::JvmType|QualifiedName] '.' 'class'
-;
-
-XUnaryOperation returns xbase::XExpression:
-	{xbase::XUnaryOperation} feature=[types::JvmIdentifiableElement|OpUnary] operand=XMemberFeatureCall
-	| XMemberFeatureCall;
-
-XPrimaryExpression returns xbase::XExpression:
-	XConstructorCall |
-	XFeatureCall |
-	XLiteral |
-	XIfExpression |
-	XForLoopExpression |
-	XWhileExpression |
-	XDoWhileExpression |
-	XThrowExpression |
-	XReturnExpression |
-	XTryCatchFinallyExpression |
-//	=>XCastedExpression |
-	XParenthesizedExpression;
-
-
-//XCastedExpression returns xbase::XExpression :
-//	{xbase::XCastedExpression} 
-//	'(' type=JvmTypeReference ')' target=XMemberFeatureCall
-//;
-
-XMemberFeatureCall returns xbase::XExpression:
-	XPrimaryExpression
-	(=>({xbase::XAssignment.assignable=current} '.' feature=[types::JvmIdentifiableElement|ValidID] OpSingleAssign) value=XAssignment
-	|=>({xbase::XMemberFeatureCall.memberCallTarget=current} ".") 
-		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
-		feature=[types::JvmIdentifiableElement|ValidID] (
-			=>explicitOperationCall?='(' 
-				(
-				    memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-				)? 
-			')')?
-		)*;
-
-XFeatureCall returns xbase::XExpression:
-	{xbase::XFeatureCall}
-	(declaringType=[types::JvmDeclaredType|StaticQualifier])?
-	('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')? 
-	feature=[types::JvmIdentifiableElement|IdOrSuper] 
-	(=>explicitOperationCall?='(' 
-		(
-		    featureCallArguments+=XExpression (',' featureCallArguments+=XExpression)*
-		)? 
-	')')?;
-
-//
-// String[] a = new String[3];
-// String[] b = new String[]{"", "", ""};
-XConstructorCall returns xbase::XConstructorCall:
-	{XConstructorCall}
-	'new' constructor=[types::JvmConstructor|QualifiedName] 
-	(=>'<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?
-	
+// BUTTONS
+ButtonElement:'button' name=ID
 	(
-		(=>'(' 
-			(
-			    arguments+=XExpression (',' arguments+=XExpression)*
-			)? 
-		')')
-	|
-		(=>isArray?='[' ']')
+		('text' '=' text=[TranslationElement])? &
+		('enabled' '=' enabled=BooleanType)? &
+		('visible' '=' visible=BooleanType)? &
+		('label_visible' '=' labelVisible=BooleanType)? &
+		('master' '=' master=[FormFieldElement])? &
+		('process_button' '=' processButton=BooleanType)?
 	)
-	;
- */
+	('{' (logic+=LogicElement | menus+=MenuElement)* '}')?;
+
+
+// MENUS
+MenuElement:'menu' name=ID
+	(
+		('text' '=' text=[TranslationElement])?
+	)
+	('{' logic+=LogicElement* '}')?;
+

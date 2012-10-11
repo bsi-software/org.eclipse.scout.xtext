@@ -13,6 +13,8 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields.container;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.core.ITypeHierarchy;
+import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.GroupBoxElement;
 import org.eclipse.scout.sdk.operation.form.field.GroupBoxNewOperation;
@@ -48,19 +50,52 @@ public class SamlGroupBoxElementImportOperation extends AbstractBoxElementImport
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
     IType createdField = o.getCreatedField();
+    ITypeHierarchy h = createdField.newSupertypeHierarchy(getSamlContext().getMonitor());
 
-    applyColumnsAttribute(getGroupBoxElement().getColumns(), createdField);
+    applyColumnsAttribute(getGroupBoxElement().getColumns(), createdField, h);
+    applyBorderVisibleAttribute(getGroupBoxElement().getBorderVisible(), createdField, h);
+    applyBorderDecorationAttribute(getGroupBoxElement().getBorderDecoration(), createdField, h);
 
     return createdField;
   }
 
-  protected void applyColumnsAttribute(int columns, IType mainBox) throws IllegalArgumentException, CoreException {
-    applyColumnsAttribute(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager(), columns, mainBox);
+  protected void applyColumnsAttribute(int columns, IType mainBox, ITypeHierarchy h) throws IllegalArgumentException, CoreException {
+    applyColumnsAttribute(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager(), columns, mainBox, h);
   }
 
-  public static void applyColumnsAttribute(IProgressMonitor monitor, IWorkingCopyManager workingcopyManager, int columns, IType mainBox) throws IllegalArgumentException, CoreException {
-    if (columns != 2) {
-      overrideMethod(monitor, workingcopyManager, mainBox, null, "getConfiguredGridColumnCount", "return " + columns + ";");
+  public static void applyColumnsAttribute(IProgressMonitor monitor, IWorkingCopyManager workingcopyManager, int columns, IType mainBox, ITypeHierarchy h) throws IllegalArgumentException, CoreException {
+    if (columns != 2 && columns > 0) {
+      overrideMethod(monitor, workingcopyManager, mainBox, h, "getConfiguredGridColumnCount", "return " + columns + ";");
+    }
+  }
+
+  protected void applyBorderVisibleAttribute(String a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    if ("false".equals(a)) {
+      overrideMethod(field, h, "getConfiguredBorderVisible", "return false;");
+    }
+  }
+
+  protected void applyBorderDecorationAttribute(String a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    if (StringUtility.hasText(a)) {
+      overrideMethod(field, h, "getConfiguredBorderDecoration", "return " + getBorderConstant(a) + ";");
+    }
+  }
+
+  private String getBorderConstant(String val) throws IllegalArgumentException {
+    if (val.equals(getSamlContext().getGrammarAccess().getGroupBoxElementAccess().getBorderDecorationEmptyKeyword_2_6_0_2_0_0().getValue())) {
+      return "BORDER_DECORATION_EMPTY";
+    }
+    else if (val.equals(getSamlContext().getGrammarAccess().getGroupBoxElementAccess().getBorderDecorationAutoKeyword_2_6_0_2_0_3().getValue())) {
+      return "BORDER_DECORATION_AUTO";
+    }
+    else if (val.equals(getSamlContext().getGrammarAccess().getGroupBoxElementAccess().getBorderDecorationLineKeyword_2_6_0_2_0_1().getValue())) {
+      return "BORDER_DECORATION_LINE";
+    }
+    else if (val.equals(getSamlContext().getGrammarAccess().getGroupBoxElementAccess().getBorderDecorationSectionKeyword_2_6_0_2_0_2().getValue())) {
+      return "BORDER_DECORATION_SECTION";
+    }
+    else {
+      throw new IllegalArgumentException("unknown border_decoration: " + val);
     }
   }
 

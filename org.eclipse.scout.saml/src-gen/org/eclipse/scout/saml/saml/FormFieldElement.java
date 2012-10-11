@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.scout.saml.saml.FormFieldElement#getText <em>Text</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormFieldElement#getEnabled <em>Enabled</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormFieldElement#getVisible <em>Visible</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.FormFieldElement#getLabelVisible <em>Label Visible</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormFieldElement#getMaster <em>Master</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormFieldElement#getLogic <em>Logic</em>}</li>
  * </ul>
@@ -132,6 +133,32 @@ public interface FormFieldElement extends EObject
    * @generated
    */
   void setVisible(String value);
+
+  /**
+   * Returns the value of the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Label Visible</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Label Visible</em>' attribute.
+   * @see #setLabelVisible(String)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getFormFieldElement_LabelVisible()
+   * @model
+   * @generated
+   */
+  String getLabelVisible();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.FormFieldElement#getLabelVisible <em>Label Visible</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Label Visible</em>' attribute.
+   * @see #getLabelVisible()
+   * @generated
+   */
+  void setLabelVisible(String value);
 
   /**
    * Returns the value of the '<em><b>Master</b></em>' reference.

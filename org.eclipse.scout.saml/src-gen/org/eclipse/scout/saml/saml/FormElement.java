@@ -17,7 +17,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getModal <em>Modal</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getColumns <em>Columns</em>}</li>
- *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getText <em>Text</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getTitle <em>Title</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getSubtitle <em>Subtitle</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getLogic <em>Logic</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getFields <em>Fields</em>}</li>
  * </ul>
@@ -108,30 +109,56 @@ public interface FormElement extends EObject
   void setColumns(int value);
 
   /**
-   * Returns the value of the '<em><b>Text</b></em>' reference.
+   * Returns the value of the '<em><b>Title</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Text</em>' reference isn't clear,
+   * If the meaning of the '<em>Title</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Text</em>' reference.
-   * @see #setText(TranslationElement)
-   * @see org.eclipse.scout.saml.saml.SamlPackage#getFormElement_Text()
+   * @return the value of the '<em>Title</em>' reference.
+   * @see #setTitle(TranslationElement)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getFormElement_Title()
    * @model
    * @generated
    */
-  TranslationElement getText();
+  TranslationElement getTitle();
 
   /**
-   * Sets the value of the '{@link org.eclipse.scout.saml.saml.FormElement#getText <em>Text</em>}' reference.
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.FormElement#getTitle <em>Title</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Text</em>' reference.
-   * @see #getText()
+   * @param value the new value of the '<em>Title</em>' reference.
+   * @see #getTitle()
    * @generated
    */
-  void setText(TranslationElement value);
+  void setTitle(TranslationElement value);
+
+  /**
+   * Returns the value of the '<em><b>Subtitle</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Subtitle</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Subtitle</em>' reference.
+   * @see #setSubtitle(TranslationElement)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getFormElement_Subtitle()
+   * @model
+   * @generated
+   */
+  TranslationElement getSubtitle();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.FormElement#getSubtitle <em>Subtitle</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Subtitle</em>' reference.
+   * @see #getSubtitle()
+   * @generated
+   */
+  void setSubtitle(TranslationElement value);
 
   /**
    * Returns the value of the '<em><b>Logic</b></em>' containment reference list.

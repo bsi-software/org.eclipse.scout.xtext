@@ -34,6 +34,7 @@ import org.eclipse.scout.saml.saml.TranslationElement;
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getText <em>Text</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getEnabled <em>Enabled</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getVisible <em>Visible</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getLabelVisible <em>Label Visible</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getMaster <em>Master</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getLogic <em>Logic</em>}</li>
  * </ul>
@@ -112,6 +113,26 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
    * @ordered
    */
   protected String visible = VISIBLE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getLabelVisible() <em>Label Visible</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLabelVisible()
+   * @generated
+   * @ordered
+   */
+  protected static final String LABEL_VISIBLE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getLabelVisible() <em>Label Visible</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLabelVisible()
+   * @generated
+   * @ordered
+   */
+  protected String labelVisible = LABEL_VISIBLE_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getMaster() <em>Master</em>}' reference.
@@ -271,6 +292,29 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getLabelVisible()
+  {
+    return labelVisible;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setLabelVisible(String newLabelVisible)
+  {
+    String oldLabelVisible = labelVisible;
+    labelVisible = newLabelVisible;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.FORM_FIELD_ELEMENT__LABEL_VISIBLE, oldLabelVisible, labelVisible));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public FormFieldElement getMaster()
   {
     if (master != null && master.eIsProxy())
@@ -358,6 +402,8 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
         return getEnabled();
       case SamlPackage.FORM_FIELD_ELEMENT__VISIBLE:
         return getVisible();
+      case SamlPackage.FORM_FIELD_ELEMENT__LABEL_VISIBLE:
+        return getLabelVisible();
       case SamlPackage.FORM_FIELD_ELEMENT__MASTER:
         if (resolve) return getMaster();
         return basicGetMaster();
@@ -389,6 +435,9 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
         return;
       case SamlPackage.FORM_FIELD_ELEMENT__VISIBLE:
         setVisible((String)newValue);
+        return;
+      case SamlPackage.FORM_FIELD_ELEMENT__LABEL_VISIBLE:
+        setLabelVisible((String)newValue);
         return;
       case SamlPackage.FORM_FIELD_ELEMENT__MASTER:
         setMaster((FormFieldElement)newValue);
@@ -423,6 +472,9 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
       case SamlPackage.FORM_FIELD_ELEMENT__VISIBLE:
         setVisible(VISIBLE_EDEFAULT);
         return;
+      case SamlPackage.FORM_FIELD_ELEMENT__LABEL_VISIBLE:
+        setLabelVisible(LABEL_VISIBLE_EDEFAULT);
+        return;
       case SamlPackage.FORM_FIELD_ELEMENT__MASTER:
         setMaster((FormFieldElement)null);
         return;
@@ -451,6 +503,8 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
         return ENABLED_EDEFAULT == null ? enabled != null : !ENABLED_EDEFAULT.equals(enabled);
       case SamlPackage.FORM_FIELD_ELEMENT__VISIBLE:
         return VISIBLE_EDEFAULT == null ? visible != null : !VISIBLE_EDEFAULT.equals(visible);
+      case SamlPackage.FORM_FIELD_ELEMENT__LABEL_VISIBLE:
+        return LABEL_VISIBLE_EDEFAULT == null ? labelVisible != null : !LABEL_VISIBLE_EDEFAULT.equals(labelVisible);
       case SamlPackage.FORM_FIELD_ELEMENT__MASTER:
         return master != null;
       case SamlPackage.FORM_FIELD_ELEMENT__LOGIC:
@@ -476,6 +530,8 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
     result.append(enabled);
     result.append(", visible: ");
     result.append(visible);
+    result.append(", labelVisible: ");
+    result.append(labelVisible);
     result.append(')');
     return result.toString();
   }

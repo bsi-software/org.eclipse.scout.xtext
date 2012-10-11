@@ -19,6 +19,8 @@ import org.eclipse.scout.saml.saml.SamlPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.GroupBoxElementImpl#getColumns <em>Columns</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.GroupBoxElementImpl#getBorderVisible <em>Border Visible</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.GroupBoxElementImpl#getBorderDecoration <em>Border Decoration</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,6 +47,46 @@ public class GroupBoxElementImpl extends CompositeFieldElementImpl implements Gr
    * @ordered
    */
   protected int columns = COLUMNS_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getBorderVisible() <em>Border Visible</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getBorderVisible()
+   * @generated
+   * @ordered
+   */
+  protected static final String BORDER_VISIBLE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getBorderVisible() <em>Border Visible</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getBorderVisible()
+   * @generated
+   * @ordered
+   */
+  protected String borderVisible = BORDER_VISIBLE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getBorderDecoration() <em>Border Decoration</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getBorderDecoration()
+   * @generated
+   * @ordered
+   */
+  protected static final String BORDER_DECORATION_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getBorderDecoration() <em>Border Decoration</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getBorderDecoration()
+   * @generated
+   * @ordered
+   */
+  protected String borderDecoration = BORDER_DECORATION_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -95,6 +137,52 @@ public class GroupBoxElementImpl extends CompositeFieldElementImpl implements Gr
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getBorderVisible()
+  {
+    return borderVisible;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setBorderVisible(String newBorderVisible)
+  {
+    String oldBorderVisible = borderVisible;
+    borderVisible = newBorderVisible;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.GROUP_BOX_ELEMENT__BORDER_VISIBLE, oldBorderVisible, borderVisible));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getBorderDecoration()
+  {
+    return borderDecoration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setBorderDecoration(String newBorderDecoration)
+  {
+    String oldBorderDecoration = borderDecoration;
+    borderDecoration = newBorderDecoration;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.GROUP_BOX_ELEMENT__BORDER_DECORATION, oldBorderDecoration, borderDecoration));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -102,6 +190,10 @@ public class GroupBoxElementImpl extends CompositeFieldElementImpl implements Gr
     {
       case SamlPackage.GROUP_BOX_ELEMENT__COLUMNS:
         return getColumns();
+      case SamlPackage.GROUP_BOX_ELEMENT__BORDER_VISIBLE:
+        return getBorderVisible();
+      case SamlPackage.GROUP_BOX_ELEMENT__BORDER_DECORATION:
+        return getBorderDecoration();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -118,6 +210,12 @@ public class GroupBoxElementImpl extends CompositeFieldElementImpl implements Gr
     {
       case SamlPackage.GROUP_BOX_ELEMENT__COLUMNS:
         setColumns((Integer)newValue);
+        return;
+      case SamlPackage.GROUP_BOX_ELEMENT__BORDER_VISIBLE:
+        setBorderVisible((String)newValue);
+        return;
+      case SamlPackage.GROUP_BOX_ELEMENT__BORDER_DECORATION:
+        setBorderDecoration((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -136,6 +234,12 @@ public class GroupBoxElementImpl extends CompositeFieldElementImpl implements Gr
       case SamlPackage.GROUP_BOX_ELEMENT__COLUMNS:
         setColumns(COLUMNS_EDEFAULT);
         return;
+      case SamlPackage.GROUP_BOX_ELEMENT__BORDER_VISIBLE:
+        setBorderVisible(BORDER_VISIBLE_EDEFAULT);
+        return;
+      case SamlPackage.GROUP_BOX_ELEMENT__BORDER_DECORATION:
+        setBorderDecoration(BORDER_DECORATION_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -152,6 +256,10 @@ public class GroupBoxElementImpl extends CompositeFieldElementImpl implements Gr
     {
       case SamlPackage.GROUP_BOX_ELEMENT__COLUMNS:
         return columns != COLUMNS_EDEFAULT;
+      case SamlPackage.GROUP_BOX_ELEMENT__BORDER_VISIBLE:
+        return BORDER_VISIBLE_EDEFAULT == null ? borderVisible != null : !BORDER_VISIBLE_EDEFAULT.equals(borderVisible);
+      case SamlPackage.GROUP_BOX_ELEMENT__BORDER_DECORATION:
+        return BORDER_DECORATION_EDEFAULT == null ? borderDecoration != null : !BORDER_DECORATION_EDEFAULT.equals(borderDecoration);
     }
     return super.eIsSet(featureID);
   }
@@ -169,6 +277,10 @@ public class GroupBoxElementImpl extends CompositeFieldElementImpl implements Gr
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (columns: ");
     result.append(columns);
+    result.append(", borderVisible: ");
+    result.append(borderVisible);
+    result.append(", borderDecoration: ");
+    result.append(borderDecoration);
     result.append(')');
     return result.toString();
   }

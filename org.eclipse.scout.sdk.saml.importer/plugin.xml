@@ -36,6 +36,10 @@
             importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.SamlCustomFieldElementImportOperation"
             samlFormElement="org.eclipse.scout.saml.saml.CustomFieldElement">
       </operation>
+      <operation
+            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.SamlButtonElementImportOperation"
+            samlFormElement="org.eclipse.scout.saml.saml.ButtonElement">
+      </operation>
    </extension>
 
 </plugin>

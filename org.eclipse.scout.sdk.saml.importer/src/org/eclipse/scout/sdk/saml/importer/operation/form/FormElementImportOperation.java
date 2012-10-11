@@ -18,6 +18,7 @@ import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.saml.saml.FormElement;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.LogicElement;
+import org.eclipse.scout.saml.saml.TranslationElement;
 import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.form.FormStackNewOperation;
 import org.eclipse.scout.sdk.operation.service.ServiceDeleteOperation;
@@ -74,6 +75,12 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
     }
   }
 
+  private void applySubtitleAttribute(TranslationElement a, IType field) throws CoreException, IllegalArgumentException {
+    if (a != null) {
+      overrideMethod(field, null, "getConfiguredSubTitle", "return TEXTS.get(\"" + a.getName() + "\");");
+    }
+  }
+
   @Override
   public void run() throws CoreException, IllegalArgumentException {
     deleteExistingForm();
@@ -124,7 +131,7 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
 
   private void createFormStack() throws CoreException {
     String formName = getFormElement().getName();
-    String nlsKey = getFormElement().getText().getName();
+    String nlsKey = getFormElement().getTitle().getName();
 
     FormStackNewOperation op = new FormStackNewOperation(false);
     op.setFormatSource(false);
@@ -199,7 +206,8 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
 
   private void applyFormAttributes() throws IllegalArgumentException, CoreException {
     applyModalAttribute(getFormElement().getModal(), getCreatedForm());
-    SamlGroupBoxElementImportOperation.applyColumnsAttribute(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager(), getFormElement().getColumns(), getCreatedMainBox());
+    applySubtitleAttribute(getFormElement().getSubtitle(), getCreatedForm());
+    SamlGroupBoxElementImportOperation.applyColumnsAttribute(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager(), getFormElement().getColumns(), getCreatedMainBox(), null);
   }
 
   private void fillFormLogic() throws CoreException {

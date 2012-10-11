@@ -61,6 +61,7 @@ public class SamlSmartfieldElementImportOperation extends AbstractValueFieldElem
     IType createdField = o.getCreatedField();
     ITypeHierarchy h = createdField.newSupertypeHierarchy(getSamlContext().getMonitor());
 
+    overrideMethod(createdField, h, "getConfiguredTreat0AsNull", "return false;");
     applyCodeAttribute(getSmartfieldElement().getCode(), createdField, h);
     applyLookupAttribute(getSmartfieldElement().getLookup(), createdField, h);
 

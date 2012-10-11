@@ -180,6 +180,16 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
         return createCustomFieldElementAdapter();
       }
       @Override
+      public Adapter caseButtonElement(ButtonElement object)
+      {
+        return createButtonElementAdapter();
+      }
+      @Override
+      public Adapter caseMenuElement(MenuElement object)
+      {
+        return createMenuElementAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -512,6 +522,36 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCustomFieldElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.ButtonElement <em>Button Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.scout.saml.saml.ButtonElement
+   * @generated
+   */
+  public Adapter createButtonElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.MenuElement <em>Menu Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.scout.saml.saml.MenuElement
+   * @generated
+   */
+  public Adapter createMenuElementAdapter()
   {
     return null;
   }

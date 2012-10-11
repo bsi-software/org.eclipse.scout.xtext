@@ -481,13 +481,22 @@ public interface SamlPackage extends EPackage
   int FORM_ELEMENT__COLUMNS = 2;
 
   /**
-   * The feature id for the '<em><b>Text</b></em>' reference.
+   * The feature id for the '<em><b>Title</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FORM_ELEMENT__TEXT = 3;
+  int FORM_ELEMENT__TITLE = 3;
+
+  /**
+   * The feature id for the '<em><b>Subtitle</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORM_ELEMENT__SUBTITLE = 4;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -496,7 +505,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_ELEMENT__LOGIC = 4;
+  int FORM_ELEMENT__LOGIC = 5;
 
   /**
    * The feature id for the '<em><b>Fields</b></em>' containment reference list.
@@ -505,7 +514,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_ELEMENT__FIELDS = 5;
+  int FORM_ELEMENT__FIELDS = 6;
 
   /**
    * The number of structural features of the '<em>Form Element</em>' class.
@@ -514,7 +523,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_ELEMENT_FEATURE_COUNT = 6;
+  int FORM_ELEMENT_FEATURE_COUNT = 7;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl <em>Form Field Element</em>}' class.
@@ -563,13 +572,22 @@ public interface SamlPackage extends EPackage
   int FORM_FIELD_ELEMENT__VISIBLE = 3;
 
   /**
+   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORM_FIELD_ELEMENT__LABEL_VISIBLE = 4;
+
+  /**
    * The feature id for the '<em><b>Master</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FORM_FIELD_ELEMENT__MASTER = 4;
+  int FORM_FIELD_ELEMENT__MASTER = 5;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -578,7 +596,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_FIELD_ELEMENT__LOGIC = 5;
+  int FORM_FIELD_ELEMENT__LOGIC = 6;
 
   /**
    * The number of structural features of the '<em>Form Field Element</em>' class.
@@ -587,7 +605,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_FIELD_ELEMENT_FEATURE_COUNT = 6;
+  int FORM_FIELD_ELEMENT_FEATURE_COUNT = 7;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.CompositeFieldElementImpl <em>Composite Field Element</em>}' class.
@@ -634,6 +652,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int COMPOSITE_FIELD_ELEMENT__VISIBLE = FORM_FIELD_ELEMENT__VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPOSITE_FIELD_ELEMENT__LABEL_VISIBLE = FORM_FIELD_ELEMENT__LABEL_VISIBLE;
 
   /**
    * The feature id for the '<em><b>Master</b></em>' reference.
@@ -718,6 +745,15 @@ public interface SamlPackage extends EPackage
   int SEQUENCE_BOX_ELEMENT__VISIBLE = COMPOSITE_FIELD_ELEMENT__VISIBLE;
 
   /**
+   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SEQUENCE_BOX_ELEMENT__LABEL_VISIBLE = COMPOSITE_FIELD_ELEMENT__LABEL_VISIBLE;
+
+  /**
    * The feature id for the '<em><b>Master</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -800,6 +836,15 @@ public interface SamlPackage extends EPackage
   int GROUP_BOX_ELEMENT__VISIBLE = COMPOSITE_FIELD_ELEMENT__VISIBLE;
 
   /**
+   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_BOX_ELEMENT__LABEL_VISIBLE = COMPOSITE_FIELD_ELEMENT__LABEL_VISIBLE;
+
+  /**
    * The feature id for the '<em><b>Master</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -836,13 +881,31 @@ public interface SamlPackage extends EPackage
   int GROUP_BOX_ELEMENT__COLUMNS = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Border Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_BOX_ELEMENT__BORDER_VISIBLE = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Border Decoration</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_BOX_ELEMENT__BORDER_DECORATION = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
    * The number of structural features of the '<em>Group Box Element</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GROUP_BOX_ELEMENT_FEATURE_COUNT = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+  int GROUP_BOX_ELEMENT_FEATURE_COUNT = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.ValueFieldElementImpl <em>Value Field Element</em>}' class.
@@ -889,6 +952,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int VALUE_FIELD_ELEMENT__VISIBLE = FORM_FIELD_ELEMENT__VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE_FIELD_ELEMENT__LABEL_VISIBLE = FORM_FIELD_ELEMENT__LABEL_VISIBLE;
 
   /**
    * The feature id for the '<em><b>Master</b></em>' reference.
@@ -971,6 +1043,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int STRING_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT__LABEL_VISIBLE = VALUE_FIELD_ELEMENT__LABEL_VISIBLE;
 
   /**
    * The feature id for the '<em><b>Master</b></em>' reference.
@@ -1064,6 +1145,15 @@ public interface SamlPackage extends EPackage
   int DOUBLE_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
 
   /**
+   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DOUBLE_ELEMENT__LABEL_VISIBLE = VALUE_FIELD_ELEMENT__LABEL_VISIBLE;
+
+  /**
    * The feature id for the '<em><b>Master</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1144,6 +1234,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int LONG_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LONG_ELEMENT__LABEL_VISIBLE = VALUE_FIELD_ELEMENT__LABEL_VISIBLE;
 
   /**
    * The feature id for the '<em><b>Master</b></em>' reference.
@@ -1228,6 +1327,15 @@ public interface SamlPackage extends EPackage
   int DATE_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
 
   /**
+   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATE_ELEMENT__LABEL_VISIBLE = VALUE_FIELD_ELEMENT__LABEL_VISIBLE;
+
+  /**
    * The feature id for the '<em><b>Master</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1308,6 +1416,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int SMARTFIELD_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SMARTFIELD_ELEMENT__LABEL_VISIBLE = VALUE_FIELD_ELEMENT__LABEL_VISIBLE;
 
   /**
    * The feature id for the '<em><b>Master</b></em>' reference.
@@ -1419,6 +1536,15 @@ public interface SamlPackage extends EPackage
   int CUSTOM_FIELD_ELEMENT__VISIBLE = FORM_FIELD_ELEMENT__VISIBLE;
 
   /**
+   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CUSTOM_FIELD_ELEMENT__LABEL_VISIBLE = FORM_FIELD_ELEMENT__LABEL_VISIBLE;
+
+  /**
    * The feature id for the '<em><b>Master</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1462,6 +1588,152 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int CUSTOM_FIELD_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.ButtonElementImpl <em>Button Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.ButtonElementImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getButtonElement()
+   * @generated
+   */
+  int BUTTON_ELEMENT = 21;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUTTON_ELEMENT__NAME = FORM_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUTTON_ELEMENT__TEXT = FORM_FIELD_ELEMENT__TEXT;
+
+  /**
+   * The feature id for the '<em><b>Enabled</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUTTON_ELEMENT__ENABLED = FORM_FIELD_ELEMENT__ENABLED;
+
+  /**
+   * The feature id for the '<em><b>Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUTTON_ELEMENT__VISIBLE = FORM_FIELD_ELEMENT__VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUTTON_ELEMENT__LABEL_VISIBLE = FORM_FIELD_ELEMENT__LABEL_VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Master</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUTTON_ELEMENT__MASTER = FORM_FIELD_ELEMENT__MASTER;
+
+  /**
+   * The feature id for the '<em><b>Logic</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUTTON_ELEMENT__LOGIC = FORM_FIELD_ELEMENT__LOGIC;
+
+  /**
+   * The feature id for the '<em><b>Process Button</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUTTON_ELEMENT__PROCESS_BUTTON = FORM_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Menus</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUTTON_ELEMENT__MENUS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Button Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUTTON_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.MenuElementImpl <em>Menu Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.MenuElementImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getMenuElement()
+   * @generated
+   */
+  int MENU_ELEMENT = 22;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MENU_ELEMENT__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MENU_ELEMENT__TEXT = 1;
+
+  /**
+   * The feature id for the '<em><b>Logic</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MENU_ELEMENT__LOGIC = 2;
+
+  /**
+   * The number of structural features of the '<em>Menu Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MENU_ELEMENT_FEATURE_COUNT = 3;
 
 
   /**
@@ -1862,15 +2134,26 @@ public interface SamlPackage extends EPackage
   EAttribute getFormElement_Columns();
 
   /**
-   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.FormElement#getText <em>Text</em>}'.
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.FormElement#getTitle <em>Title</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Text</em>'.
-   * @see org.eclipse.scout.saml.saml.FormElement#getText()
+   * @return the meta object for the reference '<em>Title</em>'.
+   * @see org.eclipse.scout.saml.saml.FormElement#getTitle()
    * @see #getFormElement()
    * @generated
    */
-  EReference getFormElement_Text();
+  EReference getFormElement_Title();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.FormElement#getSubtitle <em>Subtitle</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Subtitle</em>'.
+   * @see org.eclipse.scout.saml.saml.FormElement#getSubtitle()
+   * @see #getFormElement()
+   * @generated
+   */
+  EReference getFormElement_Subtitle();
 
   /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.FormElement#getLogic <em>Logic</em>}'.
@@ -1949,6 +2232,17 @@ public interface SamlPackage extends EPackage
   EAttribute getFormFieldElement_Visible();
 
   /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FormFieldElement#getLabelVisible <em>Label Visible</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Label Visible</em>'.
+   * @see org.eclipse.scout.saml.saml.FormFieldElement#getLabelVisible()
+   * @see #getFormFieldElement()
+   * @generated
+   */
+  EAttribute getFormFieldElement_LabelVisible();
+
+  /**
    * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.FormFieldElement#getMaster <em>Master</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2021,6 +2315,28 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EAttribute getGroupBoxElement_Columns();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.GroupBoxElement#getBorderVisible <em>Border Visible</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Border Visible</em>'.
+   * @see org.eclipse.scout.saml.saml.GroupBoxElement#getBorderVisible()
+   * @see #getGroupBoxElement()
+   * @generated
+   */
+  EAttribute getGroupBoxElement_BorderVisible();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.GroupBoxElement#getBorderDecoration <em>Border Decoration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Border Decoration</em>'.
+   * @see org.eclipse.scout.saml.saml.GroupBoxElement#getBorderDecoration()
+   * @see #getGroupBoxElement()
+   * @generated
+   */
+  EAttribute getGroupBoxElement_BorderDecoration();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.ValueFieldElement <em>Value Field Element</em>}'.
@@ -2168,6 +2484,81 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EReference getCustomFieldElement_Fields();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.ButtonElement <em>Button Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Button Element</em>'.
+   * @see org.eclipse.scout.saml.saml.ButtonElement
+   * @generated
+   */
+  EClass getButtonElement();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.ButtonElement#getProcessButton <em>Process Button</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Process Button</em>'.
+   * @see org.eclipse.scout.saml.saml.ButtonElement#getProcessButton()
+   * @see #getButtonElement()
+   * @generated
+   */
+  EAttribute getButtonElement_ProcessButton();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.ButtonElement#getMenus <em>Menus</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Menus</em>'.
+   * @see org.eclipse.scout.saml.saml.ButtonElement#getMenus()
+   * @see #getButtonElement()
+   * @generated
+   */
+  EReference getButtonElement_Menus();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.MenuElement <em>Menu Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Menu Element</em>'.
+   * @see org.eclipse.scout.saml.saml.MenuElement
+   * @generated
+   */
+  EClass getMenuElement();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.MenuElement#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.eclipse.scout.saml.saml.MenuElement#getName()
+   * @see #getMenuElement()
+   * @generated
+   */
+  EAttribute getMenuElement_Name();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.MenuElement#getText <em>Text</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Text</em>'.
+   * @see org.eclipse.scout.saml.saml.MenuElement#getText()
+   * @see #getMenuElement()
+   * @generated
+   */
+  EReference getMenuElement_Text();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.MenuElement#getLogic <em>Logic</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Logic</em>'.
+   * @see org.eclipse.scout.saml.saml.MenuElement#getLogic()
+   * @see #getMenuElement()
+   * @generated
+   */
+  EReference getMenuElement_Logic();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -2509,12 +2900,20 @@ public interface SamlPackage extends EPackage
     EAttribute FORM_ELEMENT__COLUMNS = eINSTANCE.getFormElement_Columns();
 
     /**
-     * The meta object literal for the '<em><b>Text</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Title</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FORM_ELEMENT__TEXT = eINSTANCE.getFormElement_Text();
+    EReference FORM_ELEMENT__TITLE = eINSTANCE.getFormElement_Title();
+
+    /**
+     * The meta object literal for the '<em><b>Subtitle</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FORM_ELEMENT__SUBTITLE = eINSTANCE.getFormElement_Subtitle();
 
     /**
      * The meta object literal for the '<em><b>Logic</b></em>' containment reference list feature.
@@ -2573,6 +2972,14 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EAttribute FORM_FIELD_ELEMENT__VISIBLE = eINSTANCE.getFormFieldElement_Visible();
+
+    /**
+     * The meta object literal for the '<em><b>Label Visible</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FORM_FIELD_ELEMENT__LABEL_VISIBLE = eINSTANCE.getFormFieldElement_LabelVisible();
 
     /**
      * The meta object literal for the '<em><b>Master</b></em>' reference feature.
@@ -2635,6 +3042,22 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EAttribute GROUP_BOX_ELEMENT__COLUMNS = eINSTANCE.getGroupBoxElement_Columns();
+
+    /**
+     * The meta object literal for the '<em><b>Border Visible</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GROUP_BOX_ELEMENT__BORDER_VISIBLE = eINSTANCE.getGroupBoxElement_BorderVisible();
+
+    /**
+     * The meta object literal for the '<em><b>Border Decoration</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GROUP_BOX_ELEMENT__BORDER_DECORATION = eINSTANCE.getGroupBoxElement_BorderDecoration();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.ValueFieldElementImpl <em>Value Field Element</em>}' class.
@@ -2761,6 +3184,66 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EReference CUSTOM_FIELD_ELEMENT__FIELDS = eINSTANCE.getCustomFieldElement_Fields();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.ButtonElementImpl <em>Button Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.ButtonElementImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getButtonElement()
+     * @generated
+     */
+    EClass BUTTON_ELEMENT = eINSTANCE.getButtonElement();
+
+    /**
+     * The meta object literal for the '<em><b>Process Button</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BUTTON_ELEMENT__PROCESS_BUTTON = eINSTANCE.getButtonElement_ProcessButton();
+
+    /**
+     * The meta object literal for the '<em><b>Menus</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BUTTON_ELEMENT__MENUS = eINSTANCE.getButtonElement_Menus();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.MenuElementImpl <em>Menu Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.MenuElementImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getMenuElement()
+     * @generated
+     */
+    EClass MENU_ELEMENT = eINSTANCE.getMenuElement();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MENU_ELEMENT__NAME = eINSTANCE.getMenuElement_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Text</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MENU_ELEMENT__TEXT = eINSTANCE.getMenuElement_Text();
+
+    /**
+     * The meta object literal for the '<em><b>Logic</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MENU_ELEMENT__LOGIC = eINSTANCE.getMenuElement_Logic();
 
   }
 

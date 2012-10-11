@@ -66,15 +66,17 @@ public abstract class AbstractSamlFormFieldElementOperation extends AbstractSaml
     applyMasterAttribute(getFieldElement().getMaster(), field, h);
     applyTextAttribute(getFieldElement().getText(), field, h);
     applyVisibleAttribute(getFieldElement().getVisible(), field, h);
+    applyLabelVisibleAttribute(getFieldElement().getLabelVisible(), field, h);
   }
 
   protected void applyTextAttribute(TranslationElement a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
     if (a != null) {
-      // field has a label
       overrideMethod(field, h, "getConfiguredLabel", "return TEXTS.get(\"" + a.getName() + "\");");
     }
-    else {
-      // field has no label: hide it
+  }
+
+  protected void applyLabelVisibleAttribute(String a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    if ("false".equals(a)) {
       overrideMethod(field, h, "getConfiguredLabelVisible", "return false;");
     }
   }

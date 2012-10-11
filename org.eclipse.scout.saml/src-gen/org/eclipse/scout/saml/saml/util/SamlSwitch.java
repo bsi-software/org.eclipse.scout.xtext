@@ -236,6 +236,21 @@ public class SamlSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case SamlPackage.BUTTON_ELEMENT:
+      {
+        ButtonElement buttonElement = (ButtonElement)theEObject;
+        T result = caseButtonElement(buttonElement);
+        if (result == null) result = caseFormFieldElement(buttonElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.MENU_ELEMENT:
+      {
+        MenuElement menuElement = (MenuElement)theEObject;
+        T result = caseMenuElement(menuElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -572,6 +587,38 @@ public class SamlSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCustomFieldElement(CustomFieldElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Button Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Button Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseButtonElement(ButtonElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Menu Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Menu Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMenuElement(MenuElement object)
   {
     return null;
   }

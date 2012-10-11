@@ -34,7 +34,8 @@ import org.eclipse.scout.saml.saml.TranslationElement;
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getModal <em>Modal</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getColumns <em>Columns</em>}</li>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getText <em>Text</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getTitle <em>Title</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getSubtitle <em>Subtitle</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getLogic <em>Logic</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getFields <em>Fields</em>}</li>
  * </ul>
@@ -105,14 +106,24 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
   protected int columns = COLUMNS_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getText() <em>Text</em>}' reference.
+   * The cached value of the '{@link #getTitle() <em>Title</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getText()
+   * @see #getTitle()
    * @generated
    * @ordered
    */
-  protected TranslationElement text;
+  protected TranslationElement title;
+
+  /**
+   * The cached value of the '{@link #getSubtitle() <em>Subtitle</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSubtitle()
+   * @generated
+   * @ordered
+   */
+  protected TranslationElement subtitle;
 
   /**
    * The cached value of the '{@link #getLogic() <em>Logic</em>}' containment reference list.
@@ -229,19 +240,19 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
    * <!-- end-user-doc -->
    * @generated
    */
-  public TranslationElement getText()
+  public TranslationElement getTitle()
   {
-    if (text != null && text.eIsProxy())
+    if (title != null && title.eIsProxy())
     {
-      InternalEObject oldText = (InternalEObject)text;
-      text = (TranslationElement)eResolveProxy(oldText);
-      if (text != oldText)
+      InternalEObject oldTitle = (InternalEObject)title;
+      title = (TranslationElement)eResolveProxy(oldTitle);
+      if (title != oldTitle)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SamlPackage.FORM_ELEMENT__TEXT, oldText, text));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SamlPackage.FORM_ELEMENT__TITLE, oldTitle, title));
       }
     }
-    return text;
+    return title;
   }
 
   /**
@@ -249,9 +260,9 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
    * <!-- end-user-doc -->
    * @generated
    */
-  public TranslationElement basicGetText()
+  public TranslationElement basicGetTitle()
   {
-    return text;
+    return title;
   }
 
   /**
@@ -259,12 +270,55 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setText(TranslationElement newText)
+  public void setTitle(TranslationElement newTitle)
   {
-    TranslationElement oldText = text;
-    text = newText;
+    TranslationElement oldTitle = title;
+    title = newTitle;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.FORM_ELEMENT__TEXT, oldText, text));
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.FORM_ELEMENT__TITLE, oldTitle, title));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TranslationElement getSubtitle()
+  {
+    if (subtitle != null && subtitle.eIsProxy())
+    {
+      InternalEObject oldSubtitle = (InternalEObject)subtitle;
+      subtitle = (TranslationElement)eResolveProxy(oldSubtitle);
+      if (subtitle != oldSubtitle)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SamlPackage.FORM_ELEMENT__SUBTITLE, oldSubtitle, subtitle));
+      }
+    }
+    return subtitle;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TranslationElement basicGetSubtitle()
+  {
+    return subtitle;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSubtitle(TranslationElement newSubtitle)
+  {
+    TranslationElement oldSubtitle = subtitle;
+    subtitle = newSubtitle;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.FORM_ELEMENT__SUBTITLE, oldSubtitle, subtitle));
   }
 
   /**
@@ -329,9 +383,12 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
         return getModal();
       case SamlPackage.FORM_ELEMENT__COLUMNS:
         return getColumns();
-      case SamlPackage.FORM_ELEMENT__TEXT:
-        if (resolve) return getText();
-        return basicGetText();
+      case SamlPackage.FORM_ELEMENT__TITLE:
+        if (resolve) return getTitle();
+        return basicGetTitle();
+      case SamlPackage.FORM_ELEMENT__SUBTITLE:
+        if (resolve) return getSubtitle();
+        return basicGetSubtitle();
       case SamlPackage.FORM_ELEMENT__LOGIC:
         return getLogic();
       case SamlPackage.FORM_ELEMENT__FIELDS:
@@ -360,8 +417,11 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
       case SamlPackage.FORM_ELEMENT__COLUMNS:
         setColumns((Integer)newValue);
         return;
-      case SamlPackage.FORM_ELEMENT__TEXT:
-        setText((TranslationElement)newValue);
+      case SamlPackage.FORM_ELEMENT__TITLE:
+        setTitle((TranslationElement)newValue);
+        return;
+      case SamlPackage.FORM_ELEMENT__SUBTITLE:
+        setSubtitle((TranslationElement)newValue);
         return;
       case SamlPackage.FORM_ELEMENT__LOGIC:
         getLogic().clear();
@@ -394,8 +454,11 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
       case SamlPackage.FORM_ELEMENT__COLUMNS:
         setColumns(COLUMNS_EDEFAULT);
         return;
-      case SamlPackage.FORM_ELEMENT__TEXT:
-        setText((TranslationElement)null);
+      case SamlPackage.FORM_ELEMENT__TITLE:
+        setTitle((TranslationElement)null);
+        return;
+      case SamlPackage.FORM_ELEMENT__SUBTITLE:
+        setSubtitle((TranslationElement)null);
         return;
       case SamlPackage.FORM_ELEMENT__LOGIC:
         getLogic().clear();
@@ -423,8 +486,10 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
         return MODAL_EDEFAULT == null ? modal != null : !MODAL_EDEFAULT.equals(modal);
       case SamlPackage.FORM_ELEMENT__COLUMNS:
         return columns != COLUMNS_EDEFAULT;
-      case SamlPackage.FORM_ELEMENT__TEXT:
-        return text != null;
+      case SamlPackage.FORM_ELEMENT__TITLE:
+        return title != null;
+      case SamlPackage.FORM_ELEMENT__SUBTITLE:
+        return subtitle != null;
       case SamlPackage.FORM_ELEMENT__LOGIC:
         return logic != null && !logic.isEmpty();
       case SamlPackage.FORM_ELEMENT__FIELDS:
