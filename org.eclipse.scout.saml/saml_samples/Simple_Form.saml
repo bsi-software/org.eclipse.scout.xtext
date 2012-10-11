@@ -1,10 +1,8 @@
-<<<<<<< HEAD
 module ch.raiffeisen.dialba.common
 
+import ch.raiffeisen.dialba.common.shared.beans.*
 
-// ========================
-// TRANSLATIONS
-// ========================
+
 translation AboutMenu de="&Info..."    
 translation Abschluss de="Abschluss" en="bla"
 translation AbsichernRefinanz de="Absichern / Refinanz."
@@ -26,7 +24,7 @@ translation ContactVendorMenu de="BSI kontaktieren"
 translation DIALBA2020 de="DIALBA2020"
 translation DIALBA2020Title de="DIALBA2020 - Backoffice  - Benutzer: Max Muster - Bank: Raiffeisen Landdorf"
 translation DatumEmission de="Datum / Emission"
-translation Depot de="Depot"
+translation DepotText de="Depot"
 translation DepotCode de="Depot "
 translation DepotTwin de="DepotTwin"
 translation Dienste de="Dienste"
@@ -89,220 +87,11 @@ translation Vorsorgen de="Vorsorgen"
 translation Zahlen de="Zahlen"
 translation Zentralregister de="Zentralregister"
 translation ZentralregisterUmschF12 de="Zentralregister (Umsch + F12)" 
-translation Zinssatz de="Zinssatz"
+translation ZinssatzText de="Zinssatz"
 translation ZinstermAuslauf de="Zinsterm / Auslauf"
 translation ZregNumber de="ZREG-Nr."
 translation ZregQuickSearchForm de="Zreg Schnellsuche"
 translation koEmissionTitle de="KO Emission"
-
-
-// ========================
-// CODE TYPES
-// ========================
-code KOArt id=1587999
-code KOLaufzeit id=9687
-code KOTiteldruck id=2569
-
-
-// ========================
-// LOOKUP CALLS & SERVICES
-// ========================
-lookup DepotNumber {
-	logic type=global runat=server {
-		"private LookupRow[] createDummyData() {
-  		  return new LookupRow[]{new LookupRow(new DepotId(), \"Depot id 1\"), new LookupRow(new DepotId(), \"Depot id 2\"), new LookupRow(new DepotId(), \"Depot id 3\")};
-  		}"
-    }
-	logic type=all runat=server { "return createDummyData();" }
-}
-
-lookup OldObliNumber {
-	java GetDataByAll runat=server {
-		"return new LookupRow[]{new LookupRow(1L, \"Value 1\"), new LookupRow(2L, \"Value 2\"), new LookupRow(3L, \"Value 3\")};"
-	}
-	logic type=all exec=GetDataByAll
-}
-
-lookup KontoByZrnr {
-	logic type=global runat=server { 
-		"private LookupRow[] createDummyData() {
-  		  return new LookupRow[]{new LookupRow(new KontoData(), \"KontoData id 1\"), new LookupRow(new KontoData(), \"KontoData id 2\"), new LookupRow(new KontoData(), \"KontoData id 3\")};
-  		}"
-  	}
-	logic type=all runat=server { "return createDummyData();" }
-}
-
-
-
-// ========================
-// UI TEMPLATE DEFINITIONS
-// ========================
-/*
-
-template zreg_sequence_box class=ch.raiffeisen.dialba.common.client.ui.forms.fields.Zregsequence_boxAbs replaces=sequence_box
-template dialba_smartfield class=ch.raiffeisen.dialba.common.client.ui.forms.fields.AbstractDialbaSmartField replaces=smartfield
-
-*/
-
-
-
-// ========================
-// FORMS
-// ========================
-form Rka001_gen modal=true text=koEmissionTitle columns=2 {
-	/* Named Java code snippets that are used more than once */
-	java EvalForm runat=client {
-		"evaluateZinstermFields();
-	     evaluateBuchungstext1And2();"
-	}
-	
-	/* form level logic */
-	logic type=global runat=client {
-		"private void evaluateBuchungstext1And2() throws ProcessingException {
-	        System.out.println(\"client method evaluateBuchungstext1And2\");	
-		}
-	
-		private void evaluateZinstermFields() {
-	        System.out.println(\"client method evaluateZinstermFields\");
-	    }"
-	}
-	
-	logic type=global runat=server {
-		"private static void makeZentralRegister(Rka001_genFormData formData) {
-	        System.out.println(\"server method makeZentralRegister\");
-	    }
-	
-		private static void makeKassenobligationBewegung(Rka001_genFormData formData, Integer laufNr, Integer sollHaben) {
-	        System.out.println(\"server method makeKassenobligationBewegung\");
-	    }
-	
-		private void makeKassenobligationStamm(Rka001_genFormData formData) {
-	        System.out.println(\"server method makeKassenobligationStamm\");
-	    }"
-	}
-	
-	logic type=new_store runat=server {
-		"System.out.println(\"server call create\");
-		 return formData;"
-	}
-
-	sequence_box BuchungsCodeSequence template=zreg_sequence_box {
-		string BuchungsCode text=Transaktionscode enabled=false
-	}
-	
-	sequence_box ZregSequence {
-		zreg_sequence_box Zreg text=Zentralregister
-	}
-
-	sequence_box KoArtSequence {
-		smartfield KoArt text=Art mandatory=true value_type="java.lang.Integer" code=KOArt
-	}
-	
-	sequence_box LaufzeitSequence {
-		smartfield Laufzeit text=Laufzeit mandatory=true code=KOLaufzeit value_type="java.lang.Integer" {
-			logic type=changed runat=server {
-				"System.out.println(\"server call LaufzeitfieldChanged\");
-				 return formData;"
-			}
-			logic type=changed exec=EvalForm
-		}
-	}
-
-	sequence_box ValorSequence {
-		string Valor text=Valorennummer enabled=false
-		zreg_sequence_box mynewbox enabled=false
-	}
-	
-	sequence_box ZinssatzSequence {
-		double Zinssatz text=Zinssatz enabled=false
-	}
-	
-	sequence_box MitTitelSequence {
-		smartfield MitTitel text=MitTiteldruck mandatory=true code=KOTiteldruck value_type="java.lang.Integer" {
-			logic type=changed runat=server {
-				"System.out.println(\"server call MitTitelFieldChanged\");
-				 return formData;"
-			}
-			logic type=changed runat=client {
-				"evaluateBuchungstext1And2();"
-			}
-		}
-	}
-	
-	sequence_box DepotSequence /*master=MitTitel*/	{
-		logic type=master_changed runat=client {
-			"System.out.println(\"client call DepotSequenceBoxMasterChanged\");"
-		}
-		smartfield Depot text=Depot /*master=Zreg*/ lookup=DepotNumber value_type="ch.raiffeisen.dialba.common.shared.beans.DepotId"
-	}
-  
-	sequence_box ObligationNrAltSequence {
-		smartfield ObligationNrAlt text=AlteNeueKONr mandatory=true lookup=OldObliNumber /*master=Zreg*/ value_type="java.lang.Long"
-		long ObligationNr enabled=false visible=false
-	}
-  
-	sequence_box BuchungsDatumSequence {
-		date BuchungsDatum text=DatumEmission enabled=false {
-			logic type=init runat=client {
-				"form.getBuchungsDatumField().setValue(new java.util.Date());"
-			}
-		}
-    	date EmissionsDatum mandatory=true {
-    		logic type=init runat=client {
-				"form.getEmissionsDatumField().setValue(new java.util.Date());"
-			}
-			logic type=changed exec=EvalForm
-    	}
-	}
-  
-	sequence_box ZinstermSequence {
-		string Zinsterm text=ZinstermAuslauf enabled=false
-		string EndJahr enabled=false
-	}
-  
-	sequence_box BetragSequence {
-		long Betrag text=BetragSpesen mandatory=true {
-			logic type=changed runat=client {
-				"form.getEmissionField().setValue(0d);"
-			}
-		}
-		string BetragsWaehrung enabled=false
-	}
-  
-	sequence_box EmissionSequence {
-		double Emission text=Emissionsabgabe enabled=false
-		string EmissionsWaehrung enabled=false
-	}
-  
-	sequence_box KontoNrSequence {
-		smartfield KontoNr text=Kontobelastung mandatory=true lookup=KontoByZrnr /*master=Zreg*/ value_type="ch.raiffeisen.dialba.common.shared.beans.KontoData" {
-			logic type=changed runat=client {
-				"System.out.println(\"client call KontoNrFieldChanged\");"
-			}
-		}
-		string ZregKurzbezeichnung enabled=false master=KontoNr
-		string Kontostand enabled=false
-	}
-  
-	sequence_box KontoText1Sequence {
-		string KontoText1 text=Buchungstext1 enabled=false
-	}
-  
-	sequence_box KontoText2Sequence {
-		string KontoText2 text=Buchungstext2 enabled=false
-	}
-  
-	sequence_box KontoText3Sequence {
-		string KontoText3 text=Buchungstext3
-	}
-} // end form Rka001
-
-=======
-module ch.raiffeisen.dialba.common
-
-import ch.raiffeisen.dialba.common.shared.beans.*
-import java.util.*
-
 
 // ========================
 // CODE TYPES
@@ -321,16 +110,18 @@ lookup DepotNumber {
   		  return new LookupRow[]{new LookupRow(new DepotId(), \"Depot id 1\"), new LookupRow(new DepotId(), \"Depot id 2\"), new LookupRow(new DepotId(), \"Depot id 3\")};
   		}"
     }
-	logic event=all runat=server { "return createDummyData();" }
+	logic event=all runat=server {
+		"return createDummyData();"
+	}
 }
 
 lookup OldObliNumber {
 	logic event=all runat=server {
-		val ret = new ArrayList<org.eclipse.scout.rt.shared.services.^lookup.LookupRow>()
-		ret.add(new org.eclipse.scout.rt.shared.services.^lookup.LookupRow(1L, "Value 1"))
-		ret.add(new org.eclipse.scout.rt.shared.services.^lookup.LookupRow(2L, "Value 2"))
-		ret.add(new org.eclipse.scout.rt.shared.services.^lookup.LookupRow(3L, "Value 3"))
-		return ret
+		"return new LookupRow[]{
+		new org.eclipse.scout.rt.shared.services.lookup.LookupRow(1L, \"Value 1\"),
+		new org.eclipse.scout.rt.shared.services.lookup.LookupRow(2L, \"Value 2\"),
+		new org.eclipse.scout.rt.shared.services.lookup.LookupRow(3L, \"Value 3\")};
+		"
 	}
 }
 
@@ -340,16 +131,15 @@ lookup KontoByZrnr {
   		  return new LookupRow[]{new LookupRow(new KontoData(), \"KontoData id 1\"), new LookupRow(new KontoData(), \"KontoData id 2\"), new LookupRow(new KontoData(), \"KontoData id 3\")};
   		}"
   	}
-	logic event=all runat=server { "return createDummyData();" }
+	logic event=all runat=server {
+		"return createDummyData();"
+	}
 }
-
-
-
 
 // ========================
 // UI TEMPLATE DEFINITIONS
 // ========================
-template zreg_sequence_box definition=ch.raiffeisen.dialba.common.^client.ui.forms.fields.Zregsequence_boxAbs
+template zreg_sequence_box definition="ch.raiffeisen.dialba.common.client.ui.forms.fields.Zregsequence_boxAbs"
 //template dialba_smartfield definition=ch.raiffeisen.dialba.common.^client.ui.forms.fields.AbstractDialbaSmartField
 
 
@@ -359,9 +149,8 @@ template zreg_sequence_box definition=ch.raiffeisen.dialba.common.^client.ui.for
 form Rka001_gen modal=true text=koEmissionTitle columns=2 {
 	/* Named Java code snippets that are used more than once */
 	logic EvalForm runat=client {
-		/*"evaluateZinstermFields();
-	     evaluateBuchungstext1And2();"*/
-	     return null;
+		"evaluateZinstermFields();
+	     evaluateBuchungstext1And2();"
 	}
 	
 	/* form level logic */
@@ -375,6 +164,7 @@ form Rka001_gen modal=true text=koEmissionTitle columns=2 {
 	    }"
 	}
 	
+	
 	logic runat=server {
 		"private static void makeZentralRegister(Rka001_genFormData formData) {
 	        System.out.println(\"server method makeZentralRegister\");
@@ -388,7 +178,7 @@ form Rka001_gen modal=true text=koEmissionTitle columns=2 {
 	        System.out.println(\"server method makeKassenobligationStamm\");
 	    }"
 	}
-	
+
 	logic event=new_store runat=server {
 		"System.out.println(\"server call create\");
 		 return formData;"
@@ -401,17 +191,17 @@ form Rka001_gen modal=true text=koEmissionTitle columns=2 {
 	sequence_box ZregSequence {
 		custom_field Zreg template=zreg_sequence_box text=Zentralregister {
 			logic event=init runat=client {
-				"setValue(null);"
+				"form.getZregField().setValue(null);"
 			}
 		}
 	}
 
 	sequence_box KoArtSequence {
-		smartfield KoArt text=Art mandatory=true value_type=Integer codetype=KOArt
+		smartfield KoArt text=Art mandatory=true value_type="Integer" code=KOArt
 	}
 	
 	sequence_box LaufzeitSequence {
-		smartfield LaufzeitField text=Laufzeit mandatory=true codetype=KOLaufzeit value_type=Integer {
+		smartfield LaufzeitField text=Laufzeit mandatory=true code=KOLaufzeit value_type="Integer" {
 			logic event=changed runat=server {
 				"System.out.println(\"server call LaufzeitfieldChanged\");
 				 return formData;"
@@ -425,11 +215,11 @@ form Rka001_gen modal=true text=koEmissionTitle columns=2 {
 	}
 	
 	sequence_box ZinssatzSequence {
-		double Zinssatz text=Zinssatz enabled=false
+		double Zinssatz text=ZinssatzText enabled=false
 	}
-	
+
 	sequence_box MitTitelSequence {
-		smartfield MitTitel text=MitTiteldruck mandatory=true codetype=KOTiteldruck value_type=Integer {
+		smartfield MitTitel text=MitTiteldruck mandatory=true code=KOTiteldruck value_type="Integer" {
 			logic event=changed runat=server {
 				"System.out.println(\"server call MitTitelFieldChanged\");
 				 return formData;"
@@ -444,11 +234,11 @@ form Rka001_gen modal=true text=koEmissionTitle columns=2 {
 		logic event=master_changed runat=client {
 			"System.out.println(\"client call DepotSequenceBoxMasterChanged\");"
 		}
-		smartfield Depot text=Depot master=Zreg lookupcall=DepotNumber value_type=DepotId
+		smartfield Depot text=DepotText master=Zreg lookup=DepotNumber value_type="DepotId"
 	}
 
 	sequence_box ObligationNrAltSequence {
-		smartfield ObligationNrAlt text=AlteNeueKONr  master=Zreg mandatory=true lookupcall=OldObliNumber value_type=Long
+		smartfield ObligationNrAlt text=AlteNeueKONr master=Zreg mandatory=true lookup=OldObliNumber value_type="Long"
 		long ObligationNr enabled=false visible=false
 	}
   
@@ -465,7 +255,7 @@ form Rka001_gen modal=true text=koEmissionTitle columns=2 {
 			logic event=changed exec=EvalForm
     	}
 	}
-  
+
 	sequence_box ZinstermSequence {
 		string Zinsterm text=ZinstermAuslauf enabled=false
 		string EndJahr enabled=false
@@ -485,8 +275,8 @@ form Rka001_gen modal=true text=koEmissionTitle columns=2 {
 		string EmissionsWaehrung enabled=false
 	}
   
-	sequence_box KontoNrSequence {
-		smartfield KontoNr text=Kontobelastung master=Zreg mandatory=true lookupcall=KontoByZrnr value_type=KontoData {
+  	sequence_box KontoNrSequence {
+		smartfield KontoNr text=Kontobelastung master=Zreg mandatory=true lookup=KontoByZrnr value_type="KontoData" {
 			logic event=changed runat=client {
 				"System.out.println(\"client call KontoNrFieldChanged\");"
 			}
@@ -508,4 +298,3 @@ form Rka001_gen modal=true text=koEmissionTitle columns=2 {
 	}
 } // end form Rka001
 
->>>>>>> refs/remotes/origin/master
