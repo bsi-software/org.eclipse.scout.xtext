@@ -11,7 +11,6 @@ package org.eclipse.scout.saml.saml;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.scout.saml.saml.StringElement#getMandatory <em>Mandatory</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.StringElement#getMaxlen <em>Maxlen</em>}</li>
  * </ul>
  * </p>
@@ -22,32 +21,6 @@ package org.eclipse.scout.saml.saml;
  */
 public interface StringElement extends ValueFieldElement
 {
-  /**
-   * Returns the value of the '<em><b>Mandatory</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Mandatory</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Mandatory</em>' attribute.
-   * @see #setMandatory(String)
-   * @see org.eclipse.scout.saml.saml.SamlPackage#getStringElement_Mandatory()
-   * @model
-   * @generated
-   */
-  String getMandatory();
-
-  /**
-   * Sets the value of the '{@link org.eclipse.scout.saml.saml.StringElement#getMandatory <em>Mandatory</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Mandatory</em>' attribute.
-   * @see #getMandatory()
-   * @generated
-   */
-  void setMandatory(String value);
-
   /**
    * Returns the value of the '<em><b>Maxlen</b></em>' attribute.
    * <!-- begin-user-doc -->

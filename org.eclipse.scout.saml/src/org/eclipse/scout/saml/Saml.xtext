@@ -56,7 +56,7 @@ FormElement:'form' name=ID (('modal' '=' modal=BooleanType)? & ('columns' '=' co
 
 
 // UI FIELDS
-FormFieldElement:CompositeFieldElement | ValueFieldElement;
+FormFieldElement:CompositeFieldElement | ValueFieldElement | CustomFieldElement;
 
 // COMPOSITES
 CompositeFieldElement:SequenceBoxElement|GroupBoxElement;
@@ -65,7 +65,7 @@ SequenceBoxElement:'sequence_box' name=ID
 		('text' '=' text=[TranslationElement])? & 
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
-		('master' '=' master=[ValueFieldElement])?
+		('master' '=' master=[FormFieldElement])?
 	)
 	('{' (logic+=LogicElement | fields+=FormFieldElement)* '}')?;
 	
@@ -75,20 +75,20 @@ GroupBoxElement:'group_box' name=ID
 		('columns' '=' columns=INT)? &
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
-		('master' '=' master=[ValueFieldElement])?
+		('master' '=' master=[FormFieldElement])?
 	)
 	('{' (logic+=LogicElement | fields+=FormFieldElement)* '}')?;
 
 
 // VALUE FIELDS
-ValueFieldElement: StringElement|DoubleElement|LongElement|DateElement|SmartfieldElement|CustomFieldElement;
+ValueFieldElement: StringElement|DoubleElement|LongElement|DateElement|SmartfieldElement;
 
 StringElement:'string' name=ID 
 	(
 		('text' '=' text=[TranslationElement])? &
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
-		('master' '=' master=[ValueFieldElement])? &
+		('master' '=' master=[FormFieldElement])? &
 		('mandatory' '=' mandatory=BooleanType)? &
 		('maxlen' '=' maxlen=INT)?
 	)
@@ -100,7 +100,7 @@ DoubleElement:'double' name=ID
 		('text' '=' text=[TranslationElement])? &
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
-		('master' '=' master=[ValueFieldElement])? &
+		('master' '=' master=[FormFieldElement])? &
 		('mandatory' '=' mandatory=BooleanType)?
 	)
 	('{' logic+=LogicElement* '}')?;
@@ -110,7 +110,7 @@ LongElement:'long' name=ID
 		('text' '=' text=[TranslationElement])? &
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
-		('master' '=' master=[ValueFieldElement])? &
+		('master' '=' master=[FormFieldElement])? &
 		('mandatory' '=' mandatory=BooleanType)?
 	)
 	('{' logic+=LogicElement* '}')?;
@@ -120,7 +120,7 @@ DateElement:'date' name=ID
 		('text' '=' text=[TranslationElement])? &
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
-		('master' '=' master=[ValueFieldElement])? &
+		('master' '=' master=[FormFieldElement])? &
 		('mandatory' '=' mandatory=BooleanType)?
 	)
 	('{' logic+=LogicElement* '}')?;
@@ -130,7 +130,7 @@ SmartfieldElement:'smartfield' name=ID
 		('text' '=' text=[TranslationElement])? &
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
-		('master' '=' master=[ValueFieldElement])? &
+		('master' '=' master=[FormFieldElement])? &
 		('mandatory' '=' mandatory=BooleanType)? &
 		('code' '=' code=[CodeElement])? &
 		('value_type' '=' valueType=STRING/*JvmTypeReference*/)? &
@@ -145,7 +145,7 @@ CustomFieldElement:'custom_field' name=ID
 		('text' '=' text=[TranslationElement])? &
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
-		('master' '=' master=[ValueFieldElement])?
+		('master' '=' master=[FormFieldElement])?
 	)
 	('{' (logic+=LogicElement | fields+=FormFieldElement)* '}')?;
 

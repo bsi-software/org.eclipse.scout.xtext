@@ -112,7 +112,7 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
       @Override
       public boolean visit(LogicElement t) {
         for (String handlerType : handlerTypes) {
-          if (t.getEvent().equals(handlerType)) {
+          if (t.getEvent() != null && t.getEvent().equals(handlerType)) {
             return true;
           }
         }

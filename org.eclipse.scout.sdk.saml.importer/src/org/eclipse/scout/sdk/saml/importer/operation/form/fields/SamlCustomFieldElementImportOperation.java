@@ -15,6 +15,7 @@ import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.saml.saml.CustomFieldElement;
+import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.sdk.operation.form.field.FormFieldNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
 
@@ -27,7 +28,6 @@ import org.eclipse.scout.sdk.util.SdkProperties;
 public class SamlCustomFieldElementImportOperation extends AbstractSamlFormFieldElementOperation {
 
   private CustomFieldElement m_customElement;
-  public static final String SUFFIX = SdkProperties.SUFFIX_FORM_FIELD;
 
   @Override
   public String getOperationName() {
@@ -41,18 +41,12 @@ public class SamlCustomFieldElementImportOperation extends AbstractSamlFormField
     }
   }
 
-  protected void applyMaxLengthAttribute(int maxlen, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
-    if (maxlen != 0 && maxlen != 4000) {
-      overrideMethod(field, h, "getConfiguredMaxLength", "return " + maxlen + ";");
-    }
-  }
-
   @Override
   public void run() throws CoreException, IllegalArgumentException {
     String superClass = getCustomFieldElement().getTemplate().getDefinition();
 
     FormFieldNewOperation newOp = new FormFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
-    newOp.setTypeName(getCustomFieldElement().getName() + SUFFIX);
+    newOp.setTypeName(getCustomFieldElement().getName() + getFieldSuffix());
     newOp.setSuperTypeSignature(Signature.createTypeSignature(superClass, true));
     newOp.validate();
     newOp.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
@@ -68,8 +62,18 @@ public class SamlCustomFieldElementImportOperation extends AbstractSamlFormField
     return m_customElement;
   }
 
-  public void setCustomFieldElement(CustomFieldElement customElement) {
-    m_customElement = customElement;
+  @Override
+  public void setFieldElement(FormFieldElement fieldElement) {
+    m_customElement = (CustomFieldElement) fieldElement;
   }
 
+  @Override
+  public FormFieldElement getFieldElement() {
+    return m_customElement;
+  }
+
+  @Override
+  public String getFieldSuffix() {
+    return SdkProperties.SUFFIX_FORM_FIELD;
+  }
 }

@@ -1248,6 +1248,16 @@ ruleFormFieldElement returns [EObject current=null]
         $current = $this_ValueFieldElement_1.current; 
         afterParserOrEnumRuleCall();
     }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getFormFieldElementAccess().getCustomFieldElementParserRuleCall_2()); 
+    }
+    this_CustomFieldElement_2=ruleCustomFieldElement
+    { 
+        $current = $this_CustomFieldElement_2.current; 
+        afterParserOrEnumRuleCall();
+    }
 )
 ;
 
@@ -1471,7 +1481,7 @@ ruleSequenceBoxElement returns [EObject current=null]
         }
 	otherlv_14=RULE_ID
 	{
-		newLeafNode(otherlv_14, grammarAccess.getSequenceBoxElementAccess().getMasterValueFieldElementCrossReference_2_3_2_0()); 
+		newLeafNode(otherlv_14, grammarAccess.getSequenceBoxElementAccess().getMasterFormFieldElementCrossReference_2_3_2_0()); 
 	}
 
 )
@@ -1755,7 +1765,7 @@ ruleGroupBoxElement returns [EObject current=null]
         }
 	otherlv_17=RULE_ID
 	{
-		newLeafNode(otherlv_17, grammarAccess.getGroupBoxElementAccess().getMasterValueFieldElementCrossReference_2_4_2_0()); 
+		newLeafNode(otherlv_17, grammarAccess.getGroupBoxElementAccess().getMasterFormFieldElementCrossReference_2_4_2_0()); 
 	}
 
 )
@@ -1886,16 +1896,6 @@ ruleValueFieldElement returns [EObject current=null]
     this_SmartfieldElement_4=ruleSmartfieldElement
     { 
         $current = $this_SmartfieldElement_4.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getValueFieldElementAccess().getCustomFieldElementParserRuleCall_5()); 
-    }
-    this_CustomFieldElement_5=ruleCustomFieldElement
-    { 
-        $current = $this_CustomFieldElement_5.current; 
         afterParserOrEnumRuleCall();
     }
 )
@@ -2081,7 +2081,7 @@ ruleStringElement returns [EObject current=null]
         }
 	otherlv_14=RULE_ID
 	{
-		newLeafNode(otherlv_14, grammarAccess.getStringElementAccess().getMasterValueFieldElementCrossReference_2_3_2_0()); 
+		newLeafNode(otherlv_14, grammarAccess.getStringElementAccess().getMasterFormFieldElementCrossReference_2_3_2_0()); 
 	}
 
 )
@@ -2384,7 +2384,7 @@ ruleDoubleElement returns [EObject current=null]
         }
 	otherlv_14=RULE_ID
 	{
-		newLeafNode(otherlv_14, grammarAccess.getDoubleElementAccess().getMasterValueFieldElementCrossReference_2_3_2_0()); 
+		newLeafNode(otherlv_14, grammarAccess.getDoubleElementAccess().getMasterFormFieldElementCrossReference_2_3_2_0()); 
 	}
 
 )
@@ -2649,7 +2649,7 @@ ruleLongElement returns [EObject current=null]
         }
 	otherlv_14=RULE_ID
 	{
-		newLeafNode(otherlv_14, grammarAccess.getLongElementAccess().getMasterValueFieldElementCrossReference_2_3_2_0()); 
+		newLeafNode(otherlv_14, grammarAccess.getLongElementAccess().getMasterFormFieldElementCrossReference_2_3_2_0()); 
 	}
 
 )
@@ -2914,7 +2914,7 @@ ruleDateElement returns [EObject current=null]
         }
 	otherlv_14=RULE_ID
 	{
-		newLeafNode(otherlv_14, grammarAccess.getDateElementAccess().getMasterValueFieldElementCrossReference_2_3_2_0()); 
+		newLeafNode(otherlv_14, grammarAccess.getDateElementAccess().getMasterFormFieldElementCrossReference_2_3_2_0()); 
 	}
 
 )
@@ -3179,7 +3179,7 @@ ruleSmartfieldElement returns [EObject current=null]
         }
 	otherlv_14=RULE_ID
 	{
-		newLeafNode(otherlv_14, grammarAccess.getSmartfieldElementAccess().getMasterValueFieldElementCrossReference_2_3_2_0()); 
+		newLeafNode(otherlv_14, grammarAccess.getSmartfieldElementAccess().getMasterFormFieldElementCrossReference_2_3_2_0()); 
 	}
 
 )
@@ -3569,7 +3569,7 @@ ruleCustomFieldElement returns [EObject current=null]
         }
 	otherlv_17=RULE_ID
 	{
-		newLeafNode(otherlv_17, grammarAccess.getCustomFieldElementAccess().getMasterValueFieldElementCrossReference_5_3_2_0()); 
+		newLeafNode(otherlv_17, grammarAccess.getCustomFieldElementAccess().getMasterFormFieldElementCrossReference_5_3_2_0()); 
 	}
 
 )

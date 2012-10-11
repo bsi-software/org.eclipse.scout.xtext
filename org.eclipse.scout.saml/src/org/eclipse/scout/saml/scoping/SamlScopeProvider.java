@@ -30,7 +30,7 @@ public class SamlScopeProvider extends XbaseScopeProvider {
     if (context instanceof FormFieldElement) {
       FormFieldElement formField = (FormFieldElement) context;
       if (reference == SamlPackage.Literals.FORM_FIELD_ELEMENT__MASTER) {
-        return Scopes.scopeFor(helper.leafNodes(formField));
+        return Scopes.scopeFor(helper.allFieldsInSameForm(formField));
       }
     }
 

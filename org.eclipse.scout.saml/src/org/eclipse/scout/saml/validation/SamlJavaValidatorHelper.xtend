@@ -4,9 +4,9 @@ import com.google.inject.Inject
 import java.util.HashSet
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.scout.saml.saml.FormElement
+import org.eclipse.scout.saml.saml.FormFieldElement
 import org.eclipse.scout.saml.saml.Model
 import org.eclipse.scout.saml.saml.SamlPackage
-import org.eclipse.scout.saml.saml.ValueFieldElement
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.resource.IContainer
 import org.eclipse.xtext.resource.IContainer$Manager
@@ -36,8 +36,8 @@ class SamlJavaValidatorHelper {
 			]
 	}
 	
-	def leafNodes(EObject element) {
-		element.getContainerOfType(typeof(FormElement)).eAllOfType(typeof(ValueFieldElement))
+	def allFieldsInSameForm(EObject element) {
+		element.getContainerOfType(typeof(FormElement)).eAllOfType(typeof(FormFieldElement))
 	}
 	
 	def allTranslations(EObject context) {

@@ -7,6 +7,8 @@ public class Activator implements BundleActivator {
 
   private static BundleContext context;
 
+  public final static String PLUGIN_ID = "org.eclipse.scout.sdk.saml.importer";
+
   static BundleContext getContext() {
     return context;
   }

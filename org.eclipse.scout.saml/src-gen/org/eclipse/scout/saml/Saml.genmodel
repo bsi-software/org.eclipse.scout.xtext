@@ -72,22 +72,16 @@
     <genClasses ecoreClass="Saml.ecore#//GroupBoxElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//GroupBoxElement/columns"/>
     </genClasses>
-    <genClasses ecoreClass="Saml.ecore#//ValueFieldElement"/>
+    <genClasses ecoreClass="Saml.ecore#//ValueFieldElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//ValueFieldElement/mandatory"/>
+    </genClasses>
     <genClasses ecoreClass="Saml.ecore#//StringElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//StringElement/mandatory"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//StringElement/maxlen"/>
     </genClasses>
-    <genClasses ecoreClass="Saml.ecore#//DoubleElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//DoubleElement/mandatory"/>
-    </genClasses>
-    <genClasses ecoreClass="Saml.ecore#//LongElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LongElement/mandatory"/>
-    </genClasses>
-    <genClasses ecoreClass="Saml.ecore#//DateElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//DateElement/mandatory"/>
-    </genClasses>
+    <genClasses ecoreClass="Saml.ecore#//DoubleElement"/>
+    <genClasses ecoreClass="Saml.ecore#//LongElement"/>
+    <genClasses ecoreClass="Saml.ecore#//DateElement"/>
     <genClasses ecoreClass="Saml.ecore#//SmartfieldElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//SmartfieldElement/mandatory"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartfieldElement/code"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//SmartfieldElement/valueType"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartfieldElement/lookup"/>

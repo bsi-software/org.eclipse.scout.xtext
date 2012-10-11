@@ -12,7 +12,7 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields.container;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
-import org.eclipse.jdt.core.ITypeHierarchy;
+import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.SequenceBoxElement;
 import org.eclipse.scout.sdk.operation.form.field.SequenceBoxNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
@@ -26,7 +26,6 @@ import org.eclipse.scout.sdk.util.SdkProperties;
 public class SamlSequenceBoxElementImportOperation extends AbstractBoxElementImportOperation {
 
   private SequenceBoxElement m_sequenceBoxElement;
-  public static final String SUFFIX = SdkProperties.SUFFIX_BOX;
 
   @Override
   public String getOperationName() {
@@ -43,16 +42,12 @@ public class SamlSequenceBoxElementImportOperation extends AbstractBoxElementImp
   @Override
   public IType createBox() throws CoreException, IllegalArgumentException {
     SequenceBoxNewOperation o = new SequenceBoxNewOperation(getSamlFormContext().getCurrentParentBox(), false);
-    o.setTypeName(getSequenceBoxElement().getName() + SUFFIX);
+    o.setTypeName(getSequenceBoxElement().getName() + getFieldSuffix());
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
     IType createdField = o.getCreatedField();
-    ITypeHierarchy h = createdField.newSupertypeHierarchy(getSamlContext().getMonitor());
 
-    overrideMethod(createdField, h, "getConfiguredAutoCheckFromTo", "return false;");
-
-    applyFormFieldProperties(createdField, h);
-    fillFormFieldLogic(createdField);
+    overrideMethod(createdField, null, "getConfiguredAutoCheckFromTo", "return false;");
 
     return createdField;
   }
@@ -61,7 +56,18 @@ public class SamlSequenceBoxElementImportOperation extends AbstractBoxElementImp
     return m_sequenceBoxElement;
   }
 
-  public void setSequenceBoxElement(SequenceBoxElement sequenceBoxElement) {
-    m_sequenceBoxElement = sequenceBoxElement;
+  @Override
+  public void setFieldElement(FormFieldElement fieldElement) {
+    m_sequenceBoxElement = (SequenceBoxElement) fieldElement;
+  }
+
+  @Override
+  public FormFieldElement getFieldElement() {
+    return m_sequenceBoxElement;
+  }
+
+  @Override
+  public String getFieldSuffix() {
+    return SdkProperties.SUFFIX_BOX;
   }
 }

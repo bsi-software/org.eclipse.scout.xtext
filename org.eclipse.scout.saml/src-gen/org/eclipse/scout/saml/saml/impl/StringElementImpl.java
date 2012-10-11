@@ -18,7 +18,6 @@ import org.eclipse.scout.saml.saml.StringElement;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.StringElementImpl#getMandatory <em>Mandatory</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.StringElementImpl#getMaxlen <em>Maxlen</em>}</li>
  * </ul>
  * </p>
@@ -27,26 +26,6 @@ import org.eclipse.scout.saml.saml.StringElement;
  */
 public class StringElementImpl extends ValueFieldElementImpl implements StringElement
 {
-  /**
-   * The default value of the '{@link #getMandatory() <em>Mandatory</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getMandatory()
-   * @generated
-   * @ordered
-   */
-  protected static final String MANDATORY_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getMandatory() <em>Mandatory</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getMandatory()
-   * @generated
-   * @ordered
-   */
-  protected String mandatory = MANDATORY_EDEFAULT;
-
   /**
    * The default value of the '{@link #getMaxlen() <em>Maxlen</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -93,29 +72,6 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getMandatory()
-  {
-    return mandatory;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setMandatory(String newMandatory)
-  {
-    String oldMandatory = mandatory;
-    mandatory = newMandatory;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.STRING_ELEMENT__MANDATORY, oldMandatory, mandatory));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public int getMaxlen()
   {
     return maxlen;
@@ -144,8 +100,6 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
   {
     switch (featureID)
     {
-      case SamlPackage.STRING_ELEMENT__MANDATORY:
-        return getMandatory();
       case SamlPackage.STRING_ELEMENT__MAXLEN:
         return getMaxlen();
     }
@@ -162,9 +116,6 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
   {
     switch (featureID)
     {
-      case SamlPackage.STRING_ELEMENT__MANDATORY:
-        setMandatory((String)newValue);
-        return;
       case SamlPackage.STRING_ELEMENT__MAXLEN:
         setMaxlen((Integer)newValue);
         return;
@@ -182,9 +133,6 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
   {
     switch (featureID)
     {
-      case SamlPackage.STRING_ELEMENT__MANDATORY:
-        setMandatory(MANDATORY_EDEFAULT);
-        return;
       case SamlPackage.STRING_ELEMENT__MAXLEN:
         setMaxlen(MAXLEN_EDEFAULT);
         return;
@@ -202,8 +150,6 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
   {
     switch (featureID)
     {
-      case SamlPackage.STRING_ELEMENT__MANDATORY:
-        return MANDATORY_EDEFAULT == null ? mandatory != null : !MANDATORY_EDEFAULT.equals(mandatory);
       case SamlPackage.STRING_ELEMENT__MAXLEN:
         return maxlen != MAXLEN_EDEFAULT;
     }
@@ -221,9 +167,7 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (mandatory: ");
-    result.append(mandatory);
-    result.append(", maxlen: ");
+    result.append(" (maxlen: ");
     result.append(maxlen);
     result.append(')');
     return result.toString();

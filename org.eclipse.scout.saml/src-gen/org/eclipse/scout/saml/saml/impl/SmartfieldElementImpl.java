@@ -21,7 +21,6 @@ import org.eclipse.scout.saml.saml.SmartfieldElement;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.SmartfieldElementImpl#getMandatory <em>Mandatory</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.SmartfieldElementImpl#getCode <em>Code</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.SmartfieldElementImpl#getValueType <em>Value Type</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.SmartfieldElementImpl#getLookup <em>Lookup</em>}</li>
@@ -32,26 +31,6 @@ import org.eclipse.scout.saml.saml.SmartfieldElement;
  */
 public class SmartfieldElementImpl extends ValueFieldElementImpl implements SmartfieldElement
 {
-  /**
-   * The default value of the '{@link #getMandatory() <em>Mandatory</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getMandatory()
-   * @generated
-   * @ordered
-   */
-  protected static final String MANDATORY_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getMandatory() <em>Mandatory</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getMandatory()
-   * @generated
-   * @ordered
-   */
-  protected String mandatory = MANDATORY_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getCode() <em>Code</em>}' reference.
    * <!-- begin-user-doc -->
@@ -111,29 +90,6 @@ public class SmartfieldElementImpl extends ValueFieldElementImpl implements Smar
   protected EClass eStaticClass()
   {
     return SamlPackage.Literals.SMARTFIELD_ELEMENT;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getMandatory()
-  {
-    return mandatory;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setMandatory(String newMandatory)
-  {
-    String oldMandatory = mandatory;
-    mandatory = newMandatory;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.SMARTFIELD_ELEMENT__MANDATORY, oldMandatory, mandatory));
   }
 
   /**
@@ -255,8 +211,6 @@ public class SmartfieldElementImpl extends ValueFieldElementImpl implements Smar
   {
     switch (featureID)
     {
-      case SamlPackage.SMARTFIELD_ELEMENT__MANDATORY:
-        return getMandatory();
       case SamlPackage.SMARTFIELD_ELEMENT__CODE:
         if (resolve) return getCode();
         return basicGetCode();
@@ -279,9 +233,6 @@ public class SmartfieldElementImpl extends ValueFieldElementImpl implements Smar
   {
     switch (featureID)
     {
-      case SamlPackage.SMARTFIELD_ELEMENT__MANDATORY:
-        setMandatory((String)newValue);
-        return;
       case SamlPackage.SMARTFIELD_ELEMENT__CODE:
         setCode((CodeElement)newValue);
         return;
@@ -305,9 +256,6 @@ public class SmartfieldElementImpl extends ValueFieldElementImpl implements Smar
   {
     switch (featureID)
     {
-      case SamlPackage.SMARTFIELD_ELEMENT__MANDATORY:
-        setMandatory(MANDATORY_EDEFAULT);
-        return;
       case SamlPackage.SMARTFIELD_ELEMENT__CODE:
         setCode((CodeElement)null);
         return;
@@ -331,8 +279,6 @@ public class SmartfieldElementImpl extends ValueFieldElementImpl implements Smar
   {
     switch (featureID)
     {
-      case SamlPackage.SMARTFIELD_ELEMENT__MANDATORY:
-        return MANDATORY_EDEFAULT == null ? mandatory != null : !MANDATORY_EDEFAULT.equals(mandatory);
       case SamlPackage.SMARTFIELD_ELEMENT__CODE:
         return code != null;
       case SamlPackage.SMARTFIELD_ELEMENT__VALUE_TYPE:
@@ -354,9 +300,7 @@ public class SmartfieldElementImpl extends ValueFieldElementImpl implements Smar
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (mandatory: ");
-    result.append(mandatory);
-    result.append(", valueType: ");
+    result.append(" (valueType: ");
     result.append(valueType);
     result.append(')');
     return result.toString();

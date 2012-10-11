@@ -142,12 +142,12 @@ public interface FormFieldElement extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Master</em>' reference.
-   * @see #setMaster(ValueFieldElement)
+   * @see #setMaster(FormFieldElement)
    * @see org.eclipse.scout.saml.saml.SamlPackage#getFormFieldElement_Master()
    * @model
    * @generated
    */
-  ValueFieldElement getMaster();
+  FormFieldElement getMaster();
 
   /**
    * Sets the value of the '{@link org.eclipse.scout.saml.saml.FormFieldElement#getMaster <em>Master</em>}' reference.
@@ -157,7 +157,7 @@ public interface FormFieldElement extends EObject
    * @see #getMaster()
    * @generated
    */
-  void setMaster(ValueFieldElement value);
+  void setMaster(FormFieldElement value);
 
   /**
    * Returns the value of the '<em><b>Logic</b></em>' containment reference list.

@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface CustomFieldElement extends ValueFieldElement
+public interface CustomFieldElement extends FormFieldElement
 {
   /**
    * Returns the value of the '<em><b>Template</b></em>' reference.

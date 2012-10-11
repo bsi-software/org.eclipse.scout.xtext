@@ -36,7 +36,7 @@ import org.eclipse.scout.saml.saml.TemplateElement;
  *
  * @generated
  */
-public class CustomFieldElementImpl extends ValueFieldElementImpl implements CustomFieldElement
+public class CustomFieldElementImpl extends FormFieldElementImpl implements CustomFieldElement
 {
   /**
    * The cached value of the '{@link #getTemplate() <em>Template</em>}' reference.

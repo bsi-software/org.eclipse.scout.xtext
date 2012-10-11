@@ -232,7 +232,6 @@ public class SamlSwitch<T> extends Switch<T>
       {
         CustomFieldElement customFieldElement = (CustomFieldElement)theEObject;
         T result = caseCustomFieldElement(customFieldElement);
-        if (result == null) result = caseValueFieldElement(customFieldElement);
         if (result == null) result = caseFormFieldElement(customFieldElement);
         if (result == null) result = defaultCase(theEObject);
         return result;

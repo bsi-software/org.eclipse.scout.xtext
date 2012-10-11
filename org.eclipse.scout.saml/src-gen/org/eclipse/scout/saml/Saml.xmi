@@ -287,6 +287,7 @@
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.23"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="CompositeFieldElement">
@@ -340,7 +341,7 @@
             <elements xsi:type="xtext:Assignment" feature="master" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.0">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//ValueFieldElement"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//FormFieldElement"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
               </terminal>
@@ -410,7 +411,7 @@
             <elements xsi:type="xtext:Assignment" feature="master" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.0">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//ValueFieldElement"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//FormFieldElement"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
               </terminal>
@@ -441,7 +442,6 @@
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.23"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="StringElement">
@@ -486,7 +486,7 @@
             <elements xsi:type="xtext:Assignment" feature="master" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.0">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//ValueFieldElement"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//FormFieldElement"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
               </terminal>
@@ -558,7 +558,7 @@
             <elements xsi:type="xtext:Assignment" feature="master" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.0">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//ValueFieldElement"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//FormFieldElement"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
               </terminal>
@@ -623,7 +623,7 @@
             <elements xsi:type="xtext:Assignment" feature="master" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.0">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//ValueFieldElement"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//FormFieldElement"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
               </terminal>
@@ -688,7 +688,7 @@
             <elements xsi:type="xtext:Assignment" feature="master" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.0">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//ValueFieldElement"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//FormFieldElement"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
               </terminal>
@@ -753,7 +753,7 @@
             <elements xsi:type="xtext:Assignment" feature="master" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.0">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//ValueFieldElement"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//FormFieldElement"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
               </terminal>
@@ -859,7 +859,7 @@
             <elements xsi:type="xtext:Assignment" feature="master" operator="=">
               <terminal xsi:type="xtext:CrossReference">
                 <type metamodel="/0/@metamodelDeclarations.0">
-                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//ValueFieldElement"/>
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//FormFieldElement"/>
                 </type>
                 <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
               </terminal>

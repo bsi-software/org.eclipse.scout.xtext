@@ -87,8 +87,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 				else break;
 			case SamlPackage.CUSTOM_FIELD_ELEMENT:
 				if(context == grammarAccess.getCustomFieldElementRule() ||
-				   context == grammarAccess.getFormFieldElementRule() ||
-				   context == grammarAccess.getValueFieldElementRule()) {
+				   context == grammarAccess.getFormFieldElementRule()) {
 					sequence_CustomFieldElement(context, (CustomFieldElement) semanticObject); 
 					return; 
 				}
@@ -1090,7 +1089,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         text=[TranslationElement|ID]? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
-	 *         master=[ValueFieldElement|ID]? 
+	 *         master=[FormFieldElement|ID]? 
 	 *         (logic+=LogicElement | fields+=FormFieldElement)*
 	 *     )
 	 */
@@ -1106,7 +1105,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         text=[TranslationElement|ID]? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
-	 *         master=[ValueFieldElement|ID]? 
+	 *         master=[FormFieldElement|ID]? 
 	 *         mandatory=BooleanType? 
 	 *         logic+=LogicElement*
 	 *     )
@@ -1123,7 +1122,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         text=[TranslationElement|ID]? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
-	 *         master=[ValueFieldElement|ID]? 
+	 *         master=[FormFieldElement|ID]? 
 	 *         mandatory=BooleanType? 
 	 *         logic+=LogicElement*
 	 *     )
@@ -1150,7 +1149,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         columns=INT? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
-	 *         master=[ValueFieldElement|ID]? 
+	 *         master=[FormFieldElement|ID]? 
 	 *         (logic+=LogicElement | fields+=FormFieldElement)*
 	 *     )
 	 */
@@ -1210,7 +1209,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         text=[TranslationElement|ID]? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
-	 *         master=[ValueFieldElement|ID]? 
+	 *         master=[FormFieldElement|ID]? 
 	 *         mandatory=BooleanType? 
 	 *         logic+=LogicElement*
 	 *     )
@@ -1265,7 +1264,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         text=[TranslationElement|ID]? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
-	 *         master=[ValueFieldElement|ID]? 
+	 *         master=[FormFieldElement|ID]? 
 	 *         (logic+=LogicElement | fields+=FormFieldElement)*
 	 *     )
 	 */
@@ -1281,7 +1280,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         text=[TranslationElement|ID]? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
-	 *         master=[ValueFieldElement|ID]? 
+	 *         master=[FormFieldElement|ID]? 
 	 *         mandatory=BooleanType? 
 	 *         code=[CodeElement|ID]? 
 	 *         valueType=STRING? 
@@ -1301,7 +1300,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         text=[TranslationElement|ID]? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
-	 *         master=[ValueFieldElement|ID]? 
+	 *         master=[FormFieldElement|ID]? 
 	 *         mandatory=BooleanType? 
 	 *         maxlen=INT? 
 	 *         logic+=LogicElement*

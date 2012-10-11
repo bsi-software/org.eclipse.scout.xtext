@@ -909,13 +909,22 @@ public interface SamlPackage extends EPackage
   int VALUE_FIELD_ELEMENT__LOGIC = FORM_FIELD_ELEMENT__LOGIC;
 
   /**
+   * The feature id for the '<em><b>Mandatory</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE_FIELD_ELEMENT__MANDATORY = FORM_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
    * The number of structural features of the '<em>Value Field Element</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VALUE_FIELD_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int VALUE_FIELD_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.StringElementImpl <em>String Element</em>}' class.
@@ -988,7 +997,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STRING_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int STRING_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT__MANDATORY;
 
   /**
    * The feature id for the '<em><b>Maxlen</b></em>' attribute.
@@ -997,7 +1006,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STRING_ELEMENT__MAXLEN = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+  int STRING_ELEMENT__MAXLEN = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>String Element</em>' class.
@@ -1006,7 +1015,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STRING_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 2;
+  int STRING_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.DoubleElementImpl <em>Double Element</em>}' class.
@@ -1079,7 +1088,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DOUBLE_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int DOUBLE_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT__MANDATORY;
 
   /**
    * The number of structural features of the '<em>Double Element</em>' class.
@@ -1088,7 +1097,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DOUBLE_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+  int DOUBLE_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.LongElementImpl <em>Long Element</em>}' class.
@@ -1161,7 +1170,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LONG_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int LONG_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT__MANDATORY;
 
   /**
    * The number of structural features of the '<em>Long Element</em>' class.
@@ -1170,7 +1179,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LONG_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+  int LONG_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.DateElementImpl <em>Date Element</em>}' class.
@@ -1243,7 +1252,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DATE_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int DATE_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT__MANDATORY;
 
   /**
    * The number of structural features of the '<em>Date Element</em>' class.
@@ -1252,7 +1261,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DATE_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+  int DATE_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.SmartfieldElementImpl <em>Smartfield Element</em>}' class.
@@ -1325,7 +1334,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int SMARTFIELD_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT__MANDATORY;
 
   /**
    * The feature id for the '<em><b>Code</b></em>' reference.
@@ -1334,7 +1343,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT__CODE = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+  int SMARTFIELD_ELEMENT__CODE = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Value Type</b></em>' attribute.
@@ -1343,7 +1352,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT__VALUE_TYPE = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 2;
+  int SMARTFIELD_ELEMENT__VALUE_TYPE = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Lookup</b></em>' reference.
@@ -1352,7 +1361,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT__LOOKUP = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 3;
+  int SMARTFIELD_ELEMENT__LOOKUP = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Smartfield Element</em>' class.
@@ -1361,7 +1370,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 4;
+  int SMARTFIELD_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.CustomFieldElementImpl <em>Custom Field Element</em>}' class.
@@ -1380,7 +1389,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_FIELD_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
+  int CUSTOM_FIELD_ELEMENT__NAME = FORM_FIELD_ELEMENT__NAME;
 
   /**
    * The feature id for the '<em><b>Text</b></em>' reference.
@@ -1389,7 +1398,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_FIELD_ELEMENT__TEXT = VALUE_FIELD_ELEMENT__TEXT;
+  int CUSTOM_FIELD_ELEMENT__TEXT = FORM_FIELD_ELEMENT__TEXT;
 
   /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -1398,7 +1407,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_FIELD_ELEMENT__ENABLED = VALUE_FIELD_ELEMENT__ENABLED;
+  int CUSTOM_FIELD_ELEMENT__ENABLED = FORM_FIELD_ELEMENT__ENABLED;
 
   /**
    * The feature id for the '<em><b>Visible</b></em>' attribute.
@@ -1407,7 +1416,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_FIELD_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
+  int CUSTOM_FIELD_ELEMENT__VISIBLE = FORM_FIELD_ELEMENT__VISIBLE;
 
   /**
    * The feature id for the '<em><b>Master</b></em>' reference.
@@ -1416,7 +1425,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_FIELD_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
+  int CUSTOM_FIELD_ELEMENT__MASTER = FORM_FIELD_ELEMENT__MASTER;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -1425,7 +1434,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_FIELD_ELEMENT__LOGIC = VALUE_FIELD_ELEMENT__LOGIC;
+  int CUSTOM_FIELD_ELEMENT__LOGIC = FORM_FIELD_ELEMENT__LOGIC;
 
   /**
    * The feature id for the '<em><b>Template</b></em>' reference.
@@ -1434,7 +1443,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_FIELD_ELEMENT__TEMPLATE = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int CUSTOM_FIELD_ELEMENT__TEMPLATE = FORM_FIELD_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Fields</b></em>' containment reference list.
@@ -1443,7 +1452,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_FIELD_ELEMENT__FIELDS = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+  int CUSTOM_FIELD_ELEMENT__FIELDS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Custom Field Element</em>' class.
@@ -1452,7 +1461,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_FIELD_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 2;
+  int CUSTOM_FIELD_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 2;
 
 
   /**
@@ -2024,6 +2033,17 @@ public interface SamlPackage extends EPackage
   EClass getValueFieldElement();
 
   /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.ValueFieldElement#getMandatory <em>Mandatory</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Mandatory</em>'.
+   * @see org.eclipse.scout.saml.saml.ValueFieldElement#getMandatory()
+   * @see #getValueFieldElement()
+   * @generated
+   */
+  EAttribute getValueFieldElement_Mandatory();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.StringElement <em>String Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2032,17 +2052,6 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EClass getStringElement();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.StringElement#getMandatory <em>Mandatory</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Mandatory</em>'.
-   * @see org.eclipse.scout.saml.saml.StringElement#getMandatory()
-   * @see #getStringElement()
-   * @generated
-   */
-  EAttribute getStringElement_Mandatory();
 
   /**
    * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.StringElement#getMaxlen <em>Maxlen</em>}'.
@@ -2066,17 +2075,6 @@ public interface SamlPackage extends EPackage
   EClass getDoubleElement();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.DoubleElement#getMandatory <em>Mandatory</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Mandatory</em>'.
-   * @see org.eclipse.scout.saml.saml.DoubleElement#getMandatory()
-   * @see #getDoubleElement()
-   * @generated
-   */
-  EAttribute getDoubleElement_Mandatory();
-
-  /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.LongElement <em>Long Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2085,17 +2083,6 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EClass getLongElement();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.LongElement#getMandatory <em>Mandatory</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Mandatory</em>'.
-   * @see org.eclipse.scout.saml.saml.LongElement#getMandatory()
-   * @see #getLongElement()
-   * @generated
-   */
-  EAttribute getLongElement_Mandatory();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.DateElement <em>Date Element</em>}'.
@@ -2108,17 +2095,6 @@ public interface SamlPackage extends EPackage
   EClass getDateElement();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.DateElement#getMandatory <em>Mandatory</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Mandatory</em>'.
-   * @see org.eclipse.scout.saml.saml.DateElement#getMandatory()
-   * @see #getDateElement()
-   * @generated
-   */
-  EAttribute getDateElement_Mandatory();
-
-  /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.SmartfieldElement <em>Smartfield Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2127,17 +2103,6 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EClass getSmartfieldElement();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getMandatory <em>Mandatory</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Mandatory</em>'.
-   * @see org.eclipse.scout.saml.saml.SmartfieldElement#getMandatory()
-   * @see #getSmartfieldElement()
-   * @generated
-   */
-  EAttribute getSmartfieldElement_Mandatory();
 
   /**
    * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getCode <em>Code</em>}'.
@@ -2682,6 +2647,14 @@ public interface SamlPackage extends EPackage
     EClass VALUE_FIELD_ELEMENT = eINSTANCE.getValueFieldElement();
 
     /**
+     * The meta object literal for the '<em><b>Mandatory</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VALUE_FIELD_ELEMENT__MANDATORY = eINSTANCE.getValueFieldElement_Mandatory();
+
+    /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.StringElementImpl <em>String Element</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2690,14 +2663,6 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EClass STRING_ELEMENT = eINSTANCE.getStringElement();
-
-    /**
-     * The meta object literal for the '<em><b>Mandatory</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute STRING_ELEMENT__MANDATORY = eINSTANCE.getStringElement_Mandatory();
 
     /**
      * The meta object literal for the '<em><b>Maxlen</b></em>' attribute feature.
@@ -2718,14 +2683,6 @@ public interface SamlPackage extends EPackage
     EClass DOUBLE_ELEMENT = eINSTANCE.getDoubleElement();
 
     /**
-     * The meta object literal for the '<em><b>Mandatory</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute DOUBLE_ELEMENT__MANDATORY = eINSTANCE.getDoubleElement_Mandatory();
-
-    /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.LongElementImpl <em>Long Element</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2734,14 +2691,6 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EClass LONG_ELEMENT = eINSTANCE.getLongElement();
-
-    /**
-     * The meta object literal for the '<em><b>Mandatory</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute LONG_ELEMENT__MANDATORY = eINSTANCE.getLongElement_Mandatory();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.DateElementImpl <em>Date Element</em>}' class.
@@ -2754,14 +2703,6 @@ public interface SamlPackage extends EPackage
     EClass DATE_ELEMENT = eINSTANCE.getDateElement();
 
     /**
-     * The meta object literal for the '<em><b>Mandatory</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute DATE_ELEMENT__MANDATORY = eINSTANCE.getDateElement_Mandatory();
-
-    /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.SmartfieldElementImpl <em>Smartfield Element</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2770,14 +2711,6 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EClass SMARTFIELD_ELEMENT = eINSTANCE.getSmartfieldElement();
-
-    /**
-     * The meta object literal for the '<em><b>Mandatory</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute SMARTFIELD_ELEMENT__MANDATORY = eINSTANCE.getSmartfieldElement_Mandatory();
 
     /**
      * The meta object literal for the '<em><b>Code</b></em>' reference feature.

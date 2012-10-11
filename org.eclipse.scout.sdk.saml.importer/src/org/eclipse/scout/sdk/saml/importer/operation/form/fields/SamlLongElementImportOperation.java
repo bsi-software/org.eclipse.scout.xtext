@@ -12,7 +12,7 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
-import org.eclipse.jdt.core.ITypeHierarchy;
+import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.LongElement;
 import org.eclipse.scout.sdk.operation.form.field.LongFieldNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
@@ -23,10 +23,9 @@ import org.eclipse.scout.sdk.util.SdkProperties;
  * @author mvi
  * @since 3.8.0 26.09.2012
  */
-public class SamlLongElementImportOperation extends AbstractSamlFormFieldElementOperation {
+public class SamlLongElementImportOperation extends AbstractValueFieldElementImportOperation {
 
   private LongElement m_longElement;
-  public static final String SUFFIX = SdkProperties.SUFFIX_FORM_FIELD;
 
   @Override
   public String getOperationName() {
@@ -41,26 +40,32 @@ public class SamlLongElementImportOperation extends AbstractSamlFormFieldElement
   }
 
   @Override
-  public void run() throws CoreException, IllegalArgumentException {
+  protected IType createField() throws CoreException, IllegalArgumentException {
     LongFieldNewOperation o = new LongFieldNewOperation(getSamlFormContext().getCurrentParentBox());
     o.setFormatSource(false);
-    o.setTypeName(getLongElement().getName() + SUFFIX);
+    o.setTypeName(getLongElement().getName() + getFieldSuffix());
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
-    IType createdField = o.getCreatedField();
-    ITypeHierarchy h = createdField.newSupertypeHierarchy(getSamlContext().getMonitor());
 
-    applyMandatoryAttribute(getLongElement().getMandatory(), createdField, h);
-    applyFormFieldProperties(createdField, h);
-    fillFormFieldLogic(createdField);
+    return o.getCreatedField();
   }
 
   public LongElement getLongElement() {
     return m_longElement;
   }
 
-  public void setLongElement(LongElement longElement) {
-    m_longElement = longElement;
+  @Override
+  public void setFieldElement(FormFieldElement fieldElement) {
+    m_longElement = (LongElement) fieldElement;
   }
 
+  @Override
+  public FormFieldElement getFieldElement() {
+    return m_longElement;
+  }
+
+  @Override
+  public String getFieldSuffix() {
+    return SdkProperties.SUFFIX_FORM_FIELD;
+  }
 }

@@ -786,6 +786,16 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getValueFieldElement_Mandatory()
+  {
+    return (EAttribute)valueFieldElementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getStringElement()
   {
     return stringElementEClass;
@@ -796,19 +806,9 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getStringElement_Mandatory()
-  {
-    return (EAttribute)stringElementEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EAttribute getStringElement_Maxlen()
   {
-    return (EAttribute)stringElementEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)stringElementEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -826,29 +826,9 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getDoubleElement_Mandatory()
-  {
-    return (EAttribute)doubleElementEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getLongElement()
   {
     return longElementEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getLongElement_Mandatory()
-  {
-    return (EAttribute)longElementEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -866,16 +846,6 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getDateElement_Mandatory()
-  {
-    return (EAttribute)dateElementEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getSmartfieldElement()
   {
     return smartfieldElementEClass;
@@ -886,19 +856,9 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getSmartfieldElement_Mandatory()
-  {
-    return (EAttribute)smartfieldElementEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getSmartfieldElement_Code()
   {
-    return (EReference)smartfieldElementEClass.getEStructuralFeatures().get(1);
+    return (EReference)smartfieldElementEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -908,7 +868,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    */
   public EAttribute getSmartfieldElement_ValueType()
   {
-    return (EAttribute)smartfieldElementEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)smartfieldElementEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -918,7 +878,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    */
   public EReference getSmartfieldElement_Lookup()
   {
-    return (EReference)smartfieldElementEClass.getEStructuralFeatures().get(3);
+    return (EReference)smartfieldElementEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1048,22 +1008,18 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     createEAttribute(groupBoxElementEClass, GROUP_BOX_ELEMENT__COLUMNS);
 
     valueFieldElementEClass = createEClass(VALUE_FIELD_ELEMENT);
+    createEAttribute(valueFieldElementEClass, VALUE_FIELD_ELEMENT__MANDATORY);
 
     stringElementEClass = createEClass(STRING_ELEMENT);
-    createEAttribute(stringElementEClass, STRING_ELEMENT__MANDATORY);
     createEAttribute(stringElementEClass, STRING_ELEMENT__MAXLEN);
 
     doubleElementEClass = createEClass(DOUBLE_ELEMENT);
-    createEAttribute(doubleElementEClass, DOUBLE_ELEMENT__MANDATORY);
 
     longElementEClass = createEClass(LONG_ELEMENT);
-    createEAttribute(longElementEClass, LONG_ELEMENT__MANDATORY);
 
     dateElementEClass = createEClass(DATE_ELEMENT);
-    createEAttribute(dateElementEClass, DATE_ELEMENT__MANDATORY);
 
     smartfieldElementEClass = createEClass(SMARTFIELD_ELEMENT);
-    createEAttribute(smartfieldElementEClass, SMARTFIELD_ELEMENT__MANDATORY);
     createEReference(smartfieldElementEClass, SMARTFIELD_ELEMENT__CODE);
     createEAttribute(smartfieldElementEClass, SMARTFIELD_ELEMENT__VALUE_TYPE);
     createEReference(smartfieldElementEClass, SMARTFIELD_ELEMENT__LOOKUP);
@@ -1111,7 +1067,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     longElementEClass.getESuperTypes().add(this.getValueFieldElement());
     dateElementEClass.getESuperTypes().add(this.getValueFieldElement());
     smartfieldElementEClass.getESuperTypes().add(this.getValueFieldElement());
-    customFieldElementEClass.getESuperTypes().add(this.getValueFieldElement());
+    customFieldElementEClass.getESuperTypes().add(this.getFormFieldElement());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1169,7 +1125,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEReference(getFormFieldElement_Text(), this.getTranslationElement(), null, "text", null, 0, 1, FormFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFormFieldElement_Enabled(), ecorePackage.getEString(), "enabled", null, 0, 1, FormFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFormFieldElement_Visible(), ecorePackage.getEString(), "visible", null, 0, 1, FormFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFormFieldElement_Master(), this.getValueFieldElement(), null, "master", null, 0, 1, FormFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFormFieldElement_Master(), this.getFormFieldElement(), null, "master", null, 0, 1, FormFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFormFieldElement_Logic(), this.getLogicElement(), null, "logic", null, 0, -1, FormFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(compositeFieldElementEClass, CompositeFieldElement.class, "CompositeFieldElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1181,22 +1137,18 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEAttribute(getGroupBoxElement_Columns(), ecorePackage.getEInt(), "columns", null, 0, 1, GroupBoxElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(valueFieldElementEClass, ValueFieldElement.class, "ValueFieldElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getValueFieldElement_Mandatory(), ecorePackage.getEString(), "mandatory", null, 0, 1, ValueFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(stringElementEClass, StringElement.class, "StringElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getStringElement_Mandatory(), ecorePackage.getEString(), "mandatory", null, 0, 1, StringElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getStringElement_Maxlen(), ecorePackage.getEInt(), "maxlen", null, 0, 1, StringElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(doubleElementEClass, DoubleElement.class, "DoubleElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getDoubleElement_Mandatory(), ecorePackage.getEString(), "mandatory", null, 0, 1, DoubleElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(longElementEClass, LongElement.class, "LongElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getLongElement_Mandatory(), ecorePackage.getEString(), "mandatory", null, 0, 1, LongElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(dateElementEClass, DateElement.class, "DateElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getDateElement_Mandatory(), ecorePackage.getEString(), "mandatory", null, 0, 1, DateElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(smartfieldElementEClass, SmartfieldElement.class, "SmartfieldElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getSmartfieldElement_Mandatory(), ecorePackage.getEString(), "mandatory", null, 0, 1, SmartfieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSmartfieldElement_Code(), this.getCodeElement(), null, "code", null, 0, 1, SmartfieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getSmartfieldElement_ValueType(), ecorePackage.getEString(), "valueType", null, 0, 1, SmartfieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSmartfieldElement_Lookup(), this.getLookupElement(), null, "lookup", null, 0, 1, SmartfieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

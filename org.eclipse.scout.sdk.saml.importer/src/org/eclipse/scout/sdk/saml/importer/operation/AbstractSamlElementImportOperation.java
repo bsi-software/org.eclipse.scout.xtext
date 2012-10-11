@@ -15,7 +15,6 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.nls.sdk.model.INlsEntry;
-import org.eclipse.scout.sdk.operation.IOperation;
 import org.eclipse.scout.sdk.operation.method.MethodOverrideOperation;
 import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 import org.eclipse.scout.sdk.workspace.IScoutProject;
@@ -26,22 +25,12 @@ import org.eclipse.scout.sdk.workspace.IScoutProject;
  * @author mvi
  * @since 3.8.0 25.09.2012
  */
-public abstract class AbstractSamlElementImportOperation implements IOperation {
+public abstract class AbstractSamlElementImportOperation implements ISamlElementImportOperation {
   private SamlContext m_samlContext;
-
-  public SamlContext getSamlContext() {
-    return m_samlContext;
-  }
 
   @Override
   public final void run(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException, IllegalArgumentException {
-    run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
-  }
-
-  public abstract void run() throws CoreException, IllegalArgumentException;
-
-  public void setSamlContext(SamlContext samlContext) {
-    m_samlContext = samlContext;
+    run();
   }
 
   protected IScoutProject getCurrentScoutModule() {
@@ -56,7 +45,7 @@ public abstract class AbstractSamlElementImportOperation implements IOperation {
     overrideMethod(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager(), declaringType, h, methodName, body);
   }
 
-  protected static void overrideMethod(IProgressMonitor monitor, IWorkingCopyManager workingcopyManager, IType declaringType, ITypeHierarchy h, String methodName, String body) throws CoreException, IllegalArgumentException {
+  public static void overrideMethod(IProgressMonitor monitor, IWorkingCopyManager workingcopyManager, IType declaringType, ITypeHierarchy h, String methodName, String body) throws CoreException, IllegalArgumentException {
     /*IMethod method = TypeUtility.getMethod(declaringType, methodName);
     if (TypeUtility.exists(method)) {
       MethodUpdateContentOperation operation = new MethodUpdateContentOperation(method, null, true);
@@ -71,5 +60,15 @@ public abstract class AbstractSamlElementImportOperation implements IOperation {
     op.validate();
     op.run(monitor, workingcopyManager);
     //}
+  }
+
+  @Override
+  public SamlContext getSamlContext() {
+    return m_samlContext;
+  }
+
+  @Override
+  public void setSamlContext(SamlContext samlContext) {
+    m_samlContext = samlContext;
   }
 }

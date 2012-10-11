@@ -15,6 +15,7 @@ import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.saml.saml.CodeElement;
+import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.LookupElement;
 import org.eclipse.scout.saml.saml.SmartfieldElement;
 import org.eclipse.scout.sdk.RuntimeClasses;
@@ -27,10 +28,9 @@ import org.eclipse.scout.sdk.util.SdkProperties;
  * @author mvi
  * @since 3.8.0 26.09.2012
  */
-public class SamlSmartfieldElementImportOperation extends AbstractSamlFormFieldElementOperation {
+public class SamlSmartfieldElementImportOperation extends AbstractValueFieldElementImportOperation {
 
   private SmartfieldElement m_smartfieldElement;
-  public static final String SUFFIX = SdkProperties.SUFFIX_FORM_FIELD;
 
   @Override
   public String getOperationName() {
@@ -52,9 +52,9 @@ public class SamlSmartfieldElementImportOperation extends AbstractSamlFormFieldE
   }
 
   @Override
-  public void run() throws CoreException, IllegalArgumentException {
+  protected IType createField() throws CoreException, IllegalArgumentException {
     SmartFieldNewOperation o = new SmartFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
-    o.setTypeName(getSmartfieldElement().getName() + SUFFIX);
+    o.setTypeName(getSmartfieldElement().getName() + getFieldSuffix());
     o.setSuperTypeSignature(Signature.createTypeSignature(RuntimeClasses.AbstractSmartField + "<" + getValueType() + ">", true));
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
@@ -63,17 +63,27 @@ public class SamlSmartfieldElementImportOperation extends AbstractSamlFormFieldE
 
     applyCodeAttribute(getSmartfieldElement().getCode(), createdField, h);
     applyLookupAttribute(getSmartfieldElement().getLookup(), createdField, h);
-    applyMandatoryAttribute(getSmartfieldElement().getMandatory(), createdField, h);
-    applyFormFieldProperties(createdField, h);
-    fillFormFieldLogic(createdField);
+
+    return createdField;
   }
 
   public SmartfieldElement getSmartfieldElement() {
     return m_smartfieldElement;
   }
 
-  public void setSmartfieldElement(SmartfieldElement smartfieldElement) {
-    m_smartfieldElement = smartfieldElement;
+  @Override
+  public void setFieldElement(FormFieldElement fieldElement) {
+    m_smartfieldElement = (SmartfieldElement) fieldElement;
+  }
+
+  @Override
+  public FormFieldElement getFieldElement() {
+    return m_smartfieldElement;
+  }
+
+  @Override
+  public String getFieldSuffix() {
+    return SdkProperties.SUFFIX_FORM_FIELD;
   }
 
   protected void applyCodeAttribute(CodeElement a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {

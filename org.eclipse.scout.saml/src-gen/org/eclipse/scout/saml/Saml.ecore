@@ -67,7 +67,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="text" eType="#//TranslationElement"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="enabled" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="visible" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="master" eType="#//ValueFieldElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="master" eType="#//FormFieldElement"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="logic" upperBound="-1"
         eType="#//LogicElement" containment="true"/>
   </eClassifiers>
@@ -79,27 +79,21 @@
   <eClassifiers xsi:type="ecore:EClass" name="GroupBoxElement" eSuperTypes="#//CompositeFieldElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="columns" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ValueFieldElement" eSuperTypes="#//FormFieldElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="StringElement" eSuperTypes="#//ValueFieldElement">
+  <eClassifiers xsi:type="ecore:EClass" name="ValueFieldElement" eSuperTypes="#//FormFieldElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mandatory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringElement" eSuperTypes="#//ValueFieldElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxlen" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DoubleElement" eSuperTypes="#//ValueFieldElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mandatory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LongElement" eSuperTypes="#//ValueFieldElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mandatory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DateElement" eSuperTypes="#//ValueFieldElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mandatory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DoubleElement" eSuperTypes="#//ValueFieldElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LongElement" eSuperTypes="#//ValueFieldElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DateElement" eSuperTypes="#//ValueFieldElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="SmartfieldElement" eSuperTypes="#//ValueFieldElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mandatory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="code" eType="#//CodeElement"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="lookup" eType="#//LookupElement"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CustomFieldElement" eSuperTypes="#//ValueFieldElement">
+  <eClassifiers xsi:type="ecore:EClass" name="CustomFieldElement" eSuperTypes="#//FormFieldElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="template" eType="#//TemplateElement"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="fields" upperBound="-1"
         eType="#//FormFieldElement" containment="true"/>

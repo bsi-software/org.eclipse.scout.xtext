@@ -13,6 +13,7 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
+import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.StringElement;
 import org.eclipse.scout.sdk.operation.form.field.StringFieldNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
@@ -23,10 +24,9 @@ import org.eclipse.scout.sdk.util.SdkProperties;
  * @author mvi
  * @since 3.8.0 26.09.2012
  */
-public class SamlStringElementImportOperation extends AbstractSamlFormFieldElementOperation {
+public class SamlStringElementImportOperation extends AbstractValueFieldElementImportOperation {
 
   private StringElement m_stringElement;
-  public static final String SUFFIX = SdkProperties.SUFFIX_FORM_FIELD;
 
   @Override
   public String getOperationName() {
@@ -47,26 +47,33 @@ public class SamlStringElementImportOperation extends AbstractSamlFormFieldEleme
   }
 
   @Override
-  public void run() throws CoreException, IllegalArgumentException {
+  protected IType createField() throws CoreException, IllegalArgumentException {
     StringFieldNewOperation o = new StringFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
-    o.setTypeName(getStringElement().getName() + SUFFIX);
+    o.setTypeName(getStringElement().getName() + getFieldSuffix());
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
     IType createdField = o.getCreatedField();
-    ITypeHierarchy h = createdField.newSupertypeHierarchy(getSamlContext().getMonitor());
-
-    applyMaxLengthAttribute(getStringElement().getMaxlen(), createdField, h);
-    applyMandatoryAttribute(getStringElement().getMandatory(), createdField, h);
-    applyFormFieldProperties(createdField, h);
-    fillFormFieldLogic(createdField);
+    applyMaxLengthAttribute(getStringElement().getMaxlen(), createdField, null);
+    return createdField;
   }
 
   public StringElement getStringElement() {
     return m_stringElement;
   }
 
-  public void setStringElement(StringElement stringElement) {
-    m_stringElement = stringElement;
+  @Override
+  public void setFieldElement(FormFieldElement fieldElement) {
+    m_stringElement = (StringElement) fieldElement;
+  }
+
+  @Override
+  public FormFieldElement getFieldElement() {
+    return m_stringElement;
+  }
+
+  @Override
+  public String getFieldSuffix() {
+    return SdkProperties.SUFFIX_FORM_FIELD;
   }
 
 }

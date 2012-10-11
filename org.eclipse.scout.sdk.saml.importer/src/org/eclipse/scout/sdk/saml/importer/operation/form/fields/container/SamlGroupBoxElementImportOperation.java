@@ -13,7 +13,7 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields.container;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IType;
-import org.eclipse.jdt.core.ITypeHierarchy;
+import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.GroupBoxElement;
 import org.eclipse.scout.sdk.operation.form.field.GroupBoxNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
@@ -28,7 +28,6 @@ import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 public class SamlGroupBoxElementImportOperation extends AbstractBoxElementImportOperation {
 
   private GroupBoxElement m_groupBoxElement;
-  public static final String SUFFIX = SdkProperties.SUFFIX_BOX;
 
   @Override
   public String getOperationName() {
@@ -45,15 +44,12 @@ public class SamlGroupBoxElementImportOperation extends AbstractBoxElementImport
   @Override
   public IType createBox() throws CoreException, IllegalArgumentException {
     GroupBoxNewOperation o = new GroupBoxNewOperation(getSamlFormContext().getCurrentParentBox(), false);
-    o.setTypeName(getGroupBoxElement().getName() + SUFFIX);
+    o.setTypeName(getGroupBoxElement().getName() + getFieldSuffix());
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
     IType createdField = o.getCreatedField();
-    ITypeHierarchy h = createdField.newSupertypeHierarchy(getSamlContext().getMonitor());
 
     applyColumnsAttribute(getGroupBoxElement().getColumns(), createdField);
-    applyFormFieldProperties(createdField, h);
-    fillFormFieldLogic(createdField);
 
     return createdField;
   }
@@ -72,7 +68,18 @@ public class SamlGroupBoxElementImportOperation extends AbstractBoxElementImport
     return m_groupBoxElement;
   }
 
-  public void setGroupBoxElement(GroupBoxElement groupBoxElement) {
-    m_groupBoxElement = groupBoxElement;
+  @Override
+  public void setFieldElement(FormFieldElement fieldElement) {
+    m_groupBoxElement = (GroupBoxElement) fieldElement;
+  }
+
+  @Override
+  public FormFieldElement getFieldElement() {
+    return m_groupBoxElement;
+  }
+
+  @Override
+  public String getFieldSuffix() {
+    return SdkProperties.SUFFIX_BOX;
   }
 }

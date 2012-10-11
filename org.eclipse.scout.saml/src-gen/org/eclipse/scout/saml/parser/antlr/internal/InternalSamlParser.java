@@ -3313,7 +3313,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFormFieldElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1228:1: ruleFormFieldElement returns [EObject current=null] : (this_CompositeFieldElement_0= ruleCompositeFieldElement | this_ValueFieldElement_1= ruleValueFieldElement ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1228:1: ruleFormFieldElement returns [EObject current=null] : (this_CompositeFieldElement_0= ruleCompositeFieldElement | this_ValueFieldElement_1= ruleValueFieldElement | this_CustomFieldElement_2= ruleCustomFieldElement ) ;
     public final EObject ruleFormFieldElement() throws RecognitionException {
         EObject current = null;
 
@@ -3321,30 +3321,46 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
         EObject this_ValueFieldElement_1 = null;
 
+        EObject this_CustomFieldElement_2 = null;
+
 
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1231:28: ( (this_CompositeFieldElement_0= ruleCompositeFieldElement | this_ValueFieldElement_1= ruleValueFieldElement ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1232:1: (this_CompositeFieldElement_0= ruleCompositeFieldElement | this_ValueFieldElement_1= ruleValueFieldElement )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1231:28: ( (this_CompositeFieldElement_0= ruleCompositeFieldElement | this_ValueFieldElement_1= ruleValueFieldElement | this_CustomFieldElement_2= ruleCustomFieldElement ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1232:1: (this_CompositeFieldElement_0= ruleCompositeFieldElement | this_ValueFieldElement_1= ruleValueFieldElement | this_CustomFieldElement_2= ruleCustomFieldElement )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1232:1: (this_CompositeFieldElement_0= ruleCompositeFieldElement | this_ValueFieldElement_1= ruleValueFieldElement )
-            int alt15=2;
-            int LA15_0 = input.LA(1);
-
-            if ( (LA15_0==47||LA15_0==51) ) {
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1232:1: (this_CompositeFieldElement_0= ruleCompositeFieldElement | this_ValueFieldElement_1= ruleValueFieldElement | this_CustomFieldElement_2= ruleCustomFieldElement )
+            int alt15=3;
+            switch ( input.LA(1) ) {
+            case 47:
+            case 51:
+                {
                 alt15=1;
-            }
-            else if ( (LA15_0==52||(LA15_0>=55 && LA15_0<=58)||LA15_0==60) ) {
+                }
+                break;
+            case 52:
+            case 55:
+            case 56:
+            case 57:
+            case 58:
+                {
                 alt15=2;
-            }
-            else {
+                }
+                break;
+            case 60:
+                {
+                alt15=3;
+                }
+                break;
+            default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
                     new NoViableAltException("", 15, 0, input);
 
                 throw nvae;
             }
+
             switch (alt15) {
                 case 1 :
                     // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1233:5: this_CompositeFieldElement_0= ruleCompositeFieldElement
@@ -3390,6 +3406,28 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
                     }
                     break;
+                case 3 :
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1253:5: this_CustomFieldElement_2= ruleCustomFieldElement
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                              newCompositeNode(grammarAccess.getFormFieldElementAccess().getCustomFieldElementParserRuleCall_2()); 
+                          
+                    }
+                    pushFollow(FOLLOW_ruleCustomFieldElement_in_ruleFormFieldElement2888);
+                    this_CustomFieldElement_2=ruleCustomFieldElement();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+                       
+                              current = this_CustomFieldElement_2; 
+                              afterParserOrEnumRuleCall();
+                          
+                    }
+
+                    }
+                    break;
 
             }
 
@@ -3413,7 +3451,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCompositeFieldElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1259:1: entryRuleCompositeFieldElement returns [EObject current=null] : iv_ruleCompositeFieldElement= ruleCompositeFieldElement EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1269:1: entryRuleCompositeFieldElement returns [EObject current=null] : iv_ruleCompositeFieldElement= ruleCompositeFieldElement EOF ;
     public final EObject entryRuleCompositeFieldElement() throws RecognitionException {
         EObject current = null;
 
@@ -3421,13 +3459,13 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1260:2: (iv_ruleCompositeFieldElement= ruleCompositeFieldElement EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1261:2: iv_ruleCompositeFieldElement= ruleCompositeFieldElement EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1270:2: (iv_ruleCompositeFieldElement= ruleCompositeFieldElement EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1271:2: iv_ruleCompositeFieldElement= ruleCompositeFieldElement EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getCompositeFieldElementRule()); 
             }
-            pushFollow(FOLLOW_ruleCompositeFieldElement_in_entryRuleCompositeFieldElement2896);
+            pushFollow(FOLLOW_ruleCompositeFieldElement_in_entryRuleCompositeFieldElement2923);
             iv_ruleCompositeFieldElement=ruleCompositeFieldElement();
 
             state._fsp--;
@@ -3435,7 +3473,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleCompositeFieldElement; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleCompositeFieldElement2906); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleCompositeFieldElement2933); if (state.failed) return current;
 
             }
 
@@ -3453,7 +3491,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCompositeFieldElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1268:1: ruleCompositeFieldElement returns [EObject current=null] : (this_SequenceBoxElement_0= ruleSequenceBoxElement | this_GroupBoxElement_1= ruleGroupBoxElement ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1278:1: ruleCompositeFieldElement returns [EObject current=null] : (this_SequenceBoxElement_0= ruleSequenceBoxElement | this_GroupBoxElement_1= ruleGroupBoxElement ) ;
     public final EObject ruleCompositeFieldElement() throws RecognitionException {
         EObject current = null;
 
@@ -3465,10 +3503,10 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1271:28: ( (this_SequenceBoxElement_0= ruleSequenceBoxElement | this_GroupBoxElement_1= ruleGroupBoxElement ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1272:1: (this_SequenceBoxElement_0= ruleSequenceBoxElement | this_GroupBoxElement_1= ruleGroupBoxElement )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1281:28: ( (this_SequenceBoxElement_0= ruleSequenceBoxElement | this_GroupBoxElement_1= ruleGroupBoxElement ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1282:1: (this_SequenceBoxElement_0= ruleSequenceBoxElement | this_GroupBoxElement_1= ruleGroupBoxElement )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1272:1: (this_SequenceBoxElement_0= ruleSequenceBoxElement | this_GroupBoxElement_1= ruleGroupBoxElement )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1282:1: (this_SequenceBoxElement_0= ruleSequenceBoxElement | this_GroupBoxElement_1= ruleGroupBoxElement )
             int alt16=2;
             int LA16_0 = input.LA(1);
 
@@ -3487,14 +3525,14 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             }
             switch (alt16) {
                 case 1 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1273:5: this_SequenceBoxElement_0= ruleSequenceBoxElement
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1283:5: this_SequenceBoxElement_0= ruleSequenceBoxElement
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getCompositeFieldElementAccess().getSequenceBoxElementParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleSequenceBoxElement_in_ruleCompositeFieldElement2953);
+                    pushFollow(FOLLOW_ruleSequenceBoxElement_in_ruleCompositeFieldElement2980);
                     this_SequenceBoxElement_0=ruleSequenceBoxElement();
 
                     state._fsp--;
@@ -3509,14 +3547,14 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1283:5: this_GroupBoxElement_1= ruleGroupBoxElement
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1293:5: this_GroupBoxElement_1= ruleGroupBoxElement
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getCompositeFieldElementAccess().getGroupBoxElementParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleGroupBoxElement_in_ruleCompositeFieldElement2980);
+                    pushFollow(FOLLOW_ruleGroupBoxElement_in_ruleCompositeFieldElement3007);
                     this_GroupBoxElement_1=ruleGroupBoxElement();
 
                     state._fsp--;
@@ -3553,7 +3591,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSequenceBoxElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1299:1: entryRuleSequenceBoxElement returns [EObject current=null] : iv_ruleSequenceBoxElement= ruleSequenceBoxElement EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1309:1: entryRuleSequenceBoxElement returns [EObject current=null] : iv_ruleSequenceBoxElement= ruleSequenceBoxElement EOF ;
     public final EObject entryRuleSequenceBoxElement() throws RecognitionException {
         EObject current = null;
 
@@ -3561,13 +3599,13 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1300:2: (iv_ruleSequenceBoxElement= ruleSequenceBoxElement EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1301:2: iv_ruleSequenceBoxElement= ruleSequenceBoxElement EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1310:2: (iv_ruleSequenceBoxElement= ruleSequenceBoxElement EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1311:2: iv_ruleSequenceBoxElement= ruleSequenceBoxElement EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getSequenceBoxElementRule()); 
             }
-            pushFollow(FOLLOW_ruleSequenceBoxElement_in_entryRuleSequenceBoxElement3015);
+            pushFollow(FOLLOW_ruleSequenceBoxElement_in_entryRuleSequenceBoxElement3042);
             iv_ruleSequenceBoxElement=ruleSequenceBoxElement();
 
             state._fsp--;
@@ -3575,7 +3613,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleSequenceBoxElement; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleSequenceBoxElement3025); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleSequenceBoxElement3052); if (state.failed) return current;
 
             }
 
@@ -3593,7 +3631,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSequenceBoxElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1308:1: ruleSequenceBoxElement returns [EObject current=null] : (otherlv_0= 'sequence_box' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) ) ) )* ) ) ) (otherlv_15= '{' ( ( (lv_logic_16_0= ruleLogicElement ) ) | ( (lv_fields_17_0= ruleFormFieldElement ) ) )* otherlv_18= '}' )? ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1318:1: ruleSequenceBoxElement returns [EObject current=null] : (otherlv_0= 'sequence_box' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) ) ) )* ) ) ) (otherlv_15= '{' ( ( (lv_logic_16_0= ruleLogicElement ) ) | ( (lv_fields_17_0= ruleFormFieldElement ) ) )* otherlv_18= '}' )? ) ;
     public final EObject ruleSequenceBoxElement() throws RecognitionException {
         EObject current = null;
 
@@ -3623,25 +3661,25 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1311:28: ( (otherlv_0= 'sequence_box' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) ) ) )* ) ) ) (otherlv_15= '{' ( ( (lv_logic_16_0= ruleLogicElement ) ) | ( (lv_fields_17_0= ruleFormFieldElement ) ) )* otherlv_18= '}' )? ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1312:1: (otherlv_0= 'sequence_box' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) ) ) )* ) ) ) (otherlv_15= '{' ( ( (lv_logic_16_0= ruleLogicElement ) ) | ( (lv_fields_17_0= ruleFormFieldElement ) ) )* otherlv_18= '}' )? )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1321:28: ( (otherlv_0= 'sequence_box' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) ) ) )* ) ) ) (otherlv_15= '{' ( ( (lv_logic_16_0= ruleLogicElement ) ) | ( (lv_fields_17_0= ruleFormFieldElement ) ) )* otherlv_18= '}' )? ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1322:1: (otherlv_0= 'sequence_box' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) ) ) )* ) ) ) (otherlv_15= '{' ( ( (lv_logic_16_0= ruleLogicElement ) ) | ( (lv_fields_17_0= ruleFormFieldElement ) ) )* otherlv_18= '}' )? )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1312:1: (otherlv_0= 'sequence_box' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) ) ) )* ) ) ) (otherlv_15= '{' ( ( (lv_logic_16_0= ruleLogicElement ) ) | ( (lv_fields_17_0= ruleFormFieldElement ) ) )* otherlv_18= '}' )? )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1312:3: otherlv_0= 'sequence_box' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) ) ) )* ) ) ) (otherlv_15= '{' ( ( (lv_logic_16_0= ruleLogicElement ) ) | ( (lv_fields_17_0= ruleFormFieldElement ) ) )* otherlv_18= '}' )?
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1322:1: (otherlv_0= 'sequence_box' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) ) ) )* ) ) ) (otherlv_15= '{' ( ( (lv_logic_16_0= ruleLogicElement ) ) | ( (lv_fields_17_0= ruleFormFieldElement ) ) )* otherlv_18= '}' )? )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1322:3: otherlv_0= 'sequence_box' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) ) ) )* ) ) ) (otherlv_15= '{' ( ( (lv_logic_16_0= ruleLogicElement ) ) | ( (lv_fields_17_0= ruleFormFieldElement ) ) )* otherlv_18= '}' )?
             {
-            otherlv_0=(Token)match(input,47,FOLLOW_47_in_ruleSequenceBoxElement3062); if (state.failed) return current;
+            otherlv_0=(Token)match(input,47,FOLLOW_47_in_ruleSequenceBoxElement3089); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getSequenceBoxElementAccess().getSequence_boxKeyword_0());
                   
             }
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1316:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1317:1: (lv_name_1_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1326:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1327:1: (lv_name_1_0= RULE_ID )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1317:1: (lv_name_1_0= RULE_ID )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1318:3: lv_name_1_0= RULE_ID
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1327:1: (lv_name_1_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1328:3: lv_name_1_0= RULE_ID
             {
-            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSequenceBoxElement3079); if (state.failed) return current;
+            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSequenceBoxElement3106); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(lv_name_1_0, grammarAccess.getSequenceBoxElementAccess().getNameIDTerminalRuleCall_1_0()); 
@@ -3665,17 +3703,17 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1334:2: ( ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) ) ) )* ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1336:1: ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) ) ) )* ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1344:2: ( ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) ) ) )* ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1346:1: ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) ) ) )* ) )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1336:1: ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) ) ) )* ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1337:2: ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) ) ) )* )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1346:1: ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) ) ) )* ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1347:2: ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) ) ) )* )
             {
             getUnorderedGroupHelper().enter(grammarAccess.getSequenceBoxElementAccess().getUnorderedGroup_2());
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1340:2: ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) ) ) )* )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1341:3: ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) ) ) )*
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1350:2: ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) ) ) )* )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1351:3: ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) ) ) )*
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1341:3: ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) ) ) )*
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1351:3: ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) ) ) )*
             loop17:
             do {
                 int alt17=5;
@@ -3697,46 +3735,46 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
                 switch (alt17) {
             	case 1 :
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1343:4: ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1353:4: ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1343:4: ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1344:5: {...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1353:4: ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1354:5: {...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getSequenceBoxElementAccess().getUnorderedGroup_2(), 0) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        throw new FailedPredicateException(input, "ruleSequenceBoxElement", "getUnorderedGroupHelper().canSelect(grammarAccess.getSequenceBoxElementAccess().getUnorderedGroup_2(), 0)");
             	    }
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1344:115: ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1345:6: ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1354:115: ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1355:6: ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) )
             	    {
             	    getUnorderedGroupHelper().select(grammarAccess.getSequenceBoxElementAccess().getUnorderedGroup_2(), 0);
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1348:6: ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1348:7: {...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1358:6: ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1358:7: {...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) )
             	    {
             	    if ( !((true)) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        throw new FailedPredicateException(input, "ruleSequenceBoxElement", "true");
             	    }
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1348:16: (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1348:18: otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1358:16: (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1358:18: otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) )
             	    {
-            	    otherlv_3=(Token)match(input,46,FOLLOW_46_in_ruleSequenceBoxElement3142); if (state.failed) return current;
+            	    otherlv_3=(Token)match(input,46,FOLLOW_46_in_ruleSequenceBoxElement3169); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_3, grammarAccess.getSequenceBoxElementAccess().getTextKeyword_2_0_0());
             	          
             	    }
-            	    otherlv_4=(Token)match(input,29,FOLLOW_29_in_ruleSequenceBoxElement3154); if (state.failed) return current;
+            	    otherlv_4=(Token)match(input,29,FOLLOW_29_in_ruleSequenceBoxElement3181); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_4, grammarAccess.getSequenceBoxElementAccess().getEqualsSignKeyword_2_0_1());
             	          
             	    }
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1356:1: ( (otherlv_5= RULE_ID ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1357:1: (otherlv_5= RULE_ID )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1366:1: ( (otherlv_5= RULE_ID ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1367:1: (otherlv_5= RULE_ID )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1357:1: (otherlv_5= RULE_ID )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1358:3: otherlv_5= RULE_ID
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1367:1: (otherlv_5= RULE_ID )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1368:3: otherlv_5= RULE_ID
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -3745,7 +3783,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             	      	        }
             	              
             	    }
-            	    otherlv_5=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSequenceBoxElement3174); if (state.failed) return current;
+            	    otherlv_5=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSequenceBoxElement3201); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	      		newLeafNode(otherlv_5, grammarAccess.getSequenceBoxElementAccess().getTextTranslationElementCrossReference_2_0_2_0()); 
@@ -3774,53 +3812,53 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 2 :
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1376:4: ({...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1386:4: ({...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) ) )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1376:4: ({...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1377:5: {...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1386:4: ({...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1387:5: {...}? => ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getSequenceBoxElementAccess().getUnorderedGroup_2(), 1) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        throw new FailedPredicateException(input, "ruleSequenceBoxElement", "getUnorderedGroupHelper().canSelect(grammarAccess.getSequenceBoxElementAccess().getUnorderedGroup_2(), 1)");
             	    }
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1377:115: ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1378:6: ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1387:115: ( ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1388:6: ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) )
             	    {
             	    getUnorderedGroupHelper().select(grammarAccess.getSequenceBoxElementAccess().getUnorderedGroup_2(), 1);
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1381:6: ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1381:7: {...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1391:6: ({...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1391:7: {...}? => (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) )
             	    {
             	    if ( !((true)) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        throw new FailedPredicateException(input, "ruleSequenceBoxElement", "true");
             	    }
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1381:16: (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1381:18: otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1391:16: (otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1391:18: otherlv_6= 'enabled' otherlv_7= '=' ( (lv_enabled_8_0= ruleBooleanType ) )
             	    {
-            	    otherlv_6=(Token)match(input,48,FOLLOW_48_in_ruleSequenceBoxElement3242); if (state.failed) return current;
+            	    otherlv_6=(Token)match(input,48,FOLLOW_48_in_ruleSequenceBoxElement3269); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_6, grammarAccess.getSequenceBoxElementAccess().getEnabledKeyword_2_1_0());
             	          
             	    }
-            	    otherlv_7=(Token)match(input,29,FOLLOW_29_in_ruleSequenceBoxElement3254); if (state.failed) return current;
+            	    otherlv_7=(Token)match(input,29,FOLLOW_29_in_ruleSequenceBoxElement3281); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_7, grammarAccess.getSequenceBoxElementAccess().getEqualsSignKeyword_2_1_1());
             	          
             	    }
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1389:1: ( (lv_enabled_8_0= ruleBooleanType ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1390:1: (lv_enabled_8_0= ruleBooleanType )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1399:1: ( (lv_enabled_8_0= ruleBooleanType ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1400:1: (lv_enabled_8_0= ruleBooleanType )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1390:1: (lv_enabled_8_0= ruleBooleanType )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1391:3: lv_enabled_8_0= ruleBooleanType
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1400:1: (lv_enabled_8_0= ruleBooleanType )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1401:3: lv_enabled_8_0= ruleBooleanType
             	    {
             	    if ( state.backtracking==0 ) {
             	       
             	      	        newCompositeNode(grammarAccess.getSequenceBoxElementAccess().getEnabledBooleanTypeParserRuleCall_2_1_2_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleBooleanType_in_ruleSequenceBoxElement3275);
+            	    pushFollow(FOLLOW_ruleBooleanType_in_ruleSequenceBoxElement3302);
             	    lv_enabled_8_0=ruleBooleanType();
 
             	    state._fsp--;
@@ -3861,53 +3899,53 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 3 :
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1414:4: ({...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1424:4: ({...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) ) )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1414:4: ({...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1415:5: {...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1424:4: ({...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1425:5: {...}? => ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getSequenceBoxElementAccess().getUnorderedGroup_2(), 2) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        throw new FailedPredicateException(input, "ruleSequenceBoxElement", "getUnorderedGroupHelper().canSelect(grammarAccess.getSequenceBoxElementAccess().getUnorderedGroup_2(), 2)");
             	    }
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1415:115: ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1416:6: ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1425:115: ( ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1426:6: ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) )
             	    {
             	    getUnorderedGroupHelper().select(grammarAccess.getSequenceBoxElementAccess().getUnorderedGroup_2(), 2);
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1419:6: ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1419:7: {...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1429:6: ({...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1429:7: {...}? => (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) )
             	    {
             	    if ( !((true)) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        throw new FailedPredicateException(input, "ruleSequenceBoxElement", "true");
             	    }
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1419:16: (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1419:18: otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1429:16: (otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1429:18: otherlv_9= 'visible' otherlv_10= '=' ( (lv_visible_11_0= ruleBooleanType ) )
             	    {
-            	    otherlv_9=(Token)match(input,49,FOLLOW_49_in_ruleSequenceBoxElement3343); if (state.failed) return current;
+            	    otherlv_9=(Token)match(input,49,FOLLOW_49_in_ruleSequenceBoxElement3370); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_9, grammarAccess.getSequenceBoxElementAccess().getVisibleKeyword_2_2_0());
             	          
             	    }
-            	    otherlv_10=(Token)match(input,29,FOLLOW_29_in_ruleSequenceBoxElement3355); if (state.failed) return current;
+            	    otherlv_10=(Token)match(input,29,FOLLOW_29_in_ruleSequenceBoxElement3382); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_10, grammarAccess.getSequenceBoxElementAccess().getEqualsSignKeyword_2_2_1());
             	          
             	    }
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1427:1: ( (lv_visible_11_0= ruleBooleanType ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1428:1: (lv_visible_11_0= ruleBooleanType )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1437:1: ( (lv_visible_11_0= ruleBooleanType ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1438:1: (lv_visible_11_0= ruleBooleanType )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1428:1: (lv_visible_11_0= ruleBooleanType )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1429:3: lv_visible_11_0= ruleBooleanType
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1438:1: (lv_visible_11_0= ruleBooleanType )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1439:3: lv_visible_11_0= ruleBooleanType
             	    {
             	    if ( state.backtracking==0 ) {
             	       
             	      	        newCompositeNode(grammarAccess.getSequenceBoxElementAccess().getVisibleBooleanTypeParserRuleCall_2_2_2_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleBooleanType_in_ruleSequenceBoxElement3376);
+            	    pushFollow(FOLLOW_ruleBooleanType_in_ruleSequenceBoxElement3403);
             	    lv_visible_11_0=ruleBooleanType();
 
             	    state._fsp--;
@@ -3948,46 +3986,46 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 4 :
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1452:4: ({...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1462:4: ({...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) ) )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1452:4: ({...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1453:5: {...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1462:4: ({...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1463:5: {...}? => ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getSequenceBoxElementAccess().getUnorderedGroup_2(), 3) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        throw new FailedPredicateException(input, "ruleSequenceBoxElement", "getUnorderedGroupHelper().canSelect(grammarAccess.getSequenceBoxElementAccess().getUnorderedGroup_2(), 3)");
             	    }
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1453:115: ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1454:6: ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1463:115: ( ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1464:6: ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) )
             	    {
             	    getUnorderedGroupHelper().select(grammarAccess.getSequenceBoxElementAccess().getUnorderedGroup_2(), 3);
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1457:6: ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1457:7: {...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1467:6: ({...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1467:7: {...}? => (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) )
             	    {
             	    if ( !((true)) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        throw new FailedPredicateException(input, "ruleSequenceBoxElement", "true");
             	    }
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1457:16: (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1457:18: otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1467:16: (otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1467:18: otherlv_12= 'master' otherlv_13= '=' ( (otherlv_14= RULE_ID ) )
             	    {
-            	    otherlv_12=(Token)match(input,50,FOLLOW_50_in_ruleSequenceBoxElement3444); if (state.failed) return current;
+            	    otherlv_12=(Token)match(input,50,FOLLOW_50_in_ruleSequenceBoxElement3471); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_12, grammarAccess.getSequenceBoxElementAccess().getMasterKeyword_2_3_0());
             	          
             	    }
-            	    otherlv_13=(Token)match(input,29,FOLLOW_29_in_ruleSequenceBoxElement3456); if (state.failed) return current;
+            	    otherlv_13=(Token)match(input,29,FOLLOW_29_in_ruleSequenceBoxElement3483); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_13, grammarAccess.getSequenceBoxElementAccess().getEqualsSignKeyword_2_3_1());
             	          
             	    }
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1465:1: ( (otherlv_14= RULE_ID ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1466:1: (otherlv_14= RULE_ID )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1475:1: ( (otherlv_14= RULE_ID ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1476:1: (otherlv_14= RULE_ID )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1466:1: (otherlv_14= RULE_ID )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1467:3: otherlv_14= RULE_ID
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1476:1: (otherlv_14= RULE_ID )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1477:3: otherlv_14= RULE_ID
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -3996,10 +4034,10 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             	      	        }
             	              
             	    }
-            	    otherlv_14=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSequenceBoxElement3476); if (state.failed) return current;
+            	    otherlv_14=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSequenceBoxElement3503); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	      		newLeafNode(otherlv_14, grammarAccess.getSequenceBoxElementAccess().getMasterValueFieldElementCrossReference_2_3_2_0()); 
+            	      		newLeafNode(otherlv_14, grammarAccess.getSequenceBoxElementAccess().getMasterFormFieldElementCrossReference_2_3_2_0()); 
             	      	
             	    }
 
@@ -4040,7 +4078,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1492:2: (otherlv_15= '{' ( ( (lv_logic_16_0= ruleLogicElement ) ) | ( (lv_fields_17_0= ruleFormFieldElement ) ) )* otherlv_18= '}' )?
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1502:2: (otherlv_15= '{' ( ( (lv_logic_16_0= ruleLogicElement ) ) | ( (lv_fields_17_0= ruleFormFieldElement ) ) )* otherlv_18= '}' )?
             int alt19=2;
             int LA19_0 = input.LA(1);
 
@@ -4049,15 +4087,15 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             }
             switch (alt19) {
                 case 1 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1492:4: otherlv_15= '{' ( ( (lv_logic_16_0= ruleLogicElement ) ) | ( (lv_fields_17_0= ruleFormFieldElement ) ) )* otherlv_18= '}'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1502:4: otherlv_15= '{' ( ( (lv_logic_16_0= ruleLogicElement ) ) | ( (lv_fields_17_0= ruleFormFieldElement ) ) )* otherlv_18= '}'
                     {
-                    otherlv_15=(Token)match(input,36,FOLLOW_36_in_ruleSequenceBoxElement3530); if (state.failed) return current;
+                    otherlv_15=(Token)match(input,36,FOLLOW_36_in_ruleSequenceBoxElement3557); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_15, grammarAccess.getSequenceBoxElementAccess().getLeftCurlyBracketKeyword_3_0());
                           
                     }
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1496:1: ( ( (lv_logic_16_0= ruleLogicElement ) ) | ( (lv_fields_17_0= ruleFormFieldElement ) ) )*
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1506:1: ( ( (lv_logic_16_0= ruleLogicElement ) ) | ( (lv_fields_17_0= ruleFormFieldElement ) ) )*
                     loop18:
                     do {
                         int alt18=3;
@@ -4073,20 +4111,20 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
                         switch (alt18) {
                     	case 1 :
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1496:2: ( (lv_logic_16_0= ruleLogicElement ) )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1506:2: ( (lv_logic_16_0= ruleLogicElement ) )
                     	    {
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1496:2: ( (lv_logic_16_0= ruleLogicElement ) )
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1497:1: (lv_logic_16_0= ruleLogicElement )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1506:2: ( (lv_logic_16_0= ruleLogicElement ) )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1507:1: (lv_logic_16_0= ruleLogicElement )
                     	    {
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1497:1: (lv_logic_16_0= ruleLogicElement )
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1498:3: lv_logic_16_0= ruleLogicElement
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1507:1: (lv_logic_16_0= ruleLogicElement )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1508:3: lv_logic_16_0= ruleLogicElement
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
                     	      	        newCompositeNode(grammarAccess.getSequenceBoxElementAccess().getLogicLogicElementParserRuleCall_3_1_0_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleLogicElement_in_ruleSequenceBoxElement3552);
+                    	    pushFollow(FOLLOW_ruleLogicElement_in_ruleSequenceBoxElement3579);
                     	    lv_logic_16_0=ruleLogicElement();
 
                     	    state._fsp--;
@@ -4114,20 +4152,20 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1515:6: ( (lv_fields_17_0= ruleFormFieldElement ) )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1525:6: ( (lv_fields_17_0= ruleFormFieldElement ) )
                     	    {
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1515:6: ( (lv_fields_17_0= ruleFormFieldElement ) )
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1516:1: (lv_fields_17_0= ruleFormFieldElement )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1525:6: ( (lv_fields_17_0= ruleFormFieldElement ) )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1526:1: (lv_fields_17_0= ruleFormFieldElement )
                     	    {
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1516:1: (lv_fields_17_0= ruleFormFieldElement )
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1517:3: lv_fields_17_0= ruleFormFieldElement
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1526:1: (lv_fields_17_0= ruleFormFieldElement )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1527:3: lv_fields_17_0= ruleFormFieldElement
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
                     	      	        newCompositeNode(grammarAccess.getSequenceBoxElementAccess().getFieldsFormFieldElementParserRuleCall_3_1_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleFormFieldElement_in_ruleSequenceBoxElement3579);
+                    	    pushFollow(FOLLOW_ruleFormFieldElement_in_ruleSequenceBoxElement3606);
                     	    lv_fields_17_0=ruleFormFieldElement();
 
                     	    state._fsp--;
@@ -4160,7 +4198,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                         }
                     } while (true);
 
-                    otherlv_18=(Token)match(input,37,FOLLOW_37_in_ruleSequenceBoxElement3593); if (state.failed) return current;
+                    otherlv_18=(Token)match(input,37,FOLLOW_37_in_ruleSequenceBoxElement3620); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_18, grammarAccess.getSequenceBoxElementAccess().getRightCurlyBracketKeyword_3_2());
@@ -4195,7 +4233,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleGroupBoxElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1545:1: entryRuleGroupBoxElement returns [EObject current=null] : iv_ruleGroupBoxElement= ruleGroupBoxElement EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1555:1: entryRuleGroupBoxElement returns [EObject current=null] : iv_ruleGroupBoxElement= ruleGroupBoxElement EOF ;
     public final EObject entryRuleGroupBoxElement() throws RecognitionException {
         EObject current = null;
 
@@ -4203,13 +4241,13 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1546:2: (iv_ruleGroupBoxElement= ruleGroupBoxElement EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1547:2: iv_ruleGroupBoxElement= ruleGroupBoxElement EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1556:2: (iv_ruleGroupBoxElement= ruleGroupBoxElement EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1557:2: iv_ruleGroupBoxElement= ruleGroupBoxElement EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getGroupBoxElementRule()); 
             }
-            pushFollow(FOLLOW_ruleGroupBoxElement_in_entryRuleGroupBoxElement3631);
+            pushFollow(FOLLOW_ruleGroupBoxElement_in_entryRuleGroupBoxElement3658);
             iv_ruleGroupBoxElement=ruleGroupBoxElement();
 
             state._fsp--;
@@ -4217,7 +4255,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleGroupBoxElement; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleGroupBoxElement3641); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleGroupBoxElement3668); if (state.failed) return current;
 
             }
 
@@ -4235,7 +4273,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleGroupBoxElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1554:1: ruleGroupBoxElement returns [EObject current=null] : (otherlv_0= 'group_box' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) ) ) )* ) ) ) (otherlv_18= '{' ( ( (lv_logic_19_0= ruleLogicElement ) ) | ( (lv_fields_20_0= ruleFormFieldElement ) ) )* otherlv_21= '}' )? ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1564:1: ruleGroupBoxElement returns [EObject current=null] : (otherlv_0= 'group_box' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) ) ) )* ) ) ) (otherlv_18= '{' ( ( (lv_logic_19_0= ruleLogicElement ) ) | ( (lv_fields_20_0= ruleFormFieldElement ) ) )* otherlv_21= '}' )? ) ;
     public final EObject ruleGroupBoxElement() throws RecognitionException {
         EObject current = null;
 
@@ -4268,25 +4306,25 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1557:28: ( (otherlv_0= 'group_box' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) ) ) )* ) ) ) (otherlv_18= '{' ( ( (lv_logic_19_0= ruleLogicElement ) ) | ( (lv_fields_20_0= ruleFormFieldElement ) ) )* otherlv_21= '}' )? ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1558:1: (otherlv_0= 'group_box' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) ) ) )* ) ) ) (otherlv_18= '{' ( ( (lv_logic_19_0= ruleLogicElement ) ) | ( (lv_fields_20_0= ruleFormFieldElement ) ) )* otherlv_21= '}' )? )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1567:28: ( (otherlv_0= 'group_box' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) ) ) )* ) ) ) (otherlv_18= '{' ( ( (lv_logic_19_0= ruleLogicElement ) ) | ( (lv_fields_20_0= ruleFormFieldElement ) ) )* otherlv_21= '}' )? ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1568:1: (otherlv_0= 'group_box' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) ) ) )* ) ) ) (otherlv_18= '{' ( ( (lv_logic_19_0= ruleLogicElement ) ) | ( (lv_fields_20_0= ruleFormFieldElement ) ) )* otherlv_21= '}' )? )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1558:1: (otherlv_0= 'group_box' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) ) ) )* ) ) ) (otherlv_18= '{' ( ( (lv_logic_19_0= ruleLogicElement ) ) | ( (lv_fields_20_0= ruleFormFieldElement ) ) )* otherlv_21= '}' )? )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1558:3: otherlv_0= 'group_box' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) ) ) )* ) ) ) (otherlv_18= '{' ( ( (lv_logic_19_0= ruleLogicElement ) ) | ( (lv_fields_20_0= ruleFormFieldElement ) ) )* otherlv_21= '}' )?
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1568:1: (otherlv_0= 'group_box' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) ) ) )* ) ) ) (otherlv_18= '{' ( ( (lv_logic_19_0= ruleLogicElement ) ) | ( (lv_fields_20_0= ruleFormFieldElement ) ) )* otherlv_21= '}' )? )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1568:3: otherlv_0= 'group_box' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) ) ) )* ) ) ) (otherlv_18= '{' ( ( (lv_logic_19_0= ruleLogicElement ) ) | ( (lv_fields_20_0= ruleFormFieldElement ) ) )* otherlv_21= '}' )?
             {
-            otherlv_0=(Token)match(input,51,FOLLOW_51_in_ruleGroupBoxElement3678); if (state.failed) return current;
+            otherlv_0=(Token)match(input,51,FOLLOW_51_in_ruleGroupBoxElement3705); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getGroupBoxElementAccess().getGroup_boxKeyword_0());
                   
             }
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1562:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1563:1: (lv_name_1_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1572:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1573:1: (lv_name_1_0= RULE_ID )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1563:1: (lv_name_1_0= RULE_ID )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1564:3: lv_name_1_0= RULE_ID
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1573:1: (lv_name_1_0= RULE_ID )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1574:3: lv_name_1_0= RULE_ID
             {
-            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleGroupBoxElement3695); if (state.failed) return current;
+            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleGroupBoxElement3722); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(lv_name_1_0, grammarAccess.getGroupBoxElementAccess().getNameIDTerminalRuleCall_1_0()); 
@@ -4310,17 +4348,17 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1580:2: ( ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) ) ) )* ) ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1582:1: ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) ) ) )* ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1590:2: ( ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) ) ) )* ) ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1592:1: ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) ) ) )* ) )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1582:1: ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) ) ) )* ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1583:2: ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) ) ) )* )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1592:1: ( ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) ) ) )* ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1593:2: ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) ) ) )* )
             {
             getUnorderedGroupHelper().enter(grammarAccess.getGroupBoxElementAccess().getUnorderedGroup_2());
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1586:2: ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) ) ) )* )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1587:3: ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) ) ) )*
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1596:2: ( ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) ) ) )* )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1597:3: ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) ) ) )*
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1587:3: ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) ) ) )*
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1597:3: ( ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) ) ) )*
             loop20:
             do {
                 int alt20=6;
@@ -4345,46 +4383,46 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
                 switch (alt20) {
             	case 1 :
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1589:4: ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1599:4: ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1589:4: ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1590:5: {...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1599:4: ({...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1600:5: {...}? => ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getGroupBoxElementAccess().getUnorderedGroup_2(), 0) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        throw new FailedPredicateException(input, "ruleGroupBoxElement", "getUnorderedGroupHelper().canSelect(grammarAccess.getGroupBoxElementAccess().getUnorderedGroup_2(), 0)");
             	    }
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1590:112: ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1591:6: ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1600:112: ( ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1601:6: ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) )
             	    {
             	    getUnorderedGroupHelper().select(grammarAccess.getGroupBoxElementAccess().getUnorderedGroup_2(), 0);
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1594:6: ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1594:7: {...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1604:6: ({...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1604:7: {...}? => (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) )
             	    {
             	    if ( !((true)) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        throw new FailedPredicateException(input, "ruleGroupBoxElement", "true");
             	    }
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1594:16: (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1594:18: otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1604:16: (otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1604:18: otherlv_3= 'text' otherlv_4= '=' ( (otherlv_5= RULE_ID ) )
             	    {
-            	    otherlv_3=(Token)match(input,46,FOLLOW_46_in_ruleGroupBoxElement3758); if (state.failed) return current;
+            	    otherlv_3=(Token)match(input,46,FOLLOW_46_in_ruleGroupBoxElement3785); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_3, grammarAccess.getGroupBoxElementAccess().getTextKeyword_2_0_0());
             	          
             	    }
-            	    otherlv_4=(Token)match(input,29,FOLLOW_29_in_ruleGroupBoxElement3770); if (state.failed) return current;
+            	    otherlv_4=(Token)match(input,29,FOLLOW_29_in_ruleGroupBoxElement3797); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_4, grammarAccess.getGroupBoxElementAccess().getEqualsSignKeyword_2_0_1());
             	          
             	    }
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1602:1: ( (otherlv_5= RULE_ID ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1603:1: (otherlv_5= RULE_ID )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1612:1: ( (otherlv_5= RULE_ID ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1613:1: (otherlv_5= RULE_ID )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1603:1: (otherlv_5= RULE_ID )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1604:3: otherlv_5= RULE_ID
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1613:1: (otherlv_5= RULE_ID )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1614:3: otherlv_5= RULE_ID
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -4393,7 +4431,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             	      	        }
             	              
             	    }
-            	    otherlv_5=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleGroupBoxElement3790); if (state.failed) return current;
+            	    otherlv_5=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleGroupBoxElement3817); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	      		newLeafNode(otherlv_5, grammarAccess.getGroupBoxElementAccess().getTextTranslationElementCrossReference_2_0_2_0()); 
@@ -4422,48 +4460,48 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 2 :
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1622:4: ({...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1632:4: ({...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) ) )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1622:4: ({...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1623:5: {...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1632:4: ({...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1633:5: {...}? => ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getGroupBoxElementAccess().getUnorderedGroup_2(), 1) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        throw new FailedPredicateException(input, "ruleGroupBoxElement", "getUnorderedGroupHelper().canSelect(grammarAccess.getGroupBoxElementAccess().getUnorderedGroup_2(), 1)");
             	    }
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1623:112: ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1624:6: ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1633:112: ( ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1634:6: ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) )
             	    {
             	    getUnorderedGroupHelper().select(grammarAccess.getGroupBoxElementAccess().getUnorderedGroup_2(), 1);
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1627:6: ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1627:7: {...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1637:6: ({...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1637:7: {...}? => (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) )
             	    {
             	    if ( !((true)) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        throw new FailedPredicateException(input, "ruleGroupBoxElement", "true");
             	    }
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1627:16: (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1627:18: otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1637:16: (otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1637:18: otherlv_6= 'columns' otherlv_7= '=' ( (lv_columns_8_0= RULE_INT ) )
             	    {
-            	    otherlv_6=(Token)match(input,45,FOLLOW_45_in_ruleGroupBoxElement3858); if (state.failed) return current;
+            	    otherlv_6=(Token)match(input,45,FOLLOW_45_in_ruleGroupBoxElement3885); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_6, grammarAccess.getGroupBoxElementAccess().getColumnsKeyword_2_1_0());
             	          
             	    }
-            	    otherlv_7=(Token)match(input,29,FOLLOW_29_in_ruleGroupBoxElement3870); if (state.failed) return current;
+            	    otherlv_7=(Token)match(input,29,FOLLOW_29_in_ruleGroupBoxElement3897); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_7, grammarAccess.getGroupBoxElementAccess().getEqualsSignKeyword_2_1_1());
             	          
             	    }
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1635:1: ( (lv_columns_8_0= RULE_INT ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1636:1: (lv_columns_8_0= RULE_INT )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1645:1: ( (lv_columns_8_0= RULE_INT ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1646:1: (lv_columns_8_0= RULE_INT )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1636:1: (lv_columns_8_0= RULE_INT )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1637:3: lv_columns_8_0= RULE_INT
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1646:1: (lv_columns_8_0= RULE_INT )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1647:3: lv_columns_8_0= RULE_INT
             	    {
-            	    lv_columns_8_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleGroupBoxElement3887); if (state.failed) return current;
+            	    lv_columns_8_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleGroupBoxElement3914); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	      			newLeafNode(lv_columns_8_0, grammarAccess.getGroupBoxElementAccess().getColumnsINTTerminalRuleCall_2_1_2_0()); 
@@ -4504,53 +4542,53 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 3 :
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1660:4: ({...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1670:4: ({...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) ) )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1660:4: ({...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1661:5: {...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1670:4: ({...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1671:5: {...}? => ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getGroupBoxElementAccess().getUnorderedGroup_2(), 2) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        throw new FailedPredicateException(input, "ruleGroupBoxElement", "getUnorderedGroupHelper().canSelect(grammarAccess.getGroupBoxElementAccess().getUnorderedGroup_2(), 2)");
             	    }
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1661:112: ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1662:6: ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1671:112: ( ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1672:6: ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) )
             	    {
             	    getUnorderedGroupHelper().select(grammarAccess.getGroupBoxElementAccess().getUnorderedGroup_2(), 2);
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1665:6: ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1665:7: {...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1675:6: ({...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1675:7: {...}? => (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) )
             	    {
             	    if ( !((true)) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        throw new FailedPredicateException(input, "ruleGroupBoxElement", "true");
             	    }
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1665:16: (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1665:18: otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1675:16: (otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1675:18: otherlv_9= 'enabled' otherlv_10= '=' ( (lv_enabled_11_0= ruleBooleanType ) )
             	    {
-            	    otherlv_9=(Token)match(input,48,FOLLOW_48_in_ruleGroupBoxElement3960); if (state.failed) return current;
+            	    otherlv_9=(Token)match(input,48,FOLLOW_48_in_ruleGroupBoxElement3987); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_9, grammarAccess.getGroupBoxElementAccess().getEnabledKeyword_2_2_0());
             	          
             	    }
-            	    otherlv_10=(Token)match(input,29,FOLLOW_29_in_ruleGroupBoxElement3972); if (state.failed) return current;
+            	    otherlv_10=(Token)match(input,29,FOLLOW_29_in_ruleGroupBoxElement3999); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_10, grammarAccess.getGroupBoxElementAccess().getEqualsSignKeyword_2_2_1());
             	          
             	    }
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1673:1: ( (lv_enabled_11_0= ruleBooleanType ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1674:1: (lv_enabled_11_0= ruleBooleanType )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1683:1: ( (lv_enabled_11_0= ruleBooleanType ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1684:1: (lv_enabled_11_0= ruleBooleanType )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1674:1: (lv_enabled_11_0= ruleBooleanType )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1675:3: lv_enabled_11_0= ruleBooleanType
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1684:1: (lv_enabled_11_0= ruleBooleanType )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1685:3: lv_enabled_11_0= ruleBooleanType
             	    {
             	    if ( state.backtracking==0 ) {
             	       
             	      	        newCompositeNode(grammarAccess.getGroupBoxElementAccess().getEnabledBooleanTypeParserRuleCall_2_2_2_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleBooleanType_in_ruleGroupBoxElement3993);
+            	    pushFollow(FOLLOW_ruleBooleanType_in_ruleGroupBoxElement4020);
             	    lv_enabled_11_0=ruleBooleanType();
 
             	    state._fsp--;
@@ -4591,53 +4629,53 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 4 :
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1698:4: ({...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1708:4: ({...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) ) )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1698:4: ({...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1699:5: {...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1708:4: ({...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1709:5: {...}? => ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getGroupBoxElementAccess().getUnorderedGroup_2(), 3) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        throw new FailedPredicateException(input, "ruleGroupBoxElement", "getUnorderedGroupHelper().canSelect(grammarAccess.getGroupBoxElementAccess().getUnorderedGroup_2(), 3)");
             	    }
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1699:112: ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1700:6: ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1709:112: ( ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1710:6: ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) )
             	    {
             	    getUnorderedGroupHelper().select(grammarAccess.getGroupBoxElementAccess().getUnorderedGroup_2(), 3);
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1703:6: ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1703:7: {...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1713:6: ({...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1713:7: {...}? => (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) )
             	    {
             	    if ( !((true)) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        throw new FailedPredicateException(input, "ruleGroupBoxElement", "true");
             	    }
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1703:16: (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1703:18: otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1713:16: (otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1713:18: otherlv_12= 'visible' otherlv_13= '=' ( (lv_visible_14_0= ruleBooleanType ) )
             	    {
-            	    otherlv_12=(Token)match(input,49,FOLLOW_49_in_ruleGroupBoxElement4061); if (state.failed) return current;
+            	    otherlv_12=(Token)match(input,49,FOLLOW_49_in_ruleGroupBoxElement4088); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_12, grammarAccess.getGroupBoxElementAccess().getVisibleKeyword_2_3_0());
             	          
             	    }
-            	    otherlv_13=(Token)match(input,29,FOLLOW_29_in_ruleGroupBoxElement4073); if (state.failed) return current;
+            	    otherlv_13=(Token)match(input,29,FOLLOW_29_in_ruleGroupBoxElement4100); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_13, grammarAccess.getGroupBoxElementAccess().getEqualsSignKeyword_2_3_1());
             	          
             	    }
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1711:1: ( (lv_visible_14_0= ruleBooleanType ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1712:1: (lv_visible_14_0= ruleBooleanType )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1721:1: ( (lv_visible_14_0= ruleBooleanType ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1722:1: (lv_visible_14_0= ruleBooleanType )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1712:1: (lv_visible_14_0= ruleBooleanType )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1713:3: lv_visible_14_0= ruleBooleanType
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1722:1: (lv_visible_14_0= ruleBooleanType )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1723:3: lv_visible_14_0= ruleBooleanType
             	    {
             	    if ( state.backtracking==0 ) {
             	       
             	      	        newCompositeNode(grammarAccess.getGroupBoxElementAccess().getVisibleBooleanTypeParserRuleCall_2_3_2_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleBooleanType_in_ruleGroupBoxElement4094);
+            	    pushFollow(FOLLOW_ruleBooleanType_in_ruleGroupBoxElement4121);
             	    lv_visible_14_0=ruleBooleanType();
 
             	    state._fsp--;
@@ -4678,46 +4716,46 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 5 :
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1736:4: ({...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1746:4: ({...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) ) )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1736:4: ({...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1737:5: {...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1746:4: ({...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1747:5: {...}? => ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getGroupBoxElementAccess().getUnorderedGroup_2(), 4) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        throw new FailedPredicateException(input, "ruleGroupBoxElement", "getUnorderedGroupHelper().canSelect(grammarAccess.getGroupBoxElementAccess().getUnorderedGroup_2(), 4)");
             	    }
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1737:112: ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1738:6: ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1747:112: ( ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1748:6: ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) )
             	    {
             	    getUnorderedGroupHelper().select(grammarAccess.getGroupBoxElementAccess().getUnorderedGroup_2(), 4);
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1741:6: ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1741:7: {...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1751:6: ({...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1751:7: {...}? => (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) )
             	    {
             	    if ( !((true)) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        throw new FailedPredicateException(input, "ruleGroupBoxElement", "true");
             	    }
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1741:16: (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1741:18: otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1751:16: (otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1751:18: otherlv_15= 'master' otherlv_16= '=' ( (otherlv_17= RULE_ID ) )
             	    {
-            	    otherlv_15=(Token)match(input,50,FOLLOW_50_in_ruleGroupBoxElement4162); if (state.failed) return current;
+            	    otherlv_15=(Token)match(input,50,FOLLOW_50_in_ruleGroupBoxElement4189); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_15, grammarAccess.getGroupBoxElementAccess().getMasterKeyword_2_4_0());
             	          
             	    }
-            	    otherlv_16=(Token)match(input,29,FOLLOW_29_in_ruleGroupBoxElement4174); if (state.failed) return current;
+            	    otherlv_16=(Token)match(input,29,FOLLOW_29_in_ruleGroupBoxElement4201); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_16, grammarAccess.getGroupBoxElementAccess().getEqualsSignKeyword_2_4_1());
             	          
             	    }
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1749:1: ( (otherlv_17= RULE_ID ) )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1750:1: (otherlv_17= RULE_ID )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1759:1: ( (otherlv_17= RULE_ID ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1760:1: (otherlv_17= RULE_ID )
             	    {
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1750:1: (otherlv_17= RULE_ID )
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1751:3: otherlv_17= RULE_ID
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1760:1: (otherlv_17= RULE_ID )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1761:3: otherlv_17= RULE_ID
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -4726,10 +4764,10 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             	      	        }
             	              
             	    }
-            	    otherlv_17=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleGroupBoxElement4194); if (state.failed) return current;
+            	    otherlv_17=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleGroupBoxElement4221); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	      		newLeafNode(otherlv_17, grammarAccess.getGroupBoxElementAccess().getMasterValueFieldElementCrossReference_2_4_2_0()); 
+            	      		newLeafNode(otherlv_17, grammarAccess.getGroupBoxElementAccess().getMasterFormFieldElementCrossReference_2_4_2_0()); 
             	      	
             	    }
 
@@ -4770,7 +4808,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1776:2: (otherlv_18= '{' ( ( (lv_logic_19_0= ruleLogicElement ) ) | ( (lv_fields_20_0= ruleFormFieldElement ) ) )* otherlv_21= '}' )?
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1786:2: (otherlv_18= '{' ( ( (lv_logic_19_0= ruleLogicElement ) ) | ( (lv_fields_20_0= ruleFormFieldElement ) ) )* otherlv_21= '}' )?
             int alt22=2;
             int LA22_0 = input.LA(1);
 
@@ -4779,15 +4817,15 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             }
             switch (alt22) {
                 case 1 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1776:4: otherlv_18= '{' ( ( (lv_logic_19_0= ruleLogicElement ) ) | ( (lv_fields_20_0= ruleFormFieldElement ) ) )* otherlv_21= '}'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1786:4: otherlv_18= '{' ( ( (lv_logic_19_0= ruleLogicElement ) ) | ( (lv_fields_20_0= ruleFormFieldElement ) ) )* otherlv_21= '}'
                     {
-                    otherlv_18=(Token)match(input,36,FOLLOW_36_in_ruleGroupBoxElement4248); if (state.failed) return current;
+                    otherlv_18=(Token)match(input,36,FOLLOW_36_in_ruleGroupBoxElement4275); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_18, grammarAccess.getGroupBoxElementAccess().getLeftCurlyBracketKeyword_3_0());
                           
                     }
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1780:1: ( ( (lv_logic_19_0= ruleLogicElement ) ) | ( (lv_fields_20_0= ruleFormFieldElement ) ) )*
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1790:1: ( ( (lv_logic_19_0= ruleLogicElement ) ) | ( (lv_fields_20_0= ruleFormFieldElement ) ) )*
                     loop21:
                     do {
                         int alt21=3;
@@ -4803,20 +4841,20 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
                         switch (alt21) {
                     	case 1 :
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1780:2: ( (lv_logic_19_0= ruleLogicElement ) )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1790:2: ( (lv_logic_19_0= ruleLogicElement ) )
                     	    {
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1780:2: ( (lv_logic_19_0= ruleLogicElement ) )
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1781:1: (lv_logic_19_0= ruleLogicElement )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1790:2: ( (lv_logic_19_0= ruleLogicElement ) )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1791:1: (lv_logic_19_0= ruleLogicElement )
                     	    {
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1781:1: (lv_logic_19_0= ruleLogicElement )
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1782:3: lv_logic_19_0= ruleLogicElement
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1791:1: (lv_logic_19_0= ruleLogicElement )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1792:3: lv_logic_19_0= ruleLogicElement
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
                     	      	        newCompositeNode(grammarAccess.getGroupBoxElementAccess().getLogicLogicElementParserRuleCall_3_1_0_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleLogicElement_in_ruleGroupBoxElement4270);
+                    	    pushFollow(FOLLOW_ruleLogicElement_in_ruleGroupBoxElement4297);
                     	    lv_logic_19_0=ruleLogicElement();
 
                     	    state._fsp--;
@@ -4844,20 +4882,20 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1799:6: ( (lv_fields_20_0= ruleFormFieldElement ) )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1809:6: ( (lv_fields_20_0= ruleFormFieldElement ) )
                     	    {
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1799:6: ( (lv_fields_20_0= ruleFormFieldElement ) )
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1800:1: (lv_fields_20_0= ruleFormFieldElement )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1809:6: ( (lv_fields_20_0= ruleFormFieldElement ) )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1810:1: (lv_fields_20_0= ruleFormFieldElement )
                     	    {
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1800:1: (lv_fields_20_0= ruleFormFieldElement )
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1801:3: lv_fields_20_0= ruleFormFieldElement
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1810:1: (lv_fields_20_0= ruleFormFieldElement )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1811:3: lv_fields_20_0= ruleFormFieldElement
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
                     	      	        newCompositeNode(grammarAccess.getGroupBoxElementAccess().getFieldsFormFieldElementParserRuleCall_3_1_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleFormFieldElement_in_ruleGroupBoxElement4297);
+                    	    pushFollow(FOLLOW_ruleFormFieldElement_in_ruleGroupBoxElement4324);
                     	    lv_fields_20_0=ruleFormFieldElement();
 
                     	    state._fsp--;
@@ -4890,7 +4928,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                         }
                     } while (true);
 
-                    otherlv_21=(Token)match(input,37,FOLLOW_37_in_ruleGroupBoxElement4311); if (state.failed) return current;
+                    otherlv_21=(Token)match(input,37,FOLLOW_37_in_ruleGroupBoxElement4338); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_21, grammarAccess.getGroupBoxElementAccess().getRightCurlyBracketKeyword_3_2());
@@ -4925,7 +4963,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleValueFieldElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1829:1: entryRuleValueFieldElement returns [EObject current=null] : iv_ruleValueFieldElement= ruleValueFieldElement EOF ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1839:1: entryRuleValueFieldElement returns [EObject current=null] : iv_ruleValueFieldElement= ruleValueFieldElement EOF ;
     public final EObject entryRuleValueFieldElement() throws RecognitionException {
         EObject current = null;
 
@@ -4933,13 +4971,13 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1830:2: (iv_ruleValueFieldElement= ruleValueFieldElement EOF )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1831:2: iv_ruleValueFieldElement= ruleValueFieldElement EOF
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1840:2: (iv_ruleValueFieldElement= ruleValueFieldElement EOF )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1841:2: iv_ruleValueFieldElement= ruleValueFieldElement EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getValueFieldElementRule()); 
             }
-            pushFollow(FOLLOW_ruleValueFieldElement_in_entryRuleValueFieldElement4349);
+            pushFollow(FOLLOW_ruleValueFieldElement_in_entryRuleValueFieldElement4376);
             iv_ruleValueFieldElement=ruleValueFieldElement();
 
             state._fsp--;
@@ -4947,7 +4985,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleValueFieldElement; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleValueFieldElement4359); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleValueFieldElement4386); if (state.failed) return current;
 
             }
 
@@ -4965,7 +5003,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleValueFieldElement"
-    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1838:1: ruleValueFieldElement returns [EObject current=null] : (this_StringElement_0= ruleStringElement | this_DoubleElement_1= ruleDoubleElement | this_LongElement_2= ruleLongElement | this_DateElement_3= ruleDateElement | this_SmartfieldElement_4= ruleSmartfieldElement | this_CustomFieldElement_5= ruleCustomFieldElement ) ;
+    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1848:1: ruleValueFieldElement returns [EObject current=null] : (this_StringElement_0= ruleStringElement | this_DoubleElement_1= ruleDoubleElement | this_LongElement_2= ruleLongElement | this_DateElement_3= ruleDateElement | this_SmartfieldElement_4= ruleSmartfieldElement ) ;
     public final EObject ruleValueFieldElement() throws RecognitionException {
         EObject current = null;
 
@@ -4979,17 +5017,15 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
         EObject this_SmartfieldElement_4 = null;
 
-        EObject this_CustomFieldElement_5 = null;
-
 
          enterRule(); 
             
         try {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1841:28: ( (this_StringElement_0= ruleStringElement | this_DoubleElement_1= ruleDoubleElement | this_LongElement_2= ruleLongElement | this_DateElement_3= ruleDateElement | this_SmartfieldElement_4= ruleSmartfieldElement | this_CustomFieldElement_5= ruleCustomFieldElement ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1842:1: (this_StringElement_0= ruleStringElement | this_DoubleElement_1= ruleDoubleElement | this_LongElement_2= ruleLongElement | this_DateElement_3= ruleDateElement | this_SmartfieldElement_4= ruleSmartfieldElement | this_CustomFieldElement_5= ruleCustomFieldElement )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1851:28: ( (this_StringElement_0= ruleStringElement | this_DoubleElement_1= ruleDoubleElement | this_LongElement_2= ruleLongElement | this_DateElement_3= ruleDateElement | this_SmartfieldElement_4= ruleSmartfieldElement ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1852:1: (this_StringElement_0= ruleStringElement | this_DoubleElement_1= ruleDoubleElement | this_LongElement_2= ruleLongElement | this_DateElement_3= ruleDateElement | this_SmartfieldElement_4= ruleSmartfieldElement )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1842:1: (this_StringElement_0= ruleStringElement | this_DoubleElement_1= ruleDoubleElement | this_LongElement_2= ruleLongElement | this_DateElement_3= ruleDateElement | this_SmartfieldElement_4= ruleSmartfieldElement | this_CustomFieldElement_5= ruleCustomFieldElement )
-            int alt23=6;
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1852:1: (this_StringElement_0= ruleStringElement | this_DoubleElement_1= ruleDoubleElement | this_LongElement_2= ruleLongElement | this_DateElement_3= ruleDateElement | this_SmartfieldElement_4= ruleSmartfieldElement )
+            int alt23=5;
             switch ( input.LA(1) ) {
             case 52:
                 {
@@ -5016,11 +5052,6 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                 alt23=5;
                 }
                 break;
-            case 60:
-                {
-                alt23=6;
-                }
-                break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
@@ -5031,14 +5062,14 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
 
             switch (alt23) {
                 case 1 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1843:5: this_StringElement_0= ruleStringElement
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1853:5: this_StringElement_0= ruleStringElement
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getValueFieldElementAccess().getStringElementParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleStringElement_in_ruleValueFieldElement4406);
+                    pushFollow(FOLLOW_ruleStringElement_in_ruleValueFieldElement4433);
                     this_StringElement_0=ruleStringElement();
 
                     state._fsp--;
@@ -5053,14 +5084,14 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1853:5: this_DoubleElement_1= ruleDoubleElement
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1863:5: this_DoubleElement_1= ruleDoubleElement
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getValueFieldElementAccess().getDoubleElementParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleDoubleElement_in_ruleValueFieldElement4433);
+                    pushFollow(FOLLOW_ruleDoubleElement_in_ruleValueFieldElement4460);
                     this_DoubleElement_1=ruleDoubleElement();
 
                     state._fsp--;
@@ -5075,14 +5106,14 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1863:5: this_LongElement_2= ruleLongElement
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1873:5: this_LongElement_2= ruleLongElement
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getValueFieldElementAccess().getLongElementParserRuleCall_2()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleLongElement_in_ruleValueFieldElement4460);
+                    pushFollow(FOLLOW_ruleLongElement_in_ruleValueFieldElement4487);
                     this_LongElement_2=ruleLongElement();
 
                     state._fsp--;
@@ -5097,14 +5128,14 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1873:5: this_DateElement_3= ruleDateElement
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1883:5: this_DateElement_3= ruleDateElement
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getValueFieldElementAccess().getDateElementParserRuleCall_3()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleDateElement_in_ruleValueFieldElement4487);
+                    pushFollow(FOLLOW_ruleDateElement_in_ruleValueFieldElement4514);
                     this_DateElement_3=ruleDateElement();
 
                     state._fsp--;
@@ -5119,14 +5150,14 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1883:5: this_SmartfieldElement_4= ruleSmartfieldElement
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1893:5: this_SmartfieldElement_4= ruleSmartfieldElement
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getValueFieldElementAccess().getSmartfieldElementParserRuleCall_4()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleSmartfieldElement_in_ruleValueFieldElement4514);
+                    pushFollow(FOLLOW_ruleSmartfieldElement_in_ruleValueFieldElement4541);
                     this_SmartfieldElement_4=ruleSmartfieldElement();
 
                     state._fsp--;
@@ -5134,28 +5165,6 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
                     if ( state.backtracking==0 ) {
                        
                               current = this_SmartfieldElement_4; 
-                              afterParserOrEnumRuleCall();
-                          
-                    }
-
-                    }
-                    break;
-                case 6 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:1893:5: this_CustomFieldElement_5= ruleCustomFieldElement
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                              newCompositeNode(grammarAccess.getValueFieldElementAccess().getCustomFieldElementParserRuleCall_5()); 
-                          
-                    }
-                    pushFollow(FOLLOW_ruleCustomFieldElement_in_ruleValueFieldElement4541);
-                    this_CustomFieldElement_5=ruleCustomFieldElement();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-                       
-                              current = this_CustomFieldElement_5; 
                               afterParserOrEnumRuleCall();
                           
                     }
@@ -5642,7 +5651,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             	    otherlv_14=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleStringElement5037); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	      		newLeafNode(otherlv_14, grammarAccess.getStringElementAccess().getMasterValueFieldElementCrossReference_2_3_2_0()); 
+            	      		newLeafNode(otherlv_14, grammarAccess.getStringElementAccess().getMasterFormFieldElementCrossReference_2_3_2_0()); 
             	      	
             	    }
 
@@ -6408,7 +6417,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             	    otherlv_14=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleDoubleElement5827); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	      		newLeafNode(otherlv_14, grammarAccess.getDoubleElementAccess().getMasterValueFieldElementCrossReference_2_3_2_0()); 
+            	      		newLeafNode(otherlv_14, grammarAccess.getDoubleElementAccess().getMasterFormFieldElementCrossReference_2_3_2_0()); 
             	      	
             	    }
 
@@ -7092,7 +7101,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             	    otherlv_14=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleLongElement6515); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	      		newLeafNode(otherlv_14, grammarAccess.getLongElementAccess().getMasterValueFieldElementCrossReference_2_3_2_0()); 
+            	      		newLeafNode(otherlv_14, grammarAccess.getLongElementAccess().getMasterFormFieldElementCrossReference_2_3_2_0()); 
             	      	
             	    }
 
@@ -7776,7 +7785,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             	    otherlv_14=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleDateElement7203); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	      		newLeafNode(otherlv_14, grammarAccess.getDateElementAccess().getMasterValueFieldElementCrossReference_2_3_2_0()); 
+            	      		newLeafNode(otherlv_14, grammarAccess.getDateElementAccess().getMasterFormFieldElementCrossReference_2_3_2_0()); 
             	      	
             	    }
 
@@ -8451,7 +8460,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             	    otherlv_14=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSmartfieldElement7891); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	      		newLeafNode(otherlv_14, grammarAccess.getSmartfieldElementAccess().getMasterValueFieldElementCrossReference_2_3_2_0()); 
+            	      		newLeafNode(otherlv_14, grammarAccess.getSmartfieldElementAccess().getMasterFormFieldElementCrossReference_2_3_2_0()); 
             	      	
             	    }
 
@@ -9406,7 +9415,7 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
             	    otherlv_17=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleCustomFieldElement8925); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	      		newLeafNode(otherlv_17, grammarAccess.getCustomFieldElementAccess().getMasterValueFieldElementCrossReference_5_3_2_0()); 
+            	      		newLeafNode(otherlv_17, grammarAccess.getCustomFieldElementAccess().getMasterFormFieldElementCrossReference_5_3_2_0()); 
             	      	
             	    }
 
@@ -27939,61 +27948,61 @@ public class InternalSamlParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_EOF_in_entryRuleFormFieldElement2787 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleCompositeFieldElement_in_ruleFormFieldElement2834 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleValueFieldElement_in_ruleFormFieldElement2861 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCompositeFieldElement_in_entryRuleCompositeFieldElement2896 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleCompositeFieldElement2906 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSequenceBoxElement_in_ruleCompositeFieldElement2953 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleGroupBoxElement_in_ruleCompositeFieldElement2980 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSequenceBoxElement_in_entryRuleSequenceBoxElement3015 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleSequenceBoxElement3025 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_47_in_ruleSequenceBoxElement3062 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleSequenceBoxElement3079 = new BitSet(new long[]{0x0007401000000002L});
-    public static final BitSet FOLLOW_46_in_ruleSequenceBoxElement3142 = new BitSet(new long[]{0x0000000020000000L});
-    public static final BitSet FOLLOW_29_in_ruleSequenceBoxElement3154 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleSequenceBoxElement3174 = new BitSet(new long[]{0x0007401000000002L});
-    public static final BitSet FOLLOW_48_in_ruleSequenceBoxElement3242 = new BitSet(new long[]{0x0000000020000000L});
-    public static final BitSet FOLLOW_29_in_ruleSequenceBoxElement3254 = new BitSet(new long[]{0x0000000000018000L});
-    public static final BitSet FOLLOW_ruleBooleanType_in_ruleSequenceBoxElement3275 = new BitSet(new long[]{0x0007401000000002L});
-    public static final BitSet FOLLOW_49_in_ruleSequenceBoxElement3343 = new BitSet(new long[]{0x0000000020000000L});
-    public static final BitSet FOLLOW_29_in_ruleSequenceBoxElement3355 = new BitSet(new long[]{0x0000000000018000L});
-    public static final BitSet FOLLOW_ruleBooleanType_in_ruleSequenceBoxElement3376 = new BitSet(new long[]{0x0007401000000002L});
-    public static final BitSet FOLLOW_50_in_ruleSequenceBoxElement3444 = new BitSet(new long[]{0x0000000020000000L});
-    public static final BitSet FOLLOW_29_in_ruleSequenceBoxElement3456 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleSequenceBoxElement3476 = new BitSet(new long[]{0x0007401000000002L});
-    public static final BitSet FOLLOW_36_in_ruleSequenceBoxElement3530 = new BitSet(new long[]{0x1798802040000000L});
-    public static final BitSet FOLLOW_ruleLogicElement_in_ruleSequenceBoxElement3552 = new BitSet(new long[]{0x1798802040000000L});
-    public static final BitSet FOLLOW_ruleFormFieldElement_in_ruleSequenceBoxElement3579 = new BitSet(new long[]{0x1798802040000000L});
-    public static final BitSet FOLLOW_37_in_ruleSequenceBoxElement3593 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleGroupBoxElement_in_entryRuleGroupBoxElement3631 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleGroupBoxElement3641 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_51_in_ruleGroupBoxElement3678 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleGroupBoxElement3695 = new BitSet(new long[]{0x0007601000000002L});
-    public static final BitSet FOLLOW_46_in_ruleGroupBoxElement3758 = new BitSet(new long[]{0x0000000020000000L});
-    public static final BitSet FOLLOW_29_in_ruleGroupBoxElement3770 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleGroupBoxElement3790 = new BitSet(new long[]{0x0007601000000002L});
-    public static final BitSet FOLLOW_45_in_ruleGroupBoxElement3858 = new BitSet(new long[]{0x0000000020000000L});
-    public static final BitSet FOLLOW_29_in_ruleGroupBoxElement3870 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_RULE_INT_in_ruleGroupBoxElement3887 = new BitSet(new long[]{0x0007601000000002L});
-    public static final BitSet FOLLOW_48_in_ruleGroupBoxElement3960 = new BitSet(new long[]{0x0000000020000000L});
-    public static final BitSet FOLLOW_29_in_ruleGroupBoxElement3972 = new BitSet(new long[]{0x0000000000018000L});
-    public static final BitSet FOLLOW_ruleBooleanType_in_ruleGroupBoxElement3993 = new BitSet(new long[]{0x0007601000000002L});
-    public static final BitSet FOLLOW_49_in_ruleGroupBoxElement4061 = new BitSet(new long[]{0x0000000020000000L});
-    public static final BitSet FOLLOW_29_in_ruleGroupBoxElement4073 = new BitSet(new long[]{0x0000000000018000L});
-    public static final BitSet FOLLOW_ruleBooleanType_in_ruleGroupBoxElement4094 = new BitSet(new long[]{0x0007601000000002L});
-    public static final BitSet FOLLOW_50_in_ruleGroupBoxElement4162 = new BitSet(new long[]{0x0000000020000000L});
-    public static final BitSet FOLLOW_29_in_ruleGroupBoxElement4174 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleGroupBoxElement4194 = new BitSet(new long[]{0x0007601000000002L});
-    public static final BitSet FOLLOW_36_in_ruleGroupBoxElement4248 = new BitSet(new long[]{0x1798802040000000L});
-    public static final BitSet FOLLOW_ruleLogicElement_in_ruleGroupBoxElement4270 = new BitSet(new long[]{0x1798802040000000L});
-    public static final BitSet FOLLOW_ruleFormFieldElement_in_ruleGroupBoxElement4297 = new BitSet(new long[]{0x1798802040000000L});
-    public static final BitSet FOLLOW_37_in_ruleGroupBoxElement4311 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValueFieldElement_in_entryRuleValueFieldElement4349 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleValueFieldElement4359 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStringElement_in_ruleValueFieldElement4406 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDoubleElement_in_ruleValueFieldElement4433 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLongElement_in_ruleValueFieldElement4460 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDateElement_in_ruleValueFieldElement4487 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSmartfieldElement_in_ruleValueFieldElement4514 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCustomFieldElement_in_ruleValueFieldElement4541 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCustomFieldElement_in_ruleFormFieldElement2888 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCompositeFieldElement_in_entryRuleCompositeFieldElement2923 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleCompositeFieldElement2933 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSequenceBoxElement_in_ruleCompositeFieldElement2980 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleGroupBoxElement_in_ruleCompositeFieldElement3007 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSequenceBoxElement_in_entryRuleSequenceBoxElement3042 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleSequenceBoxElement3052 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_47_in_ruleSequenceBoxElement3089 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleSequenceBoxElement3106 = new BitSet(new long[]{0x0007401000000002L});
+    public static final BitSet FOLLOW_46_in_ruleSequenceBoxElement3169 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_29_in_ruleSequenceBoxElement3181 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleSequenceBoxElement3201 = new BitSet(new long[]{0x0007401000000002L});
+    public static final BitSet FOLLOW_48_in_ruleSequenceBoxElement3269 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_29_in_ruleSequenceBoxElement3281 = new BitSet(new long[]{0x0000000000018000L});
+    public static final BitSet FOLLOW_ruleBooleanType_in_ruleSequenceBoxElement3302 = new BitSet(new long[]{0x0007401000000002L});
+    public static final BitSet FOLLOW_49_in_ruleSequenceBoxElement3370 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_29_in_ruleSequenceBoxElement3382 = new BitSet(new long[]{0x0000000000018000L});
+    public static final BitSet FOLLOW_ruleBooleanType_in_ruleSequenceBoxElement3403 = new BitSet(new long[]{0x0007401000000002L});
+    public static final BitSet FOLLOW_50_in_ruleSequenceBoxElement3471 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_29_in_ruleSequenceBoxElement3483 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleSequenceBoxElement3503 = new BitSet(new long[]{0x0007401000000002L});
+    public static final BitSet FOLLOW_36_in_ruleSequenceBoxElement3557 = new BitSet(new long[]{0x1798802040000000L});
+    public static final BitSet FOLLOW_ruleLogicElement_in_ruleSequenceBoxElement3579 = new BitSet(new long[]{0x1798802040000000L});
+    public static final BitSet FOLLOW_ruleFormFieldElement_in_ruleSequenceBoxElement3606 = new BitSet(new long[]{0x1798802040000000L});
+    public static final BitSet FOLLOW_37_in_ruleSequenceBoxElement3620 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleGroupBoxElement_in_entryRuleGroupBoxElement3658 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleGroupBoxElement3668 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_51_in_ruleGroupBoxElement3705 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleGroupBoxElement3722 = new BitSet(new long[]{0x0007601000000002L});
+    public static final BitSet FOLLOW_46_in_ruleGroupBoxElement3785 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_29_in_ruleGroupBoxElement3797 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleGroupBoxElement3817 = new BitSet(new long[]{0x0007601000000002L});
+    public static final BitSet FOLLOW_45_in_ruleGroupBoxElement3885 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_29_in_ruleGroupBoxElement3897 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_RULE_INT_in_ruleGroupBoxElement3914 = new BitSet(new long[]{0x0007601000000002L});
+    public static final BitSet FOLLOW_48_in_ruleGroupBoxElement3987 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_29_in_ruleGroupBoxElement3999 = new BitSet(new long[]{0x0000000000018000L});
+    public static final BitSet FOLLOW_ruleBooleanType_in_ruleGroupBoxElement4020 = new BitSet(new long[]{0x0007601000000002L});
+    public static final BitSet FOLLOW_49_in_ruleGroupBoxElement4088 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_29_in_ruleGroupBoxElement4100 = new BitSet(new long[]{0x0000000000018000L});
+    public static final BitSet FOLLOW_ruleBooleanType_in_ruleGroupBoxElement4121 = new BitSet(new long[]{0x0007601000000002L});
+    public static final BitSet FOLLOW_50_in_ruleGroupBoxElement4189 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_29_in_ruleGroupBoxElement4201 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleGroupBoxElement4221 = new BitSet(new long[]{0x0007601000000002L});
+    public static final BitSet FOLLOW_36_in_ruleGroupBoxElement4275 = new BitSet(new long[]{0x1798802040000000L});
+    public static final BitSet FOLLOW_ruleLogicElement_in_ruleGroupBoxElement4297 = new BitSet(new long[]{0x1798802040000000L});
+    public static final BitSet FOLLOW_ruleFormFieldElement_in_ruleGroupBoxElement4324 = new BitSet(new long[]{0x1798802040000000L});
+    public static final BitSet FOLLOW_37_in_ruleGroupBoxElement4338 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValueFieldElement_in_entryRuleValueFieldElement4376 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleValueFieldElement4386 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStringElement_in_ruleValueFieldElement4433 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDoubleElement_in_ruleValueFieldElement4460 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLongElement_in_ruleValueFieldElement4487 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDateElement_in_ruleValueFieldElement4514 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSmartfieldElement_in_ruleValueFieldElement4541 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleStringElement_in_entryRuleStringElement4576 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleStringElement4586 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_52_in_ruleStringElement4623 = new BitSet(new long[]{0x0000000000000010L});

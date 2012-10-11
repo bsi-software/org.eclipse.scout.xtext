@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="formFieldOperation" name="formFieldOperation" schema="schema/formFieldOperation.exsd"/>
+   <extension
+         point="org.eclipse.scout.sdk.saml.importer.formFieldOperation">
+      <operation
+            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.container.SamlSequenceBoxElementImportOperation"
+            samlFormElement="org.eclipse.scout.saml.saml.SequenceBoxElement">
+      </operation>
+      <operation
+            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.container.SamlGroupBoxElementImportOperation"
+            samlFormElement="org.eclipse.scout.saml.saml.GroupBoxElement">
+      </operation>
+      <operation
+            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.SamlStringElementImportOperation"
+            samlFormElement="org.eclipse.scout.saml.saml.StringElement">
+      </operation>
+      <operation
+            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.SamlSmartfieldElementImportOperation"
+            samlFormElement="org.eclipse.scout.saml.saml.SmartfieldElement">
+      </operation>
+      <operation
+            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.SamlLongElementImportOperation"
+            samlFormElement="org.eclipse.scout.saml.saml.LongElement">
+      </operation>
+      <operation
+            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.SamlDoubleElementImportOperation"
+            samlFormElement="org.eclipse.scout.saml.saml.DoubleElement">
+      </operation>
+      <operation
+            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.SamlDateElementImportOperation"
+            samlFormElement="org.eclipse.scout.saml.saml.DateElement">
+      </operation>
+      <operation
+            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.SamlCustomFieldElementImportOperation"
+            samlFormElement="org.eclipse.scout.saml.saml.CustomFieldElement">
+      </operation>
+   </extension>
+
+</plugin>

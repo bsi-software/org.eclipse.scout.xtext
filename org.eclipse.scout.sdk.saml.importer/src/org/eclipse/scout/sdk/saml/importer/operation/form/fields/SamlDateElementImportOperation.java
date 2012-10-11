@@ -12,8 +12,8 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
-import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.saml.saml.DateElement;
+import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.sdk.operation.form.field.DateFieldNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
 
@@ -23,10 +23,9 @@ import org.eclipse.scout.sdk.util.SdkProperties;
  * @author mvi
  * @since 3.8.0 26.09.2012
  */
-public class SamlDateElementImportOperation extends AbstractSamlFormFieldElementOperation {
+public class SamlDateElementImportOperation extends AbstractValueFieldElementImportOperation {
 
   private DateElement m_dateElement;
-  public static final String SUFFIX = SdkProperties.SUFFIX_FORM_FIELD;
 
   @Override
   public String getOperationName() {
@@ -41,24 +40,30 @@ public class SamlDateElementImportOperation extends AbstractSamlFormFieldElement
   }
 
   @Override
-  public void run() throws CoreException, IllegalArgumentException {
+  protected IType createField() throws CoreException, IllegalArgumentException {
     DateFieldNewOperation o = new DateFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
-    o.setTypeName(getDateElement().getName() + SUFFIX);
+    o.setTypeName(getDateElement().getName() + getFieldSuffix());
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
-    IType createdField = o.getCreatedField();
-    ITypeHierarchy h = createdField.newSupertypeHierarchy(getSamlContext().getMonitor());
-
-    applyMandatoryAttribute(getDateElement().getMandatory(), createdField, h);
-    applyFormFieldProperties(createdField, h);
-    fillFormFieldLogic(createdField);
+    return o.getCreatedField();
   }
 
   public DateElement getDateElement() {
     return m_dateElement;
   }
 
-  public void setDateElement(DateElement dateElement) {
-    m_dateElement = dateElement;
+  @Override
+  public void setFieldElement(FormFieldElement fieldElement) {
+    m_dateElement = (DateElement) fieldElement;
+  }
+
+  @Override
+  public FormFieldElement getFieldElement() {
+    return m_dateElement;
+  }
+
+  @Override
+  public String getFieldSuffix() {
+    return SdkProperties.SUFFIX_FORM_FIELD;
   }
 }
