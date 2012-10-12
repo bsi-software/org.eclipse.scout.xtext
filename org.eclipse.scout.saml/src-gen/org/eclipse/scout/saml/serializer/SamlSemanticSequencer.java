@@ -1085,7 +1085,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
 	 *         labelVisible=BooleanType? 
-	 *         master=[FormFieldElement|ID]? 
+	 *         master=[ValueFieldElement|ID]? 
 	 *         processButton=BooleanType? 
 	 *         (logic+=LogicElement | menus+=MenuElement)*
 	 *     )
@@ -1123,7 +1123,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
 	 *         labelVisible=BooleanType? 
-	 *         master=[FormFieldElement|ID]? 
+	 *         master=[ValueFieldElement|ID]? 
 	 *         (logic+=LogicElement | fields+=FormFieldElement)*
 	 *     )
 	 */
@@ -1140,7 +1140,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
 	 *         labelVisible=BooleanType? 
-	 *         master=[FormFieldElement|ID]? 
+	 *         master=[ValueFieldElement|ID]? 
 	 *         mandatory=BooleanType? 
 	 *         logic+=LogicElement*
 	 *     )
@@ -1158,7 +1158,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
 	 *         labelVisible=BooleanType? 
-	 *         master=[FormFieldElement|ID]? 
+	 *         master=[ValueFieldElement|ID]? 
 	 *         mandatory=BooleanType? 
 	 *         logic+=LogicElement*
 	 *     )
@@ -1195,7 +1195,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         labelVisible=BooleanType? 
 	 *         borderVisible=BooleanType? 
 	 *         (borderDecoration='empty' | borderDecoration='line' | borderDecoration='section' | borderDecoration='auto') 
-	 *         master=[FormFieldElement|ID]? 
+	 *         master=[ValueFieldElement|ID]? 
 	 *         (logic+=LogicElement | fields+=FormFieldElement)*
 	 *     )
 	 */
@@ -1241,7 +1241,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=ID? event=LogicEventType? (runat='client' | runat='server')? exec=[LogicElement|ID]? source=STRING?)
+	 *     (name=ID? event=LogicEventType? (placement='client' | placement='server' | placement='inline')? exec=[LogicElement|ID]? source=STRING?)
 	 */
 	protected void sequence_LogicElement(EObject context, LogicElement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1256,7 +1256,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
 	 *         labelVisible=BooleanType? 
-	 *         master=[FormFieldElement|ID]? 
+	 *         master=[ValueFieldElement|ID]? 
 	 *         mandatory=BooleanType? 
 	 *         logic+=LogicElement*
 	 *     )
@@ -1277,7 +1277,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=ID text=[TranslationElement|ID]? logic+=LogicElement*)
+	 *     (name=ID enabled=BooleanType? visible=BooleanType? text=[TranslationElement|ID]? logic+=LogicElement*)
 	 */
 	protected void sequence_MenuElement(EObject context, MenuElement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1321,7 +1321,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
 	 *         labelVisible=BooleanType? 
-	 *         master=[FormFieldElement|ID]? 
+	 *         master=[ValueFieldElement|ID]? 
 	 *         (logic+=LogicElement | fields+=FormFieldElement)*
 	 *     )
 	 */
@@ -1338,12 +1338,12 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
 	 *         labelVisible=BooleanType? 
-	 *         master=[FormFieldElement|ID]? 
+	 *         master=[ValueFieldElement|ID]? 
 	 *         mandatory=BooleanType? 
 	 *         code=[CodeElement|ID]? 
 	 *         valueType=STRING? 
 	 *         lookup=[LookupElement|ID]? 
-	 *         logic+=LogicElement*
+	 *         (logic+=LogicElement | menus+=MenuElement)*
 	 *     )
 	 */
 	protected void sequence_SmartfieldElement(EObject context, SmartfieldElement semanticObject) {
@@ -1359,7 +1359,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
 	 *         labelVisible=BooleanType? 
-	 *         master=[FormFieldElement|ID]? 
+	 *         master=[ValueFieldElement|ID]? 
 	 *         mandatory=BooleanType? 
 	 *         maxlen=INT? 
 	 *         logic+=LogicElement*

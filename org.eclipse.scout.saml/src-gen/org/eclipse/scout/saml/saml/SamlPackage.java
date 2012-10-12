@@ -297,13 +297,13 @@ public interface SamlPackage extends EPackage
   int LOGIC_ELEMENT__EVENT = 1;
 
   /**
-   * The feature id for the '<em><b>Runat</b></em>' attribute.
+   * The feature id for the '<em><b>Placement</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LOGIC_ELEMENT__RUNAT = 2;
+  int LOGIC_ELEMENT__PLACEMENT = 2;
 
   /**
    * The feature id for the '<em><b>Exec</b></em>' reference.
@@ -1481,13 +1481,22 @@ public interface SamlPackage extends EPackage
   int SMARTFIELD_ELEMENT__LOOKUP = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 2;
 
   /**
+   * The feature id for the '<em><b>Menus</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SMARTFIELD_ELEMENT__MENUS = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 3;
+
+  /**
    * The number of structural features of the '<em>Smartfield Element</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 3;
+  int SMARTFIELD_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.CustomFieldElementImpl <em>Custom Field Element</em>}' class.
@@ -1709,13 +1718,31 @@ public interface SamlPackage extends EPackage
   int MENU_ELEMENT__NAME = 0;
 
   /**
+   * The feature id for the '<em><b>Enabled</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MENU_ELEMENT__ENABLED = 1;
+
+  /**
+   * The feature id for the '<em><b>Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MENU_ELEMENT__VISIBLE = 2;
+
+  /**
    * The feature id for the '<em><b>Text</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MENU_ELEMENT__TEXT = 1;
+  int MENU_ELEMENT__TEXT = 3;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -1724,7 +1751,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MENU_ELEMENT__LOGIC = 2;
+  int MENU_ELEMENT__LOGIC = 4;
 
   /**
    * The number of structural features of the '<em>Menu Element</em>' class.
@@ -1733,7 +1760,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MENU_ELEMENT_FEATURE_COUNT = 3;
+  int MENU_ELEMENT_FEATURE_COUNT = 5;
 
 
   /**
@@ -1962,15 +1989,15 @@ public interface SamlPackage extends EPackage
   EAttribute getLogicElement_Event();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.LogicElement#getRunat <em>Runat</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.LogicElement#getPlacement <em>Placement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Runat</em>'.
-   * @see org.eclipse.scout.saml.saml.LogicElement#getRunat()
+   * @return the meta object for the attribute '<em>Placement</em>'.
+   * @see org.eclipse.scout.saml.saml.LogicElement#getPlacement()
    * @see #getLogicElement()
    * @generated
    */
-  EAttribute getLogicElement_Runat();
+  EAttribute getLogicElement_Placement();
 
   /**
    * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.LogicElement#getExec <em>Exec</em>}'.
@@ -2454,6 +2481,17 @@ public interface SamlPackage extends EPackage
   EReference getSmartfieldElement_Lookup();
 
   /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getMenus <em>Menus</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Menus</em>'.
+   * @see org.eclipse.scout.saml.saml.SmartfieldElement#getMenus()
+   * @see #getSmartfieldElement()
+   * @generated
+   */
+  EReference getSmartfieldElement_Menus();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.CustomFieldElement <em>Custom Field Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2537,6 +2575,28 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EAttribute getMenuElement_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.MenuElement#getEnabled <em>Enabled</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Enabled</em>'.
+   * @see org.eclipse.scout.saml.saml.MenuElement#getEnabled()
+   * @see #getMenuElement()
+   * @generated
+   */
+  EAttribute getMenuElement_Enabled();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.MenuElement#getVisible <em>Visible</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Visible</em>'.
+   * @see org.eclipse.scout.saml.saml.MenuElement#getVisible()
+   * @see #getMenuElement()
+   * @generated
+   */
+  EAttribute getMenuElement_Visible();
 
   /**
    * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.MenuElement#getText <em>Text</em>}'.
@@ -2764,12 +2824,12 @@ public interface SamlPackage extends EPackage
     EAttribute LOGIC_ELEMENT__EVENT = eINSTANCE.getLogicElement_Event();
 
     /**
-     * The meta object literal for the '<em><b>Runat</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Placement</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute LOGIC_ELEMENT__RUNAT = eINSTANCE.getLogicElement_Runat();
+    EAttribute LOGIC_ELEMENT__PLACEMENT = eINSTANCE.getLogicElement_Placement();
 
     /**
      * The meta object literal for the '<em><b>Exec</b></em>' reference feature.
@@ -3160,6 +3220,14 @@ public interface SamlPackage extends EPackage
     EReference SMARTFIELD_ELEMENT__LOOKUP = eINSTANCE.getSmartfieldElement_Lookup();
 
     /**
+     * The meta object literal for the '<em><b>Menus</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SMARTFIELD_ELEMENT__MENUS = eINSTANCE.getSmartfieldElement_Menus();
+
+    /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.CustomFieldElementImpl <em>Custom Field Element</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3228,6 +3296,22 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EAttribute MENU_ELEMENT__NAME = eINSTANCE.getMenuElement_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Enabled</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MENU_ELEMENT__ENABLED = eINSTANCE.getMenuElement_Enabled();
+
+    /**
+     * The meta object literal for the '<em><b>Visible</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MENU_ELEMENT__VISIBLE = eINSTANCE.getMenuElement_Visible();
 
     /**
      * The meta object literal for the '<em><b>Text</b></em>' reference feature.

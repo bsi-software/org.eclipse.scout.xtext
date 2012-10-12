@@ -10,12 +10,15 @@
  ******************************************************************************/
 package org.eclipse.scout.sdk.saml.importer.operation.logic;
 
+import java.util.List;
+
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IMethod;
+import org.eclipse.jdt.core.ISourceRange;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaModelException;
+import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.sdk.operation.method.MethodOverrideOperation;
 import org.eclipse.scout.sdk.operation.method.MethodUpdateContentOperation;
@@ -36,9 +39,8 @@ import org.eclipse.scout.sdk.util.type.TypeUtility;
  */
 public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
 
-  private EList<LogicElement> m_logicElements;
-  private IType m_logicSourceType;
-  private SamlFormContext m_formContext;
+  private LogicElement m_logicElement;
+  private LogicInfo m_logicInfo;
 
   @Override
   public String getOperationName() {
@@ -47,32 +49,30 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
 
   @Override
   public void validate() throws IllegalArgumentException {
-    if (getLogicElements() == null) {
-      throw new IllegalArgumentException("Child elements cannot be null.");
+    if (getLogicElement() == null) {
+      throw new IllegalArgumentException("logic element cannot be null.");
     }
-    if (getSamlContext() == null || getSamlFormContext() == null) {
+    if (getSamlContext() == null || getLogicInfo() == null) {
       throw new IllegalArgumentException("Context missing for logic wiring.");
     }
   }
 
   @Override
   public void run() throws CoreException, IllegalArgumentException {
-    for (LogicElement logicElement : getLogicElements()) {
-      /* logic elements with name are just named snippets used at several places. nothing to do for them. they will be referred to from a non-named element later on */
-      if (logicElement.getName() == null) {
-        LogicInfo info = LogicInfoFactory.create(logicElement, getLogicSourceType(), getSamlFormContext());
-
-        if (info.isClassLevel()) {
-          fillClassLevelLogic(info.getTargetType(), info.getTargetLogic());
+    /* logic elements with name are just named snippets used at several places. nothing to do for them. they will be referred to from a non-named element later on */
+    if (getLogicElement().getName() == null) {
+      if (getLogicInfo().isClassLevel()) {
+        fillClassLevelLogic(getLogicInfo().getTargetType(), getLogicInfo().getTargetLogic());
+      }
+      else {
+        if (TypeUtility.exists(getLogicInfo().getTargetInterfaceType())) {
+          IMethod target = createTargetMethod(getLogicInfo());
+          appendMethodLogic(target, getLogicInfo().getTargetLogic());
         }
-        else {
-          IMethod target = createTargetMethod(info);
-          appendMethodLogic(target, info.getTargetLogic());
 
-          if (TypeUtility.exists(info.getSourceType())) {
-            IMethod source = createSourceMethod(info);
-            appendMethodLogic(source, info.getSourceLogic());
-          }
+        if (TypeUtility.exists(getLogicInfo().getSourceType())) {
+          IMethod source = createSourceMethod(getLogicInfo());
+          appendMethodLogic(source, getLogicInfo().getSourceLogic());
         }
       }
     }
@@ -113,9 +113,13 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
 
   private void fillClassLevelLogic(IType target, String addSource) throws CoreException, IllegalArgumentException {
     ICompilationUnit cu = target.getCompilationUnit();
-    String source = cu.getSource();
 
-    int end = source.lastIndexOf('}');
+    ISourceRange sourceRange = target.getSourceRange();
+    int typeEndPos = sourceRange.getOffset() + sourceRange.getLength();
+    String source = cu.getSource();
+    String sourceUpToType = source.substring(0, typeEndPos);
+
+    int end = sourceUpToType.lastIndexOf('}');
     if (end > 0) {
       StringBuilder newSource = new StringBuilder(source.length() * 2);
       newSource.append(source.subSequence(0, end));
@@ -162,27 +166,52 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
     }
   }
 
-  public IType getLogicSourceType() {
-    return m_logicSourceType;
+  public static void fillAllLogic(List<LogicElement> logics, SamlFormContext formContext) throws CoreException, IllegalArgumentException {
+    fillAllLogic(logics, formContext, null);
   }
 
-  public void setLogicSourceType(IType formType) {
-    m_logicSourceType = formType;
+  public static void fillAllLogic(List<LogicElement> logics, SamlFormContext formContext, IType sourceType) throws CoreException, IllegalArgumentException {
+    // first all event logics
+    for (LogicElement logic : logics) {
+      if (logic.getEvent() != null) {
+        runLogicOperation(logic, formContext, sourceType);
+      }
+    }
+    // then all class-level logics
+    for (LogicElement logic : logics) {
+      if (logic.getEvent() == null) {
+        runLogicOperation(logic, formContext, sourceType);
+      }
+    }
   }
 
-  public EList<LogicElement> getLogicElements() {
-    return m_logicElements;
+  private static void runLogicOperation(LogicElement logic, SamlFormContext formContext, IType sourceType) throws CoreException, IllegalArgumentException {
+    if (!StringUtility.hasText(logic.getName())) {
+      LogicInfo info = LogicInfoFactory.create(logic, sourceType, formContext);
+      SamlLogicFillOperation slfo = new SamlLogicFillOperation();
+
+      slfo.setSamlContext(formContext.getSamlContext());
+      slfo.setLogicElement(logic);
+      slfo.setLogicInfo(info);
+
+      slfo.validate();
+      slfo.run();
+    }
   }
 
-  public void setLogicElements(EList<LogicElement> logicElements) {
-    m_logicElements = logicElements;
+  public LogicElement getLogicElement() {
+    return m_logicElement;
   }
 
-  public SamlFormContext getSamlFormContext() {
-    return m_formContext;
+  public void setLogicElement(LogicElement logicElement) {
+    m_logicElement = logicElement;
   }
 
-  public void setSamlFormContext(SamlFormContext formContext) {
-    m_formContext = formContext;
+  public LogicInfo getLogicInfo() {
+    return m_logicInfo;
+  }
+
+  public void setLogicInfo(LogicInfo logicInfo) {
+    m_logicInfo = logicInfo;
   }
 }

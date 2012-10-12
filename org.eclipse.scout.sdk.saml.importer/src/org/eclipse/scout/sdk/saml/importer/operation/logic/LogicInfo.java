@@ -33,7 +33,6 @@ public class LogicInfo {
   private IType m_targetInterfaceType;
   private String m_targetLogic;
 
-  private boolean m_isClientLogic;
   private boolean m_isClassLevel;
 
   private ParameterArgument m_returnType;
@@ -109,14 +108,6 @@ public class LogicInfo {
 
   public void setTargetLogic(String targetLogic) {
     m_targetLogic = targetLogic;
-  }
-
-  public boolean isClientLogic() {
-    return m_isClientLogic;
-  }
-
-  public void setClientLogic(boolean isClientLogic) {
-    m_isClientLogic = isClientLogic;
   }
 
   public boolean isClassLevel() {

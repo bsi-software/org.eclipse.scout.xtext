@@ -24,9 +24,8 @@ import org.eclipse.scout.sdk.operation.form.FormStackNewOperation;
 import org.eclipse.scout.sdk.operation.service.ServiceDeleteOperation;
 import org.eclipse.scout.sdk.operation.service.ServiceNewOperation;
 import org.eclipse.scout.sdk.operation.util.JavaElementDeleteOperation;
-import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
-import org.eclipse.scout.sdk.saml.importer.operation.form.fields.AbstractSamlFormFieldElementOperation;
-import org.eclipse.scout.sdk.saml.importer.operation.form.fields.container.SamlGroupBoxElementImportOperation;
+import org.eclipse.scout.sdk.saml.importer.operation.form.fields.AbstractFormFieldElementOperation;
+import org.eclipse.scout.sdk.saml.importer.operation.form.fields.container.GroupBoxElementImportOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.logic.SamlLogicFillOperation;
 import org.eclipse.scout.sdk.saml.importer.util.IItemVisitor;
 import org.eclipse.scout.sdk.saml.importer.util.SamlImportUtility;
@@ -40,7 +39,7 @@ import org.eclipse.scout.sdk.workspace.IScoutBundle;
  * @author mvi
  * @since 3.8.0 26.09.2012
  */
-public class FormElementImportOperation extends AbstractSamlElementImportOperation {
+public class FormElementImportOperation extends AbstractUiElementImportOperation {
 
   private final static String CLIENT_FORM_SERVICE_SUFFIX = "ClientService";
 
@@ -77,7 +76,7 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
 
   private void applySubtitleAttribute(TranslationElement a, IType field) throws CoreException, IllegalArgumentException {
     if (a != null) {
-      overrideMethod(field, null, "getConfiguredSubTitle", "return TEXTS.get(\"" + a.getName() + "\");");
+      overrideMethod(field, null, "getConfiguredSubTitle", getNlsReturnClause(a));
     }
   }
 
@@ -91,7 +90,7 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
 
     createFormContext();
 
-    fillFormLogic();
+    SamlLogicFillOperation.fillAllLogic(getFormElement().getLogic(), m_formContext, getCreatedForm());
 
     processChildren();
   }
@@ -110,7 +109,7 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
 
   private void processChildren() throws CoreException {
     for (FormFieldElement o : getFormElement().getFields()) {
-      AbstractSamlFormFieldElementOperation.dispatchFieldElements(o, getSamlContext(), m_formContext);
+      AbstractFormFieldElementOperation.dispatchFieldElements(o, getSamlContext(), m_formContext);
     }
   }
 
@@ -207,19 +206,7 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
   private void applyFormAttributes() throws IllegalArgumentException, CoreException {
     applyModalAttribute(getFormElement().getModal(), getCreatedForm());
     applySubtitleAttribute(getFormElement().getSubtitle(), getCreatedForm());
-    SamlGroupBoxElementImportOperation.applyColumnsAttribute(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager(), getFormElement().getColumns(), getCreatedMainBox(), null);
-  }
-
-  private void fillFormLogic() throws CoreException {
-    SamlLogicFillOperation slfo = new SamlLogicFillOperation();
-
-    slfo.setLogicSourceType(getCreatedForm());
-    slfo.setSamlContext(getSamlContext());
-    slfo.setSamlFormContext(m_formContext);
-    slfo.setLogicElements(getFormElement().getLogic());
-
-    slfo.validate();
-    slfo.run();
+    GroupBoxElementImportOperation.applyColumnsAttribute(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager(), getFormElement().getColumns(), getCreatedMainBox(), null);
   }
 
   private IType getFormDataType(String formName) {

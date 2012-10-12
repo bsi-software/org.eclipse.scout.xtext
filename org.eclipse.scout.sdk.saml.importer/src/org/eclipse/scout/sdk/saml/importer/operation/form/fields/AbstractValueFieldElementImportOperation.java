@@ -21,7 +21,7 @@ import org.eclipse.scout.saml.saml.ValueFieldElement;
  * @author mvi
  * @since 3.8.0 11.10.2012
  */
-public abstract class AbstractValueFieldElementImportOperation extends AbstractSamlFormFieldElementOperation {
+public abstract class AbstractValueFieldElementImportOperation extends AbstractFormFieldElementOperation {
   @Override
   public final void run() throws CoreException, IllegalArgumentException {
     IType createdField = createField();
@@ -32,7 +32,7 @@ public abstract class AbstractValueFieldElementImportOperation extends AbstractS
     applyMandatoryAttribute(valueFieldElement.getMandatory(), createdField, h);
     applyFormFieldProperties(createdField, h);
 
-    fillFormFieldLogic(createdField);
+    fillLogic(createdField);
   }
 
   protected abstract IType createField() throws CoreException, IllegalArgumentException;

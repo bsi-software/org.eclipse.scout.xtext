@@ -33,7 +33,7 @@
     <genClasses ecoreClass="Saml.ecore#//LogicElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LogicElement/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LogicElement/event"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LogicElement/runat"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LogicElement/placement"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//LogicElement/exec"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LogicElement/source"/>
     </genClasses>
@@ -89,6 +89,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartfieldElement/code"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//SmartfieldElement/valueType"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartfieldElement/lookup"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartfieldElement/menus"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//CustomFieldElement">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//CustomFieldElement/template"/>
@@ -100,6 +101,8 @@
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//MenuElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//MenuElement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//MenuElement/enabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//MenuElement/visible"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//MenuElement/text"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//MenuElement/logic"/>
     </genClasses>

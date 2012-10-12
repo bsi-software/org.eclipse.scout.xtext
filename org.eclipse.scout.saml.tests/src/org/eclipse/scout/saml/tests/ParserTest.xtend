@@ -96,7 +96,7 @@ form MyForm {
 }
 '''.parse.assertError(
 	SamlPackage::eINSTANCE.logicElement,
-	SamlJavaValidator::RUNAT_MANDATORY,
+	SamlJavaValidator::PLACEMENT_MANDATORY,
 	"'runat' is mandatory when providing the source"
 )
 	}

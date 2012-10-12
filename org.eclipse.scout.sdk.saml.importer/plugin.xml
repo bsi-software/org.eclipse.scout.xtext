@@ -5,39 +5,39 @@
    <extension
          point="org.eclipse.scout.sdk.saml.importer.formFieldOperation">
       <operation
-            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.container.SamlSequenceBoxElementImportOperation"
+            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.container.SequenceBoxElementImportOperation"
             samlFormElement="org.eclipse.scout.saml.saml.SequenceBoxElement">
       </operation>
       <operation
-            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.container.SamlGroupBoxElementImportOperation"
+            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.container.GroupBoxElementImportOperation"
             samlFormElement="org.eclipse.scout.saml.saml.GroupBoxElement">
       </operation>
       <operation
-            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.SamlStringElementImportOperation"
+            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.StringElementImportOperation"
             samlFormElement="org.eclipse.scout.saml.saml.StringElement">
       </operation>
       <operation
-            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.SamlSmartfieldElementImportOperation"
+            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.SmartfieldElementImportOperation"
             samlFormElement="org.eclipse.scout.saml.saml.SmartfieldElement">
       </operation>
       <operation
-            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.SamlLongElementImportOperation"
+            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.LongElementImportOperation"
             samlFormElement="org.eclipse.scout.saml.saml.LongElement">
       </operation>
       <operation
-            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.SamlDoubleElementImportOperation"
+            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.DoubleElementImportOperation"
             samlFormElement="org.eclipse.scout.saml.saml.DoubleElement">
       </operation>
       <operation
-            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.SamlDateElementImportOperation"
+            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.DateElementImportOperation"
             samlFormElement="org.eclipse.scout.saml.saml.DateElement">
       </operation>
       <operation
-            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.SamlCustomFieldElementImportOperation"
+            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.CustomFieldElementImportOperation"
             samlFormElement="org.eclipse.scout.saml.saml.CustomFieldElement">
       </operation>
       <operation
-            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.SamlButtonElementImportOperation"
+            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.ButtonElementImportOperation"
             samlFormElement="org.eclipse.scout.saml.saml.ButtonElement">
       </operation>
    </extension>

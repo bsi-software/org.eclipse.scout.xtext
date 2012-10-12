@@ -35,7 +35,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="LogicElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="event" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="runat" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="placement" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="exec" eType="#//LogicElement"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="source" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -69,7 +69,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="enabled" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="visible" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelVisible" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="master" eType="#//FormFieldElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="master" eType="#//ValueFieldElement"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="logic" upperBound="-1"
         eType="#//LogicElement" containment="true"/>
   </eClassifiers>
@@ -96,6 +96,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="code" eType="#//CodeElement"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="lookup" eType="#//LookupElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="menus" upperBound="-1"
+        eType="#//MenuElement" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CustomFieldElement" eSuperTypes="#//FormFieldElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="template" eType="#//TemplateElement"/>
@@ -109,6 +111,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MenuElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enabled" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visible" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="text" eType="#//TranslationElement"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="logic" upperBound="-1"
         eType="#//LogicElement" containment="true"/>

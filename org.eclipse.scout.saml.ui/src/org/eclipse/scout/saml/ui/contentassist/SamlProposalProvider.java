@@ -20,7 +20,7 @@ public class SamlProposalProvider extends AbstractSamlProposalProvider {
   SamlGrammarAccess access;
 
   @Override
-  public void completeLogicElement_Runat(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+  public void completeLogicElement_Placement(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
     /*List<Keyword> completions = getAllContentsOfType(access.getRunAtTypeRule().getAlternatives(), Keyword.class);
     for (Keyword keyword : completions) {
       acceptor.accept(createCompletionProposal(keyword.getValue(), context));

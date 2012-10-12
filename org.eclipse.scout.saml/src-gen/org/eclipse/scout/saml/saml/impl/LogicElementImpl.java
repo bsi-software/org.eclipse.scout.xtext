@@ -22,7 +22,7 @@ import org.eclipse.scout.saml.saml.SamlPackage;
  * <ul>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.LogicElementImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.LogicElementImpl#getEvent <em>Event</em>}</li>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.LogicElementImpl#getRunat <em>Runat</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.LogicElementImpl#getPlacement <em>Placement</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.LogicElementImpl#getExec <em>Exec</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.LogicElementImpl#getSource <em>Source</em>}</li>
  * </ul>
@@ -73,24 +73,24 @@ public class LogicElementImpl extends MinimalEObjectImpl.Container implements Lo
   protected String event = EVENT_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getRunat() <em>Runat</em>}' attribute.
+   * The default value of the '{@link #getPlacement() <em>Placement</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRunat()
+   * @see #getPlacement()
    * @generated
    * @ordered
    */
-  protected static final String RUNAT_EDEFAULT = null;
+  protected static final String PLACEMENT_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getRunat() <em>Runat</em>}' attribute.
+   * The cached value of the '{@link #getPlacement() <em>Placement</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRunat()
+   * @see #getPlacement()
    * @generated
    * @ordered
    */
-  protected String runat = RUNAT_EDEFAULT;
+  protected String placement = PLACEMENT_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getExec() <em>Exec</em>}' reference.
@@ -194,9 +194,9 @@ public class LogicElementImpl extends MinimalEObjectImpl.Container implements Lo
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getRunat()
+  public String getPlacement()
   {
-    return runat;
+    return placement;
   }
 
   /**
@@ -204,12 +204,12 @@ public class LogicElementImpl extends MinimalEObjectImpl.Container implements Lo
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRunat(String newRunat)
+  public void setPlacement(String newPlacement)
   {
-    String oldRunat = runat;
-    runat = newRunat;
+    String oldPlacement = placement;
+    placement = newPlacement;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.LOGIC_ELEMENT__RUNAT, oldRunat, runat));
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.LOGIC_ELEMENT__PLACEMENT, oldPlacement, placement));
   }
 
   /**
@@ -292,8 +292,8 @@ public class LogicElementImpl extends MinimalEObjectImpl.Container implements Lo
         return getName();
       case SamlPackage.LOGIC_ELEMENT__EVENT:
         return getEvent();
-      case SamlPackage.LOGIC_ELEMENT__RUNAT:
-        return getRunat();
+      case SamlPackage.LOGIC_ELEMENT__PLACEMENT:
+        return getPlacement();
       case SamlPackage.LOGIC_ELEMENT__EXEC:
         if (resolve) return getExec();
         return basicGetExec();
@@ -319,8 +319,8 @@ public class LogicElementImpl extends MinimalEObjectImpl.Container implements Lo
       case SamlPackage.LOGIC_ELEMENT__EVENT:
         setEvent((String)newValue);
         return;
-      case SamlPackage.LOGIC_ELEMENT__RUNAT:
-        setRunat((String)newValue);
+      case SamlPackage.LOGIC_ELEMENT__PLACEMENT:
+        setPlacement((String)newValue);
         return;
       case SamlPackage.LOGIC_ELEMENT__EXEC:
         setExec((LogicElement)newValue);
@@ -348,8 +348,8 @@ public class LogicElementImpl extends MinimalEObjectImpl.Container implements Lo
       case SamlPackage.LOGIC_ELEMENT__EVENT:
         setEvent(EVENT_EDEFAULT);
         return;
-      case SamlPackage.LOGIC_ELEMENT__RUNAT:
-        setRunat(RUNAT_EDEFAULT);
+      case SamlPackage.LOGIC_ELEMENT__PLACEMENT:
+        setPlacement(PLACEMENT_EDEFAULT);
         return;
       case SamlPackage.LOGIC_ELEMENT__EXEC:
         setExec((LogicElement)null);
@@ -375,8 +375,8 @@ public class LogicElementImpl extends MinimalEObjectImpl.Container implements Lo
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case SamlPackage.LOGIC_ELEMENT__EVENT:
         return EVENT_EDEFAULT == null ? event != null : !EVENT_EDEFAULT.equals(event);
-      case SamlPackage.LOGIC_ELEMENT__RUNAT:
-        return RUNAT_EDEFAULT == null ? runat != null : !RUNAT_EDEFAULT.equals(runat);
+      case SamlPackage.LOGIC_ELEMENT__PLACEMENT:
+        return PLACEMENT_EDEFAULT == null ? placement != null : !PLACEMENT_EDEFAULT.equals(placement);
       case SamlPackage.LOGIC_ELEMENT__EXEC:
         return exec != null;
       case SamlPackage.LOGIC_ELEMENT__SOURCE:
@@ -400,8 +400,8 @@ public class LogicElementImpl extends MinimalEObjectImpl.Container implements Lo
     result.append(name);
     result.append(", event: ");
     result.append(event);
-    result.append(", runat: ");
-    result.append(runat);
+    result.append(", placement: ");
+    result.append(placement);
     result.append(", source: ");
     result.append(source);
     result.append(')');

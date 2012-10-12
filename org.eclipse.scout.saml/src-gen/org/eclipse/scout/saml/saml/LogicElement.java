@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.eclipse.scout.saml.saml.LogicElement#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.LogicElement#getEvent <em>Event</em>}</li>
- *   <li>{@link org.eclipse.scout.saml.saml.LogicElement#getRunat <em>Runat</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.LogicElement#getPlacement <em>Placement</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.LogicElement#getExec <em>Exec</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.LogicElement#getSource <em>Source</em>}</li>
  * </ul>
@@ -79,30 +79,30 @@ public interface LogicElement extends EObject
   void setEvent(String value);
 
   /**
-   * Returns the value of the '<em><b>Runat</b></em>' attribute.
+   * Returns the value of the '<em><b>Placement</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Runat</em>' attribute isn't clear,
+   * If the meaning of the '<em>Placement</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Runat</em>' attribute.
-   * @see #setRunat(String)
-   * @see org.eclipse.scout.saml.saml.SamlPackage#getLogicElement_Runat()
+   * @return the value of the '<em>Placement</em>' attribute.
+   * @see #setPlacement(String)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getLogicElement_Placement()
    * @model
    * @generated
    */
-  String getRunat();
+  String getPlacement();
 
   /**
-   * Sets the value of the '{@link org.eclipse.scout.saml.saml.LogicElement#getRunat <em>Runat</em>}' attribute.
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.LogicElement#getPlacement <em>Placement</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Runat</em>' attribute.
-   * @see #getRunat()
+   * @param value the new value of the '<em>Placement</em>' attribute.
+   * @see #getPlacement()
    * @generated
    */
-  void setRunat(String value);
+  void setPlacement(String value);
 
   /**
    * Returns the value of the '<em><b>Exec</b></em>' reference.

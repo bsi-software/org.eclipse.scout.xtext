@@ -21,7 +21,7 @@ import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.sdk.saml.importer.internal.Activator;
-import org.eclipse.scout.sdk.saml.importer.operation.form.fields.ISamlFormFieldElementOperation;
+import org.eclipse.scout.sdk.saml.importer.operation.form.fields.IFormFieldElementOperation;
 import org.eclipse.scout.sdk.util.log.ScoutStatus;
 
 /**
@@ -41,7 +41,7 @@ public class FormFieldExtension {
   private final static Object formFieldElementOperationLock = new Object();
   private static Map<String, Class> formFieldElementMap;
 
-  public static ISamlFormFieldElementOperation getOperationFor(FormFieldElement field) throws CoreException {
+  public static IFormFieldElementOperation getOperationFor(FormFieldElement field) throws CoreException {
     Class clazz = field.getClass();
     Class operationClass = null;
 
@@ -57,7 +57,7 @@ public class FormFieldExtension {
       throw new CoreException(new ScoutStatus("unable to find operation mapping for form field element: " + clazz));
     }
     try {
-      return (ISamlFormFieldElementOperation) operationClass.newInstance();
+      return (IFormFieldElementOperation) operationClass.newInstance();
     }
     catch (Exception e) {
       throw new CoreException(new ScoutStatus(e));
@@ -78,7 +78,7 @@ public class FormFieldExtension {
             for (IConfigurationElement element : elements) {
               if (ELEMENT_NAME.equals(element.getName())) {
                 String samlElementClassName = element.getAttribute(SAML_ELEMENT_ATTRIBUTE);
-                ISamlFormFieldElementOperation formFieldOperation = (ISamlFormFieldElementOperation) element.createExecutableExtension(OPERATION_ATTRIBUTE);
+                IFormFieldElementOperation formFieldOperation = (IFormFieldElementOperation) element.createExecutableExtension(OPERATION_ATTRIBUTE);
                 map.put(samlElementClassName, formFieldOperation.getClass());
               }
             }

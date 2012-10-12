@@ -24,7 +24,7 @@ Model:
 // TYPES
 QualifiedNameWithWildCard: QualifiedName  ('.' '*')?;
 BooleanType: 'true'|'false';	//TODO: code completion
-LogicEventType: 'all'|'modify_load'|'modify_store'|'new_load'|'new_store'|'changed'|'click'|'master_changed'|'init';	//TODO: code completion depending on element we are on
+LogicEventType: 'all'|'modify_load'|'modify_store'|'new_load'|'new_store'|'changed'|'click'|'master_changed'|'init'|'format_value';	//TODO: code completion depending on element we are on
 
 
 ModuleElement: 'module' name=QualifiedName;
@@ -38,7 +38,7 @@ LanguageAttribute:lang=ID '=' text=STRING;
 
 
 //TODO: validation of properties, scope of exec=
-LogicElement: {LogicElement} 'logic' (name=ID)? (('event' '=' event=LogicEventType)? & ('runat' '=' runat=('client'|'server'))? & ('exec' '=' exec=[LogicElement])?) ('{'source=STRING/*XBlockExpression*/'}')?;
+LogicElement: {LogicElement} 'logic' (name=ID)? (('event' '=' event=LogicEventType)? & ('placement' '=' placement=('client'|'server'|'inline'))? & ('exec' '=' exec=[LogicElement])?) ('{'source=STRING/*XBlockExpression*/'}')?;
 
 
 CodeElement:'code' name=ID 'id' '=' id=INT;
@@ -67,7 +67,7 @@ SequenceBoxElement:'sequence_box' name=ID
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
 		('label_visible' '=' labelVisible=BooleanType)? &
-		('master' '=' master=[FormFieldElement])?
+		('master' '=' master=[ValueFieldElement])?
 	)
 	('{' (logic+=LogicElement | fields+=FormFieldElement)* '}')?;
 	
@@ -80,7 +80,7 @@ GroupBoxElement:'group_box' name=ID
 		('label_visible' '=' labelVisible=BooleanType)? &
 		('border_visible' '=' borderVisible=BooleanType)? &
 		('border_decoration' '=' borderDecoration=('empty'|'line'|'section'|'auto'))
-		('master' '=' master=[FormFieldElement])?
+		('master' '=' master=[ValueFieldElement])?
 	)
 	('{' (logic+=LogicElement | fields+=FormFieldElement)* '}')?;
 
@@ -94,7 +94,7 @@ StringElement:'string' name=ID
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
 		('label_visible' '=' labelVisible=BooleanType)? &
-		('master' '=' master=[FormFieldElement])? &
+		('master' '=' master=[ValueFieldElement])? &
 		('mandatory' '=' mandatory=BooleanType)? &
 		('maxlen' '=' maxlen=INT)?
 	)
@@ -107,7 +107,7 @@ DoubleElement:'double' name=ID
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
 		('label_visible' '=' labelVisible=BooleanType)? &
-		('master' '=' master=[FormFieldElement])? &
+		('master' '=' master=[ValueFieldElement])? &
 		('mandatory' '=' mandatory=BooleanType)?
 	)
 	('{' logic+=LogicElement* '}')?;
@@ -118,7 +118,7 @@ LongElement:'long' name=ID
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
 		('label_visible' '=' labelVisible=BooleanType)? &
-		('master' '=' master=[FormFieldElement])? &
+		('master' '=' master=[ValueFieldElement])? &
 		('mandatory' '=' mandatory=BooleanType)?
 	)
 	('{' logic+=LogicElement* '}')?;
@@ -129,7 +129,7 @@ DateElement:'date' name=ID
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
 		('label_visible' '=' labelVisible=BooleanType)? &
-		('master' '=' master=[FormFieldElement])? &
+		('master' '=' master=[ValueFieldElement])? &
 		('mandatory' '=' mandatory=BooleanType)?
 	)
 	('{' logic+=LogicElement* '}')?;
@@ -140,13 +140,13 @@ SmartfieldElement:'smartfield' name=ID
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
 		('label_visible' '=' labelVisible=BooleanType)? &
-		('master' '=' master=[FormFieldElement])? &
+		('master' '=' master=[ValueFieldElement])? &
 		('mandatory' '=' mandatory=BooleanType)? &
 		('code' '=' code=[CodeElement])? &
 		('value_type' '=' valueType=STRING/*JvmTypeReference*/)? &
 		('lookup' '=' lookup=[LookupElement])?
 	)
-	('{' logic+=LogicElement* '}')?;
+	('{' (logic+=LogicElement | menus+=MenuElement)* '}')?;
 
 // CUSTOM FIELDS
 CustomFieldElement:'custom_field' name=ID 
@@ -156,7 +156,7 @@ CustomFieldElement:'custom_field' name=ID
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
 		('label_visible' '=' labelVisible=BooleanType)? &
-		('master' '=' master=[FormFieldElement])?
+		('master' '=' master=[ValueFieldElement])?
 	)
 	('{' (logic+=LogicElement | fields+=FormFieldElement)* '}')?;
 
@@ -168,7 +168,7 @@ ButtonElement:'button' name=ID
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
 		('label_visible' '=' labelVisible=BooleanType)? &
-		('master' '=' master=[FormFieldElement])? &
+		('master' '=' master=[ValueFieldElement])? &
 		('process_button' '=' processButton=BooleanType)?
 	)
 	('{' (logic+=LogicElement | menus+=MenuElement)* '}')?;
@@ -177,6 +177,8 @@ ButtonElement:'button' name=ID
 // MENUS
 MenuElement:'menu' name=ID
 	(
+		('enabled' '=' enabled=BooleanType)? &
+		('visible' '=' visible=BooleanType)? &
 		('text' '=' text=[TranslationElement])?
 	)
 	('{' logic+=LogicElement* '}')?;

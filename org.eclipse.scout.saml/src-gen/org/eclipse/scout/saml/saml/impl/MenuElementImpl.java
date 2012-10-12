@@ -31,6 +31,8 @@ import org.eclipse.scout.saml.saml.TranslationElement;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.MenuElementImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.MenuElementImpl#getEnabled <em>Enabled</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.MenuElementImpl#getVisible <em>Visible</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.MenuElementImpl#getText <em>Text</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.MenuElementImpl#getLogic <em>Logic</em>}</li>
  * </ul>
@@ -59,6 +61,46 @@ public class MenuElementImpl extends MinimalEObjectImpl.Container implements Men
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getEnabled() <em>Enabled</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEnabled()
+   * @generated
+   * @ordered
+   */
+  protected static final String ENABLED_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getEnabled() <em>Enabled</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEnabled()
+   * @generated
+   * @ordered
+   */
+  protected String enabled = ENABLED_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getVisible() <em>Visible</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getVisible()
+   * @generated
+   * @ordered
+   */
+  protected static final String VISIBLE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getVisible() <em>Visible</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getVisible()
+   * @generated
+   * @ordered
+   */
+  protected String visible = VISIBLE_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getText() <em>Text</em>}' reference.
@@ -122,6 +164,52 @@ public class MenuElementImpl extends MinimalEObjectImpl.Container implements Men
     name = newName;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.MENU_ELEMENT__NAME, oldName, name));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getEnabled()
+  {
+    return enabled;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setEnabled(String newEnabled)
+  {
+    String oldEnabled = enabled;
+    enabled = newEnabled;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.MENU_ELEMENT__ENABLED, oldEnabled, enabled));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getVisible()
+  {
+    return visible;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setVisible(String newVisible)
+  {
+    String oldVisible = visible;
+    visible = newVisible;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.MENU_ELEMENT__VISIBLE, oldVisible, visible));
   }
 
   /**
@@ -209,6 +297,10 @@ public class MenuElementImpl extends MinimalEObjectImpl.Container implements Men
     {
       case SamlPackage.MENU_ELEMENT__NAME:
         return getName();
+      case SamlPackage.MENU_ELEMENT__ENABLED:
+        return getEnabled();
+      case SamlPackage.MENU_ELEMENT__VISIBLE:
+        return getVisible();
       case SamlPackage.MENU_ELEMENT__TEXT:
         if (resolve) return getText();
         return basicGetText();
@@ -231,6 +323,12 @@ public class MenuElementImpl extends MinimalEObjectImpl.Container implements Men
     {
       case SamlPackage.MENU_ELEMENT__NAME:
         setName((String)newValue);
+        return;
+      case SamlPackage.MENU_ELEMENT__ENABLED:
+        setEnabled((String)newValue);
+        return;
+      case SamlPackage.MENU_ELEMENT__VISIBLE:
+        setVisible((String)newValue);
         return;
       case SamlPackage.MENU_ELEMENT__TEXT:
         setText((TranslationElement)newValue);
@@ -256,6 +354,12 @@ public class MenuElementImpl extends MinimalEObjectImpl.Container implements Men
       case SamlPackage.MENU_ELEMENT__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case SamlPackage.MENU_ELEMENT__ENABLED:
+        setEnabled(ENABLED_EDEFAULT);
+        return;
+      case SamlPackage.MENU_ELEMENT__VISIBLE:
+        setVisible(VISIBLE_EDEFAULT);
+        return;
       case SamlPackage.MENU_ELEMENT__TEXT:
         setText((TranslationElement)null);
         return;
@@ -278,6 +382,10 @@ public class MenuElementImpl extends MinimalEObjectImpl.Container implements Men
     {
       case SamlPackage.MENU_ELEMENT__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case SamlPackage.MENU_ELEMENT__ENABLED:
+        return ENABLED_EDEFAULT == null ? enabled != null : !ENABLED_EDEFAULT.equals(enabled);
+      case SamlPackage.MENU_ELEMENT__VISIBLE:
+        return VISIBLE_EDEFAULT == null ? visible != null : !VISIBLE_EDEFAULT.equals(visible);
       case SamlPackage.MENU_ELEMENT__TEXT:
         return text != null;
       case SamlPackage.MENU_ELEMENT__LOGIC:
@@ -299,6 +407,10 @@ public class MenuElementImpl extends MinimalEObjectImpl.Container implements Men
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
+    result.append(", enabled: ");
+    result.append(enabled);
+    result.append(", visible: ");
+    result.append(visible);
     result.append(')');
     return result.toString();
   }

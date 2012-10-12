@@ -14,12 +14,15 @@ import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.saml.saml.MenuElement;
+import org.eclipse.scout.saml.saml.TranslationElement;
 import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.MenuNewOperation;
-import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
-import org.eclipse.scout.sdk.saml.importer.operation.SamlContext;
+import org.eclipse.scout.sdk.saml.importer.operation.form.AbstractUiElementImportOperation;
+import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
+import org.eclipse.scout.sdk.saml.importer.operation.logic.SamlLogicFillOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
 
 /**
@@ -28,10 +31,11 @@ import org.eclipse.scout.sdk.util.SdkProperties;
  * @author mvi
  * @since 3.8.0 11.10.2012
  */
-public class MenuElementImportOperation extends AbstractSamlElementImportOperation {
+public class MenuElementImportOperation extends AbstractUiElementImportOperation {
 
   private MenuElement m_menuElement;
   private IType m_container;
+  private SamlFormContext m_samlContext;
 
   @Override
   public void run() throws CoreException, IllegalArgumentException {
@@ -40,8 +44,20 @@ public class MenuElementImportOperation extends AbstractSamlElementImportOperati
     operation.setSuperTypeSignature(Signature.createTypeSignature(RuntimeClasses.AbstractMenu, true));
     operation.validate();
     operation.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
+    IType menu = operation.getCreatedMenu();
+    ITypeHierarchy h = menu.newSupertypeHierarchy(getSamlContext().getMonitor());
 
-    //TODO: attributes
+    applyEnabledAttribute(getMenuElement().getEnabled(), menu, h);
+    applyTextAttribute(getMenuElement().getText(), menu, h);
+    applyVisibleAttribute(getMenuElement().getVisible(), menu, h);
+
+    SamlLogicFillOperation.fillAllLogic(getMenuElement().getLogic(), getSamlFormContext(), menu);
+  }
+
+  protected void applyTextAttribute(TranslationElement a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    if (a != null) {
+      overrideMethod(field, h, "getConfiguredText", getNlsReturnClause(a));
+    }
   }
 
   @Override
@@ -59,12 +75,13 @@ public class MenuElementImportOperation extends AbstractSamlElementImportOperati
     }
   }
 
-  public static void processMenus(List<MenuElement> menus, IType parent, SamlContext context) throws CoreException, IllegalArgumentException {
+  public static void processMenus(List<MenuElement> menus, IType parent, SamlFormContext context) throws CoreException, IllegalArgumentException {
     for (MenuElement m : menus) {
       MenuElementImportOperation o = new MenuElementImportOperation();
       o.setContainer(parent);
       o.setMenuElement(m);
-      o.setSamlContext(context);
+      o.setSamlFormContext(context);
+      o.setSamlContext(context.getSamlContext());
       o.validate();
       o.run();
     }
@@ -84,5 +101,13 @@ public class MenuElementImportOperation extends AbstractSamlElementImportOperati
 
   public void setContainer(IType container) {
     m_container = container;
+  }
+
+  public SamlFormContext getSamlFormContext() {
+    return m_samlContext;
+  }
+
+  public void setSamlFormContext(SamlFormContext samlContext) {
+    m_samlContext = samlContext;
   }
 }

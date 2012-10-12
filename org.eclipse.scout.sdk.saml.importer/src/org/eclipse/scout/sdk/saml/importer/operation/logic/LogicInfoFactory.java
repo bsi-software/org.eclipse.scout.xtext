@@ -10,14 +10,20 @@
  ******************************************************************************/
 package org.eclipse.scout.sdk.saml.importer.operation.logic;
 
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.saml.services.SamlGrammarAccess.LogicEventTypeElements;
+import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.service.ParameterArgument;
 import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
 import org.eclipse.scout.sdk.saml.importer.util.SamlImportUtility;
 import org.eclipse.scout.sdk.util.resources.ResourceUtility;
+import org.eclipse.scout.sdk.util.signature.SignatureUtility;
 import org.eclipse.scout.sdk.util.type.TypeUtility;
+import org.eclipse.scout.sdk.workspace.type.ScoutTypeUtility;
+import org.eclipse.scout.sdk.workspace.type.config.ConfigurationMethod;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.compiler.ImportManager;
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
@@ -33,11 +39,18 @@ import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 @SuppressWarnings("restriction")
 public class LogicInfoFactory {
 
-  public static LogicInfo create(LogicElement element, IType sourceType, SamlFormContext context) {
+  private enum Placement {
+    Client,
+    Server,
+    Inline
+  }
+
+  public static LogicInfo create(LogicElement element, IType sourceType, SamlFormContext context) throws CoreException {
     LogicInfo ret = new LogicInfo();
 
-    boolean isClientCall = isClientCall(element, context);
+    Placement placement = getLogicPlacement(element, context);
     boolean isClassLevel = isClassLevelLogic(element);
+    String targetLogic = getTargetLogic(element, context);
     String targetMethodName = null;
     if (!isClassLevel) {
       targetMethodName = getTargetMethodName(element.getEvent(), sourceType, context);
@@ -45,34 +58,49 @@ public class LogicInfoFactory {
 
     IType targetType = null;
     IType targetInterfaceType = null;
-    if (isClientCall) {
-      targetType = context.getClientType();
-      targetInterfaceType = context.getClientInterface();
-    }
-    else {
-      targetType = context.getServerType();
-      targetInterfaceType = context.getServerInterface();
+    switch (placement) {
+      case Client: {
+        targetType = context.getClientType();
+        targetInterfaceType = context.getClientInterface();
+        break;
+      }
+      case Server: {
+        targetType = context.getServerType();
+        targetInterfaceType = context.getServerInterface();
+        break;
+      }
+      case Inline: {
+        targetType = sourceType;
+        break;
+      }
     }
 
     ret.setClassLevel(isClassLevel);
-    ret.setClientLogic(isClientCall);
     ret.setFormDataType(context.getFormDataType());
     ret.setFormType(context.getFormType());
     if (!isClassLevel) {
+      boolean isClientCall = placement.equals(Placement.Client) | placement.equals(Placement.Inline);
+      String sourceMethodName = getSourceMethodName(element.getEvent(), context);
+      ConfigurationMethod cm = null;
+      if (TypeUtility.exists(sourceType)) {
+        cm = ScoutTypeUtility.getConfigurationMethod(sourceType, sourceMethodName);
+      }
+
       if (isClientCall && TypeUtility.exists(context.getFormType())) {
-        ret.setParameters(new ParameterArgument[]{new ParameterArgument("form", context.getFormType().getElementName())});
+        ret.setParameters(getClientParameterTypes(sourceMethodName, sourceType, context));
       }
       else if (TypeUtility.exists(context.getFormDataType())) {
         ret.setParameters(new ParameterArgument[]{new ParameterArgument("formData", context.getFormDataType().getElementName())});
       }
+
       if (isClientCall) {
-        ret.setReturnType(new ParameterArgument("ret", "void"));
+        ret.setReturnType(getClientReturnType(cm));
       }
       else if (TypeUtility.exists(context.getFormDataType())) {
         ret.setReturnType(new ParameterArgument("ret", context.getFormDataType().getElementName()));
       }
-      ret.setSourceLogic(getSourceLogic(isClientCall, targetInterfaceType, context.getFormDataType(), context.getFormType(), targetMethodName));
-      ret.setSourceMethodName(getSourceMethodName(element.getEvent(), context));
+      ret.setSourceLogic(getSourceLogic(placement, targetInterfaceType, context.getFormDataType(), context.getFormType(), targetMethodName, targetLogic, ret.getReturnType(), cm));
+      ret.setSourceMethodName(sourceMethodName);
     }
 
     LogicEventTypeElements eventElements = context.getSamlContext().getGrammarAccess().getLogicEventTypeAccess();
@@ -88,11 +116,22 @@ public class LogicInfoFactory {
       }
     }
     ret.setTargetInterfaceType(targetInterfaceType);
-    ret.setTargetLogic(getTargetLogic(element, context));
+    ret.setTargetLogic(targetLogic);
     ret.setTargetMethodName(targetMethodName);
     ret.setTargetType(targetType);
 
     return ret;
+  }
+
+  private static ParameterArgument[] getClientParameterTypes(String sourceMethodName, IType sourceType, SamlFormContext context) throws CoreException {
+    //TODO
+    return new ParameterArgument[]{new ParameterArgument("form", context.getFormType().getElementName())};
+  }
+
+  private static ParameterArgument getClientReturnType(ConfigurationMethod cm) throws CoreException {
+    String retTypeSig = SignatureUtility.getReturnTypeSignatureResolved(cm.getDefaultMethod(), cm.getType());
+    String retTypeName = Signature.getSignatureSimpleName(retTypeSig);
+    return new ParameterArgument("ret", retTypeName);
   }
 
   private static String getSourceMethodName(String event, SamlFormContext context) {
@@ -123,6 +162,9 @@ public class LogicInfoFactory {
     }
     else if (event.equals(elements.getInitKeyword_8().getValue())) {
       return "execInitField";
+    }
+    else if (event.equals(elements.getFormat_valueKeyword_9().getValue())) {
+      return "execFormatValue";
     }
     else {
       throw new IllegalArgumentException("Unknown logic type: " + event);
@@ -163,23 +205,56 @@ public class LogicInfoFactory {
     }
   }
 
-  private static boolean isClientCall(LogicElement logicElement, SamlFormContext context) {
-    String runat = logicElement.getRunat();
-    if (runat == null) {
-      // not defined on logic element. may also be defined on java element
+  private static Placement getLogicPlacement(LogicElement logicElement, SamlFormContext context) throws IllegalArgumentException {
+    String placement = logicElement.getPlacement();
+    if (placement == null) {
+      // not defined on logic element itself. may be defined on linked logic element
       LogicElement exec = logicElement.getExec();
       if (exec == null) {
         throw new IllegalArgumentException("Linked java element for source code could not be found. ");
       }
-      runat = exec.getRunat();
+      placement = exec.getPlacement();
     }
-    String clientKeyWord = context.getSamlContext().getGrammarAccess().getLogicElementAccess().getRunatClientKeyword_3_1_2_0_0().getValue();
-    return runat.equals(clientKeyWord);
+    if (placement.equals(context.getSamlContext().getGrammarAccess().getLogicElementAccess().getPlacementClientKeyword_3_1_2_0_0().getValue())) {
+      return Placement.Client;
+    }
+    else if (placement.equals(context.getSamlContext().getGrammarAccess().getLogicElementAccess().getPlacementServerKeyword_3_1_2_0_1().getValue())) {
+      return Placement.Server;
+    }
+    else if (placement.equals(context.getSamlContext().getGrammarAccess().getLogicElementAccess().getPlacementInlineKeyword_3_1_2_0_2().getValue())) {
+      return Placement.Inline;
+    }
+    else {
+      throw new IllegalArgumentException("unknown logic placement: " + placement);
+    }
   }
 
-  private static String getSourceLogic(boolean isClientLogic, IType targetInterfaceType, IType formDataType, IType formType, String targetMethodName) {
+  private static boolean isThrowsProcessingExceptionPresent(ConfigurationMethod cm) throws CoreException {
+    if (cm == null) {
+      return true;
+    }
+    String[] exs = cm.getDefaultMethod().getExceptionTypes();
+    String procExcSig = Signature.createTypeSignature(RuntimeClasses.ProcessingException, true);
+    for (String ex : exs) {
+      if (procExcSig.equals(ex)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private static String getSourceLogic(Placement placement, IType targetInterfaceType, IType formDataType, IType formType, String targetMethodName,
+      String source, ParameterArgument returnParam, ConfigurationMethod cm) throws CoreException {
+    boolean throwsExisting = isThrowsProcessingExceptionPresent(cm);
+    boolean hasReturn = returnParam != null && !"void".equals(returnParam.getType());
     StringBuilder sb = new StringBuilder();
-    if (isClientLogic) {
+    if (placement.equals(Placement.Client)) {
+      if (!throwsExisting) {
+        sb.append("try {");
+      }
+      if (hasReturn) {
+        sb.append("return ");
+      }
       sb.append("SERVICES.getService(");
       sb.append(targetInterfaceType.getElementName());
       sb.append(".class).");
@@ -187,9 +262,22 @@ public class LogicInfoFactory {
       sb.append("(");
       sb.append(formType.getElementName());
       sb.append(".this);");
+      if (!throwsExisting) {
+        sb.append("} catch (ProcessingException e) { /* TODO */ e.printStackTrace(); ");
+        if (hasReturn) {
+          sb.append("return null; ");
+        }
+        sb.append("}");
+      }
+    }
+    else if (placement.equals(Placement.Inline)) {
+      sb.append(source);
     }
     else if (TypeUtility.exists(targetInterfaceType) && TypeUtility.exists(formDataType)) {
       String nl = ResourceUtility.getLineSeparator(targetInterfaceType.getCompilationUnit());
+      if (!throwsExisting) {
+        sb.append("try {");
+      }
       sb.append(formDataType.getElementName());
       sb.append(" formData = new ");
       sb.append(formDataType.getElementName());
@@ -204,6 +292,9 @@ public class LogicInfoFactory {
       sb.append("(formData);");
       sb.append(nl);
       sb.append("importFormData(formData);");
+      if (!throwsExisting) {
+        sb.append("} catch (ProcessingException e) { /* TODO */ e.printStackTrace(); }");
+      }
     }
     return sb.toString();
   }
@@ -236,6 +327,9 @@ public class LogicInfoFactory {
     }
     else if (event.equals(elements.getInitKeyword_8().getValue())) {
       return getSourceElementPrefix(sourceType) + "Init";
+    }
+    else if (event.equals(elements.getFormat_valueKeyword_9().getValue())) {
+      return getSourceElementPrefix(sourceType) + "FormatValue";
     }
     else {
       throw new IllegalArgumentException("Unknown logic type: " + event);

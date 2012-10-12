@@ -22,6 +22,7 @@ import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
 import org.eclipse.scout.saml.saml.TranslationElement;
+import org.eclipse.scout.saml.saml.ValueFieldElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -142,7 +143,7 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
    * @generated
    * @ordered
    */
-  protected FormFieldElement master;
+  protected ValueFieldElement master;
 
   /**
    * The cached value of the '{@link #getLogic() <em>Logic</em>}' containment reference list.
@@ -315,12 +316,12 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public FormFieldElement getMaster()
+  public ValueFieldElement getMaster()
   {
     if (master != null && master.eIsProxy())
     {
       InternalEObject oldMaster = (InternalEObject)master;
-      master = (FormFieldElement)eResolveProxy(oldMaster);
+      master = (ValueFieldElement)eResolveProxy(oldMaster);
       if (master != oldMaster)
       {
         if (eNotificationRequired())
@@ -335,7 +336,7 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public FormFieldElement basicGetMaster()
+  public ValueFieldElement basicGetMaster()
   {
     return master;
   }
@@ -345,9 +346,9 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setMaster(FormFieldElement newMaster)
+  public void setMaster(ValueFieldElement newMaster)
   {
-    FormFieldElement oldMaster = master;
+    ValueFieldElement oldMaster = master;
     master = newMaster;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.FORM_FIELD_ELEMENT__MASTER, oldMaster, master));
@@ -440,7 +441,7 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
         setLabelVisible((String)newValue);
         return;
       case SamlPackage.FORM_FIELD_ELEMENT__MASTER:
-        setMaster((FormFieldElement)newValue);
+        setMaster((ValueFieldElement)newValue);
         return;
       case SamlPackage.FORM_FIELD_ELEMENT__LOGIC:
         getLogic().clear();
@@ -476,7 +477,7 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
         setLabelVisible(LABEL_VISIBLE_EDEFAULT);
         return;
       case SamlPackage.FORM_FIELD_ELEMENT__MASTER:
-        setMaster((FormFieldElement)null);
+        setMaster((ValueFieldElement)null);
         return;
       case SamlPackage.FORM_FIELD_ELEMENT__LOGIC:
         getLogic().clear();

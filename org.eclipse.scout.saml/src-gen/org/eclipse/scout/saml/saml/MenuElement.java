@@ -15,6 +15,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.scout.saml.saml.MenuElement#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.MenuElement#getEnabled <em>Enabled</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.MenuElement#getVisible <em>Visible</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.MenuElement#getText <em>Text</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.MenuElement#getLogic <em>Logic</em>}</li>
  * </ul>
@@ -51,6 +53,58 @@ public interface MenuElement extends EObject
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Enabled</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Enabled</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Enabled</em>' attribute.
+   * @see #setEnabled(String)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getMenuElement_Enabled()
+   * @model
+   * @generated
+   */
+  String getEnabled();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.MenuElement#getEnabled <em>Enabled</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Enabled</em>' attribute.
+   * @see #getEnabled()
+   * @generated
+   */
+  void setEnabled(String value);
+
+  /**
+   * Returns the value of the '<em><b>Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Visible</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Visible</em>' attribute.
+   * @see #setVisible(String)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getMenuElement_Visible()
+   * @model
+   * @generated
+   */
+  String getVisible();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.MenuElement#getVisible <em>Visible</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Visible</em>' attribute.
+   * @see #getVisible()
+   * @generated
+   */
+  void setVisible(String value);
 
   /**
    * Returns the value of the '<em><b>Text</b></em>' reference.

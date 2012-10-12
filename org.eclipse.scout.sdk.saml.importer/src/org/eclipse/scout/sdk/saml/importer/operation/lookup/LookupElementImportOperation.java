@@ -66,22 +66,18 @@ public class LookupElementImportOperation extends AbstractSamlElementImportOpera
     op.validate();
     op.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
 
-    // fill logic
+    // remember modified classes
     IType lookupService = TypeUtility.getType(getLookupServiceFqn(baseName));
+    getSamlContext().rememberModifiedType(lookupService);
+    getSamlContext().rememberModifiedType(op.getOutLookupCall());
+
+    // fill logic
     SamlFormContext formContext = new SamlFormContext();
     formContext.setClientType(op.getOutLookupCall());
     formContext.setServerType(lookupService);
     formContext.setSamlContext(getSamlContext());
 
-    getSamlContext().rememberModifiedType(lookupService);
-    getSamlContext().rememberModifiedType(op.getOutLookupCall());
-
-    SamlLogicFillOperation logicFillOp = new SamlLogicFillOperation();
-    logicFillOp.setSamlContext(getSamlContext());
-    logicFillOp.setLogicElements(getLookupElement().getLogic());
-    logicFillOp.setSamlFormContext(formContext);
-    logicFillOp.validate();
-    logicFillOp.run();
+    SamlLogicFillOperation.fillAllLogic(getLookupElement().getLogic(), formContext);
   }
 
   private String getLookupServiceFqn(String baseName) {

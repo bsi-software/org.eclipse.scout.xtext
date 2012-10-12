@@ -2,15 +2,24 @@
  */
 package org.eclipse.scout.saml.saml.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.scout.saml.saml.CodeElement;
 import org.eclipse.scout.saml.saml.LookupElement;
+import org.eclipse.scout.saml.saml.MenuElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
 import org.eclipse.scout.saml.saml.SmartfieldElement;
 
@@ -24,6 +33,7 @@ import org.eclipse.scout.saml.saml.SmartfieldElement;
  *   <li>{@link org.eclipse.scout.saml.saml.impl.SmartfieldElementImpl#getCode <em>Code</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.SmartfieldElementImpl#getValueType <em>Value Type</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.SmartfieldElementImpl#getLookup <em>Lookup</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.SmartfieldElementImpl#getMenus <em>Menus</em>}</li>
  * </ul>
  * </p>
  *
@@ -70,6 +80,16 @@ public class SmartfieldElementImpl extends ValueFieldElementImpl implements Smar
    * @ordered
    */
   protected LookupElement lookup;
+
+  /**
+   * The cached value of the '{@link #getMenus() <em>Menus</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMenus()
+   * @generated
+   * @ordered
+   */
+  protected EList<MenuElement> menus;
 
   /**
    * <!-- begin-user-doc -->
@@ -206,6 +226,36 @@ public class SmartfieldElementImpl extends ValueFieldElementImpl implements Smar
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<MenuElement> getMenus()
+  {
+    if (menus == null)
+    {
+      menus = new EObjectContainmentEList<MenuElement>(MenuElement.class, this, SamlPackage.SMARTFIELD_ELEMENT__MENUS);
+    }
+    return menus;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case SamlPackage.SMARTFIELD_ELEMENT__MENUS:
+        return ((InternalEList<?>)getMenus()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -219,6 +269,8 @@ public class SmartfieldElementImpl extends ValueFieldElementImpl implements Smar
       case SamlPackage.SMARTFIELD_ELEMENT__LOOKUP:
         if (resolve) return getLookup();
         return basicGetLookup();
+      case SamlPackage.SMARTFIELD_ELEMENT__MENUS:
+        return getMenus();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -228,6 +280,7 @@ public class SmartfieldElementImpl extends ValueFieldElementImpl implements Smar
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -241,6 +294,10 @@ public class SmartfieldElementImpl extends ValueFieldElementImpl implements Smar
         return;
       case SamlPackage.SMARTFIELD_ELEMENT__LOOKUP:
         setLookup((LookupElement)newValue);
+        return;
+      case SamlPackage.SMARTFIELD_ELEMENT__MENUS:
+        getMenus().clear();
+        getMenus().addAll((Collection<? extends MenuElement>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -265,6 +322,9 @@ public class SmartfieldElementImpl extends ValueFieldElementImpl implements Smar
       case SamlPackage.SMARTFIELD_ELEMENT__LOOKUP:
         setLookup((LookupElement)null);
         return;
+      case SamlPackage.SMARTFIELD_ELEMENT__MENUS:
+        getMenus().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -285,6 +345,8 @@ public class SmartfieldElementImpl extends ValueFieldElementImpl implements Smar
         return VALUE_TYPE_EDEFAULT == null ? valueType != null : !VALUE_TYPE_EDEFAULT.equals(valueType);
       case SamlPackage.SMARTFIELD_ELEMENT__LOOKUP:
         return lookup != null;
+      case SamlPackage.SMARTFIELD_ELEMENT__MENUS:
+        return menus != null && !menus.isEmpty();
     }
     return super.eIsSet(featureID);
   }

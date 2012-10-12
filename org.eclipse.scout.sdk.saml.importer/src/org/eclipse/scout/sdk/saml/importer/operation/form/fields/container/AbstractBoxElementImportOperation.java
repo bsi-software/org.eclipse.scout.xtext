@@ -15,7 +15,7 @@ import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.saml.saml.CompositeFieldElement;
 import org.eclipse.scout.saml.saml.FormFieldElement;
-import org.eclipse.scout.sdk.saml.importer.operation.form.fields.AbstractSamlFormFieldElementOperation;
+import org.eclipse.scout.sdk.saml.importer.operation.form.fields.AbstractFormFieldElementOperation;
 
 /**
  * <h3>{@link AbstractBoxElementImportOperation}</h3> ...
@@ -23,7 +23,7 @@ import org.eclipse.scout.sdk.saml.importer.operation.form.fields.AbstractSamlFor
  * @author mvi
  * @since 3.8.0 26.09.2012
  */
-public abstract class AbstractBoxElementImportOperation extends AbstractSamlFormFieldElementOperation {
+public abstract class AbstractBoxElementImportOperation extends AbstractFormFieldElementOperation {
   @Override
   public final void run() throws CoreException, IllegalArgumentException {
     IType box = createBox();
@@ -31,7 +31,7 @@ public abstract class AbstractBoxElementImportOperation extends AbstractSamlForm
     ITypeHierarchy h = box.newSupertypeHierarchy(getSamlContext().getMonitor());
 
     applyFormFieldProperties(box, h);
-    fillFormFieldLogic(box);
+    fillLogic(box);
 
     getSamlFormContext().pushParentBox(box);
     CompositeFieldElement container = (CompositeFieldElement) getFieldElement();

@@ -15,6 +15,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.nls.sdk.model.INlsEntry;
+import org.eclipse.scout.saml.saml.TranslationElement;
 import org.eclipse.scout.sdk.operation.method.MethodOverrideOperation;
 import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 import org.eclipse.scout.sdk.workspace.IScoutProject;
@@ -39,6 +40,10 @@ public abstract class AbstractSamlElementImportOperation implements ISamlElement
 
   protected INlsEntry getNlsEntry(String key) {
     return getCurrentScoutModule().getNlsProject().getEntry(key);
+  }
+
+  protected String getNlsReturnClause(TranslationElement translation) {
+    return "return TEXTS.get(\"" + translation.getName() + "\");";
   }
 
   protected void overrideMethod(IType declaringType, ITypeHierarchy h, String methodName, String body) throws CoreException, IllegalArgumentException {
