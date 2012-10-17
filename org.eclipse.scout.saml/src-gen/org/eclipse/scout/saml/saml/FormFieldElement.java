@@ -20,6 +20,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.scout.saml.saml.FormFieldElement#getVisible <em>Visible</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormFieldElement#getLabelVisible <em>Label Visible</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormFieldElement#getMaster <em>Master</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.FormFieldElement#getGridHeight <em>Grid Height</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.FormFieldElement#getGridWidth <em>Grid Width</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormFieldElement#getLogic <em>Logic</em>}</li>
  * </ul>
  * </p>
@@ -185,6 +187,58 @@ public interface FormFieldElement extends EObject
    * @generated
    */
   void setMaster(ValueFieldElement value);
+
+  /**
+   * Returns the value of the '<em><b>Grid Height</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Grid Height</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Grid Height</em>' attribute.
+   * @see #setGridHeight(int)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getFormFieldElement_GridHeight()
+   * @model
+   * @generated
+   */
+  int getGridHeight();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.FormFieldElement#getGridHeight <em>Grid Height</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Grid Height</em>' attribute.
+   * @see #getGridHeight()
+   * @generated
+   */
+  void setGridHeight(int value);
+
+  /**
+   * Returns the value of the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Grid Width</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Grid Width</em>' attribute.
+   * @see #setGridWidth(int)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getFormFieldElement_GridWidth()
+   * @model
+   * @generated
+   */
+  int getGridWidth();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.FormFieldElement#getGridWidth <em>Grid Width</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Grid Width</em>' attribute.
+   * @see #getGridWidth()
+   * @generated
+   */
+  void setGridWidth(int value);
 
   /**
    * Returns the value of the '<em><b>Logic</b></em>' containment reference list.

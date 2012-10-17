@@ -25,15 +25,17 @@ Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.scout.saml,
- org.eclipse.scout.saml.services,
+ org.eclipse.scout.saml.formatting,
+ org.eclipse.scout.saml.generator,
+ org.eclipse.scout.saml.jvmmodel,
+ org.eclipse.scout.saml.parser.antlr,
+ org.eclipse.scout.saml.parser.antlr.internal,
  org.eclipse.scout.saml.saml,
  org.eclipse.scout.saml.saml.impl,
  org.eclipse.scout.saml.saml.util,
- org.eclipse.scout.saml.serializer,
- org.eclipse.scout.saml.parser.antlr,
- org.eclipse.scout.saml.parser.antlr.internal,
- org.eclipse.scout.saml.validation,
  org.eclipse.scout.saml.scoping,
- org.eclipse.scout.saml.generator,
- org.eclipse.scout.saml.formatting,
- org.eclipse.scout.saml.jvmmodel
+ org.eclipse.scout.saml.serializer,
+ org.eclipse.scout.saml.services,
+ org.eclipse.scout.saml.typing,
+ org.eclipse.scout.saml.validation
+

@@ -5,6 +5,7 @@ import com.google.inject.Provider;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.scout.saml.saml.ButtonElement;
 import org.eclipse.scout.saml.saml.CodeElement;
+import org.eclipse.scout.saml.saml.ColumnElement;
 import org.eclipse.scout.saml.saml.CustomFieldElement;
 import org.eclipse.scout.saml.saml.DateElement;
 import org.eclipse.scout.saml.saml.DoubleElement;
@@ -22,6 +23,7 @@ import org.eclipse.scout.saml.saml.SamlPackage;
 import org.eclipse.scout.saml.saml.SequenceBoxElement;
 import org.eclipse.scout.saml.saml.SmartfieldElement;
 import org.eclipse.scout.saml.saml.StringElement;
+import org.eclipse.scout.saml.saml.TableElement;
 import org.eclipse.scout.saml.saml.TemplateElement;
 import org.eclipse.scout.saml.saml.TranslationElement;
 import org.eclipse.scout.saml.services.SamlGrammarAccess;
@@ -91,6 +93,12 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 			case SamlPackage.CODE_ELEMENT:
 				if(context == grammarAccess.getCodeElementRule()) {
 					sequence_CodeElement(context, (CodeElement) semanticObject); 
+					return; 
+				}
+				else break;
+			case SamlPackage.COLUMN_ELEMENT:
+				if(context == grammarAccess.getColumnElementRule()) {
+					sequence_ColumnElement(context, (ColumnElement) semanticObject); 
 					return; 
 				}
 				else break;
@@ -202,6 +210,13 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 				   context == grammarAccess.getStringElementRule() ||
 				   context == grammarAccess.getValueFieldElementRule()) {
 					sequence_StringElement(context, (StringElement) semanticObject); 
+					return; 
+				}
+				else break;
+			case SamlPackage.TABLE_ELEMENT:
+				if(context == grammarAccess.getFormFieldElementRule() ||
+				   context == grammarAccess.getTableElementRule()) {
+					sequence_TableElement(context, (TableElement) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1087,6 +1102,8 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         labelVisible=BooleanType? 
 	 *         master=[ValueFieldElement|ID]? 
 	 *         processButton=BooleanType? 
+	 *         gridHeight=INT? 
+	 *         gridWidth=INT? 
 	 *         (logic+=LogicElement | menus+=MenuElement)*
 	 *     )
 	 */
@@ -1116,6 +1133,15 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     (name=ID (type='date' | type='string' | type='int' | type='double') text=[TranslationElement|ID]? width=INT? visible=BooleanType?)
+	 */
+	protected void sequence_ColumnElement(EObject context, ColumnElement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (
 	 *         name=ID 
 	 *         template=[TemplateElement|ID] 
@@ -1124,6 +1150,8 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         visible=BooleanType? 
 	 *         labelVisible=BooleanType? 
 	 *         master=[ValueFieldElement|ID]? 
+	 *         gridHeight=INT? 
+	 *         gridWidth=INT? 
 	 *         (logic+=LogicElement | fields+=FormFieldElement)*
 	 *     )
 	 */
@@ -1142,6 +1170,8 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         labelVisible=BooleanType? 
 	 *         master=[ValueFieldElement|ID]? 
 	 *         mandatory=BooleanType? 
+	 *         gridHeight=INT? 
+	 *         gridWidth=INT? 
 	 *         logic+=LogicElement*
 	 *     )
 	 */
@@ -1160,6 +1190,8 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         labelVisible=BooleanType? 
 	 *         master=[ValueFieldElement|ID]? 
 	 *         mandatory=BooleanType? 
+	 *         gridHeight=INT? 
+	 *         gridWidth=INT? 
 	 *         logic+=LogicElement*
 	 *     )
 	 */
@@ -1196,6 +1228,8 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         borderVisible=BooleanType? 
 	 *         (borderDecoration='empty' | borderDecoration='line' | borderDecoration='section' | borderDecoration='auto') 
 	 *         master=[ValueFieldElement|ID]? 
+	 *         gridHeight=INT? 
+	 *         gridWidth=INT? 
 	 *         (logic+=LogicElement | fields+=FormFieldElement)*
 	 *     )
 	 */
@@ -1258,6 +1292,8 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         labelVisible=BooleanType? 
 	 *         master=[ValueFieldElement|ID]? 
 	 *         mandatory=BooleanType? 
+	 *         gridHeight=INT? 
+	 *         gridWidth=INT? 
 	 *         logic+=LogicElement*
 	 *     )
 	 */
@@ -1322,6 +1358,8 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         visible=BooleanType? 
 	 *         labelVisible=BooleanType? 
 	 *         master=[ValueFieldElement|ID]? 
+	 *         gridHeight=INT? 
+	 *         gridWidth=INT? 
 	 *         (logic+=LogicElement | fields+=FormFieldElement)*
 	 *     )
 	 */
@@ -1343,6 +1381,8 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         code=[CodeElement|ID]? 
 	 *         valueType=STRING? 
 	 *         lookup=[LookupElement|ID]? 
+	 *         gridHeight=INT? 
+	 *         gridWidth=INT? 
 	 *         (logic+=LogicElement | menus+=MenuElement)*
 	 *     )
 	 */
@@ -1362,10 +1402,31 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         master=[ValueFieldElement|ID]? 
 	 *         mandatory=BooleanType? 
 	 *         maxlen=INT? 
+	 *         gridHeight=INT? 
+	 *         gridWidth=INT? 
 	 *         logic+=LogicElement*
 	 *     )
 	 */
 	protected void sequence_StringElement(EObject context, StringElement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         name=ID 
+	 *         text=[TranslationElement|ID]? 
+	 *         enabled=BooleanType? 
+	 *         visible=BooleanType? 
+	 *         master=[ValueFieldElement|ID]? 
+	 *         labelVisible=BooleanType? 
+	 *         gridHeight=INT? 
+	 *         gridWidth=INT? 
+	 *         (logic+=LogicElement | menus+=MenuElement | columns+=ColumnElement)*
+	 *     )
+	 */
+	protected void sequence_TableElement(EObject context, TableElement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

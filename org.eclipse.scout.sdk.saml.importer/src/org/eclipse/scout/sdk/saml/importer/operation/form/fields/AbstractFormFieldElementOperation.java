@@ -60,6 +60,8 @@ public abstract class AbstractFormFieldElementOperation extends AbstractUiElemen
     applyLabelAttribute(getFieldElement().getText(), field, h);
     applyVisibleAttribute(getFieldElement().getVisible(), field, h);
     applyLabelVisibleAttribute(getFieldElement().getLabelVisible(), field, h);
+    applyGridHeightAttribute(getFieldElement().getGridHeight(), field, h);
+    applyGridWidthAttribute(getFieldElement().getGridWidth(), field, h);
   }
 
   protected void applyLabelAttribute(TranslationElement a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
@@ -71,6 +73,18 @@ public abstract class AbstractFormFieldElementOperation extends AbstractUiElemen
   protected void applyLabelVisibleAttribute(String a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
     if ("false".equals(a)) {
       overrideMethod(field, h, "getConfiguredLabelVisible", "return false;");
+    }
+  }
+
+  protected void applyGridHeightAttribute(int height, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    if (height > 0) {
+      overrideMethod(field, h, "getConfiguredGridH", "return " + height + ";");
+    }
+  }
+
+  protected void applyGridWidthAttribute(int width, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    if (width > 0) {
+      overrideMethod(field, h, "getConfiguredGridW", "return " + width + ";");
     }
   }
 

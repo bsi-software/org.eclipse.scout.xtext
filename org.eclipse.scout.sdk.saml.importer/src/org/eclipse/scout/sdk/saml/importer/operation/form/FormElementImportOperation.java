@@ -130,11 +130,13 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
 
   private void createFormStack() throws CoreException {
     String formName = getFormElement().getName();
-    String nlsKey = getFormElement().getTitle().getName();
 
     FormStackNewOperation op = new FormStackNewOperation(false);
     op.setFormatSource(false);
-    op.setNlsEntry(getNlsEntry(nlsKey));
+    if (getFormElement().getTitle() != null) {
+      String nlsKey = getFormElement().getTitle().getName();
+      op.setNlsEntry(getNlsEntry(nlsKey));
+    }
     op.setCreateButtonOk(true);
     op.setCreateButtonCancel(true);
 

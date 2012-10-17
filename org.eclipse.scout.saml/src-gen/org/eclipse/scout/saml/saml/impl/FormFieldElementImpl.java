@@ -37,6 +37,8 @@ import org.eclipse.scout.saml.saml.ValueFieldElement;
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getVisible <em>Visible</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getLabelVisible <em>Label Visible</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getMaster <em>Master</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getGridHeight <em>Grid Height</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getGridWidth <em>Grid Width</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getLogic <em>Logic</em>}</li>
  * </ul>
  * </p>
@@ -144,6 +146,46 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
    * @ordered
    */
   protected ValueFieldElement master;
+
+  /**
+   * The default value of the '{@link #getGridHeight() <em>Grid Height</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getGridHeight()
+   * @generated
+   * @ordered
+   */
+  protected static final int GRID_HEIGHT_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getGridHeight() <em>Grid Height</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getGridHeight()
+   * @generated
+   * @ordered
+   */
+  protected int gridHeight = GRID_HEIGHT_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getGridWidth() <em>Grid Width</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getGridWidth()
+   * @generated
+   * @ordered
+   */
+  protected static final int GRID_WIDTH_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getGridWidth() <em>Grid Width</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getGridWidth()
+   * @generated
+   * @ordered
+   */
+  protected int gridWidth = GRID_WIDTH_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getLogic() <em>Logic</em>}' containment reference list.
@@ -359,6 +401,52 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
+  public int getGridHeight()
+  {
+    return gridHeight;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setGridHeight(int newGridHeight)
+  {
+    int oldGridHeight = gridHeight;
+    gridHeight = newGridHeight;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.FORM_FIELD_ELEMENT__GRID_HEIGHT, oldGridHeight, gridHeight));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public int getGridWidth()
+  {
+    return gridWidth;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setGridWidth(int newGridWidth)
+  {
+    int oldGridWidth = gridWidth;
+    gridWidth = newGridWidth;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.FORM_FIELD_ELEMENT__GRID_WIDTH, oldGridWidth, gridWidth));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<LogicElement> getLogic()
   {
     if (logic == null)
@@ -408,6 +496,10 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
       case SamlPackage.FORM_FIELD_ELEMENT__MASTER:
         if (resolve) return getMaster();
         return basicGetMaster();
+      case SamlPackage.FORM_FIELD_ELEMENT__GRID_HEIGHT:
+        return getGridHeight();
+      case SamlPackage.FORM_FIELD_ELEMENT__GRID_WIDTH:
+        return getGridWidth();
       case SamlPackage.FORM_FIELD_ELEMENT__LOGIC:
         return getLogic();
     }
@@ -442,6 +534,12 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
         return;
       case SamlPackage.FORM_FIELD_ELEMENT__MASTER:
         setMaster((ValueFieldElement)newValue);
+        return;
+      case SamlPackage.FORM_FIELD_ELEMENT__GRID_HEIGHT:
+        setGridHeight((Integer)newValue);
+        return;
+      case SamlPackage.FORM_FIELD_ELEMENT__GRID_WIDTH:
+        setGridWidth((Integer)newValue);
         return;
       case SamlPackage.FORM_FIELD_ELEMENT__LOGIC:
         getLogic().clear();
@@ -479,6 +577,12 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
       case SamlPackage.FORM_FIELD_ELEMENT__MASTER:
         setMaster((ValueFieldElement)null);
         return;
+      case SamlPackage.FORM_FIELD_ELEMENT__GRID_HEIGHT:
+        setGridHeight(GRID_HEIGHT_EDEFAULT);
+        return;
+      case SamlPackage.FORM_FIELD_ELEMENT__GRID_WIDTH:
+        setGridWidth(GRID_WIDTH_EDEFAULT);
+        return;
       case SamlPackage.FORM_FIELD_ELEMENT__LOGIC:
         getLogic().clear();
         return;
@@ -508,6 +612,10 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
         return LABEL_VISIBLE_EDEFAULT == null ? labelVisible != null : !LABEL_VISIBLE_EDEFAULT.equals(labelVisible);
       case SamlPackage.FORM_FIELD_ELEMENT__MASTER:
         return master != null;
+      case SamlPackage.FORM_FIELD_ELEMENT__GRID_HEIGHT:
+        return gridHeight != GRID_HEIGHT_EDEFAULT;
+      case SamlPackage.FORM_FIELD_ELEMENT__GRID_WIDTH:
+        return gridWidth != GRID_WIDTH_EDEFAULT;
       case SamlPackage.FORM_FIELD_ELEMENT__LOGIC:
         return logic != null && !logic.isEmpty();
     }
@@ -533,6 +641,10 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
     result.append(visible);
     result.append(", labelVisible: ");
     result.append(labelVisible);
+    result.append(", gridHeight: ");
+    result.append(gridHeight);
+    result.append(", gridWidth: ");
+    result.append(gridWidth);
     result.append(')');
     return result.toString();
   }

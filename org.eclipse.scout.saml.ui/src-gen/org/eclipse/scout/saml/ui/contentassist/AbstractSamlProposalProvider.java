@@ -130,6 +130,12 @@ public class AbstractSamlProposalProvider extends XbaseProposalProvider {
 	public void completeSequenceBoxElement_Master(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		lookupCrossReference(((CrossReference)assignment.getTerminal()), context, acceptor);
 	}
+	public void completeSequenceBoxElement_GridHeight(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeSequenceBoxElement_GridWidth(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
 	public void completeSequenceBoxElement_Logic(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
@@ -166,6 +172,12 @@ public class AbstractSamlProposalProvider extends XbaseProposalProvider {
 	public void completeGroupBoxElement_Master(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		lookupCrossReference(((CrossReference)assignment.getTerminal()), context, acceptor);
 	}
+	public void completeGroupBoxElement_GridHeight(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeGroupBoxElement_GridWidth(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
 	public void completeGroupBoxElement_Logic(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
@@ -196,6 +208,12 @@ public class AbstractSamlProposalProvider extends XbaseProposalProvider {
 	public void completeStringElement_Maxlen(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
+	public void completeStringElement_GridHeight(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeStringElement_GridWidth(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
 	public void completeStringElement_Logic(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
@@ -218,6 +236,12 @@ public class AbstractSamlProposalProvider extends XbaseProposalProvider {
 		lookupCrossReference(((CrossReference)assignment.getTerminal()), context, acceptor);
 	}
 	public void completeDoubleElement_Mandatory(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeDoubleElement_GridHeight(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeDoubleElement_GridWidth(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
 	public void completeDoubleElement_Logic(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
@@ -244,6 +268,12 @@ public class AbstractSamlProposalProvider extends XbaseProposalProvider {
 	public void completeLongElement_Mandatory(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
+	public void completeLongElement_GridHeight(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeLongElement_GridWidth(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
 	public void completeLongElement_Logic(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
@@ -266,6 +296,12 @@ public class AbstractSamlProposalProvider extends XbaseProposalProvider {
 		lookupCrossReference(((CrossReference)assignment.getTerminal()), context, acceptor);
 	}
 	public void completeDateElement_Mandatory(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeDateElement_GridHeight(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeDateElement_GridWidth(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
 	public void completeDateElement_Logic(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
@@ -301,6 +337,12 @@ public class AbstractSamlProposalProvider extends XbaseProposalProvider {
 	public void completeSmartfieldElement_Lookup(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		lookupCrossReference(((CrossReference)assignment.getTerminal()), context, acceptor);
 	}
+	public void completeSmartfieldElement_GridHeight(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeSmartfieldElement_GridWidth(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
 	public void completeSmartfieldElement_Logic(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
@@ -327,6 +369,12 @@ public class AbstractSamlProposalProvider extends XbaseProposalProvider {
 	}
 	public void completeCustomFieldElement_Master(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		lookupCrossReference(((CrossReference)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeCustomFieldElement_GridHeight(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeCustomFieldElement_GridWidth(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
 	public void completeCustomFieldElement_Logic(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
@@ -355,6 +403,12 @@ public class AbstractSamlProposalProvider extends XbaseProposalProvider {
 	public void completeButtonElement_ProcessButton(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
+	public void completeButtonElement_GridHeight(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeButtonElement_GridWidth(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
 	public void completeButtonElement_Logic(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
@@ -374,6 +428,57 @@ public class AbstractSamlProposalProvider extends XbaseProposalProvider {
 		lookupCrossReference(((CrossReference)assignment.getTerminal()), context, acceptor);
 	}
 	public void completeMenuElement_Logic(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeTableElement_Name(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeTableElement_Text(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		lookupCrossReference(((CrossReference)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeTableElement_Enabled(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeTableElement_Visible(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeTableElement_Master(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		lookupCrossReference(((CrossReference)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeTableElement_LabelVisible(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeTableElement_GridHeight(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeTableElement_GridWidth(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeTableElement_Logic(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeTableElement_Menus(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeTableElement_Columns(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeColumnElement_Name(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeColumnElement_Type(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		// subclasses may override
+		// subclasses may override
+		// subclasses may override
+		// subclasses may override
+	}
+	public void completeColumnElement_Text(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		lookupCrossReference(((CrossReference)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeColumnElement_Width(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeColumnElement_Visible(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
     
@@ -453,6 +558,12 @@ public class AbstractSamlProposalProvider extends XbaseProposalProvider {
 		// subclasses may override
 	}
 	public void complete_MenuElement(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		// subclasses may override
+	}
+	public void complete_TableElement(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		// subclasses may override
+	}
+	public void complete_ColumnElement(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		// subclasses may override
 	}
 }

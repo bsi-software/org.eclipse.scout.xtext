@@ -190,6 +190,16 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
         return createMenuElementAdapter();
       }
       @Override
+      public Adapter caseTableElement(TableElement object)
+      {
+        return createTableElementAdapter();
+      }
+      @Override
+      public Adapter caseColumnElement(ColumnElement object)
+      {
+        return createColumnElementAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -552,6 +562,36 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createMenuElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.TableElement <em>Table Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.scout.saml.saml.TableElement
+   * @generated
+   */
+  public Adapter createTableElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.ColumnElement <em>Column Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.scout.saml.saml.ColumnElement
+   * @generated
+   */
+  public Adapter createColumnElementAdapter()
   {
     return null;
   }

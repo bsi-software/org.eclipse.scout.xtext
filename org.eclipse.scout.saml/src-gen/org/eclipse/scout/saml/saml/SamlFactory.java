@@ -230,6 +230,24 @@ public interface SamlFactory extends EFactory
   MenuElement createMenuElement();
 
   /**
+   * Returns a new object of class '<em>Table Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Table Element</em>'.
+   * @generated
+   */
+  TableElement createTableElement();
+
+  /**
+   * Returns a new object of class '<em>Column Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Column Element</em>'.
+   * @generated
+   */
+  ColumnElement createColumnElement();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

@@ -83,7 +83,15 @@ public class SamlImportOperation implements IOperation {
       }
 
       if (parsingIssues.size() > 0) {
-        throw new IllegalArgumentException("SAML files are not valid. " + parsingIssues.size() + " Error(s) have been found. Please check input files. ");
+        StringBuilder sb = new StringBuilder();
+        sb.append("SAML files are not valid. ");
+        sb.append(parsingIssues.size());
+        sb.append(" Error(s) have been found. Please check input files:");
+        for (Issue i : parsingIssues) {
+          sb.append("\n     ");
+          sb.append(i.getMessage());
+        }
+        throw new IllegalArgumentException(sb.toString());
       }
       else {
         m_context = new SamlContext(monitor, workingCopyManager, getInjector());

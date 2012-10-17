@@ -19,7 +19,7 @@ public class SamlSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected SamlGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_ButtonElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q;
-	protected AbstractElementAlias match_CustomFieldElement___LeftCurlyBracketKeyword_6_0_RightCurlyBracketKeyword_6_2__q;
+	protected AbstractElementAlias match_CustomFieldElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q;
 	protected AbstractElementAlias match_DateElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q;
 	protected AbstractElementAlias match_DoubleElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q;
 	protected AbstractElementAlias match_FormElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q;
@@ -29,6 +29,7 @@ public class SamlSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected AbstractElementAlias match_SequenceBoxElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q;
 	protected AbstractElementAlias match_SmartfieldElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q;
 	protected AbstractElementAlias match_StringElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q;
+	protected AbstractElementAlias match_TableElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q;
 	protected AbstractElementAlias match_XBlockExpression_SemicolonKeyword_2_1_q;
 	protected AbstractElementAlias match_XConstructorCall___LeftParenthesisKeyword_4_0_RightParenthesisKeyword_4_2__q;
 	protected AbstractElementAlias match_XExpressionInClosure_SemicolonKeyword_1_1_q;
@@ -40,7 +41,7 @@ public class SamlSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (SamlGrammarAccess) access;
 		match_ButtonElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getButtonElementAccess().getLeftCurlyBracketKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getButtonElementAccess().getRightCurlyBracketKeyword_3_2()));
-		match_CustomFieldElement___LeftCurlyBracketKeyword_6_0_RightCurlyBracketKeyword_6_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getCustomFieldElementAccess().getLeftCurlyBracketKeyword_6_0()), new TokenAlias(false, false, grammarAccess.getCustomFieldElementAccess().getRightCurlyBracketKeyword_6_2()));
+		match_CustomFieldElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getCustomFieldElementAccess().getLeftCurlyBracketKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getCustomFieldElementAccess().getRightCurlyBracketKeyword_3_2()));
 		match_DateElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getDateElementAccess().getLeftCurlyBracketKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getDateElementAccess().getRightCurlyBracketKeyword_3_2()));
 		match_DoubleElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getDoubleElementAccess().getLeftCurlyBracketKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getDoubleElementAccess().getRightCurlyBracketKeyword_3_2()));
 		match_FormElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getFormElementAccess().getLeftCurlyBracketKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getFormElementAccess().getRightCurlyBracketKeyword_3_2()));
@@ -50,6 +51,7 @@ public class SamlSyntacticSequencer extends AbstractSyntacticSequencer {
 		match_SequenceBoxElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getSequenceBoxElementAccess().getLeftCurlyBracketKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getSequenceBoxElementAccess().getRightCurlyBracketKeyword_3_2()));
 		match_SmartfieldElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getSmartfieldElementAccess().getLeftCurlyBracketKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getSmartfieldElementAccess().getRightCurlyBracketKeyword_3_2()));
 		match_StringElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getStringElementAccess().getLeftCurlyBracketKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getStringElementAccess().getRightCurlyBracketKeyword_3_2()));
+		match_TableElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getTableElementAccess().getLeftCurlyBracketKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getTableElementAccess().getRightCurlyBracketKeyword_3_2()));
 		match_XBlockExpression_SemicolonKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getXBlockExpressionAccess().getSemicolonKeyword_2_1());
 		match_XConstructorCall___LeftParenthesisKeyword_4_0_RightParenthesisKeyword_4_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXConstructorCallAccess().getLeftParenthesisKeyword_4_0()), new TokenAlias(false, false, grammarAccess.getXConstructorCallAccess().getRightParenthesisKeyword_4_2()));
 		match_XExpressionInClosure_SemicolonKeyword_1_1_q = new TokenAlias(false, true, grammarAccess.getXExpressionInClosureAccess().getSemicolonKeyword_1_1());
@@ -84,8 +86,8 @@ public class SamlSyntacticSequencer extends AbstractSyntacticSequencer {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
 			if(match_ButtonElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q.equals(syntax))
 				emit_ButtonElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_CustomFieldElement___LeftCurlyBracketKeyword_6_0_RightCurlyBracketKeyword_6_2__q.equals(syntax))
-				emit_CustomFieldElement___LeftCurlyBracketKeyword_6_0_RightCurlyBracketKeyword_6_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_CustomFieldElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q.equals(syntax))
+				emit_CustomFieldElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_DateElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q.equals(syntax))
 				emit_DateElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_DoubleElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q.equals(syntax))
@@ -104,6 +106,8 @@ public class SamlSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_SmartfieldElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_StringElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q.equals(syntax))
 				emit_StringElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_TableElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q.equals(syntax))
+				emit_TableElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XBlockExpression_SemicolonKeyword_2_1_q.equals(syntax))
 				emit_XBlockExpression_SemicolonKeyword_2_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XConstructorCall___LeftParenthesisKeyword_4_0_RightParenthesisKeyword_4_2__q.equals(syntax))
@@ -132,7 +136,7 @@ public class SamlSyntacticSequencer extends AbstractSyntacticSequencer {
 	 * Syntax:
 	 *     ('{' '}')?
 	 */
-	protected void emit_CustomFieldElement___LeftCurlyBracketKeyword_6_0_RightCurlyBracketKeyword_6_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_CustomFieldElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -205,6 +209,14 @@ public class SamlSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ('{' '}')?
 	 */
 	protected void emit_StringElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     ('{' '}')?
+	 */
+	protected void emit_TableElement___LeftCurlyBracketKeyword_3_0_RightCurlyBracketKeyword_3_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

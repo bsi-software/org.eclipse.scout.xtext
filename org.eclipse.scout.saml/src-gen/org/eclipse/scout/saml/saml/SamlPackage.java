@@ -590,13 +590,31 @@ public interface SamlPackage extends EPackage
   int FORM_FIELD_ELEMENT__MASTER = 5;
 
   /**
+   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORM_FIELD_ELEMENT__GRID_HEIGHT = 6;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORM_FIELD_ELEMENT__GRID_WIDTH = 7;
+
+  /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FORM_FIELD_ELEMENT__LOGIC = 6;
+  int FORM_FIELD_ELEMENT__LOGIC = 8;
 
   /**
    * The number of structural features of the '<em>Form Field Element</em>' class.
@@ -605,7 +623,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_FIELD_ELEMENT_FEATURE_COUNT = 7;
+  int FORM_FIELD_ELEMENT_FEATURE_COUNT = 9;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.CompositeFieldElementImpl <em>Composite Field Element</em>}' class.
@@ -670,6 +688,24 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int COMPOSITE_FIELD_ELEMENT__MASTER = FORM_FIELD_ELEMENT__MASTER;
+
+  /**
+   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPOSITE_FIELD_ELEMENT__GRID_HEIGHT = FORM_FIELD_ELEMENT__GRID_HEIGHT;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPOSITE_FIELD_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT__GRID_WIDTH;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -763,6 +799,24 @@ public interface SamlPackage extends EPackage
   int SEQUENCE_BOX_ELEMENT__MASTER = COMPOSITE_FIELD_ELEMENT__MASTER;
 
   /**
+   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SEQUENCE_BOX_ELEMENT__GRID_HEIGHT = COMPOSITE_FIELD_ELEMENT__GRID_HEIGHT;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SEQUENCE_BOX_ELEMENT__GRID_WIDTH = COMPOSITE_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -852,6 +906,24 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int GROUP_BOX_ELEMENT__MASTER = COMPOSITE_FIELD_ELEMENT__MASTER;
+
+  /**
+   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_BOX_ELEMENT__GRID_HEIGHT = COMPOSITE_FIELD_ELEMENT__GRID_HEIGHT;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_BOX_ELEMENT__GRID_WIDTH = COMPOSITE_FIELD_ELEMENT__GRID_WIDTH;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -972,6 +1044,24 @@ public interface SamlPackage extends EPackage
   int VALUE_FIELD_ELEMENT__MASTER = FORM_FIELD_ELEMENT__MASTER;
 
   /**
+   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE_FIELD_ELEMENT__GRID_HEIGHT = FORM_FIELD_ELEMENT__GRID_HEIGHT;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE_FIELD_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1061,6 +1151,24 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int STRING_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
+
+  /**
+   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT__GRID_HEIGHT = VALUE_FIELD_ELEMENT__GRID_HEIGHT;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -1163,6 +1271,24 @@ public interface SamlPackage extends EPackage
   int DOUBLE_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
 
   /**
+   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DOUBLE_ELEMENT__GRID_HEIGHT = VALUE_FIELD_ELEMENT__GRID_HEIGHT;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DOUBLE_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1252,6 +1378,24 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int LONG_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
+
+  /**
+   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LONG_ELEMENT__GRID_HEIGHT = VALUE_FIELD_ELEMENT__GRID_HEIGHT;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LONG_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -1345,6 +1489,24 @@ public interface SamlPackage extends EPackage
   int DATE_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
 
   /**
+   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATE_ELEMENT__GRID_HEIGHT = VALUE_FIELD_ELEMENT__GRID_HEIGHT;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATE_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1434,6 +1596,24 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int SMARTFIELD_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
+
+  /**
+   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SMARTFIELD_ELEMENT__GRID_HEIGHT = VALUE_FIELD_ELEMENT__GRID_HEIGHT;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SMARTFIELD_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -1563,6 +1743,24 @@ public interface SamlPackage extends EPackage
   int CUSTOM_FIELD_ELEMENT__MASTER = FORM_FIELD_ELEMENT__MASTER;
 
   /**
+   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CUSTOM_FIELD_ELEMENT__GRID_HEIGHT = FORM_FIELD_ELEMENT__GRID_HEIGHT;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CUSTOM_FIELD_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1663,6 +1861,24 @@ public interface SamlPackage extends EPackage
   int BUTTON_ELEMENT__MASTER = FORM_FIELD_ELEMENT__MASTER;
 
   /**
+   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUTTON_ELEMENT__GRID_HEIGHT = FORM_FIELD_ELEMENT__GRID_HEIGHT;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUTTON_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1761,6 +1977,188 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int MENU_ELEMENT_FEATURE_COUNT = 5;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.TableElementImpl <em>Table Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.TableElementImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getTableElement()
+   * @generated
+   */
+  int TABLE_ELEMENT = 23;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TABLE_ELEMENT__NAME = FORM_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TABLE_ELEMENT__TEXT = FORM_FIELD_ELEMENT__TEXT;
+
+  /**
+   * The feature id for the '<em><b>Enabled</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TABLE_ELEMENT__ENABLED = FORM_FIELD_ELEMENT__ENABLED;
+
+  /**
+   * The feature id for the '<em><b>Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TABLE_ELEMENT__VISIBLE = FORM_FIELD_ELEMENT__VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TABLE_ELEMENT__LABEL_VISIBLE = FORM_FIELD_ELEMENT__LABEL_VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Master</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TABLE_ELEMENT__MASTER = FORM_FIELD_ELEMENT__MASTER;
+
+  /**
+   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TABLE_ELEMENT__GRID_HEIGHT = FORM_FIELD_ELEMENT__GRID_HEIGHT;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TABLE_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
+   * The feature id for the '<em><b>Logic</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TABLE_ELEMENT__LOGIC = FORM_FIELD_ELEMENT__LOGIC;
+
+  /**
+   * The feature id for the '<em><b>Menus</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TABLE_ELEMENT__MENUS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Columns</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TABLE_ELEMENT__COLUMNS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Table Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TABLE_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.ColumnElementImpl <em>Column Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.ColumnElementImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getColumnElement()
+   * @generated
+   */
+  int COLUMN_ELEMENT = 24;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COLUMN_ELEMENT__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COLUMN_ELEMENT__TYPE = 1;
+
+  /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COLUMN_ELEMENT__TEXT = 2;
+
+  /**
+   * The feature id for the '<em><b>Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COLUMN_ELEMENT__WIDTH = 3;
+
+  /**
+   * The feature id for the '<em><b>Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COLUMN_ELEMENT__VISIBLE = 4;
+
+  /**
+   * The number of structural features of the '<em>Column Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COLUMN_ELEMENT_FEATURE_COUNT = 5;
 
 
   /**
@@ -2281,6 +2679,28 @@ public interface SamlPackage extends EPackage
   EReference getFormFieldElement_Master();
 
   /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FormFieldElement#getGridHeight <em>Grid Height</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Grid Height</em>'.
+   * @see org.eclipse.scout.saml.saml.FormFieldElement#getGridHeight()
+   * @see #getFormFieldElement()
+   * @generated
+   */
+  EAttribute getFormFieldElement_GridHeight();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FormFieldElement#getGridWidth <em>Grid Width</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Grid Width</em>'.
+   * @see org.eclipse.scout.saml.saml.FormFieldElement#getGridWidth()
+   * @see #getFormFieldElement()
+   * @generated
+   */
+  EAttribute getFormFieldElement_GridWidth();
+
+  /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.FormFieldElement#getLogic <em>Logic</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2619,6 +3039,103 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EReference getMenuElement_Logic();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.TableElement <em>Table Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Table Element</em>'.
+   * @see org.eclipse.scout.saml.saml.TableElement
+   * @generated
+   */
+  EClass getTableElement();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.TableElement#getMenus <em>Menus</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Menus</em>'.
+   * @see org.eclipse.scout.saml.saml.TableElement#getMenus()
+   * @see #getTableElement()
+   * @generated
+   */
+  EReference getTableElement_Menus();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.TableElement#getColumns <em>Columns</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Columns</em>'.
+   * @see org.eclipse.scout.saml.saml.TableElement#getColumns()
+   * @see #getTableElement()
+   * @generated
+   */
+  EReference getTableElement_Columns();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.ColumnElement <em>Column Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Column Element</em>'.
+   * @see org.eclipse.scout.saml.saml.ColumnElement
+   * @generated
+   */
+  EClass getColumnElement();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.ColumnElement#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.eclipse.scout.saml.saml.ColumnElement#getName()
+   * @see #getColumnElement()
+   * @generated
+   */
+  EAttribute getColumnElement_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.ColumnElement#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see org.eclipse.scout.saml.saml.ColumnElement#getType()
+   * @see #getColumnElement()
+   * @generated
+   */
+  EAttribute getColumnElement_Type();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.ColumnElement#getText <em>Text</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Text</em>'.
+   * @see org.eclipse.scout.saml.saml.ColumnElement#getText()
+   * @see #getColumnElement()
+   * @generated
+   */
+  EReference getColumnElement_Text();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.ColumnElement#getWidth <em>Width</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Width</em>'.
+   * @see org.eclipse.scout.saml.saml.ColumnElement#getWidth()
+   * @see #getColumnElement()
+   * @generated
+   */
+  EAttribute getColumnElement_Width();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.ColumnElement#getVisible <em>Visible</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Visible</em>'.
+   * @see org.eclipse.scout.saml.saml.ColumnElement#getVisible()
+   * @see #getColumnElement()
+   * @generated
+   */
+  EAttribute getColumnElement_Visible();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -3050,6 +3567,22 @@ public interface SamlPackage extends EPackage
     EReference FORM_FIELD_ELEMENT__MASTER = eINSTANCE.getFormFieldElement_Master();
 
     /**
+     * The meta object literal for the '<em><b>Grid Height</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FORM_FIELD_ELEMENT__GRID_HEIGHT = eINSTANCE.getFormFieldElement_GridHeight();
+
+    /**
+     * The meta object literal for the '<em><b>Grid Width</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FORM_FIELD_ELEMENT__GRID_WIDTH = eINSTANCE.getFormFieldElement_GridWidth();
+
+    /**
      * The meta object literal for the '<em><b>Logic</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3328,6 +3861,82 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EReference MENU_ELEMENT__LOGIC = eINSTANCE.getMenuElement_Logic();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.TableElementImpl <em>Table Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.TableElementImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getTableElement()
+     * @generated
+     */
+    EClass TABLE_ELEMENT = eINSTANCE.getTableElement();
+
+    /**
+     * The meta object literal for the '<em><b>Menus</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TABLE_ELEMENT__MENUS = eINSTANCE.getTableElement_Menus();
+
+    /**
+     * The meta object literal for the '<em><b>Columns</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TABLE_ELEMENT__COLUMNS = eINSTANCE.getTableElement_Columns();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.ColumnElementImpl <em>Column Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.ColumnElementImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getColumnElement()
+     * @generated
+     */
+    EClass COLUMN_ELEMENT = eINSTANCE.getColumnElement();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COLUMN_ELEMENT__NAME = eINSTANCE.getColumnElement_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COLUMN_ELEMENT__TYPE = eINSTANCE.getColumnElement_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Text</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COLUMN_ELEMENT__TEXT = eINSTANCE.getColumnElement_Text();
+
+    /**
+     * The meta object literal for the '<em><b>Width</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COLUMN_ELEMENT__WIDTH = eINSTANCE.getColumnElement_Width();
+
+    /**
+     * The meta object literal for the '<em><b>Visible</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COLUMN_ELEMENT__VISIBLE = eINSTANCE.getColumnElement_Visible();
 
   }
 

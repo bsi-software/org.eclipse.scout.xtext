@@ -57,7 +57,7 @@ FormElement:'form' name=ID (('modal' '=' modal=BooleanType)? & ('columns' '=' co
 
 // UI FIELDS
 
-FormFieldElement:CompositeFieldElement | ValueFieldElement | CustomFieldElement | ButtonElement;
+FormFieldElement:CompositeFieldElement | ValueFieldElement | CustomFieldElement | ButtonElement | TableElement;
 
 // COMPOSITES
 CompositeFieldElement:SequenceBoxElement|GroupBoxElement;
@@ -67,7 +67,9 @@ SequenceBoxElement:'sequence_box' name=ID
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
 		('label_visible' '=' labelVisible=BooleanType)? &
-		('master' '=' master=[ValueFieldElement])?
+		('master' '=' master=[ValueFieldElement])? &
+		('grid_height' '=' gridHeight=INT)? &
+		('grid_width' '=' gridWidth=INT)?
 	)
 	('{' (logic+=LogicElement | fields+=FormFieldElement)* '}')?;
 	
@@ -80,7 +82,9 @@ GroupBoxElement:'group_box' name=ID
 		('label_visible' '=' labelVisible=BooleanType)? &
 		('border_visible' '=' borderVisible=BooleanType)? &
 		('border_decoration' '=' borderDecoration=('empty'|'line'|'section'|'auto'))
-		('master' '=' master=[ValueFieldElement])?
+		('master' '=' master=[ValueFieldElement])? &
+		('grid_height' '=' gridHeight=INT)? &
+		('grid_width' '=' gridWidth=INT)?
 	)
 	('{' (logic+=LogicElement | fields+=FormFieldElement)* '}')?;
 
@@ -96,7 +100,9 @@ StringElement:'string' name=ID
 		('label_visible' '=' labelVisible=BooleanType)? &
 		('master' '=' master=[ValueFieldElement])? &
 		('mandatory' '=' mandatory=BooleanType)? &
-		('maxlen' '=' maxlen=INT)?
+		('maxlen' '=' maxlen=INT)? &
+		('grid_height' '=' gridHeight=INT)? &
+		('grid_width' '=' gridWidth=INT)?
 	)
 	('{' logic+=LogicElement* '}')?;
 
@@ -108,7 +114,9 @@ DoubleElement:'double' name=ID
 		('visible' '=' visible=BooleanType)? &
 		('label_visible' '=' labelVisible=BooleanType)? &
 		('master' '=' master=[ValueFieldElement])? &
-		('mandatory' '=' mandatory=BooleanType)?
+		('mandatory' '=' mandatory=BooleanType)? &
+		('grid_height' '=' gridHeight=INT)? &
+		('grid_width' '=' gridWidth=INT)?
 	)
 	('{' logic+=LogicElement* '}')?;
 
@@ -119,7 +127,9 @@ LongElement:'long' name=ID
 		('visible' '=' visible=BooleanType)? &
 		('label_visible' '=' labelVisible=BooleanType)? &
 		('master' '=' master=[ValueFieldElement])? &
-		('mandatory' '=' mandatory=BooleanType)?
+		('mandatory' '=' mandatory=BooleanType)? &
+		('grid_height' '=' gridHeight=INT)? &
+		('grid_width' '=' gridWidth=INT)?
 	)
 	('{' logic+=LogicElement* '}')?;
 
@@ -130,7 +140,9 @@ DateElement:'date' name=ID
 		('visible' '=' visible=BooleanType)? &
 		('label_visible' '=' labelVisible=BooleanType)? &
 		('master' '=' master=[ValueFieldElement])? &
-		('mandatory' '=' mandatory=BooleanType)?
+		('mandatory' '=' mandatory=BooleanType)? &
+		('grid_height' '=' gridHeight=INT)? &
+		('grid_width' '=' gridWidth=INT)?
 	)
 	('{' logic+=LogicElement* '}')?;
 
@@ -144,19 +156,23 @@ SmartfieldElement:'smartfield' name=ID
 		('mandatory' '=' mandatory=BooleanType)? &
 		('code' '=' code=[CodeElement])? &
 		('value_type' '=' valueType=STRING/*JvmTypeReference*/)? &
-		('lookup' '=' lookup=[LookupElement])?
+		('lookup' '=' lookup=[LookupElement])? &
+		('grid_height' '=' gridHeight=INT)? &
+		('grid_width' '=' gridWidth=INT)?
 	)
 	('{' (logic+=LogicElement | menus+=MenuElement)* '}')?;
 
 // CUSTOM FIELDS
 CustomFieldElement:'custom_field' name=ID 
-	'template' '=' template=[TemplateElement]
 	(
+		('template' '=' template=[TemplateElement]) &
 		('text' '=' text=[TranslationElement])? &
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
 		('label_visible' '=' labelVisible=BooleanType)? &
-		('master' '=' master=[ValueFieldElement])?
+		('master' '=' master=[ValueFieldElement])? &
+		('grid_height' '=' gridHeight=INT)? &
+		('grid_width' '=' gridWidth=INT)?
 	)
 	('{' (logic+=LogicElement | fields+=FormFieldElement)* '}')?;
 
@@ -169,7 +185,9 @@ ButtonElement:'button' name=ID
 		('visible' '=' visible=BooleanType)? &
 		('label_visible' '=' labelVisible=BooleanType)? &
 		('master' '=' master=[ValueFieldElement])? &
-		('process_button' '=' processButton=BooleanType)?
+		('process_button' '=' processButton=BooleanType)? &
+		('grid_height' '=' gridHeight=INT)? &
+		('grid_width' '=' gridWidth=INT)?
 	)
 	('{' (logic+=LogicElement | menus+=MenuElement)* '}')?;
 
@@ -183,3 +201,23 @@ MenuElement:'menu' name=ID
 	)
 	('{' logic+=LogicElement* '}')?;
 
+TableElement:'table' name=ID
+	(
+		('text' '=' text=[TranslationElement])? &
+		('enabled' '=' enabled=BooleanType)? &
+		('visible' '=' visible=BooleanType)? &
+		('master' '=' master=[ValueFieldElement])? &
+		('label_visible' '=' labelVisible=BooleanType)? &
+		('grid_height' '=' gridHeight=INT)? &
+		('grid_width' '=' gridWidth=INT)?
+	)
+	('{' (logic+=LogicElement | menus+=MenuElement | columns+=ColumnElement)* '}')?;
+
+	
+ColumnElement:'column' name=ID
+	(
+		('type' '=' type=('date'|'string'|'int'|'double')) &
+		('text' '=' text=[TranslationElement])? &
+		('width' '=' width=INT)? &
+		('visible' '=' visible=BooleanType)?
+	);
