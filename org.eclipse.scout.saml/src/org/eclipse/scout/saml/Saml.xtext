@@ -37,7 +37,7 @@ TranslationElement:'translation' name=ID (translations+=LanguageAttribute)+;
 LanguageAttribute:lang=ID '=' text=STRING;
 
 
-//TODO: validation of properties, scope of exec=
+//TODO: code completion for placement, event
 LogicElement: {LogicElement} 'logic' (name=ID)? (('event' '=' event=LogicEventType)? & ('placement' '=' placement=('client'|'server'|'inline'))? & ('exec' '=' exec=[LogicElement])?) ('{'source=STRING/*XBlockExpression*/'}')?;
 
 

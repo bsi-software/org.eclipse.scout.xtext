@@ -24,6 +24,7 @@ public interface ISamlValidatorConstants {
   static final String DUPLICATE = "DuplicateElement";
   static final String MSG_DUPLICATE = "duplicate element name";
   static final String MSG_DUPLICATE_FIELD = "form contains duplicate fields";
+  static final String MSG_DUPLICATE_LANG = "a language can only be defined once for each translation";
 
   static final String PLACEMENT_MANDATORY = "PlacementMandatory";
   static final String MSG_PLACEMENT_MANDATORY = "source placement is missing";
@@ -33,4 +34,5 @@ public interface ISamlValidatorConstants {
   static final String MSG_NAMED_LOGIC_ELEMENTS_NO_EVENT = "a named logic element must not define an event";
   static final String MSG_NAMED_LOGIC_NO_EXEC = "a named logic element must not define an exec";
   static final String MSG_SOURCE_LINKED_OR_GIVEN = "a logic element must either contain source or link to source code of a named logic element";
+  static final String MSG_WRONG_LOGIC_EVENT = "this event is not allowed in this context";
 }

@@ -28,12 +28,11 @@ public class SamlScopeProvider extends XbaseScopeProvider {
   @Override
   public IScope getScope(EObject context, EReference reference) {
     if (context instanceof FormFieldElement) {
-      FormFieldElement formField = (FormFieldElement) context;
       if (reference == SamlPackage.Literals.FORM_FIELD_ELEMENT__MASTER) {
+        FormFieldElement formField = (FormFieldElement) context;
         return Scopes.scopeFor(helper.allFieldsInSameForm(formField));
       }
     }
-
     return super.getScope(context, reference);
   }
 }
