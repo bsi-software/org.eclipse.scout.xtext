@@ -2152,13 +2152,22 @@ public interface SamlPackage extends EPackage
   int COLUMN_ELEMENT__VISIBLE = 4;
 
   /**
+   * The feature id for the '<em><b>Displayable</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COLUMN_ELEMENT__DISPLAYABLE = 5;
+
+  /**
    * The number of structural features of the '<em>Column Element</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COLUMN_ELEMENT_FEATURE_COUNT = 5;
+  int COLUMN_ELEMENT_FEATURE_COUNT = 6;
 
 
   /**
@@ -3138,6 +3147,17 @@ public interface SamlPackage extends EPackage
   EAttribute getColumnElement_Visible();
 
   /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.ColumnElement#getDisplayable <em>Displayable</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Displayable</em>'.
+   * @see org.eclipse.scout.saml.saml.ColumnElement#getDisplayable()
+   * @see #getColumnElement()
+   * @generated
+   */
+  EAttribute getColumnElement_Displayable();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3937,6 +3957,14 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EAttribute COLUMN_ELEMENT__VISIBLE = eINSTANCE.getColumnElement_Visible();
+
+    /**
+     * The meta object literal for the '<em><b>Displayable</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COLUMN_ELEMENT__DISPLAYABLE = eINSTANCE.getColumnElement_Displayable();
 
   }
 

@@ -358,7 +358,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cSourceSTRINGTerminalRuleCall_4_1_0 = (RuleCall)cSourceAssignment_4_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4_2 = (Keyword)cGroup_4.eContents().get(2);
 		
-		////TODO: validation of properties, scope of exec=
+		////TODO: code completion for placement, event
 		// LogicElement:
 		//
 		//	{LogicElement} "logic" name=ID? (("event" "=" event=LogicEventType)? & ("placement" "=" placement=("client" |
@@ -3523,17 +3523,22 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEqualsSignKeyword_2_3_1 = (Keyword)cGroup_2_3.eContents().get(1);
 		private final Assignment cVisibleAssignment_2_3_2 = (Assignment)cGroup_2_3.eContents().get(2);
 		private final RuleCall cVisibleBooleanTypeParserRuleCall_2_3_2_0 = (RuleCall)cVisibleAssignment_2_3_2.eContents().get(0);
+		private final Group cGroup_2_4 = (Group)cUnorderedGroup_2.eContents().get(4);
+		private final Keyword cDisplayableKeyword_2_4_0 = (Keyword)cGroup_2_4.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_4_1 = (Keyword)cGroup_2_4.eContents().get(1);
+		private final Assignment cDisplayableAssignment_2_4_2 = (Assignment)cGroup_2_4.eContents().get(2);
+		private final RuleCall cDisplayableBooleanTypeParserRuleCall_2_4_2_0 = (RuleCall)cDisplayableAssignment_2_4_2.eContents().get(0);
 		
 		//ColumnElement:
 		//
 		//	"column" name=ID ("type" "=" type=("date" | "string" | "int" | "double") & ("text" "=" text=[TranslationElement])? &
 		//
-		//	("width" "=" width=INT)? & ("visible" "=" visible=BooleanType)?);
+		//	("width" "=" width=INT)? & ("visible" "=" visible=BooleanType)? & ("displayable" "=" displayable=BooleanType)?);
 		public ParserRule getRule() { return rule; }
 
 		//"column" name=ID ("type" "=" type=("date" | "string" | "int" | "double") & ("text" "=" text=[TranslationElement])? &
 		//
-		//("width" "=" width=INT)? & ("visible" "=" visible=BooleanType)?)
+		//("width" "=" width=INT)? & ("visible" "=" visible=BooleanType)? & ("displayable" "=" displayable=BooleanType)?)
 		public Group getGroup() { return cGroup; }
 
 		//"column"
@@ -3547,7 +3552,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"type" "=" type=("date" | "string" | "int" | "double") & ("text" "=" text=[TranslationElement])? & ("width" "="
 		//
-		//width=INT)? & ("visible" "=" visible=BooleanType)?
+		//width=INT)? & ("visible" "=" visible=BooleanType)? & ("displayable" "=" displayable=BooleanType)?
 		public UnorderedGroup getUnorderedGroup_2() { return cUnorderedGroup_2; }
 
 		//"type" "=" type=("date" | "string" | "int" | "double")
@@ -3624,6 +3629,21 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 
 		//BooleanType
 		public RuleCall getVisibleBooleanTypeParserRuleCall_2_3_2_0() { return cVisibleBooleanTypeParserRuleCall_2_3_2_0; }
+
+		//("displayable" "=" displayable=BooleanType)?
+		public Group getGroup_2_4() { return cGroup_2_4; }
+
+		//"displayable"
+		public Keyword getDisplayableKeyword_2_4_0() { return cDisplayableKeyword_2_4_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_2_4_1() { return cEqualsSignKeyword_2_4_1; }
+
+		//displayable=BooleanType
+		public Assignment getDisplayableAssignment_2_4_2() { return cDisplayableAssignment_2_4_2; }
+
+		//BooleanType
+		public RuleCall getDisplayableBooleanTypeParserRuleCall_2_4_2_0() { return cDisplayableBooleanTypeParserRuleCall_2_4_2_0; }
 	}
 	
 	
@@ -3789,7 +3809,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		return getLanguageAttributeAccess().getRule();
 	}
 
-	////TODO: validation of properties, scope of exec=
+	////TODO: code completion for placement, event
 	// LogicElement:
 	//
 	//	{LogicElement} "logic" name=ID? (("event" "=" event=LogicEventType)? & ("placement" "=" placement=("client" |
@@ -4081,7 +4101,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	//	"column" name=ID ("type" "=" type=("date" | "string" | "int" | "double") & ("text" "=" text=[TranslationElement])? &
 	//
-	//	("width" "=" width=INT)? & ("visible" "=" visible=BooleanType)?);
+	//	("width" "=" width=INT)? & ("visible" "=" visible=BooleanType)? & ("displayable" "=" displayable=BooleanType)?);
 	public ColumnElementElements getColumnElementAccess() {
 		return (pColumnElement != null) ? pColumnElement : (pColumnElement = new ColumnElementElements());
 	}

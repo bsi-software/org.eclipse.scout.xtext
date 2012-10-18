@@ -275,6 +275,7 @@ public class LogicInfoFactory {
     }
     else if (TypeUtility.exists(targetInterfaceType) && TypeUtility.exists(formDataType)) {
       String nl = ResourceUtility.getLineSeparator(targetInterfaceType.getCompilationUnit());
+      sb.append("new ClientSyncJob(\"import formdata\", ClientSession.get(), true) { @Override protected void runVoid(IProgressMonitor monitor) throws Throwable {");
       if (!throwsExisting) {
         sb.append("try {");
       }
@@ -295,6 +296,7 @@ public class LogicInfoFactory {
       if (!throwsExisting) {
         sb.append("} catch (ProcessingException e) { /* TODO */ e.printStackTrace(); }");
       }
+      sb.append("} }.schedule();");
     }
     return sb.toString();
   }

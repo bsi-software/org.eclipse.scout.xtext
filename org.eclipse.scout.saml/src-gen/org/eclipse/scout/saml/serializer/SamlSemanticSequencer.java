@@ -1133,7 +1133,14 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=ID (type='date' | type='string' | type='int' | type='double') text=[TranslationElement|ID]? width=INT? visible=BooleanType?)
+	 *     (
+	 *         name=ID 
+	 *         (type='date' | type='string' | type='int' | type='double') 
+	 *         text=[TranslationElement|ID]? 
+	 *         width=INT? 
+	 *         visible=BooleanType? 
+	 *         displayable=BooleanType?
+	 *     )
 	 */
 	protected void sequence_ColumnElement(EObject context, ColumnElement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

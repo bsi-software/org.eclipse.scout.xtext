@@ -51,11 +51,18 @@ public class ColumnElementImportOperation extends AbstractUiElementImportOperati
     applyVisibleAttribute(getColumnElement().getVisible(), createdColumn, h);
     applyTextAttribute(getColumnElement().getText(), createdColumn, h);
     applyWidthAttribute(getColumnElement().getWidth(), createdColumn, h);
+    applyDisplayableAttribute(getColumnElement().getDisplayable(), createdColumn, h);
   }
 
   protected void applyTextAttribute(TranslationElement a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
     if (a != null) {
       overrideMethod(field, h, "getConfiguredHeaderText", getNlsReturnClause(a));
+    }
+  }
+
+  protected void applyDisplayableAttribute(String a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    if ("false".equals(a)) {
+      overrideMethod(field, h, "getConfiguredDisplayable", "return false;");
     }
   }
 

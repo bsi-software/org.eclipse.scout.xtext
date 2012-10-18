@@ -5953,6 +5953,44 @@ ruleColumnElement returns [EObject current=null]
 	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getColumnElementAccess().getUnorderedGroup_2());
 	 				}
  				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getColumnElementAccess().getUnorderedGroup_2(), 4)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getColumnElementAccess().getUnorderedGroup_2(), 4);
+	 				}
+					({true}?=>(	otherlv_15='displayable' 
+    {
+    	newLeafNode(otherlv_15, grammarAccess.getColumnElementAccess().getDisplayableKeyword_2_4_0());
+    }
+	otherlv_16='=' 
+    {
+    	newLeafNode(otherlv_16, grammarAccess.getColumnElementAccess().getEqualsSignKeyword_2_4_1());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getColumnElementAccess().getDisplayableBooleanTypeParserRuleCall_2_4_2_0()); 
+	    }
+		lv_displayable_17_0=ruleBooleanType		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getColumnElementRule());
+	        }
+       		set(
+       			$current, 
+       			"displayable",
+        		lv_displayable_17_0, 
+        		"BooleanType");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getColumnElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
 			)  
 
 		)+

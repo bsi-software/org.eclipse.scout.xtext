@@ -113,11 +113,11 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
     }
   }
 
-  private boolean hasOneOfHandlers(final String[] handlerTypes) {
+  private boolean hasOneOfLogicEvents(final String[] logicEvents) {
     LogicElement handler = SamlImportUtility.findFirst(getFormElement().getLogic(), new IItemVisitor<LogicElement>() {
       @Override
       public boolean visit(LogicElement t) {
-        for (String handlerType : handlerTypes) {
+        for (String handlerType : logicEvents) {
           if (t.getEvent() != null && t.getEvent().equals(handlerType)) {
             return true;
           }
@@ -140,11 +140,13 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
     op.setCreateButtonOk(true);
     op.setCreateButtonCancel(true);
 
-    op.setCreateModifyHandler(hasOneOfHandlers(new String[]{
+    boolean createModifyHandler = hasOneOfLogicEvents(new String[]{
         getSamlContext().getGrammarAccess().getLogicEventTypeAccess().getModify_loadKeyword_1().getValue(),
         getSamlContext().getGrammarAccess().getLogicEventTypeAccess().getModify_storeKeyword_2().getValue()
-    }));
-    op.setCreateNewHandler(hasOneOfHandlers(new String[]{
+    });
+
+    op.setCreateModifyHandler(createModifyHandler);
+    op.setCreateNewHandler(!createModifyHandler || hasOneOfLogicEvents(new String[]{
         getSamlContext().getGrammarAccess().getLogicEventTypeAccess().getNew_loadKeyword_3().getValue(),
         getSamlContext().getGrammarAccess().getLogicEventTypeAccess().getNew_storeKeyword_4().getValue()
     }));

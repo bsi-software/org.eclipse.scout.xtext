@@ -118,6 +118,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//ColumnElement/text"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//ColumnElement/width"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//ColumnElement/visible"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//ColumnElement/displayable"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

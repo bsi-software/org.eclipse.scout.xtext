@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.scout.saml.saml.ColumnElement#getText <em>Text</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.ColumnElement#getWidth <em>Width</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.ColumnElement#getVisible <em>Visible</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.ColumnElement#getDisplayable <em>Displayable</em>}</li>
  * </ul>
  * </p>
  *
@@ -155,5 +156,31 @@ public interface ColumnElement extends EObject
    * @generated
    */
   void setVisible(String value);
+
+  /**
+   * Returns the value of the '<em><b>Displayable</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Displayable</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Displayable</em>' attribute.
+   * @see #setDisplayable(String)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getColumnElement_Displayable()
+   * @model
+   * @generated
+   */
+  String getDisplayable();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.ColumnElement#getDisplayable <em>Displayable</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Displayable</em>' attribute.
+   * @see #getDisplayable()
+   * @generated
+   */
+  void setDisplayable(String value);
 
 } // ColumnElement

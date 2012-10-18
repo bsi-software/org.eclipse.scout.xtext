@@ -1198,6 +1198,16 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getColumnElement_Displayable()
+  {
+    return (EAttribute)columnElementEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public SamlFactory getSamlFactory()
   {
     return (SamlFactory)getEFactoryInstance();
@@ -1338,6 +1348,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     createEReference(columnElementEClass, COLUMN_ELEMENT__TEXT);
     createEAttribute(columnElementEClass, COLUMN_ELEMENT__WIDTH);
     createEAttribute(columnElementEClass, COLUMN_ELEMENT__VISIBLE);
+    createEAttribute(columnElementEClass, COLUMN_ELEMENT__DISPLAYABLE);
   }
 
   /**
@@ -1498,6 +1509,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEReference(getColumnElement_Text(), this.getTranslationElement(), null, "text", null, 0, 1, ColumnElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getColumnElement_Width(), ecorePackage.getEInt(), "width", null, 0, 1, ColumnElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getColumnElement_Visible(), ecorePackage.getEString(), "visible", null, 0, 1, ColumnElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getColumnElement_Displayable(), ecorePackage.getEString(), "displayable", null, 0, 1, ColumnElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

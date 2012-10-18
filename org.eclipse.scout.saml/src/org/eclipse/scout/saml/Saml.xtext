@@ -219,5 +219,6 @@ ColumnElement:'column' name=ID
 		('type' '=' type=('date'|'string'|'int'|'double')) &
 		('text' '=' text=[TranslationElement])? &
 		('width' '=' width=INT)? &
-		('visible' '=' visible=BooleanType)?
+		('visible' '=' visible=BooleanType)? &
+		('displayable' '=' displayable=BooleanType)?
 	);

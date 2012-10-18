@@ -26,6 +26,7 @@ import org.eclipse.scout.saml.saml.TranslationElement;
  *   <li>{@link org.eclipse.scout.saml.saml.impl.ColumnElementImpl#getText <em>Text</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.ColumnElementImpl#getWidth <em>Width</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.ColumnElementImpl#getVisible <em>Visible</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.ColumnElementImpl#getDisplayable <em>Displayable</em>}</li>
  * </ul>
  * </p>
  *
@@ -122,6 +123,26 @@ public class ColumnElementImpl extends MinimalEObjectImpl.Container implements C
    * @ordered
    */
   protected String visible = VISIBLE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getDisplayable() <em>Displayable</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDisplayable()
+   * @generated
+   * @ordered
+   */
+  protected static final String DISPLAYABLE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getDisplayable() <em>Displayable</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDisplayable()
+   * @generated
+   * @ordered
+   */
+  protected String displayable = DISPLAYABLE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -284,6 +305,29 @@ public class ColumnElementImpl extends MinimalEObjectImpl.Container implements C
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getDisplayable()
+  {
+    return displayable;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setDisplayable(String newDisplayable)
+  {
+    String oldDisplayable = displayable;
+    displayable = newDisplayable;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.COLUMN_ELEMENT__DISPLAYABLE, oldDisplayable, displayable));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -300,6 +344,8 @@ public class ColumnElementImpl extends MinimalEObjectImpl.Container implements C
         return getWidth();
       case SamlPackage.COLUMN_ELEMENT__VISIBLE:
         return getVisible();
+      case SamlPackage.COLUMN_ELEMENT__DISPLAYABLE:
+        return getDisplayable();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -328,6 +374,9 @@ public class ColumnElementImpl extends MinimalEObjectImpl.Container implements C
         return;
       case SamlPackage.COLUMN_ELEMENT__VISIBLE:
         setVisible((String)newValue);
+        return;
+      case SamlPackage.COLUMN_ELEMENT__DISPLAYABLE:
+        setDisplayable((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -358,6 +407,9 @@ public class ColumnElementImpl extends MinimalEObjectImpl.Container implements C
       case SamlPackage.COLUMN_ELEMENT__VISIBLE:
         setVisible(VISIBLE_EDEFAULT);
         return;
+      case SamlPackage.COLUMN_ELEMENT__DISPLAYABLE:
+        setDisplayable(DISPLAYABLE_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -382,6 +434,8 @@ public class ColumnElementImpl extends MinimalEObjectImpl.Container implements C
         return width != WIDTH_EDEFAULT;
       case SamlPackage.COLUMN_ELEMENT__VISIBLE:
         return VISIBLE_EDEFAULT == null ? visible != null : !VISIBLE_EDEFAULT.equals(visible);
+      case SamlPackage.COLUMN_ELEMENT__DISPLAYABLE:
+        return DISPLAYABLE_EDEFAULT == null ? displayable != null : !DISPLAYABLE_EDEFAULT.equals(displayable);
     }
     return super.eIsSet(featureID);
   }
@@ -405,6 +459,8 @@ public class ColumnElementImpl extends MinimalEObjectImpl.Container implements C
     result.append(width);
     result.append(", visible: ");
     result.append(visible);
+    result.append(", displayable: ");
+    result.append(displayable);
     result.append(')');
     return result.toString();
   }
