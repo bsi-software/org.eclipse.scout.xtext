@@ -14,6 +14,9 @@ import org.eclipse.xtext.resource.IEObjectDescription
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider
 
 import static extension org.eclipse.xtext.EcoreUtil2.*
+import org.eclipse.emf.ecore.EClass
+import java.util.Set
+import java.util.List
 
 class SamlJavaValidatorHelper {
 	
@@ -36,29 +39,42 @@ class SamlJavaValidatorHelper {
 			]
 	}
 	
+	def allFieldsOfForm(FormElement form) {
+		form.eAllOfType(typeof(FormFieldElement));
+	}
+	
 	def allFieldsInSameForm(EObject element) {
-		element.getContainerOfType(typeof(FormElement)).eAllOfType(typeof(FormFieldElement))
+		element.getContainerOfType(typeof(FormElement)).allFieldsOfForm
 	}
 	
-	def allTranslations(EObject context) {
+	def allObjectsOfType(EObject context, EClass type) {
 		val eResource = context.eResource();
-		val index = resourceDescriptionsProvider
-				.getResourceDescriptions(eResource);
-		val resourceDescription = index
-				.getResourceDescription(eResource.getURI());
-		var allVisibileTranslations = new HashSet<IEObjectDescription>();
-		for (IContainer visibleContainer : manager.getVisibleContainers(
-				resourceDescription, index)) {
-			allVisibileTranslations.addAll(visibleContainer
-					.getExportedObjectsByType(SamlPackage::eINSTANCE.translationElement));
+		val index = resourceDescriptionsProvider.getResourceDescriptions(eResource);
+		val resourceDescription = index.getResourceDescription(eResource.getURI());
+		var allVisibileObjects = new HashSet<IEObjectDescription>();
+		for (IContainer visibleContainer : manager.getVisibleContainers(resourceDescription, index)) {
+			allVisibileObjects.addAll(visibleContainer.getExportedObjectsByType(type));
 		}
-		return allVisibileTranslations;
+		return allVisibileObjects;
 	}
 	
-	def hasDuplicateTranslations(EObject context) {
+	
+	
+	def hasGlobalDuplicate(EObject context, EClass type) {
+		context.allObjectsOfType(type).hasDuplicate
+	}
+	
+	def hasDuplicate(Set<IEObjectDescription> d) {
 		val qualifiedNames = new HashSet<String>()
-		! context.allTranslations.forall [
-			qualifiedNames.add(qualifiedName.lastSegment)
+		!d.forall [
+			qualifiedNames.add(it.qualifiedName.lastSegment)
+		]
+	}
+	
+	def hasDuplicate(List<? extends EObject> list) {
+		val qualifiedNames = new HashSet<String>()
+		!list.forall [
+			qualifiedNames.add(it.fullyQualifiedName.lastSegment)
 		]
 	}
 }

@@ -25,236 +25,221 @@ class ParserTest {
 	private Provider<XtextResourceSet> resourceSetProvider;
 
 	@Test
-	def void testParsingAndLinking() {
+	def void testNamedLogic() {
 		'''
-module a.b
-
-import java.util.List
-import org.eclipse.scout.rt.shared.services.^lookup.LookupRow
-
-form MyForm {
-
-logic Foo runat=server {
-	return new 
-	java.util.LinkedList<org.eclipse.scout.rt.shared.services.^lookup.LookupRow>();
-}
-
-logic Foo2 runat=server {
-	return new 
-	java.util.LinkedList<org.eclipse.scout.rt.shared.services.^lookup.LookupRow>();
-}
-
-}
+		module a.b
+		
+		lookup MyLookup {
+			logic Foo3 placement=server { "" }
+		}
+		
+		form MyForm {
+			logic Foo placement=server { "" }
+			logic Foo2 placement=client { "" }
+		}
 		'''.parse.assertNoErrors
+		
+		'''
+		module a.b
+		
+		lookup MyLookup {
+			logic Foo placement=server { "" }
+		}
+		
+		form MyForm {
+			logic Foo placement=server { "" }
+		}
+		'''.parse.assertError(SamlPackage::eINSTANCE.logicElement, SamlJavaValidator::DUPLICATE, SamlJavaValidator::MSG_DUPLICATE)
+	}
+	
+	@Test
+	def void testLogicElementAttributes() {
+		'''
+		module a.b
+		form MyForm {
+			logic A { "" }
+		}
+		'''.parse.assertError(SamlPackage::eINSTANCE.logicElement, SamlJavaValidator::PLACEMENT_MANDATORY, SamlJavaValidator::MSG_PLACEMENT_MANDATORY);
+		
+		'''
+		module a.b
+		form MyForm {
+			logic event=changed { "" }
+		}
+		'''.parse.assertError(SamlPackage::eINSTANCE.logicElement, SamlJavaValidator::PLACEMENT_MANDATORY, SamlJavaValidator::MSG_PLACEMENT_MANDATORY);
+		
+		'''
+		module a.b
+		form MyForm {
+			logic event=changed
+		}
+		'''.parse.assertError(SamlPackage::eINSTANCE.logicElement, SamlJavaValidator::INVALID_LOGIC_ELEMENT, SamlJavaValidator::MSG_SOURCE_LINKED_OR_GIVEN);
+
+		'''
+		module a.b
+		form MyForm {
+			logic C placement=server { "" }
+			logic event=changed exec=C { "" }
+		}
+		'''.parse.assertError(SamlPackage::eINSTANCE.logicElement, SamlJavaValidator::INVALID_LOGIC_ELEMENT, SamlJavaValidator::MSG_SOURCE_LINKED_OR_GIVEN);
+		
+				
+		'''
+		module a.b
+		form MyForm {
+			logic A placement=server
+		}
+		'''.parse.assertError(SamlPackage::eINSTANCE.logicElement, SamlJavaValidator::INVALID_LOGIC_ELEMENT, SamlJavaValidator::MSG_NAMED_LOGIC_ELEMENTS_NEEDS_SOURCE);
+		
+		'''
+		module a.b
+		form MyForm {
+			logic A event=changed placement=server { "" }
+		}
+		'''.parse.assertError(SamlPackage::eINSTANCE.logicElement, SamlJavaValidator::INVALID_LOGIC_ELEMENT, SamlJavaValidator::MSG_NAMED_LOGIC_ELEMENTS_NO_EVENT);
+		
+		'''
+		module a.b
+		form MyForm {
+			logic C placement=server { "" }
+			logic A exec=C placement=server { "" }
+		}
+		'''.parse.assertError(SamlPackage::eINSTANCE.logicElement, SamlJavaValidator::INVALID_LOGIC_ELEMENT, SamlJavaValidator::MSG_NAMED_LOGIC_NO_EXEC);
+	}
+	
+	@Test
+	def void testLookupLogic() {
+		'''
+		module a.b
+		
+		lookup MyLookup {
+			logic Foo3 placement=client { "" }
+		}
+		'''.parse.assertError(SamlPackage::eINSTANCE.logicElement, SamlJavaValidator::PLACEMENT_SERVER_ONLY_FOR_LOOKUP, SamlJavaValidator::MSG_PLACEMENT_SERVER_ONLY_FOR_LOOKUP)
 	}
 	
 	
 	@Test
 	def void testForms() {
-'''
-module a.b
-
-import java.util.List
-import org.eclipse.scout.rt.shared.services.^lookup.LookupRow
-
-form MyForm {
-	sequence_box MyBox {
-		string my
-		long mzlong {
-			logic event=all runat=server {
-				
+		'''
+		module a.b
+		
+		form MyForm {
+			sequence_box MyBox {
+				string myString
+				long mylong {
+					logic event=all placement=server { "" }
+				}
+				sequence_box asdf {
+					
+				}
 			}
 		}
-		sequence_box asdf {
-			
-		}
-	}
-}
-'''.parse.assertNoErrors
+		'''.parse.assertNoErrors
 	}
 
 	@Test
-	def void testLogicElementValidation() {
-'''
-module a.b
-
-import java.util.List
-import org.eclipse.scout.rt.shared.services.^lookup.LookupRow
-
-form MyForm {
-	sequence_box MyBox {
-		string my
-		long mzlong {
-			logic event=all {
-				return null
+	def void testMasterAttribute() {
+		'''
+		module a.b
+		
+		form MyForm {
+			string test1
+			
+			sequence_box MyBox3 {
+				string string1
+			}
+			
+			sequence_box MyBox {
+				string my master=test1
+				string my2 master=string1
 			}
 		}
-		sequence_box asdf {
-			
+		
+		form MyForm2 {
+			string test1
+			string string1 master=test1
 		}
-	}
-}
-'''.parse.assertError(
-	SamlPackage::eINSTANCE.logicElement,
-	SamlJavaValidator::PLACEMENT_MANDATORY,
-	"'runat' is mandatory when providing the source"
-)
+		'''.parse.assertNoErrors
 	}
 
 	@Test
-	def void testDuplicateElements() {
-'''
-module a.b
-
-import java.util.List
-import org.eclipse.scout.rt.shared.services.^lookup.LookupRow
-
-form MyForm {
-	sequence_box MyForm {
-		string my
+	def void testTranslations() {
+		'''
+		module a.b
+		
+		translation TransTest en="en" de="de" de_CH="de_CH"
+		translation TransTest2 en="en" de="de" de_CH="de_CH"
+		'''.parse.assertNoErrors
 	}
-}
-'''.parse.assertError(
-	SamlPackage::eINSTANCE.formElement,
-	SamlJavaValidator::DUPLICATE
-)
-	}
+
 
 	@Test
-	def void testLeafNodeScoping() {
-'''
-module a.b
-
-import java.util.List
-import org.eclipse.scout.rt.shared.services.^lookup.LookupRow
-
-form MyForm {
-	string test1
-	
-	sequence_box MyBox3 {
-		string string1
-	}
-	
-	sequence_box MyBox {
-		string my master=test1
-		string my2 master=string1
-	}
-}
-'''.parse.assertNoErrors
-	}
-
-	@Test
-	def void testNonDuplicateTranslations() {
-'''
-module a.b
-
-translation TransTest en="en" de="de" de_CH="de_CH"
-translation TransTest2 en="en" de="de" de_CH="de_CH"
-'''.parse.assertNoErrors
-	}
-
-	@Test
-	def void testXVariableDeclaration() {
-'''
-module a.b
-
-import java.util.List
-import org.eclipse.scout.rt.shared.services.^lookup.LookupRow
-
-form MyForm {
-
-logic Foo runat=server {
-	String s = "String";
-	String s1 = "My" + s;
-	return new java.util.LinkedList<org.eclipse.scout.rt.shared.services.^lookup.LookupRow>();
-}
-
-}
-'''.parse.assertNoErrors
-	}
-
-	@Test
-	def void testXTypeLiteral() {
-'''
-module a.b
-
-import java.util.List
-import org.eclipse.xtext.EcoreUtil2
-
-form MyForm {
-
-logic Foo runat=server {
-	List<String> strings =
-		EcoreUtil2::typeSelect
-			(new java.util.LinkedList<String>(), String.class) ;
-	return null;
-}
-
-}
-'''.parse.assertNoErrors
-	}
-
-	@Test
-	def void testXUnaryOperation() {
-'''
-module a.b
-
-import java.util.List
-import org.eclipse.xtext.EcoreUtil2
-
-form MyForm {
-
-logic Foo runat=server {
-	boolean isItTrue =
-		!(EcoreUtil2::typeSelect
-			(new java.util.LinkedList<String>(), String.class).size() > 0) ;
-	return null;
-}
-
-}
-'''.parse.assertNoErrors
-	}
-
-	@Test
-	def void testConstructorCall() {
-'''
-module a.b
-
-import java.util.List
-import org.eclipse.xtext.EcoreUtil2
-
-form MyForm {
-
-logic Foo runat=server {
-	String[] s = new String[];
-	//String s1 = new String();
-	//String s2 = new String("test");
-	return null;
-}
-
-}
-'''.parse.assertNoErrors
-	}
-
-	@Test
-	def void testMultipleFiles() {
+	def void testTextRefOverFiles() {
 		val resourceSet = resourceSetProvider.get()
 		'''
-module a.b
+		module a.b
+		
+		translation TransTest en="en" de="de" de_CH="de_CH"
+		translation TransTest2 en="en" de="de" de_CH="de_CH"
+		'''.parse(resourceSet).assertNoErrors
 
-translation TransTest en="en" de="de" de_CH="de_CH"
-translation TransTest2 en="en" de="de" de_CH="de_CH"
-'''.parse(resourceSet).assertNoErrors
-
-'''
-module a.b
-
-translation TransTest3 en="en"
-
-form MyForm text=TransTest {
-	
-}
-'''.parse(resourceSet).assertNoErrors
+		'''
+		module a.b
+		
+		translation TransTest3 en="en"
+		
+		form MyForm title=TransTest {
+			
+		}
+		'''.parse(resourceSet).assertNoErrors
 	}
 	
+	@Test
+	def void testUniquencess() {
+		'''
+		module a.b
+		
+		form MyForm {
+			sequence_box MyBox {
+				string my
+			}
+			sequence_box MyBox2 {
+				string my
+			}
+		}
+		'''.parse.assertError(SamlPackage::eINSTANCE.formElement, SamlJavaValidator::DUPLICATE, SamlJavaValidator::MSG_DUPLICATE_FIELD)
+		
+		
+		val rs = resourceSetProvider.get()
+		'''
+		module a.b
+		form FormA {
+			
+		}
+		'''.parse(rs).assertNoErrors
+		
+		'''
+		module a.b
+		form FormA {
+			
+		}
+		'''.parse(rs).assertError(SamlPackage::eINSTANCE.model, SamlJavaValidator::DUPLICATE, SamlJavaValidator::MSG_DUPLICATE)
+		
+		
+		val rs2 = resourceSetProvider.get()
+		'''
+		module a.b
+		form FormA {
+			string StringA
+		}
+		'''.parse(rs2).assertNoErrors
+		
+		'''
+		module a.b
+		form FormB {
+			string StringA
+		}
+		'''.parse(rs2).assertNoErrors
+	}
 }
