@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: org.eclipse.scout.saml
-Bundle-Vendor: My Company
+Bundle-Name: Scout Application Modeling Language
+Bundle-Vendor: Eclipse Scout Project
 Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: org.eclipse.scout.saml; singleton:=true
 Bundle-ActivationPolicy: lazy
@@ -23,7 +23,7 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.scout.rt.client;bundle-version="3.8.0"
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.scout.saml,
  org.eclipse.scout.saml.formatting,
  org.eclipse.scout.saml.generator,

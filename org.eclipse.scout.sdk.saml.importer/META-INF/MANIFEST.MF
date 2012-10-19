@@ -1,13 +1,14 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Importer
+Bundle-Name: Scout Application Modeling Language Importer
 Bundle-SymbolicName: org.eclipse.scout.sdk.saml.importer;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 3.8.1.qualifier
 Bundle-Activator: org.eclipse.scout.sdk.saml.importer.internal.Activator
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.scout.sdk;bundle-version="3.8.1";visibility:=reexport,
  org.eclipse.scout.saml;bundle-version="1.0.0";visibility:=reexport,
  org.eclipse.scout.saml.ui;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.scout.sdk.saml.importer.operation
+Bundle-Vendor: Eclipse Scout Project
