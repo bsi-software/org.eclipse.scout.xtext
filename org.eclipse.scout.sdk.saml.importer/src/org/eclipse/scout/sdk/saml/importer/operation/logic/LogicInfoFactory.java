@@ -45,6 +45,13 @@ public class LogicInfoFactory {
     Inline
   }
 
+  private static String[] PROCESSING_EXCEPTION_SIGS = new String[]{
+      Signature.createTypeSignature(RuntimeClasses.ProcessingException.substring(RuntimeClasses.ProcessingException.lastIndexOf('.') + 1), false),
+      Signature.createTypeSignature(RuntimeClasses.ProcessingException.substring(RuntimeClasses.ProcessingException.lastIndexOf('.') + 1), true),
+      Signature.createTypeSignature(RuntimeClasses.ProcessingException, true),
+      Signature.createTypeSignature(RuntimeClasses.ProcessingException, false)
+  };
+
   public static LogicInfo create(LogicElement element, IType sourceType, SamlFormContext context) throws CoreException {
     LogicInfo ret = new LogicInfo();
 
@@ -124,7 +131,7 @@ public class LogicInfoFactory {
   }
 
   private static ParameterArgument[] getClientParameterTypes(String sourceMethodName, IType sourceType, SamlFormContext context) throws CoreException {
-    //TODO
+    //TODO [mvi]: parse parametes of operation method and also pass them to the client service?
     return new ParameterArgument[]{new ParameterArgument("form", context.getFormType().getElementName())};
   }
 
@@ -234,10 +241,11 @@ public class LogicInfoFactory {
       return true;
     }
     String[] exs = cm.getDefaultMethod().getExceptionTypes();
-    String procExcSig = Signature.createTypeSignature(RuntimeClasses.ProcessingException, true);
     for (String ex : exs) {
-      if (procExcSig.equals(ex)) {
-        return true;
+      for (String sig : PROCESSING_EXCEPTION_SIGS) {
+        if (sig.equals(ex)) {
+          return true;
+        }
       }
     }
     return false;
@@ -275,6 +283,7 @@ public class LogicInfoFactory {
     }
     else if (TypeUtility.exists(targetInterfaceType) && TypeUtility.exists(formDataType)) {
       String nl = ResourceUtility.getLineSeparator(targetInterfaceType.getCompilationUnit());
+      //TODO [mvi]: change to new formDataImport using formfield filter?
       sb.append("new ClientSyncJob(\"import formdata\", ClientSession.get(), true) { @Override protected void runVoid(IProgressMonitor monitor) throws Throwable {");
       if (!throwsExisting) {
         sb.append("try {");
