@@ -30,7 +30,8 @@ import org.eclipse.swt.widgets.Composite;
  */
 public class SamlImportWizardPage extends AbstractWorkspaceWizardPage {
 
-  private final static String PROP_SAML_ROOT_DIRECTORY = "fileProp";
+  private final static String PROP_SAML_ROOT_DIRECTORY = "samlRootDir";
+  private final static String SETTING_SAML_ROOT_DIRECTORY = "samlRootDirSetting";
 
   private FileSelectionField m_fileField;
 
@@ -56,10 +57,17 @@ public class SamlImportWizardPage extends AbstractWorkspaceWizardPage {
         pingStateChanging();
       }
     });
-    File defaultPath = new File("C:\\BSI\\Projects\\SAML\\runtime-EclipseApplication\\org.eclipse.scout.saml.input\\saml");
-    setSamlRootInternal(defaultPath.getAbsolutePath());
-    m_fileField.setFile(defaultPath);
-    pingStateChanging();
+    String defaultPath = getDialogSettings().get(SETTING_SAML_ROOT_DIRECTORY);
+    if (StringUtility.hasText(defaultPath)) {
+      File f = new File(defaultPath);
+      m_fileField.setFile(f);
+      setSamlRootInternal(f.getAbsolutePath());
+      pingStateChanging();
+    }
+    else {
+      m_fileField.setFile(null);
+      setSamlRootInternal(null);
+    }
 
     parent.setLayout(new GridLayout(1, true));
     m_fileField.setLayoutData(new GridData(GridData.GRAB_HORIZONTAL | GridData.FILL_HORIZONTAL));
@@ -76,7 +84,11 @@ public class SamlImportWizardPage extends AbstractWorkspaceWizardPage {
 
   protected IStatus getSamlRootStatus() {
     if (!StringUtility.hasText(getSamlRoot())) {
-      return new Status(IStatus.ERROR, ScoutSdkUi.PLUGIN_ID, "Choose a SAML directory");
+      return new Status(IStatus.ERROR, ScoutSdkUi.PLUGIN_ID, "Please specify a SAML root directory");
+    }
+    File f = new File(getSamlRoot());
+    if (!f.exists()) {
+      return new Status(IStatus.ERROR, ScoutSdkUi.PLUGIN_ID, "The given SAML root directory could not be found");
     }
     return Status.OK_STATUS;
   }
@@ -98,6 +110,7 @@ public class SamlImportWizardPage extends AbstractWorkspaceWizardPage {
     if (f != null) {
       f = f.trim();
     }
+    getDialogSettings().put(SETTING_SAML_ROOT_DIRECTORY, f);
     setProperty(PROP_SAML_ROOT_DIRECTORY, f);
   }
 }

@@ -47,6 +47,10 @@ public class TranslationElementImportOperation extends AbstractSamlElementImport
     String key = getTranslationElement().getName();
 
     INlsProject nlsProject = getCurrentScoutModule().getNlsProject();
+    if (nlsProject == null) {
+      throw new IllegalArgumentException("No NLS project could be found in module '" + getCurrentScoutModule().getProjectName() +
+          "'. Ensure a TextProviderService exists for this module.");
+    }
 
     NlsEntry entry = new NlsEntry(key, nlsProject);
     for (LanguageAttribute lang : getTranslationElement().getTranslations()) {
