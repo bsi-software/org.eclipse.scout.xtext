@@ -43,6 +43,7 @@ public class LongElementImportOperation extends AbstractValueFieldElementImportO
   protected IType createField() throws CoreException, IllegalArgumentException {
     LongFieldNewOperation o = new LongFieldNewOperation(getSamlFormContext().getCurrentParentBox());
     o.setFormatSource(false);
+    o.setSibling(getDefaultSibling());
     o.setTypeName(getLongElement().getName() + getFieldSuffix());
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());

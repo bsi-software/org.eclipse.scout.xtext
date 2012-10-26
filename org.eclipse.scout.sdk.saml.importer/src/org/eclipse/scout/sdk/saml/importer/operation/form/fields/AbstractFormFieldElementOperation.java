@@ -10,6 +10,8 @@
  ******************************************************************************/
 package org.eclipse.scout.sdk.saml.importer.operation.form.fields;
 
+import java.util.List;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
@@ -20,6 +22,7 @@ import org.eclipse.scout.sdk.saml.importer.operation.SamlContext;
 import org.eclipse.scout.sdk.saml.importer.operation.form.AbstractUiElementImportOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
 import org.eclipse.scout.sdk.saml.importer.operation.logic.SamlLogicFillOperation;
+import org.eclipse.scout.sdk.workspace.type.ScoutTypeUtility;
 
 /**
  * <h3>{@link AbstractFormFieldElementOperation}</h3> ...
@@ -44,6 +47,10 @@ public abstract class AbstractFormFieldElementOperation extends AbstractUiElemen
         overrideMethod(field, h, "getConfiguredMasterRequired", "return true;");
       }
     }
+  }
+
+  protected IType getDefaultSibling() {
+    return ScoutTypeUtility.getFistProcessButton(getSamlFormContext().getCurrentParentBox(), getSamlFormContext().getCurrentParentBoxLocalTypeHierarchy());
   }
 
   private String getFieldNameSuffix(FormFieldElement field) throws CoreException {
@@ -94,13 +101,15 @@ public abstract class AbstractFormFieldElementOperation extends AbstractUiElemen
     }
   }
 
-  public static void dispatchFieldElements(FormFieldElement field, SamlContext context, SamlFormContext formContext) throws CoreException {
-    IFormFieldElementOperation op = FormFieldExtension.getOperationFor(field);
-    op.setSamlContext(context);
-    op.setSamlFormContext(formContext);
-    op.setFieldElement(field);
-    op.validate();
-    op.run();
+  public static void dispatchFieldElements(List<FormFieldElement> fields, SamlContext context, SamlFormContext formContext) throws CoreException {
+    for (FormFieldElement field : fields) {
+      IFormFieldElementOperation op = FormFieldExtension.getOperationFor(field);
+      op.setSamlContext(context);
+      op.setSamlFormContext(formContext);
+      op.setFieldElement(field);
+      op.validate();
+      op.run();
+    }
   }
 
   @Override

@@ -51,6 +51,7 @@ public class ButtonElementImportOperation extends AbstractFormFieldElementOperat
   public final void run() throws CoreException, IllegalArgumentException {
     ButtonFieldNewOperation o = new ButtonFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getButtonElement().getName() + getFieldSuffix());
+    o.setSibling(getDefaultSibling());
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
     IType createdField = o.getCreatedButton();

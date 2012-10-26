@@ -517,13 +517,22 @@ public interface SamlPackage extends EPackage
   int FORM_ELEMENT__FIELDS = 6;
 
   /**
+   * The feature id for the '<em><b>Key Strokes</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORM_ELEMENT__KEY_STROKES = 7;
+
+  /**
    * The number of structural features of the '<em>Form Element</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FORM_ELEMENT_FEATURE_COUNT = 7;
+  int FORM_ELEMENT_FEATURE_COUNT = 8;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl <em>Form Field Element</em>}' class.
@@ -2169,6 +2178,52 @@ public interface SamlPackage extends EPackage
    */
   int COLUMN_ELEMENT_FEATURE_COUNT = 6;
 
+  /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.KeyElementImpl <em>Key Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.KeyElementImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getKeyElement()
+   * @generated
+   */
+  int KEY_ELEMENT = 25;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int KEY_ELEMENT__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Stroke</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int KEY_ELEMENT__STROKE = 1;
+
+  /**
+   * The feature id for the '<em><b>Logic</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int KEY_ELEMENT__LOGIC = 2;
+
+  /**
+   * The number of structural features of the '<em>Key Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int KEY_ELEMENT_FEATURE_COUNT = 3;
+
 
   /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.Model <em>Model</em>}'.
@@ -2610,6 +2665,17 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EReference getFormElement_Fields();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.FormElement#getKeyStrokes <em>Key Strokes</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Key Strokes</em>'.
+   * @see org.eclipse.scout.saml.saml.FormElement#getKeyStrokes()
+   * @see #getFormElement()
+   * @generated
+   */
+  EReference getFormElement_KeyStrokes();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.FormFieldElement <em>Form Field Element</em>}'.
@@ -3158,6 +3224,49 @@ public interface SamlPackage extends EPackage
   EAttribute getColumnElement_Displayable();
 
   /**
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.KeyElement <em>Key Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Key Element</em>'.
+   * @see org.eclipse.scout.saml.saml.KeyElement
+   * @generated
+   */
+  EClass getKeyElement();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.KeyElement#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.eclipse.scout.saml.saml.KeyElement#getName()
+   * @see #getKeyElement()
+   * @generated
+   */
+  EAttribute getKeyElement_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.KeyElement#getStroke <em>Stroke</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Stroke</em>'.
+   * @see org.eclipse.scout.saml.saml.KeyElement#getStroke()
+   * @see #getKeyElement()
+   * @generated
+   */
+  EAttribute getKeyElement_Stroke();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.KeyElement#getLogic <em>Logic</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Logic</em>'.
+   * @see org.eclipse.scout.saml.saml.KeyElement#getLogic()
+   * @see #getKeyElement()
+   * @generated
+   */
+  EReference getKeyElement_Logic();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3527,6 +3636,14 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EReference FORM_ELEMENT__FIELDS = eINSTANCE.getFormElement_Fields();
+
+    /**
+     * The meta object literal for the '<em><b>Key Strokes</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FORM_ELEMENT__KEY_STROKES = eINSTANCE.getFormElement_KeyStrokes();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl <em>Form Field Element</em>}' class.
@@ -3965,6 +4082,40 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EAttribute COLUMN_ELEMENT__DISPLAYABLE = eINSTANCE.getColumnElement_Displayable();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.KeyElementImpl <em>Key Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.KeyElementImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getKeyElement()
+     * @generated
+     */
+    EClass KEY_ELEMENT = eINSTANCE.getKeyElement();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute KEY_ELEMENT__NAME = eINSTANCE.getKeyElement_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Stroke</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute KEY_ELEMENT__STROKE = eINSTANCE.getKeyElement_Stroke();
+
+    /**
+     * The meta object literal for the '<em><b>Logic</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference KEY_ELEMENT__LOGIC = eINSTANCE.getKeyElement_Logic();
 
   }
 

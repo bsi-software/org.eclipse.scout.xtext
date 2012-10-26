@@ -1,0 +1,20 @@
+module org.eclipse.scout.helloworld
+
+translation Message en="Message" de="Nachricht"
+
+form Desktop title=Message {
+	
+	key Refresh stroke="f5" {
+		logic event=activated placement=client {
+			"System.out.println(\"refresh key stroke\");"
+		}
+	}
+	
+	logic event=new_load placement=server {
+		"
+		formData.getMessage().setValue(\"hello world\");
+		return formData;"
+	}
+	
+	string Message text=Message
+}

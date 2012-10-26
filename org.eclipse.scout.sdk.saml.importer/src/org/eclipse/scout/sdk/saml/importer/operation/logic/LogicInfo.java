@@ -12,6 +12,7 @@ package org.eclipse.scout.sdk.saml.importer.operation.logic;
 
 import org.eclipse.jdt.core.IType;
 import org.eclipse.scout.sdk.operation.service.ParameterArgument;
+import org.eclipse.scout.sdk.workspace.type.config.ConfigurationMethod;
 
 /**
  * <h3>{@link LogicInfo}</h3> ...
@@ -24,7 +25,7 @@ public class LogicInfo {
   private IType m_formType;
   private IType m_formDataType;
 
-  private String m_sourceMethodName;
+  private ConfigurationMethod m_sourceMethod;
   private IType m_sourceType;
   private String m_sourceLogic;
 
@@ -52,14 +53,6 @@ public class LogicInfo {
 
   public void setFormDataType(IType formDataType) {
     m_formDataType = formDataType;
-  }
-
-  public String getSourceMethodName() {
-    return m_sourceMethodName;
-  }
-
-  public void setSourceMethodName(String sourceMethodName) {
-    m_sourceMethodName = sourceMethodName;
   }
 
   public IType getSourceType() {
@@ -132,5 +125,13 @@ public class LogicInfo {
 
   public void setParameters(ParameterArgument[] parameters) {
     m_parameters = parameters;
+  }
+
+  public ConfigurationMethod getSourceMethod() {
+    return m_sourceMethod;
+  }
+
+  public void setSourceMethod(ConfigurationMethod sourceMethod) {
+    m_sourceMethod = sourceMethod;
   }
 }

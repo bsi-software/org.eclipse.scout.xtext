@@ -13,12 +13,14 @@ package org.eclipse.scout.sdk.saml.importer.operation.logic;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.Signature;
+import org.eclipse.scout.saml.saml.KeyElement;
 import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.saml.services.SamlGrammarAccess.LogicEventTypeElements;
 import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.service.ParameterArgument;
 import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
 import org.eclipse.scout.sdk.saml.importer.util.SamlImportUtility;
+import org.eclipse.scout.sdk.util.NamingUtility;
 import org.eclipse.scout.sdk.util.resources.ResourceUtility;
 import org.eclipse.scout.sdk.util.signature.SignatureUtility;
 import org.eclipse.scout.sdk.util.type.TypeUtility;
@@ -60,7 +62,20 @@ public class LogicInfoFactory {
     String targetLogic = getTargetLogic(element, context);
     String targetMethodName = null;
     if (!isClassLevel) {
-      targetMethodName = getTargetMethodName(element.getEvent(), sourceType, context);
+      targetMethodName = getTargetMethodName(element, sourceType, context);
+    }
+
+    LogicEventTypeElements eventElements = context.getSamlContext().getGrammarAccess().getLogicEventTypeAccess();
+    ret.setSourceType(sourceType);
+    if (element.getEvent() != null) {
+      if (element.getEvent().equals(eventElements.getModify_loadKeyword_1().getValue()) ||
+          element.getEvent().equals(eventElements.getModify_storeKeyword_2().getValue())) {
+        ret.setSourceType(getHandler(context.getFormType(), SamlImportUtility.FORM_HANDLER_MODIFY));
+      }
+      else if (element.getEvent().equals(eventElements.getNew_loadKeyword_3().getValue()) ||
+          element.getEvent().equals(eventElements.getNew_storeKeyword_4().getValue())) {
+        ret.setSourceType(getHandler(context.getFormType(), SamlImportUtility.FORM_HANDLER_NEW));
+      }
     }
 
     IType targetType = null;
@@ -77,7 +92,7 @@ public class LogicInfoFactory {
         break;
       }
       case Inline: {
-        targetType = sourceType;
+        targetType = ret.getSourceType();
         break;
       }
     }
@@ -88,40 +103,27 @@ public class LogicInfoFactory {
     if (!isClassLevel) {
       boolean isClientCall = placement.equals(Placement.Client) | placement.equals(Placement.Inline);
       String sourceMethodName = getSourceMethodName(element.getEvent(), context);
-      ConfigurationMethod cm = null;
-      if (TypeUtility.exists(sourceType)) {
-        cm = ScoutTypeUtility.getConfigurationMethod(sourceType, sourceMethodName);
+      if (TypeUtility.exists(ret.getSourceType())) {
+        ret.setSourceMethod(ScoutTypeUtility.getConfigurationMethod(ret.getSourceType(), sourceMethodName));
       }
 
       if (isClientCall && TypeUtility.exists(context.getFormType())) {
-        ret.setParameters(getClientParameterTypes(sourceMethodName, sourceType, context));
+        ret.setParameters(getClientParameterTypes(sourceMethodName, ret.getSourceType(), context));
       }
       else if (TypeUtility.exists(context.getFormDataType())) {
         ret.setParameters(new ParameterArgument[]{new ParameterArgument("formData", context.getFormDataType().getElementName())});
       }
 
       if (isClientCall) {
-        ret.setReturnType(getClientReturnType(cm));
+        ret.setReturnType(getClientReturnType(ret.getSourceMethod()));
       }
       else if (TypeUtility.exists(context.getFormDataType())) {
         ret.setReturnType(new ParameterArgument("ret", context.getFormDataType().getElementName()));
       }
-      ret.setSourceLogic(getSourceLogic(placement, targetInterfaceType, context.getFormDataType(), context.getFormType(), targetMethodName, targetLogic, ret.getReturnType(), cm));
-      ret.setSourceMethodName(sourceMethodName);
+      ret.setSourceLogic(getSourceLogic(placement, targetInterfaceType, context.getFormDataType(), context.getFormType(),
+          targetMethodName, targetLogic, ret.getReturnType(), ret.getSourceMethod()));
     }
 
-    LogicEventTypeElements eventElements = context.getSamlContext().getGrammarAccess().getLogicEventTypeAccess();
-    ret.setSourceType(sourceType);
-    if (element.getEvent() != null) {
-      if (element.getEvent().equals(eventElements.getModify_loadKeyword_1().getValue()) ||
-          element.getEvent().equals(eventElements.getModify_storeKeyword_2().getValue())) {
-        ret.setSourceType(getHandler(context.getFormType(), SamlImportUtility.FORM_HANDLER_MODIFY));
-      }
-      else if (element.getEvent().equals(eventElements.getNew_loadKeyword_3().getValue()) ||
-          element.getEvent().equals(eventElements.getNew_storeKeyword_4().getValue())) {
-        ret.setSourceType(getHandler(context.getFormType(), SamlImportUtility.FORM_HANDLER_NEW));
-      }
-    }
     ret.setTargetInterfaceType(targetInterfaceType);
     ret.setTargetLogic(targetLogic);
     ret.setTargetMethodName(targetMethodName);
@@ -172,6 +174,9 @@ public class LogicInfoFactory {
     }
     else if (event.equals(elements.getFormat_valueKeyword_9().getValue())) {
       return "execFormatValue";
+    }
+    else if (event.equals(elements.getActivatedKeyword_10().getValue())) {
+      return "execAction";
     }
     else {
       throw new IllegalArgumentException("Unknown logic type: " + event);
@@ -310,8 +315,9 @@ public class LogicInfoFactory {
     return sb.toString();
   }
 
-  private static String getTargetMethodName(String event, IType sourceType, SamlFormContext context) {
+  private static String getTargetMethodName(LogicElement element, IType sourceType, SamlFormContext context) {
     LogicEventTypeElements elements = context.getSamlContext().getGrammarAccess().getLogicEventTypeAccess();
+    String event = element.getEvent();
     if (event.equals(elements.getAllKeyword_0().getValue())) {
       return "getDataByAll";
     }
@@ -341,6 +347,11 @@ public class LogicInfoFactory {
     }
     else if (event.equals(elements.getFormat_valueKeyword_9().getValue())) {
       return getSourceElementPrefix(sourceType) + "FormatValue";
+    }
+    else if (event.equals(elements.getActivatedKeyword_10().getValue())) {
+      // 'activated' is only used by key strokes
+      KeyElement container = (KeyElement) element.eContainer();
+      return NamingUtility.toJavaCamelCase(container.getStroke()) + "Pressed";
     }
     else {
       throw new IllegalArgumentException("Unknown logic type: " + event);

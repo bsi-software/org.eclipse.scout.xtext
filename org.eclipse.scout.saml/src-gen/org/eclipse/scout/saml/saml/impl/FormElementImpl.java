@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.scout.saml.saml.FormElement;
 import org.eclipse.scout.saml.saml.FormFieldElement;
+import org.eclipse.scout.saml.saml.KeyElement;
 import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
 import org.eclipse.scout.saml.saml.TranslationElement;
@@ -38,6 +39,7 @@ import org.eclipse.scout.saml.saml.TranslationElement;
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getSubtitle <em>Subtitle</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getLogic <em>Logic</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getFields <em>Fields</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getKeyStrokes <em>Key Strokes</em>}</li>
  * </ul>
  * </p>
  *
@@ -144,6 +146,16 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
    * @ordered
    */
   protected EList<FormFieldElement> fields;
+
+  /**
+   * The cached value of the '{@link #getKeyStrokes() <em>Key Strokes</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getKeyStrokes()
+   * @generated
+   * @ordered
+   */
+  protected EList<KeyElement> keyStrokes;
 
   /**
    * <!-- begin-user-doc -->
@@ -354,6 +366,20 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<KeyElement> getKeyStrokes()
+  {
+    if (keyStrokes == null)
+    {
+      keyStrokes = new EObjectContainmentEList<KeyElement>(KeyElement.class, this, SamlPackage.FORM_ELEMENT__KEY_STROKES);
+    }
+    return keyStrokes;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -363,6 +389,8 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
         return ((InternalEList<?>)getLogic()).basicRemove(otherEnd, msgs);
       case SamlPackage.FORM_ELEMENT__FIELDS:
         return ((InternalEList<?>)getFields()).basicRemove(otherEnd, msgs);
+      case SamlPackage.FORM_ELEMENT__KEY_STROKES:
+        return ((InternalEList<?>)getKeyStrokes()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -393,6 +421,8 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
         return getLogic();
       case SamlPackage.FORM_ELEMENT__FIELDS:
         return getFields();
+      case SamlPackage.FORM_ELEMENT__KEY_STROKES:
+        return getKeyStrokes();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -431,6 +461,10 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
         getFields().clear();
         getFields().addAll((Collection<? extends FormFieldElement>)newValue);
         return;
+      case SamlPackage.FORM_ELEMENT__KEY_STROKES:
+        getKeyStrokes().clear();
+        getKeyStrokes().addAll((Collection<? extends KeyElement>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -466,6 +500,9 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
       case SamlPackage.FORM_ELEMENT__FIELDS:
         getFields().clear();
         return;
+      case SamlPackage.FORM_ELEMENT__KEY_STROKES:
+        getKeyStrokes().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -494,6 +531,8 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
         return logic != null && !logic.isEmpty();
       case SamlPackage.FORM_ELEMENT__FIELDS:
         return fields != null && !fields.isEmpty();
+      case SamlPackage.FORM_ELEMENT__KEY_STROKES:
+        return keyStrokes != null && !keyStrokes.isEmpty();
     }
     return super.eIsSet(featureID);
   }

@@ -45,12 +45,13 @@ public class CustomFieldElementImportOperation extends AbstractFormFieldElementO
   public void run() throws CoreException, IllegalArgumentException {
     String superClass = getCustomFieldElement().getTemplate().getDefinition();
 
-    FormFieldNewOperation newOp = new FormFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
-    newOp.setTypeName(getCustomFieldElement().getName() + getFieldSuffix());
-    newOp.setSuperTypeSignature(Signature.createTypeSignature(superClass, true));
-    newOp.validate();
-    newOp.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
-    IType createdField = newOp.getCreatedFormField();
+    FormFieldNewOperation o = new FormFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
+    o.setTypeName(getCustomFieldElement().getName() + getFieldSuffix());
+    o.setSuperTypeSignature(Signature.createTypeSignature(superClass, true));
+    o.setSiblingField(getDefaultSibling());
+    o.validate();
+    o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
+    IType createdField = o.getCreatedFormField();
 
     ITypeHierarchy h = createdField.newSupertypeHierarchy(getSamlContext().getMonitor());
 

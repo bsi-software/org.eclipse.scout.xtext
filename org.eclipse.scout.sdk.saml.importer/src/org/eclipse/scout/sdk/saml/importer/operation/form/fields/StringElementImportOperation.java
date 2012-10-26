@@ -50,6 +50,7 @@ public class StringElementImportOperation extends AbstractValueFieldElementImpor
   protected IType createField() throws CoreException, IllegalArgumentException {
     StringFieldNewOperation o = new StringFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getStringElement().getName() + getFieldSuffix());
+    o.setSibling(getDefaultSibling());
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
     IType createdField = o.getCreatedField();

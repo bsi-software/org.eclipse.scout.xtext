@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.scout.saml.saml.ButtonElement;
 import org.eclipse.scout.saml.saml.FormElement;
 import org.eclipse.scout.saml.saml.FormFieldElement;
+import org.eclipse.scout.saml.saml.KeyElement;
 import org.eclipse.scout.saml.saml.LanguageAttribute;
 import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.saml.saml.LookupElement;
@@ -44,19 +45,27 @@ public class SamlJavaValidator extends AbstractSamlJavaValidator implements ISam
     }
 
     if (logicElement.getName() != null) {
-      // named logic elements 
+      // named logic elements must have source 
       if (logicElement.getSource() == null) {
         error(MSG_NAMED_LOGIC_ELEMENTS_NEEDS_SOURCE, logicElement, SamlPackage.Literals.LOGIC_ELEMENT__SOURCE, INVALID_LOGIC_ELEMENT);
       }
+      // named logic elements must not specify the event
       if (logicElement.getEvent() != null) {
         error(MSG_NAMED_LOGIC_ELEMENTS_NO_EVENT, logicElement, SamlPackage.Literals.LOGIC_ELEMENT__EVENT, INVALID_LOGIC_ELEMENT);
       }
+      // named logic elements must not specify an exec property
       if (logicElement.getExec() != null) {
         error(MSG_NAMED_LOGIC_NO_EXEC, logicElement, SamlPackage.Literals.LOGIC_ELEMENT__EXEC, INVALID_LOGIC_ELEMENT);
+      }
+
+      // named logic elements must have unique name
+      if (helper.hasGlobalDuplicate(logicElement, SamlPackage.eINSTANCE.getLogicElement())) {
+        error(MSG_DUPLICATE, SamlPackage.Literals.LOGIC_ELEMENT__NAME, DUPLICATE);
       }
     }
     else {
       if (logicElement.getEvent() != null) {
+        // check if the event is valid for the container of the logic element
         Set<String> possibilities = getPossibleLogicEventsFor(logicElement.eContainer());
         if (!possibilities.contains(logicElement.getEvent())) {
           error(MSG_WRONG_LOGIC_EVENT, logicElement, SamlPackage.Literals.LOGIC_ELEMENT__EVENT, INVALID_LOGIC_ELEMENT);
@@ -64,15 +73,12 @@ public class SamlJavaValidator extends AbstractSamlJavaValidator implements ISam
       }
     }
 
+    // logic element must specify an exec or have source. exact one option must be present.
     if (logicElement.getExec() == null && logicElement.getSource() == null) {
       error(MSG_SOURCE_LINKED_OR_GIVEN, logicElement, SamlPackage.Literals.LOGIC_ELEMENT__SOURCE, INVALID_LOGIC_ELEMENT);
     }
     else if (logicElement.getExec() != null && logicElement.getSource() != null) {
       error(MSG_SOURCE_LINKED_OR_GIVEN, logicElement, SamlPackage.Literals.LOGIC_ELEMENT__SOURCE, INVALID_LOGIC_ELEMENT);
-    }
-
-    if (helper.hasGlobalDuplicate(logicElement, SamlPackage.eINSTANCE.getLogicElement())) {
-      error(MSG_DUPLICATE, SamlPackage.Literals.LOGIC_ELEMENT__NAME, DUPLICATE);
     }
   }
 
@@ -101,6 +107,9 @@ public class SamlJavaValidator extends AbstractSamlJavaValidator implements ISam
     }
     else if (container instanceof TableElement) {
       return newSet(grammar.getLogicEventTypeAccess().getInitKeyword_8().getValue());
+    }
+    else if (container instanceof KeyElement) {
+      return newSet(grammar.getLogicEventTypeAccess().getActivatedKeyword_10().getValue());
     }
 
     return newSet();

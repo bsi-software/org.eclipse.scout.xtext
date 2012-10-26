@@ -24,7 +24,9 @@ Model:
 // TYPES
 QualifiedNameWithWildCard: QualifiedName  ('.' '*')?;
 BooleanType: 'true'|'false';	//TODO: code completion
-LogicEventType: 'all'|'modify_load'|'modify_store'|'new_load'|'new_store'|'changed'|'click'|'master_changed'|'init'|'format_value';	//TODO: code completion depending on element we are on
+
+//TODO: code completion depending on element we are on
+LogicEventType: 'all'|'modify_load'|'modify_store'|'new_load'|'new_store'|'changed'|'click'|'master_changed'|'init'|'format_value'|'activated';
 
 
 ModuleElement: 'module' name=QualifiedName;
@@ -52,7 +54,7 @@ TemplateElement:'template' name=ID 'definition' '=' definition=STRING/*JvmTypeRe
 
 
 FormElement:'form' name=ID (('modal' '=' modal=BooleanType)? & ('columns' '=' columns=INT)? & ('title' '=' title=[TranslationElement])? & ('subtitle' '=' subtitle=[TranslationElement])?)
-	('{' (logic+=LogicElement | fields+=FormFieldElement)* '}')?;
+	('{' (logic+=LogicElement | fields+=FormFieldElement | keyStrokes+=KeyElement)* '}')?;
 
 
 // UI FIELDS
@@ -222,3 +224,5 @@ ColumnElement:'column' name=ID
 		('visible' '=' visible=BooleanType)? &
 		('displayable' '=' displayable=BooleanType)?
 	);
+	
+KeyElement:'key' name=ID 'stroke' '=' stroke=STRING '{' logic+=LogicElement+ '}';

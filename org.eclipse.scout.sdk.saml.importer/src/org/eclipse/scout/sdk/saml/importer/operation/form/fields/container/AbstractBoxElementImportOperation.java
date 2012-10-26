@@ -14,7 +14,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.saml.saml.CompositeFieldElement;
-import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.sdk.saml.importer.operation.form.fields.AbstractFormFieldElementOperation;
 
 /**
@@ -35,9 +34,7 @@ public abstract class AbstractBoxElementImportOperation extends AbstractFormFiel
 
     getSamlFormContext().pushParentBox(box);
     CompositeFieldElement container = (CompositeFieldElement) getFieldElement();
-    for (FormFieldElement o : container.getFields()) {
-      dispatchFieldElements(o, getSamlContext(), getSamlFormContext());
-    }
+    dispatchFieldElements(container.getFields(), getSamlContext(), getSamlFormContext());
     getSamlFormContext().popParentBox();
   }
 

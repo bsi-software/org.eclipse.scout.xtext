@@ -10,10 +10,13 @@
  ******************************************************************************/
 package org.eclipse.scout.sdk.saml.importer.operation.form;
 
+import java.util.HashMap;
 import java.util.Stack;
 
 import org.eclipse.jdt.core.IType;
 import org.eclipse.scout.sdk.saml.importer.operation.SamlContext;
+import org.eclipse.scout.sdk.util.type.TypeUtility;
+import org.eclipse.scout.sdk.util.typecache.ITypeHierarchy;
 
 /**
  * <h3>{@link SamlFormContext}</h3> ...
@@ -30,9 +33,11 @@ public class SamlFormContext {
   private IType m_formType;
   private Stack<IType> m_parentBoxStack;
   private SamlContext m_samlContext;
+  private HashMap<IType, ITypeHierarchy> m_parentBoxLocalTypeHierarchies;
 
   public SamlFormContext() {
     m_parentBoxStack = new Stack<IType>();
+    m_parentBoxLocalTypeHierarchies = new HashMap<IType, ITypeHierarchy>();
   }
 
   public void pushParentBox(IType container) {
@@ -41,6 +46,19 @@ public class SamlFormContext {
 
   public IType getCurrentParentBox() {
     return m_parentBoxStack.peek();
+  }
+
+  public ITypeHierarchy getCurrentParentBoxLocalTypeHierarchy() {
+    IType currentParentBox = getCurrentParentBox();
+    if (currentParentBox == null) {
+      return null;
+    }
+    ITypeHierarchy result = m_parentBoxLocalTypeHierarchies.get(currentParentBox);
+    if (result == null) {
+      result = TypeUtility.getLocalTypeHierarchy(currentParentBox);
+      m_parentBoxLocalTypeHierarchies.put(currentParentBox, result);
+    }
+    return result;
   }
 
   public IType popParentBox() {

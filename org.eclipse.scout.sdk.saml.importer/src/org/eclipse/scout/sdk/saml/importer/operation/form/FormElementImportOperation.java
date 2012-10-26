@@ -16,7 +16,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.saml.saml.FormElement;
-import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.saml.saml.TranslationElement;
 import org.eclipse.scout.sdk.RuntimeClasses;
@@ -26,6 +25,7 @@ import org.eclipse.scout.sdk.operation.service.ServiceNewOperation;
 import org.eclipse.scout.sdk.operation.util.JavaElementDeleteOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.form.fields.AbstractFormFieldElementOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.form.fields.container.GroupBoxElementImportOperation;
+import org.eclipse.scout.sdk.saml.importer.operation.key.KeyElementImportOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.logic.SamlLogicFillOperation;
 import org.eclipse.scout.sdk.saml.importer.util.IItemVisitor;
 import org.eclipse.scout.sdk.saml.importer.util.SamlImportUtility;
@@ -68,31 +68,27 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
     }
   }
 
-  private void applyModalAttribute(String a, IType form) throws CoreException, IllegalArgumentException {
-    if ("false".equals(a)) {
-      overrideMethod(form, null, "getConfiguredModal", "return false;");
-    }
-  }
-
-  private void applySubtitleAttribute(TranslationElement a, IType field) throws CoreException, IllegalArgumentException {
-    if (a != null) {
-      overrideMethod(field, null, "getConfiguredSubTitle", getNlsReturnClause(a));
-    }
-  }
-
   @Override
   public void run() throws CoreException, IllegalArgumentException {
     deleteExistingForm();
 
     createFormStack();
 
-    applyFormAttributes();
+    // apply form attributes
+    applyModalAttribute(getFormElement().getModal(), getCreatedForm());
+    applySubtitleAttribute(getFormElement().getSubtitle(), getCreatedForm());
+    GroupBoxElementImportOperation.applyColumnsAttribute(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager(), getFormElement().getColumns(), getCreatedMainBox(), null);
 
     createFormContext();
 
+    // apply logic
     SamlLogicFillOperation.fillAllLogic(getFormElement().getLogic(), m_formContext, getCreatedForm());
 
-    processChildren();
+    // apply key strokes
+    KeyElementImportOperation.processKeyStrokes(getFormElement().getKeyStrokes(), getCreatedMainBox(), m_formContext);
+
+    // create child form fields recursive
+    AbstractFormFieldElementOperation.dispatchFieldElements(getFormElement().getFields(), getSamlContext(), m_formContext);
   }
 
   private void createFormContext() {
@@ -105,12 +101,6 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
     m_formContext.setFormType(getCreatedForm());
     m_formContext.setSamlContext(getSamlContext());
     m_formContext.pushParentBox(getCreatedMainBox());
-  }
-
-  private void processChildren() throws CoreException {
-    for (FormFieldElement o : getFormElement().getFields()) {
-      AbstractFormFieldElementOperation.dispatchFieldElements(o, getSamlContext(), m_formContext);
-    }
   }
 
   private boolean hasOneOfLogicEvents(final String[] logicEvents) {
@@ -207,12 +197,6 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
     getSamlContext().rememberModifiedType(clientSvcOp.getCreatedServiceInterface());
   }
 
-  private void applyFormAttributes() throws IllegalArgumentException, CoreException {
-    applyModalAttribute(getFormElement().getModal(), getCreatedForm());
-    applySubtitleAttribute(getFormElement().getSubtitle(), getCreatedForm());
-    GroupBoxElementImportOperation.applyColumnsAttribute(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager(), getFormElement().getColumns(), getCreatedMainBox(), null);
-  }
-
   private IType getFormDataType(String formName) {
     return TypeUtility.getType(getCurrentScoutModule().getSharedBundle().getPackageName(IScoutBundle.SHARED_PACKAGE_APPENDIX_SERVICES_PROCESS) + "." + formName + SdkProperties.SUFFIX_FORM_DATA);
   }
@@ -257,6 +241,18 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
       sdo.setServiceInterface(clientSvcInterface);
       sdo.validate();
       sdo.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
+    }
+  }
+
+  private void applyModalAttribute(String a, IType form) throws CoreException, IllegalArgumentException {
+    if ("false".equals(a)) {
+      overrideMethod(form, null, "getConfiguredModal", "return false;");
+    }
+  }
+
+  private void applySubtitleAttribute(TranslationElement a, IType field) throws CoreException, IllegalArgumentException {
+    if (a != null) {
+      overrideMethod(field, null, "getConfiguredSubTitle", getNlsReturnClause(a));
     }
   }
 

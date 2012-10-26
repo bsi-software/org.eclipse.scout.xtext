@@ -222,6 +222,7 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getColumnElementAccess().getGroup_2_2(), "rule__ColumnElement__Group_2_2__0");
 					put(grammarAccess.getColumnElementAccess().getGroup_2_3(), "rule__ColumnElement__Group_2_3__0");
 					put(grammarAccess.getColumnElementAccess().getGroup_2_4(), "rule__ColumnElement__Group_2_4__0");
+					put(grammarAccess.getKeyElementAccess().getGroup(), "rule__KeyElement__Group__0");
 					put(grammarAccess.getXAssignmentAccess().getGroup_0(), "rule__XAssignment__Group_0__0");
 					put(grammarAccess.getXAssignmentAccess().getGroup_1(), "rule__XAssignment__Group_1__0");
 					put(grammarAccess.getXAssignmentAccess().getGroup_1_1(), "rule__XAssignment__Group_1_1__0");
@@ -395,6 +396,7 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFormElementAccess().getSubtitleAssignment_2_3_2(), "rule__FormElement__SubtitleAssignment_2_3_2");
 					put(grammarAccess.getFormElementAccess().getLogicAssignment_3_1_0(), "rule__FormElement__LogicAssignment_3_1_0");
 					put(grammarAccess.getFormElementAccess().getFieldsAssignment_3_1_1(), "rule__FormElement__FieldsAssignment_3_1_1");
+					put(grammarAccess.getFormElementAccess().getKeyStrokesAssignment_3_1_2(), "rule__FormElement__KeyStrokesAssignment_3_1_2");
 					put(grammarAccess.getSequenceBoxElementAccess().getNameAssignment_1(), "rule__SequenceBoxElement__NameAssignment_1");
 					put(grammarAccess.getSequenceBoxElementAccess().getTextAssignment_2_0_2(), "rule__SequenceBoxElement__TextAssignment_2_0_2");
 					put(grammarAccess.getSequenceBoxElementAccess().getEnabledAssignment_2_1_2(), "rule__SequenceBoxElement__EnabledAssignment_2_1_2");
@@ -517,6 +519,9 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getColumnElementAccess().getWidthAssignment_2_2_2(), "rule__ColumnElement__WidthAssignment_2_2_2");
 					put(grammarAccess.getColumnElementAccess().getVisibleAssignment_2_3_2(), "rule__ColumnElement__VisibleAssignment_2_3_2");
 					put(grammarAccess.getColumnElementAccess().getDisplayableAssignment_2_4_2(), "rule__ColumnElement__DisplayableAssignment_2_4_2");
+					put(grammarAccess.getKeyElementAccess().getNameAssignment_1(), "rule__KeyElement__NameAssignment_1");
+					put(grammarAccess.getKeyElementAccess().getStrokeAssignment_4(), "rule__KeyElement__StrokeAssignment_4");
+					put(grammarAccess.getKeyElementAccess().getLogicAssignment_6(), "rule__KeyElement__LogicAssignment_6");
 					put(grammarAccess.getXAssignmentAccess().getFeatureAssignment_0_1(), "rule__XAssignment__FeatureAssignment_0_1");
 					put(grammarAccess.getXAssignmentAccess().getValueAssignment_0_3(), "rule__XAssignment__ValueAssignment_0_3");
 					put(grammarAccess.getXAssignmentAccess().getFeatureAssignment_1_1_0_0_1(), "rule__XAssignment__FeatureAssignment_1_1_0_0_1");

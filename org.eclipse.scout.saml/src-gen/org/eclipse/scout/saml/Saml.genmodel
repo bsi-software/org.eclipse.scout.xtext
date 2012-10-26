@@ -57,6 +57,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//FormElement/subtitle"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//FormElement/logic"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//FormElement/fields"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//FormElement/keyStrokes"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//FormFieldElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//FormFieldElement/name"/>
@@ -119,6 +120,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//ColumnElement/width"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//ColumnElement/visible"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//ColumnElement/displayable"/>
+    </genClasses>
+    <genClasses ecoreClass="Saml.ecore#//KeyElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//KeyElement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//KeyElement/stroke"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//KeyElement/logic"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

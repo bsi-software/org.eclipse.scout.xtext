@@ -153,12 +153,11 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
   }
 
   private IMethod createSourceMethod(LogicInfo info) throws CoreException, IllegalArgumentException {
-    IMethod method = TypeUtility.getMethod(info.getSourceType(), info.getSourceMethodName());
-    if (TypeUtility.exists(method)) {
-      return method;
+    if (info.getSourceMethod().isImplemented()) {
+      return info.getSourceMethod().peekMethod();
     }
     else {
-      MethodOverrideOperation op = new MethodOverrideOperation(info.getSourceType(), info.getSourceMethodName(), false);
+      MethodOverrideOperation op = new MethodOverrideOperation(info.getSourceType(), info.getSourceMethod().getMethodName(), false);
       op.setSimpleBody("");
       op.validate();
       op.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());

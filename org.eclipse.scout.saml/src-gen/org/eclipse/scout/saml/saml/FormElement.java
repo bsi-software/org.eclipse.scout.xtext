@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getSubtitle <em>Subtitle</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getLogic <em>Logic</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getFields <em>Fields</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getKeyStrokes <em>Key Strokes</em>}</li>
  * </ul>
  * </p>
  *
@@ -191,5 +192,21 @@ public interface FormElement extends EObject
    * @generated
    */
   EList<FormFieldElement> getFields();
+
+  /**
+   * Returns the value of the '<em><b>Key Strokes</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.scout.saml.saml.KeyElement}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Key Strokes</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Key Strokes</em>' containment reference list.
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getFormElement_KeyStrokes()
+   * @model containment="true"
+   * @generated
+   */
+  EList<KeyElement> getKeyStrokes();
 
 } // FormElement

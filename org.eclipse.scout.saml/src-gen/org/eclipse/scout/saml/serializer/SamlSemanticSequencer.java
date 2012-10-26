@@ -12,6 +12,7 @@ import org.eclipse.scout.saml.saml.DoubleElement;
 import org.eclipse.scout.saml.saml.FormElement;
 import org.eclipse.scout.saml.saml.GroupBoxElement;
 import org.eclipse.scout.saml.saml.ImportElement;
+import org.eclipse.scout.saml.saml.KeyElement;
 import org.eclipse.scout.saml.saml.LanguageAttribute;
 import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.saml.saml.LongElement;
@@ -142,6 +143,12 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 			case SamlPackage.IMPORT_ELEMENT:
 				if(context == grammarAccess.getImportElementRule()) {
 					sequence_ImportElement(context, (ImportElement) semanticObject); 
+					return; 
+				}
+				else break;
+			case SamlPackage.KEY_ELEMENT:
+				if(context == grammarAccess.getKeyElementRule()) {
+					sequence_KeyElement(context, (KeyElement) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1215,7 +1222,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         columns=INT? 
 	 *         title=[TranslationElement|ID]? 
 	 *         subtitle=[TranslationElement|ID]? 
-	 *         (logic+=LogicElement | fields+=FormFieldElement)*
+	 *         (logic+=LogicElement | fields+=FormFieldElement | keyStrokes+=KeyElement)*
 	 *     )
 	 */
 	protected void sequence_FormElement(EObject context, FormElement semanticObject) {
@@ -1258,6 +1265,15 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getImportElementAccess().getImportedNamespaceQualifiedNameWithWildCardParserRuleCall_1_0(), semanticObject.getImportedNamespace());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=ID stroke=STRING logic+=LogicElement+)
+	 */
+	protected void sequence_KeyElement(EObject context, KeyElement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

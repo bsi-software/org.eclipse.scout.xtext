@@ -200,6 +200,11 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
         return createColumnElementAdapter();
       }
       @Override
+      public Adapter caseKeyElement(KeyElement object)
+      {
+        return createKeyElementAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -592,6 +597,21 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createColumnElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.KeyElement <em>Key Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.scout.saml.saml.KeyElement
+   * @generated
+   */
+  public Adapter createKeyElementAdapter()
   {
     return null;
   }

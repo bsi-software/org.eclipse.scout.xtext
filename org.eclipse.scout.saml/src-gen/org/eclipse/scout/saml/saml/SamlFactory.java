@@ -248,6 +248,15 @@ public interface SamlFactory extends EFactory
   ColumnElement createColumnElement();
 
   /**
+   * Returns a new object of class '<em>Key Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Key Element</em>'.
+   * @generated
+   */
+  KeyElement createKeyElement();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

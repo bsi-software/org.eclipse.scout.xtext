@@ -266,6 +266,13 @@ public class SamlSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case SamlPackage.KEY_ELEMENT:
+      {
+        KeyElement keyElement = (KeyElement)theEObject;
+        T result = caseKeyElement(keyElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -666,6 +673,22 @@ public class SamlSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseColumnElement(ColumnElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Key Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Key Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseKeyElement(KeyElement object)
   {
     return null;
   }

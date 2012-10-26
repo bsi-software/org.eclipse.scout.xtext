@@ -43,6 +43,7 @@ public class SequenceBoxElementImportOperation extends AbstractBoxElementImportO
   public IType createBox() throws CoreException, IllegalArgumentException {
     SequenceBoxNewOperation o = new SequenceBoxNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getSequenceBoxElement().getName() + getFieldSuffix());
+    o.setSibling(getDefaultSibling());
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
     IType createdField = o.getCreatedField();

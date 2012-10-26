@@ -164,18 +164,19 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cMaster_changedKeyword_7 = (Keyword)cAlternatives.eContents().get(7);
 		private final Keyword cInitKeyword_8 = (Keyword)cAlternatives.eContents().get(8);
 		private final Keyword cFormat_valueKeyword_9 = (Keyword)cAlternatives.eContents().get(9);
+		private final Keyword cActivatedKeyword_10 = (Keyword)cAlternatives.eContents().get(10);
 		
 		////TODO: code completion depending on element we are on
 		// LogicEventType:
 		//
 		//	"all" | "modify_load" | "modify_store" | "new_load" | "new_store" | "changed" | "click" | "master_changed" | "init" |
 		//
-		//	"format_value";
+		//	"format_value" | "activated";
 		public ParserRule getRule() { return rule; }
 
 		//"all" | "modify_load" | "modify_store" | "new_load" | "new_store" | "changed" | "click" | "master_changed" | "init" |
 		//
-		//"format_value"
+		//"format_value" | "activated"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//"all"
@@ -207,6 +208,9 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"format_value"
 		public Keyword getFormat_valueKeyword_9() { return cFormat_valueKeyword_9; }
+
+		//"activated"
+		public Keyword getActivatedKeyword_10() { return cActivatedKeyword_10; }
 	}
 
 	public class ModuleElementElements extends AbstractParserRuleElementFinder {
@@ -620,6 +624,8 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cLogicLogicElementParserRuleCall_3_1_0_0 = (RuleCall)cLogicAssignment_3_1_0.eContents().get(0);
 		private final Assignment cFieldsAssignment_3_1_1 = (Assignment)cAlternatives_3_1.eContents().get(1);
 		private final RuleCall cFieldsFormFieldElementParserRuleCall_3_1_1_0 = (RuleCall)cFieldsAssignment_3_1_1.eContents().get(0);
+		private final Assignment cKeyStrokesAssignment_3_1_2 = (Assignment)cAlternatives_3_1.eContents().get(2);
+		private final RuleCall cKeyStrokesKeyElementParserRuleCall_3_1_2_0 = (RuleCall)cKeyStrokesAssignment_3_1_2.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
 		
 		//FormElement:
@@ -628,14 +634,14 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//
 		//	title=[TranslationElement])? & ("subtitle" "=" subtitle=[TranslationElement])?) ("{" (logic+=LogicElement |
 		//
-		//	fields+=FormFieldElement)* "}")?;
+		//	fields+=FormFieldElement | keyStrokes+=KeyElement)* "}")?;
 		public ParserRule getRule() { return rule; }
 
 		//"form" name=ID (("modal" "=" modal=BooleanType)? & ("columns" "=" columns=INT)? & ("title" "="
 		//
 		//title=[TranslationElement])? & ("subtitle" "=" subtitle=[TranslationElement])?) ("{" (logic+=LogicElement |
 		//
-		//fields+=FormFieldElement)* "}")?
+		//fields+=FormFieldElement | keyStrokes+=KeyElement)* "}")?
 		public Group getGroup() { return cGroup; }
 
 		//"form"
@@ -718,13 +724,13 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getSubtitleTranslationElementIDTerminalRuleCall_2_3_2_0_1() { return cSubtitleTranslationElementIDTerminalRuleCall_2_3_2_0_1; }
 
-		//("{" (logic+=LogicElement | fields+=FormFieldElement)* "}")?
+		//("{" (logic+=LogicElement | fields+=FormFieldElement | keyStrokes+=KeyElement)* "}")?
 		public Group getGroup_3() { return cGroup_3; }
 
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_3_0() { return cLeftCurlyBracketKeyword_3_0; }
 
-		//(logic+=LogicElement | fields+=FormFieldElement)*
+		//(logic+=LogicElement | fields+=FormFieldElement | keyStrokes+=KeyElement)*
 		public Alternatives getAlternatives_3_1() { return cAlternatives_3_1; }
 
 		//logic+=LogicElement
@@ -738,6 +744,12 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 
 		//FormFieldElement
 		public RuleCall getFieldsFormFieldElementParserRuleCall_3_1_1_0() { return cFieldsFormFieldElementParserRuleCall_3_1_1_0; }
+
+		//keyStrokes+=KeyElement
+		public Assignment getKeyStrokesAssignment_3_1_2() { return cKeyStrokesAssignment_3_1_2; }
+
+		//KeyElement
+		public RuleCall getKeyStrokesKeyElementParserRuleCall_3_1_2_0() { return cKeyStrokesKeyElementParserRuleCall_3_1_2_0; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_3_2() { return cRightCurlyBracketKeyword_3_2; }
@@ -3645,6 +3657,63 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//BooleanType
 		public RuleCall getDisplayableBooleanTypeParserRuleCall_2_4_2_0() { return cDisplayableBooleanTypeParserRuleCall_2_4_2_0; }
 	}
+
+	public class KeyElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "KeyElement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cKeyKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cStrokeKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cEqualsSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cStrokeAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cStrokeSTRINGTerminalRuleCall_4_0 = (RuleCall)cStrokeAssignment_4.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cLogicAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cLogicLogicElementParserRuleCall_6_0 = (RuleCall)cLogicAssignment_6.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		
+		//KeyElement:
+		//
+		//	"key" name=ID "stroke" "=" stroke=STRING "{" logic+=LogicElement+ "}";
+		public ParserRule getRule() { return rule; }
+
+		//"key" name=ID "stroke" "=" stroke=STRING "{" logic+=LogicElement+ "}"
+		public Group getGroup() { return cGroup; }
+
+		//"key"
+		public Keyword getKeyKeyword_0() { return cKeyKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//"stroke"
+		public Keyword getStrokeKeyword_2() { return cStrokeKeyword_2; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_3() { return cEqualsSignKeyword_3; }
+
+		//stroke=STRING
+		public Assignment getStrokeAssignment_4() { return cStrokeAssignment_4; }
+
+		//STRING
+		public RuleCall getStrokeSTRINGTerminalRuleCall_4_0() { return cStrokeSTRINGTerminalRuleCall_4_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_5() { return cLeftCurlyBracketKeyword_5; }
+
+		//logic+=LogicElement+
+		public Assignment getLogicAssignment_6() { return cLogicAssignment_6; }
+
+		//LogicElement
+		public RuleCall getLogicLogicElementParserRuleCall_6_0() { return cLogicLogicElementParserRuleCall_6_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
+	}
 	
 	
 	private ModelElements pModel;
@@ -3675,6 +3744,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	private MenuElementElements pMenuElement;
 	private TableElementElements pTableElement;
 	private ColumnElementElements pColumnElement;
+	private KeyElementElements pKeyElement;
 	
 	private final Grammar grammar;
 
@@ -3756,7 +3826,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	//	"all" | "modify_load" | "modify_store" | "new_load" | "new_store" | "changed" | "click" | "master_changed" | "init" |
 	//
-	//	"format_value";
+	//	"format_value" | "activated";
 	public LogicEventTypeElements getLogicEventTypeAccess() {
 		return (pLogicEventType != null) ? pLogicEventType : (pLogicEventType = new LogicEventTypeElements());
 	}
@@ -3862,7 +3932,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	//	title=[TranslationElement])? & ("subtitle" "=" subtitle=[TranslationElement])?) ("{" (logic+=LogicElement |
 	//
-	//	fields+=FormFieldElement)* "}")?;
+	//	fields+=FormFieldElement | keyStrokes+=KeyElement)* "}")?;
 	public FormElementElements getFormElementAccess() {
 		return (pFormElement != null) ? pFormElement : (pFormElement = new FormElementElements());
 	}
@@ -4108,6 +4178,17 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getColumnElementRule() {
 		return getColumnElementAccess().getRule();
+	}
+
+	//KeyElement:
+	//
+	//	"key" name=ID "stroke" "=" stroke=STRING "{" logic+=LogicElement+ "}";
+	public KeyElementElements getKeyElementAccess() {
+		return (pKeyElement != null) ? pKeyElement : (pKeyElement = new KeyElementElements());
+	}
+	
+	public ParserRule getKeyElementRule() {
+		return getKeyElementAccess().getRule();
 	}
 
 	//XExpression:

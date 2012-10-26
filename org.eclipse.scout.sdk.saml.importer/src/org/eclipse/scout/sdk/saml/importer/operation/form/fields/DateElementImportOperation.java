@@ -43,6 +43,7 @@ public class DateElementImportOperation extends AbstractValueFieldElementImportO
   protected IType createField() throws CoreException, IllegalArgumentException {
     DateFieldNewOperation o = new DateFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getDateElement().getName() + getFieldSuffix());
+    o.setSibling(getDefaultSibling());
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
     return o.getCreatedField();

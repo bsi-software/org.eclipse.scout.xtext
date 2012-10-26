@@ -218,4 +218,57 @@ public class LogicTests {
       throw Exceptions.sneakyThrow(_e);
     }
   }
+  
+  @Test
+  public void testKeyStrokeLogic() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module a.b");
+      _builder.newLine();
+      _builder.append("form MyForm {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("key DoSomething stroke=\"f2\" {");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("logic event=activated placement=server { \"\" }");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      Model _parse = this._parseHelper.parse(_builder);
+      this._validationTestHelper.assertNoErrors(_parse);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testEventMatchingContainer() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module a.b");
+      _builder.newLine();
+      _builder.append("form MyForm {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("key stroke=\"f2\" {");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("logic event=click placement=server { \"\" }");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      Model _parse = this._parseHelper.parse(_builder);
+      EClass _logicElement = SamlPackage.eINSTANCE.getLogicElement();
+      this._validationTestHelper.assertError(_parse, _logicElement, SamlJavaValidator.INVALID_LOGIC_ELEMENT, SamlJavaValidator.MSG_WRONG_LOGIC_EVENT);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
 }

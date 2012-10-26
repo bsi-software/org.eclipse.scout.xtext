@@ -20,6 +20,7 @@ import org.eclipse.scout.saml.saml.FormElement;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.GroupBoxElement;
 import org.eclipse.scout.saml.saml.ImportElement;
+import org.eclipse.scout.saml.saml.KeyElement;
 import org.eclipse.scout.saml.saml.LanguageAttribute;
 import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.saml.saml.LongElement;
@@ -219,6 +220,13 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * @generated
    */
   private EClass columnElementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass keyElementEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -691,6 +699,16 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
   public EReference getFormElement_Fields()
   {
     return (EReference)formElementEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFormElement_KeyStrokes()
+  {
+    return (EReference)formElementEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -1208,6 +1226,46 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getKeyElement()
+  {
+    return keyElementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getKeyElement_Name()
+  {
+    return (EAttribute)keyElementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getKeyElement_Stroke()
+  {
+    return (EAttribute)keyElementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getKeyElement_Logic()
+  {
+    return (EReference)keyElementEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public SamlFactory getSamlFactory()
   {
     return (SamlFactory)getEFactoryInstance();
@@ -1283,6 +1341,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     createEReference(formElementEClass, FORM_ELEMENT__SUBTITLE);
     createEReference(formElementEClass, FORM_ELEMENT__LOGIC);
     createEReference(formElementEClass, FORM_ELEMENT__FIELDS);
+    createEReference(formElementEClass, FORM_ELEMENT__KEY_STROKES);
 
     formFieldElementEClass = createEClass(FORM_FIELD_ELEMENT);
     createEAttribute(formFieldElementEClass, FORM_FIELD_ELEMENT__NAME);
@@ -1349,6 +1408,11 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     createEAttribute(columnElementEClass, COLUMN_ELEMENT__WIDTH);
     createEAttribute(columnElementEClass, COLUMN_ELEMENT__VISIBLE);
     createEAttribute(columnElementEClass, COLUMN_ELEMENT__DISPLAYABLE);
+
+    keyElementEClass = createEClass(KEY_ELEMENT);
+    createEAttribute(keyElementEClass, KEY_ELEMENT__NAME);
+    createEAttribute(keyElementEClass, KEY_ELEMENT__STROKE);
+    createEReference(keyElementEClass, KEY_ELEMENT__LOGIC);
   }
 
   /**
@@ -1444,6 +1508,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEReference(getFormElement_Subtitle(), this.getTranslationElement(), null, "subtitle", null, 0, 1, FormElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFormElement_Logic(), this.getLogicElement(), null, "logic", null, 0, -1, FormElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFormElement_Fields(), this.getFormFieldElement(), null, "fields", null, 0, -1, FormElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFormElement_KeyStrokes(), this.getKeyElement(), null, "keyStrokes", null, 0, -1, FormElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(formFieldElementEClass, FormFieldElement.class, "FormFieldElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFormFieldElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, FormFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1510,6 +1575,11 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEAttribute(getColumnElement_Width(), ecorePackage.getEInt(), "width", null, 0, 1, ColumnElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getColumnElement_Visible(), ecorePackage.getEString(), "visible", null, 0, 1, ColumnElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getColumnElement_Displayable(), ecorePackage.getEString(), "displayable", null, 0, 1, ColumnElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(keyElementEClass, KeyElement.class, "KeyElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getKeyElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, KeyElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getKeyElement_Stroke(), ecorePackage.getEString(), "stroke", null, 0, 1, KeyElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getKeyElement_Logic(), this.getLogicElement(), null, "logic", null, 0, -1, KeyElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

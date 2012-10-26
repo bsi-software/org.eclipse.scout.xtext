@@ -118,4 +118,28 @@ class LogicTests {
 		}
 		'''.parse.assertError(SamlPackage::eINSTANCE.logicElement, SamlJavaValidator::PLACEMENT_SERVER_ONLY_FOR_LOOKUP, SamlJavaValidator::MSG_PLACEMENT_SERVER_ONLY_FOR_LOOKUP)
 	}
+	
+	@Test
+	def void testKeyStrokeLogic() {
+		'''
+		module a.b
+		form MyForm {
+			key DoSomething stroke="f2" {
+				logic event=activated placement=server { "" }
+			}
+		}
+		'''.parse.assertNoErrors
+	}
+	
+	@Test
+	def void testEventMatchingContainer() {
+		'''
+		module a.b
+		form MyForm {
+			key stroke="f2" {
+				logic event=click placement=server { "" }
+			}
+		}
+		'''.parse.assertError(SamlPackage::eINSTANCE.logicElement, SamlJavaValidator::INVALID_LOGIC_ELEMENT, SamlJavaValidator::MSG_WRONG_LOGIC_EVENT)
+	}
 }

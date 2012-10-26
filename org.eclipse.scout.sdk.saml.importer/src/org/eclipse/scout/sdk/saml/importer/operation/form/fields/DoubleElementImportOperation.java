@@ -43,6 +43,7 @@ public class DoubleElementImportOperation extends AbstractValueFieldElementImpor
   protected IType createField() throws CoreException, IllegalArgumentException {
     DoubleFieldNewOperation o = new DoubleFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getDoubleElement().getName() + getFieldSuffix());
+    o.setSibling(getDefaultSibling());
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
     return o.getCreatedField();

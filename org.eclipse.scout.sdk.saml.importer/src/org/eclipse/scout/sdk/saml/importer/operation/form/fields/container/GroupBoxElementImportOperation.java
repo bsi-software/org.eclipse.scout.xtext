@@ -47,6 +47,7 @@ public class GroupBoxElementImportOperation extends AbstractBoxElementImportOper
   public IType createBox() throws CoreException, IllegalArgumentException {
     GroupBoxNewOperation o = new GroupBoxNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getGroupBoxElement().getName() + getFieldSuffix());
+    o.setSibling(getDefaultSibling());
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
     IType createdField = o.getCreatedField();
