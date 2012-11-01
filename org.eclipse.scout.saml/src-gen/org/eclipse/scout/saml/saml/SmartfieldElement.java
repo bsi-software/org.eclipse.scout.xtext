@@ -4,6 +4,8 @@ package org.eclipse.scout.saml.saml;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.xtext.common.types.JvmTypeReference;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Smartfield Element</b></em>'.
@@ -52,30 +54,30 @@ public interface SmartfieldElement extends ValueFieldElement
   void setCode(CodeElement value);
 
   /**
-   * Returns the value of the '<em><b>Value Type</b></em>' attribute.
+   * Returns the value of the '<em><b>Value Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Value Type</em>' attribute isn't clear,
+   * If the meaning of the '<em>Value Type</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Value Type</em>' attribute.
-   * @see #setValueType(String)
+   * @return the value of the '<em>Value Type</em>' containment reference.
+   * @see #setValueType(JvmTypeReference)
    * @see org.eclipse.scout.saml.saml.SamlPackage#getSmartfieldElement_ValueType()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getValueType();
+  JvmTypeReference getValueType();
 
   /**
-   * Sets the value of the '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getValueType <em>Value Type</em>}' attribute.
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getValueType <em>Value Type</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Value Type</em>' attribute.
+   * @param value the new value of the '<em>Value Type</em>' containment reference.
    * @see #getValueType()
    * @generated
    */
-  void setValueType(String value);
+  void setValueType(JvmTypeReference value);
 
   /**
    * Returns the value of the '<em><b>Lookup</b></em>' reference.

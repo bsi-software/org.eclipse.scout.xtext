@@ -62,7 +62,7 @@ public class CodeElementImportOperation extends AbstractSamlElementImportOperati
     ctno.validate();
     ctno.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
 
-    getSamlContext().rememberModifiedType(ctno.getCreatedType());
+    postProcessType(ctno.getCreatedType());
   }
 
   private void deleteExisting(IScoutBundle shared, String codeTypeName) throws CoreException, IllegalArgumentException {

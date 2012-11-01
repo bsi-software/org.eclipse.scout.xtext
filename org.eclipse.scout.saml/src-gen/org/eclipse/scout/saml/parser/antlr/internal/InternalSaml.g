@@ -1005,19 +1005,19 @@ ruleTemplateElement returns [EObject current=null]
     }
 (
 (
-		lv_definition_4_0=RULE_STRING
-		{
-			newLeafNode(lv_definition_4_0, grammarAccess.getTemplateElementAccess().getDefinitionSTRINGTerminalRuleCall_4_0()); 
-		}
-		{
+		{ 
+	        newCompositeNode(grammarAccess.getTemplateElementAccess().getDefinitionJvmTypeReferenceParserRuleCall_4_0()); 
+	    }
+		lv_definition_4_0=ruleJvmTypeReference		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getTemplateElementRule());
+	            $current = createModelElementForParent(grammarAccess.getTemplateElementRule());
 	        }
-       		setWithLastConsumed(
+       		set(
        			$current, 
        			"definition",
         		lv_definition_4_0, 
-        		"STRING");
+        		"JvmTypeReference");
+	        afterParserOrEnumRuleCall();
 	    }
 
 )
@@ -4197,19 +4197,19 @@ ruleSmartfieldElement returns [EObject current=null]
     }
 (
 (
-		lv_valueType_26_0=RULE_STRING
-		{
-			newLeafNode(lv_valueType_26_0, grammarAccess.getSmartfieldElementAccess().getValueTypeSTRINGTerminalRuleCall_2_7_2_0()); 
-		}
-		{
+		{ 
+	        newCompositeNode(grammarAccess.getSmartfieldElementAccess().getValueTypeJvmTypeReferenceParserRuleCall_2_7_2_0()); 
+	    }
+		lv_valueType_26_0=ruleJvmTypeReference		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getSmartfieldElementRule());
+	            $current = createModelElementForParent(grammarAccess.getSmartfieldElementRule());
 	        }
-       		setWithLastConsumed(
+       		set(
        			$current, 
        			"valueType",
         		lv_valueType_26_0, 
-        		"STRING");
+        		"JvmTypeReference");
+	        afterParserOrEnumRuleCall();
 	    }
 
 )

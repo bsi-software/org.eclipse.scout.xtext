@@ -2,13 +2,7 @@ package org.eclipse.scout.sdk.saml.importer.ui.wizard;
 
 import java.io.File;
 
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.jobs.IJobChangeEvent;
-import org.eclipse.core.runtime.jobs.JobChangeAdapter;
-import org.eclipse.scout.saml.ui.internal.SamlActivator;
-import org.eclipse.scout.sdk.jobs.OperationJob;
-import org.eclipse.scout.sdk.saml.importer.operation.SamlImportOperation;
-import org.eclipse.scout.sdk.saml.importer.operation.SamlImportPostProcessOperation;
+import org.eclipse.scout.sdk.saml.importer.SamlImportHelper;
 import org.eclipse.scout.sdk.ui.wizard.AbstractWizard;
 import org.eclipse.scout.sdk.workspace.IScoutProject;
 
@@ -25,26 +19,8 @@ public class SamlImportWizard extends AbstractWizard {
 
   @Override
   public boolean performFinish() {
-    final SamlImportOperation op = new SamlImportOperation();
     File d = new File(m_page1.getSamlRoot());
-    op.setSamlRootDirectory(d);
-    op.setInjector(SamlActivator.getInstance().getInjector(SamlActivator.ORG_ECLIPSE_SCOUT_SAML_SAML));
-    op.setScoutRootProject(getRootProject(getProject()));
-
-    OperationJob j = new OperationJob(op);
-    j.addJobChangeListener(new JobChangeAdapter() {
-      @Override
-      public void done(IJobChangeEvent event) {
-        if (event.getResult().isOK()) {
-          ResourcesPlugin.getWorkspace().checkpoint(false);
-          SamlImportPostProcessOperation pp = new SamlImportPostProcessOperation();
-          pp.setSamlContext(op.getSamlContext());
-          OperationJob postprocessJob = new OperationJob(pp);
-          postprocessJob.schedule();
-        }
-      }
-    });
-    j.schedule();
+    SamlImportHelper.importSamlAsync(d);
     return true;
   }
 

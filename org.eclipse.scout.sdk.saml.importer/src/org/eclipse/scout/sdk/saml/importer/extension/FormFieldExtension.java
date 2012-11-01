@@ -20,7 +20,7 @@ import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.scout.saml.saml.FormFieldElement;
-import org.eclipse.scout.sdk.saml.importer.internal.Activator;
+import org.eclipse.scout.sdk.saml.importer.internal.SamlImporterActivator;
 import org.eclipse.scout.sdk.saml.importer.operation.form.fields.IFormFieldElementOperation;
 import org.eclipse.scout.sdk.util.log.ScoutStatus;
 
@@ -71,7 +71,7 @@ public class FormFieldExtension {
           final HashMap<String, Class> map = new HashMap<String, Class>();
 
           IExtensionRegistry reg = Platform.getExtensionRegistry();
-          IExtensionPoint xp = reg.getExtensionPoint(Activator.PLUGIN_ID, EXTENSION_POINT_ID);
+          IExtensionPoint xp = reg.getExtensionPoint(SamlImporterActivator.PLUGIN_ID, EXTENSION_POINT_ID);
           IExtension[] extensions = xp.getExtensions();
           for (IExtension extension : extensions) {
             IConfigurationElement[] elements = extension.getConfigurationElements();

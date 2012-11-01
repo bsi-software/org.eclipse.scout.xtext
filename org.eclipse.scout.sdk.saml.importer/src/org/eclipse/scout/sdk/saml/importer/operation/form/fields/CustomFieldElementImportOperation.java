@@ -43,7 +43,7 @@ public class CustomFieldElementImportOperation extends AbstractFormFieldElementO
 
   @Override
   public void run() throws CoreException, IllegalArgumentException {
-    String superClass = getCustomFieldElement().getTemplate().getDefinition();
+    String superClass = getCustomFieldElement().getTemplate().getDefinition().getQualifiedName();
 
     FormFieldNewOperation o = new FormFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getCustomFieldElement().getName() + getFieldSuffix());

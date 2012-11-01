@@ -50,7 +50,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TemplateElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="definition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="definition" eType="ecore:EClass ../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FormElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -98,7 +99,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="DateElement" eSuperTypes="#//ValueFieldElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="SmartfieldElement" eSuperTypes="#//ValueFieldElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="code" eType="#//CodeElement"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valueType" eType="ecore:EClass ../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="lookup" eType="#//LookupElement"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="menus" upperBound="-1"
         eType="#//MenuElement" containment="true"/>

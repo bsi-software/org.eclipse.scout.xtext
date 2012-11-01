@@ -3,6 +3,18 @@
 <plugin>
    <extension-point id="formFieldOperation" name="formFieldOperation" schema="schema/formFieldOperation.exsd"/>
    <extension
+         id="samlImport"
+         point="org.eclipse.core.runtime.applications">
+      <application
+      		cardinality="singleton-global"
+            thread="main"
+            visible="true">
+         <run
+               class="org.eclipse.scout.sdk.saml.importer.application.SamlImportApplication">
+         </run>
+      </application>
+   </extension>
+   <extension
          point="org.eclipse.scout.sdk.saml.importer.formFieldOperation">
       <operation
             importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.container.SequenceBoxElementImportOperation"

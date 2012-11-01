@@ -331,7 +331,7 @@ public class ComplexFormTests {
       _builder.newLine();
       _builder.append("// ========================");
       _builder.newLine();
-      _builder.append("template zreg_sequence_box definition=\"ch.raiffeisen.dialba.common.client.ui.forms.fields.ZregSequenceBoxAbs\"");
+      _builder.append("template zreg_sequence_box definition=java.lang.Integer");
       _builder.newLine();
       _builder.newLine();
       _builder.newLine();
@@ -527,7 +527,7 @@ public class ComplexFormTests {
       _builder.append("sequence_box KoArtSequence {");
       _builder.newLine();
       _builder.append("\t\t");
-      _builder.append("smartfield KoArt text=Art mandatory=true value_type=\"Integer\" code=KOArt");
+      _builder.append("smartfield KoArt text=Art mandatory=true value_type=java.lang.Integer code=KOArt");
       _builder.newLine();
       _builder.append("\t");
       _builder.append("}");
@@ -538,7 +538,7 @@ public class ComplexFormTests {
       _builder.append("sequence_box LaufzeitSequence {");
       _builder.newLine();
       _builder.append("\t\t");
-      _builder.append("smartfield Laufzeit text=LaufzeitText mandatory=true code=KOLaufzeit value_type=\"Integer\" {");
+      _builder.append("smartfield Laufzeit text=LaufzeitText mandatory=true code=KOLaufzeit value_type=java.lang.Integer {");
       _builder.newLine();
       _builder.append("\t\t\t");
       _builder.append("logic event=changed placement=server {");
@@ -587,7 +587,7 @@ public class ComplexFormTests {
       _builder.append("sequence_box MitTiteldruckSequence {");
       _builder.newLine();
       _builder.append("\t\t");
-      _builder.append("smartfield MitTitel text=MitTiteldruck mandatory=true code=KOTiteldruck value_type=\"Integer\" {");
+      _builder.append("smartfield MitTitel text=MitTiteldruck mandatory=true code=KOTiteldruck value_type=java.lang.Integer {");
       _builder.newLine();
       _builder.append("\t\t\t");
       _builder.append("logic event=changed placement=server {");
@@ -664,7 +664,7 @@ public class ComplexFormTests {
       _builder.append("}");
       _builder.newLine();
       _builder.append("\t\t");
-      _builder.append("smartfield Depot text=DepotText lookup=DepotNumber value_type=\"DepotId\" {");
+      _builder.append("smartfield Depot text=DepotText lookup=DepotNumber value_type=java.lang.Double {");
       _builder.newLine();
       _builder.append("\t\t\t");
       _builder.append("logic exec=ZregAsMasterField");
@@ -680,7 +680,7 @@ public class ComplexFormTests {
       _builder.append("sequence_box AlteNeueKONrSequence {");
       _builder.newLine();
       _builder.append("\t\t");
-      _builder.append("smartfield ObligationNrAlt text=AlteNeueKONr mandatory=true lookup=OldObliNumber value_type=\"Integer\" {");
+      _builder.append("smartfield ObligationNrAlt text=AlteNeueKONr mandatory=true lookup=OldObliNumber value_type=java.lang.Integer {");
       _builder.newLine();
       _builder.append("\t\t\t");
       _builder.append("logic exec=ZregAsMasterField");
@@ -827,7 +827,7 @@ public class ComplexFormTests {
       _builder.append("sequence_box KontobelastungSequence {");
       _builder.newLine();
       _builder.append("\t\t");
-      _builder.append("smartfield KontoNr text=Kontobelastung mandatory=true lookup=KontoByZrnr value_type=\"KontoData\" {");
+      _builder.append("smartfield KontoNr text=Kontobelastung mandatory=true lookup=KontoByZrnr value_type=java.util.List {");
       _builder.newLine();
       _builder.append("\t\t\t");
       _builder.append("logic exec=ZregAsMasterField");

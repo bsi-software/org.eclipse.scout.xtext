@@ -67,6 +67,10 @@ public abstract class AbstractSamlElementImportOperation implements ISamlElement
     //}
   }
 
+  protected void postProcessType(IType t) throws CoreException, IllegalArgumentException {
+    new SamlImportPostProcessOperation(t).run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
+  }
+
   @Override
   public SamlContext getSamlContext() {
     return m_samlContext;

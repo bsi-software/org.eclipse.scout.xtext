@@ -1,0 +1,71 @@
+<!--
+	This project helps starting eclipse to import SAML files using Ant. 
+	
+	Add the following definitions to your ant build file to use this macro:
+	<import  file="${basedir}/macros/saml.xml" />
+	
+	
+	Change History
+	==============
+	
+	date       author    comments
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+	2012-11-01 mvi       initial version
+-->
+<project name="Eclipse Scout SAML Ant Macros">
+
+	<!-- 
+		Launches eclipse and imports the given SAML files. 
+	
+		Example 
+		=======
+		<scout.saml.import eclipseBaseDir="C:\eclipse_with_scout_and_saml" workspaceDir="C:\workspace" samlInputDir="C:\workspace\org.eclipse.scout.saml.input\src"	/>
+	-->
+	<macrodef name="scout.saml.import" description="Imports SAML files into a workspace">
+	
+		<!--
+			The base directory pointing to the eclipse home to use to build the feature. this folder contains the "plugins" folder.
+			The following projects must be installed in this eclipse:
+			- Eclipse Scout (Runtime + SDK) >= 3.8.1.201211011400
+			- Eclipse Scout SAML >= 3.8.1.201211011400
+			- Eclipse Xtext >= 2.3.1
+		-->
+		<attribute name="eclipseBaseDir" /> 
+		
+		<!--
+			This is the target workspace. This workspace must contain exactly one top-level Scout project. The import will then try to import into this project.
+			All generated sources will be placed in this workspace as well. 
+		 -->
+		<attribute name="workspaceDir" />
+		
+		<!--
+			This is the input directory containing all .saml files to import. It is best practice to have this folder placed in an own plugin inside the workspace specified in 'workspaceDir'.  
+		 -->
+		<attribute name="samlInputDir" />
+		
+		<sequential>
+			<java fork="true" failonerror="true" classname="org.eclipse.equinox.launcher.Main">
+				<jvmarg value="-Xms256m" />
+				<jvmarg value="-Xmx1024m" />
+				<jvmarg value="-XX:MaxPermSize=256m" />
+				
+				<arg value="-clean" />
+				<arg value="-noupdate" />
+				<arg value="-nosplash" />
+				<arg value="-application" />
+				<arg value="org.eclipse.scout.sdk.saml.importer.samlImport" />
+				<arg value="-data" />
+				<arg value="@{workspaceDir}" />
+				<arg value="-samlInputRootDirectory" />
+				<arg value="@{samlInputDir}" />
+
+				<classpath>
+					<fileset dir="@{eclipseBaseDir}/plugins">
+						<include name="org.eclipse.equinox.launcher_*.jar" />
+					</fileset>
+				</classpath>
+			</java>
+		</sequential>
+		
+	</macrodef>
+</project>

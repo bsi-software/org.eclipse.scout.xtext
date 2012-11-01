@@ -38,6 +38,8 @@ import org.eclipse.scout.saml.saml.TemplateElement;
 import org.eclipse.scout.saml.saml.TranslationElement;
 import org.eclipse.scout.saml.saml.ValueFieldElement;
 
+import org.eclipse.xtext.common.types.TypesPackage;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Package</b>.
@@ -275,6 +277,9 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     SamlPackageImpl theSamlPackage = (SamlPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof SamlPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new SamlPackageImpl());
 
     isInited = true;
+
+    // Initialize simple dependencies
+    TypesPackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
     theSamlPackage.createPackageContents();
@@ -616,9 +621,9 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTemplateElement_Definition()
+  public EReference getTemplateElement_Definition()
   {
-    return (EAttribute)templateElementEClass.getEStructuralFeatures().get(1);
+    return (EReference)templateElementEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -976,9 +981,9 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getSmartfieldElement_ValueType()
+  public EReference getSmartfieldElement_ValueType()
   {
-    return (EAttribute)smartfieldElementEClass.getEStructuralFeatures().get(1);
+    return (EReference)smartfieldElementEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1331,7 +1336,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
 
     templateElementEClass = createEClass(TEMPLATE_ELEMENT);
     createEAttribute(templateElementEClass, TEMPLATE_ELEMENT__NAME);
-    createEAttribute(templateElementEClass, TEMPLATE_ELEMENT__DEFINITION);
+    createEReference(templateElementEClass, TEMPLATE_ELEMENT__DEFINITION);
 
     formElementEClass = createEClass(FORM_ELEMENT);
     createEAttribute(formElementEClass, FORM_ELEMENT__NAME);
@@ -1378,7 +1383,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
 
     smartfieldElementEClass = createEClass(SMARTFIELD_ELEMENT);
     createEReference(smartfieldElementEClass, SMARTFIELD_ELEMENT__CODE);
-    createEAttribute(smartfieldElementEClass, SMARTFIELD_ELEMENT__VALUE_TYPE);
+    createEReference(smartfieldElementEClass, SMARTFIELD_ELEMENT__VALUE_TYPE);
     createEReference(smartfieldElementEClass, SMARTFIELD_ELEMENT__LOOKUP);
     createEReference(smartfieldElementEClass, SMARTFIELD_ELEMENT__MENUS);
 
@@ -1439,6 +1444,9 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     setNsPrefix(eNS_PREFIX);
     setNsURI(eNS_URI);
 
+    // Obtain other dependent packages
+    TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
+
     // Create type parameters
 
     // Set bounds for type parameters
@@ -1498,7 +1506,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
 
     initEClass(templateElementEClass, TemplateElement.class, "TemplateElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTemplateElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, TemplateElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTemplateElement_Definition(), ecorePackage.getEString(), "definition", null, 0, 1, TemplateElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTemplateElement_Definition(), theTypesPackage.getJvmTypeReference(), null, "definition", null, 0, 1, TemplateElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(formElementEClass, FormElement.class, "FormElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFormElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, FormElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1545,7 +1553,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
 
     initEClass(smartfieldElementEClass, SmartfieldElement.class, "SmartfieldElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSmartfieldElement_Code(), this.getCodeElement(), null, "code", null, 0, 1, SmartfieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getSmartfieldElement_ValueType(), ecorePackage.getEString(), "valueType", null, 0, 1, SmartfieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSmartfieldElement_ValueType(), theTypesPackage.getJvmTypeReference(), null, "valueType", null, 0, 1, SmartfieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSmartfieldElement_Lookup(), this.getLookupElement(), null, "lookup", null, 0, 1, SmartfieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSmartfieldElement_Menus(), this.getMenuElement(), null, "menus", null, 0, -1, SmartfieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

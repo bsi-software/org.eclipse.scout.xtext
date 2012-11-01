@@ -14,7 +14,6 @@ import java.util.HashSet;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IMethod;
-import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.scout.saml.services.SamlGrammarAccess;
 import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
@@ -32,7 +31,6 @@ public class SamlContext {
   private final IProgressMonitor m_monitor;
   private final IWorkingCopyManager m_workingCopyManager;
   private final Injector m_injector;
-  private final HashSet<String> m_modifiedTypes;
   private final HashSet<String> m_modifiedMethods;
   private final SamlGrammarAccess m_grammarAccess;
   private IScoutProject m_currentScoutModule;
@@ -42,15 +40,7 @@ public class SamlContext {
     m_workingCopyManager = workingCopyManager;
     m_injector = injector;
     m_grammarAccess = m_injector.getInstance(SamlGrammarAccess.class);
-    m_modifiedTypes = new HashSet<String>();
     m_modifiedMethods = new HashSet<String>();
-  }
-
-  public void rememberModifiedType(IType t) {
-    while (t.getDeclaringType() != null) {
-      t = t.getDeclaringType();
-    }
-    m_modifiedTypes.add(t.getFullyQualifiedName());
   }
 
   public void markMethodChanged(IMethod m) throws JavaModelException {
@@ -65,10 +55,6 @@ public class SamlContext {
 
   private String getMethodId(IMethod m) throws JavaModelException {
     return m.getDeclaringType().getFullyQualifiedName() + "#" + m.getElementName() + m.getSignature();
-  }
-
-  public String[] getModifiedTypes() {
-    return m_modifiedTypes.toArray(new String[m_modifiedTypes.size()]);
   }
 
   public IScoutProject getCurrentScoutModule() {

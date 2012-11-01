@@ -52,6 +52,7 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
   private IType m_createdClientServiceInterface;
 
   private IType m_createdForm;
+  private IType m_createdFormData;
   private IType m_createdMainBox;
 
   private SamlFormContext m_formContext;
@@ -89,6 +90,20 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
 
     // create child form fields recursive
     AbstractFormFieldElementOperation.dispatchFieldElements(getFormElement().getFields(), getSamlContext(), m_formContext);
+
+    // post processing
+    postProcessForm();
+  }
+
+  private void postProcessForm() throws CoreException, IllegalArgumentException {
+    postProcessType(getCreatedClientServiceImplementation());
+    postProcessType(getCreatedClientServiceInterface());
+
+    postProcessType(getCreatedServerServiceImplementation());
+    postProcessType(getCreatedServerServiceInterface());
+
+    postProcessType(getCreatedForm());
+    postProcessType(getCreatedFormData());
   }
 
   private void createFormContext() {
@@ -97,7 +112,7 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
     m_formContext.setClientInterface(getCreatedClientServiceInterface());
     m_formContext.setServerType(getCreatedServerServiceImplementation());
     m_formContext.setServerInterface(getCreatedServerServiceInterface());
-    m_formContext.setFormDataType(getFormDataType(getFormElement().getName()));
+    m_formContext.setFormDataType(getCreatedFormData());
     m_formContext.setFormType(getCreatedForm());
     m_formContext.setSamlContext(getSamlContext());
     m_formContext.pushParentBox(getCreatedMainBox());
@@ -167,13 +182,10 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
     op.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
 
     setCreatedServerServiceImplementation(op.getOutProcessService());
-    getSamlContext().rememberModifiedType(op.getOutProcessService());
     setCreatedServerServiceInterface(op.getOutProcessServiceInterface());
-    getSamlContext().rememberModifiedType(op.getOutProcessServiceInterface());
     setCreatedMainBox(op.getOutMainBox());
     setCreatedForm(op.getOutForm());
-    getSamlContext().rememberModifiedType(op.getOutForm());
-    getSamlContext().rememberModifiedType(getFormDataType(getFormElement().getName()));
+    setCreatedFormData(getFormDataType(getFormElement().getName()));
 
     // client service
     ServiceNewOperation clientSvcOp = new ServiceNewOperation();
@@ -192,9 +204,7 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
     clientSvcOp.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
 
     setCreatedClientServiceImplementation(clientSvcOp.getCreatedServiceImplementation());
-    getSamlContext().rememberModifiedType(clientSvcOp.getCreatedServiceImplementation());
     setCreatedClientServiceInterface(clientSvcOp.getCreatedServiceInterface());
-    getSamlContext().rememberModifiedType(clientSvcOp.getCreatedServiceInterface());
   }
 
   private IType getFormDataType(String formName) {
@@ -204,7 +214,7 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
   private void deleteExistingForm() throws CoreException {
     String formName = getFormElement().getName();
 
-    IType formData = getFormDataType(formName);
+    //IType formData = getFormDataType(formName);
     IType form = TypeUtility.getType(getCurrentScoutModule().getClientBundle().getPackageName(IScoutBundle.CLIENT_PACKAGE_APPENDIX_UI_FORMS) + "." + formName + SdkProperties.SUFFIX_FORM);
 
     IType serverService = TypeUtility.getType(getCurrentScoutModule().getServerBundle().getPackageName(IScoutBundle.SERVER_PACKAGE_APPENDIX_SERVICES_PROCESS) + "." + formName + SdkProperties.SUFFIX_PROCESS_SERVICE);
@@ -217,9 +227,9 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
     if (TypeUtility.exists(form)) {
       formArtifacts.add(form);
     }
-    if (TypeUtility.exists(formData)) {
-      formArtifacts.add(formData);
-    }
+    //if (TypeUtility.exists(formData)) {
+    //  formArtifacts.add(formData);
+    //}
     if (formArtifacts.size() > 0) {
       JavaElementDeleteOperation jedo = new JavaElementDeleteOperation();
       jedo.setMembers(formArtifacts.toArray(new IType[formArtifacts.size()]));
@@ -310,5 +320,13 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
 
   private void setCreatedMainBox(IType createdMainBox) {
     m_createdMainBox = createdMainBox;
+  }
+
+  public IType getCreatedFormData() {
+    return m_createdFormData;
+  }
+
+  private void setCreatedFormData(IType createdFormData) {
+    m_createdFormData = createdFormData;
   }
 }

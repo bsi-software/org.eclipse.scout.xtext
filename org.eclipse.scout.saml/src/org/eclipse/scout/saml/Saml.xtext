@@ -49,7 +49,7 @@ CodeElement:'code' name=ID 'id' '=' id=INT;
 LookupElement:'lookup' name=ID '{' logic+=LogicElement* '}';
 
 
-TemplateElement:'template' name=ID 'definition' '=' definition=STRING/*JvmTypeReference*/;
+TemplateElement:'template' name=ID 'definition' '=' definition=JvmTypeReference;
 
 
 
@@ -157,7 +157,7 @@ SmartfieldElement:'smartfield' name=ID
 		('master' '=' master=[ValueFieldElement])? &
 		('mandatory' '=' mandatory=BooleanType)? &
 		('code' '=' code=[CodeElement])? &
-		('value_type' '=' valueType=STRING/*JvmTypeReference*/)? &
+		('value_type' '=' valueType=JvmTypeReference)? &
 		('lookup' '=' lookup=[LookupElement])? &
 		('grid_height' '=' gridHeight=INT)? &
 		('grid_width' '=' gridWidth=INT)?

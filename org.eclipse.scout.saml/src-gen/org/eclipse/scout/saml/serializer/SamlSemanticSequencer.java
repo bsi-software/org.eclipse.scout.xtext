@@ -1402,7 +1402,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         master=[ValueFieldElement|ID]? 
 	 *         mandatory=BooleanType? 
 	 *         code=[CodeElement|ID]? 
-	 *         valueType=STRING? 
+	 *         valueType=JvmTypeReference? 
 	 *         lookup=[LookupElement|ID]? 
 	 *         gridHeight=INT? 
 	 *         gridWidth=INT? 
@@ -1456,7 +1456,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=ID definition=STRING)
+	 *     (name=ID definition=JvmTypeReference)
 	 */
 	protected void sequence_TemplateElement(EObject context, TemplateElement semanticObject) {
 		if(errorAcceptor != null) {
@@ -1468,7 +1468,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getTemplateElementAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getTemplateElementAccess().getDefinitionSTRINGTerminalRuleCall_4_0(), semanticObject.getDefinition());
+		feeder.accept(grammarAccess.getTemplateElementAccess().getDefinitionJvmTypeReferenceParserRuleCall_4_0(), semanticObject.getDefinition());
 		feeder.finish();
 	}
 	

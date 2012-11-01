@@ -32510,8 +32510,8 @@ rule__TemplateElement__DefinitionAssignment_4
     }
 :
 (
-{ before(grammarAccess.getTemplateElementAccess().getDefinitionSTRINGTerminalRuleCall_4_0()); }
-	RULE_STRING{ after(grammarAccess.getTemplateElementAccess().getDefinitionSTRINGTerminalRuleCall_4_0()); }
+{ before(grammarAccess.getTemplateElementAccess().getDefinitionJvmTypeReferenceParserRuleCall_4_0()); }
+	ruleJvmTypeReference{ after(grammarAccess.getTemplateElementAccess().getDefinitionJvmTypeReferenceParserRuleCall_4_0()); }
 )
 
 ;
@@ -33794,8 +33794,8 @@ rule__SmartfieldElement__ValueTypeAssignment_2_7_2
     }
 :
 (
-{ before(grammarAccess.getSmartfieldElementAccess().getValueTypeSTRINGTerminalRuleCall_2_7_2_0()); }
-	RULE_STRING{ after(grammarAccess.getSmartfieldElementAccess().getValueTypeSTRINGTerminalRuleCall_2_7_2_0()); }
+{ before(grammarAccess.getSmartfieldElementAccess().getValueTypeJvmTypeReferenceParserRuleCall_2_7_2_0()); }
+	ruleJvmTypeReference{ after(grammarAccess.getSmartfieldElementAccess().getValueTypeJvmTypeReferenceParserRuleCall_2_7_2_0()); }
 )
 
 ;

@@ -3,12 +3,26 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Scout Application Modeling Language Importer
 Bundle-SymbolicName: org.eclipse.scout.sdk.saml.importer;singleton:=true
 Bundle-Version: 3.8.1.qualifier
-Bundle-Activator: org.eclipse.scout.sdk.saml.importer.internal.Activator
+Bundle-Activator: org.eclipse.scout.sdk.saml.importer.internal.SamlImporterActivator
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.scout.sdk;bundle-version="3.8.1";visibility:=reexport,
  org.eclipse.scout.saml;bundle-version="1.0.0";visibility:=reexport,
- org.eclipse.scout.saml.ui;bundle-version="1.0.0"
+ org.eclipse.jdt.ui;bundle-version="3.8.1"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.eclipse.scout.sdk.saml.importer.operation
+Export-Package: org.eclipse.scout.sdk.saml.importer,
+ org.eclipse.scout.sdk.saml.importer.application,
+ org.eclipse.scout.sdk.saml.importer.extension,
+ org.eclipse.scout.sdk.saml.importer.operation,
+ org.eclipse.scout.sdk.saml.importer.operation.codetype,
+ org.eclipse.scout.sdk.saml.importer.operation.column,
+ org.eclipse.scout.sdk.saml.importer.operation.form,
+ org.eclipse.scout.sdk.saml.importer.operation.form.fields,
+ org.eclipse.scout.sdk.saml.importer.operation.form.fields.container,
+ org.eclipse.scout.sdk.saml.importer.operation.key,
+ org.eclipse.scout.sdk.saml.importer.operation.logic,
+ org.eclipse.scout.sdk.saml.importer.operation.lookup,
+ org.eclipse.scout.sdk.saml.importer.operation.menu,
+ org.eclipse.scout.sdk.saml.importer.operation.nls,
+ org.eclipse.scout.sdk.saml.importer.util
 Bundle-Vendor: Eclipse Scout Project

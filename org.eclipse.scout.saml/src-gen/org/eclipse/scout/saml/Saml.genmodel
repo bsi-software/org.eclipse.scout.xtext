@@ -4,7 +4,7 @@
     editorDirectory="/org.eclipse.scout.saml.editor/src" modelPluginID="org.eclipse.scout.saml"
     forceOverwrite="true" modelName="Saml" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="org.eclipse.scout.saml.edit"
-    editorPluginID="org.eclipse.scout.saml.editor" runtimeVersion="2.8">
+    editorPluginID="org.eclipse.scout.saml.editor" runtimeVersion="2.8" usedGenPackages="../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types">
   <genPackages prefix="Saml" basePackage="org.eclipse.scout.saml" disposableProviderFactory="true"
       ecorePackage="Saml.ecore#/">
     <genClasses ecoreClass="Saml.ecore#//Model">
@@ -47,7 +47,7 @@
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//TemplateElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//TemplateElement/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//TemplateElement/definition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//TemplateElement/definition"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//FormElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//FormElement/name"/>
@@ -90,7 +90,7 @@
     <genClasses ecoreClass="Saml.ecore#//DateElement"/>
     <genClasses ecoreClass="Saml.ecore#//SmartfieldElement">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartfieldElement/code"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//SmartfieldElement/valueType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartfieldElement/valueType"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartfieldElement/lookup"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartfieldElement/menus"/>
     </genClasses>

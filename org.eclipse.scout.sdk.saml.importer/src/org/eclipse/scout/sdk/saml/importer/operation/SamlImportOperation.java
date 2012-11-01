@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.EList;
@@ -107,6 +108,7 @@ public class SamlImportOperation implements IOperation {
             }
           }
         }
+        ResourcesPlugin.getWorkspace().checkpoint(false);
       }
     }
     catch (IOException e) {

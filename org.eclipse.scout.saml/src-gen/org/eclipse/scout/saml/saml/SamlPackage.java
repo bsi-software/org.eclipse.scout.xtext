@@ -426,7 +426,7 @@ public interface SamlPackage extends EPackage
   int TEMPLATE_ELEMENT__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Definition</b></em>' attribute.
+   * The feature id for the '<em><b>Definition</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1652,7 +1652,7 @@ public interface SamlPackage extends EPackage
   int SMARTFIELD_ELEMENT__CODE = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Value Type</b></em>' attribute.
+   * The feature id for the '<em><b>Value Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -2569,15 +2569,15 @@ public interface SamlPackage extends EPackage
   EAttribute getTemplateElement_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.TemplateElement#getDefinition <em>Definition</em>}'.
+   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.TemplateElement#getDefinition <em>Definition</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Definition</em>'.
+   * @return the meta object for the containment reference '<em>Definition</em>'.
    * @see org.eclipse.scout.saml.saml.TemplateElement#getDefinition()
    * @see #getTemplateElement()
    * @generated
    */
-  EAttribute getTemplateElement_Definition();
+  EReference getTemplateElement_Definition();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.FormElement <em>Form Element</em>}'.
@@ -2954,15 +2954,15 @@ public interface SamlPackage extends EPackage
   EReference getSmartfieldElement_Code();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getValueType <em>Value Type</em>}'.
+   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getValueType <em>Value Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value Type</em>'.
+   * @return the meta object for the containment reference '<em>Value Type</em>'.
    * @see org.eclipse.scout.saml.saml.SmartfieldElement#getValueType()
    * @see #getSmartfieldElement()
    * @generated
    */
-  EAttribute getSmartfieldElement_ValueType();
+  EReference getSmartfieldElement_ValueType();
 
   /**
    * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getLookup <em>Lookup</em>}'.
@@ -3564,12 +3564,12 @@ public interface SamlPackage extends EPackage
     EAttribute TEMPLATE_ELEMENT__NAME = eINSTANCE.getTemplateElement_Name();
 
     /**
-     * The meta object literal for the '<em><b>Definition</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Definition</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TEMPLATE_ELEMENT__DEFINITION = eINSTANCE.getTemplateElement_Definition();
+    EReference TEMPLATE_ELEMENT__DEFINITION = eINSTANCE.getTemplateElement_Definition();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.FormElementImpl <em>Form Element</em>}' class.
@@ -3874,12 +3874,12 @@ public interface SamlPackage extends EPackage
     EReference SMARTFIELD_ELEMENT__CODE = eINSTANCE.getSmartfieldElement_Code();
 
     /**
-     * The meta object literal for the '<em><b>Value Type</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Value Type</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute SMARTFIELD_ELEMENT__VALUE_TYPE = eINSTANCE.getSmartfieldElement_ValueType();
+    EReference SMARTFIELD_ELEMENT__VALUE_TYPE = eINSTANCE.getSmartfieldElement_ValueType();
 
     /**
      * The meta object literal for the '<em><b>Lookup</b></em>' reference feature.

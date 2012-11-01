@@ -26,41 +26,32 @@ import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
  */
 public class SamlImportPostProcessOperation implements IOperation {
 
-  private SamlContext m_samlContext;
+  private final IType m_type;
+
+  public SamlImportPostProcessOperation(IType t) {
+    m_type = t;
+  }
 
   @Override
   public String getOperationName() {
-    return "Post processing";
+    return "Post processing element";
   }
 
   @Override
   public void validate() throws IllegalArgumentException {
-    if (getSamlContext() == null) {
-      throw new IllegalArgumentException("Saml context cannot be null.");
+    if (!TypeUtility.exists(getType())) {
+      throw new IllegalArgumentException("type cannot be null.");
     }
   }
 
   @Override
   public void run(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException, IllegalArgumentException {
-    for (String fqn : getSamlContext().getModifiedTypes()) {
-      IType t = TypeUtility.getType(fqn);
-
-      JavaElementFormatOperation jefo = new JavaElementFormatOperation(t, true);
-      jefo.validate();
-      try {
-        jefo.run(monitor, workingCopyManager);
-      }
-      catch (Exception e) {
-        System.out.println("unable to format type " + t.getFullyQualifiedName());
-      }
-    }
+    JavaElementFormatOperation formatOp = new JavaElementFormatOperation(getType(), true);
+    formatOp.validate();
+    formatOp.run(monitor, workingCopyManager);
   }
 
-  public SamlContext getSamlContext() {
-    return m_samlContext;
-  }
-
-  public void setSamlContext(SamlContext samlContext) {
-    m_samlContext = samlContext;
+  private IType getType() {
+    return m_type;
   }
 }

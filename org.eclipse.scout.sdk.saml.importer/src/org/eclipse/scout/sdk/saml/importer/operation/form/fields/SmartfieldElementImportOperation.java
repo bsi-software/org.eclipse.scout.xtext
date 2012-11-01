@@ -47,7 +47,7 @@ public class SmartfieldElementImportOperation extends AbstractValueFieldElementI
 
   private String getValueType() {
     if (getSmartfieldElement().getValueType() != null) {
-      return getSmartfieldElement().getValueType()/*.getQualifiedName()*/;
+      return getSmartfieldElement().getValueType().getQualifiedName();
     }
     return Object.class.getName();
   }

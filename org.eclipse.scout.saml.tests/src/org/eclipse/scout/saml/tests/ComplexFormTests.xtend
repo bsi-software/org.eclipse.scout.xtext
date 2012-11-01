@@ -167,7 +167,7 @@ class ComplexFormTests {
 		// ========================
 		// UI TEMPLATE DEFINITIONS
 		// ========================
-		template zreg_sequence_box definition="ch.raiffeisen.dialba.common.client.ui.forms.fields.ZregSequenceBoxAbs"
+		template zreg_sequence_box definition=java.lang.Integer
 		
 		
 		// ========================
@@ -239,11 +239,11 @@ class ComplexFormTests {
 			}
 		
 			sequence_box KoArtSequence {
-				smartfield KoArt text=Art mandatory=true value_type="Integer" code=KOArt
+				smartfield KoArt text=Art mandatory=true value_type=java.lang.Integer code=KOArt
 			}
 			
 			sequence_box LaufzeitSequence {
-				smartfield Laufzeit text=LaufzeitText mandatory=true code=KOLaufzeit value_type="Integer" {
+				smartfield Laufzeit text=LaufzeitText mandatory=true code=KOLaufzeit value_type=java.lang.Integer {
 					logic event=changed placement=server {
 						"System.out.println(\"server call LaufzeitfieldChanged\");
 						 return formData;"
@@ -261,7 +261,7 @@ class ComplexFormTests {
 			}
 		
 			sequence_box MitTiteldruckSequence {
-				smartfield MitTitel text=MitTiteldruck mandatory=true code=KOTiteldruck value_type="Integer" {
+				smartfield MitTitel text=MitTiteldruck mandatory=true code=KOTiteldruck value_type=java.lang.Integer {
 					logic event=changed placement=server {
 						"System.out.println(\"server call MitTitelFieldChanged\");
 						 return formData;"
@@ -287,13 +287,13 @@ class ComplexFormTests {
 				      }
 				    }"
 				}
-				smartfield Depot text=DepotText lookup=DepotNumber value_type="DepotId" {
+				smartfield Depot text=DepotText lookup=DepotNumber value_type=java.lang.Double {
 					logic exec=ZregAsMasterField
 				}
 			}
 		
 			sequence_box AlteNeueKONrSequence {
-				smartfield ObligationNrAlt text=AlteNeueKONr mandatory=true lookup=OldObliNumber value_type="Integer" {
+				smartfield ObligationNrAlt text=AlteNeueKONr mandatory=true lookup=OldObliNumber value_type=java.lang.Integer {
 					logic exec=ZregAsMasterField
 				}
 				long ObligationNr enabled=false label_visible=false
@@ -344,7 +344,7 @@ class ComplexFormTests {
 			}
 		  
 		  	sequence_box KontobelastungSequence {
-				smartfield KontoNr text=Kontobelastung mandatory=true lookup=KontoByZrnr value_type="KontoData" {
+				smartfield KontoNr text=Kontobelastung mandatory=true lookup=KontoByZrnr value_type=java.util.List {
 					logic exec=ZregAsMasterField
 					logic event=changed placement=client {
 						"KontoData kontoData = form.getKontoNrField().getValue();
