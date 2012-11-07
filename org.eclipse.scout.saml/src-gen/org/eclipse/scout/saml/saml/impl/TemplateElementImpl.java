@@ -3,18 +3,14 @@
 package org.eclipse.scout.saml.saml.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.scout.saml.saml.SamlPackage;
 import org.eclipse.scout.saml.saml.TemplateElement;
-
-import org.eclipse.xtext.common.types.JvmTypeReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -53,14 +49,24 @@ public class TemplateElementImpl extends MinimalEObjectImpl.Container implements
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getDefinition() <em>Definition</em>}' containment reference.
+   * The default value of the '{@link #getDefinition() <em>Definition</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getDefinition()
    * @generated
    * @ordered
    */
-  protected JvmTypeReference definition;
+  protected static final String DEFINITION_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getDefinition() <em>Definition</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDefinition()
+   * @generated
+   * @ordered
+   */
+  protected String definition = DEFINITION_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -111,7 +117,7 @@ public class TemplateElementImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public JvmTypeReference getDefinition()
+  public String getDefinition()
   {
     return definition;
   }
@@ -121,53 +127,12 @@ public class TemplateElementImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetDefinition(JvmTypeReference newDefinition, NotificationChain msgs)
+  public void setDefinition(String newDefinition)
   {
-    JvmTypeReference oldDefinition = definition;
+    String oldDefinition = definition;
     definition = newDefinition;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SamlPackage.TEMPLATE_ELEMENT__DEFINITION, oldDefinition, newDefinition);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setDefinition(JvmTypeReference newDefinition)
-  {
-    if (newDefinition != definition)
-    {
-      NotificationChain msgs = null;
-      if (definition != null)
-        msgs = ((InternalEObject)definition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SamlPackage.TEMPLATE_ELEMENT__DEFINITION, null, msgs);
-      if (newDefinition != null)
-        msgs = ((InternalEObject)newDefinition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SamlPackage.TEMPLATE_ELEMENT__DEFINITION, null, msgs);
-      msgs = basicSetDefinition(newDefinition, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.TEMPLATE_ELEMENT__DEFINITION, newDefinition, newDefinition));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case SamlPackage.TEMPLATE_ELEMENT__DEFINITION:
-        return basicSetDefinition(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.TEMPLATE_ELEMENT__DEFINITION, oldDefinition, definition));
   }
 
   /**
@@ -202,7 +167,7 @@ public class TemplateElementImpl extends MinimalEObjectImpl.Container implements
         setName((String)newValue);
         return;
       case SamlPackage.TEMPLATE_ELEMENT__DEFINITION:
-        setDefinition((JvmTypeReference)newValue);
+        setDefinition((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -222,7 +187,7 @@ public class TemplateElementImpl extends MinimalEObjectImpl.Container implements
         setName(NAME_EDEFAULT);
         return;
       case SamlPackage.TEMPLATE_ELEMENT__DEFINITION:
-        setDefinition((JvmTypeReference)null);
+        setDefinition(DEFINITION_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -241,7 +206,7 @@ public class TemplateElementImpl extends MinimalEObjectImpl.Container implements
       case SamlPackage.TEMPLATE_ELEMENT__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case SamlPackage.TEMPLATE_ELEMENT__DEFINITION:
-        return definition != null;
+        return DEFINITION_EDEFAULT == null ? definition != null : !DEFINITION_EDEFAULT.equals(definition);
     }
     return super.eIsSet(featureID);
   }
@@ -259,6 +224,8 @@ public class TemplateElementImpl extends MinimalEObjectImpl.Container implements
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
+    result.append(", definition: ");
+    result.append(definition);
     result.append(')');
     return result.toString();
   }

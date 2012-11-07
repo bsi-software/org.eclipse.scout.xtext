@@ -14,6 +14,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
+import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.GroupBoxElement;
@@ -48,6 +49,9 @@ public class GroupBoxElementImportOperation extends AbstractBoxElementImportOper
     GroupBoxNewOperation o = new GroupBoxNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getGroupBoxElement().getName() + getFieldSuffix());
     o.setSibling(getDefaultSibling());
+    if (getGroupBoxElement().getSuperType() != null) {
+      o.setSuperTypeSignature(Signature.createTypeSignature(getGroupBoxElement().getSuperType().getDefinition(), true));
+    }
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
     IType createdField = o.getCreatedField();

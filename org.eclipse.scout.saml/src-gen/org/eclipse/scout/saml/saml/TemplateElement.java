@@ -4,8 +4,6 @@ package org.eclipse.scout.saml.saml;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.xtext.common.types.JvmTypeReference;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Template Element</b></em>'.
@@ -52,29 +50,29 @@ public interface TemplateElement extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Definition</b></em>' containment reference.
+   * Returns the value of the '<em><b>Definition</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Definition</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Definition</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Definition</em>' containment reference.
-   * @see #setDefinition(JvmTypeReference)
+   * @return the value of the '<em>Definition</em>' attribute.
+   * @see #setDefinition(String)
    * @see org.eclipse.scout.saml.saml.SamlPackage#getTemplateElement_Definition()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  JvmTypeReference getDefinition();
+  String getDefinition();
 
   /**
-   * Sets the value of the '{@link org.eclipse.scout.saml.saml.TemplateElement#getDefinition <em>Definition</em>}' containment reference.
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.TemplateElement#getDefinition <em>Definition</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Definition</em>' containment reference.
+   * @param value the new value of the '<em>Definition</em>' attribute.
    * @see #getDefinition()
    * @generated
    */
-  void setDefinition(JvmTypeReference value);
+  void setDefinition(String value);
 
 } // TemplateElement

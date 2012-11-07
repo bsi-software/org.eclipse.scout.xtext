@@ -175,7 +175,11 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
     op.setServiceInterfaceBundle(getCurrentScoutModule().getSharedBundle());
     op.setServiceInterfaceName("I" + formName + SdkProperties.SUFFIX_PROCESS_SERVICE);
 
-    op.setFormSuperTypeSignature(Signature.createTypeSignature(RuntimeClasses.AbstractForm, true));
+    String superType = RuntimeClasses.AbstractForm;
+    if (getFormElement().getSuperType() != null) {
+      superType = getFormElement().getSuperType().getDefinition();
+    }
+    op.setFormSuperTypeSignature(Signature.createTypeSignature(superType, true));
     op.setFormName(formName + SdkProperties.SUFFIX_FORM);
 
     op.validate();

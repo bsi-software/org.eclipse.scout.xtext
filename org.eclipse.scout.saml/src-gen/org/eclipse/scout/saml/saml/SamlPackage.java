@@ -426,7 +426,7 @@ public interface SamlPackage extends EPackage
   int TEMPLATE_ELEMENT__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Definition</b></em>' containment reference.
+   * The feature id for the '<em><b>Definition</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -499,13 +499,22 @@ public interface SamlPackage extends EPackage
   int FORM_ELEMENT__SUBTITLE = 4;
 
   /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORM_ELEMENT__SUPER_TYPE = 5;
+
+  /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FORM_ELEMENT__LOGIC = 5;
+  int FORM_ELEMENT__LOGIC = 6;
 
   /**
    * The feature id for the '<em><b>Fields</b></em>' containment reference list.
@@ -514,7 +523,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_ELEMENT__FIELDS = 6;
+  int FORM_ELEMENT__FIELDS = 7;
 
   /**
    * The feature id for the '<em><b>Key Strokes</b></em>' containment reference list.
@@ -523,7 +532,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_ELEMENT__KEY_STROKES = 7;
+  int FORM_ELEMENT__KEY_STROKES = 8;
 
   /**
    * The number of structural features of the '<em>Form Element</em>' class.
@@ -532,7 +541,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_ELEMENT_FEATURE_COUNT = 8;
+  int FORM_ELEMENT_FEATURE_COUNT = 9;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl <em>Form Field Element</em>}' class.
@@ -617,13 +626,22 @@ public interface SamlPackage extends EPackage
   int FORM_FIELD_ELEMENT__GRID_WIDTH = 7;
 
   /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORM_FIELD_ELEMENT__SUPER_TYPE = 8;
+
+  /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FORM_FIELD_ELEMENT__LOGIC = 8;
+  int FORM_FIELD_ELEMENT__LOGIC = 9;
 
   /**
    * The number of structural features of the '<em>Form Field Element</em>' class.
@@ -632,7 +650,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_FIELD_ELEMENT_FEATURE_COUNT = 9;
+  int FORM_FIELD_ELEMENT_FEATURE_COUNT = 10;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.CompositeFieldElementImpl <em>Composite Field Element</em>}' class.
@@ -715,6 +733,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int COMPOSITE_FIELD_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPOSITE_FIELD_ELEMENT__SUPER_TYPE = FORM_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -826,6 +853,15 @@ public interface SamlPackage extends EPackage
   int SEQUENCE_BOX_ELEMENT__GRID_WIDTH = COMPOSITE_FIELD_ELEMENT__GRID_WIDTH;
 
   /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SEQUENCE_BOX_ELEMENT__SUPER_TYPE = COMPOSITE_FIELD_ELEMENT__SUPER_TYPE;
+
+  /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -933,6 +969,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int GROUP_BOX_ELEMENT__GRID_WIDTH = COMPOSITE_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_BOX_ELEMENT__SUPER_TYPE = COMPOSITE_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -1071,6 +1116,15 @@ public interface SamlPackage extends EPackage
   int VALUE_FIELD_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT__GRID_WIDTH;
 
   /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE_FIELD_ELEMENT__SUPER_TYPE = FORM_FIELD_ELEMENT__SUPER_TYPE;
+
+  /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1178,6 +1232,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int STRING_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT__SUPER_TYPE = VALUE_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -1298,6 +1361,15 @@ public interface SamlPackage extends EPackage
   int DOUBLE_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
 
   /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DOUBLE_ELEMENT__SUPER_TYPE = VALUE_FIELD_ELEMENT__SUPER_TYPE;
+
+  /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1405,6 +1477,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int LONG_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LONG_ELEMENT__SUPER_TYPE = VALUE_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -1516,6 +1597,15 @@ public interface SamlPackage extends EPackage
   int DATE_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
 
   /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATE_ELEMENT__SUPER_TYPE = VALUE_FIELD_ELEMENT__SUPER_TYPE;
+
+  /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1625,6 +1715,15 @@ public interface SamlPackage extends EPackage
   int SMARTFIELD_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
 
   /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SMARTFIELD_ELEMENT__SUPER_TYPE = VALUE_FIELD_ELEMENT__SUPER_TYPE;
+
+  /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1652,7 +1751,7 @@ public interface SamlPackage extends EPackage
   int SMARTFIELD_ELEMENT__CODE = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Value Type</b></em>' containment reference.
+   * The feature id for the '<em><b>Value Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1770,6 +1869,15 @@ public interface SamlPackage extends EPackage
   int CUSTOM_FIELD_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT__GRID_WIDTH;
 
   /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CUSTOM_FIELD_ELEMENT__SUPER_TYPE = FORM_FIELD_ELEMENT__SUPER_TYPE;
+
+  /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1779,22 +1887,13 @@ public interface SamlPackage extends EPackage
   int CUSTOM_FIELD_ELEMENT__LOGIC = FORM_FIELD_ELEMENT__LOGIC;
 
   /**
-   * The feature id for the '<em><b>Template</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CUSTOM_FIELD_ELEMENT__TEMPLATE = FORM_FIELD_ELEMENT_FEATURE_COUNT + 0;
-
-  /**
    * The feature id for the '<em><b>Fields</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CUSTOM_FIELD_ELEMENT__FIELDS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 1;
+  int CUSTOM_FIELD_ELEMENT__FIELDS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Custom Field Element</em>' class.
@@ -1803,7 +1902,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_FIELD_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 2;
+  int CUSTOM_FIELD_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.ButtonElementImpl <em>Button Element</em>}' class.
@@ -1888,6 +1987,15 @@ public interface SamlPackage extends EPackage
   int BUTTON_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT__GRID_WIDTH;
 
   /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUTTON_ELEMENT__SUPER_TYPE = FORM_FIELD_ELEMENT__SUPER_TYPE;
+
+  /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1970,13 +2078,22 @@ public interface SamlPackage extends EPackage
   int MENU_ELEMENT__TEXT = 3;
 
   /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MENU_ELEMENT__SUPER_TYPE = 4;
+
+  /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MENU_ELEMENT__LOGIC = 4;
+  int MENU_ELEMENT__LOGIC = 5;
 
   /**
    * The number of structural features of the '<em>Menu Element</em>' class.
@@ -1985,7 +2102,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MENU_ELEMENT_FEATURE_COUNT = 5;
+  int MENU_ELEMENT_FEATURE_COUNT = 6;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.TableElementImpl <em>Table Element</em>}' class.
@@ -2068,6 +2185,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int TABLE_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TABLE_ELEMENT__SUPER_TYPE = FORM_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -2569,15 +2695,15 @@ public interface SamlPackage extends EPackage
   EAttribute getTemplateElement_Name();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.TemplateElement#getDefinition <em>Definition</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.TemplateElement#getDefinition <em>Definition</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Definition</em>'.
+   * @return the meta object for the attribute '<em>Definition</em>'.
    * @see org.eclipse.scout.saml.saml.TemplateElement#getDefinition()
    * @see #getTemplateElement()
    * @generated
    */
-  EReference getTemplateElement_Definition();
+  EAttribute getTemplateElement_Definition();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.FormElement <em>Form Element</em>}'.
@@ -2643,6 +2769,17 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EReference getFormElement_Subtitle();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.FormElement#getSuperType <em>Super Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Super Type</em>'.
+   * @see org.eclipse.scout.saml.saml.FormElement#getSuperType()
+   * @see #getFormElement()
+   * @generated
+   */
+  EReference getFormElement_SuperType();
 
   /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.FormElement#getLogic <em>Logic</em>}'.
@@ -2774,6 +2911,17 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EAttribute getFormFieldElement_GridWidth();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.FormFieldElement#getSuperType <em>Super Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Super Type</em>'.
+   * @see org.eclipse.scout.saml.saml.FormFieldElement#getSuperType()
+   * @see #getFormFieldElement()
+   * @generated
+   */
+  EReference getFormFieldElement_SuperType();
 
   /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.FormFieldElement#getLogic <em>Logic</em>}'.
@@ -2954,15 +3102,15 @@ public interface SamlPackage extends EPackage
   EReference getSmartfieldElement_Code();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getValueType <em>Value Type</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getValueType <em>Value Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Value Type</em>'.
+   * @return the meta object for the attribute '<em>Value Type</em>'.
    * @see org.eclipse.scout.saml.saml.SmartfieldElement#getValueType()
    * @see #getSmartfieldElement()
    * @generated
    */
-  EReference getSmartfieldElement_ValueType();
+  EAttribute getSmartfieldElement_ValueType();
 
   /**
    * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getLookup <em>Lookup</em>}'.
@@ -2995,17 +3143,6 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EClass getCustomFieldElement();
-
-  /**
-   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.CustomFieldElement#getTemplate <em>Template</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Template</em>'.
-   * @see org.eclipse.scout.saml.saml.CustomFieldElement#getTemplate()
-   * @see #getCustomFieldElement()
-   * @generated
-   */
-  EReference getCustomFieldElement_Template();
 
   /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.CustomFieldElement#getFields <em>Fields</em>}'.
@@ -3103,6 +3240,17 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EReference getMenuElement_Text();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.MenuElement#getSuperType <em>Super Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Super Type</em>'.
+   * @see org.eclipse.scout.saml.saml.MenuElement#getSuperType()
+   * @see #getMenuElement()
+   * @generated
+   */
+  EReference getMenuElement_SuperType();
 
   /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.MenuElement#getLogic <em>Logic</em>}'.
@@ -3564,12 +3712,12 @@ public interface SamlPackage extends EPackage
     EAttribute TEMPLATE_ELEMENT__NAME = eINSTANCE.getTemplateElement_Name();
 
     /**
-     * The meta object literal for the '<em><b>Definition</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Definition</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference TEMPLATE_ELEMENT__DEFINITION = eINSTANCE.getTemplateElement_Definition();
+    EAttribute TEMPLATE_ELEMENT__DEFINITION = eINSTANCE.getTemplateElement_Definition();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.FormElementImpl <em>Form Element</em>}' class.
@@ -3620,6 +3768,14 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EReference FORM_ELEMENT__SUBTITLE = eINSTANCE.getFormElement_Subtitle();
+
+    /**
+     * The meta object literal for the '<em><b>Super Type</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FORM_ELEMENT__SUPER_TYPE = eINSTANCE.getFormElement_SuperType();
 
     /**
      * The meta object literal for the '<em><b>Logic</b></em>' containment reference list feature.
@@ -3718,6 +3874,14 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EAttribute FORM_FIELD_ELEMENT__GRID_WIDTH = eINSTANCE.getFormFieldElement_GridWidth();
+
+    /**
+     * The meta object literal for the '<em><b>Super Type</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FORM_FIELD_ELEMENT__SUPER_TYPE = eINSTANCE.getFormFieldElement_SuperType();
 
     /**
      * The meta object literal for the '<em><b>Logic</b></em>' containment reference list feature.
@@ -3874,12 +4038,12 @@ public interface SamlPackage extends EPackage
     EReference SMARTFIELD_ELEMENT__CODE = eINSTANCE.getSmartfieldElement_Code();
 
     /**
-     * The meta object literal for the '<em><b>Value Type</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Value Type</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference SMARTFIELD_ELEMENT__VALUE_TYPE = eINSTANCE.getSmartfieldElement_ValueType();
+    EAttribute SMARTFIELD_ELEMENT__VALUE_TYPE = eINSTANCE.getSmartfieldElement_ValueType();
 
     /**
      * The meta object literal for the '<em><b>Lookup</b></em>' reference feature.
@@ -3906,14 +4070,6 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EClass CUSTOM_FIELD_ELEMENT = eINSTANCE.getCustomFieldElement();
-
-    /**
-     * The meta object literal for the '<em><b>Template</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CUSTOM_FIELD_ELEMENT__TEMPLATE = eINSTANCE.getCustomFieldElement_Template();
 
     /**
      * The meta object literal for the '<em><b>Fields</b></em>' containment reference list feature.
@@ -3990,6 +4146,14 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EReference MENU_ELEMENT__TEXT = eINSTANCE.getMenuElement_Text();
+
+    /**
+     * The meta object literal for the '<em><b>Super Type</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MENU_ELEMENT__SUPER_TYPE = eINSTANCE.getMenuElement_SuperType();
 
     /**
      * The meta object literal for the '<em><b>Logic</b></em>' containment reference list feature.

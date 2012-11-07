@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.scout.saml.saml.FormFieldElement#getMaster <em>Master</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormFieldElement#getGridHeight <em>Grid Height</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormFieldElement#getGridWidth <em>Grid Width</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.FormFieldElement#getSuperType <em>Super Type</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormFieldElement#getLogic <em>Logic</em>}</li>
  * </ul>
  * </p>
@@ -239,6 +240,32 @@ public interface FormFieldElement extends EObject
    * @generated
    */
   void setGridWidth(int value);
+
+  /**
+   * Returns the value of the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Super Type</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Super Type</em>' reference.
+   * @see #setSuperType(TemplateElement)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getFormFieldElement_SuperType()
+   * @model
+   * @generated
+   */
+  TemplateElement getSuperType();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.FormFieldElement#getSuperType <em>Super Type</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Super Type</em>' reference.
+   * @see #getSuperType()
+   * @generated
+   */
+  void setSuperType(TemplateElement value);
 
   /**
    * Returns the value of the '<em><b>Logic</b></em>' containment reference list.

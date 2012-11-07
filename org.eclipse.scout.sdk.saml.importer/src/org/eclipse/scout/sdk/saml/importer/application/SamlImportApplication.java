@@ -6,6 +6,7 @@ import java.util.LinkedList;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.equinox.app.IApplication;
@@ -14,6 +15,7 @@ import org.eclipse.jdt.core.WorkingCopyOwner;
 import org.eclipse.jdt.internal.ui.JavaPlugin;
 import org.eclipse.scout.sdk.saml.importer.SamlImportHelper;
 import org.eclipse.scout.sdk.saml.importer.internal.SamlImporterActivator;
+import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleEvent;
 import org.osgi.framework.BundleListener;
 
@@ -99,9 +101,17 @@ public class SamlImportApplication implements IApplication {
    * @since 3.8.0 01.11.2012
    */
   private static class InitJdtUiJob extends Job {
+
+    private final static String JDT_UI_PLUGIN_ID = "org.eclipse.jdt.ui";
+
     private InitJdtUiJob() {
       super("init jdt ui plugin");
       setSystem(true);
+    }
+
+    private boolean isJdtUiActive() {
+      Bundle b = Platform.getBundle(JDT_UI_PLUGIN_ID);
+      return b != null && b.getState() == Bundle.ACTIVE;
     }
 
     @Override
@@ -109,9 +119,8 @@ public class SamlImportApplication implements IApplication {
       BundleListener disableUiJavaPluginListener = new BundleListener() {
         @Override
         public void bundleChanged(BundleEvent event) {
-          if (event.getType() == BundleEvent.STARTED && "org.eclipse.jdt.ui".equals(event.getBundle().getSymbolicName())) {
+          if (event.getType() == BundleEvent.STARTED && JDT_UI_PLUGIN_ID.equals(event.getBundle().getSymbolicName())) {
             synchronized (InitJdtUiJob.this) {
-              WorkingCopyOwner.setPrimaryBufferProvider(null); // remove the buffer provider added by jdt.ui again becuase we are running headlessly but require som ui plugins (organize imports)
               InitJdtUiJob.this.notify();
             }
           }
@@ -119,21 +128,20 @@ public class SamlImportApplication implements IApplication {
       };
 
       try {
-        SamlImporterActivator.getContext().addBundleListener(disableUiJavaPluginListener);
-        boolean run = true;
-        while (run) {
-          try {
-            synchronized (this) {
-              JavaPlugin.getDefault(); // ensure jdt.ui is activated
+        synchronized (this) {
+          SamlImporterActivator.getContext().addBundleListener(disableUiJavaPluginListener);
+          boolean jdtNotStarted = !isJdtUiActive();
+          while (jdtNotStarted) {
+            try {
+              JavaPlugin.getDefault(); // trigger jdt.ui activation
               wait(); // wait until the activated event is fired.
+              jdtNotStarted = false;
             }
-            run = false;
+            catch (InterruptedException e) {
+            }
           }
-          catch (InterruptedException e) {
-            run = true;
-          }
+          WorkingCopyOwner.setPrimaryBufferProvider(null); // remove the buffer provider added by jdt.ui again because we are running headlessly but require some ui plugins (organize imports)
         }
-
       }
       finally {
         SamlImporterActivator.getContext().removeBundleListener(disableUiJavaPluginListener);

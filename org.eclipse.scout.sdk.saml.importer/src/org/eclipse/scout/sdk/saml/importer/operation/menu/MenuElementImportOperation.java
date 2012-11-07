@@ -39,12 +39,18 @@ public class MenuElementImportOperation extends AbstractUiElementImportOperation
 
   @Override
   public void run() throws CoreException, IllegalArgumentException {
-    MenuNewOperation operation = new MenuNewOperation(getContainer(), false);
-    operation.setTypeName(getMenuElement().getName() + SdkProperties.SUFFIX_MENU);
-    operation.setSuperTypeSignature(Signature.createTypeSignature(RuntimeClasses.AbstractMenu, true));
-    operation.validate();
-    operation.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
-    IType menu = operation.getCreatedMenu();
+    MenuNewOperation o = new MenuNewOperation(getContainer(), false);
+    o.setTypeName(getMenuElement().getName() + SdkProperties.SUFFIX_MENU);
+
+    String superType = RuntimeClasses.AbstractMenu;
+    if (getMenuElement().getSuperType() != null) {
+      superType = getMenuElement().getSuperType().getDefinition();
+    }
+    o.setSuperTypeSignature(Signature.createTypeSignature(superType, true));
+
+    o.validate();
+    o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
+    IType menu = o.getCreatedMenu();
     ITypeHierarchy h = menu.newSupertypeHierarchy(getSamlContext().getMonitor());
 
     applyEnabledAttribute(getMenuElement().getEnabled(), menu, h);

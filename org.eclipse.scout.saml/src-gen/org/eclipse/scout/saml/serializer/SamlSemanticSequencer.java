@@ -1111,6 +1111,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         processButton=BooleanType? 
 	 *         gridHeight=INT? 
 	 *         gridWidth=INT? 
+	 *         superType=[TemplateElement|ID]? 
 	 *         (logic+=LogicElement | menus+=MenuElement)*
 	 *     )
 	 */
@@ -1158,7 +1159,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         name=ID 
-	 *         template=[TemplateElement|ID] 
+	 *         superType=[TemplateElement|ID]? 
 	 *         text=[TranslationElement|ID]? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
@@ -1186,6 +1187,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         mandatory=BooleanType? 
 	 *         gridHeight=INT? 
 	 *         gridWidth=INT? 
+	 *         superType=[TemplateElement|ID]? 
 	 *         logic+=LogicElement*
 	 *     )
 	 */
@@ -1206,6 +1208,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         mandatory=BooleanType? 
 	 *         gridHeight=INT? 
 	 *         gridWidth=INT? 
+	 *         superType=[TemplateElement|ID]? 
 	 *         logic+=LogicElement*
 	 *     )
 	 */
@@ -1222,6 +1225,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         columns=INT? 
 	 *         title=[TranslationElement|ID]? 
 	 *         subtitle=[TranslationElement|ID]? 
+	 *         superType=[TemplateElement|ID]? 
 	 *         (logic+=LogicElement | fields+=FormFieldElement | keyStrokes+=KeyElement)*
 	 *     )
 	 */
@@ -1244,6 +1248,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         master=[ValueFieldElement|ID]? 
 	 *         gridHeight=INT? 
 	 *         gridWidth=INT? 
+	 *         superType=[TemplateElement|ID]? 
 	 *         (logic+=LogicElement | fields+=FormFieldElement)*
 	 *     )
 	 */
@@ -1317,6 +1322,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         mandatory=BooleanType? 
 	 *         gridHeight=INT? 
 	 *         gridWidth=INT? 
+	 *         superType=[TemplateElement|ID]? 
 	 *         logic+=LogicElement*
 	 *     )
 	 */
@@ -1336,7 +1342,14 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=ID enabled=BooleanType? visible=BooleanType? text=[TranslationElement|ID]? logic+=LogicElement*)
+	 *     (
+	 *         name=ID 
+	 *         enabled=BooleanType? 
+	 *         visible=BooleanType? 
+	 *         text=[TranslationElement|ID]? 
+	 *         superType=[TemplateElement|ID]? 
+	 *         logic+=LogicElement*
+	 *     )
 	 */
 	protected void sequence_MenuElement(EObject context, MenuElement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1383,6 +1396,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         master=[ValueFieldElement|ID]? 
 	 *         gridHeight=INT? 
 	 *         gridWidth=INT? 
+	 *         superType=[TemplateElement|ID]? 
 	 *         (logic+=LogicElement | fields+=FormFieldElement)*
 	 *     )
 	 */
@@ -1402,10 +1416,11 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         master=[ValueFieldElement|ID]? 
 	 *         mandatory=BooleanType? 
 	 *         code=[CodeElement|ID]? 
-	 *         valueType=JvmTypeReference? 
+	 *         valueType=STRING? 
 	 *         lookup=[LookupElement|ID]? 
 	 *         gridHeight=INT? 
 	 *         gridWidth=INT? 
+	 *         superType=[TemplateElement|ID]? 
 	 *         (logic+=LogicElement | menus+=MenuElement)*
 	 *     )
 	 */
@@ -1427,6 +1442,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         maxlen=INT? 
 	 *         gridHeight=INT? 
 	 *         gridWidth=INT? 
+	 *         superType=[TemplateElement|ID]? 
 	 *         logic+=LogicElement*
 	 *     )
 	 */
@@ -1446,6 +1462,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         labelVisible=BooleanType? 
 	 *         gridHeight=INT? 
 	 *         gridWidth=INT? 
+	 *         superType=[TemplateElement|ID]? 
 	 *         (logic+=LogicElement | menus+=MenuElement | columns+=ColumnElement)*
 	 *     )
 	 */
@@ -1456,7 +1473,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=ID definition=JvmTypeReference)
+	 *     (name=ID definition=STRING)
 	 */
 	protected void sequence_TemplateElement(EObject context, TemplateElement semanticObject) {
 		if(errorAcceptor != null) {
@@ -1468,7 +1485,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getTemplateElementAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getTemplateElementAccess().getDefinitionJvmTypeReferenceParserRuleCall_4_0(), semanticObject.getDefinition());
+		feeder.accept(grammarAccess.getTemplateElementAccess().getDefinitionSTRINGTerminalRuleCall_4_0(), semanticObject.getDefinition());
 		feeder.finish();
 	}
 	

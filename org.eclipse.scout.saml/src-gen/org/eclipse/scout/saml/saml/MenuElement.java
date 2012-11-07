@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.scout.saml.saml.MenuElement#getEnabled <em>Enabled</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.MenuElement#getVisible <em>Visible</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.MenuElement#getText <em>Text</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.MenuElement#getSuperType <em>Super Type</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.MenuElement#getLogic <em>Logic</em>}</li>
  * </ul>
  * </p>
@@ -131,6 +132,32 @@ public interface MenuElement extends EObject
    * @generated
    */
   void setText(TranslationElement value);
+
+  /**
+   * Returns the value of the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Super Type</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Super Type</em>' reference.
+   * @see #setSuperType(TemplateElement)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getMenuElement_SuperType()
+   * @model
+   * @generated
+   */
+  TemplateElement getSuperType();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.MenuElement#getSuperType <em>Super Type</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Super Type</em>' reference.
+   * @see #getSuperType()
+   * @generated
+   */
+  void setSuperType(TemplateElement value);
 
   /**
    * Returns the value of the '<em><b>Logic</b></em>' containment reference list.

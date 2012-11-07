@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.saml.saml.MenuElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
+import org.eclipse.scout.saml.saml.TemplateElement;
 import org.eclipse.scout.saml.saml.TranslationElement;
 
 /**
@@ -34,6 +35,7 @@ import org.eclipse.scout.saml.saml.TranslationElement;
  *   <li>{@link org.eclipse.scout.saml.saml.impl.MenuElementImpl#getEnabled <em>Enabled</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.MenuElementImpl#getVisible <em>Visible</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.MenuElementImpl#getText <em>Text</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.MenuElementImpl#getSuperType <em>Super Type</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.MenuElementImpl#getLogic <em>Logic</em>}</li>
  * </ul>
  * </p>
@@ -111,6 +113,16 @@ public class MenuElementImpl extends MinimalEObjectImpl.Container implements Men
    * @ordered
    */
   protected TranslationElement text;
+
+  /**
+   * The cached value of the '{@link #getSuperType() <em>Super Type</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSuperType()
+   * @generated
+   * @ordered
+   */
+  protected TemplateElement superType;
 
   /**
    * The cached value of the '{@link #getLogic() <em>Logic</em>}' containment reference list.
@@ -260,6 +272,49 @@ public class MenuElementImpl extends MinimalEObjectImpl.Container implements Men
    * <!-- end-user-doc -->
    * @generated
    */
+  public TemplateElement getSuperType()
+  {
+    if (superType != null && superType.eIsProxy())
+    {
+      InternalEObject oldSuperType = (InternalEObject)superType;
+      superType = (TemplateElement)eResolveProxy(oldSuperType);
+      if (superType != oldSuperType)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SamlPackage.MENU_ELEMENT__SUPER_TYPE, oldSuperType, superType));
+      }
+    }
+    return superType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TemplateElement basicGetSuperType()
+  {
+    return superType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSuperType(TemplateElement newSuperType)
+  {
+    TemplateElement oldSuperType = superType;
+    superType = newSuperType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.MENU_ELEMENT__SUPER_TYPE, oldSuperType, superType));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<LogicElement> getLogic()
   {
     if (logic == null)
@@ -304,6 +359,9 @@ public class MenuElementImpl extends MinimalEObjectImpl.Container implements Men
       case SamlPackage.MENU_ELEMENT__TEXT:
         if (resolve) return getText();
         return basicGetText();
+      case SamlPackage.MENU_ELEMENT__SUPER_TYPE:
+        if (resolve) return getSuperType();
+        return basicGetSuperType();
       case SamlPackage.MENU_ELEMENT__LOGIC:
         return getLogic();
     }
@@ -332,6 +390,9 @@ public class MenuElementImpl extends MinimalEObjectImpl.Container implements Men
         return;
       case SamlPackage.MENU_ELEMENT__TEXT:
         setText((TranslationElement)newValue);
+        return;
+      case SamlPackage.MENU_ELEMENT__SUPER_TYPE:
+        setSuperType((TemplateElement)newValue);
         return;
       case SamlPackage.MENU_ELEMENT__LOGIC:
         getLogic().clear();
@@ -363,6 +424,9 @@ public class MenuElementImpl extends MinimalEObjectImpl.Container implements Men
       case SamlPackage.MENU_ELEMENT__TEXT:
         setText((TranslationElement)null);
         return;
+      case SamlPackage.MENU_ELEMENT__SUPER_TYPE:
+        setSuperType((TemplateElement)null);
+        return;
       case SamlPackage.MENU_ELEMENT__LOGIC:
         getLogic().clear();
         return;
@@ -388,6 +452,8 @@ public class MenuElementImpl extends MinimalEObjectImpl.Container implements Men
         return VISIBLE_EDEFAULT == null ? visible != null : !VISIBLE_EDEFAULT.equals(visible);
       case SamlPackage.MENU_ELEMENT__TEXT:
         return text != null;
+      case SamlPackage.MENU_ELEMENT__SUPER_TYPE:
+        return superType != null;
       case SamlPackage.MENU_ELEMENT__LOGIC:
         return logic != null && !logic.isEmpty();
     }

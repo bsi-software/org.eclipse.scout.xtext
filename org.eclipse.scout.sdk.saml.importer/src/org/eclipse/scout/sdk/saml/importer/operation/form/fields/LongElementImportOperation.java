@@ -12,6 +12,7 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.LongElement;
 import org.eclipse.scout.sdk.operation.form.field.LongFieldNewOperation;
@@ -45,6 +46,9 @@ public class LongElementImportOperation extends AbstractValueFieldElementImportO
     o.setFormatSource(false);
     o.setSibling(getDefaultSibling());
     o.setTypeName(getLongElement().getName() + getFieldSuffix());
+    if (getLongElement().getSuperType() != null) {
+      o.setSuperTypeSignature(Signature.createTypeSignature(getLongElement().getSuperType().getDefinition(), true));
+    }
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
 

@@ -48,7 +48,13 @@ public class TableElementImportOperation extends AbstractFormFieldElementOperati
   public void run() throws CoreException, IllegalArgumentException {
     TableFieldNewOperation o = new TableFieldNewOperation(getSamlFormContext().getCurrentParentBox());
     o.setFormatSource(false);
-    o.setSuperTypeSignature(Signature.createTypeSignature(RuntimeClasses.AbstractTableField, true));
+
+    String superType = RuntimeClasses.AbstractTableField;
+    if (getTableFieldElement().getSuperType() != null) {
+      superType = getTableFieldElement().getSuperType().getDefinition();
+    }
+    o.setSuperTypeSignature(Signature.createTypeSignature(superType, true));
+
     o.setTypeName(getTableFieldElement().getName() + getFieldSuffix());
     o.setSibling(getDefaultSibling());
     o.validate();

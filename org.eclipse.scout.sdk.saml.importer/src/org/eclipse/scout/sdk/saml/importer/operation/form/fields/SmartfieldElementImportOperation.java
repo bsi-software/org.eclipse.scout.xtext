@@ -47,7 +47,7 @@ public class SmartfieldElementImportOperation extends AbstractValueFieldElementI
 
   private String getValueType() {
     if (getSmartfieldElement().getValueType() != null) {
-      return getSmartfieldElement().getValueType().getQualifiedName();
+      return getSmartfieldElement().getValueType();
     }
     return Object.class.getName();
   }
@@ -58,6 +58,9 @@ public class SmartfieldElementImportOperation extends AbstractValueFieldElementI
     o.setTypeName(getSmartfieldElement().getName() + getFieldSuffix());
     o.setSuperTypeSignature(Signature.createTypeSignature(RuntimeClasses.AbstractSmartField + "<" + getValueType() + ">", true));
     o.setSibling(getDefaultSibling());
+    if (getSmartfieldElement().getSuperType() != null) {
+      o.setSuperTypeSignature(Signature.createTypeSignature(getSmartfieldElement().getSuperType().getDefinition(), true));
+    }
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
     IType createdField = o.getCreatedField();

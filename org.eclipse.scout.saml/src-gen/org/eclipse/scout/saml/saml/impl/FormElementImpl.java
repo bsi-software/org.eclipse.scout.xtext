@@ -23,6 +23,7 @@ import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.KeyElement;
 import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
+import org.eclipse.scout.saml.saml.TemplateElement;
 import org.eclipse.scout.saml.saml.TranslationElement;
 
 /**
@@ -37,6 +38,7 @@ import org.eclipse.scout.saml.saml.TranslationElement;
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getColumns <em>Columns</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getSubtitle <em>Subtitle</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getSuperType <em>Super Type</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getLogic <em>Logic</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getFields <em>Fields</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getKeyStrokes <em>Key Strokes</em>}</li>
@@ -126,6 +128,16 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
    * @ordered
    */
   protected TranslationElement subtitle;
+
+  /**
+   * The cached value of the '{@link #getSuperType() <em>Super Type</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSuperType()
+   * @generated
+   * @ordered
+   */
+  protected TemplateElement superType;
 
   /**
    * The cached value of the '{@link #getLogic() <em>Logic</em>}' containment reference list.
@@ -338,6 +350,49 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
    * <!-- end-user-doc -->
    * @generated
    */
+  public TemplateElement getSuperType()
+  {
+    if (superType != null && superType.eIsProxy())
+    {
+      InternalEObject oldSuperType = (InternalEObject)superType;
+      superType = (TemplateElement)eResolveProxy(oldSuperType);
+      if (superType != oldSuperType)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SamlPackage.FORM_ELEMENT__SUPER_TYPE, oldSuperType, superType));
+      }
+    }
+    return superType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TemplateElement basicGetSuperType()
+  {
+    return superType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSuperType(TemplateElement newSuperType)
+  {
+    TemplateElement oldSuperType = superType;
+    superType = newSuperType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.FORM_ELEMENT__SUPER_TYPE, oldSuperType, superType));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<LogicElement> getLogic()
   {
     if (logic == null)
@@ -417,6 +472,9 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
       case SamlPackage.FORM_ELEMENT__SUBTITLE:
         if (resolve) return getSubtitle();
         return basicGetSubtitle();
+      case SamlPackage.FORM_ELEMENT__SUPER_TYPE:
+        if (resolve) return getSuperType();
+        return basicGetSuperType();
       case SamlPackage.FORM_ELEMENT__LOGIC:
         return getLogic();
       case SamlPackage.FORM_ELEMENT__FIELDS:
@@ -452,6 +510,9 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
         return;
       case SamlPackage.FORM_ELEMENT__SUBTITLE:
         setSubtitle((TranslationElement)newValue);
+        return;
+      case SamlPackage.FORM_ELEMENT__SUPER_TYPE:
+        setSuperType((TemplateElement)newValue);
         return;
       case SamlPackage.FORM_ELEMENT__LOGIC:
         getLogic().clear();
@@ -494,6 +555,9 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
       case SamlPackage.FORM_ELEMENT__SUBTITLE:
         setSubtitle((TranslationElement)null);
         return;
+      case SamlPackage.FORM_ELEMENT__SUPER_TYPE:
+        setSuperType((TemplateElement)null);
+        return;
       case SamlPackage.FORM_ELEMENT__LOGIC:
         getLogic().clear();
         return;
@@ -527,6 +591,8 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
         return title != null;
       case SamlPackage.FORM_ELEMENT__SUBTITLE:
         return subtitle != null;
+      case SamlPackage.FORM_ELEMENT__SUPER_TYPE:
+        return superType != null;
       case SamlPackage.FORM_ELEMENT__LOGIC:
         return logic != null && !logic.isEmpty();
       case SamlPackage.FORM_ELEMENT__FIELDS:

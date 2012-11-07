@@ -200,7 +200,7 @@ form Rka001_gen modal=true title=KOEmission subtitle=DIALBA2020 {
 		}
 	}
 	
-	custom_field ZregBox template=zreg_sequence_box text=Zentralregister {
+	custom_field ZregBox super_type=zreg_sequence_box text=Zentralregister {
 		logic event=init placement=client {
 			"System.out.println(\"init zregboxfield\");"
 		}
