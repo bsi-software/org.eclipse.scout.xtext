@@ -33,12 +33,14 @@ public class SamlContext {
   private final Injector m_injector;
   private final HashSet<String> m_modifiedMethods;
   private final SamlGrammarAccess m_grammarAccess;
+  private final IScoutProject m_rootProject;
   private IScoutProject m_currentScoutModule;
 
-  public SamlContext(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, Injector injector) {
+  public SamlContext(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, Injector injector, IScoutProject rootProject) {
     m_monitor = monitor;
     m_workingCopyManager = workingCopyManager;
     m_injector = injector;
+    m_rootProject = rootProject;
     m_grammarAccess = m_injector.getInstance(SamlGrammarAccess.class);
     m_modifiedMethods = new HashSet<String>();
   }
@@ -79,5 +81,9 @@ public class SamlContext {
 
   public SamlGrammarAccess getGrammarAccess() {
     return m_grammarAccess;
+  }
+
+  public IScoutProject getRootProject() {
+    return m_rootProject;
   }
 }

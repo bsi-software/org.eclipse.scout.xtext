@@ -4,8 +4,12 @@ import java.io.File;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import org.eclipse.core.resources.IMarker;
+import org.eclipse.core.resources.IncrementalProjectBuilder;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
@@ -13,8 +17,12 @@ import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.jdt.core.WorkingCopyOwner;
 import org.eclipse.jdt.internal.ui.JavaPlugin;
+import org.eclipse.scout.sdk.jobs.OperationJob;
 import org.eclipse.scout.sdk.saml.importer.SamlImportHelper;
 import org.eclipse.scout.sdk.saml.importer.internal.SamlImporterActivator;
+import org.eclipse.scout.sdk.saml.importer.operation.util.ExternalProjectImportOperation;
+import org.eclipse.scout.sdk.util.ScoutSeverityManager;
+import org.eclipse.scout.sdk.util.jdt.JdtUtility;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleEvent;
 import org.osgi.framework.BundleListener;
@@ -58,7 +66,28 @@ public class SamlImportApplication implements IApplication {
     j.join();
     SamlImporterActivator.logInfo("JDT plugin ready.");
 
-    SamlImportHelper.importSamlSync(getSamlInputRootDirectory());
+    SamlImporterActivator.logInfo("Importing all projects into workspace.");
+    ExternalProjectImportOperation impProjOp = new ExternalProjectImportOperation();
+    impProjOp.setFolder(ResourcesPlugin.getWorkspace().getRoot().getLocation().toFile());
+    OperationJob oj = new OperationJob(impProjOp);
+    oj.schedule();
+    oj.join();
+    SamlImporterActivator.logInfo("Project import finished.");
+
+    SamlImporterActivator.logInfo("Compiling initial workspace.");
+    ResourcesPlugin.getWorkspace().checkpoint(false);
+    ResourcesPlugin.getWorkspace().build(IncrementalProjectBuilder.CLEAN_BUILD, new NullProgressMonitor());
+    ResourcesPlugin.getWorkspace().build(IncrementalProjectBuilder.FULL_BUILD, new NullProgressMonitor());
+    JdtUtility.waitForSilentWorkspace();
+    SamlImporterActivator.logInfo("Compilation finished.");
+
+    int severity = ScoutSeverityManager.getInstance().getSeverityOf(ResourcesPlugin.getWorkspace().getRoot());
+    if (severity < IMarker.SEVERITY_ERROR) {
+      SamlImportHelper.importSamlSync(getSamlInputRootDirectory());
+    }
+    else {
+      SamlImporterActivator.logError("SAML import aborted because the initial workspace contains compile errors.");
+    }
 
     SamlImporterActivator.logInfo("SAML import application finished.");
     return EXIT_OK;

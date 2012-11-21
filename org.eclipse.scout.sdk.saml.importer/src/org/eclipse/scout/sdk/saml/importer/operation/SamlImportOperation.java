@@ -17,10 +17,7 @@ import org.eclipse.scout.commons.FileUtility;
 import org.eclipse.scout.saml.SamlStandaloneSetup;
 import org.eclipse.scout.saml.saml.CodeElement;
 import org.eclipse.scout.saml.saml.FormElement;
-import org.eclipse.scout.saml.saml.ImportElement;
 import org.eclipse.scout.saml.saml.LookupElement;
-import org.eclipse.scout.saml.saml.ModuleElement;
-import org.eclipse.scout.saml.saml.TemplateElement;
 import org.eclipse.scout.saml.saml.TranslationElement;
 import org.eclipse.scout.sdk.operation.IOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.codetype.CodeElementImportOperation;
@@ -42,7 +39,6 @@ public class SamlImportOperation implements IOperation {
 
   private File m_samlRootDirectory;
   private IScoutProject m_scoutRootProject;
-  private IScoutProject m_currentModuleProject;
   private SamlContext m_context;
   private Injector m_injector;
 
@@ -95,24 +91,51 @@ public class SamlImportOperation implements IOperation {
         throw new IllegalArgumentException(sb.toString());
       }
       else {
-        m_context = new SamlContext(monitor, workingCopyManager, getInjector());
+        m_context = new SamlContext(monitor, workingCopyManager, getInjector(), getScoutRootProject());
 
-        for (Resource r : resourceSet.getResources()) {
-          EList<EObject> contents = r.getContents();
-          for (EObject content : contents) {
-            for (EObject root : content.eContents()) {
-              if (monitor.isCanceled()) {
-                return;
-              }
-              dispatchRootElement(monitor, workingCopyManager, root, getSamlContext());
-            }
-          }
+        // 1. all translations over all files
+        visitRootElements(monitor, workingCopyManager, resourceSet, new TranslationElementVisitor());
+        if (monitor.isCanceled()) {
+          return;
         }
+
+        // 2. all codes over all files
+        visitRootElements(monitor, workingCopyManager, resourceSet, new CodeElementVisitor());
+        if (monitor.isCanceled()) {
+          return;
+        }
+
+        // 3. all lookups over all files
+        visitRootElements(monitor, workingCopyManager, resourceSet, new LookupElementVisitor());
+        if (monitor.isCanceled()) {
+          return;
+        }
+
+        // 4. all forms over all files
+        visitRootElements(monitor, workingCopyManager, resourceSet, new FormElementVisitor());
+        if (monitor.isCanceled()) {
+          return;
+        }
+
         ResourcesPlugin.getWorkspace().checkpoint(false);
       }
     }
     catch (IOException e) {
       throw new IllegalArgumentException(e);
+    }
+  }
+
+  private void visitRootElements(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, XtextResourceSet resourcesToVisit, IRootElementVisitor visitor) throws IllegalArgumentException, CoreException {
+    for (Resource r : resourcesToVisit.getResources()) {
+      EList<EObject> contents = r.getContents();
+      for (EObject model : contents) {
+        for (EObject root : model.eContents()) {
+          if (monitor.isCanceled()) {
+            return;
+          }
+          visitor.visit(monitor, workingCopyManager, root, getSamlContext());
+        }
+      }
     }
   }
 
@@ -127,88 +150,12 @@ public class SamlImportOperation implements IOperation {
     return allFiles.toArray(new File[allFiles.size()]);
   }
 
-  private void dispatchRootElement(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, EObject o, SamlContext context) throws CoreException, IllegalArgumentException {
-    AbstractSamlElementImportOperation op = null;
-    if (o instanceof ModuleElement) {
-      ModuleElement mod = (ModuleElement) o;
-      String moduleName = mod.getName();
-      IScoutProject curModule = findScoutProjectRec(getScoutRootProject(), moduleName);
-      if (curModule == null) {
-        throw new IllegalArgumentException("module '" + moduleName + "' could not be found.");
-      }
-      else {
-        setCurrentModuleProject(curModule);
-      }
-    }
-    else if (o instanceof TranslationElement) {
-      TranslationElementImportOperation teio = new TranslationElementImportOperation();
-      teio.setTranslationElement((TranslationElement) o);
-      op = teio;
-    }
-    else if (o instanceof CodeElement) {
-      CodeElementImportOperation ceio = new CodeElementImportOperation();
-      ceio.setCodeElement((CodeElement) o);
-      op = ceio;
-    }
-    else if (o instanceof LookupElement) {
-      LookupElementImportOperation leio = new LookupElementImportOperation();
-      leio.setLookupElement((LookupElement) o);
-      op = leio;
-    }
-    else if (o instanceof TemplateElement) {
-      //nop. will then be used by the custom_field which references the template
-    }
-    else if (o instanceof FormElement) {
-      FormElementImportOperation feio = new FormElementImportOperation();
-      feio.setFormElement((FormElement) o);
-      op = feio;
-    }
-    else if (o instanceof ImportElement) {
-      //nop
-    }
-    else {
-      throw new IllegalArgumentException("Unknown EObject type: " + o);
-    }
-
-    if (op != null) {
-      context.setCurrentScoutModule(getCurrentModuleProject());
-      op.setSamlContext(context);
-      op.validate();
-      op.run(monitor, workingCopyManager);
-    }
-  }
-
-  private IScoutProject findScoutProjectRec(IScoutProject parent, String searchName) {
-    if (parent.getProjectName().equals(searchName)) {
-      return parent;
-    }
-    for (IScoutProject child : parent.getSubProjects()) {
-      IScoutProject result = findScoutProjectRec(child, searchName);
-      if (result != null) {
-        return result;
-      }
-    }
-    return null;
-  }
-
-  private IScoutProject getCurrentModuleProject() {
-    return m_currentModuleProject;
-  }
-
-  private void setCurrentModuleProject(IScoutProject currentModuleProject) {
-    m_currentModuleProject = currentModuleProject;
-  }
-
   public IScoutProject getScoutRootProject() {
     return m_scoutRootProject;
   }
 
   public void setScoutRootProject(IScoutProject scoutRootProject) {
     m_scoutRootProject = scoutRootProject;
-    if (getCurrentModuleProject() == null) {
-      // if there is no module set: initially set it to the root project. 
-      setCurrentModuleProject(scoutRootProject);
-    }
   }
 
   public SamlContext getSamlContext() {
@@ -229,5 +176,57 @@ public class SamlImportOperation implements IOperation {
 
   public void setInjector(Injector injector) {
     m_injector = injector;
+  }
+
+  private static class TranslationElementVisitor extends AbstractRootElementVisitor<TranslationElement> {
+    private TranslationElementVisitor() {
+      super(TranslationElement.class);
+    }
+
+    @Override
+    protected ISamlElementImportOperation prepareOperation(TranslationElement element) {
+      TranslationElementImportOperation teio = new TranslationElementImportOperation();
+      teio.setTranslationElement(element);
+      return teio;
+    }
+  }
+
+  private static class CodeElementVisitor extends AbstractRootElementVisitor<CodeElement> {
+    private CodeElementVisitor() {
+      super(CodeElement.class);
+    }
+
+    @Override
+    protected ISamlElementImportOperation prepareOperation(CodeElement element) {
+      CodeElementImportOperation ceio = new CodeElementImportOperation();
+      ceio.setCodeElement(element);
+      return ceio;
+    }
+  }
+
+  private static class LookupElementVisitor extends AbstractRootElementVisitor<LookupElement> {
+    private LookupElementVisitor() {
+      super(LookupElement.class);
+    }
+
+    @Override
+    protected ISamlElementImportOperation prepareOperation(LookupElement element) {
+      LookupElementImportOperation leio = new LookupElementImportOperation();
+      leio.setLookupElement(element);
+      return leio;
+    }
+  }
+
+  private static class FormElementVisitor extends AbstractRootElementVisitor<FormElement> {
+    private FormElementVisitor() {
+      super(FormElement.class);
+    }
+
+    @Override
+    protected ISamlElementImportOperation prepareOperation(FormElement element) {
+      FormElementImportOperation feio = new FormElementImportOperation();
+      feio.setFormElement(element);
+      return feio;
+    }
   }
 }
