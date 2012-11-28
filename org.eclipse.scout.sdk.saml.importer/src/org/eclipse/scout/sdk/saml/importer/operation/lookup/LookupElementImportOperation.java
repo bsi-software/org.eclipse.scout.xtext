@@ -12,7 +12,6 @@ package org.eclipse.scout.sdk.saml.importer.operation.lookup;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
-import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.saml.saml.LookupElement;
 import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.lookupcall.LookupCallNewOperation;
@@ -21,6 +20,7 @@ import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOp
 import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
 import org.eclipse.scout.sdk.saml.importer.operation.logic.SamlLogicFillOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
+import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
 import org.eclipse.scout.sdk.util.type.TypeUtility;
 import org.eclipse.scout.sdk.workspace.IScoutBundle;
 
@@ -62,7 +62,7 @@ public class LookupElementImportOperation extends AbstractSamlElementImportOpera
     op.setInterfaceRegistrationBundle(getCurrentScoutModule().getClientBundle());
     op.setImplementationRegistrationBundle(getCurrentScoutModule().getServerBundle());
     op.setServiceImplementationBundle(getCurrentScoutModule().getServerBundle());
-    op.setServiceSuperTypeSignature(Signature.createTypeSignature(RuntimeClasses.AbstractLookupService, true));
+    op.setServiceSuperTypeSignature(SignatureCache.createTypeSignature(RuntimeClasses.AbstractLookupService));
     op.validate();
     op.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
 

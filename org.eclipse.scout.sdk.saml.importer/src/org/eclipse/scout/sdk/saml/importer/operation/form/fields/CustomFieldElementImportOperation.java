@@ -13,11 +13,11 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
-import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.saml.saml.CustomFieldElement;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.sdk.operation.form.field.FormFieldNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
+import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
 
 /**
  * <h3>{@link CustomFieldElementImportOperation}</h3> ...
@@ -47,7 +47,7 @@ public class CustomFieldElementImportOperation extends AbstractFormFieldElementO
 
     FormFieldNewOperation o = new FormFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getCustomFieldElement().getName() + getFieldSuffix());
-    o.setSuperTypeSignature(Signature.createTypeSignature(superClass, true));
+    o.setSuperTypeSignature(SignatureCache.createTypeSignature(superClass));
     o.setSiblingField(getDefaultSibling());
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());

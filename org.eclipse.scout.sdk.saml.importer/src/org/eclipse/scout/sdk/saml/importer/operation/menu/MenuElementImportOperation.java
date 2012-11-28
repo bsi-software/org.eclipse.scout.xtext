@@ -15,7 +15,6 @@ import java.util.List;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
-import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.saml.saml.MenuElement;
 import org.eclipse.scout.saml.saml.TranslationElement;
 import org.eclipse.scout.sdk.RuntimeClasses;
@@ -24,6 +23,7 @@ import org.eclipse.scout.sdk.saml.importer.operation.form.AbstractUiElementImpor
 import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
 import org.eclipse.scout.sdk.saml.importer.operation.logic.SamlLogicFillOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
+import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
 
 /**
  * <h3>{@link MenuElementImportOperation}</h3> ...
@@ -42,11 +42,11 @@ public class MenuElementImportOperation extends AbstractUiElementImportOperation
     MenuNewOperation o = new MenuNewOperation(getContainer(), false);
     o.setTypeName(getMenuElement().getName() + SdkProperties.SUFFIX_MENU);
 
-    String superType = RuntimeClasses.AbstractMenu;
+    String superType = RuntimeClasses.getSuperTypeName(RuntimeClasses.IMenu, getSamlContext().getRootProject());
     if (getMenuElement().getSuperType() != null) {
       superType = getMenuElement().getSuperType().getDefinition();
     }
-    o.setSuperTypeSignature(Signature.createTypeSignature(superType, true));
+    o.setSuperTypeSignature(SignatureCache.createTypeSignature(superType));
 
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());

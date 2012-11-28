@@ -13,12 +13,12 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
-import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.saml.saml.ButtonElement;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.sdk.operation.form.field.ButtonFieldNewOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.menu.MenuElementImportOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
+import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
 
 /**
  * <h3>{@link ButtonElementImportOperation}</h3> ...
@@ -54,7 +54,7 @@ public class ButtonElementImportOperation extends AbstractFormFieldElementOperat
     o.setTypeName(getButtonElement().getName() + getFieldSuffix());
     o.setSibling(getDefaultSibling());
     if (getButtonElement().getSuperType() != null) {
-      o.setSuperTypeSignature(Signature.createTypeSignature(getButtonElement().getSuperType().getDefinition(), true));
+      o.setSuperTypeSignature(SignatureCache.createTypeSignature(getButtonElement().getSuperType().getDefinition()));
     }
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());

@@ -22,13 +22,13 @@ import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.scout.sdk.internal.ScoutSdk;
-import org.eclipse.scout.sdk.internal.workspace.ScoutProject;
 import org.eclipse.scout.sdk.internal.workspace.ScoutWorkspace;
 import org.eclipse.scout.sdk.jobs.OperationJob;
 import org.eclipse.scout.sdk.operation.form.formdata.FormDataAutoUpdater;
 import org.eclipse.scout.sdk.saml.importer.internal.SamlImporterActivator;
 import org.eclipse.scout.sdk.saml.importer.operation.SamlImportOperation;
 import org.eclipse.scout.sdk.util.jdt.JdtUtility;
+import org.eclipse.scout.sdk.workspace.IScoutProject;
 
 /**
  * <h3>{@link SamlImportHelper}</h3> ...
@@ -48,7 +48,7 @@ public class SamlImportHelper {
   }
 
   private static void doImport(File samlInputDirectory, final boolean sync) throws IllegalArgumentException {
-    ScoutProject[] roots = ScoutWorkspace.getInstance().getRootProjects();
+    IScoutProject[] roots = ScoutWorkspace.getInstance().getRootProjects();
     if (roots == null || roots.length != 1) {
       throw new IllegalArgumentException("the running workspace must contain exactly one scout project");
     }

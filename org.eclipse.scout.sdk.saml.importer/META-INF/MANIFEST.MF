@@ -13,6 +13,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.scout.sdk.saml.importer,
  org.eclipse.scout.sdk.saml.importer.application,
  org.eclipse.scout.sdk.saml.importer.extension,
+ org.eclipse.scout.sdk.saml.importer.extension.customization,
  org.eclipse.scout.sdk.saml.importer.operation,
  org.eclipse.scout.sdk.saml.importer.operation.codetype,
  org.eclipse.scout.sdk.saml.importer.operation.column,
@@ -21,8 +22,10 @@ Export-Package: org.eclipse.scout.sdk.saml.importer,
  org.eclipse.scout.sdk.saml.importer.operation.form.fields.container,
  org.eclipse.scout.sdk.saml.importer.operation.key,
  org.eclipse.scout.sdk.saml.importer.operation.logic,
+ org.eclipse.scout.sdk.saml.importer.operation.logic.fragments,
  org.eclipse.scout.sdk.saml.importer.operation.lookup,
  org.eclipse.scout.sdk.saml.importer.operation.menu,
  org.eclipse.scout.sdk.saml.importer.operation.nls,
+ org.eclipse.scout.sdk.saml.importer.operation.util,
  org.eclipse.scout.sdk.saml.importer.util
 Bundle-Vendor: Eclipse Scout Project

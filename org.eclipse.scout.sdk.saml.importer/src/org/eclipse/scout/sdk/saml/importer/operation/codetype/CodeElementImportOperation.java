@@ -12,13 +12,13 @@ package org.eclipse.scout.sdk.saml.importer.operation.codetype;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
-import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.saml.saml.CodeElement;
 import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.CodeTypeNewOperation;
 import org.eclipse.scout.sdk.operation.util.TypeDeleteOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
+import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
 import org.eclipse.scout.sdk.util.type.TypeUtility;
 import org.eclipse.scout.sdk.workspace.IScoutBundle;
 
@@ -46,7 +46,10 @@ public class CodeElementImportOperation extends AbstractSamlElementImportOperati
 
   @Override
   public void run() throws CoreException, IllegalArgumentException {
-    String superSignature = Signature.createTypeSignature(RuntimeClasses.AbstractCodeType + "<" + Integer.class.getName() + ">", true);
+    String genericTypeFqn = Integer.class.getName();
+    String superTypeName = RuntimeClasses.getSuperTypeName(RuntimeClasses.ICodeType, getSamlContext().getRootProject());
+    String superSignature = SignatureCache.createTypeSignature(superTypeName + "<" + genericTypeFqn + ">");
+
     IScoutBundle sharedBundle = getCurrentScoutModule().getSharedBundle();
     String name = getCodeElement().getName() + SdkProperties.SUFFIX_CODE_TYPE;
 
@@ -57,7 +60,7 @@ public class CodeElementImportOperation extends AbstractSamlElementImportOperati
     ctno.setNextCodeId("" + getCodeElement().getId());
     ctno.setSharedBundle(sharedBundle);
     ctno.setSuperTypeSignature(superSignature);
-    ctno.setGenericTypeSignature(Signature.createTypeSignature(Integer.class.getName(), true));
+    ctno.setGenericTypeSignature(SignatureCache.createTypeSignature(genericTypeFqn));
     ctno.setTypeName(name);
     ctno.validate();
     ctno.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());

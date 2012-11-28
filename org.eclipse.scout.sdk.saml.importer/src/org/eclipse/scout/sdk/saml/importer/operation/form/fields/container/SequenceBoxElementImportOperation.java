@@ -12,11 +12,11 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields.container;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
-import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.SequenceBoxElement;
 import org.eclipse.scout.sdk.operation.form.field.SequenceBoxNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
+import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
 
 /**
  * <h3>{@link SequenceBoxElementImportOperation}</h3> ...
@@ -46,7 +46,7 @@ public class SequenceBoxElementImportOperation extends AbstractBoxElementImportO
     o.setTypeName(getSequenceBoxElement().getName() + getFieldSuffix());
     o.setSibling(getDefaultSibling());
     if (getSequenceBoxElement().getSuperType() != null) {
-      o.setSuperTypeSignature(Signature.createTypeSignature(getSequenceBoxElement().getSuperType().getDefinition(), true));
+      o.setSuperTypeSignature(SignatureCache.createTypeSignature(getSequenceBoxElement().getSuperType().getDefinition()));
     }
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());

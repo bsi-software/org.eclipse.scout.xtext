@@ -16,12 +16,12 @@ import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.saml.saml.KeyElement;
 import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.saml.services.SamlGrammarAccess.LogicEventTypeElements;
-import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.service.ParameterArgument;
+import org.eclipse.scout.sdk.saml.importer.extension.customization.CodeCustomizationExtension;
+import org.eclipse.scout.sdk.saml.importer.extension.customization.SourceProviderInput;
 import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
 import org.eclipse.scout.sdk.saml.importer.util.SamlImportUtility;
 import org.eclipse.scout.sdk.util.NamingUtility;
-import org.eclipse.scout.sdk.util.resources.ResourceUtility;
 import org.eclipse.scout.sdk.util.signature.SignatureUtility;
 import org.eclipse.scout.sdk.util.type.TypeUtility;
 import org.eclipse.scout.sdk.workspace.type.ScoutTypeUtility;
@@ -41,18 +41,11 @@ import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 @SuppressWarnings("restriction")
 public class LogicInfoFactory {
 
-  private enum Placement {
+  public static enum Placement {
     Client,
     Server,
     Inline
   }
-
-  private static String[] PROCESSING_EXCEPTION_SIGS = new String[]{
-      Signature.createTypeSignature(RuntimeClasses.ProcessingException.substring(RuntimeClasses.ProcessingException.lastIndexOf('.') + 1), false),
-      Signature.createTypeSignature(RuntimeClasses.ProcessingException.substring(RuntimeClasses.ProcessingException.lastIndexOf('.') + 1), true),
-      Signature.createTypeSignature(RuntimeClasses.ProcessingException, true),
-      Signature.createTypeSignature(RuntimeClasses.ProcessingException, false)
-  };
 
   public static LogicInfo create(LogicElement element, IType sourceType, SamlFormContext context) throws CoreException {
     LogicInfo ret = new LogicInfo();
@@ -120,8 +113,9 @@ public class LogicInfoFactory {
       else if (TypeUtility.exists(context.getFormDataType())) {
         ret.setReturnType(new ParameterArgument("ret", context.getFormDataType().getElementName()));
       }
-      ret.setSourceLogic(getSourceLogic(placement, targetInterfaceType, context.getFormDataType(), context.getFormType(),
-          targetMethodName, targetLogic, ret.getReturnType(), ret.getSourceMethod()));
+      SourceProviderInput input = new SourceProviderInput(placement, targetInterfaceType, targetMethodName,
+          ret.getSourceMethod(), ret.getReturnType(), context.getFormDataType(), context.getFormType(), targetLogic);
+      ret.setSourceLogic(CodeCustomizationExtension.getSource(input));
     }
 
     ret.setTargetInterfaceType(targetInterfaceType);
@@ -239,80 +233,6 @@ public class LogicInfoFactory {
     else {
       throw new IllegalArgumentException("unknown logic placement: " + placement);
     }
-  }
-
-  private static boolean isThrowsProcessingExceptionPresent(ConfigurationMethod cm) throws CoreException {
-    if (cm == null) {
-      return true;
-    }
-    String[] exs = cm.getDefaultMethod().getExceptionTypes();
-    for (String ex : exs) {
-      for (String sig : PROCESSING_EXCEPTION_SIGS) {
-        if (sig.equals(ex)) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-
-  private static String getSourceLogic(Placement placement, IType targetInterfaceType, IType formDataType, IType formType, String targetMethodName,
-      String source, ParameterArgument returnParam, ConfigurationMethod cm) throws CoreException {
-    boolean throwsExisting = isThrowsProcessingExceptionPresent(cm);
-    boolean hasReturn = returnParam != null && !"void".equals(returnParam.getType());
-    StringBuilder sb = new StringBuilder();
-    if (placement.equals(Placement.Client)) {
-      if (!throwsExisting) {
-        sb.append("try {");
-      }
-      if (hasReturn) {
-        sb.append("return ");
-      }
-      sb.append("SERVICES.getService(");
-      sb.append(targetInterfaceType.getElementName());
-      sb.append(".class).");
-      sb.append(targetMethodName);
-      sb.append("(");
-      sb.append(formType.getElementName());
-      sb.append(".this);");
-      if (!throwsExisting) {
-        sb.append("} catch (ProcessingException e) { /* TODO */ e.printStackTrace(); ");
-        if (hasReturn) {
-          sb.append("return null; ");
-        }
-        sb.append("}");
-      }
-    }
-    else if (placement.equals(Placement.Inline)) {
-      sb.append(source);
-    }
-    else if (TypeUtility.exists(targetInterfaceType) && TypeUtility.exists(formDataType)) {
-      String nl = ResourceUtility.getLineSeparator(targetInterfaceType.getCompilationUnit());
-      //TODO [mvi]: change to new formDataImport using formfield filter?
-      sb.append("new ClientSyncJob(\"import formdata\", ClientSession.get(), true) { @Override protected void runVoid(IProgressMonitor monitor) throws Throwable {");
-      if (!throwsExisting) {
-        sb.append("try {");
-      }
-      sb.append(formDataType.getElementName());
-      sb.append(" formData = new ");
-      sb.append(formDataType.getElementName());
-      sb.append("();");
-      sb.append(nl);
-      sb.append("exportFormData(formData);");
-      sb.append(nl);
-      sb.append("formData = SERVICES.getService(");
-      sb.append(targetInterfaceType.getElementName());
-      sb.append(".class).");
-      sb.append(targetMethodName);
-      sb.append("(formData);");
-      sb.append(nl);
-      sb.append("importFormData(formData);");
-      if (!throwsExisting) {
-        sb.append("} catch (ProcessingException e) { /* TODO */ e.printStackTrace(); }");
-      }
-      sb.append("} }.schedule();");
-    }
-    return sb.toString();
   }
 
   private static String getTargetMethodName(LogicElement element, IType sourceType, SamlFormContext context) {

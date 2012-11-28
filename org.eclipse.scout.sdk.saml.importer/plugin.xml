@@ -2,6 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension-point id="formFieldOperation" name="formFieldOperation" schema="schema/formFieldOperation.exsd"/>
+   <extension-point id="codeCustomization" name="codeCustomization" schema="schema/codeCustomization.exsd"/>
    <extension
          id="samlImport"
          point="org.eclipse.core.runtime.applications">
@@ -56,6 +57,13 @@
             importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.TableElementImportOperation"
             samlFormElement="org.eclipse.scout.saml.saml.TableElement">
       </operation>
+   </extension>
+   <extension
+         point="org.eclipse.scout.sdk.saml.importer.codeCustomization">
+      <sourceProvider
+            class="org.eclipse.scout.sdk.saml.importer.operation.logic.DefaultSourceProvider"
+            order="-1000">
+      </sourceProvider>
    </extension>
 
 </plugin>

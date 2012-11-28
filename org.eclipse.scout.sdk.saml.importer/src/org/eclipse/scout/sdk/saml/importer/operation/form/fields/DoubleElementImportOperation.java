@@ -12,11 +12,11 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
-import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.saml.saml.DoubleElement;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.sdk.operation.form.field.DoubleFieldNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
+import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
 
 /**
  * <h3>{@link DoubleElementImportOperation}</h3> ...
@@ -46,7 +46,7 @@ public class DoubleElementImportOperation extends AbstractValueFieldElementImpor
     o.setTypeName(getDoubleElement().getName() + getFieldSuffix());
     o.setSibling(getDefaultSibling());
     if (getDoubleElement().getSuperType() != null) {
-      o.setSuperTypeSignature(Signature.createTypeSignature(getDoubleElement().getSuperType().getDefinition(), true));
+      o.setSuperTypeSignature(SignatureCache.createTypeSignature(getDoubleElement().getSuperType().getDefinition()));
     }
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());

@@ -14,7 +14,6 @@ import java.util.ArrayList;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
-import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.saml.saml.FormElement;
 import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.saml.saml.TranslationElement;
@@ -30,6 +29,7 @@ import org.eclipse.scout.sdk.saml.importer.operation.logic.SamlLogicFillOperatio
 import org.eclipse.scout.sdk.saml.importer.util.IItemVisitor;
 import org.eclipse.scout.sdk.saml.importer.util.SamlImportUtility;
 import org.eclipse.scout.sdk.util.SdkProperties;
+import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
 import org.eclipse.scout.sdk.util.type.TypeUtility;
 import org.eclipse.scout.sdk.workspace.IScoutBundle;
 
@@ -175,11 +175,11 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
     op.setServiceInterfaceBundle(getCurrentScoutModule().getSharedBundle());
     op.setServiceInterfaceName("I" + formName + SdkProperties.SUFFIX_PROCESS_SERVICE);
 
-    String superType = RuntimeClasses.AbstractForm;
+    String superType = RuntimeClasses.getSuperTypeName(RuntimeClasses.IForm, getSamlContext().getRootProject());
     if (getFormElement().getSuperType() != null) {
       superType = getFormElement().getSuperType().getDefinition();
     }
-    op.setFormSuperTypeSignature(Signature.createTypeSignature(superType, true));
+    op.setFormSuperTypeSignature(SignatureCache.createTypeSignature(superType));
     op.setFormName(formName + SdkProperties.SUFFIX_FORM);
 
     op.validate();
@@ -196,12 +196,12 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
     clientSvcOp.setImplementationBundle(getCurrentScoutModule().getClientBundle());
     clientSvcOp.setServicePackageName(getCurrentScoutModule().getClientBundle().getPackageName(IScoutBundle.CLIENT_PACKAGE_APPENDIX_SERVICES));
     clientSvcOp.setServiceName(formName + CLIENT_FORM_SERVICE_SUFFIX);
-    clientSvcOp.setServiceSuperTypeSignature(Signature.createTypeSignature(RuntimeClasses.AbstractService, true));
+    clientSvcOp.setServiceSuperTypeSignature(RuntimeClasses.getSuperTypeSignature(RuntimeClasses.IService2, getSamlContext().getRootProject()));
 
     clientSvcOp.setInterfaceBundle(getCurrentScoutModule().getClientBundle());
     clientSvcOp.setServiceInterfacePackageName(getCurrentScoutModule().getClientBundle().getPackageName(IScoutBundle.CLIENT_PACKAGE_APPENDIX_SERVICES));
     clientSvcOp.setServiceInterfaceName("I" + formName + CLIENT_FORM_SERVICE_SUFFIX);
-    clientSvcOp.setServiceInterfaceSuperTypeSignature(Signature.createTypeSignature(RuntimeClasses.IService2, true));
+    clientSvcOp.setServiceInterfaceSuperTypeSignature(SignatureCache.createTypeSignature(RuntimeClasses.IService2));
     clientSvcOp.addServiceRegistrationBundle(getCurrentScoutModule().getClientBundle());
 
     clientSvcOp.validate();

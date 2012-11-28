@@ -15,7 +15,6 @@ import java.util.List;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
-import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.saml.saml.ColumnElement;
 import org.eclipse.scout.saml.saml.TranslationElement;
 import org.eclipse.scout.sdk.RuntimeClasses;
@@ -75,16 +74,16 @@ public class ColumnElementImportOperation extends AbstractUiElementImportOperati
   private String getColumnTypeSignature() throws IllegalArgumentException {
     String type = getColumnElement().getType();
     if (type.equals(getSamlContext().getGrammarAccess().getColumnElementAccess().getTypeDateKeyword_2_0_2_0_0().getValue())) {
-      return Signature.createTypeSignature(RuntimeClasses.AbstractDateColumn, true);
+      return RuntimeClasses.getSuperTypeSignature(RuntimeClasses.IDateColumn, getSamlContext().getRootProject());
     }
     else if (type.equals(getSamlContext().getGrammarAccess().getColumnElementAccess().getTypeDoubleKeyword_2_0_2_0_3().getValue())) {
-      return Signature.createTypeSignature(RuntimeClasses.AbstractDoubleColumn, true);
+      return RuntimeClasses.getSuperTypeSignature(RuntimeClasses.IDoubleColumn, getSamlContext().getRootProject());
     }
     else if (type.equals(getSamlContext().getGrammarAccess().getColumnElementAccess().getTypeIntKeyword_2_0_2_0_2().getValue())) {
-      return Signature.createTypeSignature(RuntimeClasses.AbstractIntegerColumn, true);
+      return RuntimeClasses.getSuperTypeSignature(RuntimeClasses.IIntegerColumn, getSamlContext().getRootProject());
     }
     else if (type.equals(getSamlContext().getGrammarAccess().getColumnElementAccess().getTypeStringKeyword_2_0_2_0_1().getValue())) {
-      return Signature.createTypeSignature(RuntimeClasses.AbstractStringColumn, true);
+      return RuntimeClasses.getSuperTypeSignature(RuntimeClasses.IStringColumn, getSamlContext().getRootProject());
     }
     else {
       throw new IllegalArgumentException("unknown column type: " + type);

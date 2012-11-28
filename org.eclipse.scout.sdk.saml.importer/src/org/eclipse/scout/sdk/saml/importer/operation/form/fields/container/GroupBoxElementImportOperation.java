@@ -14,12 +14,12 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
-import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.GroupBoxElement;
 import org.eclipse.scout.sdk.operation.form.field.GroupBoxNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
+import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
 import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 
 /**
@@ -50,7 +50,7 @@ public class GroupBoxElementImportOperation extends AbstractBoxElementImportOper
     o.setTypeName(getGroupBoxElement().getName() + getFieldSuffix());
     o.setSibling(getDefaultSibling());
     if (getGroupBoxElement().getSuperType() != null) {
-      o.setSuperTypeSignature(Signature.createTypeSignature(getGroupBoxElement().getSuperType().getDefinition(), true));
+      o.setSuperTypeSignature(SignatureCache.createTypeSignature(getGroupBoxElement().getSuperType().getDefinition()));
     }
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());

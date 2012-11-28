@@ -12,11 +12,11 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
-import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.saml.saml.DateElement;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.sdk.operation.form.field.DateFieldNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
+import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
 
 /**
  * <h3>{@link DateElementImportOperation}</h3> ...
@@ -46,7 +46,7 @@ public class DateElementImportOperation extends AbstractValueFieldElementImportO
     o.setTypeName(getDateElement().getName() + getFieldSuffix());
     o.setSibling(getDefaultSibling());
     if (getDateElement().getSuperType() != null) {
-      o.setSuperTypeSignature(Signature.createTypeSignature(getDateElement().getSuperType().getDefinition(), true));
+      o.setSuperTypeSignature(SignatureCache.createTypeSignature(getDateElement().getSuperType().getDefinition()));
     }
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());

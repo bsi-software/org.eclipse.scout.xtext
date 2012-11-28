@@ -13,7 +13,6 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
-import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.saml.saml.CodeElement;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.LookupElement;
@@ -22,6 +21,7 @@ import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.form.field.SmartFieldNewOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.menu.MenuElementImportOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
+import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
 
 /**
  * <h3>{@link SmartfieldElementImportOperation}</h3> ...
@@ -56,17 +56,17 @@ public class SmartfieldElementImportOperation extends AbstractValueFieldElementI
   protected IType createField() throws CoreException, IllegalArgumentException {
     SmartFieldNewOperation o = new SmartFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getSmartfieldElement().getName() + getFieldSuffix());
-    o.setSuperTypeSignature(Signature.createTypeSignature(RuntimeClasses.AbstractSmartField + "<" + getValueType() + ">", true));
+    String superTypeFqn = RuntimeClasses.getSuperTypeSignature(RuntimeClasses.ISmartField, getSamlContext().getRootProject());
+    o.setSuperTypeSignature(SignatureCache.createTypeSignature(superTypeFqn + "<" + getValueType() + ">"));
     o.setSibling(getDefaultSibling());
     if (getSmartfieldElement().getSuperType() != null) {
-      o.setSuperTypeSignature(Signature.createTypeSignature(getSmartfieldElement().getSuperType().getDefinition(), true));
+      o.setSuperTypeSignature(SignatureCache.createTypeSignature(getSmartfieldElement().getSuperType().getDefinition()));
     }
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
     IType createdField = o.getCreatedField();
     ITypeHierarchy h = createdField.newSupertypeHierarchy(getSamlContext().getMonitor());
 
-    overrideMethod(createdField, h, "getConfiguredTreat0AsNull", "return false;");
     applyCodeAttribute(getSmartfieldElement().getCode(), createdField, h);
     applyLookupAttribute(getSmartfieldElement().getLookup(), createdField, h);
 

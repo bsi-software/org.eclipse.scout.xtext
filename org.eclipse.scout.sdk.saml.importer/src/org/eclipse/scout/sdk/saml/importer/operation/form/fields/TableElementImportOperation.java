@@ -13,7 +13,6 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
-import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.TableElement;
 import org.eclipse.scout.sdk.RuntimeClasses;
@@ -21,6 +20,7 @@ import org.eclipse.scout.sdk.operation.form.field.TableFieldNewOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.column.ColumnElementImportOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.menu.MenuElementImportOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
+import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
 
 /**
  * <h3>{@link TableElementImportOperation}</h3> ...
@@ -49,11 +49,11 @@ public class TableElementImportOperation extends AbstractFormFieldElementOperati
     TableFieldNewOperation o = new TableFieldNewOperation(getSamlFormContext().getCurrentParentBox());
     o.setFormatSource(false);
 
-    String superType = RuntimeClasses.AbstractTableField;
+    String superType = RuntimeClasses.getSuperTypeName(RuntimeClasses.ITableField, getSamlContext().getRootProject());
     if (getTableFieldElement().getSuperType() != null) {
       superType = getTableFieldElement().getSuperType().getDefinition();
     }
-    o.setSuperTypeSignature(Signature.createTypeSignature(superType, true));
+    o.setSuperTypeSignature(SignatureCache.createTypeSignature(superType));
 
     o.setTypeName(getTableFieldElement().getName() + getFieldSuffix());
     o.setSibling(getDefaultSibling());

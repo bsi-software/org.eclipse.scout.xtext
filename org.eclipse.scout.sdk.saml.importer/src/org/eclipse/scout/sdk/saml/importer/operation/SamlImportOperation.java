@@ -20,6 +20,8 @@ import org.eclipse.scout.saml.saml.FormElement;
 import org.eclipse.scout.saml.saml.LookupElement;
 import org.eclipse.scout.saml.saml.TranslationElement;
 import org.eclipse.scout.sdk.operation.IOperation;
+import org.eclipse.scout.sdk.saml.importer.extension.customization.CodeCustomizationExtension;
+import org.eclipse.scout.sdk.saml.importer.extension.customization.IScoutProjectConfigurator;
 import org.eclipse.scout.sdk.saml.importer.operation.codetype.CodeElementImportOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.form.FormElementImportOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.lookup.LookupElementImportOperation;
@@ -92,6 +94,10 @@ public class SamlImportOperation implements IOperation {
       }
       else {
         m_context = new SamlContext(monitor, workingCopyManager, getInjector(), getScoutRootProject());
+        // 0. allow all configurators to do their tasks
+        for (IScoutProjectConfigurator configurator : CodeCustomizationExtension.getScoutProjectConfigurators()) {
+          configurator.configure(getSamlContext());
+        }
 
         // 1. all translations over all files
         visitRootElements(monitor, workingCopyManager, resourceSet, new TranslationElementVisitor());
