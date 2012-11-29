@@ -19,7 +19,7 @@
 
    <requires>
       <import feature="org.eclipse.scout.saml.sdk" version="1.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.scout.sdk" version="3.9.0.qualifier" match="greaterOrEqual"/>
+      <import feature="org.eclipse.scout.sdk" version="3.9.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
