@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.scout.sdk.saml.importer"
       label="Scout Application Modeling Language Importer Feature"
-      version="3.8.1.qualifier"
+      version="3.9.0.qualifier"
       provider-name="Eclipse Scout Project">
 
    <description url="http://www.example.com/description">
@@ -18,8 +18,8 @@
    </license>
 
    <requires>
-      <import feature="org.eclipse.scout.saml.sdk" version="1.0.0.201210191105" match="greaterOrEqual"/>
-      <import feature="org.eclipse.scout.sdk" version="3.9.0.qualifier"/>
+      <import feature="org.eclipse.scout.saml.sdk" version="1.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.scout.sdk" version="3.9.0.qualifier" match="greaterOrEqual"/>
    </requires>
 
    <plugin

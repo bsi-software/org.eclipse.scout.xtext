@@ -113,9 +113,13 @@ public class LogicInfoFactory {
       else if (TypeUtility.exists(context.getFormDataType())) {
         ret.setReturnType(new ParameterArgument("ret", context.getFormDataType().getElementName()));
       }
-      SourceProviderInput input = new SourceProviderInput(placement, targetInterfaceType, targetMethodName,
-          ret.getSourceMethod(), ret.getReturnType(), context.getFormDataType(), context.getFormType(), targetLogic);
-      ret.setSourceLogic(CodeCustomizationExtension.getSource(input));
+
+      if (TypeUtility.exists(targetInterfaceType) || placement.equals(Placement.Inline)) {
+        // e.g. lookup services have no target interface because there is actually no source logic needed.
+        SourceProviderInput input = new SourceProviderInput(placement, targetInterfaceType, targetMethodName,
+            ret.getSourceMethod(), ret.getReturnType(), context.getFormDataType(), context.getFormType(), targetLogic);
+        ret.setSourceLogic(CodeCustomizationExtension.getSource(input));
+      }
     }
 
     ret.setTargetInterfaceType(targetInterfaceType);

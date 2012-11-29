@@ -22,6 +22,8 @@ import org.eclipse.scout.sdk.saml.importer.operation.SamlContext;
 import org.eclipse.scout.sdk.saml.importer.operation.form.AbstractUiElementImportOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
 import org.eclipse.scout.sdk.saml.importer.operation.logic.SamlLogicFillOperation;
+import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
+import org.eclipse.scout.sdk.util.type.TypeUtility;
 import org.eclipse.scout.sdk.workspace.type.ScoutTypeUtility;
 
 /**
@@ -51,6 +53,24 @@ public abstract class AbstractFormFieldElementOperation extends AbstractUiElemen
 
   protected IType getDefaultSibling() {
     return ScoutTypeUtility.getFistProcessButton(getSamlFormContext().getCurrentParentBox(), getSamlFormContext().getCurrentParentBoxLocalTypeHierarchy());
+  }
+
+  protected String getSuperTypeSigValidated() throws IllegalArgumentException {
+    return getSuperTypeSigValidated(null);
+  }
+
+  protected String getSuperTypeSigValidated(String defaultFqn) throws IllegalArgumentException {
+    if (getFieldElement().getSuperType() != null) {
+      String specificSuperType = getFieldElement().getSuperType().getDefinition();
+      if (!TypeUtility.exists(TypeUtility.getType(specificSuperType))) {
+        throw new IllegalArgumentException("Specified super type '" + specificSuperType + "' could not be found. ");
+      }
+      return SignatureCache.createTypeSignature(specificSuperType);
+    }
+    if (defaultFqn == null) {
+      return null;
+    }
+    return SignatureCache.createTypeSignature(defaultFqn);
   }
 
   private String getFieldNameSuffix(FormFieldElement field) throws CoreException {

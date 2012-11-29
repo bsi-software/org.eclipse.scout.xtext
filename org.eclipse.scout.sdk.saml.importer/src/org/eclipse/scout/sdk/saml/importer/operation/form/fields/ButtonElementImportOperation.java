@@ -18,7 +18,6 @@ import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.sdk.operation.form.field.ButtonFieldNewOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.menu.MenuElementImportOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
-import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
 
 /**
  * <h3>{@link ButtonElementImportOperation}</h3> ...
@@ -53,8 +52,9 @@ public class ButtonElementImportOperation extends AbstractFormFieldElementOperat
     ButtonFieldNewOperation o = new ButtonFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getButtonElement().getName() + getFieldSuffix());
     o.setSibling(getDefaultSibling());
-    if (getButtonElement().getSuperType() != null) {
-      o.setSuperTypeSignature(SignatureCache.createTypeSignature(getButtonElement().getSuperType().getDefinition()));
+    String configuredSuperTypeSig = getSuperTypeSigValidated();
+    if (configuredSuperTypeSig != null) {
+      o.setSuperTypeSignature(configuredSuperTypeSig);
     }
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());

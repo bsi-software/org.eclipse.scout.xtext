@@ -17,7 +17,6 @@ import org.eclipse.scout.saml.saml.CustomFieldElement;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.sdk.operation.form.field.FormFieldNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
-import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
 
 /**
  * <h3>{@link CustomFieldElementImportOperation}</h3> ...
@@ -43,11 +42,14 @@ public class CustomFieldElementImportOperation extends AbstractFormFieldElementO
 
   @Override
   public void run() throws CoreException, IllegalArgumentException {
-    String superClass = getCustomFieldElement().getSuperType().getDefinition();
+    String configuredSuperTypeSig = getSuperTypeSigValidated();
+    if (configuredSuperTypeSig == null) {
+      throw new IllegalArgumentException("A custom field must specify a super type property.");
+    }
 
     FormFieldNewOperation o = new FormFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getCustomFieldElement().getName() + getFieldSuffix());
-    o.setSuperTypeSignature(SignatureCache.createTypeSignature(superClass));
+    o.setSuperTypeSignature(configuredSuperTypeSig);
     o.setSiblingField(getDefaultSibling());
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());

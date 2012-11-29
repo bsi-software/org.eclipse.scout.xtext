@@ -20,7 +20,6 @@ import org.eclipse.scout.sdk.operation.form.field.TableFieldNewOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.column.ColumnElementImportOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.menu.MenuElementImportOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
-import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
 
 /**
  * <h3>{@link TableElementImportOperation}</h3> ...
@@ -46,15 +45,11 @@ public class TableElementImportOperation extends AbstractFormFieldElementOperati
 
   @Override
   public void run() throws CoreException, IllegalArgumentException {
+    String configuredSuperTypeSig = getSuperTypeSigValidated(RuntimeClasses.getSuperTypeName(RuntimeClasses.ITableField, getSamlContext().getRootProject()));
+
     TableFieldNewOperation o = new TableFieldNewOperation(getSamlFormContext().getCurrentParentBox());
     o.setFormatSource(false);
-
-    String superType = RuntimeClasses.getSuperTypeName(RuntimeClasses.ITableField, getSamlContext().getRootProject());
-    if (getTableFieldElement().getSuperType() != null) {
-      superType = getTableFieldElement().getSuperType().getDefinition();
-    }
-    o.setSuperTypeSignature(SignatureCache.createTypeSignature(superType));
-
+    o.setSuperTypeSignature(configuredSuperTypeSig);
     o.setTypeName(getTableFieldElement().getName() + getFieldSuffix());
     o.setSibling(getDefaultSibling());
     o.validate();

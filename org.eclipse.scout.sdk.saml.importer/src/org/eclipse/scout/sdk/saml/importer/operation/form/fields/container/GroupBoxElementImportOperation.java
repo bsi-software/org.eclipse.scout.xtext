@@ -19,7 +19,6 @@ import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.GroupBoxElement;
 import org.eclipse.scout.sdk.operation.form.field.GroupBoxNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
-import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
 import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 
 /**
@@ -49,9 +48,12 @@ public class GroupBoxElementImportOperation extends AbstractBoxElementImportOper
     GroupBoxNewOperation o = new GroupBoxNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getGroupBoxElement().getName() + getFieldSuffix());
     o.setSibling(getDefaultSibling());
-    if (getGroupBoxElement().getSuperType() != null) {
-      o.setSuperTypeSignature(SignatureCache.createTypeSignature(getGroupBoxElement().getSuperType().getDefinition()));
+
+    String configuredSuperTypeSig = getSuperTypeSigValidated();
+    if (configuredSuperTypeSig != null) {
+      o.setSuperTypeSignature(configuredSuperTypeSig);
     }
+
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
     IType createdField = o.getCreatedField();

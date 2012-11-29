@@ -21,7 +21,6 @@ import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.form.field.SmartFieldNewOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.menu.MenuElementImportOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
-import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
 
 /**
  * <h3>{@link SmartfieldElementImportOperation}</h3> ...
@@ -56,12 +55,9 @@ public class SmartfieldElementImportOperation extends AbstractValueFieldElementI
   protected IType createField() throws CoreException, IllegalArgumentException {
     SmartFieldNewOperation o = new SmartFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getSmartfieldElement().getName() + getFieldSuffix());
-    String superTypeFqn = RuntimeClasses.getSuperTypeSignature(RuntimeClasses.ISmartField, getSamlContext().getRootProject());
-    o.setSuperTypeSignature(SignatureCache.createTypeSignature(superTypeFqn + "<" + getValueType() + ">"));
+    String superTypeFqn = RuntimeClasses.getSuperTypeName(RuntimeClasses.ISmartField, getSamlContext().getRootProject());
+    o.setSuperTypeSignature(getSuperTypeSigValidated(superTypeFqn + "<" + getValueType() + ">"));
     o.setSibling(getDefaultSibling());
-    if (getSmartfieldElement().getSuperType() != null) {
-      o.setSuperTypeSignature(SignatureCache.createTypeSignature(getSmartfieldElement().getSuperType().getDefinition()));
-    }
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
     IType createdField = o.getCreatedField();
