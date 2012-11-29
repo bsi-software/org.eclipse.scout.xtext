@@ -13,7 +13,7 @@ translation InfoF7Col de="Info                                     F7"
 form Rka021_gen {
 	logic event=modify_load placement=server {
 		"System.out.println(\"Rka021 form startup\");
-		formData.getStornoTable().addRow(new Object[]{new Date(), \"text\", new Date(), 15, 134592, \"sollhaben text\", 135.25});
+		formData.getStornoTable().addRow(new Object[]{new java.util.Date(), \"text\", new java.util.Date(), 15, 134592, \"sollhaben text\", 135.25});
 		return formData;"
 	}
 	table StornoTable label_visible=false grid_height=10 grid_width=2 {

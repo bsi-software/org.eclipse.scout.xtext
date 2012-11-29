@@ -2,6 +2,7 @@ package org.eclipse.scout.sdk.saml.importer.ui.wizard;
 
 import java.io.File;
 
+import org.eclipse.scout.saml.ui.internal.SamlActivator;
 import org.eclipse.scout.sdk.saml.importer.SamlImportHelper;
 import org.eclipse.scout.sdk.ui.wizard.AbstractWizard;
 import org.eclipse.scout.sdk.workspace.IScoutProject;
@@ -20,7 +21,7 @@ public class SamlImportWizard extends AbstractWizard {
   @Override
   public boolean performFinish() {
     File d = new File(m_page1.getSamlRoot());
-    SamlImportHelper.importSamlAsync(d);
+    SamlImportHelper.importSamlAsync(d, SamlActivator.getInstance().getInjector(SamlActivator.ORG_ECLIPSE_SCOUT_SAML_SAML));
     return true;
   }
 

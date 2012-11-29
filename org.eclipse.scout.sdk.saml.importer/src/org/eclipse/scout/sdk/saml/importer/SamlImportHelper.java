@@ -30,6 +30,8 @@ import org.eclipse.scout.sdk.saml.importer.operation.SamlImportOperation;
 import org.eclipse.scout.sdk.util.jdt.JdtUtility;
 import org.eclipse.scout.sdk.workspace.IScoutProject;
 
+import com.google.inject.Injector;
+
 /**
  * <h3>{@link SamlImportHelper}</h3> ...
  * 
@@ -40,14 +42,22 @@ import org.eclipse.scout.sdk.workspace.IScoutProject;
 public class SamlImportHelper {
 
   public static void importSamlSync(File samlInputDirectory) throws IllegalArgumentException {
-    doImport(samlInputDirectory, true);
+    importSamlSync(samlInputDirectory, null);
+  }
+
+  public static void importSamlSync(File samlInputDirectory, Injector injector) throws IllegalArgumentException {
+    doImport(samlInputDirectory, true, null);
   }
 
   public static void importSamlAsync(File samlInputDirectory) throws IllegalArgumentException {
-    doImport(samlInputDirectory, false);
+    importSamlAsync(samlInputDirectory, null);
   }
 
-  private static void doImport(File samlInputDirectory, final boolean sync) throws IllegalArgumentException {
+  public static void importSamlAsync(File samlInputDirectory, Injector injector) throws IllegalArgumentException {
+    doImport(samlInputDirectory, false, injector);
+  }
+
+  private static void doImport(File samlInputDirectory, final boolean sync, Injector injector) throws IllegalArgumentException {
     IScoutProject[] roots = ScoutWorkspace.getInstance().getRootProjects();
     if (roots == null || roots.length != 1) {
       throw new IllegalArgumentException("the running workspace must contain exactly one scout project");
@@ -59,6 +69,7 @@ public class SamlImportHelper {
 
       final SamlImportOperation op = new SamlImportOperation();
       op.setSamlRootDirectory(samlInputDirectory);
+      op.setInjector(injector);
       op.setScoutRootProject(roots[0]);
       SamlImporterActivator.logInfo("Starting import into Scout project '" + roots[0].getProjectName() + "'.");
 
