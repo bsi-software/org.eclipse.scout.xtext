@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.eclipse.scout.sdk.saml.importer.rt"
-      label="Scout Application Modeling Language Importer"
+      id="org.eclipse.scout.sdk.saml.importer.sdk"
+      label="Scout Application Modeling Language Importer Tooling"
       version="3.9.0.qualifier"
       provider-name="Eclipse Scout Project">
 
@@ -18,12 +18,12 @@
    </license>
 
    <requires>
-      <import feature="org.eclipse.scout.sdk" version="3.9.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.scout.saml.rt" version="1.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.scout.saml.sdk" version="1.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.scout.sdk.saml.importer.rt" version="3.9.0.qualifier"/>
    </requires>
 
    <plugin
-         id="org.eclipse.scout.sdk.saml.importer"
+         id="org.eclipse.scout.sdk.saml.importer.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"
