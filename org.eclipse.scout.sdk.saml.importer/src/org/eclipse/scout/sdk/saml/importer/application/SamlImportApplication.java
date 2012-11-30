@@ -4,12 +4,9 @@ import java.io.File;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import org.eclipse.core.resources.IMarker;
-import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.equinox.app.IApplication;
@@ -21,7 +18,6 @@ import org.eclipse.scout.sdk.jobs.OperationJob;
 import org.eclipse.scout.sdk.saml.importer.SamlImportHelper;
 import org.eclipse.scout.sdk.saml.importer.internal.SamlImporterActivator;
 import org.eclipse.scout.sdk.saml.importer.operation.util.ExternalProjectImportOperation;
-import org.eclipse.scout.sdk.util.ScoutSeverityManager;
 import org.eclipse.scout.sdk.util.jdt.JdtUtility;
 
 /**
@@ -63,29 +59,22 @@ public class SamlImportApplication implements IApplication {
     j.join();
     SamlImporterActivator.logInfo("JDT plugin ready.");
 
+    // disable workspace build
+    boolean isAutobuilding = JdtUtility.isWorkspaceAutoBuilding();
+    JdtUtility.setWorkspaceAutoBuilding(false);
+
     SamlImporterActivator.logInfo("Importing all projects into workspace.");
     ExternalProjectImportOperation impProjOp = new ExternalProjectImportOperation();
     impProjOp.setFolder(ResourcesPlugin.getWorkspace().getRoot().getLocation().toFile());
     OperationJob oj = new OperationJob(impProjOp);
     oj.schedule();
     oj.join();
+    JdtUtility.waitForSilentWorkspace();
     SamlImporterActivator.logInfo("Project import finished.");
 
-    SamlImporterActivator.logInfo("Compiling initial workspace.");
-    ResourcesPlugin.getWorkspace().checkpoint(false);
-    ResourcesPlugin.getWorkspace().build(IncrementalProjectBuilder.CLEAN_BUILD, new NullProgressMonitor());
-    ResourcesPlugin.getWorkspace().build(IncrementalProjectBuilder.FULL_BUILD, new NullProgressMonitor());
-    JdtUtility.waitForSilentWorkspace();
-    SamlImporterActivator.logInfo("Compilation finished.");
+    SamlImportHelper.importSamlSync(getSamlInputRootDirectory());
 
-    int severity = ScoutSeverityManager.getInstance().getSeverityOf(ResourcesPlugin.getWorkspace().getRoot());
-    if (severity < IMarker.SEVERITY_ERROR) {
-      SamlImportHelper.importSamlSync(getSamlInputRootDirectory());
-    }
-    else {
-      SamlImporterActivator.logError("SAML import aborted because the initial workspace contains compile errors.");
-    }
-
+    JdtUtility.setWorkspaceAutoBuilding(isAutobuilding); // reset
     SamlImporterActivator.logInfo("SAML import application finished.");
     return EXIT_OK;
   }

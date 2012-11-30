@@ -86,8 +86,8 @@ public class ExternalProjectImportOperation implements IOperation {
         }
       }
     }
-
     ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, monitor);
+    ResourcesPlugin.getWorkspace().checkpoint(false);
   }
 
   private File[] getAllProjectFiles() {

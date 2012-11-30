@@ -113,7 +113,7 @@ public class SamlImportHelper {
   }
 
   private static class P_WaitForWorkspaceReadyJob extends Job {
-    private boolean started = false;
+    private volatile boolean finished = false;
 
     private P_WaitForWorkspaceReadyJob() {
       super("wait until workspace is ready");
@@ -126,7 +126,7 @@ public class SamlImportHelper {
       try {
         Job.getJobManager().addJobChangeListener(listener);
 
-        while (!started) {
+        while (!finished) {
           try {
             synchronized (this) {
               this.wait();
@@ -148,6 +148,7 @@ public class SamlImportHelper {
       }
 
       JdtUtility.waitForSilentWorkspace();
+      JdtUtility.waitForJobFamily(FormDataAutoUpdater.AUTO_UPDATE_JOB_FAMILY); // may be triggered again after refresh of workspace.
 
       return Status.OK_STATUS;
     }
@@ -161,11 +162,13 @@ public class SamlImportHelper {
     }
 
     @Override
-    public void running(IJobChangeEvent event) {
-      if (event.getJob().belongsTo(FormDataAutoUpdater.AUTO_UPDATE_JOB_FAMILY)) {
+    public void done(IJobChangeEvent event) {
+      if (event.getResult().isOK() && event.getJob().belongsTo(FormDataAutoUpdater.AUTO_UPDATE_JOB_FAMILY)) {
         synchronized (m_job) {
-          m_job.started = true;
-          m_job.notify();
+          if (!m_job.finished) {
+            m_job.finished = true;
+            m_job.notify();
+          }
         }
       }
     }
