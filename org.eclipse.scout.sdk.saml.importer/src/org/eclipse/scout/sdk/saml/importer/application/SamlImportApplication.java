@@ -10,12 +10,12 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.jdt.core.WorkingCopyOwner;
+import org.eclipse.jdt.internal.core.DefaultWorkingCopyOwner;
 import org.eclipse.jdt.internal.ui.JavaPlugin;
 import org.eclipse.scout.sdk.jobs.OperationJob;
 import org.eclipse.scout.sdk.saml.importer.SamlImportHelper;
@@ -23,9 +23,6 @@ import org.eclipse.scout.sdk.saml.importer.internal.SamlImporterActivator;
 import org.eclipse.scout.sdk.saml.importer.operation.util.ExternalProjectImportOperation;
 import org.eclipse.scout.sdk.util.ScoutSeverityManager;
 import org.eclipse.scout.sdk.util.jdt.JdtUtility;
-import org.osgi.framework.Bundle;
-import org.osgi.framework.BundleEvent;
-import org.osgi.framework.BundleListener;
 
 /**
  * @author mvi
@@ -121,59 +118,30 @@ public class SamlImportApplication implements IApplication {
   }
 
   /**
-   * ensures the org.eclipse.jdt.ui plugin is started. the job waits until the plugin is started AND
-   * the corresponding bundleChanged event is fired. after the plugin is started some cleanup tasks are performed
-   * to ensure no UI primary buffer provider is registered because no Display thread is actually running! <h3>
+   * ensures the org.eclipse.jdt.ui plugin is started. the job waits until the plugin is started.
+   * after the plugin is started some cleanup tasks are performed to ensure no UI primary buffer
+   * provider is registered because no Display thread is actually running! <h3>
    * {@link InitJdtUiJob}</h3> ...
    * 
    * @author mvi
    * @since 3.8.0 01.11.2012
    */
   private static class InitJdtUiJob extends Job {
-
-    private final static String JDT_UI_PLUGIN_ID = "org.eclipse.jdt.ui";
-
     private InitJdtUiJob() {
       super("init jdt ui plugin");
       setSystem(true);
     }
 
-    private boolean isJdtUiActive() {
-      Bundle b = Platform.getBundle(JDT_UI_PLUGIN_ID);
-      return b != null && b.getState() == Bundle.ACTIVE;
-    }
-
     @Override
     protected IStatus run(IProgressMonitor monitor) {
-      BundleListener disableUiJavaPluginListener = new BundleListener() {
-        @Override
-        public void bundleChanged(BundleEvent event) {
-          if (event.getType() == BundleEvent.STARTED && JDT_UI_PLUGIN_ID.equals(event.getBundle().getSymbolicName())) {
-            synchronized (InitJdtUiJob.this) {
-              InitJdtUiJob.this.notify();
-            }
-          }
-        }
-      };
+      JavaPlugin.getDefault(); // trigger jdt.ui activation. bundle is started in this thread (sync).
 
-      try {
-        synchronized (this) {
-          SamlImporterActivator.getContext().addBundleListener(disableUiJavaPluginListener);
-          boolean jdtNotStarted = !isJdtUiActive();
-          while (jdtNotStarted) {
-            try {
-              JavaPlugin.getDefault(); // trigger jdt.ui activation
-              wait(); // wait until the activated event is fired.
-              jdtNotStarted = false;
-            }
-            catch (InterruptedException e) {
-            }
-          }
-          WorkingCopyOwner.setPrimaryBufferProvider(null); // remove the buffer provider added by jdt.ui again because we are running headlessly but require some ui plugins (organize imports)
-        }
+      if (DefaultWorkingCopyOwner.PRIMARY.primaryBufferProvider != null) {
+        // remove the buffer provider added by jdt.ui again because we are running headlessly but require some ui plugins (organize imports)
+        WorkingCopyOwner.setPrimaryBufferProvider(null);
       }
-      finally {
-        SamlImporterActivator.getContext().removeBundleListener(disableUiJavaPluginListener);
+      else {
+        SamlImporterActivator.logWarning("No primary buffer provider was found. Ensure JDT is initialized. This may cause blocking issues later on.");
       }
 
       return Status.OK_STATUS;
