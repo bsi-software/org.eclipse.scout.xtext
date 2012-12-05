@@ -35,4 +35,5 @@ public interface ISamlValidatorConstants {
   static final String MSG_NAMED_LOGIC_NO_EXEC = "a named logic element must not define an exec";
   static final String MSG_SOURCE_LINKED_OR_GIVEN = "a logic element must either contain source or link to source code of a named logic element";
   static final String MSG_WRONG_LOGIC_EVENT = "this event is not allowed in this context";
+  static final String MSG_ONLY_NAMED_LOGIC_ON_TOP_LEVEL = "top level logic elements must be named";
 }

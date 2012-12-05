@@ -61,9 +61,9 @@ public class SamlImportOperation implements IOperation {
 
   @Override
   public void run(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException, IllegalArgumentException {
-    if (getInjector() == null) {
-      setInjector(new SamlStandaloneSetup().createInjectorAndDoEMFRegistration());
-    }
+    // TODO if (getInjector() == null) {
+    setInjector(new SamlStandaloneSetup().createInjectorAndDoEMFRegistration());
+    //}
 
     IResourceValidator validator = getInjector().getInstance(IResourceValidator.class);
     XtextResourceSet resourceSet = getInjector().getInstance(XtextResourceSet.class);
@@ -73,7 +73,9 @@ public class SamlImportOperation implements IOperation {
     try {
       File[] filesInFolder = getAllSamlFilesRec();
       for (File f : filesInFolder) {
-        resourceSet.getResource(URI.createFileURI(f.getAbsolutePath()), true);
+        Resource r = resourceSet.getResource(URI.createFileURI(f.getAbsolutePath()), true);
+        resourceSet.getResources().add(r);
+        r.load(null);
       }
 
       ArrayList<Issue> parsingIssues = new ArrayList<Issue>();

@@ -284,10 +284,10 @@ public class LogicTests {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("module c.test");
       _builder.newLine();
-      _builder.append("form MyForm {");
+      _builder.append("logic EvalForm placement=client {");
       _builder.newLine();
       _builder.append("    ");
-      _builder.append("logic exec=EvalForm");
+      _builder.append("\"whatever\"");
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
@@ -296,15 +296,37 @@ public class LogicTests {
       StringConcatenation _builder_1 = new StringConcatenation();
       _builder_1.append("module c.test");
       _builder_1.newLine();
-      _builder_1.append("logic EvalForm placement=client {");
+      _builder_1.append("form MyForm {");
       _builder_1.newLine();
       _builder_1.append("    ");
-      _builder_1.append("\"whatever\"");
+      _builder_1.append("logic exec=EvalForm");
       _builder_1.newLine();
       _builder_1.append("}");
       _builder_1.newLine();
       Model _parse_1 = this._parseHelper.parse(_builder_1, resourceSet);
       this._validationTestHelper.assertNoErrors(_parse_1);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testUnnamedSeparatedLogic() {
+    try {
+      final XtextResourceSet resourceSet = this.resourceSetProvider.get();
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module c.test");
+      _builder.newLine();
+      _builder.append("logic placement=client {");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("\"whatever\"");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      Model _parse = this._parseHelper.parse(_builder, resourceSet);
+      EClass _logicElement = SamlPackage.eINSTANCE.getLogicElement();
+      this._validationTestHelper.assertError(_parse, _logicElement, SamlJavaValidator.INVALID_LOGIC_ELEMENT, SamlJavaValidator.MSG_ONLY_NAMED_LOGIC_ON_TOP_LEVEL);
     } catch (Exception _e) {
       throw Exceptions.sneakyThrow(_e);
     }

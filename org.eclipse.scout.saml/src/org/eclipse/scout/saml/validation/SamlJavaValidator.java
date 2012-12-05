@@ -44,6 +44,13 @@ public class SamlJavaValidator extends AbstractSamlJavaValidator implements ISam
       }
     }
 
+    if (logicElement.eContainer() instanceof Model) {
+      // top level logic elements must define a name (references only)
+      if (logicElement.getName() == null) {
+        error(MSG_ONLY_NAMED_LOGIC_ON_TOP_LEVEL, logicElement, SamlPackage.Literals.LOGIC_ELEMENT__NAME, INVALID_LOGIC_ELEMENT);
+      }
+    }
+
     if (logicElement.getName() != null) {
       // named logic elements must have source 
       if (logicElement.getSource() == null) {

@@ -151,12 +151,6 @@ class LogicTests {
 	@Test
 	def void testSeparatedLogic() {
 		val resourceSet = resourceSetProvider.get()
-		'''
-		module c.test
-		form MyForm {
-		    logic exec=EvalForm
-		}
-		'''.parse(resourceSet).assertNoErrors
 		
 		'''
 		module c.test
@@ -164,5 +158,24 @@ class LogicTests {
 		    "whatever"
 		}
 		'''.parse(resourceSet).assertNoErrors
+		
+		'''
+		module c.test
+		form MyForm {
+		    logic exec=EvalForm
+		}
+		'''.parse(resourceSet).assertNoErrors
+	}
+	
+	@Test
+	def void testUnnamedSeparatedLogic() {
+		val resourceSet = resourceSetProvider.get()
+		
+		'''
+		module c.test
+		logic placement=client {
+		    "whatever"
+		}
+		'''.parse(resourceSet).assertError(SamlPackage::eINSTANCE.logicElement, SamlJavaValidator::INVALID_LOGIC_ELEMENT, SamlJavaValidator::MSG_ONLY_NAMED_LOGIC_ON_TOP_LEVEL)
 	}
 }
