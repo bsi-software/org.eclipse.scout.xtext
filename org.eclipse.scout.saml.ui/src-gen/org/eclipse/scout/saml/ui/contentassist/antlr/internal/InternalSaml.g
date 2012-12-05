@@ -2694,6 +2694,12 @@ rule__Model__Alternatives_2
 { after(grammarAccess.getModelAccess().getFormsAssignment_2_4()); }
 )
 
+    |(
+{ before(grammarAccess.getModelAccess().getLogicsAssignment_2_5()); }
+(rule__Model__LogicsAssignment_2_5)
+{ after(grammarAccess.getModelAccess().getLogicsAssignment_2_5()); }
+)
+
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -33659,6 +33665,21 @@ rule__Model__FormsAssignment_2_4
 (
 { before(grammarAccess.getModelAccess().getFormsFormElementParserRuleCall_2_4_0()); }
 	ruleFormElement{ after(grammarAccess.getModelAccess().getFormsFormElementParserRuleCall_2_4_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Model__LogicsAssignment_2_5
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getModelAccess().getLogicsLogicElementParserRuleCall_2_5_0()); }
+	ruleLogicElement{ after(grammarAccess.getModelAccess().getLogicsLogicElementParserRuleCall_2_5_0()); }
 )
 
 ;

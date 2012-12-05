@@ -376,6 +376,16 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getModel_Logics()
+  {
+    return (EReference)modelEClass.getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getModuleElement()
   {
     return moduleElementEClass;
@@ -1319,6 +1329,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     createEReference(modelEClass, MODEL__LOOKUPS);
     createEReference(modelEClass, MODEL__TEMPLATES);
     createEReference(modelEClass, MODEL__FORMS);
+    createEReference(modelEClass, MODEL__LOGICS);
 
     moduleElementEClass = createEClass(MODULE_ELEMENT);
     createEAttribute(moduleElementEClass, MODULE_ELEMENT__NAME);
@@ -1488,6 +1499,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEReference(getModel_Lookups(), this.getLookupElement(), null, "lookups", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Templates(), this.getTemplateElement(), null, "templates", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Forms(), this.getFormElement(), null, "forms", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModel_Logics(), this.getLogicElement(), null, "logics", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(moduleElementEClass, ModuleElement.class, "ModuleElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getModuleElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, ModuleElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

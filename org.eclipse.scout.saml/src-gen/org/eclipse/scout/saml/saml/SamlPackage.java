@@ -130,13 +130,22 @@ public interface SamlPackage extends EPackage
   int MODEL__FORMS = 6;
 
   /**
+   * The feature id for the '<em><b>Logics</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODEL__LOGICS = 7;
+
+  /**
    * The number of structural features of the '<em>Model</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL_FEATURE_COUNT = 7;
+  int MODEL_FEATURE_COUNT = 8;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.ModuleElementImpl <em>Module Element</em>}' class.
@@ -2439,6 +2448,17 @@ public interface SamlPackage extends EPackage
   EReference getModel_Forms();
 
   /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.Model#getLogics <em>Logics</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Logics</em>'.
+   * @see org.eclipse.scout.saml.saml.Model#getLogics()
+   * @see #getModel()
+   * @generated
+   */
+  EReference getModel_Logics();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.ModuleElement <em>Module Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3502,6 +3522,14 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EReference MODEL__FORMS = eINSTANCE.getModel_Forms();
+
+    /**
+     * The meta object literal for the '<em><b>Logics</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MODEL__LOGICS = eINSTANCE.getModel_Logics();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.ModuleElementImpl <em>Module Element</em>}' class.

@@ -1,22 +1,27 @@
 package org.eclipse.scout.saml.tests
 
 import com.google.inject.Inject
+import com.google.inject.Provider
+import org.eclipse.scout.saml.SamlInjectorProvider
 import org.eclipse.scout.saml.saml.Model
 import org.eclipse.scout.saml.saml.SamlPackage
 import org.eclipse.scout.saml.validation.SamlJavaValidator
+import org.eclipse.xtext.junit4.InjectWith
+import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
 import org.eclipse.xtext.junit4.validation.ValidationTestHelper
+import org.eclipse.xtext.resource.XtextResourceSet
 import org.junit.Test
-import org.eclipse.xtext.junit4.InjectWith
 import org.junit.runner.RunWith
-import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.scout.saml.SamlInjectorProvider
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(SamlInjectorProvider))
 class LogicTests {
 	@Inject extension ParseHelper<Model>
 	@Inject extension ValidationTestHelper
+	
+	@Inject
+	private Provider<XtextResourceSet> resourceSetProvider;
 
 	@Test
 	def void testNamedLogic() {
@@ -141,5 +146,23 @@ class LogicTests {
 			}
 		}
 		'''.parse.assertError(SamlPackage::eINSTANCE.logicElement, SamlJavaValidator::INVALID_LOGIC_ELEMENT, SamlJavaValidator::MSG_WRONG_LOGIC_EVENT)
+	}
+	
+	@Test
+	def void testSeparatedLogic() {
+		val resourceSet = resourceSetProvider.get()
+		'''
+		module c.test
+		form MyForm {
+		    logic exec=EvalForm
+		}
+		'''.parse(resourceSet).assertNoErrors
+		
+		'''
+		module c.test
+		logic EvalForm placement=client {
+		    "whatever"
+		}
+		'''.parse(resourceSet).assertNoErrors
 	}
 }

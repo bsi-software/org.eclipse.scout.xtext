@@ -1,4 +1,4 @@
-grammar org.eclipse.scout.saml.Saml  with org.eclipse.xtext.xbase.Xbase
+grammar org.eclipse.scout.saml.Saml with org.eclipse.xtext.xbase.Xbase
 
 generate saml "http://www.eclipse.org/scout/saml/Saml"
 
@@ -18,6 +18,8 @@ Model:
 		(templates+=TemplateElement)
 		|
 		(forms+=FormElement)
+		|
+		(logics+=LogicElement) /* for reference only, will not be traversed */
 	)*;
 
 

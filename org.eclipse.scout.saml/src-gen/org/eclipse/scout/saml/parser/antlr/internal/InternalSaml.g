@@ -207,6 +207,25 @@ ruleModel returns [EObject current=null]
 	    }
 
 )
+)
+    |(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getModelAccess().getLogicsLogicElementParserRuleCall_2_5_0()); 
+	    }
+		lv_logics_7_0=ruleLogicElement		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getModelRule());
+	        }
+       		add(
+       			$current, 
+       			"logics",
+        		lv_logics_7_0, 
+        		"LogicElement");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
 ))*)
 ;
 

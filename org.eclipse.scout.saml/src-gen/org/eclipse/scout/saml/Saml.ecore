@@ -16,6 +16,8 @@
         eType="#//TemplateElement" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="forms" upperBound="-1"
         eType="#//FormElement" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="logics" upperBound="-1"
+        eType="#//LogicElement" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModuleElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

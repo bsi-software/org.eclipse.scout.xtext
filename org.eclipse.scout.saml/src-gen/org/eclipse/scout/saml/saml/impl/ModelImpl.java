@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.scout.saml.saml.CodeElement;
 import org.eclipse.scout.saml.saml.FormElement;
 import org.eclipse.scout.saml.saml.ImportElement;
+import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.saml.saml.LookupElement;
 import org.eclipse.scout.saml.saml.Model;
 import org.eclipse.scout.saml.saml.ModuleElement;
@@ -42,6 +43,7 @@ import org.eclipse.scout.saml.saml.TranslationElement;
  *   <li>{@link org.eclipse.scout.saml.saml.impl.ModelImpl#getLookups <em>Lookups</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.ModelImpl#getTemplates <em>Templates</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.ModelImpl#getForms <em>Forms</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.ModelImpl#getLogics <em>Logics</em>}</li>
  * </ul>
  * </p>
  *
@@ -118,6 +120,16 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * @ordered
    */
   protected EList<FormElement> forms;
+
+  /**
+   * The cached value of the '{@link #getLogics() <em>Logics</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLogics()
+   * @generated
+   * @ordered
+   */
+  protected EList<LogicElement> logics;
 
   /**
    * <!-- begin-user-doc -->
@@ -277,6 +289,20 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<LogicElement> getLogics()
+  {
+    if (logics == null)
+    {
+      logics = new EObjectContainmentEList<LogicElement>(LogicElement.class, this, SamlPackage.MODEL__LOGICS);
+    }
+    return logics;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -296,6 +322,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return ((InternalEList<?>)getTemplates()).basicRemove(otherEnd, msgs);
       case SamlPackage.MODEL__FORMS:
         return ((InternalEList<?>)getForms()).basicRemove(otherEnd, msgs);
+      case SamlPackage.MODEL__LOGICS:
+        return ((InternalEList<?>)getLogics()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -324,6 +352,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return getTemplates();
       case SamlPackage.MODEL__FORMS:
         return getForms();
+      case SamlPackage.MODEL__LOGICS:
+        return getLogics();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -366,6 +396,10 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         getForms().clear();
         getForms().addAll((Collection<? extends FormElement>)newValue);
         return;
+      case SamlPackage.MODEL__LOGICS:
+        getLogics().clear();
+        getLogics().addAll((Collection<? extends LogicElement>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -401,6 +435,9 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
       case SamlPackage.MODEL__FORMS:
         getForms().clear();
         return;
+      case SamlPackage.MODEL__LOGICS:
+        getLogics().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -429,6 +466,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return templates != null && !templates.isEmpty();
       case SamlPackage.MODEL__FORMS:
         return forms != null && !forms.isEmpty();
+      case SamlPackage.MODEL__LOGICS:
+        return logics != null && !logics.isEmpty();
     }
     return super.eIsSet(featureID);
   }

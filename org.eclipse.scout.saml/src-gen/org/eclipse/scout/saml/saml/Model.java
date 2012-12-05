@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.scout.saml.saml.Model#getLookups <em>Lookups</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.Model#getTemplates <em>Templates</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.Model#getForms <em>Forms</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.Model#getLogics <em>Logics</em>}</li>
  * </ul>
  * </p>
  *
@@ -151,5 +152,21 @@ public interface Model extends EObject
    * @generated
    */
   EList<FormElement> getForms();
+
+  /**
+   * Returns the value of the '<em><b>Logics</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.scout.saml.saml.LogicElement}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Logics</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Logics</em>' containment reference list.
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getModel_Logics()
+   * @model containment="true"
+   * @generated
+   */
+  EList<LogicElement> getLogics();
 
 } // Model

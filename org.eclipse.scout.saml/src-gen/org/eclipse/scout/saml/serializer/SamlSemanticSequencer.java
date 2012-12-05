@@ -1361,7 +1361,14 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *     (
 	 *         module=ModuleElement 
 	 *         imports+=ImportElement* 
-	 *         (translations+=TranslationElement | codes+=CodeElement | lookups+=LookupElement | templates+=TemplateElement | forms+=FormElement)*
+	 *         (
+	 *             translations+=TranslationElement | 
+	 *             codes+=CodeElement | 
+	 *             lookups+=LookupElement | 
+	 *             templates+=TemplateElement | 
+	 *             forms+=FormElement | 
+	 *             logics+=LogicElement
+	 *         )*
 	 *     )
 	 */
 	protected void sequence_Model(EObject context, Model semanticObject) {

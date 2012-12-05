@@ -1,6 +1,7 @@
 package org.eclipse.scout.saml.tests;
 
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.scout.saml.SamlInjectorProvider;
 import org.eclipse.scout.saml.saml.Model;
@@ -11,6 +12,7 @@ import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.junit4.util.ParseHelper;
 import org.eclipse.xtext.junit4.validation.ValidationTestHelper;
+import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,6 +26,9 @@ public class LogicTests {
   
   @Inject
   private ValidationTestHelper _validationTestHelper;
+  
+  @Inject
+  private Provider<XtextResourceSet> resourceSetProvider;
   
   @Test
   public void testNamedLogic() {
@@ -267,6 +272,39 @@ public class LogicTests {
       Model _parse = this._parseHelper.parse(_builder);
       EClass _logicElement = SamlPackage.eINSTANCE.getLogicElement();
       this._validationTestHelper.assertError(_parse, _logicElement, SamlJavaValidator.INVALID_LOGIC_ELEMENT, SamlJavaValidator.MSG_WRONG_LOGIC_EVENT);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testSeparatedLogic() {
+    try {
+      final XtextResourceSet resourceSet = this.resourceSetProvider.get();
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module c.test");
+      _builder.newLine();
+      _builder.append("form MyForm {");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("logic exec=EvalForm");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      Model _parse = this._parseHelper.parse(_builder, resourceSet);
+      this._validationTestHelper.assertNoErrors(_parse);
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("module c.test");
+      _builder_1.newLine();
+      _builder_1.append("logic EvalForm placement=client {");
+      _builder_1.newLine();
+      _builder_1.append("    ");
+      _builder_1.append("\"whatever\"");
+      _builder_1.newLine();
+      _builder_1.append("}");
+      _builder_1.newLine();
+      Model _parse_1 = this._parseHelper.parse(_builder_1, resourceSet);
+      this._validationTestHelper.assertNoErrors(_parse_1);
     } catch (Exception _e) {
       throw Exceptions.sneakyThrow(_e);
     }

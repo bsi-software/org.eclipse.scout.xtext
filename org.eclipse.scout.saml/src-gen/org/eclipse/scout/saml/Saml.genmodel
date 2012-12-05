@@ -15,6 +15,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//Model/lookups"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//Model/templates"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//Model/forms"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//Model/logics"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//ModuleElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//ModuleElement/name"/>

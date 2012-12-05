@@ -38,17 +38,23 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTemplatesTemplateElementParserRuleCall_2_3_0 = (RuleCall)cTemplatesAssignment_2_3.eContents().get(0);
 		private final Assignment cFormsAssignment_2_4 = (Assignment)cAlternatives_2.eContents().get(4);
 		private final RuleCall cFormsFormElementParserRuleCall_2_4_0 = (RuleCall)cFormsAssignment_2_4.eContents().get(0);
+		private final Assignment cLogicsAssignment_2_5 = (Assignment)cAlternatives_2.eContents().get(5);
+		private final RuleCall cLogicsLogicElementParserRuleCall_2_5_0 = (RuleCall)cLogicsAssignment_2_5.eContents().get(0);
 		
 		//Model:
 		//
-		//	module=ModuleElement imports+=ImportElement* (translations+=TranslationElement | codes+=CodeElement |
+		//	module=ModuleElement imports+=ImportElement* (translations+=TranslationElement
 		//
-		//	lookups+=LookupElement | templates+=TemplateElement | forms+=FormElement)*;
+		//	/ * for reference only, will not be traversed * / | codes+=CodeElement | lookups+=LookupElement |
+		//
+		//	templates+=TemplateElement | forms+=FormElement | logics+=LogicElement)*;
 		public ParserRule getRule() { return rule; }
 
-		//module=ModuleElement imports+=ImportElement* (translations+=TranslationElement | codes+=CodeElement |
+		//module=ModuleElement imports+=ImportElement* (translations+=TranslationElement
 		//
-		//lookups+=LookupElement | templates+=TemplateElement | forms+=FormElement)*
+		/// * for reference only, will not be traversed * / | codes+=CodeElement | lookups+=LookupElement |
+		//
+		//templates+=TemplateElement | forms+=FormElement | logics+=LogicElement)*
 		public Group getGroup() { return cGroup; }
 
 		//module=ModuleElement
@@ -63,9 +69,9 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//ImportElement
 		public RuleCall getImportsImportElementParserRuleCall_1_0() { return cImportsImportElementParserRuleCall_1_0; }
 
-		//(translations+=TranslationElement | codes+=CodeElement | lookups+=LookupElement | templates+=TemplateElement |
+		//(translations+=TranslationElement / * for reference only, will not be traversed * / | codes+=CodeElement |
 		//
-		//forms+=FormElement)*
+		//lookups+=LookupElement | templates+=TemplateElement | forms+=FormElement | logics+=LogicElement)*
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
 		//translations+=TranslationElement
@@ -97,6 +103,12 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 
 		//FormElement
 		public RuleCall getFormsFormElementParserRuleCall_2_4_0() { return cFormsFormElementParserRuleCall_2_4_0; }
+
+		//logics+=LogicElement
+		public Assignment getLogicsAssignment_2_5() { return cLogicsAssignment_2_5; }
+
+		//LogicElement
+		public RuleCall getLogicsLogicElementParserRuleCall_2_5_0() { return cLogicsLogicElementParserRuleCall_2_5_0; }
 	}
 
 	public class QualifiedNameWithWildCardElements extends AbstractParserRuleElementFinder {
@@ -4076,9 +4088,11 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//Model:
 	//
-	//	module=ModuleElement imports+=ImportElement* (translations+=TranslationElement | codes+=CodeElement |
+	//	module=ModuleElement imports+=ImportElement* (translations+=TranslationElement
 	//
-	//	lookups+=LookupElement | templates+=TemplateElement | forms+=FormElement)*;
+	//	/ * for reference only, will not be traversed * / | codes+=CodeElement | lookups+=LookupElement |
+	//
+	//	templates+=TemplateElement | forms+=FormElement | logics+=LogicElement)*;
 	public ModelElements getModelAccess() {
 		return (pModel != null) ? pModel : (pModel = new ModelElements());
 	}

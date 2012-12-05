@@ -2879,10 +2879,10 @@ public class InternalSamlLexer extends Lexer {
         try {
             int _type = RULE_HEX;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11242:10: ( ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )? )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11242:12: ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11261:10: ( ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )? )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11261:12: ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11242:12: ( '0x' | '0X' )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11261:12: ( '0x' | '0X' )
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -2910,7 +2910,7 @@ public class InternalSamlLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11242:13: '0x'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11261:13: '0x'
                     {
                     match("0x"); 
 
@@ -2918,7 +2918,7 @@ public class InternalSamlLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11242:18: '0X'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11261:18: '0X'
                     {
                     match("0X"); 
 
@@ -2928,7 +2928,7 @@ public class InternalSamlLexer extends Lexer {
 
             }
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11242:24: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11261:24: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+
             int cnt2=0;
             loop2:
             do {
@@ -2966,7 +2966,7 @@ public class InternalSamlLexer extends Lexer {
                 cnt2++;
             } while (true);
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11242:58: ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11261:58: ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -2975,10 +2975,10 @@ public class InternalSamlLexer extends Lexer {
             }
             switch (alt4) {
                 case 1 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11242:59: '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11261:59: '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
                     {
                     match('#'); 
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11242:63: ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11261:63: ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
                     int alt3=2;
                     int LA3_0 = input.LA(1);
 
@@ -2996,7 +2996,7 @@ public class InternalSamlLexer extends Lexer {
                     }
                     switch (alt3) {
                         case 1 :
-                            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11242:64: ( 'b' | 'B' ) ( 'i' | 'I' )
+                            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11261:64: ( 'b' | 'B' ) ( 'i' | 'I' )
                             {
                             if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                                 input.consume();
@@ -3020,7 +3020,7 @@ public class InternalSamlLexer extends Lexer {
                             }
                             break;
                         case 2 :
-                            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11242:84: ( 'l' | 'L' )
+                            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11261:84: ( 'l' | 'L' )
                             {
                             if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
                                 input.consume();
@@ -3059,11 +3059,11 @@ public class InternalSamlLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11244:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11244:12: '0' .. '9' ( '0' .. '9' | '_' )*
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11263:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11263:12: '0' .. '9' ( '0' .. '9' | '_' )*
             {
             matchRange('0','9'); 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11244:21: ( '0' .. '9' | '_' )*
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11263:21: ( '0' .. '9' | '_' )*
             loop5:
             do {
                 int alt5=2;
@@ -3112,11 +3112,11 @@ public class InternalSamlLexer extends Lexer {
         try {
             int _type = RULE_DECIMAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11246:14: ( RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )? )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11246:16: RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11265:14: ( RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )? )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11265:16: RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
             {
             mRULE_INT(); 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11246:25: ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )?
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11265:25: ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )?
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -3125,7 +3125,7 @@ public class InternalSamlLexer extends Lexer {
             }
             switch (alt7) {
                 case 1 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11246:26: ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11265:26: ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
                     {
                     if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                         input.consume();
@@ -3136,7 +3136,7 @@ public class InternalSamlLexer extends Lexer {
                         recover(mse);
                         throw mse;}
 
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11246:36: ( '+' | '-' )?
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11265:36: ( '+' | '-' )?
                     int alt6=2;
                     int LA6_0 = input.LA(1);
 
@@ -3169,7 +3169,7 @@ public class InternalSamlLexer extends Lexer {
 
             }
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11246:58: ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11265:58: ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
             int alt8=3;
             int LA8_0 = input.LA(1);
 
@@ -3181,7 +3181,7 @@ public class InternalSamlLexer extends Lexer {
             }
             switch (alt8) {
                 case 1 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11246:59: ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11265:59: ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' )
                     {
                     if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                         input.consume();
@@ -3205,7 +3205,7 @@ public class InternalSamlLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11246:87: ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' )
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11265:87: ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' )
                     {
                     if ( input.LA(1)=='D'||input.LA(1)=='F'||input.LA(1)=='L'||input.LA(1)=='d'||input.LA(1)=='f'||input.LA(1)=='l' ) {
                         input.consume();
@@ -3238,10 +3238,10 @@ public class InternalSamlLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11248:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )* )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11248:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11267:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )* )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11267:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11248:11: ( '^' )?
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11267:11: ( '^' )?
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -3250,7 +3250,7 @@ public class InternalSamlLexer extends Lexer {
             }
             switch (alt9) {
                 case 1 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11248:11: '^'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11267:11: '^'
                     {
                     match('^'); 
 
@@ -3268,7 +3268,7 @@ public class InternalSamlLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11248:44: ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11267:44: ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
             loop10:
             do {
                 int alt10=2;
@@ -3317,10 +3317,10 @@ public class InternalSamlLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11250:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11250:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11269:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11269:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11250:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11269:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -3338,10 +3338,10 @@ public class InternalSamlLexer extends Lexer {
             }
             switch (alt13) {
                 case 1 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11250:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11269:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11250:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11269:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop11:
                     do {
                         int alt11=3;
@@ -3357,7 +3357,7 @@ public class InternalSamlLexer extends Lexer {
 
                         switch (alt11) {
                     	case 1 :
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11250:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11269:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -3373,7 +3373,7 @@ public class InternalSamlLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11250:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11269:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -3398,10 +3398,10 @@ public class InternalSamlLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11250:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11269:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11250:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11269:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop12:
                     do {
                         int alt12=3;
@@ -3417,7 +3417,7 @@ public class InternalSamlLexer extends Lexer {
 
                         switch (alt12) {
                     	case 1 :
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11250:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11269:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -3433,7 +3433,7 @@ public class InternalSamlLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11250:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11269:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -3476,12 +3476,12 @@ public class InternalSamlLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11252:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11252:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11271:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11271:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11252:24: ( options {greedy=false; } : . )*
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11271:24: ( options {greedy=false; } : . )*
             loop14:
             do {
                 int alt14=2;
@@ -3506,7 +3506,7 @@ public class InternalSamlLexer extends Lexer {
 
                 switch (alt14) {
             	case 1 :
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11252:52: .
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11271:52: .
             	    {
             	    matchAny(); 
 
@@ -3536,12 +3536,12 @@ public class InternalSamlLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11254:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11254:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11273:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11273:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11254:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11273:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop15:
             do {
                 int alt15=2;
@@ -3554,7 +3554,7 @@ public class InternalSamlLexer extends Lexer {
 
                 switch (alt15) {
             	case 1 :
-            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11254:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11273:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -3574,7 +3574,7 @@ public class InternalSamlLexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11254:40: ( ( '\\r' )? '\\n' )?
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11273:40: ( ( '\\r' )? '\\n' )?
             int alt17=2;
             int LA17_0 = input.LA(1);
 
@@ -3583,9 +3583,9 @@ public class InternalSamlLexer extends Lexer {
             }
             switch (alt17) {
                 case 1 :
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11254:41: ( '\\r' )? '\\n'
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11273:41: ( '\\r' )? '\\n'
                     {
-                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11254:41: ( '\\r' )?
+                    // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11273:41: ( '\\r' )?
                     int alt16=2;
                     int LA16_0 = input.LA(1);
 
@@ -3594,7 +3594,7 @@ public class InternalSamlLexer extends Lexer {
                     }
                     switch (alt16) {
                         case 1 :
-                            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11254:41: '\\r'
+                            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11273:41: '\\r'
                             {
                             match('\r'); 
 
@@ -3626,10 +3626,10 @@ public class InternalSamlLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11256:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11256:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11275:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11275:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11256:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11275:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt18=0;
             loop18:
             do {
@@ -3683,8 +3683,8 @@ public class InternalSamlLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11258:16: ( . )
-            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11258:18: .
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11277:16: ( . )
+            // ../org.eclipse.scout.saml/src-gen/org/eclipse/scout/saml/parser/antlr/internal/InternalSaml.g:11277:18: .
             {
             matchAny(); 
 
