@@ -46,15 +46,6 @@ public class SamlImportApplication implements IApplication {
       throw new Exception("the input project name must be specified using the '" + INPUT_PROJECT_NAME + "' property.");
     }
 
-    IProject inputProject = ResourcesPlugin.getWorkspace().getRoot().getProject(getSamlInputProjectName());
-
-    if (inputProject == null || !inputProject.exists()) {
-      throw new Exception("the input project specified by the '" + INPUT_PROJECT_NAME + "' property could not be found in the workspace: '" + getSamlInputProjectName() + "'.");
-    }
-    if (!inputProject.isOpen()) {
-      throw new Exception("the input project specified by the '" + INPUT_PROJECT_NAME + "' is not open: '" + getSamlInputProjectName() + "'.");
-    }
-
     SamlImporterActivator.logInfo("Running import with '" + getSamlInputProjectName() + "' as SAML input project.");
 
     SamlImporterActivator.logInfo("Waiting for JDT...");
@@ -75,6 +66,15 @@ public class SamlImportApplication implements IApplication {
     oj.join();
     JdtUtility.waitForSilentWorkspace();
     SamlImporterActivator.logInfo("Project import finished.");
+
+    IProject inputProject = ResourcesPlugin.getWorkspace().getRoot().getProject(getSamlInputProjectName());
+
+    if (inputProject == null || !inputProject.exists()) {
+      throw new Exception("the input project specified by the '" + INPUT_PROJECT_NAME + "' property could not be found in the workspace: '" + getSamlInputProjectName() + "'.");
+    }
+    if (!inputProject.isOpen()) {
+      throw new Exception("the input project specified by the '" + INPUT_PROJECT_NAME + "' is not open: '" + getSamlInputProjectName() + "'.");
+    }
 
     SamlImportHelper.importSamlSync(inputProject);
 
