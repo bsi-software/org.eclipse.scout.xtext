@@ -1,9 +1,9 @@
 package org.eclipse.scout.sdk.saml.importer.application;
 
-import java.io.File;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -14,6 +14,7 @@ import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.jdt.core.WorkingCopyOwner;
 import org.eclipse.jdt.internal.core.DefaultWorkingCopyOwner;
 import org.eclipse.jdt.internal.ui.JavaPlugin;
+import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.sdk.jobs.OperationJob;
 import org.eclipse.scout.sdk.saml.importer.SamlImportHelper;
 import org.eclipse.scout.sdk.saml.importer.internal.SamlImporterActivator;
@@ -26,11 +27,11 @@ import org.eclipse.scout.sdk.util.jdt.JdtUtility;
 @SuppressWarnings("restriction")
 public class SamlImportApplication implements IApplication {
 
-  public final static String INPUT_ROOT_DIR = "samlInputRootDirectory";
+  public final static String INPUT_PROJECT_NAME = "samlInputProjectName";
   public final static String PARAM_PREFIX = "-";
-  public final static String INPUT_PARAM_ROOT_DIR = PARAM_PREFIX + INPUT_ROOT_DIR;
+  public final static String INPUT_PARAM_PROJECT_NAME = PARAM_PREFIX + INPUT_PROJECT_NAME;
 
-  private File m_samlInputRootDirectory;
+  private String m_samlInputProjectName;
 
   @Override
   public Object start(IApplicationContext context) throws Exception {
@@ -41,17 +42,20 @@ public class SamlImportApplication implements IApplication {
       fillParamsFromCommandLine((String[]) o);
     }
 
-    if (getSamlInputRootDirectory() == null) {
-      throw new Exception("the input directory must be specified using the '" + INPUT_PARAM_ROOT_DIR + "' property.");
-    }
-    if (!getSamlInputRootDirectory().exists()) {
-      throw new Exception("the input directory specified by the '" + INPUT_PARAM_ROOT_DIR + "' property could not be found: '" + getSamlInputRootDirectory().getAbsolutePath() + "'.");
-    }
-    if (!getSamlInputRootDirectory().isDirectory()) {
-      throw new Exception("the path specified by the '" + INPUT_PARAM_ROOT_DIR + "' property is not a directory: '" + getSamlInputRootDirectory().getAbsolutePath() + "'.");
+    if (!StringUtility.hasText(getSamlInputProjectName())) {
+      throw new Exception("the input project name must be specified using the '" + INPUT_PROJECT_NAME + "' property.");
     }
 
-    SamlImporterActivator.logInfo("Running import with '" + getSamlInputRootDirectory().getAbsolutePath() + "' as SAML input directory.");
+    IProject inputProject = ResourcesPlugin.getWorkspace().getRoot().getProject(getSamlInputProjectName());
+
+    if (inputProject == null || !inputProject.exists()) {
+      throw new Exception("the input project specified by the '" + INPUT_PROJECT_NAME + "' property could not be found in the workspace: '" + getSamlInputProjectName() + "'.");
+    }
+    if (!inputProject.isOpen()) {
+      throw new Exception("the input project specified by the '" + INPUT_PROJECT_NAME + "' is not open: '" + getSamlInputProjectName() + "'.");
+    }
+
+    SamlImporterActivator.logInfo("Running import with '" + getSamlInputProjectName() + "' as SAML input project.");
 
     SamlImporterActivator.logInfo("Waiting for JDT...");
     InitJdtUiJob j = new InitJdtUiJob();
@@ -72,7 +76,7 @@ public class SamlImportApplication implements IApplication {
     JdtUtility.waitForSilentWorkspace();
     SamlImporterActivator.logInfo("Project import finished.");
 
-    SamlImportHelper.importSamlSync(getSamlInputRootDirectory());
+    SamlImportHelper.importSamlSync(inputProject);
 
     JdtUtility.setWorkspaceAutoBuilding(isAutobuilding); // reset
     SamlImporterActivator.logInfo("SAML import application finished.");
@@ -88,10 +92,10 @@ public class SamlImportApplication implements IApplication {
     Iterator<String> it = params.iterator();
     while (it.hasNext()) {
       String p = consume(it);
-      if (INPUT_PARAM_ROOT_DIR.equals(p)) {
+      if (INPUT_PARAM_PROJECT_NAME.equals(p)) {
         String c = consume(it);
         if (c != null) {
-          setSamlInputRootDirectory(new File(c));
+          setSamlInputProjectName(c.trim());
         }
       }
     }
@@ -141,11 +145,11 @@ public class SamlImportApplication implements IApplication {
   public void stop() {
   }
 
-  public File getSamlInputRootDirectory() {
-    return m_samlInputRootDirectory;
+  public String getSamlInputProjectName() {
+    return m_samlInputProjectName;
   }
 
-  public void setSamlInputRootDirectory(File samlInputRootDirectory) {
-    m_samlInputRootDirectory = samlInputRootDirectory;
+  public void setSamlInputProjectName(String samlInputProjectName) {
+    m_samlInputProjectName = samlInputProjectName;
   }
 }

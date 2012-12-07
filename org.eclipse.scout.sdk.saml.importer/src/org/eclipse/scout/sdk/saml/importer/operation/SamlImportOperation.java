@@ -1,19 +1,24 @@
 package org.eclipse.scout.sdk.saml.importer.operation;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.scout.commons.FileUtility;
+import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.scout.saml.SamlStandaloneSetup;
 import org.eclipse.scout.saml.saml.CodeElement;
 import org.eclipse.scout.saml.saml.FormElement;
@@ -39,10 +44,13 @@ import com.google.inject.Injector;
 
 public class SamlImportOperation implements IOperation {
 
-  private File m_samlRootDirectory;
+  private IProject m_samlInputProject;
   private IScoutProject m_scoutRootProject;
+
   private SamlContext m_context;
+
   private Injector m_injector;
+  private XtextResourceSet m_resourceSet;
 
   @Override
   public String getOperationName() {
@@ -54,87 +62,135 @@ public class SamlImportOperation implements IOperation {
     if (getScoutRootProject() == null) {
       throw new IllegalArgumentException("Scout project cannot be null.");
     }
-    if (getSamlRootDirectory() == null || !getSamlRootDirectory().exists() || !getSamlRootDirectory().isDirectory()) {
-      throw new IllegalArgumentException("Invalid saml root directory.");
+    if (getSamlInputProject() == null) {
+      throw new IllegalArgumentException("The input project cannot be null.");
     }
+    if (!getSamlInputProject().exists()) {
+      throw new IllegalArgumentException("The input project could not be found.");
+    }
+    if (!getSamlInputProject().isOpen()) {
+      throw new IllegalArgumentException("The input project must be open.");
+    }
+  }
+
+  public static Set<IFile> getSamlFiles(IProject p) throws CoreException {
+    final HashSet<IPath> excludedPaths = new HashSet<IPath>();
+    if (p.hasNature(JavaCore.NATURE_ID)) {
+      IJavaProject jp = JavaCore.create(p);
+      excludedPaths.add(jp.getOutputLocation());
+    }
+
+    final Set<IFile> samlFileCollector = new HashSet<IFile>();
+    p.accept(new IResourceVisitor() {
+      @Override
+      public boolean visit(IResource resource) throws CoreException {
+        if (!resource.exists()) {
+          return false;
+        }
+
+        if (resource.getType() == IResource.FILE) {
+          if (resource.getName().toLowerCase().endsWith(".saml")) {
+            samlFileCollector.add((IFile) resource);
+          }
+          return false;
+        }
+        if (resource.getType() == IResource.FOLDER) {
+          IFolder f = (IFolder) resource;
+          for (IPath pa : excludedPaths) {
+            if (pa.equals(f.getFullPath())) {
+              return false;
+            }
+          }
+        }
+
+        return true;
+      }
+    });
+    return samlFileCollector;
   }
 
   @Override
   public void run(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException, IllegalArgumentException {
-    // TODO if (getInjector() == null) {
-    setInjector(new SamlStandaloneSetup().createInjectorAndDoEMFRegistration());
-    //}
-
-    IResourceValidator validator = getInjector().getInstance(IResourceValidator.class);
-    XtextResourceSet resourceSet = getInjector().getInstance(XtextResourceSet.class);
-    resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
-    resourceSet.addLoadOption(XtextResource.OPTION_ENCODING, "UTF-8");
-
-    try {
-      File[] filesInFolder = getAllSamlFilesRec();
-      for (File f : filesInFolder) {
-        Resource r = resourceSet.getResource(URI.createFileURI(f.getAbsolutePath()), true);
-        resourceSet.getResources().add(r);
-        r.load(null);
-      }
-
-      ArrayList<Issue> parsingIssues = new ArrayList<Issue>();
-      for (Resource r : resourceSet.getResources()) {
-        parsingIssues.addAll(validator.validate(r, CheckMode.ALL, CancelIndicator.NullImpl));
-      }
-
-      if (parsingIssues.size() > 0) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("SAML files are not valid. ");
-        sb.append(parsingIssues.size());
-        sb.append(" Error(s) have been found. Please check input files:");
-        for (Issue i : parsingIssues) {
-          sb.append("\n     ");
-          sb.append(i.getMessage());
-        }
-        throw new IllegalArgumentException(sb.toString());
-      }
-      else {
-        m_context = new SamlContext(monitor, workingCopyManager, getInjector(), getScoutRootProject());
-        // 0. allow all configurators to do their tasks
-        for (IScoutProjectConfigurator configurator : CodeCustomizationExtension.getScoutProjectConfigurators()) {
-          configurator.configure(getSamlContext());
-        }
-
-        // 1. all translations over all files
-        visitRootElements(monitor, workingCopyManager, resourceSet, new TranslationElementVisitor());
-        if (monitor.isCanceled()) {
-          return;
-        }
-
-        // 2. all codes over all files
-        visitRootElements(monitor, workingCopyManager, resourceSet, new CodeElementVisitor());
-        if (monitor.isCanceled()) {
-          return;
-        }
-
-        // 3. all lookups over all files
-        visitRootElements(monitor, workingCopyManager, resourceSet, new LookupElementVisitor());
-        if (monitor.isCanceled()) {
-          return;
-        }
-
-        // 4. all forms over all files
-        visitRootElements(monitor, workingCopyManager, resourceSet, new FormElementVisitor());
-        if (monitor.isCanceled()) {
-          return;
-        }
-
-        ResourcesPlugin.getWorkspace().checkpoint(false);
-      }
+    if (getInjector() == null) {
+      setInjector(new SamlStandaloneSetup().createInjectorAndDoEMFRegistration());
     }
-    catch (IOException e) {
-      throw new IllegalArgumentException(e);
+
+    if (getResourceSet() == null) {
+      setResourceSet(getInjector().getInstance(XtextResourceSet.class));
+    }
+
+    getResourceSet().addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
+    getResourceSet().addLoadOption(XtextResource.OPTION_ENCODING, "UTF-8");
+
+    // get all input files in the input project
+    Set<IFile> samlFiles = getSamlFiles(getSamlInputProject());
+
+    // create resources from the input files
+    ArrayList<Resource> samlResources = new ArrayList<Resource>(samlFiles.size());
+    for (IFile file : samlFiles) {
+      URI uri = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
+      Resource r = getResourceSet().getResource(uri, true);
+      samlResources.add(r);
+    }
+
+    // checking the resources for errors (do validation)
+    IResourceValidator validator = getInjector().getInstance(IResourceValidator.class);
+    ArrayList<Issue> parsingIssues = new ArrayList<Issue>();
+    for (Resource r : samlResources) {
+      parsingIssues.addAll(validator.validate(r, CheckMode.ALL, CancelIndicator.NullImpl));
+    }
+
+    if (parsingIssues.size() > 0) {
+      // errors found: collect messages
+      StringBuilder sb = new StringBuilder();
+      sb.append("SAML files are not valid. ");
+      sb.append(parsingIssues.size());
+      sb.append(" Error(s) have been found. Please check input files:");
+      for (Issue i : parsingIssues) {
+        sb.append("\n     ");
+        sb.append(i.getMessage());
+      }
+      throw new IllegalArgumentException(sb.toString());
+    }
+    else {
+      // no errors: start import
+
+      m_context = new SamlContext(monitor, workingCopyManager, getInjector(), getScoutRootProject());
+      // 0. allow all configurators to do their tasks
+      for (IScoutProjectConfigurator configurator : CodeCustomizationExtension.getScoutProjectConfigurators()) {
+        configurator.configure(getSamlContext());
+      }
+
+      // 1. all translations over all files
+      visitRootElements(monitor, workingCopyManager, new TranslationElementVisitor());
+      if (monitor.isCanceled()) {
+        return;
+      }
+
+      // 2. all codes over all files
+      visitRootElements(monitor, workingCopyManager, new CodeElementVisitor());
+      if (monitor.isCanceled()) {
+        return;
+      }
+
+      // 3. all lookups over all files
+      visitRootElements(monitor, workingCopyManager, new LookupElementVisitor());
+      if (monitor.isCanceled()) {
+        return;
+      }
+
+      // 4. all forms over all files
+      visitRootElements(monitor, workingCopyManager, new FormElementVisitor());
+      if (monitor.isCanceled()) {
+        return;
+      }
+
+      ResourcesPlugin.getWorkspace().checkpoint(false);
     }
   }
 
-  private void visitRootElements(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, XtextResourceSet resourcesToVisit, IRootElementVisitor visitor) throws IllegalArgumentException, CoreException {
-    for (Resource r : resourcesToVisit.getResources()) {
+  private void visitRootElements(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, IRootElementVisitor visitor) throws IllegalArgumentException, CoreException {
+    for (Resource r : getResourceSet().getResources()) {
       EList<EObject> contents = r.getContents();
       for (EObject model : contents) {
         for (EObject root : model.eContents()) {
@@ -145,17 +201,6 @@ public class SamlImportOperation implements IOperation {
         }
       }
     }
-  }
-
-  private File[] getAllSamlFilesRec() throws IOException {
-    List<File> allFiles = FileUtility.listTree(getSamlRootDirectory(), true, false);
-    for (Iterator<File> it = allFiles.iterator(); it.hasNext();) {
-      File candidate = it.next();
-      if (!candidate.exists() || !candidate.getName().toLowerCase().endsWith(".saml")) {
-        it.remove();
-      }
-    }
-    return allFiles.toArray(new File[allFiles.size()]);
   }
 
   public IScoutProject getScoutRootProject() {
@@ -170,20 +215,28 @@ public class SamlImportOperation implements IOperation {
     return m_context;
   }
 
-  public File getSamlRootDirectory() {
-    return m_samlRootDirectory;
-  }
-
-  public void setSamlRootDirectory(File samlRootDirectory) {
-    m_samlRootDirectory = samlRootDirectory;
-  }
-
   public Injector getInjector() {
     return m_injector;
   }
 
   public void setInjector(Injector injector) {
     m_injector = injector;
+  }
+
+  public IProject getSamlInputProject() {
+    return m_samlInputProject;
+  }
+
+  public void setSamlInputProject(IProject samlInputProject) {
+    m_samlInputProject = samlInputProject;
+  }
+
+  public XtextResourceSet getResourceSet() {
+    return m_resourceSet;
+  }
+
+  public void setResourceSet(XtextResourceSet resourceSet) {
+    m_resourceSet = resourceSet;
   }
 
   private static class TranslationElementVisitor extends AbstractRootElementVisitor<TranslationElement> {

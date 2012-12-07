@@ -10,19 +10,24 @@
  ******************************************************************************/
 package org.eclipse.scout.sdk.saml.importer.ui.wizard;
 
-import java.io.File;
-
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.scout.commons.StringUtility;
-import org.eclipse.scout.sdk.ui.fields.FileSelectionField;
-import org.eclipse.scout.sdk.ui.fields.IFileSelectionListener;
+import org.eclipse.scout.sdk.saml.importer.operation.SamlImportOperation;
 import org.eclipse.scout.sdk.ui.internal.ScoutSdkUi;
 import org.eclipse.scout.sdk.ui.wizard.AbstractWorkspaceWizardPage;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
 
 /**
  * @author mvi
@@ -30,10 +35,10 @@ import org.eclipse.swt.widgets.Composite;
  */
 public class SamlImportWizardPage extends AbstractWorkspaceWizardPage {
 
-  private final static String PROP_SAML_ROOT_DIRECTORY = "samlRootDir";
-  private final static String SETTING_SAML_ROOT_DIRECTORY = "samlRootDirSetting";
+  private final static String PROP_SAML_INPUT_PROJECT = "samlInputProject";
+  private final static String SETTING_SAML_INPUT_PROJECT = "samlInputProject";
 
-  private FileSelectionField m_fileField;
+  private Combo m_projectCombo;
 
   public SamlImportWizardPage() {
     super(SamlImportWizardPage.class.getName());
@@ -43,62 +48,93 @@ public class SamlImportWizardPage extends AbstractWorkspaceWizardPage {
 
   @Override
   protected void createContent(Composite parent) {
-    m_fileField = new FileSelectionField(parent);
-    m_fileField.setLabelText("SAML Root Directory");
-    m_fileField.setFolderMode(true);
-    m_fileField.addProductSelectionListener(new IFileSelectionListener() {
+
+    IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
+    String[] names = new String[projects.length];
+    for (int i = 0; i < projects.length; i++) {
+      names[i] = projects[i].getName();
+    }
+
+    Label l = new Label(parent, SWT.NONE);
+    l.setText("SAML Input Project");
+
+    m_projectCombo = new Combo(parent, SWT.READ_ONLY | SWT.DROP_DOWN);
+    m_projectCombo.setItems(names);
+    m_projectCombo.setEnabled(names.length > 1);
+    m_projectCombo.addSelectionListener(new SelectionAdapter() {
       @Override
-      public void fileSelected(File file) {
-        String fileName = "";
-        if (file != null) {
-          fileName = file.getAbsolutePath();
-        }
-        setSamlRootInternal(fileName);
+      public void widgetSelected(SelectionEvent e) {
+        setSamlInputProjectInternal(getWorkspaceProject(m_projectCombo.getItem(m_projectCombo.getSelectionIndex())));
         pingStateChanging();
       }
     });
-    String defaultPath = getDialogSettings().get(SETTING_SAML_ROOT_DIRECTORY);
-    if (StringUtility.hasText(defaultPath)) {
-      File f = new File(defaultPath);
-      m_fileField.setFile(f);
-      setSamlRootInternal(f.getAbsolutePath());
-      pingStateChanging();
+
+    String defaultProject = getDialogSettings().get(SETTING_SAML_INPUT_PROJECT);
+    if (StringUtility.hasText(defaultProject)) {
+      setSamlInputProject(getWorkspaceProject(defaultProject));
     }
     else {
-      m_fileField.setFile(null);
-      setSamlRootInternal(null);
+      setSamlInputProject(null);
     }
 
-    parent.setLayout(new GridLayout(1, true));
-    m_fileField.setLayoutData(new GridData(GridData.GRAB_HORIZONTAL | GridData.FILL_HORIZONTAL));
+    parent.setLayout(new GridLayout(2, false));
+    m_projectCombo.setLayoutData(new GridData(GridData.GRAB_HORIZONTAL | GridData.FILL_HORIZONTAL));
   }
 
-  public String getSamlRoot() {
-    return (String) getProperty(PROP_SAML_ROOT_DIRECTORY);
+  private IProject getWorkspaceProject(String name) {
+    IProject p = ResourcesPlugin.getWorkspace().getRoot().getProject(name);
+    if (p != null && p.exists()) {
+      return p;
+    }
+    return null;
   }
 
   @Override
   protected void validatePage(MultiStatus multiStatus) {
-    multiStatus.add(getSamlRootStatus());
+    multiStatus.add(getSamlInputProjectStatus());
   }
 
-  protected IStatus getSamlRootStatus() {
-    if (!StringUtility.hasText(getSamlRoot())) {
-      return new Status(IStatus.ERROR, ScoutSdkUi.PLUGIN_ID, "Please specify a SAML root directory");
+  protected IStatus getSamlInputProjectStatus() {
+    if (getSamlInputProject() == null) {
+      return new Status(IStatus.ERROR, ScoutSdkUi.PLUGIN_ID, "Please choose the input project.");
     }
-    File f = new File(getSamlRoot());
-    if (!f.exists()) {
-      return new Status(IStatus.ERROR, ScoutSdkUi.PLUGIN_ID, "The given SAML root directory could not be found");
+    if (!getSamlInputProject().exists()) {
+      return new Status(IStatus.ERROR, ScoutSdkUi.PLUGIN_ID, "The given input project could not be found.");
     }
+    if (!getSamlInputProject().isOpen()) {
+      return new Status(IStatus.ERROR, ScoutSdkUi.PLUGIN_ID, "The given input project is not open.");
+    }
+
+    try {
+      if (SamlImportOperation.getSamlFiles(getSamlInputProject()).size() < 1) {
+        return new Status(IStatus.ERROR, ScoutSdkUi.PLUGIN_ID, "The given project does not contain any SAML input files.");
+      }
+    }
+    catch (CoreException e) {
+      return new Status(IStatus.ERROR, ScoutSdkUi.PLUGIN_ID, "Error checking the given project: " + e.getMessage());
+    }
+
     return Status.OK_STATUS;
   }
 
-  public void setSamlRoot(String f) {
+  public IProject getSamlInputProject() {
+    return (IProject) getProperty(PROP_SAML_INPUT_PROJECT);
+  }
+
+  public void setSamlInputProject(IProject p) {
     try {
       setStateChanging(true);
-      setSamlRootInternal(f);
-      if (isControlCreated()) {
-        m_fileField.setFileName(f);
+      setSamlInputProjectInternal(p);
+      if (!m_projectCombo.isDisposed()) {
+        String[] items = m_projectCombo.getItems();
+        int selIndex = -1;
+        for (int i = 0; i < items.length; i++) {
+          if (p.getName().equals(items[i])) {
+            selIndex = i;
+            break;
+          }
+        }
+        m_projectCombo.select(selIndex);
       }
     }
     finally {
@@ -106,11 +142,8 @@ public class SamlImportWizardPage extends AbstractWorkspaceWizardPage {
     }
   }
 
-  private void setSamlRootInternal(String f) {
-    if (f != null) {
-      f = f.trim();
-    }
-    getDialogSettings().put(SETTING_SAML_ROOT_DIRECTORY, f);
-    setProperty(PROP_SAML_ROOT_DIRECTORY, f);
+  private void setSamlInputProjectInternal(IProject p) {
+    getDialogSettings().put(SETTING_SAML_INPUT_PROJECT, p == null ? null : p.getName());
+    setProperty(PROP_SAML_INPUT_PROJECT, p);
   }
 }

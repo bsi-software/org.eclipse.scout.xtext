@@ -19,7 +19,7 @@
 	
 		Example 
 		=======
-		<scout.saml.import eclipseBaseDir="C:\eclipse_with_scout_and_saml" workspaceDir="C:\workspace" samlInputDir="C:\workspace\org.eclipse.scout.saml.input\src"	/>
+		<scout.saml.import eclipseBaseDir="C:\eclipse_with_scout_and_saml" workspaceDir="C:\workspace" samlInputProjectName="org.eclipse.scout.saml.input"	/>
 	-->
 	<macrodef name="scout.saml.import" description="Imports SAML files into a workspace">
 	
@@ -39,9 +39,10 @@
 		<attribute name="workspaceDir" />
 		
 		<!--
-			This is the input directory containing all .saml files to import. It is best practice to have this folder placed in an own plugin inside the workspace specified in 'workspaceDir'.  
+			This is the eclipse project name containing all .saml files to import. 
+			The project with this name is searched in the workspace specified in 'workspaceDir'.  
 		 -->
-		<attribute name="samlInputDir" />
+		<attribute name="samlInputProjectName" />
 		
 		<sequential>
 			<java fork="true" failonerror="true" classname="org.eclipse.equinox.launcher.Main">
@@ -56,8 +57,8 @@
 				<arg value="org.eclipse.scout.sdk.saml.importer.samlImport" />
 				<arg value="-data" />
 				<arg value="@{workspaceDir}" />
-				<arg value="-samlInputRootDirectory" />
-				<arg value="@{samlInputDir}" />
+				<arg value="-samlInputProjectName" />
+				<arg value="@{samlInputProjectName}" />
 
 				<classpath>
 					<fileset dir="@{eclipseBaseDir}/plugins">

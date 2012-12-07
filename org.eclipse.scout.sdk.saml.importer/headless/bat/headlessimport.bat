@@ -1,1 +1,1 @@
-eclipse -nosplash -application org.eclipse.scout.sdk.saml.importer.samlImport -data C:\BSI\Projects\SAML\_workspace-with-importer -samlInputRootDirectory C:\BSI\Projects\SAML\_workspace-with-importer\org.eclipse.scout.saml.input\src
+eclipse -nosplash -application org.eclipse.scout.sdk.saml.importer.samlImport -data C:\BSI\Projects\SAML\_workspace-with-importer -samlInputProjectName org.eclipse.scout.saml.input

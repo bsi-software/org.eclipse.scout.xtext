@@ -10,8 +10,7 @@
  ******************************************************************************/
 package org.eclipse.scout.sdk.saml.importer;
 
-import java.io.File;
-
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
@@ -29,6 +28,7 @@ import org.eclipse.scout.sdk.saml.importer.internal.SamlImporterActivator;
 import org.eclipse.scout.sdk.saml.importer.operation.SamlImportOperation;
 import org.eclipse.scout.sdk.util.jdt.JdtUtility;
 import org.eclipse.scout.sdk.workspace.IScoutProject;
+import org.eclipse.xtext.resource.XtextResourceSet;
 
 import com.google.inject.Injector;
 
@@ -41,23 +41,23 @@ import com.google.inject.Injector;
 @SuppressWarnings("restriction")
 public class SamlImportHelper {
 
-  public static void importSamlSync(File samlInputDirectory) throws IllegalArgumentException {
-    importSamlSync(samlInputDirectory, null);
+  public static void importSamlSync(IProject samlInputProject) throws IllegalArgumentException {
+    importSamlSync(samlInputProject, null, null);
   }
 
-  public static void importSamlSync(File samlInputDirectory, Injector injector) throws IllegalArgumentException {
-    doImport(samlInputDirectory, true, null);
+  public static void importSamlSync(IProject samlInputProject, Injector injector, XtextResourceSet resourceSet) throws IllegalArgumentException {
+    doImport(samlInputProject, injector, resourceSet, true);
   }
 
-  public static void importSamlAsync(File samlInputDirectory) throws IllegalArgumentException {
-    importSamlAsync(samlInputDirectory, null);
+  public static void importSamlAsync(IProject samlInputProject) throws IllegalArgumentException {
+    importSamlAsync(samlInputProject, null, null);
   }
 
-  public static void importSamlAsync(File samlInputDirectory, Injector injector) throws IllegalArgumentException {
-    doImport(samlInputDirectory, false, injector);
+  public static void importSamlAsync(IProject samlInputProject, Injector injector, XtextResourceSet resourceSet) throws IllegalArgumentException {
+    doImport(samlInputProject, injector, resourceSet, false);
   }
 
-  private static void doImport(File samlInputDirectory, final boolean sync, Injector injector) throws IllegalArgumentException {
+  private static void doImport(IProject samlInputProject, Injector injector, XtextResourceSet resourceSet, final boolean sync) throws IllegalArgumentException {
     IScoutProject[] roots = ScoutWorkspace.getInstance().getRootProjects();
     if (roots == null || roots.length != 1) {
       throw new IllegalArgumentException("the running workspace must contain exactly one scout project");
@@ -68,15 +68,15 @@ public class SamlImportHelper {
       ScoutSdk.getDefault().setFormDataAutoUpdate(true);
 
       final SamlImportOperation op = new SamlImportOperation();
-      op.setSamlRootDirectory(samlInputDirectory);
+      op.setSamlInputProject(samlInputProject);
       op.setInjector(injector);
+      op.setResourceSet(resourceSet);
       op.setScoutRootProject(roots[0]);
-      SamlImporterActivator.logInfo("Starting import into Scout project '" + roots[0].getProjectName() + "'.");
+      SamlImporterActivator.logInfo("Starting SAML import into Scout project '" + roots[0].getProjectName() + "'.");
 
-      P_WaitForWorkspaceReadyJob wait = new P_WaitForWorkspaceReadyJob();
-      OperationJob j = new OperationJob(op);
+      final P_WaitForWorkspaceReadyJob waitJob = new P_WaitForWorkspaceReadyJob();
       if (!sync) {
-        wait.addJobChangeListener(new JobChangeAdapter() {
+        waitJob.addJobChangeListener(new JobChangeAdapter() {
           @Override
           public void done(IJobChangeEvent event) {
             ScoutSdk.getDefault().setFormDataAutoUpdate(origFormDataAutoUpdate);
@@ -84,25 +84,33 @@ public class SamlImportHelper {
         });
       }
 
-      j.schedule();
-      wait.schedule();
+      OperationJob importJob = new OperationJob(op);
+      importJob.addJobChangeListener(new JobChangeAdapter() {
+        @Override
+        public void done(IJobChangeEvent event) {
+          new P_MaxFormDataStartDelayJob(waitJob).schedule(10000);
+        }
+      });
+
+      importJob.schedule();
+      waitJob.schedule();
 
       if (sync) {
         try {
-          SamlImporterActivator.logInfo("Sync import requested. Waiting for Import Job to complete.");
-          j.join();
+          SamlImporterActivator.logInfo("Sync SAML import requested. Waiting for SAML Import Job to complete.");
+          importJob.join();
         }
         catch (InterruptedException e) {
           SamlImporterActivator.logWarning("Interrupted while waiting for import job.", e);
         }
         try {
           SamlImporterActivator.logInfo("Import Job completed. Waiting until all post-import tasks have been completed.");
-          wait.join();
+          waitJob.join();
         }
         catch (InterruptedException e) {
           SamlImporterActivator.logWarning("Interrupted while waiting for post-import tasks.", e);
         }
-        SamlImporterActivator.logInfo("Sync import completed.");
+        SamlImporterActivator.logInfo("Post-Import tasks completed. Sync import completed.");
       }
     }
     finally {
@@ -112,24 +120,59 @@ public class SamlImportHelper {
     }
   }
 
-  private static class P_WaitForWorkspaceReadyJob extends Job {
-    private volatile boolean finished = false;
+  /**
+   * this job unblocks the waiting job if no formdata update has been started or finished within a given time.
+   * 
+   * @author mvi
+   */
+  private static class P_MaxFormDataStartDelayJob extends Job {
+    private final P_WaitForWorkspaceReadyJob m_waitingJob;
 
-    private P_WaitForWorkspaceReadyJob() {
-      super("wait until workspace is ready");
+    private P_MaxFormDataStartDelayJob(P_WaitForWorkspaceReadyJob j) {
+      super("notify workspace ready job to stop waiting");
       setSystem(true);
+      m_waitingJob = j;
     }
 
     @Override
     protected IStatus run(IProgressMonitor monitor) {
-      P_ChangeListener listener = new P_ChangeListener(this);
+      if (!m_waitingJob.m_listener.formDataUpdateStarted && !m_waitingJob.finished) {
+        // the formdata job has not yet started or completed -> we assume the saml import has not changed any forms -> no formdata updates will come
+        m_waitingJob.stopWaiting();
+      }
+      return Status.OK_STATUS;
+    }
+  }
+
+  /**
+   * this job waits until it is notified to stop waiting. then the workspace is refreshed.
+   * 
+   * @author mvi
+   */
+  private static class P_WaitForWorkspaceReadyJob extends Job {
+    private volatile boolean finished = false;
+    private final P_FormDataAutoUpdateJobListener m_listener;
+
+    private P_WaitForWorkspaceReadyJob() {
+      super("wait until workspace is ready");
+      setSystem(true);
+      m_listener = new P_FormDataAutoUpdateJobListener(this);
+    }
+
+    private synchronized void stopWaiting() {
+      finished = true;
+      notify();
+    }
+
+    @Override
+    protected IStatus run(IProgressMonitor monitor) {
       try {
-        Job.getJobManager().addJobChangeListener(listener);
+        Job.getJobManager().addJobChangeListener(m_listener);
 
         while (!finished) {
           try {
             synchronized (this) {
-              this.wait();
+              wait();
             }
           }
           catch (InterruptedException e) {
@@ -137,7 +180,7 @@ public class SamlImportHelper {
         }
       }
       finally {
-        Job.getJobManager().removeJobChangeListener(listener);
+        Job.getJobManager().removeJobChangeListener(m_listener);
       }
 
       try {
@@ -154,22 +197,35 @@ public class SamlImportHelper {
     }
   }
 
-  private static class P_ChangeListener extends JobChangeAdapter {
-    private final P_WaitForWorkspaceReadyJob m_job;
+  /**
+   * this listener monitors the formdata auto update job. it protocols the start of a formdataupdate job and
+   * unblocks the waiting job as soon as the formdata job has completed.
+   * 
+   * @author mvi
+   */
+  private static class P_FormDataAutoUpdateJobListener extends JobChangeAdapter {
+    private final P_WaitForWorkspaceReadyJob m_waitingJob;
+    private volatile boolean formDataUpdateStarted = false;
 
-    private P_ChangeListener(P_WaitForWorkspaceReadyJob j) {
-      m_job = j;
+    private P_FormDataAutoUpdateJobListener(P_WaitForWorkspaceReadyJob j) {
+      m_waitingJob = j;
+    }
+
+    private boolean isFormDataJob(Job j) {
+      return j.belongsTo(FormDataAutoUpdater.AUTO_UPDATE_JOB_FAMILY);
+    }
+
+    @Override
+    public void scheduled(IJobChangeEvent event) {
+      if (isFormDataJob(event.getJob())) {
+        formDataUpdateStarted = true;
+      }
     }
 
     @Override
     public void done(IJobChangeEvent event) {
-      if (event.getResult().isOK() && event.getJob().belongsTo(FormDataAutoUpdater.AUTO_UPDATE_JOB_FAMILY)) {
-        synchronized (m_job) {
-          if (!m_job.finished) {
-            m_job.finished = true;
-            m_job.notify();
-          }
-        }
+      if (event.getResult().isOK() && isFormDataJob(event.getJob())) {
+        m_waitingJob.stopWaiting();
       }
     }
   }
