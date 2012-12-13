@@ -67,29 +67,29 @@ public class LookupElementImportOperation extends AbstractSamlElementImportOpera
     op.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
 
     // remember modified classes
-    IType lookupService = TypeUtility.getType(getLookupServiceFqn(baseName));
+    IType lookupService = op.getOutLookupService();
+    IType lookukpServiceInterface = op.getOutLookupServiceInterface();
+    IType lookupCall = op.getOutLookupCall();
 
     // fill logic
     SamlFormContext formContext = new SamlFormContext();
-    formContext.setClientType(op.getOutLookupCall());
+    formContext.setClientType(lookupCall);
+    formContext.setServerInterface(lookukpServiceInterface);
     formContext.setServerType(lookupService);
     formContext.setSamlContext(getSamlContext());
 
     SamlLogicFillOperation.fillAllLogic(getLookupElement().getLogic(), formContext);
 
     postProcessType(lookupService);
-    postProcessType(op.getOutLookupCall());
-  }
-
-  private String getLookupServiceFqn(String baseName) {
-    IScoutBundle server = getCurrentScoutModule().getServerBundle();
-    return server.getPackageName(IScoutBundle.SERVER_PACKAGE_APPENDIX_SERVICES_LOOKUP) + "." + baseName + SdkProperties.SUFFIX_LOOKUP_SERVICE;
+    postProcessType(lookukpServiceInterface);
+    postProcessType(lookupCall);
   }
 
   private void deleteExisting(String name) throws CoreException, IllegalArgumentException {
     IScoutBundle shared = getCurrentScoutModule().getSharedBundle();
+    IScoutBundle server = getCurrentScoutModule().getServerBundle();
 
-    IType oldService = TypeUtility.getType(getLookupServiceFqn(name));
+    IType oldService = TypeUtility.getType(server.getPackageName(IScoutBundle.SERVER_PACKAGE_APPENDIX_SERVICES_LOOKUP) + "." + name + SdkProperties.SUFFIX_LOOKUP_SERVICE);
     IType oldCall = TypeUtility.getType(shared.getPackageName(IScoutBundle.SHARED_PACKAGE_APPENDIX_SERVICES_LOOKUP) + "." + name + SdkProperties.SUFFIX_LOOKUP_CALL);
     IType oldServiceInterface = TypeUtility.getType(shared.getPackageName(IScoutBundle.SHARED_PACKAGE_APPENDIX_SERVICES_LOOKUP) + ".I" + name + SdkProperties.SUFFIX_LOOKUP_SERVICE);
 
@@ -110,5 +110,4 @@ public class LookupElementImportOperation extends AbstractSamlElementImportOpera
   public void setLookupElement(LookupElement lookupElement) {
     m_lookupElement = lookupElement;
   }
-
 }
