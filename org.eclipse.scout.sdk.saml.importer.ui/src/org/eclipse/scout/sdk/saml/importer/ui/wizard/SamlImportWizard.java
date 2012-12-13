@@ -23,14 +23,19 @@ public class SamlImportWizard extends AbstractWizard {
 
   @Override
   public boolean performFinish() {
-    Injector injector = SamlActivator.getInstance().getInjector(SamlActivator.ORG_ECLIPSE_SCOUT_SAML_SAML);
+    getShell().getDisplay().asyncExec(new Runnable() {
+      @Override
+      public void run() {
+        Injector injector = SamlActivator.getInstance().getInjector(SamlActivator.ORG_ECLIPSE_SCOUT_SAML_SAML);
 
-    IProject inputProject = m_page1.getSamlInputProject();
+        IProject inputProject = m_page1.getSamlInputProject();
 
-    IResourceSetProvider resSetProvider = injector.getInstance(IResourceSetProvider.class);
-    XtextResourceSet resourceSet = (XtextResourceSet) resSetProvider.get(inputProject);
+        IResourceSetProvider resSetProvider = injector.getInstance(IResourceSetProvider.class);
+        XtextResourceSet resourceSet = (XtextResourceSet) resSetProvider.get(inputProject);
 
-    SamlImportHelper.importSamlAsync(inputProject, injector, resourceSet);
+        SamlImportHelper.importSamlAsync(inputProject, injector, resourceSet);
+      }
+    });
 
     return true;
   }

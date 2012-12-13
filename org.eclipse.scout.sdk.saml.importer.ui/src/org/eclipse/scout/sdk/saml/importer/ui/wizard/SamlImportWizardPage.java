@@ -10,12 +10,15 @@
  ******************************************************************************/
 package org.eclipse.scout.sdk.saml.importer.ui.wizard;
 
+import java.util.ArrayList;
+
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.scout.commons.ListUtility;
 import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.sdk.saml.importer.operation.SamlImportOperation;
 import org.eclipse.scout.sdk.ui.internal.ScoutSdkUi;
@@ -28,6 +31,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.xtext.ui.XtextProjectHelper;
 
 /**
  * @author mvi
@@ -48,19 +52,20 @@ public class SamlImportWizardPage extends AbstractWorkspaceWizardPage {
 
   @Override
   protected void createContent(Composite parent) {
-
     IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
-    String[] names = new String[projects.length];
-    for (int i = 0; i < projects.length; i++) {
-      names[i] = projects[i].getName();
+    ArrayList<String> names = new ArrayList<String>(projects.length);
+    for (IProject p : projects) {
+      if (XtextProjectHelper.hasNature(p) && p.exists() && p.isOpen()) {
+        names.add(p.getName());
+      }
     }
 
     Label l = new Label(parent, SWT.NONE);
     l.setText("SAML Input Project");
 
     m_projectCombo = new Combo(parent, SWT.READ_ONLY | SWT.DROP_DOWN);
-    m_projectCombo.setItems(names);
-    m_projectCombo.setEnabled(names.length > 1);
+    m_projectCombo.setItems(names.toArray(new String[names.size()]));
+    m_projectCombo.setEnabled(names.size() > 1);
     m_projectCombo.addSelectionListener(new SelectionAdapter() {
       @Override
       public void widgetSelected(SelectionEvent e) {
@@ -70,8 +75,11 @@ public class SamlImportWizardPage extends AbstractWorkspaceWizardPage {
     });
 
     String defaultProject = getDialogSettings().get(SETTING_SAML_INPUT_PROJECT);
-    if (StringUtility.hasText(defaultProject)) {
+    if (StringUtility.hasText(defaultProject) && ListUtility.containsAny(names, defaultProject)) {
       setSamlInputProject(getWorkspaceProject(defaultProject));
+    }
+    else if (names.size() == 1) {
+      setSamlInputProject(getWorkspaceProject(names.get(0)));
     }
     else {
       setSamlInputProject(null);
@@ -95,6 +103,9 @@ public class SamlImportWizardPage extends AbstractWorkspaceWizardPage {
   }
 
   protected IStatus getSamlInputProjectStatus() {
+    if (m_projectCombo.getItemCount() < 1) {
+      return new Status(IStatus.ERROR, ScoutSdkUi.PLUGIN_ID, "No input project with the Xtext nature could be found in the workspace.");
+    }
     if (getSamlInputProject() == null) {
       return new Status(IStatus.ERROR, ScoutSdkUi.PLUGIN_ID, "Please choose the input project.");
     }
@@ -128,10 +139,12 @@ public class SamlImportWizardPage extends AbstractWorkspaceWizardPage {
       if (!m_projectCombo.isDisposed()) {
         String[] items = m_projectCombo.getItems();
         int selIndex = -1;
-        for (int i = 0; i < items.length; i++) {
-          if (p.getName().equals(items[i])) {
-            selIndex = i;
-            break;
+        if (p != null) {
+          for (int i = 0; i < items.length; i++) {
+            if (p.getName().equals(items[i])) {
+              selIndex = i;
+              break;
+            }
           }
         }
         m_projectCombo.select(selIndex);
