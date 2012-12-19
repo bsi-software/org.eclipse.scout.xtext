@@ -1,1 +1,1 @@
-eclipse -nosplash -application org.eclipse.scout.sdk.saml.importer.samlImport -data C:\BSI\Projects\SAML\_workspace-with-importer -samlInputProjectName org.eclipse.scout.saml.input
+eclipse -nosplash -application org.eclipse.scout.sdk.saml.importer.samlImport -data C:\BSI\Projects\SAML\_workspace-with-importer -samlInputProjectName org.eclipse.scout.saml.input -importProjectsIntoWs true -targetPlatformPath org.eclipse.scout.saml.input/targets/ScoutRAP.target

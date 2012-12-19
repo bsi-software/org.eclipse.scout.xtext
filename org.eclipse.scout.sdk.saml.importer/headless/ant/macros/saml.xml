@@ -11,6 +11,7 @@
 	date       author    comments
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 	2012-11-01 mvi       initial version
+	2012-12-13 mvi       new parameters added (importProjectsIntoWs, targetPlatformPath)
 -->
 <project name="Eclipse Scout SAML Ant Macros">
 
@@ -19,7 +20,11 @@
 	
 		Example 
 		=======
-		<scout.saml.import eclipseBaseDir="C:\eclipse_with_scout_and_saml" workspaceDir="C:\workspace" samlInputProjectName="org.eclipse.scout.saml.input"	/>
+		<scout.saml.import	eclipseBaseDir="C:\eclipse_with_scout_and_saml"
+							workspaceDir="C:\workspace"
+							samlInputProjectName="org.eclipse.scout.saml.input"
+							importProjectsIntoWs="true"
+							targetPlatformPath="org.eclipse.scout.saml.input/targets/ScoutRAP.target" />
 	-->
 	<macrodef name="scout.saml.import" description="Imports SAML files into a workspace">
 	
@@ -44,6 +49,21 @@
 		 -->
 		<attribute name="samlInputProjectName" />
 		
+		<!--
+			Specifies if the projects found below the folder specified by 'workspaceDir' should automatically be imported into the workspace.
+			This parameter is optional. The default is 'true'
+		 -->
+		<attribute default="true" name="importProjectsIntoWs" />
+		
+		<!--
+			Specifies the Target Platform definition file that should be applied before the SAML import starts.
+			The path specified is considered to be relative to the path specified by 'workspaceDir'.
+			The file must be part of the workspace. So either it is already in a project that is part of the workspace or 
+			the 'importProjectsIntoWs' parameter must be set to 'true'.
+			This parameter is optional. By default no target is applied.
+		 -->
+		<attribute default="" name="targetPlatformPath" />
+		
 		<sequential>
 			<java fork="true" failonerror="true" classname="org.eclipse.equinox.launcher.Main">
 				<jvmarg value="-Xms256m" />
@@ -59,6 +79,10 @@
 				<arg value="@{workspaceDir}" />
 				<arg value="-samlInputProjectName" />
 				<arg value="@{samlInputProjectName}" />
+				<arg value="-importProjectsIntoWs" />
+				<arg value="@{importProjectsIntoWs}" />
+				<arg value="-targetPlatformPath" />
+				<arg value="@{targetPlatformPath}" />
 
 				<classpath>
 					<fileset dir="@{eclipseBaseDir}/plugins">

@@ -2,11 +2,15 @@
 	<import file="${basedir}/macros/saml.xml" />
 	
 	<target name="import">
-
+		
 		<scout.saml.import
 			eclipseBaseDir="C:\BSI\Projects\SAML\_eclipse-with-importer"
 			workspaceDir="C:\BSI\Projects\SAML\_workspace-with-importer"
 			samlInputProjectName="org.eclipse.scout.saml.input"
+			importProjectsIntoWs="true"
+			targetPlatformPath="org.eclipse.scout.saml.input/targets/ScoutRAP.target"
 		/>
+		
 	</target>
+	
 </project>
