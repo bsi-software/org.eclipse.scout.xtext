@@ -71,7 +71,7 @@ public class GroupBoxElementImportOperation extends AbstractBoxElementImportOper
   }
 
   public static void applyColumnsAttribute(IProgressMonitor monitor, IWorkingCopyManager workingcopyManager, int columns, IType mainBox, ITypeHierarchy h) throws IllegalArgumentException, CoreException {
-    if (columns != 2 && columns > 0) {
+    if (columns > 0) {
       overrideMethod(monitor, workingcopyManager, mainBox, h, "getConfiguredGridColumnCount", "return " + columns + ";");
     }
   }
