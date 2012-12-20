@@ -37,7 +37,7 @@ ModuleElement: 'module' name=QualifiedName;
 ImportElement: 'import' importedNamespace=QualifiedNameWithWildCard;
 
 
-TranslationElement:'translation' name=ID (translations+=LanguageAttribute)+;
+TranslationElement:'translation' name=QualifiedName (translations+=LanguageAttribute)+;
 LanguageAttribute:lang=ID '=' text=STRING;
 
 
@@ -59,8 +59,8 @@ FormElement:'form' name=ID
 	(
 		('modal' '=' modal=BooleanType)? & 
 		('columns' '=' columns=INT)? &
-		('title' '=' title=[TranslationElement])? &
-		('subtitle' '=' subtitle=[TranslationElement])? &
+		('title' '=' title=[TranslationElement|QualifiedName])? &
+		('subtitle' '=' subtitle=[TranslationElement|QualifiedName])? &
 		('super_type' '=' superType=[TemplateElement])?
 	)
 	('{' (logic+=LogicElement | fields+=FormFieldElement | keyStrokes+=KeyElement)* '}')?;
@@ -74,7 +74,7 @@ FormFieldElement:CompositeFieldElement | ValueFieldElement | CustomFieldElement 
 CompositeFieldElement:SequenceBoxElement|GroupBoxElement;
 SequenceBoxElement:'sequence_box' name=ID
 	(
-		('text' '=' text=[TranslationElement])? & 
+		('text' '=' text=[TranslationElement|QualifiedName])? & 
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
 		('label_visible' '=' labelVisible=BooleanType)? &
@@ -87,7 +87,7 @@ SequenceBoxElement:'sequence_box' name=ID
 	
 GroupBoxElement:'group_box' name=ID
 	(
-		('text' '=' text=[TranslationElement])? &
+		('text' '=' text=[TranslationElement|QualifiedName])? &
 		('columns' '=' columns=INT)? &
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
@@ -107,7 +107,7 @@ ValueFieldElement: StringElement|DoubleElement|LongElement|DateElement|Smartfiel
 
 StringElement:'string' name=ID 
 	(
-		('text' '=' text=[TranslationElement])? &
+		('text' '=' text=[TranslationElement|QualifiedName])? &
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
 		('label_visible' '=' labelVisible=BooleanType)? &
@@ -123,7 +123,7 @@ StringElement:'string' name=ID
 
 DoubleElement:'double' name=ID 
 	(
-		('text' '=' text=[TranslationElement])? &
+		('text' '=' text=[TranslationElement|QualifiedName])? &
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
 		('label_visible' '=' labelVisible=BooleanType)? &
@@ -137,7 +137,7 @@ DoubleElement:'double' name=ID
 
 LongElement:'long' name=ID
 	(
-		('text' '=' text=[TranslationElement])? &
+		('text' '=' text=[TranslationElement|QualifiedName])? &
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
 		('label_visible' '=' labelVisible=BooleanType)? &
@@ -151,7 +151,7 @@ LongElement:'long' name=ID
 
 DateElement:'date' name=ID
 	(
-		('text' '=' text=[TranslationElement])? &
+		('text' '=' text=[TranslationElement|QualifiedName])? &
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
 		('label_visible' '=' labelVisible=BooleanType)? &
@@ -165,7 +165,7 @@ DateElement:'date' name=ID
 
 SmartfieldElement:'smartfield' name=ID
 	(
-		('text' '=' text=[TranslationElement])? &
+		('text' '=' text=[TranslationElement|QualifiedName])? &
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
 		('label_visible' '=' labelVisible=BooleanType)? &
@@ -184,7 +184,7 @@ SmartfieldElement:'smartfield' name=ID
 CustomFieldElement:'custom_field' name=ID 
 	(
 		('super_type' '=' superType=[TemplateElement])? &
-		('text' '=' text=[TranslationElement])? &
+		('text' '=' text=[TranslationElement|QualifiedName])? &
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
 		('label_visible' '=' labelVisible=BooleanType)? &
@@ -198,7 +198,7 @@ CustomFieldElement:'custom_field' name=ID
 // BUTTONS
 ButtonElement:'button' name=ID
 	(
-		('text' '=' text=[TranslationElement])? &
+		('text' '=' text=[TranslationElement|QualifiedName])? &
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
 		('label_visible' '=' labelVisible=BooleanType)? &
@@ -216,14 +216,14 @@ MenuElement:'menu' name=ID
 	(
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
-		('text' '=' text=[TranslationElement])? &
+		('text' '=' text=[TranslationElement|QualifiedName])? &
 		('super_type' '=' superType=[TemplateElement])?
 	)
 	('{' logic+=LogicElement* '}')?;
 
 TableElement:'table' name=ID
 	(
-		('text' '=' text=[TranslationElement])? &
+		('text' '=' text=[TranslationElement|QualifiedName])? &
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
 		('master' '=' master=[ValueFieldElement])? &
@@ -238,7 +238,7 @@ TableElement:'table' name=ID
 ColumnElement:'column' name=ID
 	(
 		('type' '=' type=('date'|'string'|'int'|'double')) &
-		('text' '=' text=[TranslationElement])? &
+		('text' '=' text=[TranslationElement|QualifiedName])? &
 		('width' '=' width=INT)? &
 		('visible' '=' visible=BooleanType)? &
 		('displayable' '=' displayable=BooleanType)?

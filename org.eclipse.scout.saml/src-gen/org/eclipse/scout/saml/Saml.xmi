@@ -111,7 +111,7 @@
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="translation"/>
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.52"/>
         </elements>
         <elements xsi:type="xtext:Assignment" cardinality="+" feature="translations" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
@@ -267,7 +267,7 @@
                 <type metamodel="/0/@metamodelDeclarations.0">
                   <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//TranslationElement"/>
                 </type>
-                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+                <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.52"/>
               </terminal>
             </elements>
           </elements>
@@ -279,7 +279,7 @@
                 <type metamodel="/0/@metamodelDeclarations.0">
                   <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//TranslationElement"/>
                 </type>
-                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+                <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.52"/>
               </terminal>
             </elements>
           </elements>
@@ -352,7 +352,7 @@
                 <type metamodel="/0/@metamodelDeclarations.0">
                   <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//TranslationElement"/>
                 </type>
-                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+                <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.52"/>
               </terminal>
             </elements>
           </elements>
@@ -448,7 +448,7 @@
                 <type metamodel="/0/@metamodelDeclarations.0">
                   <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//TranslationElement"/>
                 </type>
-                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+                <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.52"/>
               </terminal>
             </elements>
           </elements>
@@ -584,7 +584,7 @@
                 <type metamodel="/0/@metamodelDeclarations.0">
                   <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//TranslationElement"/>
                 </type>
-                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+                <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.52"/>
               </terminal>
             </elements>
           </elements>
@@ -689,7 +689,7 @@
                 <type metamodel="/0/@metamodelDeclarations.0">
                   <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//TranslationElement"/>
                 </type>
-                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+                <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.52"/>
               </terminal>
             </elements>
           </elements>
@@ -787,7 +787,7 @@
                 <type metamodel="/0/@metamodelDeclarations.0">
                   <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//TranslationElement"/>
                 </type>
-                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+                <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.52"/>
               </terminal>
             </elements>
           </elements>
@@ -885,7 +885,7 @@
                 <type metamodel="/0/@metamodelDeclarations.0">
                   <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//TranslationElement"/>
                 </type>
-                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+                <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.52"/>
               </terminal>
             </elements>
           </elements>
@@ -983,7 +983,7 @@
                 <type metamodel="/0/@metamodelDeclarations.0">
                   <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//TranslationElement"/>
                 </type>
-                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+                <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.52"/>
               </terminal>
             </elements>
           </elements>
@@ -1129,7 +1129,7 @@
                 <type metamodel="/0/@metamodelDeclarations.0">
                   <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//TranslationElement"/>
                 </type>
-                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+                <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.52"/>
               </terminal>
             </elements>
           </elements>
@@ -1213,7 +1213,7 @@
                 <type metamodel="/0/@metamodelDeclarations.0">
                   <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//TranslationElement"/>
                 </type>
-                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+                <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.52"/>
               </terminal>
             </elements>
           </elements>
@@ -1330,7 +1330,7 @@
                 <type metamodel="/0/@metamodelDeclarations.0">
                   <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//TranslationElement"/>
                 </type>
-                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+                <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.52"/>
               </terminal>
             </elements>
           </elements>
@@ -1374,7 +1374,7 @@
                 <type metamodel="/0/@metamodelDeclarations.0">
                   <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//TranslationElement"/>
                 </type>
-                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+                <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.52"/>
               </terminal>
             </elements>
           </elements>
@@ -1485,7 +1485,7 @@
                 <type metamodel="/0/@metamodelDeclarations.0">
                   <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//TranslationElement"/>
                 </type>
-                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+                <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.52"/>
               </terminal>
             </elements>
           </elements>

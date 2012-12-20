@@ -514,19 +514,19 @@ ruleTranslationElement returns [EObject current=null]
     }
 (
 (
-		lv_name_1_0=RULE_ID
-		{
-			newLeafNode(lv_name_1_0, grammarAccess.getTranslationElementAccess().getNameIDTerminalRuleCall_1_0()); 
-		}
-		{
+		{ 
+	        newCompositeNode(grammarAccess.getTranslationElementAccess().getNameQualifiedNameParserRuleCall_1_0()); 
+	    }
+		lv_name_1_0=ruleQualifiedName		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getTranslationElementRule());
+	            $current = createModelElementForParent(grammarAccess.getTranslationElementRule());
 	        }
-       		setWithLastConsumed(
+       		set(
        			$current, 
        			"name",
         		lv_name_1_0, 
-        		"ID");
+        		"QualifiedName");
+	        afterParserOrEnumRuleCall();
 	    }
 
 )
@@ -1188,10 +1188,12 @@ ruleFormElement returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getFormElementRule());
 	        }
         }
-	otherlv_11=RULE_ID
-	{
-		newLeafNode(otherlv_11, grammarAccess.getFormElementAccess().getTitleTranslationElementCrossReference_2_2_2_0()); 
-	}
+		{ 
+	        newCompositeNode(grammarAccess.getFormElementAccess().getTitleTranslationElementCrossReference_2_2_2_0()); 
+	    }
+		ruleQualifiedName		{ 
+	        afterParserOrEnumRuleCall();
+	    }
 
 )
 )))
@@ -1221,10 +1223,12 @@ ruleFormElement returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getFormElementRule());
 	        }
         }
-	otherlv_14=RULE_ID
-	{
-		newLeafNode(otherlv_14, grammarAccess.getFormElementAccess().getSubtitleTranslationElementCrossReference_2_3_2_0()); 
-	}
+		{ 
+	        newCompositeNode(grammarAccess.getFormElementAccess().getSubtitleTranslationElementCrossReference_2_3_2_0()); 
+	    }
+		ruleQualifiedName		{ 
+	        afterParserOrEnumRuleCall();
+	    }
 
 )
 )))
@@ -1520,10 +1524,12 @@ ruleSequenceBoxElement returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getSequenceBoxElementRule());
 	        }
         }
-	otherlv_5=RULE_ID
-	{
-		newLeafNode(otherlv_5, grammarAccess.getSequenceBoxElementAccess().getTextTranslationElementCrossReference_2_0_2_0()); 
-	}
+		{ 
+	        newCompositeNode(grammarAccess.getSequenceBoxElementAccess().getTextTranslationElementCrossReference_2_0_2_0()); 
+	    }
+		ruleQualifiedName		{ 
+	        afterParserOrEnumRuleCall();
+	    }
 
 )
 )))
@@ -1913,10 +1919,12 @@ ruleGroupBoxElement returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getGroupBoxElementRule());
 	        }
         }
-	otherlv_5=RULE_ID
-	{
-		newLeafNode(otherlv_5, grammarAccess.getGroupBoxElementAccess().getTextTranslationElementCrossReference_2_0_2_0()); 
-	}
+		{ 
+	        newCompositeNode(grammarAccess.getGroupBoxElementAccess().getTextTranslationElementCrossReference_2_0_2_0()); 
+	    }
+		ruleQualifiedName		{ 
+	        afterParserOrEnumRuleCall();
+	    }
 
 )
 )))
@@ -2515,10 +2523,12 @@ ruleStringElement returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getStringElementRule());
 	        }
         }
-	otherlv_5=RULE_ID
-	{
-		newLeafNode(otherlv_5, grammarAccess.getStringElementAccess().getTextTranslationElementCrossReference_2_0_2_0()); 
-	}
+		{ 
+	        newCompositeNode(grammarAccess.getStringElementAccess().getTextTranslationElementCrossReference_2_0_2_0()); 
+	    }
+		ruleQualifiedName		{ 
+	        afterParserOrEnumRuleCall();
+	    }
 
 )
 )))
@@ -2965,10 +2975,12 @@ ruleDoubleElement returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getDoubleElementRule());
 	        }
         }
-	otherlv_5=RULE_ID
-	{
-		newLeafNode(otherlv_5, grammarAccess.getDoubleElementAccess().getTextTranslationElementCrossReference_2_0_2_0()); 
-	}
+		{ 
+	        newCompositeNode(grammarAccess.getDoubleElementAccess().getTextTranslationElementCrossReference_2_0_2_0()); 
+	    }
+		ruleQualifiedName		{ 
+	        afterParserOrEnumRuleCall();
+	    }
 
 )
 )))
@@ -3377,10 +3389,12 @@ ruleLongElement returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getLongElementRule());
 	        }
         }
-	otherlv_5=RULE_ID
-	{
-		newLeafNode(otherlv_5, grammarAccess.getLongElementAccess().getTextTranslationElementCrossReference_2_0_2_0()); 
-	}
+		{ 
+	        newCompositeNode(grammarAccess.getLongElementAccess().getTextTranslationElementCrossReference_2_0_2_0()); 
+	    }
+		ruleQualifiedName		{ 
+	        afterParserOrEnumRuleCall();
+	    }
 
 )
 )))
@@ -3789,10 +3803,12 @@ ruleDateElement returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getDateElementRule());
 	        }
         }
-	otherlv_5=RULE_ID
-	{
-		newLeafNode(otherlv_5, grammarAccess.getDateElementAccess().getTextTranslationElementCrossReference_2_0_2_0()); 
-	}
+		{ 
+	        newCompositeNode(grammarAccess.getDateElementAccess().getTextTranslationElementCrossReference_2_0_2_0()); 
+	    }
+		ruleQualifiedName		{ 
+	        afterParserOrEnumRuleCall();
+	    }
 
 )
 )))
@@ -4201,10 +4217,12 @@ ruleSmartfieldElement returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getSmartfieldElementRule());
 	        }
         }
-	otherlv_5=RULE_ID
-	{
-		newLeafNode(otherlv_5, grammarAccess.getSmartfieldElementAccess().getTextTranslationElementCrossReference_2_0_2_0()); 
-	}
+		{ 
+	        newCompositeNode(grammarAccess.getSmartfieldElementAccess().getTextTranslationElementCrossReference_2_0_2_0()); 
+	    }
+		ruleQualifiedName		{ 
+	        afterParserOrEnumRuleCall();
+	    }
 
 )
 )))
@@ -4769,10 +4787,12 @@ ruleCustomFieldElement returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getCustomFieldElementRule());
 	        }
         }
-	otherlv_8=RULE_ID
-	{
-		newLeafNode(otherlv_8, grammarAccess.getCustomFieldElementAccess().getTextTranslationElementCrossReference_2_1_2_0()); 
-	}
+		{ 
+	        newCompositeNode(grammarAccess.getCustomFieldElementAccess().getTextTranslationElementCrossReference_2_1_2_0()); 
+	    }
+		ruleQualifiedName		{ 
+	        afterParserOrEnumRuleCall();
+	    }
 
 )
 )))
@@ -5129,10 +5149,12 @@ ruleButtonElement returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getButtonElementRule());
 	        }
         }
-	otherlv_5=RULE_ID
-	{
-		newLeafNode(otherlv_5, grammarAccess.getButtonElementAccess().getTextTranslationElementCrossReference_2_0_2_0()); 
-	}
+		{ 
+	        newCompositeNode(grammarAccess.getButtonElementAccess().getTextTranslationElementCrossReference_2_0_2_0()); 
+	    }
+		ruleQualifiedName		{ 
+	        afterParserOrEnumRuleCall();
+	    }
 
 )
 )))
@@ -5636,10 +5658,12 @@ ruleMenuElement returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getMenuElementRule());
 	        }
         }
-	otherlv_11=RULE_ID
-	{
-		newLeafNode(otherlv_11, grammarAccess.getMenuElementAccess().getTextTranslationElementCrossReference_2_2_2_0()); 
-	}
+		{ 
+	        newCompositeNode(grammarAccess.getMenuElementAccess().getTextTranslationElementCrossReference_2_2_2_0()); 
+	    }
+		ruleQualifiedName		{ 
+	        afterParserOrEnumRuleCall();
+	    }
 
 )
 )))
@@ -5787,10 +5811,12 @@ ruleTableElement returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getTableElementRule());
 	        }
         }
-	otherlv_5=RULE_ID
-	{
-		newLeafNode(otherlv_5, grammarAccess.getTableElementAccess().getTextTranslationElementCrossReference_2_0_2_0()); 
-	}
+		{ 
+	        newCompositeNode(grammarAccess.getTableElementAccess().getTextTranslationElementCrossReference_2_0_2_0()); 
+	    }
+		ruleQualifiedName		{ 
+	        afterParserOrEnumRuleCall();
+	    }
 
 )
 )))
@@ -6273,10 +6299,12 @@ ruleColumnElement returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getColumnElementRule());
 	        }
         }
-	otherlv_8=RULE_ID
-	{
-		newLeafNode(otherlv_8, grammarAccess.getColumnElementAccess().getTextTranslationElementCrossReference_2_1_2_0()); 
-	}
+		{ 
+	        newCompositeNode(grammarAccess.getColumnElementAccess().getTextTranslationElementCrossReference_2_1_2_0()); 
+	    }
+		ruleQualifiedName		{ 
+	        afterParserOrEnumRuleCall();
+	    }
 
 )
 )))

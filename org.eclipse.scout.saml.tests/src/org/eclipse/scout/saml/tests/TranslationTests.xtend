@@ -43,6 +43,33 @@ class TranslationTests {
 	}
 	
 	@Test
+	def void testNlsKeyAttributes() {
+		'''
+		module a.b
+		
+		translation MyTrans.test.blub en="en" 
+		'''.parse.assertNoErrors
+	}
+	
+	@Test
+	def void testQualifiedNlsKeyReference() {
+		val resourceSet = resourceSetProvider.get()
+		'''
+		module a.b
+		
+		translation MyTrans.test.blub en="en" 
+		'''.parse(resourceSet).assertNoErrors
+		
+		'''
+		module a.b
+		
+		form MyForm title=MyTrans.test.blub {
+			
+		}
+		'''.parse(resourceSet).assertNoErrors
+	}
+	
+	@Test
 	def void testTextRefOverFiles() {
 		val resourceSet = resourceSetProvider.get()
 		'''

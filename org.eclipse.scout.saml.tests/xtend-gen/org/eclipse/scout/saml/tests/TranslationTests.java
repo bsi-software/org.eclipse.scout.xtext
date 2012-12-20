@@ -66,6 +66,51 @@ public class TranslationTests {
   }
   
   @Test
+  public void testNlsKeyAttributes() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module a.b");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("translation MyTrans.test.blub en=\"en\" ");
+      _builder.newLine();
+      Model _parse = this._parseHelper.parse(_builder);
+      this._validationTestHelper.assertNoErrors(_parse);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testQualifiedNlsKeyReference() {
+    try {
+      final XtextResourceSet resourceSet = this.resourceSetProvider.get();
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module a.b");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("translation MyTrans.test.blub en=\"en\" ");
+      _builder.newLine();
+      Model _parse = this._parseHelper.parse(_builder, resourceSet);
+      this._validationTestHelper.assertNoErrors(_parse);
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("module a.b");
+      _builder_1.newLine();
+      _builder_1.newLine();
+      _builder_1.append("form MyForm title=MyTrans.test.blub {");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.newLine();
+      _builder_1.append("}");
+      _builder_1.newLine();
+      Model _parse_1 = this._parseHelper.parse(_builder_1, resourceSet);
+      this._validationTestHelper.assertNoErrors(_parse_1);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
   public void testTextRefOverFiles() {
     try {
       final XtextResourceSet resourceSet = this.resourceSetProvider.get();

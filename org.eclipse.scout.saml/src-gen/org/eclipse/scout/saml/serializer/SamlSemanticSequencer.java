@@ -1103,7 +1103,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         name=ID 
-	 *         text=[TranslationElement|ID]? 
+	 *         text=[TranslationElement|QualifiedName]? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
 	 *         labelVisible=BooleanType? 
@@ -1144,7 +1144,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *     (
 	 *         name=ID 
 	 *         (type='date' | type='string' | type='int' | type='double') 
-	 *         text=[TranslationElement|ID]? 
+	 *         text=[TranslationElement|QualifiedName]? 
 	 *         width=INT? 
 	 *         visible=BooleanType? 
 	 *         displayable=BooleanType?
@@ -1160,7 +1160,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *     (
 	 *         name=ID 
 	 *         superType=[TemplateElement|ID]? 
-	 *         text=[TranslationElement|ID]? 
+	 *         text=[TranslationElement|QualifiedName]? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
 	 *         labelVisible=BooleanType? 
@@ -1179,7 +1179,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         name=ID 
-	 *         text=[TranslationElement|ID]? 
+	 *         text=[TranslationElement|QualifiedName]? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
 	 *         labelVisible=BooleanType? 
@@ -1200,7 +1200,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         name=ID 
-	 *         text=[TranslationElement|ID]? 
+	 *         text=[TranslationElement|QualifiedName]? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
 	 *         labelVisible=BooleanType? 
@@ -1223,8 +1223,8 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         name=ID 
 	 *         modal=BooleanType? 
 	 *         columns=INT? 
-	 *         title=[TranslationElement|ID]? 
-	 *         subtitle=[TranslationElement|ID]? 
+	 *         title=[TranslationElement|QualifiedName]? 
+	 *         subtitle=[TranslationElement|QualifiedName]? 
 	 *         superType=[TemplateElement|ID]? 
 	 *         (logic+=LogicElement | fields+=FormFieldElement | keyStrokes+=KeyElement)*
 	 *     )
@@ -1238,7 +1238,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         name=ID 
-	 *         text=[TranslationElement|ID]? 
+	 *         text=[TranslationElement|QualifiedName]? 
 	 *         columns=INT? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
@@ -1314,7 +1314,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         name=ID 
-	 *         text=[TranslationElement|ID]? 
+	 *         text=[TranslationElement|QualifiedName]? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
 	 *         labelVisible=BooleanType? 
@@ -1346,7 +1346,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         name=ID 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
-	 *         text=[TranslationElement|ID]? 
+	 *         text=[TranslationElement|QualifiedName]? 
 	 *         superType=[TemplateElement|ID]? 
 	 *         logic+=LogicElement*
 	 *     )
@@ -1396,7 +1396,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         name=ID 
-	 *         text=[TranslationElement|ID]? 
+	 *         text=[TranslationElement|QualifiedName]? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
 	 *         labelVisible=BooleanType? 
@@ -1416,7 +1416,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         name=ID 
-	 *         text=[TranslationElement|ID]? 
+	 *         text=[TranslationElement|QualifiedName]? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
 	 *         labelVisible=BooleanType? 
@@ -1440,7 +1440,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         name=ID 
-	 *         text=[TranslationElement|ID]? 
+	 *         text=[TranslationElement|QualifiedName]? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
 	 *         labelVisible=BooleanType? 
@@ -1462,7 +1462,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         name=ID 
-	 *         text=[TranslationElement|ID]? 
+	 *         text=[TranslationElement|QualifiedName]? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
 	 *         master=[ValueFieldElement|ID]? 
@@ -1499,7 +1499,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=ID translations+=LanguageAttribute+)
+	 *     (name=QualifiedName translations+=LanguageAttribute+)
 	 */
 	protected void sequence_TranslationElement(EObject context, TranslationElement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

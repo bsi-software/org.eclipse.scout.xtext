@@ -11,6 +11,8 @@
 package org.eclipse.scout.sdk.saml.importer.operation.nls;
 
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.runtime.CoreException;
@@ -45,6 +47,8 @@ import org.eclipse.scout.sdk.util.type.TypeUtility;
  * @since 3.8.0 25.09.2012
  */
 public class TranslationElementImportOperation extends AbstractSamlElementImportOperation {
+
+  private static final Pattern NLS_KEY_PATTERN = Pattern.compile("^(([A-Za-z]{2}))(_([A-Za-z]{2}))?$");
 
   private TranslationElement m_translationElement;
 
@@ -91,7 +95,6 @@ public class TranslationElementImportOperation extends AbstractSamlElementImport
 
   @Override
   public void run() throws CoreException, IllegalArgumentException {
-    String key = getTranslationElement().getName();
 
     String projectName = getCurrentScoutModule().getProjectName();
     IType curTxtSvc = getCurrentTextService();
@@ -132,9 +135,11 @@ public class TranslationElementImportOperation extends AbstractSamlElementImport
       SamlImporterActivator.logWarning("The NLS Project of the current module is no Scout NLS Project. Missing Languages will not be created automatically.");
     }
 
+    String key = getTranslationElement().getName();
     NlsEntry entry = new NlsEntry(key, nlsProject);
     for (LanguageAttribute lang : getTranslationElement().getTranslations()) {
-      Language language = new Language(new Locale(lang.getLang()));
+      Language language = new Language(parseLocale(lang));
+
       if (txtProvSvc != null && fld != null && !nlsProject.containsLanguage(language)) {
         INewLanguageContext translationCreationContext = nlsProject.getTranslationCreationContext();
         TranslationFileNewModel model = (TranslationFileNewModel) translationCreationContext.getModel();
@@ -147,6 +152,21 @@ public class TranslationElementImportOperation extends AbstractSamlElementImport
     nlsProject.updateRow(entry, getSamlContext().getMonitor());
   }
 
+  private static Locale parseLocale(LanguageAttribute lang) {
+    Matcher m = NLS_KEY_PATTERN.matcher(lang.getLang());
+    if (m.matches()) {
+      String l = m.group(2);
+      String c = m.group(4);
+      if (c != null) {
+        return new Locale(l, c);
+      }
+      else if (l != null) {
+        return new Locale(l);
+      }
+    }
+    throw new IllegalArgumentException("Invalid language iso code: '" + lang.getLang() + "'.");
+  }
+
   public TranslationElement getTranslationElement() {
     return m_translationElement;
   }
@@ -154,5 +174,4 @@ public class TranslationElementImportOperation extends AbstractSamlElementImport
   public void setTranslationElement(TranslationElement translationElement) {
     m_translationElement = translationElement;
   }
-
 }
