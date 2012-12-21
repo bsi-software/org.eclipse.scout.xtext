@@ -40,7 +40,7 @@ public class FormTests {
       _builder.append("form MyForm {");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("sequence_box MyBox {");
+      _builder.append("sequence MyBox {");
       _builder.newLine();
       _builder.append("\t\t");
       _builder.append("string my");
@@ -49,7 +49,7 @@ public class FormTests {
       _builder.append("}");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("sequence_box MyBox2 {");
+      _builder.append("sequence MyBox2 {");
       _builder.newLine();
       _builder.append("\t\t");
       _builder.append("string my");
@@ -89,7 +89,7 @@ public class FormTests {
       _builder_2.append("form MyForm {");
       _builder_2.newLine();
       _builder_2.append("\t");
-      _builder_2.append("sequence_box MyBox {");
+      _builder_2.append("sequence MyBox {");
       _builder_2.newLine();
       _builder_2.append("\t\t");
       _builder_2.append("string my");
@@ -98,7 +98,7 @@ public class FormTests {
       _builder_2.append("}");
       _builder_2.newLine();
       _builder_2.append("\t");
-      _builder_2.append("sequence_box MyBox2 {");
+      _builder_2.append("sequence MyBox2 {");
       _builder_2.newLine();
       _builder_2.append("\t\t");
       _builder_2.append("string my2");
@@ -136,7 +136,7 @@ public class FormTests {
       _builder.append("form MyForm {");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("sequence_box MyBox {");
+      _builder.append("sequence MyBox {");
       _builder.newLine();
       _builder.append("\t\t");
       _builder.append("string myString");
@@ -151,7 +151,7 @@ public class FormTests {
       _builder.append("}");
       _builder.newLine();
       _builder.append("\t\t");
-      _builder.append("sequence_box asdf {");
+      _builder.append("sequence asdf {");
       _builder.newLine();
       _builder.append("\t\t\t");
       _builder.newLine();
@@ -185,7 +185,7 @@ public class FormTests {
       _builder.append("\t");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("sequence_box MyBox3 {");
+      _builder.append("sequence MyBox3 {");
       _builder.newLine();
       _builder.append("\t\t");
       _builder.append("string string1");
@@ -196,7 +196,7 @@ public class FormTests {
       _builder.append("\t");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("sequence_box MyBox {");
+      _builder.append("sequence MyBox {");
       _builder.newLine();
       _builder.append("\t\t");
       _builder.append("string my master=test1");

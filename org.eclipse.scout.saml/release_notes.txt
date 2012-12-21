@@ -1,0 +1,27 @@
+
+Version: 1.0.0 2012-12-21
+Changed: mvi
+Changes:
+	Renamed:
+		from 'grid_height' to 'height'
+		from 'grid_width' to 'width'
+		from 'group_box' to 'group'
+		from 'sequence_box to 'sequence'	
+	
+	Deleted:
+		'double' element	
+
+	Added:
+		Element 'bigdecimal'
+			Attributes: 'percent', 'grouping', 'fraction_digits', 'min', 'max'
+		Element 'long'
+			Attributes: 'min', 'max'
+		Elements 'string', 'bigdecimal', 'long'
+			Attribute: 'horizontal_align'
+		For all form fields:
+			Attribute 'width_pixels'
+		For 'string', 'table', 'group'
+			Attribute 'height' added
+
+
+

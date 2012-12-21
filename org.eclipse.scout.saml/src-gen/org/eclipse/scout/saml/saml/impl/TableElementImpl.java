@@ -4,12 +4,15 @@ package org.eclipse.scout.saml.saml.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -26,6 +29,7 @@ import org.eclipse.scout.saml.saml.TableElement;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.TableElementImpl#getGridHeight <em>Grid Height</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.TableElementImpl#getMenus <em>Menus</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.TableElementImpl#getColumns <em>Columns</em>}</li>
  * </ul>
@@ -35,6 +39,26 @@ import org.eclipse.scout.saml.saml.TableElement;
  */
 public class TableElementImpl extends FormFieldElementImpl implements TableElement
 {
+  /**
+   * The default value of the '{@link #getGridHeight() <em>Grid Height</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getGridHeight()
+   * @generated
+   * @ordered
+   */
+  protected static final int GRID_HEIGHT_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getGridHeight() <em>Grid Height</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getGridHeight()
+   * @generated
+   * @ordered
+   */
+  protected int gridHeight = GRID_HEIGHT_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getMenus() <em>Menus</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -74,6 +98,29 @@ public class TableElementImpl extends FormFieldElementImpl implements TableEleme
   protected EClass eStaticClass()
   {
     return SamlPackage.Literals.TABLE_ELEMENT;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public int getGridHeight()
+  {
+    return gridHeight;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setGridHeight(int newGridHeight)
+  {
+    int oldGridHeight = gridHeight;
+    gridHeight = newGridHeight;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.TABLE_ELEMENT__GRID_HEIGHT, oldGridHeight, gridHeight));
   }
 
   /**
@@ -132,6 +179,8 @@ public class TableElementImpl extends FormFieldElementImpl implements TableEleme
   {
     switch (featureID)
     {
+      case SamlPackage.TABLE_ELEMENT__GRID_HEIGHT:
+        return getGridHeight();
       case SamlPackage.TABLE_ELEMENT__MENUS:
         return getMenus();
       case SamlPackage.TABLE_ELEMENT__COLUMNS:
@@ -151,6 +200,9 @@ public class TableElementImpl extends FormFieldElementImpl implements TableEleme
   {
     switch (featureID)
     {
+      case SamlPackage.TABLE_ELEMENT__GRID_HEIGHT:
+        setGridHeight((Integer)newValue);
+        return;
       case SamlPackage.TABLE_ELEMENT__MENUS:
         getMenus().clear();
         getMenus().addAll((Collection<? extends MenuElement>)newValue);
@@ -173,6 +225,9 @@ public class TableElementImpl extends FormFieldElementImpl implements TableEleme
   {
     switch (featureID)
     {
+      case SamlPackage.TABLE_ELEMENT__GRID_HEIGHT:
+        setGridHeight(GRID_HEIGHT_EDEFAULT);
+        return;
       case SamlPackage.TABLE_ELEMENT__MENUS:
         getMenus().clear();
         return;
@@ -193,12 +248,31 @@ public class TableElementImpl extends FormFieldElementImpl implements TableEleme
   {
     switch (featureID)
     {
+      case SamlPackage.TABLE_ELEMENT__GRID_HEIGHT:
+        return gridHeight != GRID_HEIGHT_EDEFAULT;
       case SamlPackage.TABLE_ELEMENT__MENUS:
         return menus != null && !menus.isEmpty();
       case SamlPackage.TABLE_ELEMENT__COLUMNS:
         return columns != null && !columns.isEmpty();
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (gridHeight: ");
+    result.append(gridHeight);
+    result.append(')');
+    return result.toString();
   }
 
 } //TableElementImpl

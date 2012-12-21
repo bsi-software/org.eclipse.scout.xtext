@@ -155,9 +155,9 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
         return createStringElementAdapter();
       }
       @Override
-      public Adapter caseDoubleElement(DoubleElement object)
+      public Adapter caseBigDecimalElement(BigDecimalElement object)
       {
-        return createDoubleElementAdapter();
+        return createBigDecimalElementAdapter();
       }
       @Override
       public Adapter caseLongElement(LongElement object)
@@ -467,16 +467,16 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.DoubleElement <em>Double Element</em>}'.
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.BigDecimalElement <em>Big Decimal Element</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.eclipse.scout.saml.saml.DoubleElement
+   * @see org.eclipse.scout.saml.saml.BigDecimalElement
    * @generated
    */
-  public Adapter createDoubleElementAdapter()
+  public Adapter createBigDecimalElementAdapter()
   {
     return null;
   }

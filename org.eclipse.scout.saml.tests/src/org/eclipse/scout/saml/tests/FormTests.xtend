@@ -28,10 +28,10 @@ class FormTests {
 		module a.b
 		
 		form MyForm {
-			sequence_box MyBox {
+			sequence MyBox {
 				string my
 			}
-			sequence_box MyBox2 {
+			sequence MyBox2 {
 				string my
 			}
 		}
@@ -51,10 +51,10 @@ class FormTests {
 		module a.b
 		
 		form MyForm {
-			sequence_box MyBox {
+			sequence MyBox {
 				string my
 			}
-			sequence_box MyBox2 {
+			sequence MyBox2 {
 				string my2
 			}
 		}
@@ -72,12 +72,12 @@ class FormTests {
 		module a.b
 		
 		form MyForm {
-			sequence_box MyBox {
+			sequence MyBox {
 				string myString
 				long mylong {
 					logic event=changed placement=server { "" }
 				}
-				sequence_box asdf {
+				sequence asdf {
 					
 				}
 			}
@@ -93,11 +93,11 @@ class FormTests {
 		form MyForm {
 			string test1
 			
-			sequence_box MyBox3 {
+			sequence MyBox3 {
 				string string1
 			}
 			
-			sequence_box MyBox {
+			sequence MyBox {
 				string my master=test1
 				string my2 master=string1
 			}

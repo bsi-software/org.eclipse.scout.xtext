@@ -12,8 +12,10 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.LongElement;
+import org.eclipse.scout.saml.saml.SamlPackage;
 import org.eclipse.scout.sdk.operation.form.field.LongFieldNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
 
@@ -39,6 +41,18 @@ public class LongElementImportOperation extends AbstractValueFieldElementImportO
     }
   }
 
+  protected void applyMaxAttribute(int max, boolean isSet, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    if (isSet) {
+      overrideMethod(field, h, "getConfiguredMaximumValue", "return " + max + "L;");
+    }
+  }
+
+  protected void applyMinAttribute(int min, boolean isSet, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    if (isSet) {
+      overrideMethod(field, h, "getConfiguredMinimumValue", "return " + min + "L;");
+    }
+  }
+
   @Override
   protected IType createField() throws CoreException, IllegalArgumentException {
     LongFieldNewOperation o = new LongFieldNewOperation(getSamlFormContext().getCurrentParentBox());
@@ -53,6 +67,15 @@ public class LongElementImportOperation extends AbstractValueFieldElementImportO
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
 
     return o.getCreatedField();
+  }
+
+  @Override
+  protected void applyFormFieldProperties(IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    super.applyFormFieldProperties(field, h);
+
+    applyMaxAttribute(getLongElement().getMax(), getLongElement().eIsSet(SamlPackage.eINSTANCE.getLongElement_Max()), field, h);
+    applyMinAttribute(getLongElement().getMin(), getLongElement().eIsSet(SamlPackage.eINSTANCE.getLongElement_Min()), field, h);
+    applyHorizontalAlignAttribute(getLongElement().getHorizontalAlign(), HORIZONTAL_ALIGN_RIGHT, field, h);
   }
 
   public LongElement getLongElement() {

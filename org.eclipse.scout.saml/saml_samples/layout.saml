@@ -1,0 +1,23 @@
+module test.a.b
+
+form Test01 columns=2 {
+	group Grp1 columns=1 width=1 {
+		sequence Row1 label_visible=false {
+			bigdecimal Currency01 label_visible=false fraction_digits=4 min=0 max=20000.5 grouping=true horizontal_align=left
+			bigdecimal Currency02 label_visible=false fraction_digits=1 min=0 max=100.1 grouping=false horizontal_align=center percent=true
+		}
+		sequence Row2 label_visible=false {
+			long Num01 label_visible=false min=100 max=200 
+		}
+		sequence Row3 label_visible=false {
+			string TxtArea label_visible=false height=4 maxlen=5000 width_pixels=200
+			string TxtRow label_visible=false maxlen=40 horizontal_align=right
+		}
+	}
+	group Grp2 columns=1 width=1 width_pixels=200 {
+		sequence Row4 label_visible=false {
+			date MyDate label_visible=false
+		}
+	}
+}
+

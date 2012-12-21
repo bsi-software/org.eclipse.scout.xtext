@@ -21,6 +21,7 @@ import org.eclipse.scout.saml.saml.SamlPackage;
  *   <li>{@link org.eclipse.scout.saml.saml.impl.GroupBoxElementImpl#getColumns <em>Columns</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.GroupBoxElementImpl#getBorderVisible <em>Border Visible</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.GroupBoxElementImpl#getBorderDecoration <em>Border Decoration</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.GroupBoxElementImpl#getGridHeight <em>Grid Height</em>}</li>
  * </ul>
  * </p>
  *
@@ -87,6 +88,26 @@ public class GroupBoxElementImpl extends CompositeFieldElementImpl implements Gr
    * @ordered
    */
   protected String borderDecoration = BORDER_DECORATION_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getGridHeight() <em>Grid Height</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getGridHeight()
+   * @generated
+   * @ordered
+   */
+  protected static final int GRID_HEIGHT_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getGridHeight() <em>Grid Height</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getGridHeight()
+   * @generated
+   * @ordered
+   */
+  protected int gridHeight = GRID_HEIGHT_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -183,6 +204,29 @@ public class GroupBoxElementImpl extends CompositeFieldElementImpl implements Gr
    * <!-- end-user-doc -->
    * @generated
    */
+  public int getGridHeight()
+  {
+    return gridHeight;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setGridHeight(int newGridHeight)
+  {
+    int oldGridHeight = gridHeight;
+    gridHeight = newGridHeight;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.GROUP_BOX_ELEMENT__GRID_HEIGHT, oldGridHeight, gridHeight));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -194,6 +238,8 @@ public class GroupBoxElementImpl extends CompositeFieldElementImpl implements Gr
         return getBorderVisible();
       case SamlPackage.GROUP_BOX_ELEMENT__BORDER_DECORATION:
         return getBorderDecoration();
+      case SamlPackage.GROUP_BOX_ELEMENT__GRID_HEIGHT:
+        return getGridHeight();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -216,6 +262,9 @@ public class GroupBoxElementImpl extends CompositeFieldElementImpl implements Gr
         return;
       case SamlPackage.GROUP_BOX_ELEMENT__BORDER_DECORATION:
         setBorderDecoration((String)newValue);
+        return;
+      case SamlPackage.GROUP_BOX_ELEMENT__GRID_HEIGHT:
+        setGridHeight((Integer)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -240,6 +289,9 @@ public class GroupBoxElementImpl extends CompositeFieldElementImpl implements Gr
       case SamlPackage.GROUP_BOX_ELEMENT__BORDER_DECORATION:
         setBorderDecoration(BORDER_DECORATION_EDEFAULT);
         return;
+      case SamlPackage.GROUP_BOX_ELEMENT__GRID_HEIGHT:
+        setGridHeight(GRID_HEIGHT_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -260,6 +312,8 @@ public class GroupBoxElementImpl extends CompositeFieldElementImpl implements Gr
         return BORDER_VISIBLE_EDEFAULT == null ? borderVisible != null : !BORDER_VISIBLE_EDEFAULT.equals(borderVisible);
       case SamlPackage.GROUP_BOX_ELEMENT__BORDER_DECORATION:
         return BORDER_DECORATION_EDEFAULT == null ? borderDecoration != null : !BORDER_DECORATION_EDEFAULT.equals(borderDecoration);
+      case SamlPackage.GROUP_BOX_ELEMENT__GRID_HEIGHT:
+        return gridHeight != GRID_HEIGHT_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -281,6 +335,8 @@ public class GroupBoxElementImpl extends CompositeFieldElementImpl implements Gr
     result.append(borderVisible);
     result.append(", borderDecoration: ");
     result.append(borderDecoration);
+    result.append(", gridHeight: ");
+    result.append(gridHeight);
     result.append(')');
     return result.toString();
   }

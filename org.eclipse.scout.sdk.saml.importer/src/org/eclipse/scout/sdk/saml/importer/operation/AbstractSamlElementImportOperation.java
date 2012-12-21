@@ -17,6 +17,7 @@ import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.nls.sdk.model.INlsEntry;
 import org.eclipse.scout.saml.saml.TranslationElement;
 import org.eclipse.scout.sdk.operation.method.MethodOverrideOperation;
+import org.eclipse.scout.sdk.saml.importer.internal.SamlImporterActivator;
 import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 import org.eclipse.scout.sdk.workspace.IScoutProject;
 
@@ -48,6 +49,19 @@ public abstract class AbstractSamlElementImportOperation implements ISamlElement
 
   protected void overrideMethod(IType declaringType, ITypeHierarchy h, String methodName, String body) throws CoreException, IllegalArgumentException {
     overrideMethod(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager(), declaringType, h, methodName, body);
+  }
+
+  protected static Double parseDouble(String v) {
+    if (v == null) {
+      return null;
+    }
+    try {
+      return new Double(Double.parseDouble(v));
+    }
+    catch (NumberFormatException e) {
+      SamlImporterActivator.logWarning("Cannot parse '" + v + "' as double. ", e);
+      return null;
+    }
   }
 
   public static void overrideMethod(IProgressMonitor monitor, IWorkingCopyManager workingcopyManager, IType declaringType, ITypeHierarchy h, String methodName, String body) throws CoreException, IllegalArgumentException {

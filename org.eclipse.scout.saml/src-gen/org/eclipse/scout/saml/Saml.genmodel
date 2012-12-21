@@ -68,8 +68,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//FormFieldElement/visible"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//FormFieldElement/labelVisible"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//FormFieldElement/master"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//FormFieldElement/gridHeight"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//FormFieldElement/gridWidth"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//FormFieldElement/widthInPixels"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//FormFieldElement/superType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//FormFieldElement/logic"/>
     </genClasses>
@@ -81,15 +81,29 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//GroupBoxElement/columns"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//GroupBoxElement/borderVisible"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//GroupBoxElement/borderDecoration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//GroupBoxElement/gridHeight"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//ValueFieldElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//ValueFieldElement/mandatory"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//StringElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//StringElement/maxlen"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//StringElement/gridHeight"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//StringElement/horizontalAlign"/>
     </genClasses>
-    <genClasses ecoreClass="Saml.ecore#//DoubleElement"/>
-    <genClasses ecoreClass="Saml.ecore#//LongElement"/>
+    <genClasses ecoreClass="Saml.ecore#//BigDecimalElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//BigDecimalElement/percent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//BigDecimalElement/grouping"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//BigDecimalElement/horizontalAlign"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//BigDecimalElement/fractionDigits"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//BigDecimalElement/min"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//BigDecimalElement/max"/>
+    </genClasses>
+    <genClasses ecoreClass="Saml.ecore#//LongElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LongElement/horizontalAlign"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LongElement/min"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LongElement/max"/>
+    </genClasses>
     <genClasses ecoreClass="Saml.ecore#//DateElement"/>
     <genClasses ecoreClass="Saml.ecore#//SmartfieldElement">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartfieldElement/code"/>
@@ -113,6 +127,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//MenuElement/logic"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//TableElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//TableElement/gridHeight"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//TableElement/menus"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//TableElement/columns"/>
     </genClasses>

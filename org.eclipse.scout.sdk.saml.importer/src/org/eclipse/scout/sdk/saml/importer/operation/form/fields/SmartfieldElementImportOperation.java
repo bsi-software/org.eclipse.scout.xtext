@@ -61,14 +61,18 @@ public class SmartfieldElementImportOperation extends AbstractValueFieldElementI
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
     IType createdField = o.getCreatedField();
-    ITypeHierarchy h = createdField.newSupertypeHierarchy(getSamlContext().getMonitor());
-
-    applyCodeAttribute(getSmartfieldElement().getCode(), createdField, h);
-    applyLookupAttribute(getSmartfieldElement().getLookup(), createdField, h);
 
     MenuElementImportOperation.processMenus(getSmartfieldElement().getMenus(), createdField, getSamlFormContext());
 
     return createdField;
+  }
+
+  @Override
+  protected void applyFormFieldProperties(IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    super.applyFormFieldProperties(field, h);
+
+    applyCodeAttribute(getSmartfieldElement().getCode(), field, h);
+    applyLookupAttribute(getSmartfieldElement().getLookup(), field, h);
   }
 
   public SmartfieldElement getSmartfieldElement() {

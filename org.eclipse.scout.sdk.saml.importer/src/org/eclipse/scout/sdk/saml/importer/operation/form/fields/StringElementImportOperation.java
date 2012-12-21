@@ -47,6 +47,14 @@ public class StringElementImportOperation extends AbstractValueFieldElementImpor
   }
 
   @Override
+  protected void applyGridHeightAttribute(int height, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    super.applyGridHeightAttribute(height, field, h);
+    if (height > 1) {
+      overrideMethod(field, h, "getConfiguredMultilineText", "return true;");
+    }
+  }
+
+  @Override
   protected IType createField() throws CoreException, IllegalArgumentException {
     StringFieldNewOperation o = new StringFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getStringElement().getName() + getFieldSuffix());
@@ -57,9 +65,17 @@ public class StringElementImportOperation extends AbstractValueFieldElementImpor
     }
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
-    IType createdField = o.getCreatedField();
-    applyMaxLengthAttribute(getStringElement().getMaxlen(), createdField, null);
-    return createdField;
+
+    return o.getCreatedField();
+  }
+
+  @Override
+  protected void applyFormFieldProperties(IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    super.applyFormFieldProperties(field, h);
+
+    applyGridHeightAttribute(getStringElement().getGridHeight(), field, h);
+    applyMaxLengthAttribute(getStringElement().getMaxlen(), field, h);
+    applyHorizontalAlignAttribute(getStringElement().getHorizontalAlign(), HORIZONTAL_ALIGN_LEFT, field, h);
   }
 
   public StringElement getStringElement() {

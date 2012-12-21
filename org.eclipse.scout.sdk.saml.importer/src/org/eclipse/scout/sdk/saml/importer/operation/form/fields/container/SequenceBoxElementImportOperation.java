@@ -12,6 +12,7 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields.container;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.SequenceBoxElement;
 import org.eclipse.scout.sdk.operation.form.field.SequenceBoxNewOperation;
@@ -52,11 +53,15 @@ public class SequenceBoxElementImportOperation extends AbstractBoxElementImportO
 
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
-    IType createdField = o.getCreatedField();
 
-    overrideMethod(createdField, null, "getConfiguredAutoCheckFromTo", "return false;");
+    return o.getCreatedField();
+  }
 
-    return createdField;
+  @Override
+  protected void applyFormFieldProperties(IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    super.applyFormFieldProperties(field, h);
+
+    overrideMethod(field, h, "getConfiguredAutoCheckFromTo", "return false;");
   }
 
   public SequenceBoxElement getSequenceBoxElement() {

@@ -167,7 +167,7 @@ class ComplexFormTests {
 		// ========================
 		// UI TEMPLATE DEFINITIONS
 		// ========================
-		template zreg_sequence_box definition="java.lang.Integer"
+		template zreg_sequence definition="java.lang.Integer"
 		
 		
 		// ========================
@@ -206,7 +206,7 @@ class ComplexFormTests {
 			    }"
 			}
 			
-			group_box Tool label_visible=false border_decoration=empty border_visible=false {
+			group Tool label_visible=false border_decoration=empty border_visible=false {
 				button FunktionenButton text=Funktionen process_button=false {
 					menu EndeESCMenu text=EndeESC
 					menu SpezialzinsF2Menu text=SpezialzinsF2
@@ -218,7 +218,7 @@ class ComplexFormTests {
 				}
 			}
 		
-			sequence_box TransaktionscodeSequence {
+			sequence TransaktionscodeSequence {
 				string BuchungsCode text=Transaktionscode enabled=false {
 					logic placement=inline event=format_value {
 						"return TEXTS.get(\"TransactionsCodeForKOEmission\");"
@@ -226,7 +226,7 @@ class ComplexFormTests {
 				}
 			}
 			
-			custom_field ZregBox super_type=zreg_sequence_box text=Zentralregister {
+			custom_field ZregBox super_type=zreg_sequence text=Zentralregister {
 				logic event=init placement=client {
 					"System.out.println(\"init zregboxfield\");"
 				}
@@ -238,11 +238,11 @@ class ComplexFormTests {
 				}
 			}
 		
-			sequence_box KoArtSequence {
+			sequence KoArtSequence {
 				smartfield KoArt text=Art mandatory=true value_type="java.lang.Integer" code=KOArt
 			}
 			
-			sequence_box LaufzeitSequence {
+			sequence LaufzeitSequence {
 				smartfield Laufzeit text=LaufzeitText mandatory=true code=KOLaufzeit value_type="java.lang.Integer" {
 					logic event=changed placement=server {
 						"System.out.println(\"server call LaufzeitfieldChanged\");
@@ -252,15 +252,15 @@ class ComplexFormTests {
 				}
 			}
 		
-			sequence_box ValorSequence {
+			sequence ValorSequence {
 				string Valor text=Valorennummer enabled=false
 			}
 			
-			sequence_box ZinssatzSequence {
-				double Zinssatz text=ZinssatzText enabled=false
+			sequence ZinssatzSequence {
+				bigdecimal Zinssatz text=ZinssatzText enabled=false
 			}
 		
-			sequence_box MitTiteldruckSequence {
+			sequence MitTiteldruckSequence {
 				smartfield MitTitel text=MitTiteldruck mandatory=true code=KOTiteldruck value_type="java.lang.Integer" {
 					logic event=changed placement=server {
 						"System.out.println(\"server call MitTitelFieldChanged\");
@@ -272,7 +272,7 @@ class ComplexFormTests {
 				}
 			}
 			
-			sequence_box DepotSequence master=MitTitel	{
+			sequence DepotSequence master=MitTitel	{
 				logic event=master_changed placement=client {
 					"Integer newMasterValue = form.getMitTitelField().getValue();
 				    if (newMasterValue != null) {
@@ -292,14 +292,14 @@ class ComplexFormTests {
 				}
 			}
 		
-			sequence_box AlteNeueKONrSequence {
+			sequence AlteNeueKONrSequence {
 				smartfield ObligationNrAlt text=AlteNeueKONr mandatory=true lookup=OldObliNumber value_type="java.lang.Integer" {
 					logic exec=ZregAsMasterField
 				}
 				long ObligationNr enabled=false label_visible=false
 			}
 		  
-			sequence_box DatumEmissionSequence {
+			sequence DatumEmissionSequence {
 				date BuchungsDatum text=DatumEmission enabled=false {
 					logic event=init placement=client {
 						"form.getBuchungsDatumField().setValue(new java.util.Date());"
@@ -316,12 +316,12 @@ class ComplexFormTests {
 		    	}
 			}
 		
-			sequence_box ZinstermAuslaufSequence {
+			sequence ZinstermAuslaufSequence {
 				string Zinsterm text=ZinstermAuslauf enabled=false
 				string EndJahr enabled=false label_visible=false
 			}
 		  
-			sequence_box BetragSpesenSequence {
+			sequence BetragSpesenSequence {
 				long Betrag text=BetragSpesen mandatory=true {
 					logic event=changed placement=client {
 						"form.getEmissionField().setValue(0d);"
@@ -334,8 +334,8 @@ class ComplexFormTests {
 				}
 			}
 		  
-			sequence_box EmissionsabgabeSequence {
-				double Emission text=Emissionsabgabe enabled=false
+			sequence EmissionsabgabeSequence {
+				bigdecimal Emission text=Emissionsabgabe enabled=false
 				string EmissionsWaehrung enabled=false label_visible=false {
 					logic placement=inline event=format_value {
 						"return TEXTS.get(\"CHF\");"
@@ -343,7 +343,7 @@ class ComplexFormTests {
 				}
 			}
 		  
-		  	sequence_box KontobelastungSequence {
+		  	sequence KontobelastungSequence {
 				smartfield KontoNr text=Kontobelastung mandatory=true lookup=KontoByZrnr value_type="java.util.List" {
 					logic exec=ZregAsMasterField
 					logic event=changed placement=client {
@@ -358,15 +358,15 @@ class ComplexFormTests {
 				string Kontostand enabled=false label_visible=false
 			}
 		
-			sequence_box Buchungstext1Sequence {
+			sequence Buchungstext1Sequence {
 				string KontoText1 text=Buchungstext1 enabled=false
 			}
 		  
-			sequence_box Buchungstext2Sequence {
+			sequence Buchungstext2Sequence {
 				string KontoText2 text=Buchungstext2 enabled=false
 			}
 		  
-			sequence_box Buchungstext3Sequence {
+			sequence Buchungstext3Sequence {
 				string KontoText3 text=Buchungstext3
 			}
 		} // end form Rka001
@@ -389,7 +389,14 @@ class ComplexFormTests {
 				formData.getStornoTable().addRow(new Object[]{new Date(), \"text\", new Date(), 15, 134592, \"sollhaben text\", 135.25});
 				return formData;"
 			}
-			table StornoTable label_visible=false grid_height=10 grid_width=2 {
+			group NumberTest {
+				bigdecimal MyBigDecimal min=12.0 max=200.0 percent=false grouping=true fraction_digits=3
+				long MyLong min=0 max=100 width_pixels=80 horizontal_align=center
+			}
+			group HeightTest height=10 {
+				string TextArea height=5
+			}
+			table StornoTable label_visible=false height=10 width=2 {
 				menu InfoF7Menu text=InfoF7
 				
 				column ColBuDatum text=BuDatum type=date width=100

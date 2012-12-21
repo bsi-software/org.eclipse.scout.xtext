@@ -3,12 +3,12 @@ package org.eclipse.scout.saml.serializer;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.scout.saml.saml.BigDecimalElement;
 import org.eclipse.scout.saml.saml.ButtonElement;
 import org.eclipse.scout.saml.saml.CodeElement;
 import org.eclipse.scout.saml.saml.ColumnElement;
 import org.eclipse.scout.saml.saml.CustomFieldElement;
 import org.eclipse.scout.saml.saml.DateElement;
-import org.eclipse.scout.saml.saml.DoubleElement;
 import org.eclipse.scout.saml.saml.FormElement;
 import org.eclipse.scout.saml.saml.GroupBoxElement;
 import org.eclipse.scout.saml.saml.ImportElement;
@@ -84,6 +84,14 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == SamlPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case SamlPackage.BIG_DECIMAL_ELEMENT:
+				if(context == grammarAccess.getBigDecimalElementRule() ||
+				   context == grammarAccess.getFormFieldElementRule() ||
+				   context == grammarAccess.getValueFieldElementRule()) {
+					sequence_BigDecimalElement(context, (BigDecimalElement) semanticObject); 
+					return; 
+				}
+				else break;
 			case SamlPackage.BUTTON_ELEMENT:
 				if(context == grammarAccess.getButtonElementRule() ||
 				   context == grammarAccess.getFormFieldElementRule()) {
@@ -115,14 +123,6 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 				   context == grammarAccess.getFormFieldElementRule() ||
 				   context == grammarAccess.getValueFieldElementRule()) {
 					sequence_DateElement(context, (DateElement) semanticObject); 
-					return; 
-				}
-				else break;
-			case SamlPackage.DOUBLE_ELEMENT:
-				if(context == grammarAccess.getDoubleElementRule() ||
-				   context == grammarAccess.getFormFieldElementRule() ||
-				   context == grammarAccess.getValueFieldElementRule()) {
-					sequence_DoubleElement(context, (DoubleElement) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1106,11 +1106,38 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         text=[TranslationElement|QualifiedName]? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
+	 *         percent=BooleanType? 
+	 *         grouping=BooleanType? 
+	 *         labelVisible=BooleanType? 
+	 *         master=[ValueFieldElement|ID]? 
+	 *         mandatory=BooleanType? 
+	 *         gridWidth=INT? 
+	 *         widthInPixels=INT? 
+	 *         horizontalAlign=HorizontalAlignmentType? 
+	 *         fractionDigits=INT? 
+	 *         min=Number? 
+	 *         max=Number? 
+	 *         superType=[TemplateElement|ID]? 
+	 *         logic+=LogicElement*
+	 *     )
+	 */
+	protected void sequence_BigDecimalElement(EObject context, BigDecimalElement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         name=ID 
+	 *         text=[TranslationElement|QualifiedName]? 
+	 *         enabled=BooleanType? 
+	 *         visible=BooleanType? 
 	 *         labelVisible=BooleanType? 
 	 *         master=[ValueFieldElement|ID]? 
 	 *         processButton=BooleanType? 
-	 *         gridHeight=INT? 
 	 *         gridWidth=INT? 
+	 *         widthInPixels=INT? 
 	 *         superType=[TemplateElement|ID]? 
 	 *         (logic+=LogicElement | menus+=MenuElement)*
 	 *     )
@@ -1165,8 +1192,8 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         visible=BooleanType? 
 	 *         labelVisible=BooleanType? 
 	 *         master=[ValueFieldElement|ID]? 
-	 *         gridHeight=INT? 
 	 *         gridWidth=INT? 
+	 *         widthInPixels=INT? 
 	 *         (logic+=LogicElement | fields+=FormFieldElement)*
 	 *     )
 	 */
@@ -1185,34 +1212,13 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         labelVisible=BooleanType? 
 	 *         master=[ValueFieldElement|ID]? 
 	 *         mandatory=BooleanType? 
-	 *         gridHeight=INT? 
 	 *         gridWidth=INT? 
+	 *         widthInPixels=INT? 
 	 *         superType=[TemplateElement|ID]? 
 	 *         logic+=LogicElement*
 	 *     )
 	 */
 	protected void sequence_DateElement(EObject context, DateElement semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (
-	 *         name=ID 
-	 *         text=[TranslationElement|QualifiedName]? 
-	 *         enabled=BooleanType? 
-	 *         visible=BooleanType? 
-	 *         labelVisible=BooleanType? 
-	 *         master=[ValueFieldElement|ID]? 
-	 *         mandatory=BooleanType? 
-	 *         gridHeight=INT? 
-	 *         gridWidth=INT? 
-	 *         superType=[TemplateElement|ID]? 
-	 *         logic+=LogicElement*
-	 *     )
-	 */
-	protected void sequence_DoubleElement(EObject context, DoubleElement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1244,10 +1250,11 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         visible=BooleanType? 
 	 *         labelVisible=BooleanType? 
 	 *         borderVisible=BooleanType? 
-	 *         (borderDecoration='empty' | borderDecoration='line' | borderDecoration='section' | borderDecoration='auto') 
+	 *         (borderDecoration='empty' | borderDecoration='line' | borderDecoration='section' | borderDecoration='auto')? 
 	 *         master=[ValueFieldElement|ID]? 
 	 *         gridHeight=INT? 
 	 *         gridWidth=INT? 
+	 *         widthInPixels=INT? 
 	 *         superType=[TemplateElement|ID]? 
 	 *         (logic+=LogicElement | fields+=FormFieldElement)*
 	 *     )
@@ -1320,8 +1327,11 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         labelVisible=BooleanType? 
 	 *         master=[ValueFieldElement|ID]? 
 	 *         mandatory=BooleanType? 
-	 *         gridHeight=INT? 
 	 *         gridWidth=INT? 
+	 *         widthInPixels=INT? 
+	 *         horizontalAlign=HorizontalAlignmentType? 
+	 *         min=INT? 
+	 *         max=INT? 
 	 *         superType=[TemplateElement|ID]? 
 	 *         logic+=LogicElement*
 	 *     )
@@ -1401,8 +1411,8 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         visible=BooleanType? 
 	 *         labelVisible=BooleanType? 
 	 *         master=[ValueFieldElement|ID]? 
-	 *         gridHeight=INT? 
 	 *         gridWidth=INT? 
+	 *         widthInPixels=INT? 
 	 *         superType=[TemplateElement|ID]? 
 	 *         (logic+=LogicElement | fields+=FormFieldElement)*
 	 *     )
@@ -1425,8 +1435,8 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         code=[CodeElement|ID]? 
 	 *         valueType=STRING? 
 	 *         lookup=[LookupElement|ID]? 
-	 *         gridHeight=INT? 
 	 *         gridWidth=INT? 
+	 *         widthInPixels=INT? 
 	 *         superType=[TemplateElement|ID]? 
 	 *         (logic+=LogicElement | menus+=MenuElement)*
 	 *     )
@@ -1449,6 +1459,8 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         maxlen=INT? 
 	 *         gridHeight=INT? 
 	 *         gridWidth=INT? 
+	 *         widthInPixels=INT? 
+	 *         horizontalAlign=HorizontalAlignmentType? 
 	 *         superType=[TemplateElement|ID]? 
 	 *         logic+=LogicElement*
 	 *     )
@@ -1469,6 +1481,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         labelVisible=BooleanType? 
 	 *         gridHeight=INT? 
 	 *         gridWidth=INT? 
+	 *         widthInPixels=INT? 
 	 *         superType=[TemplateElement|ID]? 
 	 *         (logic+=LogicElement | menus+=MenuElement | columns+=ColumnElement)*
 	 *     )

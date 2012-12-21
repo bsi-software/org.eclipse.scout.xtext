@@ -80,7 +80,7 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
       case SamlPackage.GROUP_BOX_ELEMENT: return createGroupBoxElement();
       case SamlPackage.VALUE_FIELD_ELEMENT: return createValueFieldElement();
       case SamlPackage.STRING_ELEMENT: return createStringElement();
-      case SamlPackage.DOUBLE_ELEMENT: return createDoubleElement();
+      case SamlPackage.BIG_DECIMAL_ELEMENT: return createBigDecimalElement();
       case SamlPackage.LONG_ELEMENT: return createLongElement();
       case SamlPackage.DATE_ELEMENT: return createDateElement();
       case SamlPackage.SMARTFIELD_ELEMENT: return createSmartfieldElement();
@@ -276,10 +276,10 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public DoubleElement createDoubleElement()
+  public BigDecimalElement createBigDecimalElement()
   {
-    DoubleElementImpl doubleElement = new DoubleElementImpl();
-    return doubleElement;
+    BigDecimalElementImpl bigDecimalElement = new BigDecimalElementImpl();
+    return bigDecimalElement;
   }
 
   /**

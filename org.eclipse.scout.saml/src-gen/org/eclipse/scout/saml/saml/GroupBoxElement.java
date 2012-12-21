@@ -14,6 +14,7 @@ package org.eclipse.scout.saml.saml;
  *   <li>{@link org.eclipse.scout.saml.saml.GroupBoxElement#getColumns <em>Columns</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.GroupBoxElement#getBorderVisible <em>Border Visible</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.GroupBoxElement#getBorderDecoration <em>Border Decoration</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.GroupBoxElement#getGridHeight <em>Grid Height</em>}</li>
  * </ul>
  * </p>
  *
@@ -100,5 +101,31 @@ public interface GroupBoxElement extends CompositeFieldElement
    * @generated
    */
   void setBorderDecoration(String value);
+
+  /**
+   * Returns the value of the '<em><b>Grid Height</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Grid Height</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Grid Height</em>' attribute.
+   * @see #setGridHeight(int)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getGroupBoxElement_GridHeight()
+   * @model
+   * @generated
+   */
+  int getGridHeight();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.GroupBoxElement#getGridHeight <em>Grid Height</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Grid Height</em>' attribute.
+   * @see #getGridHeight()
+   * @generated
+   */
+  void setGridHeight(int value);
 
 } // GroupBoxElement

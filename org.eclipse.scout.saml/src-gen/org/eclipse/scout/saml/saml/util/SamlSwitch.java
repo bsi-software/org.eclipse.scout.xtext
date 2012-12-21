@@ -192,12 +192,12 @@ public class SamlSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SamlPackage.DOUBLE_ELEMENT:
+      case SamlPackage.BIG_DECIMAL_ELEMENT:
       {
-        DoubleElement doubleElement = (DoubleElement)theEObject;
-        T result = caseDoubleElement(doubleElement);
-        if (result == null) result = caseValueFieldElement(doubleElement);
-        if (result == null) result = caseFormFieldElement(doubleElement);
+        BigDecimalElement bigDecimalElement = (BigDecimalElement)theEObject;
+        T result = caseBigDecimalElement(bigDecimalElement);
+        if (result == null) result = caseValueFieldElement(bigDecimalElement);
+        if (result == null) result = caseFormFieldElement(bigDecimalElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -534,17 +534,17 @@ public class SamlSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Double Element</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Big Decimal Element</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Double Element</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Big Decimal Element</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseDoubleElement(DoubleElement object)
+  public T caseBigDecimalElement(BigDecimalElement object)
   {
     return null;
   }

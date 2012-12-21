@@ -38,8 +38,8 @@ import org.eclipse.scout.saml.saml.ValueFieldElement;
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getVisible <em>Visible</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getLabelVisible <em>Label Visible</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getMaster <em>Master</em>}</li>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getGridHeight <em>Grid Height</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getGridWidth <em>Grid Width</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getWidthInPixels <em>Width In Pixels</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getSuperType <em>Super Type</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getLogic <em>Logic</em>}</li>
  * </ul>
@@ -150,26 +150,6 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
   protected ValueFieldElement master;
 
   /**
-   * The default value of the '{@link #getGridHeight() <em>Grid Height</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getGridHeight()
-   * @generated
-   * @ordered
-   */
-  protected static final int GRID_HEIGHT_EDEFAULT = 0;
-
-  /**
-   * The cached value of the '{@link #getGridHeight() <em>Grid Height</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getGridHeight()
-   * @generated
-   * @ordered
-   */
-  protected int gridHeight = GRID_HEIGHT_EDEFAULT;
-
-  /**
    * The default value of the '{@link #getGridWidth() <em>Grid Width</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -188,6 +168,26 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
    * @ordered
    */
   protected int gridWidth = GRID_WIDTH_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getWidthInPixels() <em>Width In Pixels</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getWidthInPixels()
+   * @generated
+   * @ordered
+   */
+  protected static final int WIDTH_IN_PIXELS_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getWidthInPixels() <em>Width In Pixels</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getWidthInPixels()
+   * @generated
+   * @ordered
+   */
+  protected int widthInPixels = WIDTH_IN_PIXELS_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getSuperType() <em>Super Type</em>}' reference.
@@ -413,29 +413,6 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getGridHeight()
-  {
-    return gridHeight;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setGridHeight(int newGridHeight)
-  {
-    int oldGridHeight = gridHeight;
-    gridHeight = newGridHeight;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.FORM_FIELD_ELEMENT__GRID_HEIGHT, oldGridHeight, gridHeight));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public int getGridWidth()
   {
     return gridWidth;
@@ -452,6 +429,29 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
     gridWidth = newGridWidth;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.FORM_FIELD_ELEMENT__GRID_WIDTH, oldGridWidth, gridWidth));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public int getWidthInPixels()
+  {
+    return widthInPixels;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setWidthInPixels(int newWidthInPixels)
+  {
+    int oldWidthInPixels = widthInPixels;
+    widthInPixels = newWidthInPixels;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.FORM_FIELD_ELEMENT__WIDTH_IN_PIXELS, oldWidthInPixels, widthInPixels));
   }
 
   /**
@@ -551,10 +551,10 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
       case SamlPackage.FORM_FIELD_ELEMENT__MASTER:
         if (resolve) return getMaster();
         return basicGetMaster();
-      case SamlPackage.FORM_FIELD_ELEMENT__GRID_HEIGHT:
-        return getGridHeight();
       case SamlPackage.FORM_FIELD_ELEMENT__GRID_WIDTH:
         return getGridWidth();
+      case SamlPackage.FORM_FIELD_ELEMENT__WIDTH_IN_PIXELS:
+        return getWidthInPixels();
       case SamlPackage.FORM_FIELD_ELEMENT__SUPER_TYPE:
         if (resolve) return getSuperType();
         return basicGetSuperType();
@@ -593,11 +593,11 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
       case SamlPackage.FORM_FIELD_ELEMENT__MASTER:
         setMaster((ValueFieldElement)newValue);
         return;
-      case SamlPackage.FORM_FIELD_ELEMENT__GRID_HEIGHT:
-        setGridHeight((Integer)newValue);
-        return;
       case SamlPackage.FORM_FIELD_ELEMENT__GRID_WIDTH:
         setGridWidth((Integer)newValue);
+        return;
+      case SamlPackage.FORM_FIELD_ELEMENT__WIDTH_IN_PIXELS:
+        setWidthInPixels((Integer)newValue);
         return;
       case SamlPackage.FORM_FIELD_ELEMENT__SUPER_TYPE:
         setSuperType((TemplateElement)newValue);
@@ -638,11 +638,11 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
       case SamlPackage.FORM_FIELD_ELEMENT__MASTER:
         setMaster((ValueFieldElement)null);
         return;
-      case SamlPackage.FORM_FIELD_ELEMENT__GRID_HEIGHT:
-        setGridHeight(GRID_HEIGHT_EDEFAULT);
-        return;
       case SamlPackage.FORM_FIELD_ELEMENT__GRID_WIDTH:
         setGridWidth(GRID_WIDTH_EDEFAULT);
+        return;
+      case SamlPackage.FORM_FIELD_ELEMENT__WIDTH_IN_PIXELS:
+        setWidthInPixels(WIDTH_IN_PIXELS_EDEFAULT);
         return;
       case SamlPackage.FORM_FIELD_ELEMENT__SUPER_TYPE:
         setSuperType((TemplateElement)null);
@@ -676,10 +676,10 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
         return LABEL_VISIBLE_EDEFAULT == null ? labelVisible != null : !LABEL_VISIBLE_EDEFAULT.equals(labelVisible);
       case SamlPackage.FORM_FIELD_ELEMENT__MASTER:
         return master != null;
-      case SamlPackage.FORM_FIELD_ELEMENT__GRID_HEIGHT:
-        return gridHeight != GRID_HEIGHT_EDEFAULT;
       case SamlPackage.FORM_FIELD_ELEMENT__GRID_WIDTH:
         return gridWidth != GRID_WIDTH_EDEFAULT;
+      case SamlPackage.FORM_FIELD_ELEMENT__WIDTH_IN_PIXELS:
+        return widthInPixels != WIDTH_IN_PIXELS_EDEFAULT;
       case SamlPackage.FORM_FIELD_ELEMENT__SUPER_TYPE:
         return superType != null;
       case SamlPackage.FORM_FIELD_ELEMENT__LOGIC:
@@ -707,10 +707,10 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
     result.append(visible);
     result.append(", labelVisible: ");
     result.append(labelVisible);
-    result.append(", gridHeight: ");
-    result.append(gridHeight);
     result.append(", gridWidth: ");
     result.append(gridWidth);
+    result.append(", widthInPixels: ");
+    result.append(widthInPixels);
     result.append(')');
     return result.toString();
   }

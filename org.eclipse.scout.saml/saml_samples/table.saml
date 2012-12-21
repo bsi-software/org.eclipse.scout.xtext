@@ -16,7 +16,7 @@ form Rka021_gen {
 		formData.getStornoTable().addRow(new Object[]{new java.util.Date(), \"text\", new java.util.Date(), 15, 134592, \"sollhaben text\", 135.25});
 		return formData;"
 	}
-	table StornoTable label_visible=false grid_height=10 grid_width=2 {
+	table StornoTable label_visible=false height=10 width=2 {
 		menu InfoF7Menu text=InfoF7Col
 		
 		column ColBuDatum text=BuDatum type=date width=100

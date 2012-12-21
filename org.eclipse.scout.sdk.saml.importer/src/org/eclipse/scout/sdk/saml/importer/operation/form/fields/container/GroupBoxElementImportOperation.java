@@ -56,14 +56,17 @@ public class GroupBoxElementImportOperation extends AbstractBoxElementImportOper
 
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
-    IType createdField = o.getCreatedField();
-    ITypeHierarchy h = createdField.newSupertypeHierarchy(getSamlContext().getMonitor());
+    return o.getCreatedField();
+  }
 
-    applyColumnsAttribute(getGroupBoxElement().getColumns(), createdField, h);
-    applyBorderVisibleAttribute(getGroupBoxElement().getBorderVisible(), createdField, h);
-    applyBorderDecorationAttribute(getGroupBoxElement().getBorderDecoration(), createdField, h);
+  @Override
+  protected void applyFormFieldProperties(IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    super.applyFormFieldProperties(field, h);
 
-    return createdField;
+    applyGridHeightAttribute(getGroupBoxElement().getGridHeight(), field, h);
+    applyColumnsAttribute(getGroupBoxElement().getColumns(), field, h);
+    applyBorderVisibleAttribute(getGroupBoxElement().getBorderVisible(), field, h);
+    applyBorderDecorationAttribute(getGroupBoxElement().getBorderDecoration(), field, h);
   }
 
   protected void applyColumnsAttribute(int columns, IType mainBox, ITypeHierarchy h) throws IllegalArgumentException, CoreException {
@@ -84,21 +87,24 @@ public class GroupBoxElementImportOperation extends AbstractBoxElementImportOper
 
   protected void applyBorderDecorationAttribute(String a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
     if (StringUtility.hasText(a)) {
-      overrideMethod(field, h, "getConfiguredBorderDecoration", "return " + getBorderConstant(a) + ";");
+      String constant = getBorderConstant(a);
+      if (constant != null) {
+        overrideMethod(field, h, "getConfiguredBorderDecoration", "return " + constant + ";");
+      }
     }
   }
 
   private String getBorderConstant(String val) throws IllegalArgumentException {
-    if (val.equals(getSamlContext().getGrammarAccess().getGroupBoxElementAccess().getBorderDecorationEmptyKeyword_2_6_0_2_0_0().getValue())) {
+    if (val.equals(getSamlContext().getGrammarAccess().getGroupBoxElementAccess().getBorderDecorationEmptyKeyword_2_6_2_0_0().getValue())) {
       return "BORDER_DECORATION_EMPTY";
     }
-    else if (val.equals(getSamlContext().getGrammarAccess().getGroupBoxElementAccess().getBorderDecorationAutoKeyword_2_6_0_2_0_3().getValue())) {
-      return "BORDER_DECORATION_AUTO";
+    else if (val.equals(getSamlContext().getGrammarAccess().getGroupBoxElementAccess().getBorderDecorationAutoKeyword_2_6_2_0_3().getValue())) {
+      return null;// default, meaning: "BORDER_DECORATION_AUTO"
     }
-    else if (val.equals(getSamlContext().getGrammarAccess().getGroupBoxElementAccess().getBorderDecorationLineKeyword_2_6_0_2_0_1().getValue())) {
+    else if (val.equals(getSamlContext().getGrammarAccess().getGroupBoxElementAccess().getBorderDecorationLineKeyword_2_6_2_0_1().getValue())) {
       return "BORDER_DECORATION_LINE";
     }
-    else if (val.equals(getSamlContext().getGrammarAccess().getGroupBoxElementAccess().getBorderDecorationSectionKeyword_2_6_0_2_0_2().getValue())) {
+    else if (val.equals(getSamlContext().getGrammarAccess().getGroupBoxElementAccess().getBorderDecorationSectionKeyword_2_6_2_0_2().getValue())) {
       return "BORDER_DECORATION_SECTION";
     }
     else {

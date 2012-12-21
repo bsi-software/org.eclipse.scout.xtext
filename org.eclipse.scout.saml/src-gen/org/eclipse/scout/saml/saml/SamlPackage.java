@@ -617,22 +617,22 @@ public interface SamlPackage extends EPackage
   int FORM_FIELD_ELEMENT__MASTER = 5;
 
   /**
-   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FORM_FIELD_ELEMENT__GRID_HEIGHT = 6;
-
-  /**
    * The feature id for the '<em><b>Grid Width</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FORM_FIELD_ELEMENT__GRID_WIDTH = 7;
+  int FORM_FIELD_ELEMENT__GRID_WIDTH = 6;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORM_FIELD_ELEMENT__WIDTH_IN_PIXELS = 7;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -726,15 +726,6 @@ public interface SamlPackage extends EPackage
   int COMPOSITE_FIELD_ELEMENT__MASTER = FORM_FIELD_ELEMENT__MASTER;
 
   /**
-   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPOSITE_FIELD_ELEMENT__GRID_HEIGHT = FORM_FIELD_ELEMENT__GRID_HEIGHT;
-
-  /**
    * The feature id for the '<em><b>Grid Width</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -742,6 +733,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int COMPOSITE_FIELD_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPOSITE_FIELD_ELEMENT__WIDTH_IN_PIXELS = FORM_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -844,15 +844,6 @@ public interface SamlPackage extends EPackage
   int SEQUENCE_BOX_ELEMENT__MASTER = COMPOSITE_FIELD_ELEMENT__MASTER;
 
   /**
-   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SEQUENCE_BOX_ELEMENT__GRID_HEIGHT = COMPOSITE_FIELD_ELEMENT__GRID_HEIGHT;
-
-  /**
    * The feature id for the '<em><b>Grid Width</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -860,6 +851,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int SEQUENCE_BOX_ELEMENT__GRID_WIDTH = COMPOSITE_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SEQUENCE_BOX_ELEMENT__WIDTH_IN_PIXELS = COMPOSITE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -962,15 +962,6 @@ public interface SamlPackage extends EPackage
   int GROUP_BOX_ELEMENT__MASTER = COMPOSITE_FIELD_ELEMENT__MASTER;
 
   /**
-   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GROUP_BOX_ELEMENT__GRID_HEIGHT = COMPOSITE_FIELD_ELEMENT__GRID_HEIGHT;
-
-  /**
    * The feature id for the '<em><b>Grid Width</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -978,6 +969,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int GROUP_BOX_ELEMENT__GRID_WIDTH = COMPOSITE_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_BOX_ELEMENT__WIDTH_IN_PIXELS = COMPOSITE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -1034,13 +1034,22 @@ public interface SamlPackage extends EPackage
   int GROUP_BOX_ELEMENT__BORDER_DECORATION = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 2;
 
   /**
+   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_BOX_ELEMENT__GRID_HEIGHT = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 3;
+
+  /**
    * The number of structural features of the '<em>Group Box Element</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GROUP_BOX_ELEMENT_FEATURE_COUNT = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 3;
+  int GROUP_BOX_ELEMENT_FEATURE_COUNT = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.ValueFieldElementImpl <em>Value Field Element</em>}' class.
@@ -1107,15 +1116,6 @@ public interface SamlPackage extends EPackage
   int VALUE_FIELD_ELEMENT__MASTER = FORM_FIELD_ELEMENT__MASTER;
 
   /**
-   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VALUE_FIELD_ELEMENT__GRID_HEIGHT = FORM_FIELD_ELEMENT__GRID_HEIGHT;
-
-  /**
    * The feature id for the '<em><b>Grid Width</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1123,6 +1123,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int VALUE_FIELD_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS = FORM_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -1225,15 +1234,6 @@ public interface SamlPackage extends EPackage
   int STRING_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
 
   /**
-   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_ELEMENT__GRID_HEIGHT = VALUE_FIELD_ELEMENT__GRID_HEIGHT;
-
-  /**
    * The feature id for the '<em><b>Grid Width</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1241,6 +1241,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int STRING_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT__WIDTH_IN_PIXELS = VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -1279,23 +1288,41 @@ public interface SamlPackage extends EPackage
   int STRING_ELEMENT__MAXLEN = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT__GRID_HEIGHT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Horizontal Align</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT__HORIZONTAL_ALIGN = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
    * The number of structural features of the '<em>String Element</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int STRING_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+  int STRING_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 3;
 
   /**
-   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.DoubleElementImpl <em>Double Element</em>}' class.
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.BigDecimalElementImpl <em>Big Decimal Element</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.eclipse.scout.saml.saml.impl.DoubleElementImpl
-   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getDoubleElement()
+   * @see org.eclipse.scout.saml.saml.impl.BigDecimalElementImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getBigDecimalElement()
    * @generated
    */
-  int DOUBLE_ELEMENT = 16;
+  int BIG_DECIMAL_ELEMENT = 16;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1304,7 +1331,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DOUBLE_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
+  int BIG_DECIMAL_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
 
   /**
    * The feature id for the '<em><b>Text</b></em>' reference.
@@ -1313,7 +1340,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DOUBLE_ELEMENT__TEXT = VALUE_FIELD_ELEMENT__TEXT;
+  int BIG_DECIMAL_ELEMENT__TEXT = VALUE_FIELD_ELEMENT__TEXT;
 
   /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -1322,7 +1349,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DOUBLE_ELEMENT__ENABLED = VALUE_FIELD_ELEMENT__ENABLED;
+  int BIG_DECIMAL_ELEMENT__ENABLED = VALUE_FIELD_ELEMENT__ENABLED;
 
   /**
    * The feature id for the '<em><b>Visible</b></em>' attribute.
@@ -1331,7 +1358,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DOUBLE_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
+  int BIG_DECIMAL_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
 
   /**
    * The feature id for the '<em><b>Label Visible</b></em>' attribute.
@@ -1340,7 +1367,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DOUBLE_ELEMENT__LABEL_VISIBLE = VALUE_FIELD_ELEMENT__LABEL_VISIBLE;
+  int BIG_DECIMAL_ELEMENT__LABEL_VISIBLE = VALUE_FIELD_ELEMENT__LABEL_VISIBLE;
 
   /**
    * The feature id for the '<em><b>Master</b></em>' reference.
@@ -1349,16 +1376,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DOUBLE_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
-
-  /**
-   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DOUBLE_ELEMENT__GRID_HEIGHT = VALUE_FIELD_ELEMENT__GRID_HEIGHT;
+  int BIG_DECIMAL_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
 
   /**
    * The feature id for the '<em><b>Grid Width</b></em>' attribute.
@@ -1367,7 +1385,16 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DOUBLE_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
+  int BIG_DECIMAL_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BIG_DECIMAL_ELEMENT__WIDTH_IN_PIXELS = VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -1376,7 +1403,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DOUBLE_ELEMENT__SUPER_TYPE = VALUE_FIELD_ELEMENT__SUPER_TYPE;
+  int BIG_DECIMAL_ELEMENT__SUPER_TYPE = VALUE_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -1385,7 +1412,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DOUBLE_ELEMENT__LOGIC = VALUE_FIELD_ELEMENT__LOGIC;
+  int BIG_DECIMAL_ELEMENT__LOGIC = VALUE_FIELD_ELEMENT__LOGIC;
 
   /**
    * The feature id for the '<em><b>Mandatory</b></em>' attribute.
@@ -1394,16 +1421,70 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DOUBLE_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT__MANDATORY;
+  int BIG_DECIMAL_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT__MANDATORY;
 
   /**
-   * The number of structural features of the '<em>Double Element</em>' class.
+   * The feature id for the '<em><b>Percent</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DOUBLE_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int BIG_DECIMAL_ELEMENT__PERCENT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Grouping</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BIG_DECIMAL_ELEMENT__GROUPING = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Horizontal Align</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BIG_DECIMAL_ELEMENT__HORIZONTAL_ALIGN = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Fraction Digits</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BIG_DECIMAL_ELEMENT__FRACTION_DIGITS = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Min</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BIG_DECIMAL_ELEMENT__MIN = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 4;
+
+  /**
+   * The feature id for the '<em><b>Max</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BIG_DECIMAL_ELEMENT__MAX = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 5;
+
+  /**
+   * The number of structural features of the '<em>Big Decimal Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BIG_DECIMAL_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 6;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.LongElementImpl <em>Long Element</em>}' class.
@@ -1470,15 +1551,6 @@ public interface SamlPackage extends EPackage
   int LONG_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
 
   /**
-   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LONG_ELEMENT__GRID_HEIGHT = VALUE_FIELD_ELEMENT__GRID_HEIGHT;
-
-  /**
    * The feature id for the '<em><b>Grid Width</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1486,6 +1558,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int LONG_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LONG_ELEMENT__WIDTH_IN_PIXELS = VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -1515,13 +1596,40 @@ public interface SamlPackage extends EPackage
   int LONG_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT__MANDATORY;
 
   /**
+   * The feature id for the '<em><b>Horizontal Align</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LONG_ELEMENT__HORIZONTAL_ALIGN = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Min</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LONG_ELEMENT__MIN = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Max</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LONG_ELEMENT__MAX = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
    * The number of structural features of the '<em>Long Element</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LONG_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int LONG_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.DateElementImpl <em>Date Element</em>}' class.
@@ -1588,15 +1696,6 @@ public interface SamlPackage extends EPackage
   int DATE_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
 
   /**
-   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DATE_ELEMENT__GRID_HEIGHT = VALUE_FIELD_ELEMENT__GRID_HEIGHT;
-
-  /**
    * The feature id for the '<em><b>Grid Width</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1604,6 +1703,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int DATE_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATE_ELEMENT__WIDTH_IN_PIXELS = VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -1706,15 +1814,6 @@ public interface SamlPackage extends EPackage
   int SMARTFIELD_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
 
   /**
-   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SMARTFIELD_ELEMENT__GRID_HEIGHT = VALUE_FIELD_ELEMENT__GRID_HEIGHT;
-
-  /**
    * The feature id for the '<em><b>Grid Width</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1722,6 +1821,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int SMARTFIELD_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SMARTFIELD_ELEMENT__WIDTH_IN_PIXELS = VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -1860,15 +1968,6 @@ public interface SamlPackage extends EPackage
   int CUSTOM_FIELD_ELEMENT__MASTER = FORM_FIELD_ELEMENT__MASTER;
 
   /**
-   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CUSTOM_FIELD_ELEMENT__GRID_HEIGHT = FORM_FIELD_ELEMENT__GRID_HEIGHT;
-
-  /**
    * The feature id for the '<em><b>Grid Width</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1876,6 +1975,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int CUSTOM_FIELD_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CUSTOM_FIELD_ELEMENT__WIDTH_IN_PIXELS = FORM_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -1978,15 +2086,6 @@ public interface SamlPackage extends EPackage
   int BUTTON_ELEMENT__MASTER = FORM_FIELD_ELEMENT__MASTER;
 
   /**
-   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BUTTON_ELEMENT__GRID_HEIGHT = FORM_FIELD_ELEMENT__GRID_HEIGHT;
-
-  /**
    * The feature id for the '<em><b>Grid Width</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1994,6 +2093,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int BUTTON_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUTTON_ELEMENT__WIDTH_IN_PIXELS = FORM_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -2178,15 +2286,6 @@ public interface SamlPackage extends EPackage
   int TABLE_ELEMENT__MASTER = FORM_FIELD_ELEMENT__MASTER;
 
   /**
-   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TABLE_ELEMENT__GRID_HEIGHT = FORM_FIELD_ELEMENT__GRID_HEIGHT;
-
-  /**
    * The feature id for the '<em><b>Grid Width</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2194,6 +2293,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int TABLE_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TABLE_ELEMENT__WIDTH_IN_PIXELS = FORM_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -2214,13 +2322,22 @@ public interface SamlPackage extends EPackage
   int TABLE_ELEMENT__LOGIC = FORM_FIELD_ELEMENT__LOGIC;
 
   /**
+   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TABLE_ELEMENT__GRID_HEIGHT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Menus</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TABLE_ELEMENT__MENUS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int TABLE_ELEMENT__MENUS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Columns</b></em>' containment reference list.
@@ -2229,7 +2346,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TABLE_ELEMENT__COLUMNS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 1;
+  int TABLE_ELEMENT__COLUMNS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Table Element</em>' class.
@@ -2238,7 +2355,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TABLE_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 2;
+  int TABLE_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.ColumnElementImpl <em>Column Element</em>}' class.
@@ -2911,17 +3028,6 @@ public interface SamlPackage extends EPackage
   EReference getFormFieldElement_Master();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FormFieldElement#getGridHeight <em>Grid Height</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Grid Height</em>'.
-   * @see org.eclipse.scout.saml.saml.FormFieldElement#getGridHeight()
-   * @see #getFormFieldElement()
-   * @generated
-   */
-  EAttribute getFormFieldElement_GridHeight();
-
-  /**
    * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FormFieldElement#getGridWidth <em>Grid Width</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2931,6 +3037,17 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EAttribute getFormFieldElement_GridWidth();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FormFieldElement#getWidthInPixels <em>Width In Pixels</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Width In Pixels</em>'.
+   * @see org.eclipse.scout.saml.saml.FormFieldElement#getWidthInPixels()
+   * @see #getFormFieldElement()
+   * @generated
+   */
+  EAttribute getFormFieldElement_WidthInPixels();
 
   /**
    * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.FormFieldElement#getSuperType <em>Super Type</em>}'.
@@ -3029,6 +3146,17 @@ public interface SamlPackage extends EPackage
   EAttribute getGroupBoxElement_BorderDecoration();
 
   /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.GroupBoxElement#getGridHeight <em>Grid Height</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Grid Height</em>'.
+   * @see org.eclipse.scout.saml.saml.GroupBoxElement#getGridHeight()
+   * @see #getGroupBoxElement()
+   * @generated
+   */
+  EAttribute getGroupBoxElement_GridHeight();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.ValueFieldElement <em>Value Field Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3071,14 +3199,102 @@ public interface SamlPackage extends EPackage
   EAttribute getStringElement_Maxlen();
 
   /**
-   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.DoubleElement <em>Double Element</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.StringElement#getGridHeight <em>Grid Height</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Double Element</em>'.
-   * @see org.eclipse.scout.saml.saml.DoubleElement
+   * @return the meta object for the attribute '<em>Grid Height</em>'.
+   * @see org.eclipse.scout.saml.saml.StringElement#getGridHeight()
+   * @see #getStringElement()
    * @generated
    */
-  EClass getDoubleElement();
+  EAttribute getStringElement_GridHeight();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.StringElement#getHorizontalAlign <em>Horizontal Align</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Horizontal Align</em>'.
+   * @see org.eclipse.scout.saml.saml.StringElement#getHorizontalAlign()
+   * @see #getStringElement()
+   * @generated
+   */
+  EAttribute getStringElement_HorizontalAlign();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.BigDecimalElement <em>Big Decimal Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Big Decimal Element</em>'.
+   * @see org.eclipse.scout.saml.saml.BigDecimalElement
+   * @generated
+   */
+  EClass getBigDecimalElement();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.BigDecimalElement#getPercent <em>Percent</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Percent</em>'.
+   * @see org.eclipse.scout.saml.saml.BigDecimalElement#getPercent()
+   * @see #getBigDecimalElement()
+   * @generated
+   */
+  EAttribute getBigDecimalElement_Percent();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.BigDecimalElement#getGrouping <em>Grouping</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Grouping</em>'.
+   * @see org.eclipse.scout.saml.saml.BigDecimalElement#getGrouping()
+   * @see #getBigDecimalElement()
+   * @generated
+   */
+  EAttribute getBigDecimalElement_Grouping();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.BigDecimalElement#getHorizontalAlign <em>Horizontal Align</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Horizontal Align</em>'.
+   * @see org.eclipse.scout.saml.saml.BigDecimalElement#getHorizontalAlign()
+   * @see #getBigDecimalElement()
+   * @generated
+   */
+  EAttribute getBigDecimalElement_HorizontalAlign();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.BigDecimalElement#getFractionDigits <em>Fraction Digits</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Fraction Digits</em>'.
+   * @see org.eclipse.scout.saml.saml.BigDecimalElement#getFractionDigits()
+   * @see #getBigDecimalElement()
+   * @generated
+   */
+  EAttribute getBigDecimalElement_FractionDigits();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.BigDecimalElement#getMin <em>Min</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Min</em>'.
+   * @see org.eclipse.scout.saml.saml.BigDecimalElement#getMin()
+   * @see #getBigDecimalElement()
+   * @generated
+   */
+  EAttribute getBigDecimalElement_Min();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.BigDecimalElement#getMax <em>Max</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Max</em>'.
+   * @see org.eclipse.scout.saml.saml.BigDecimalElement#getMax()
+   * @see #getBigDecimalElement()
+   * @generated
+   */
+  EAttribute getBigDecimalElement_Max();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.LongElement <em>Long Element</em>}'.
@@ -3089,6 +3305,39 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EClass getLongElement();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.LongElement#getHorizontalAlign <em>Horizontal Align</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Horizontal Align</em>'.
+   * @see org.eclipse.scout.saml.saml.LongElement#getHorizontalAlign()
+   * @see #getLongElement()
+   * @generated
+   */
+  EAttribute getLongElement_HorizontalAlign();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.LongElement#getMin <em>Min</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Min</em>'.
+   * @see org.eclipse.scout.saml.saml.LongElement#getMin()
+   * @see #getLongElement()
+   * @generated
+   */
+  EAttribute getLongElement_Min();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.LongElement#getMax <em>Max</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Max</em>'.
+   * @see org.eclipse.scout.saml.saml.LongElement#getMax()
+   * @see #getLongElement()
+   * @generated
+   */
+  EAttribute getLongElement_Max();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.DateElement <em>Date Element</em>}'.
@@ -3292,6 +3541,17 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EClass getTableElement();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.TableElement#getGridHeight <em>Grid Height</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Grid Height</em>'.
+   * @see org.eclipse.scout.saml.saml.TableElement#getGridHeight()
+   * @see #getTableElement()
+   * @generated
+   */
+  EAttribute getTableElement_GridHeight();
 
   /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.TableElement#getMenus <em>Menus</em>}'.
@@ -3888,20 +4148,20 @@ public interface SamlPackage extends EPackage
     EReference FORM_FIELD_ELEMENT__MASTER = eINSTANCE.getFormFieldElement_Master();
 
     /**
-     * The meta object literal for the '<em><b>Grid Height</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute FORM_FIELD_ELEMENT__GRID_HEIGHT = eINSTANCE.getFormFieldElement_GridHeight();
-
-    /**
      * The meta object literal for the '<em><b>Grid Width</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EAttribute FORM_FIELD_ELEMENT__GRID_WIDTH = eINSTANCE.getFormFieldElement_GridWidth();
+
+    /**
+     * The meta object literal for the '<em><b>Width In Pixels</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FORM_FIELD_ELEMENT__WIDTH_IN_PIXELS = eINSTANCE.getFormFieldElement_WidthInPixels();
 
     /**
      * The meta object literal for the '<em><b>Super Type</b></em>' reference feature.
@@ -3982,6 +4242,14 @@ public interface SamlPackage extends EPackage
     EAttribute GROUP_BOX_ELEMENT__BORDER_DECORATION = eINSTANCE.getGroupBoxElement_BorderDecoration();
 
     /**
+     * The meta object literal for the '<em><b>Grid Height</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GROUP_BOX_ELEMENT__GRID_HEIGHT = eINSTANCE.getGroupBoxElement_GridHeight();
+
+    /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.ValueFieldElementImpl <em>Value Field Element</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4018,14 +4286,78 @@ public interface SamlPackage extends EPackage
     EAttribute STRING_ELEMENT__MAXLEN = eINSTANCE.getStringElement_Maxlen();
 
     /**
-     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.DoubleElementImpl <em>Double Element</em>}' class.
+     * The meta object literal for the '<em><b>Grid Height</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.eclipse.scout.saml.saml.impl.DoubleElementImpl
-     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getDoubleElement()
      * @generated
      */
-    EClass DOUBLE_ELEMENT = eINSTANCE.getDoubleElement();
+    EAttribute STRING_ELEMENT__GRID_HEIGHT = eINSTANCE.getStringElement_GridHeight();
+
+    /**
+     * The meta object literal for the '<em><b>Horizontal Align</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STRING_ELEMENT__HORIZONTAL_ALIGN = eINSTANCE.getStringElement_HorizontalAlign();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.BigDecimalElementImpl <em>Big Decimal Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.BigDecimalElementImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getBigDecimalElement()
+     * @generated
+     */
+    EClass BIG_DECIMAL_ELEMENT = eINSTANCE.getBigDecimalElement();
+
+    /**
+     * The meta object literal for the '<em><b>Percent</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BIG_DECIMAL_ELEMENT__PERCENT = eINSTANCE.getBigDecimalElement_Percent();
+
+    /**
+     * The meta object literal for the '<em><b>Grouping</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BIG_DECIMAL_ELEMENT__GROUPING = eINSTANCE.getBigDecimalElement_Grouping();
+
+    /**
+     * The meta object literal for the '<em><b>Horizontal Align</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BIG_DECIMAL_ELEMENT__HORIZONTAL_ALIGN = eINSTANCE.getBigDecimalElement_HorizontalAlign();
+
+    /**
+     * The meta object literal for the '<em><b>Fraction Digits</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BIG_DECIMAL_ELEMENT__FRACTION_DIGITS = eINSTANCE.getBigDecimalElement_FractionDigits();
+
+    /**
+     * The meta object literal for the '<em><b>Min</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BIG_DECIMAL_ELEMENT__MIN = eINSTANCE.getBigDecimalElement_Min();
+
+    /**
+     * The meta object literal for the '<em><b>Max</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BIG_DECIMAL_ELEMENT__MAX = eINSTANCE.getBigDecimalElement_Max();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.LongElementImpl <em>Long Element</em>}' class.
@@ -4036,6 +4368,30 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EClass LONG_ELEMENT = eINSTANCE.getLongElement();
+
+    /**
+     * The meta object literal for the '<em><b>Horizontal Align</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LONG_ELEMENT__HORIZONTAL_ALIGN = eINSTANCE.getLongElement_HorizontalAlign();
+
+    /**
+     * The meta object literal for the '<em><b>Min</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LONG_ELEMENT__MIN = eINSTANCE.getLongElement_Min();
+
+    /**
+     * The meta object literal for the '<em><b>Max</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LONG_ELEMENT__MAX = eINSTANCE.getLongElement_Max();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.DateElementImpl <em>Date Element</em>}' class.
@@ -4200,6 +4556,14 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EClass TABLE_ELEMENT = eINSTANCE.getTableElement();
+
+    /**
+     * The meta object literal for the '<em><b>Grid Height</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TABLE_ELEMENT__GRID_HEIGHT = eINSTANCE.getTableElement_GridHeight();
 
     /**
      * The meta object literal for the '<em><b>Menus</b></em>' containment reference list feature.

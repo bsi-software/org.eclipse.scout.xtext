@@ -38,8 +38,8 @@
             samlFormElement="org.eclipse.scout.saml.saml.LongElement">
       </operation>
       <operation
-            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.DoubleElementImportOperation"
-            samlFormElement="org.eclipse.scout.saml.saml.DoubleElement">
+            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.BigDecimalElementImportOperation"
+            samlFormElement="org.eclipse.scout.saml.saml.BigDecimalElement">
       </operation>
       <operation
             importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.DateElementImportOperation"

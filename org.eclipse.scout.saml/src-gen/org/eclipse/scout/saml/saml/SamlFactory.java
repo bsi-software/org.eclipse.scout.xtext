@@ -167,13 +167,13 @@ public interface SamlFactory extends EFactory
   StringElement createStringElement();
 
   /**
-   * Returns a new object of class '<em>Double Element</em>'.
+   * Returns a new object of class '<em>Big Decimal Element</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Double Element</em>'.
+   * @return a new object of class '<em>Big Decimal Element</em>'.
    * @generated
    */
-  DoubleElement createDoubleElement();
+  BigDecimalElement createBigDecimalElement();
 
   /**
    * Returns a new object of class '<em>Long Element</em>'.
