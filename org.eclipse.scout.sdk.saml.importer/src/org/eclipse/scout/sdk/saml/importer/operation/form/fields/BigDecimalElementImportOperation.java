@@ -63,6 +63,9 @@ public class BigDecimalElementImportOperation extends AbstractValueFieldElementI
   protected void applyFractionDigitsAttribute(int digits, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
     if (digits > 0 && digits != 2) {
       overrideMethod(field, h, "getConfiguredFractionDigits", "return " + digits + ";");
+      overrideMethod(field, h, "getConfiguredMaxFractionDigits", "return " + digits + ";");
+
+      overrideMethod(field, h, "getConfiguredMinFractionDigits", "return 0;");
     }
   }
 
