@@ -33,6 +33,8 @@ import org.eclipse.scout.saml.saml.SamlPackage;
 import org.eclipse.scout.saml.saml.SequenceBoxElement;
 import org.eclipse.scout.saml.saml.SmartfieldElement;
 import org.eclipse.scout.saml.saml.StringElement;
+import org.eclipse.scout.saml.saml.TabBoxElement;
+import org.eclipse.scout.saml.saml.TabElement;
 import org.eclipse.scout.saml.saml.TableElement;
 import org.eclipse.scout.saml.saml.TemplateElement;
 import org.eclipse.scout.saml.saml.TranslationElement;
@@ -227,6 +229,20 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * @generated
    */
   private EClass keyElementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass tabElementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass tabBoxElementEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -756,19 +772,9 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFormFieldElement_Text()
-  {
-    return (EReference)formFieldElementEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EAttribute getFormFieldElement_Enabled()
   {
-    return (EAttribute)formFieldElementEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)formFieldElementEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -778,47 +784,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    */
   public EAttribute getFormFieldElement_Visible()
   {
-    return (EAttribute)formFieldElementEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getFormFieldElement_LabelVisible()
-  {
-    return (EAttribute)formFieldElementEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getFormFieldElement_Master()
-  {
-    return (EReference)formFieldElementEClass.getEStructuralFeatures().get(5);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getFormFieldElement_GridWidth()
-  {
-    return (EAttribute)formFieldElementEClass.getEStructuralFeatures().get(6);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getFormFieldElement_WidthInPixels()
-  {
-    return (EAttribute)formFieldElementEClass.getEStructuralFeatures().get(7);
+    return (EAttribute)formFieldElementEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -828,7 +794,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    */
   public EReference getFormFieldElement_SuperType()
   {
-    return (EReference)formFieldElementEClass.getEStructuralFeatures().get(8);
+    return (EReference)formFieldElementEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -838,7 +804,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    */
   public EReference getFormFieldElement_Logic()
   {
-    return (EReference)formFieldElementEClass.getEStructuralFeatures().get(9);
+    return (EReference)formFieldElementEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -856,9 +822,19 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getCompositeFieldElement_Fields()
+  public EReference getCompositeFieldElement_Text()
   {
     return (EReference)compositeFieldElementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCompositeFieldElement_Fields()
+  {
+    return (EReference)compositeFieldElementEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -869,6 +845,36 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
   public EClass getSequenceBoxElement()
   {
     return sequenceBoxElementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getSequenceBoxElement_LabelVisible()
+  {
+    return (EAttribute)sequenceBoxElementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getSequenceBoxElement_GridWidth()
+  {
+    return (EAttribute)sequenceBoxElementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getSequenceBoxElement_WidthInPixels()
+  {
+    return (EAttribute)sequenceBoxElementEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -896,7 +902,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getGroupBoxElement_BorderVisible()
+  public EAttribute getGroupBoxElement_LabelVisible()
   {
     return (EAttribute)groupBoxElementEClass.getEStructuralFeatures().get(1);
   }
@@ -906,7 +912,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getGroupBoxElement_BorderDecoration()
+  public EAttribute getGroupBoxElement_BorderVisible()
   {
     return (EAttribute)groupBoxElementEClass.getEStructuralFeatures().get(2);
   }
@@ -916,9 +922,39 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getGroupBoxElement_GridHeight()
+  public EAttribute getGroupBoxElement_BorderDecoration()
   {
     return (EAttribute)groupBoxElementEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getGroupBoxElement_GridHeight()
+  {
+    return (EAttribute)groupBoxElementEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getGroupBoxElement_GridWidth()
+  {
+    return (EAttribute)groupBoxElementEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getGroupBoxElement_WidthInPixels()
+  {
+    return (EAttribute)groupBoxElementEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -936,9 +972,59 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getValueFieldElement_Text()
+  {
+    return (EReference)valueFieldElementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getValueFieldElement_LabelVisible()
+  {
+    return (EAttribute)valueFieldElementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getValueFieldElement_Master()
+  {
+    return (EReference)valueFieldElementEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getValueFieldElement_Mandatory()
   {
-    return (EAttribute)valueFieldElementEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)valueFieldElementEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getValueFieldElement_GridWidth()
+  {
+    return (EAttribute)valueFieldElementEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getValueFieldElement_WidthInPixels()
+  {
+    return (EAttribute)valueFieldElementEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -1166,9 +1252,59 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getCustomFieldElement_Fields()
+  public EReference getCustomFieldElement_Text()
   {
     return (EReference)customFieldElementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCustomFieldElement_LabelVisible()
+  {
+    return (EAttribute)customFieldElementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCustomFieldElement_Master()
+  {
+    return (EReference)customFieldElementEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCustomFieldElement_GridWidth()
+  {
+    return (EAttribute)customFieldElementEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCustomFieldElement_WidthInPixels()
+  {
+    return (EAttribute)customFieldElementEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCustomFieldElement_Fields()
+  {
+    return (EReference)customFieldElementEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -1186,9 +1322,39 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getButtonElement_Text()
+  {
+    return (EReference)buttonElementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getButtonElement_ProcessButton()
   {
-    return (EAttribute)buttonElementEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)buttonElementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getButtonElement_GridWidth()
+  {
+    return (EAttribute)buttonElementEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getButtonElement_WidthInPixels()
+  {
+    return (EAttribute)buttonElementEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -1198,7 +1364,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    */
   public EReference getButtonElement_Menus()
   {
-    return (EReference)buttonElementEClass.getEStructuralFeatures().get(1);
+    return (EReference)buttonElementEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -1286,9 +1452,49 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getTableElement_Text()
+  {
+    return (EReference)tableElementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTableElement_LabelVisible()
+  {
+    return (EAttribute)tableElementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getTableElement_GridHeight()
   {
-    return (EAttribute)tableElementEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)tableElementEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTableElement_GridWidth()
+  {
+    return (EAttribute)tableElementEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTableElement_WidthInPixels()
+  {
+    return (EAttribute)tableElementEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -1298,7 +1504,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    */
   public EReference getTableElement_Menus()
   {
-    return (EReference)tableElementEClass.getEStructuralFeatures().get(1);
+    return (EReference)tableElementEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -1308,7 +1514,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    */
   public EReference getTableElement_Columns()
   {
-    return (EReference)tableElementEClass.getEStructuralFeatures().get(2);
+    return (EReference)tableElementEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -1426,6 +1632,66 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getTabElement()
+  {
+    return tabElementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTabElement_Columns()
+  {
+    return (EAttribute)tabElementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getTabBoxElement()
+  {
+    return tabBoxElementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTabBoxElement_GridWidth()
+  {
+    return (EAttribute)tabBoxElementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTabBoxElement_WidthInPixels()
+  {
+    return (EAttribute)tabBoxElementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getTabBoxElement_Tabs()
+  {
+    return (EReference)tabBoxElementEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public SamlFactory getSamlFactory()
   {
     return (SamlFactory)getEFactoryInstance();
@@ -1507,29 +1773,36 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
 
     formFieldElementEClass = createEClass(FORM_FIELD_ELEMENT);
     createEAttribute(formFieldElementEClass, FORM_FIELD_ELEMENT__NAME);
-    createEReference(formFieldElementEClass, FORM_FIELD_ELEMENT__TEXT);
     createEAttribute(formFieldElementEClass, FORM_FIELD_ELEMENT__ENABLED);
     createEAttribute(formFieldElementEClass, FORM_FIELD_ELEMENT__VISIBLE);
-    createEAttribute(formFieldElementEClass, FORM_FIELD_ELEMENT__LABEL_VISIBLE);
-    createEReference(formFieldElementEClass, FORM_FIELD_ELEMENT__MASTER);
-    createEAttribute(formFieldElementEClass, FORM_FIELD_ELEMENT__GRID_WIDTH);
-    createEAttribute(formFieldElementEClass, FORM_FIELD_ELEMENT__WIDTH_IN_PIXELS);
     createEReference(formFieldElementEClass, FORM_FIELD_ELEMENT__SUPER_TYPE);
     createEReference(formFieldElementEClass, FORM_FIELD_ELEMENT__LOGIC);
 
     compositeFieldElementEClass = createEClass(COMPOSITE_FIELD_ELEMENT);
+    createEReference(compositeFieldElementEClass, COMPOSITE_FIELD_ELEMENT__TEXT);
     createEReference(compositeFieldElementEClass, COMPOSITE_FIELD_ELEMENT__FIELDS);
 
     sequenceBoxElementEClass = createEClass(SEQUENCE_BOX_ELEMENT);
+    createEAttribute(sequenceBoxElementEClass, SEQUENCE_BOX_ELEMENT__LABEL_VISIBLE);
+    createEAttribute(sequenceBoxElementEClass, SEQUENCE_BOX_ELEMENT__GRID_WIDTH);
+    createEAttribute(sequenceBoxElementEClass, SEQUENCE_BOX_ELEMENT__WIDTH_IN_PIXELS);
 
     groupBoxElementEClass = createEClass(GROUP_BOX_ELEMENT);
     createEAttribute(groupBoxElementEClass, GROUP_BOX_ELEMENT__COLUMNS);
+    createEAttribute(groupBoxElementEClass, GROUP_BOX_ELEMENT__LABEL_VISIBLE);
     createEAttribute(groupBoxElementEClass, GROUP_BOX_ELEMENT__BORDER_VISIBLE);
     createEAttribute(groupBoxElementEClass, GROUP_BOX_ELEMENT__BORDER_DECORATION);
     createEAttribute(groupBoxElementEClass, GROUP_BOX_ELEMENT__GRID_HEIGHT);
+    createEAttribute(groupBoxElementEClass, GROUP_BOX_ELEMENT__GRID_WIDTH);
+    createEAttribute(groupBoxElementEClass, GROUP_BOX_ELEMENT__WIDTH_IN_PIXELS);
 
     valueFieldElementEClass = createEClass(VALUE_FIELD_ELEMENT);
+    createEReference(valueFieldElementEClass, VALUE_FIELD_ELEMENT__TEXT);
+    createEAttribute(valueFieldElementEClass, VALUE_FIELD_ELEMENT__LABEL_VISIBLE);
+    createEReference(valueFieldElementEClass, VALUE_FIELD_ELEMENT__MASTER);
     createEAttribute(valueFieldElementEClass, VALUE_FIELD_ELEMENT__MANDATORY);
+    createEAttribute(valueFieldElementEClass, VALUE_FIELD_ELEMENT__GRID_WIDTH);
+    createEAttribute(valueFieldElementEClass, VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS);
 
     stringElementEClass = createEClass(STRING_ELEMENT);
     createEAttribute(stringElementEClass, STRING_ELEMENT__MAXLEN);
@@ -1558,10 +1831,18 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     createEReference(smartfieldElementEClass, SMARTFIELD_ELEMENT__MENUS);
 
     customFieldElementEClass = createEClass(CUSTOM_FIELD_ELEMENT);
+    createEReference(customFieldElementEClass, CUSTOM_FIELD_ELEMENT__TEXT);
+    createEAttribute(customFieldElementEClass, CUSTOM_FIELD_ELEMENT__LABEL_VISIBLE);
+    createEReference(customFieldElementEClass, CUSTOM_FIELD_ELEMENT__MASTER);
+    createEAttribute(customFieldElementEClass, CUSTOM_FIELD_ELEMENT__GRID_WIDTH);
+    createEAttribute(customFieldElementEClass, CUSTOM_FIELD_ELEMENT__WIDTH_IN_PIXELS);
     createEReference(customFieldElementEClass, CUSTOM_FIELD_ELEMENT__FIELDS);
 
     buttonElementEClass = createEClass(BUTTON_ELEMENT);
+    createEReference(buttonElementEClass, BUTTON_ELEMENT__TEXT);
     createEAttribute(buttonElementEClass, BUTTON_ELEMENT__PROCESS_BUTTON);
+    createEAttribute(buttonElementEClass, BUTTON_ELEMENT__GRID_WIDTH);
+    createEAttribute(buttonElementEClass, BUTTON_ELEMENT__WIDTH_IN_PIXELS);
     createEReference(buttonElementEClass, BUTTON_ELEMENT__MENUS);
 
     menuElementEClass = createEClass(MENU_ELEMENT);
@@ -1573,7 +1854,11 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     createEReference(menuElementEClass, MENU_ELEMENT__LOGIC);
 
     tableElementEClass = createEClass(TABLE_ELEMENT);
+    createEReference(tableElementEClass, TABLE_ELEMENT__TEXT);
+    createEAttribute(tableElementEClass, TABLE_ELEMENT__LABEL_VISIBLE);
     createEAttribute(tableElementEClass, TABLE_ELEMENT__GRID_HEIGHT);
+    createEAttribute(tableElementEClass, TABLE_ELEMENT__GRID_WIDTH);
+    createEAttribute(tableElementEClass, TABLE_ELEMENT__WIDTH_IN_PIXELS);
     createEReference(tableElementEClass, TABLE_ELEMENT__MENUS);
     createEReference(tableElementEClass, TABLE_ELEMENT__COLUMNS);
 
@@ -1589,6 +1874,14 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     createEAttribute(keyElementEClass, KEY_ELEMENT__NAME);
     createEAttribute(keyElementEClass, KEY_ELEMENT__STROKE);
     createEReference(keyElementEClass, KEY_ELEMENT__LOGIC);
+
+    tabElementEClass = createEClass(TAB_ELEMENT);
+    createEAttribute(tabElementEClass, TAB_ELEMENT__COLUMNS);
+
+    tabBoxElementEClass = createEClass(TAB_BOX_ELEMENT);
+    createEAttribute(tabBoxElementEClass, TAB_BOX_ELEMENT__GRID_WIDTH);
+    createEAttribute(tabBoxElementEClass, TAB_BOX_ELEMENT__WIDTH_IN_PIXELS);
+    createEReference(tabBoxElementEClass, TAB_BOX_ELEMENT__TABS);
   }
 
   /**
@@ -1632,6 +1925,8 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     customFieldElementEClass.getESuperTypes().add(this.getFormFieldElement());
     buttonElementEClass.getESuperTypes().add(this.getFormFieldElement());
     tableElementEClass.getESuperTypes().add(this.getFormFieldElement());
+    tabElementEClass.getESuperTypes().add(this.getCompositeFieldElement());
+    tabBoxElementEClass.getESuperTypes().add(this.getFormFieldElement());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1690,29 +1985,36 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
 
     initEClass(formFieldElementEClass, FormFieldElement.class, "FormFieldElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFormFieldElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, FormFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFormFieldElement_Text(), this.getTranslationElement(), null, "text", null, 0, 1, FormFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFormFieldElement_Enabled(), ecorePackage.getEString(), "enabled", null, 0, 1, FormFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFormFieldElement_Visible(), ecorePackage.getEString(), "visible", null, 0, 1, FormFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getFormFieldElement_LabelVisible(), ecorePackage.getEString(), "labelVisible", null, 0, 1, FormFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFormFieldElement_Master(), this.getValueFieldElement(), null, "master", null, 0, 1, FormFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getFormFieldElement_GridWidth(), ecorePackage.getEInt(), "gridWidth", null, 0, 1, FormFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getFormFieldElement_WidthInPixels(), ecorePackage.getEInt(), "widthInPixels", null, 0, 1, FormFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFormFieldElement_SuperType(), this.getTemplateElement(), null, "superType", null, 0, 1, FormFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFormFieldElement_Logic(), this.getLogicElement(), null, "logic", null, 0, -1, FormFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(compositeFieldElementEClass, CompositeFieldElement.class, "CompositeFieldElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCompositeFieldElement_Text(), this.getTranslationElement(), null, "text", null, 0, 1, CompositeFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCompositeFieldElement_Fields(), this.getFormFieldElement(), null, "fields", null, 0, -1, CompositeFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(sequenceBoxElementEClass, SequenceBoxElement.class, "SequenceBoxElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSequenceBoxElement_LabelVisible(), ecorePackage.getEString(), "labelVisible", null, 0, 1, SequenceBoxElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSequenceBoxElement_GridWidth(), ecorePackage.getEInt(), "gridWidth", null, 0, 1, SequenceBoxElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSequenceBoxElement_WidthInPixels(), ecorePackage.getEInt(), "widthInPixels", null, 0, 1, SequenceBoxElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(groupBoxElementEClass, GroupBoxElement.class, "GroupBoxElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getGroupBoxElement_Columns(), ecorePackage.getEInt(), "columns", null, 0, 1, GroupBoxElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGroupBoxElement_LabelVisible(), ecorePackage.getEString(), "labelVisible", null, 0, 1, GroupBoxElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getGroupBoxElement_BorderVisible(), ecorePackage.getEString(), "borderVisible", null, 0, 1, GroupBoxElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getGroupBoxElement_BorderDecoration(), ecorePackage.getEString(), "borderDecoration", null, 0, 1, GroupBoxElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getGroupBoxElement_GridHeight(), ecorePackage.getEInt(), "gridHeight", null, 0, 1, GroupBoxElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGroupBoxElement_GridWidth(), ecorePackage.getEInt(), "gridWidth", null, 0, 1, GroupBoxElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGroupBoxElement_WidthInPixels(), ecorePackage.getEInt(), "widthInPixels", null, 0, 1, GroupBoxElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(valueFieldElementEClass, ValueFieldElement.class, "ValueFieldElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getValueFieldElement_Text(), this.getTranslationElement(), null, "text", null, 0, 1, ValueFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getValueFieldElement_LabelVisible(), ecorePackage.getEString(), "labelVisible", null, 0, 1, ValueFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getValueFieldElement_Master(), this.getValueFieldElement(), null, "master", null, 0, 1, ValueFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getValueFieldElement_Mandatory(), ecorePackage.getEString(), "mandatory", null, 0, 1, ValueFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getValueFieldElement_GridWidth(), ecorePackage.getEInt(), "gridWidth", null, 0, 1, ValueFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getValueFieldElement_WidthInPixels(), ecorePackage.getEInt(), "widthInPixels", null, 0, 1, ValueFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(stringElementEClass, StringElement.class, "StringElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getStringElement_Maxlen(), ecorePackage.getEInt(), "maxlen", null, 0, 1, StringElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1741,10 +2043,18 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEReference(getSmartfieldElement_Menus(), this.getMenuElement(), null, "menus", null, 0, -1, SmartfieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(customFieldElementEClass, CustomFieldElement.class, "CustomFieldElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCustomFieldElement_Text(), this.getTranslationElement(), null, "text", null, 0, 1, CustomFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCustomFieldElement_LabelVisible(), ecorePackage.getEString(), "labelVisible", null, 0, 1, CustomFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCustomFieldElement_Master(), this.getValueFieldElement(), null, "master", null, 0, 1, CustomFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCustomFieldElement_GridWidth(), ecorePackage.getEInt(), "gridWidth", null, 0, 1, CustomFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCustomFieldElement_WidthInPixels(), ecorePackage.getEInt(), "widthInPixels", null, 0, 1, CustomFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCustomFieldElement_Fields(), this.getFormFieldElement(), null, "fields", null, 0, -1, CustomFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(buttonElementEClass, ButtonElement.class, "ButtonElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getButtonElement_Text(), this.getTranslationElement(), null, "text", null, 0, 1, ButtonElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getButtonElement_ProcessButton(), ecorePackage.getEString(), "processButton", null, 0, 1, ButtonElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getButtonElement_GridWidth(), ecorePackage.getEInt(), "gridWidth", null, 0, 1, ButtonElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getButtonElement_WidthInPixels(), ecorePackage.getEInt(), "widthInPixels", null, 0, 1, ButtonElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getButtonElement_Menus(), this.getMenuElement(), null, "menus", null, 0, -1, ButtonElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(menuElementEClass, MenuElement.class, "MenuElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1756,7 +2066,11 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEReference(getMenuElement_Logic(), this.getLogicElement(), null, "logic", null, 0, -1, MenuElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(tableElementEClass, TableElement.class, "TableElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTableElement_Text(), this.getTranslationElement(), null, "text", null, 0, 1, TableElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTableElement_LabelVisible(), ecorePackage.getEString(), "labelVisible", null, 0, 1, TableElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getTableElement_GridHeight(), ecorePackage.getEInt(), "gridHeight", null, 0, 1, TableElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTableElement_GridWidth(), ecorePackage.getEInt(), "gridWidth", null, 0, 1, TableElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTableElement_WidthInPixels(), ecorePackage.getEInt(), "widthInPixels", null, 0, 1, TableElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTableElement_Menus(), this.getMenuElement(), null, "menus", null, 0, -1, TableElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTableElement_Columns(), this.getColumnElement(), null, "columns", null, 0, -1, TableElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1772,6 +2086,14 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEAttribute(getKeyElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, KeyElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getKeyElement_Stroke(), ecorePackage.getEString(), "stroke", null, 0, 1, KeyElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getKeyElement_Logic(), this.getLogicElement(), null, "logic", null, 0, -1, KeyElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(tabElementEClass, TabElement.class, "TabElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getTabElement_Columns(), ecorePackage.getEInt(), "columns", null, 0, 1, TabElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(tabBoxElementEClass, TabBoxElement.class, "TabBoxElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getTabBoxElement_GridWidth(), ecorePackage.getEInt(), "gridWidth", null, 0, 1, TabBoxElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTabBoxElement_WidthInPixels(), ecorePackage.getEInt(), "widthInPixels", null, 0, 1, TabBoxElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTabBoxElement_Tabs(), this.getTabElement(), null, "tabs", null, 0, -1, TabBoxElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

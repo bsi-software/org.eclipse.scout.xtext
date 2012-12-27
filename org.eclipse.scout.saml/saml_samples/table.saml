@@ -1,4 +1,4 @@
-module ch.raiffeisen.dialba.common
+module test.aa.bb
 
 translation BuDatum de="Bu-Datum"
 translation Text de="Text"

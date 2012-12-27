@@ -60,6 +60,11 @@ public class TableElementImportOperation extends AbstractFormFieldElementOperati
     ITypeHierarchy h = createdField.newSupertypeHierarchy(getSamlContext().getMonitor());
     applyFormFieldProperties(createdField, h);
     applyGridHeightAttribute(getTableFieldElement().getGridHeight(), createdField, h);
+    applyLabelAttribute(getTableFieldElement().getText(), createdField, h);
+    applyLabelVisibleAttribute(getTableFieldElement().getLabelVisible(), createdField, h);
+    applyGridWidthAttribute(getTableFieldElement().getGridWidth(), createdField, h);
+    applyWidthInPixelsAttribute(getTableFieldElement().getWidthInPixels(), createdField, h);
+
     fillLogic(createdField);
 
     MenuElementImportOperation.processMenus(getTableFieldElement().getMenus(), table, getSamlFormContext());

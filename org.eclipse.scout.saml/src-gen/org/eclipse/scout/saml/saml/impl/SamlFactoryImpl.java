@@ -90,6 +90,8 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
       case SamlPackage.TABLE_ELEMENT: return createTableElement();
       case SamlPackage.COLUMN_ELEMENT: return createColumnElement();
       case SamlPackage.KEY_ELEMENT: return createKeyElement();
+      case SamlPackage.TAB_ELEMENT: return createTabElement();
+      case SamlPackage.TAB_BOX_ELEMENT: return createTabBoxElement();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -379,6 +381,28 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
   {
     KeyElementImpl keyElement = new KeyElementImpl();
     return keyElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TabElement createTabElement()
+  {
+    TabElementImpl tabElement = new TabElementImpl();
+    return tabElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TabBoxElement createTabBoxElement()
+  {
+    TabBoxElementImpl tabBoxElement = new TabBoxElementImpl();
+    return tabBoxElement;
   }
 
   /**

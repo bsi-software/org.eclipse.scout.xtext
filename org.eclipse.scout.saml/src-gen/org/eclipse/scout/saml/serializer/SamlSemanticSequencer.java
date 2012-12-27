@@ -24,6 +24,8 @@ import org.eclipse.scout.saml.saml.SamlPackage;
 import org.eclipse.scout.saml.saml.SequenceBoxElement;
 import org.eclipse.scout.saml.saml.SmartfieldElement;
 import org.eclipse.scout.saml.saml.StringElement;
+import org.eclipse.scout.saml.saml.TabBoxElement;
+import org.eclipse.scout.saml.saml.TabElement;
 import org.eclipse.scout.saml.saml.TableElement;
 import org.eclipse.scout.saml.saml.TemplateElement;
 import org.eclipse.scout.saml.saml.TranslationElement;
@@ -217,6 +219,21 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 				   context == grammarAccess.getStringElementRule() ||
 				   context == grammarAccess.getValueFieldElementRule()) {
 					sequence_StringElement(context, (StringElement) semanticObject); 
+					return; 
+				}
+				else break;
+			case SamlPackage.TAB_BOX_ELEMENT:
+				if(context == grammarAccess.getFormFieldElementRule() ||
+				   context == grammarAccess.getTabBoxElementRule()) {
+					sequence_TabBoxElement(context, (TabBoxElement) semanticObject); 
+					return; 
+				}
+				else break;
+			case SamlPackage.TAB_ELEMENT:
+				if(context == grammarAccess.getCompositeFieldElementRule() ||
+				   context == grammarAccess.getFormFieldElementRule() ||
+				   context == grammarAccess.getTabElementRule()) {
+					sequence_TabElement(context, (TabElement) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1133,8 +1150,6 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         text=[TranslationElement|QualifiedName]? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
-	 *         labelVisible=BooleanType? 
-	 *         master=[ValueFieldElement|ID]? 
 	 *         processButton=BooleanType? 
 	 *         gridWidth=INT? 
 	 *         widthInPixels=INT? 
@@ -1251,7 +1266,6 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         labelVisible=BooleanType? 
 	 *         borderVisible=BooleanType? 
 	 *         (borderDecoration='empty' | borderDecoration='line' | borderDecoration='section' | borderDecoration='auto')? 
-	 *         master=[ValueFieldElement|ID]? 
 	 *         gridHeight=INT? 
 	 *         gridWidth=INT? 
 	 *         widthInPixels=INT? 
@@ -1410,7 +1424,6 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
 	 *         labelVisible=BooleanType? 
-	 *         master=[ValueFieldElement|ID]? 
 	 *         gridWidth=INT? 
 	 *         widthInPixels=INT? 
 	 *         superType=[TemplateElement|ID]? 
@@ -1474,10 +1487,43 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         name=ID 
+	 *         enabled=BooleanType? 
+	 *         visible=BooleanType? 
+	 *         gridWidth=INT? 
+	 *         widthInPixels=INT? 
+	 *         superType=[TemplateElement|ID]? 
+	 *         (logic+=LogicElement | tabs+=TabElement)*
+	 *     )
+	 */
+	protected void sequence_TabBoxElement(EObject context, TabBoxElement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         name=ID 
+	 *         text=[TranslationElement|QualifiedName]? 
+	 *         columns=INT? 
+	 *         enabled=BooleanType? 
+	 *         visible=BooleanType? 
+	 *         superType=[TemplateElement|ID]? 
+	 *         (logic+=LogicElement | fields+=FormFieldElement)*
+	 *     )
+	 */
+	protected void sequence_TabElement(EObject context, TabElement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         name=ID 
 	 *         text=[TranslationElement|QualifiedName]? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
-	 *         master=[ValueFieldElement|ID]? 
 	 *         labelVisible=BooleanType? 
 	 *         gridHeight=INT? 
 	 *         gridWidth=INT? 

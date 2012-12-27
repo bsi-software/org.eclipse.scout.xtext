@@ -145,5 +145,31 @@ class FormTests {
 		'''.parse(rs2).assertNoErrors
 	}
 	
-	
+	@Test
+	def void testTabBox() {
+		'''
+		module test.a.b
+
+		translation Tab01Text de="Tab 1"
+		translation Tab02Text de="Tab 2"
+		
+		form TabTest01 columns=1 {
+			group Grp01 columns=1 width=1 {
+				tabbox MyTab {
+					tab Detail text=Tab01Text {
+						long TestLong
+						string TestString
+					}
+					tab Documents text=Tab02Text {
+						date TestDate
+						bigdecimal TestDecimal
+					}
+				}
+			}
+			group Grp02 columns=1 width=1 {
+				string MyString
+			}
+		}
+		'''.parse.assertNoErrors
+	}
 }

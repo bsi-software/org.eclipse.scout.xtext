@@ -1,4 +1,4 @@
-module org.eclipse.scout.helloworld
+module test.aa.bb
 
 translation Message en="Message" de="Nachricht"
 

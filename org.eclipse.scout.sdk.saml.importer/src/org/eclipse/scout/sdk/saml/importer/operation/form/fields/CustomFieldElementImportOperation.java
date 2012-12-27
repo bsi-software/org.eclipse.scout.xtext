@@ -56,8 +56,12 @@ public class CustomFieldElementImportOperation extends AbstractFormFieldElementO
     IType createdField = o.getCreatedFormField();
 
     ITypeHierarchy h = createdField.newSupertypeHierarchy(getSamlContext().getMonitor());
-
     applyFormFieldProperties(createdField, h);
+    applyLabelAttribute(getCustomFieldElement().getText(), createdField, h);
+    applyLabelVisibleAttribute(getCustomFieldElement().getLabelVisible(), createdField, h);
+    applyGridWidthAttribute(getCustomFieldElement().getGridWidth(), createdField, h);
+    applyWidthInPixelsAttribute(getCustomFieldElement().getWidthInPixels(), createdField, h);
+
     fillLogic(createdField);
   }
 

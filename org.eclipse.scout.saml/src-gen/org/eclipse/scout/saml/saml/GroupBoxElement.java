@@ -12,9 +12,12 @@ package org.eclipse.scout.saml.saml;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.scout.saml.saml.GroupBoxElement#getColumns <em>Columns</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.GroupBoxElement#getLabelVisible <em>Label Visible</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.GroupBoxElement#getBorderVisible <em>Border Visible</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.GroupBoxElement#getBorderDecoration <em>Border Decoration</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.GroupBoxElement#getGridHeight <em>Grid Height</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.GroupBoxElement#getGridWidth <em>Grid Width</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.GroupBoxElement#getWidthInPixels <em>Width In Pixels</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,6 +52,32 @@ public interface GroupBoxElement extends CompositeFieldElement
    * @generated
    */
   void setColumns(int value);
+
+  /**
+   * Returns the value of the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Label Visible</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Label Visible</em>' attribute.
+   * @see #setLabelVisible(String)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getGroupBoxElement_LabelVisible()
+   * @model
+   * @generated
+   */
+  String getLabelVisible();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.GroupBoxElement#getLabelVisible <em>Label Visible</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Label Visible</em>' attribute.
+   * @see #getLabelVisible()
+   * @generated
+   */
+  void setLabelVisible(String value);
 
   /**
    * Returns the value of the '<em><b>Border Visible</b></em>' attribute.
@@ -127,5 +156,57 @@ public interface GroupBoxElement extends CompositeFieldElement
    * @generated
    */
   void setGridHeight(int value);
+
+  /**
+   * Returns the value of the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Grid Width</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Grid Width</em>' attribute.
+   * @see #setGridWidth(int)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getGroupBoxElement_GridWidth()
+   * @model
+   * @generated
+   */
+  int getGridWidth();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.GroupBoxElement#getGridWidth <em>Grid Width</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Grid Width</em>' attribute.
+   * @see #getGridWidth()
+   * @generated
+   */
+  void setGridWidth(int value);
+
+  /**
+   * Returns the value of the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Width In Pixels</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Width In Pixels</em>' attribute.
+   * @see #setWidthInPixels(int)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getGroupBoxElement_WidthInPixels()
+   * @model
+   * @generated
+   */
+  int getWidthInPixels();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.GroupBoxElement#getWidthInPixels <em>Width In Pixels</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Width In Pixels</em>' attribute.
+   * @see #getWidthInPixels()
+   * @generated
+   */
+  void setWidthInPixels(int value);
 
 } // GroupBoxElement

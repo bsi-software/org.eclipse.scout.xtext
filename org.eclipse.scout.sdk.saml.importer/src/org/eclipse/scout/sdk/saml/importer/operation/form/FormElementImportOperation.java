@@ -23,7 +23,7 @@ import org.eclipse.scout.sdk.operation.service.ServiceDeleteOperation;
 import org.eclipse.scout.sdk.operation.service.ServiceNewOperation;
 import org.eclipse.scout.sdk.operation.util.JavaElementDeleteOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.form.fields.AbstractFormFieldElementOperation;
-import org.eclipse.scout.sdk.saml.importer.operation.form.fields.container.GroupBoxElementImportOperation;
+import org.eclipse.scout.sdk.saml.importer.operation.form.fields.container.AbstractBoxElementImportOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.key.KeyElementImportOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.logic.SamlLogicFillOperation;
 import org.eclipse.scout.sdk.saml.importer.util.IItemVisitor;
@@ -79,7 +79,7 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
     // apply form attributes
     applyModalAttribute(getFormElement().getModal(), getCreatedForm());
     applySubtitleAttribute(getFormElement().getSubtitle(), getCreatedForm());
-    GroupBoxElementImportOperation.applyColumnsAttribute(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager(), getFormElement().getColumns(), getCreatedMainBox(), null);
+    AbstractBoxElementImportOperation.applyColumnsAttribute(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager(), getFormElement().getColumns(), getCreatedMainBox(), null);
 
     createFormContext();
 

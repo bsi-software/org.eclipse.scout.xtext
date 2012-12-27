@@ -272,7 +272,7 @@ class ComplexFormTests {
 				}
 			}
 			
-			sequence DepotSequence master=MitTitel	{
+			sequence DepotSequence {
 				logic event=master_changed placement=client {
 					"Integer newMasterValue = form.getMitTitelField().getValue();
 				    if (newMasterValue != null) {

@@ -19,9 +19,12 @@ import org.eclipse.scout.saml.saml.SamlPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.GroupBoxElementImpl#getColumns <em>Columns</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.GroupBoxElementImpl#getLabelVisible <em>Label Visible</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.GroupBoxElementImpl#getBorderVisible <em>Border Visible</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.GroupBoxElementImpl#getBorderDecoration <em>Border Decoration</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.GroupBoxElementImpl#getGridHeight <em>Grid Height</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.GroupBoxElementImpl#getGridWidth <em>Grid Width</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.GroupBoxElementImpl#getWidthInPixels <em>Width In Pixels</em>}</li>
  * </ul>
  * </p>
  *
@@ -48,6 +51,26 @@ public class GroupBoxElementImpl extends CompositeFieldElementImpl implements Gr
    * @ordered
    */
   protected int columns = COLUMNS_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getLabelVisible() <em>Label Visible</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLabelVisible()
+   * @generated
+   * @ordered
+   */
+  protected static final String LABEL_VISIBLE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getLabelVisible() <em>Label Visible</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLabelVisible()
+   * @generated
+   * @ordered
+   */
+  protected String labelVisible = LABEL_VISIBLE_EDEFAULT;
 
   /**
    * The default value of the '{@link #getBorderVisible() <em>Border Visible</em>}' attribute.
@@ -110,6 +133,46 @@ public class GroupBoxElementImpl extends CompositeFieldElementImpl implements Gr
   protected int gridHeight = GRID_HEIGHT_EDEFAULT;
 
   /**
+   * The default value of the '{@link #getGridWidth() <em>Grid Width</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getGridWidth()
+   * @generated
+   * @ordered
+   */
+  protected static final int GRID_WIDTH_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getGridWidth() <em>Grid Width</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getGridWidth()
+   * @generated
+   * @ordered
+   */
+  protected int gridWidth = GRID_WIDTH_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getWidthInPixels() <em>Width In Pixels</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getWidthInPixels()
+   * @generated
+   * @ordered
+   */
+  protected static final int WIDTH_IN_PIXELS_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getWidthInPixels() <em>Width In Pixels</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getWidthInPixels()
+   * @generated
+   * @ordered
+   */
+  protected int widthInPixels = WIDTH_IN_PIXELS_EDEFAULT;
+
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -151,6 +214,29 @@ public class GroupBoxElementImpl extends CompositeFieldElementImpl implements Gr
     columns = newColumns;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.GROUP_BOX_ELEMENT__COLUMNS, oldColumns, columns));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getLabelVisible()
+  {
+    return labelVisible;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setLabelVisible(String newLabelVisible)
+  {
+    String oldLabelVisible = labelVisible;
+    labelVisible = newLabelVisible;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.GROUP_BOX_ELEMENT__LABEL_VISIBLE, oldLabelVisible, labelVisible));
   }
 
   /**
@@ -227,6 +313,52 @@ public class GroupBoxElementImpl extends CompositeFieldElementImpl implements Gr
    * <!-- end-user-doc -->
    * @generated
    */
+  public int getGridWidth()
+  {
+    return gridWidth;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setGridWidth(int newGridWidth)
+  {
+    int oldGridWidth = gridWidth;
+    gridWidth = newGridWidth;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.GROUP_BOX_ELEMENT__GRID_WIDTH, oldGridWidth, gridWidth));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public int getWidthInPixels()
+  {
+    return widthInPixels;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setWidthInPixels(int newWidthInPixels)
+  {
+    int oldWidthInPixels = widthInPixels;
+    widthInPixels = newWidthInPixels;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.GROUP_BOX_ELEMENT__WIDTH_IN_PIXELS, oldWidthInPixels, widthInPixels));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -234,12 +366,18 @@ public class GroupBoxElementImpl extends CompositeFieldElementImpl implements Gr
     {
       case SamlPackage.GROUP_BOX_ELEMENT__COLUMNS:
         return getColumns();
+      case SamlPackage.GROUP_BOX_ELEMENT__LABEL_VISIBLE:
+        return getLabelVisible();
       case SamlPackage.GROUP_BOX_ELEMENT__BORDER_VISIBLE:
         return getBorderVisible();
       case SamlPackage.GROUP_BOX_ELEMENT__BORDER_DECORATION:
         return getBorderDecoration();
       case SamlPackage.GROUP_BOX_ELEMENT__GRID_HEIGHT:
         return getGridHeight();
+      case SamlPackage.GROUP_BOX_ELEMENT__GRID_WIDTH:
+        return getGridWidth();
+      case SamlPackage.GROUP_BOX_ELEMENT__WIDTH_IN_PIXELS:
+        return getWidthInPixels();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -257,6 +395,9 @@ public class GroupBoxElementImpl extends CompositeFieldElementImpl implements Gr
       case SamlPackage.GROUP_BOX_ELEMENT__COLUMNS:
         setColumns((Integer)newValue);
         return;
+      case SamlPackage.GROUP_BOX_ELEMENT__LABEL_VISIBLE:
+        setLabelVisible((String)newValue);
+        return;
       case SamlPackage.GROUP_BOX_ELEMENT__BORDER_VISIBLE:
         setBorderVisible((String)newValue);
         return;
@@ -265,6 +406,12 @@ public class GroupBoxElementImpl extends CompositeFieldElementImpl implements Gr
         return;
       case SamlPackage.GROUP_BOX_ELEMENT__GRID_HEIGHT:
         setGridHeight((Integer)newValue);
+        return;
+      case SamlPackage.GROUP_BOX_ELEMENT__GRID_WIDTH:
+        setGridWidth((Integer)newValue);
+        return;
+      case SamlPackage.GROUP_BOX_ELEMENT__WIDTH_IN_PIXELS:
+        setWidthInPixels((Integer)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -283,6 +430,9 @@ public class GroupBoxElementImpl extends CompositeFieldElementImpl implements Gr
       case SamlPackage.GROUP_BOX_ELEMENT__COLUMNS:
         setColumns(COLUMNS_EDEFAULT);
         return;
+      case SamlPackage.GROUP_BOX_ELEMENT__LABEL_VISIBLE:
+        setLabelVisible(LABEL_VISIBLE_EDEFAULT);
+        return;
       case SamlPackage.GROUP_BOX_ELEMENT__BORDER_VISIBLE:
         setBorderVisible(BORDER_VISIBLE_EDEFAULT);
         return;
@@ -291,6 +441,12 @@ public class GroupBoxElementImpl extends CompositeFieldElementImpl implements Gr
         return;
       case SamlPackage.GROUP_BOX_ELEMENT__GRID_HEIGHT:
         setGridHeight(GRID_HEIGHT_EDEFAULT);
+        return;
+      case SamlPackage.GROUP_BOX_ELEMENT__GRID_WIDTH:
+        setGridWidth(GRID_WIDTH_EDEFAULT);
+        return;
+      case SamlPackage.GROUP_BOX_ELEMENT__WIDTH_IN_PIXELS:
+        setWidthInPixels(WIDTH_IN_PIXELS_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -308,12 +464,18 @@ public class GroupBoxElementImpl extends CompositeFieldElementImpl implements Gr
     {
       case SamlPackage.GROUP_BOX_ELEMENT__COLUMNS:
         return columns != COLUMNS_EDEFAULT;
+      case SamlPackage.GROUP_BOX_ELEMENT__LABEL_VISIBLE:
+        return LABEL_VISIBLE_EDEFAULT == null ? labelVisible != null : !LABEL_VISIBLE_EDEFAULT.equals(labelVisible);
       case SamlPackage.GROUP_BOX_ELEMENT__BORDER_VISIBLE:
         return BORDER_VISIBLE_EDEFAULT == null ? borderVisible != null : !BORDER_VISIBLE_EDEFAULT.equals(borderVisible);
       case SamlPackage.GROUP_BOX_ELEMENT__BORDER_DECORATION:
         return BORDER_DECORATION_EDEFAULT == null ? borderDecoration != null : !BORDER_DECORATION_EDEFAULT.equals(borderDecoration);
       case SamlPackage.GROUP_BOX_ELEMENT__GRID_HEIGHT:
         return gridHeight != GRID_HEIGHT_EDEFAULT;
+      case SamlPackage.GROUP_BOX_ELEMENT__GRID_WIDTH:
+        return gridWidth != GRID_WIDTH_EDEFAULT;
+      case SamlPackage.GROUP_BOX_ELEMENT__WIDTH_IN_PIXELS:
+        return widthInPixels != WIDTH_IN_PIXELS_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -331,12 +493,18 @@ public class GroupBoxElementImpl extends CompositeFieldElementImpl implements Gr
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (columns: ");
     result.append(columns);
+    result.append(", labelVisible: ");
+    result.append(labelVisible);
     result.append(", borderVisible: ");
     result.append(borderVisible);
     result.append(", borderDecoration: ");
     result.append(borderDecoration);
     result.append(", gridHeight: ");
     result.append(gridHeight);
+    result.append(", gridWidth: ");
+    result.append(gridWidth);
+    result.append(", widthInPixels: ");
+    result.append(widthInPixels);
     result.append(')');
     return result.toString();
   }

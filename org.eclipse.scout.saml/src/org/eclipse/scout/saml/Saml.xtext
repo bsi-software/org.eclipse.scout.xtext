@@ -70,17 +70,16 @@ FormElement:'form' name=ID
 
 // UI FIELDS
 
-FormFieldElement:CompositeFieldElement | ValueFieldElement | CustomFieldElement | ButtonElement | TableElement;
+FormFieldElement:CompositeFieldElement | ValueFieldElement | CustomFieldElement | ButtonElement | TableElement | TabBoxElement;
 
 // COMPOSITES
-CompositeFieldElement:SequenceBoxElement|GroupBoxElement;
+CompositeFieldElement:SequenceBoxElement|GroupBoxElement|TabElement;
 SequenceBoxElement:'sequence' name=ID
 	(
 		('text' '=' text=[TranslationElement|QualifiedName])? & 
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
 		('label_visible' '=' labelVisible=BooleanType)? &
-		('master' '=' master=[ValueFieldElement])? &
 		('width' '=' gridWidth=INT)? &
 		('width_pixels' '=' widthInPixels=INT)? &
 		('super_type' '=' superType=[TemplateElement])?
@@ -96,14 +95,12 @@ GroupBoxElement:'group' name=ID
 		('label_visible' '=' labelVisible=BooleanType)? &
 		('border_visible' '=' borderVisible=BooleanType)? &
 		('border_decoration' '=' borderDecoration=('empty'|'line'|'section'|'auto'))? &
-		('master' '=' master=[ValueFieldElement])? &
 		('height' '=' gridHeight=INT)? &
 		('width' '=' gridWidth=INT)? &
 		('width_pixels' '=' widthInPixels=INT)? &
 		('super_type' '=' superType=[TemplateElement])?
 	)
 	('{' (logic+=LogicElement | fields+=FormFieldElement)* '}')?;
-
 
 // VALUE FIELDS
 ValueFieldElement: StringElement|BigDecimalElement|LongElement|DateElement|SmartfieldElement;
@@ -215,8 +212,6 @@ ButtonElement:'button' name=ID
 		('text' '=' text=[TranslationElement|QualifiedName])? &
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
-		('label_visible' '=' labelVisible=BooleanType)? &
-		('master' '=' master=[ValueFieldElement])? &
 		('process_button' '=' processButton=BooleanType)? &
 		('width' '=' gridWidth=INT)? &
 		('width_pixels' '=' widthInPixels=INT)? &
@@ -240,7 +235,6 @@ TableElement:'table' name=ID
 		('text' '=' text=[TranslationElement|QualifiedName])? &
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
-		('master' '=' master=[ValueFieldElement])? &
 		('label_visible' '=' labelVisible=BooleanType)? &
 		('height' '=' gridHeight=INT)? &
 		('width' '=' gridWidth=INT)? &
@@ -260,3 +254,23 @@ ColumnElement:'column' name=ID
 	);
 	
 KeyElement:'key' name=ID 'stroke' '=' stroke=STRING '{' logic+=LogicElement+ '}';
+
+TabElement:'tab' name=ID
+	(
+		('text' '=' text=[TranslationElement|QualifiedName])? &
+		('columns' '=' columns=INT)? &
+		('enabled' '=' enabled=BooleanType)? &
+		('visible' '=' visible=BooleanType)? &
+		('super_type' '=' superType=[TemplateElement])?
+	)
+	'{' (logic+=LogicElement | fields+=FormFieldElement)* '}';
+
+TabBoxElement:'tabbox' name=ID
+	(
+		('enabled' '=' enabled=BooleanType)? &
+		('visible' '=' visible=BooleanType)? &
+		('width' '=' gridWidth=INT)? &
+		('width_pixels' '=' widthInPixels=INT)? &
+		('super_type' '=' superType=[TemplateElement])?
+	)
+	('{' (logic+=LogicElement | tabs+=TabElement)* '}')?;

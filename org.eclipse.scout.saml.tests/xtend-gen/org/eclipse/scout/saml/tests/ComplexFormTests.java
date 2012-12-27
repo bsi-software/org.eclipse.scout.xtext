@@ -619,7 +619,7 @@ public class ComplexFormTests {
       _builder.append("\t");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("sequence DepotSequence master=MitTitel\t{");
+      _builder.append("sequence DepotSequence {");
       _builder.newLine();
       _builder.append("\t\t");
       _builder.append("logic event=master_changed placement=client {");

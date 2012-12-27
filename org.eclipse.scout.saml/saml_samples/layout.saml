@@ -1,4 +1,4 @@
-module test.a.b
+module test.aa.bb
 
 form Test01 columns=2 {
 	group Grp1 columns=1 width=1 {

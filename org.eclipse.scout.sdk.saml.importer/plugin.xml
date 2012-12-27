@@ -57,6 +57,10 @@
             importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.TableElementImportOperation"
             samlFormElement="org.eclipse.scout.saml.saml.TableElement">
       </operation>
+      <operation
+            importOperation="org.eclipse.scout.sdk.saml.importer.operation.form.fields.TabBoxElementImportOperation"
+            samlFormElement="org.eclipse.scout.saml.saml.TabBoxElement">
+      </operation>
    </extension>
    <extension
          point="org.eclipse.scout.sdk.saml.importer.codeCustomization">

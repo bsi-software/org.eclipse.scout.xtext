@@ -831,14 +831,15 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cCustomFieldElementParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cButtonElementParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		private final RuleCall cTableElementParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cTabBoxElementParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
 		
 		//// UI FIELDS
 		// FormFieldElement:
 		//
-		//	CompositeFieldElement | ValueFieldElement | CustomFieldElement | ButtonElement | TableElement;
+		//	CompositeFieldElement | ValueFieldElement | CustomFieldElement | ButtonElement | TableElement | TabBoxElement;
 		public ParserRule getRule() { return rule; }
 
-		//CompositeFieldElement | ValueFieldElement | CustomFieldElement | ButtonElement | TableElement
+		//CompositeFieldElement | ValueFieldElement | CustomFieldElement | ButtonElement | TableElement | TabBoxElement
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//CompositeFieldElement
@@ -855,6 +856,9 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 
 		//TableElement
 		public RuleCall getTableElementParserRuleCall_4() { return cTableElementParserRuleCall_4; }
+
+		//TabBoxElement
+		public RuleCall getTabBoxElementParserRuleCall_5() { return cTabBoxElementParserRuleCall_5; }
 	}
 
 	public class CompositeFieldElementElements extends AbstractParserRuleElementFinder {
@@ -862,14 +866,15 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cSequenceBoxElementParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cGroupBoxElementParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cTabElementParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//// COMPOSITES
 		// CompositeFieldElement:
 		//
-		//	SequenceBoxElement | GroupBoxElement;
+		//	SequenceBoxElement | GroupBoxElement | TabElement;
 		public ParserRule getRule() { return rule; }
 
-		//SequenceBoxElement | GroupBoxElement
+		//SequenceBoxElement | GroupBoxElement | TabElement
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//SequenceBoxElement
@@ -877,6 +882,9 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 
 		//GroupBoxElement
 		public RuleCall getGroupBoxElementParserRuleCall_1() { return cGroupBoxElementParserRuleCall_1; }
+
+		//TabElement
+		public RuleCall getTabElementParserRuleCall_2() { return cTabElementParserRuleCall_2; }
 	}
 
 	public class SequenceBoxElementElements extends AbstractParserRuleElementFinder {
@@ -908,27 +916,21 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cLabelVisibleAssignment_2_3_2 = (Assignment)cGroup_2_3.eContents().get(2);
 		private final RuleCall cLabelVisibleBooleanTypeParserRuleCall_2_3_2_0 = (RuleCall)cLabelVisibleAssignment_2_3_2.eContents().get(0);
 		private final Group cGroup_2_4 = (Group)cUnorderedGroup_2.eContents().get(4);
-		private final Keyword cMasterKeyword_2_4_0 = (Keyword)cGroup_2_4.eContents().get(0);
+		private final Keyword cWidthKeyword_2_4_0 = (Keyword)cGroup_2_4.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_4_1 = (Keyword)cGroup_2_4.eContents().get(1);
-		private final Assignment cMasterAssignment_2_4_2 = (Assignment)cGroup_2_4.eContents().get(2);
-		private final CrossReference cMasterValueFieldElementCrossReference_2_4_2_0 = (CrossReference)cMasterAssignment_2_4_2.eContents().get(0);
-		private final RuleCall cMasterValueFieldElementIDTerminalRuleCall_2_4_2_0_1 = (RuleCall)cMasterValueFieldElementCrossReference_2_4_2_0.eContents().get(1);
+		private final Assignment cGridWidthAssignment_2_4_2 = (Assignment)cGroup_2_4.eContents().get(2);
+		private final RuleCall cGridWidthINTTerminalRuleCall_2_4_2_0 = (RuleCall)cGridWidthAssignment_2_4_2.eContents().get(0);
 		private final Group cGroup_2_5 = (Group)cUnorderedGroup_2.eContents().get(5);
-		private final Keyword cWidthKeyword_2_5_0 = (Keyword)cGroup_2_5.eContents().get(0);
+		private final Keyword cWidth_pixelsKeyword_2_5_0 = (Keyword)cGroup_2_5.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_5_1 = (Keyword)cGroup_2_5.eContents().get(1);
-		private final Assignment cGridWidthAssignment_2_5_2 = (Assignment)cGroup_2_5.eContents().get(2);
-		private final RuleCall cGridWidthINTTerminalRuleCall_2_5_2_0 = (RuleCall)cGridWidthAssignment_2_5_2.eContents().get(0);
+		private final Assignment cWidthInPixelsAssignment_2_5_2 = (Assignment)cGroup_2_5.eContents().get(2);
+		private final RuleCall cWidthInPixelsINTTerminalRuleCall_2_5_2_0 = (RuleCall)cWidthInPixelsAssignment_2_5_2.eContents().get(0);
 		private final Group cGroup_2_6 = (Group)cUnorderedGroup_2.eContents().get(6);
-		private final Keyword cWidth_pixelsKeyword_2_6_0 = (Keyword)cGroup_2_6.eContents().get(0);
+		private final Keyword cSuper_typeKeyword_2_6_0 = (Keyword)cGroup_2_6.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_6_1 = (Keyword)cGroup_2_6.eContents().get(1);
-		private final Assignment cWidthInPixelsAssignment_2_6_2 = (Assignment)cGroup_2_6.eContents().get(2);
-		private final RuleCall cWidthInPixelsINTTerminalRuleCall_2_6_2_0 = (RuleCall)cWidthInPixelsAssignment_2_6_2.eContents().get(0);
-		private final Group cGroup_2_7 = (Group)cUnorderedGroup_2.eContents().get(7);
-		private final Keyword cSuper_typeKeyword_2_7_0 = (Keyword)cGroup_2_7.eContents().get(0);
-		private final Keyword cEqualsSignKeyword_2_7_1 = (Keyword)cGroup_2_7.eContents().get(1);
-		private final Assignment cSuperTypeAssignment_2_7_2 = (Assignment)cGroup_2_7.eContents().get(2);
-		private final CrossReference cSuperTypeTemplateElementCrossReference_2_7_2_0 = (CrossReference)cSuperTypeAssignment_2_7_2.eContents().get(0);
-		private final RuleCall cSuperTypeTemplateElementIDTerminalRuleCall_2_7_2_0_1 = (RuleCall)cSuperTypeTemplateElementCrossReference_2_7_2_0.eContents().get(1);
+		private final Assignment cSuperTypeAssignment_2_6_2 = (Assignment)cGroup_2_6.eContents().get(2);
+		private final CrossReference cSuperTypeTemplateElementCrossReference_2_6_2_0 = (CrossReference)cSuperTypeAssignment_2_6_2.eContents().get(0);
+		private final RuleCall cSuperTypeTemplateElementIDTerminalRuleCall_2_6_2_0_1 = (RuleCall)cSuperTypeTemplateElementCrossReference_2_6_2_0.eContents().get(1);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Keyword cLeftCurlyBracketKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Alternatives cAlternatives_3_1 = (Alternatives)cGroup_3.eContents().get(1);
@@ -940,22 +942,28 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//SequenceBoxElement:
 		//
-		//	"sequence" name=ID (("text" "=" text=[TranslationElement|QualifiedName])? & ("enabled" "=" enabled=BooleanType)? &
+		//	"sequence" name=ID (("text" "=" text=[TranslationElement|QualifiedName])?
 		//
-		//	("visible" "=" visible=BooleanType)? & ("label_visible" "=" labelVisible=BooleanType)? & ("master" "="
+		//	//('master' '=' master=[ValueFieldElement])? &
+		// & ("enabled" "=" enabled=BooleanType)? & ("visible" "="
 		//
-		//	master=[ValueFieldElement])? & ("width" "=" gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? & ("super_type"
+		//	visible=BooleanType)? & ("label_visible" "=" labelVisible=BooleanType)? & ("width" "=" gridWidth=INT)? &
 		//
-		//	"=" superType=[TemplateElement])?) ("{" (logic+=LogicElement | fields+=FormFieldElement)* "}")?;
+		//	("width_pixels" "=" widthInPixels=INT)? & ("super_type" "=" superType=[TemplateElement])?) ("{" (logic+=LogicElement
+		//
+		//	| fields+=FormFieldElement)* "}")?;
 		public ParserRule getRule() { return rule; }
 
-		//"sequence" name=ID (("text" "=" text=[TranslationElement|QualifiedName])? & ("enabled" "=" enabled=BooleanType)? &
+		//"sequence" name=ID (("text" "=" text=[TranslationElement|QualifiedName])?
 		//
-		//("visible" "=" visible=BooleanType)? & ("label_visible" "=" labelVisible=BooleanType)? & ("master" "="
+		////('master' '=' master=[ValueFieldElement])? &
+		// & ("enabled" "=" enabled=BooleanType)? & ("visible" "="
 		//
-		//master=[ValueFieldElement])? & ("width" "=" gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? & ("super_type"
+		//visible=BooleanType)? & ("label_visible" "=" labelVisible=BooleanType)? & ("width" "=" gridWidth=INT)? &
 		//
-		//"=" superType=[TemplateElement])?) ("{" (logic+=LogicElement | fields+=FormFieldElement)* "}")?
+		//("width_pixels" "=" widthInPixels=INT)? & ("super_type" "=" superType=[TemplateElement])?) ("{" (logic+=LogicElement |
+		//
+		//fields+=FormFieldElement)* "}")?
 		public Group getGroup() { return cGroup; }
 
 		//"sequence"
@@ -967,9 +975,10 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//("text" "=" text=[TranslationElement|QualifiedName])? & ("enabled" "=" enabled=BooleanType)? & ("visible" "="
+		//("text" "=" text=[TranslationElement|QualifiedName])? //('master' '=' master=[ValueFieldElement])? &
+		// & ("enabled" "="
 		//
-		//visible=BooleanType)? & ("label_visible" "=" labelVisible=BooleanType)? & ("master" "=" master=[ValueFieldElement])? &
+		//enabled=BooleanType)? & ("visible" "=" visible=BooleanType)? & ("label_visible" "=" labelVisible=BooleanType)? &
 		//
 		//("width" "=" gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? & ("super_type" "="
 		//
@@ -1039,71 +1048,53 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//BooleanType
 		public RuleCall getLabelVisibleBooleanTypeParserRuleCall_2_3_2_0() { return cLabelVisibleBooleanTypeParserRuleCall_2_3_2_0; }
 
-		//("master" "=" master=[ValueFieldElement])?
+		//("width" "=" gridWidth=INT)?
 		public Group getGroup_2_4() { return cGroup_2_4; }
 
-		//"master"
-		public Keyword getMasterKeyword_2_4_0() { return cMasterKeyword_2_4_0; }
+		//"width"
+		public Keyword getWidthKeyword_2_4_0() { return cWidthKeyword_2_4_0; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_2_4_1() { return cEqualsSignKeyword_2_4_1; }
 
-		//master=[ValueFieldElement]
-		public Assignment getMasterAssignment_2_4_2() { return cMasterAssignment_2_4_2; }
+		//gridWidth=INT
+		public Assignment getGridWidthAssignment_2_4_2() { return cGridWidthAssignment_2_4_2; }
 
-		//[ValueFieldElement]
-		public CrossReference getMasterValueFieldElementCrossReference_2_4_2_0() { return cMasterValueFieldElementCrossReference_2_4_2_0; }
+		//INT
+		public RuleCall getGridWidthINTTerminalRuleCall_2_4_2_0() { return cGridWidthINTTerminalRuleCall_2_4_2_0; }
 
-		//ID
-		public RuleCall getMasterValueFieldElementIDTerminalRuleCall_2_4_2_0_1() { return cMasterValueFieldElementIDTerminalRuleCall_2_4_2_0_1; }
-
-		//("width" "=" gridWidth=INT)?
+		//("width_pixels" "=" widthInPixels=INT)?
 		public Group getGroup_2_5() { return cGroup_2_5; }
 
-		//"width"
-		public Keyword getWidthKeyword_2_5_0() { return cWidthKeyword_2_5_0; }
+		//"width_pixels"
+		public Keyword getWidth_pixelsKeyword_2_5_0() { return cWidth_pixelsKeyword_2_5_0; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_2_5_1() { return cEqualsSignKeyword_2_5_1; }
 
-		//gridWidth=INT
-		public Assignment getGridWidthAssignment_2_5_2() { return cGridWidthAssignment_2_5_2; }
+		//widthInPixels=INT
+		public Assignment getWidthInPixelsAssignment_2_5_2() { return cWidthInPixelsAssignment_2_5_2; }
 
 		//INT
-		public RuleCall getGridWidthINTTerminalRuleCall_2_5_2_0() { return cGridWidthINTTerminalRuleCall_2_5_2_0; }
+		public RuleCall getWidthInPixelsINTTerminalRuleCall_2_5_2_0() { return cWidthInPixelsINTTerminalRuleCall_2_5_2_0; }
 
-		//("width_pixels" "=" widthInPixels=INT)?
+		//("super_type" "=" superType=[TemplateElement])?
 		public Group getGroup_2_6() { return cGroup_2_6; }
 
-		//"width_pixels"
-		public Keyword getWidth_pixelsKeyword_2_6_0() { return cWidth_pixelsKeyword_2_6_0; }
+		//"super_type"
+		public Keyword getSuper_typeKeyword_2_6_0() { return cSuper_typeKeyword_2_6_0; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_2_6_1() { return cEqualsSignKeyword_2_6_1; }
 
-		//widthInPixels=INT
-		public Assignment getWidthInPixelsAssignment_2_6_2() { return cWidthInPixelsAssignment_2_6_2; }
-
-		//INT
-		public RuleCall getWidthInPixelsINTTerminalRuleCall_2_6_2_0() { return cWidthInPixelsINTTerminalRuleCall_2_6_2_0; }
-
-		//("super_type" "=" superType=[TemplateElement])?
-		public Group getGroup_2_7() { return cGroup_2_7; }
-
-		//"super_type"
-		public Keyword getSuper_typeKeyword_2_7_0() { return cSuper_typeKeyword_2_7_0; }
-
-		//"="
-		public Keyword getEqualsSignKeyword_2_7_1() { return cEqualsSignKeyword_2_7_1; }
-
 		//superType=[TemplateElement]
-		public Assignment getSuperTypeAssignment_2_7_2() { return cSuperTypeAssignment_2_7_2; }
+		public Assignment getSuperTypeAssignment_2_6_2() { return cSuperTypeAssignment_2_6_2; }
 
 		//[TemplateElement]
-		public CrossReference getSuperTypeTemplateElementCrossReference_2_7_2_0() { return cSuperTypeTemplateElementCrossReference_2_7_2_0; }
+		public CrossReference getSuperTypeTemplateElementCrossReference_2_6_2_0() { return cSuperTypeTemplateElementCrossReference_2_6_2_0; }
 
 		//ID
-		public RuleCall getSuperTypeTemplateElementIDTerminalRuleCall_2_7_2_0_1() { return cSuperTypeTemplateElementIDTerminalRuleCall_2_7_2_0_1; }
+		public RuleCall getSuperTypeTemplateElementIDTerminalRuleCall_2_6_2_0_1() { return cSuperTypeTemplateElementIDTerminalRuleCall_2_6_2_0_1; }
 
 		//("{" (logic+=LogicElement | fields+=FormFieldElement)* "}")?
 		public Group getGroup_3() { return cGroup_3; }
@@ -1178,32 +1169,26 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cBorderDecorationSectionKeyword_2_6_2_0_2 = (Keyword)cBorderDecorationAlternatives_2_6_2_0.eContents().get(2);
 		private final Keyword cBorderDecorationAutoKeyword_2_6_2_0_3 = (Keyword)cBorderDecorationAlternatives_2_6_2_0.eContents().get(3);
 		private final Group cGroup_2_7 = (Group)cUnorderedGroup_2.eContents().get(7);
-		private final Keyword cMasterKeyword_2_7_0 = (Keyword)cGroup_2_7.eContents().get(0);
+		private final Keyword cHeightKeyword_2_7_0 = (Keyword)cGroup_2_7.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_7_1 = (Keyword)cGroup_2_7.eContents().get(1);
-		private final Assignment cMasterAssignment_2_7_2 = (Assignment)cGroup_2_7.eContents().get(2);
-		private final CrossReference cMasterValueFieldElementCrossReference_2_7_2_0 = (CrossReference)cMasterAssignment_2_7_2.eContents().get(0);
-		private final RuleCall cMasterValueFieldElementIDTerminalRuleCall_2_7_2_0_1 = (RuleCall)cMasterValueFieldElementCrossReference_2_7_2_0.eContents().get(1);
+		private final Assignment cGridHeightAssignment_2_7_2 = (Assignment)cGroup_2_7.eContents().get(2);
+		private final RuleCall cGridHeightINTTerminalRuleCall_2_7_2_0 = (RuleCall)cGridHeightAssignment_2_7_2.eContents().get(0);
 		private final Group cGroup_2_8 = (Group)cUnorderedGroup_2.eContents().get(8);
-		private final Keyword cHeightKeyword_2_8_0 = (Keyword)cGroup_2_8.eContents().get(0);
+		private final Keyword cWidthKeyword_2_8_0 = (Keyword)cGroup_2_8.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_8_1 = (Keyword)cGroup_2_8.eContents().get(1);
-		private final Assignment cGridHeightAssignment_2_8_2 = (Assignment)cGroup_2_8.eContents().get(2);
-		private final RuleCall cGridHeightINTTerminalRuleCall_2_8_2_0 = (RuleCall)cGridHeightAssignment_2_8_2.eContents().get(0);
+		private final Assignment cGridWidthAssignment_2_8_2 = (Assignment)cGroup_2_8.eContents().get(2);
+		private final RuleCall cGridWidthINTTerminalRuleCall_2_8_2_0 = (RuleCall)cGridWidthAssignment_2_8_2.eContents().get(0);
 		private final Group cGroup_2_9 = (Group)cUnorderedGroup_2.eContents().get(9);
-		private final Keyword cWidthKeyword_2_9_0 = (Keyword)cGroup_2_9.eContents().get(0);
+		private final Keyword cWidth_pixelsKeyword_2_9_0 = (Keyword)cGroup_2_9.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_9_1 = (Keyword)cGroup_2_9.eContents().get(1);
-		private final Assignment cGridWidthAssignment_2_9_2 = (Assignment)cGroup_2_9.eContents().get(2);
-		private final RuleCall cGridWidthINTTerminalRuleCall_2_9_2_0 = (RuleCall)cGridWidthAssignment_2_9_2.eContents().get(0);
+		private final Assignment cWidthInPixelsAssignment_2_9_2 = (Assignment)cGroup_2_9.eContents().get(2);
+		private final RuleCall cWidthInPixelsINTTerminalRuleCall_2_9_2_0 = (RuleCall)cWidthInPixelsAssignment_2_9_2.eContents().get(0);
 		private final Group cGroup_2_10 = (Group)cUnorderedGroup_2.eContents().get(10);
-		private final Keyword cWidth_pixelsKeyword_2_10_0 = (Keyword)cGroup_2_10.eContents().get(0);
+		private final Keyword cSuper_typeKeyword_2_10_0 = (Keyword)cGroup_2_10.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_10_1 = (Keyword)cGroup_2_10.eContents().get(1);
-		private final Assignment cWidthInPixelsAssignment_2_10_2 = (Assignment)cGroup_2_10.eContents().get(2);
-		private final RuleCall cWidthInPixelsINTTerminalRuleCall_2_10_2_0 = (RuleCall)cWidthInPixelsAssignment_2_10_2.eContents().get(0);
-		private final Group cGroup_2_11 = (Group)cUnorderedGroup_2.eContents().get(11);
-		private final Keyword cSuper_typeKeyword_2_11_0 = (Keyword)cGroup_2_11.eContents().get(0);
-		private final Keyword cEqualsSignKeyword_2_11_1 = (Keyword)cGroup_2_11.eContents().get(1);
-		private final Assignment cSuperTypeAssignment_2_11_2 = (Assignment)cGroup_2_11.eContents().get(2);
-		private final CrossReference cSuperTypeTemplateElementCrossReference_2_11_2_0 = (CrossReference)cSuperTypeAssignment_2_11_2.eContents().get(0);
-		private final RuleCall cSuperTypeTemplateElementIDTerminalRuleCall_2_11_2_0_1 = (RuleCall)cSuperTypeTemplateElementCrossReference_2_11_2_0.eContents().get(1);
+		private final Assignment cSuperTypeAssignment_2_10_2 = (Assignment)cGroup_2_10.eContents().get(2);
+		private final CrossReference cSuperTypeTemplateElementCrossReference_2_10_2_0 = (CrossReference)cSuperTypeAssignment_2_10_2.eContents().get(0);
+		private final RuleCall cSuperTypeTemplateElementIDTerminalRuleCall_2_10_2_0_1 = (RuleCall)cSuperTypeTemplateElementCrossReference_2_10_2_0.eContents().get(1);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Keyword cLeftCurlyBracketKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Alternatives cAlternatives_3_1 = (Alternatives)cGroup_3.eContents().get(1);
@@ -1215,30 +1200,32 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//GroupBoxElement:
 		//
-		//	"group" name=ID (("text" "=" text=[TranslationElement|QualifiedName])? & ("columns" "=" columns=INT)? & ("enabled"
+		//	"group" name=ID (("text" "=" text=[TranslationElement|QualifiedName])?
 		//
-		//	"=" enabled=BooleanType)? & ("visible" "=" visible=BooleanType)? & ("label_visible" "=" labelVisible=BooleanType)? &
+		//	//('master' '=' master=[ValueFieldElement])? &
+		// & ("columns" "=" columns=INT)? & ("enabled" "=" enabled=BooleanType)?
 		//
-		//	("border_visible" "=" borderVisible=BooleanType)? & ("border_decoration" "=" borderDecoration=("empty" | "line" |
+		//	& ("visible" "=" visible=BooleanType)? & ("label_visible" "=" labelVisible=BooleanType)? & ("border_visible" "="
 		//
-		//	"section" | "auto"))? & ("master" "=" master=[ValueFieldElement])? & ("height" "=" gridHeight=INT)? & ("width" "="
+		//	borderVisible=BooleanType)? & ("border_decoration" "=" borderDecoration=("empty" | "line" | "section" | "auto"))? &
 		//
-		//	gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? & ("super_type" "=" superType=[TemplateElement])?) ("{"
+		//	("height" "=" gridHeight=INT)? & ("width" "=" gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? &
 		//
-		//	(logic+=LogicElement | fields+=FormFieldElement)* "}")?;
+		//	("super_type" "=" superType=[TemplateElement])?) ("{" (logic+=LogicElement | fields+=FormFieldElement)* "}")?;
 		public ParserRule getRule() { return rule; }
 
-		//"group" name=ID (("text" "=" text=[TranslationElement|QualifiedName])? & ("columns" "=" columns=INT)? & ("enabled" "="
+		//"group" name=ID (("text" "=" text=[TranslationElement|QualifiedName])? //('master' '=' master=[ValueFieldElement])? &
+		// &
 		//
-		//enabled=BooleanType)? & ("visible" "=" visible=BooleanType)? & ("label_visible" "=" labelVisible=BooleanType)? &
+		//("columns" "=" columns=INT)? & ("enabled" "=" enabled=BooleanType)? & ("visible" "=" visible=BooleanType)? &
 		//
-		//("border_visible" "=" borderVisible=BooleanType)? & ("border_decoration" "=" borderDecoration=("empty" | "line" |
+		//("label_visible" "=" labelVisible=BooleanType)? & ("border_visible" "=" borderVisible=BooleanType)? &
 		//
-		//"section" | "auto"))? & ("master" "=" master=[ValueFieldElement])? & ("height" "=" gridHeight=INT)? & ("width" "="
+		//("border_decoration" "=" borderDecoration=("empty" | "line" | "section" | "auto"))? & ("height" "=" gridHeight=INT)? &
 		//
-		//gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? & ("super_type" "=" superType=[TemplateElement])?) ("{"
+		//("width" "=" gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? & ("super_type" "="
 		//
-		//(logic+=LogicElement | fields+=FormFieldElement)* "}")?
+		//superType=[TemplateElement])?) ("{" (logic+=LogicElement | fields+=FormFieldElement)* "}")?
 		public Group getGroup() { return cGroup; }
 
 		//"group"
@@ -1250,13 +1237,14 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//("text" "=" text=[TranslationElement|QualifiedName])? & ("columns" "=" columns=INT)? & ("enabled" "="
+		//("text" "=" text=[TranslationElement|QualifiedName])? //('master' '=' master=[ValueFieldElement])? &
+		// & ("columns" "="
 		//
-		//enabled=BooleanType)? & ("visible" "=" visible=BooleanType)? & ("label_visible" "=" labelVisible=BooleanType)? &
+		//columns=INT)? & ("enabled" "=" enabled=BooleanType)? & ("visible" "=" visible=BooleanType)? & ("label_visible" "="
 		//
-		//("border_visible" "=" borderVisible=BooleanType)? & ("border_decoration" "=" borderDecoration=("empty" | "line" |
+		//labelVisible=BooleanType)? & ("border_visible" "=" borderVisible=BooleanType)? & ("border_decoration" "="
 		//
-		//"section" | "auto"))? & ("master" "=" master=[ValueFieldElement])? & ("height" "=" gridHeight=INT)? & ("width" "="
+		//borderDecoration=("empty" | "line" | "section" | "auto"))? & ("height" "=" gridHeight=INT)? & ("width" "="
 		//
 		//gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? & ("super_type" "=" superType=[TemplateElement])?
 		public UnorderedGroup getUnorderedGroup_2() { return cUnorderedGroup_2; }
@@ -1381,86 +1369,68 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//"auto"
 		public Keyword getBorderDecorationAutoKeyword_2_6_2_0_3() { return cBorderDecorationAutoKeyword_2_6_2_0_3; }
 
-		//("master" "=" master=[ValueFieldElement])?
+		//("height" "=" gridHeight=INT)?
 		public Group getGroup_2_7() { return cGroup_2_7; }
 
-		//"master"
-		public Keyword getMasterKeyword_2_7_0() { return cMasterKeyword_2_7_0; }
+		//"height"
+		public Keyword getHeightKeyword_2_7_0() { return cHeightKeyword_2_7_0; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_2_7_1() { return cEqualsSignKeyword_2_7_1; }
 
-		//master=[ValueFieldElement]
-		public Assignment getMasterAssignment_2_7_2() { return cMasterAssignment_2_7_2; }
+		//gridHeight=INT
+		public Assignment getGridHeightAssignment_2_7_2() { return cGridHeightAssignment_2_7_2; }
 
-		//[ValueFieldElement]
-		public CrossReference getMasterValueFieldElementCrossReference_2_7_2_0() { return cMasterValueFieldElementCrossReference_2_7_2_0; }
+		//INT
+		public RuleCall getGridHeightINTTerminalRuleCall_2_7_2_0() { return cGridHeightINTTerminalRuleCall_2_7_2_0; }
 
-		//ID
-		public RuleCall getMasterValueFieldElementIDTerminalRuleCall_2_7_2_0_1() { return cMasterValueFieldElementIDTerminalRuleCall_2_7_2_0_1; }
-
-		//("height" "=" gridHeight=INT)?
+		//("width" "=" gridWidth=INT)?
 		public Group getGroup_2_8() { return cGroup_2_8; }
 
-		//"height"
-		public Keyword getHeightKeyword_2_8_0() { return cHeightKeyword_2_8_0; }
+		//"width"
+		public Keyword getWidthKeyword_2_8_0() { return cWidthKeyword_2_8_0; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_2_8_1() { return cEqualsSignKeyword_2_8_1; }
 
-		//gridHeight=INT
-		public Assignment getGridHeightAssignment_2_8_2() { return cGridHeightAssignment_2_8_2; }
+		//gridWidth=INT
+		public Assignment getGridWidthAssignment_2_8_2() { return cGridWidthAssignment_2_8_2; }
 
 		//INT
-		public RuleCall getGridHeightINTTerminalRuleCall_2_8_2_0() { return cGridHeightINTTerminalRuleCall_2_8_2_0; }
+		public RuleCall getGridWidthINTTerminalRuleCall_2_8_2_0() { return cGridWidthINTTerminalRuleCall_2_8_2_0; }
 
-		//("width" "=" gridWidth=INT)?
+		//("width_pixels" "=" widthInPixels=INT)?
 		public Group getGroup_2_9() { return cGroup_2_9; }
 
-		//"width"
-		public Keyword getWidthKeyword_2_9_0() { return cWidthKeyword_2_9_0; }
+		//"width_pixels"
+		public Keyword getWidth_pixelsKeyword_2_9_0() { return cWidth_pixelsKeyword_2_9_0; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_2_9_1() { return cEqualsSignKeyword_2_9_1; }
 
-		//gridWidth=INT
-		public Assignment getGridWidthAssignment_2_9_2() { return cGridWidthAssignment_2_9_2; }
+		//widthInPixels=INT
+		public Assignment getWidthInPixelsAssignment_2_9_2() { return cWidthInPixelsAssignment_2_9_2; }
 
 		//INT
-		public RuleCall getGridWidthINTTerminalRuleCall_2_9_2_0() { return cGridWidthINTTerminalRuleCall_2_9_2_0; }
+		public RuleCall getWidthInPixelsINTTerminalRuleCall_2_9_2_0() { return cWidthInPixelsINTTerminalRuleCall_2_9_2_0; }
 
-		//("width_pixels" "=" widthInPixels=INT)?
+		//("super_type" "=" superType=[TemplateElement])?
 		public Group getGroup_2_10() { return cGroup_2_10; }
 
-		//"width_pixels"
-		public Keyword getWidth_pixelsKeyword_2_10_0() { return cWidth_pixelsKeyword_2_10_0; }
+		//"super_type"
+		public Keyword getSuper_typeKeyword_2_10_0() { return cSuper_typeKeyword_2_10_0; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_2_10_1() { return cEqualsSignKeyword_2_10_1; }
 
-		//widthInPixels=INT
-		public Assignment getWidthInPixelsAssignment_2_10_2() { return cWidthInPixelsAssignment_2_10_2; }
-
-		//INT
-		public RuleCall getWidthInPixelsINTTerminalRuleCall_2_10_2_0() { return cWidthInPixelsINTTerminalRuleCall_2_10_2_0; }
-
-		//("super_type" "=" superType=[TemplateElement])?
-		public Group getGroup_2_11() { return cGroup_2_11; }
-
-		//"super_type"
-		public Keyword getSuper_typeKeyword_2_11_0() { return cSuper_typeKeyword_2_11_0; }
-
-		//"="
-		public Keyword getEqualsSignKeyword_2_11_1() { return cEqualsSignKeyword_2_11_1; }
-
 		//superType=[TemplateElement]
-		public Assignment getSuperTypeAssignment_2_11_2() { return cSuperTypeAssignment_2_11_2; }
+		public Assignment getSuperTypeAssignment_2_10_2() { return cSuperTypeAssignment_2_10_2; }
 
 		//[TemplateElement]
-		public CrossReference getSuperTypeTemplateElementCrossReference_2_11_2_0() { return cSuperTypeTemplateElementCrossReference_2_11_2_0; }
+		public CrossReference getSuperTypeTemplateElementCrossReference_2_10_2_0() { return cSuperTypeTemplateElementCrossReference_2_10_2_0; }
 
 		//ID
-		public RuleCall getSuperTypeTemplateElementIDTerminalRuleCall_2_11_2_0_1() { return cSuperTypeTemplateElementIDTerminalRuleCall_2_11_2_0_1; }
+		public RuleCall getSuperTypeTemplateElementIDTerminalRuleCall_2_10_2_0_1() { return cSuperTypeTemplateElementIDTerminalRuleCall_2_10_2_0_1; }
 
 		//("{" (logic+=LogicElement | fields+=FormFieldElement)* "}")?
 		public Group getGroup_3() { return cGroup_3; }
@@ -3462,37 +3432,26 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cVisibleAssignment_2_2_2 = (Assignment)cGroup_2_2.eContents().get(2);
 		private final RuleCall cVisibleBooleanTypeParserRuleCall_2_2_2_0 = (RuleCall)cVisibleAssignment_2_2_2.eContents().get(0);
 		private final Group cGroup_2_3 = (Group)cUnorderedGroup_2.eContents().get(3);
-		private final Keyword cLabel_visibleKeyword_2_3_0 = (Keyword)cGroup_2_3.eContents().get(0);
+		private final Keyword cProcess_buttonKeyword_2_3_0 = (Keyword)cGroup_2_3.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_3_1 = (Keyword)cGroup_2_3.eContents().get(1);
-		private final Assignment cLabelVisibleAssignment_2_3_2 = (Assignment)cGroup_2_3.eContents().get(2);
-		private final RuleCall cLabelVisibleBooleanTypeParserRuleCall_2_3_2_0 = (RuleCall)cLabelVisibleAssignment_2_3_2.eContents().get(0);
+		private final Assignment cProcessButtonAssignment_2_3_2 = (Assignment)cGroup_2_3.eContents().get(2);
+		private final RuleCall cProcessButtonBooleanTypeParserRuleCall_2_3_2_0 = (RuleCall)cProcessButtonAssignment_2_3_2.eContents().get(0);
 		private final Group cGroup_2_4 = (Group)cUnorderedGroup_2.eContents().get(4);
-		private final Keyword cMasterKeyword_2_4_0 = (Keyword)cGroup_2_4.eContents().get(0);
+		private final Keyword cWidthKeyword_2_4_0 = (Keyword)cGroup_2_4.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_4_1 = (Keyword)cGroup_2_4.eContents().get(1);
-		private final Assignment cMasterAssignment_2_4_2 = (Assignment)cGroup_2_4.eContents().get(2);
-		private final CrossReference cMasterValueFieldElementCrossReference_2_4_2_0 = (CrossReference)cMasterAssignment_2_4_2.eContents().get(0);
-		private final RuleCall cMasterValueFieldElementIDTerminalRuleCall_2_4_2_0_1 = (RuleCall)cMasterValueFieldElementCrossReference_2_4_2_0.eContents().get(1);
+		private final Assignment cGridWidthAssignment_2_4_2 = (Assignment)cGroup_2_4.eContents().get(2);
+		private final RuleCall cGridWidthINTTerminalRuleCall_2_4_2_0 = (RuleCall)cGridWidthAssignment_2_4_2.eContents().get(0);
 		private final Group cGroup_2_5 = (Group)cUnorderedGroup_2.eContents().get(5);
-		private final Keyword cProcess_buttonKeyword_2_5_0 = (Keyword)cGroup_2_5.eContents().get(0);
+		private final Keyword cWidth_pixelsKeyword_2_5_0 = (Keyword)cGroup_2_5.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_5_1 = (Keyword)cGroup_2_5.eContents().get(1);
-		private final Assignment cProcessButtonAssignment_2_5_2 = (Assignment)cGroup_2_5.eContents().get(2);
-		private final RuleCall cProcessButtonBooleanTypeParserRuleCall_2_5_2_0 = (RuleCall)cProcessButtonAssignment_2_5_2.eContents().get(0);
+		private final Assignment cWidthInPixelsAssignment_2_5_2 = (Assignment)cGroup_2_5.eContents().get(2);
+		private final RuleCall cWidthInPixelsINTTerminalRuleCall_2_5_2_0 = (RuleCall)cWidthInPixelsAssignment_2_5_2.eContents().get(0);
 		private final Group cGroup_2_6 = (Group)cUnorderedGroup_2.eContents().get(6);
-		private final Keyword cWidthKeyword_2_6_0 = (Keyword)cGroup_2_6.eContents().get(0);
+		private final Keyword cSuper_typeKeyword_2_6_0 = (Keyword)cGroup_2_6.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_6_1 = (Keyword)cGroup_2_6.eContents().get(1);
-		private final Assignment cGridWidthAssignment_2_6_2 = (Assignment)cGroup_2_6.eContents().get(2);
-		private final RuleCall cGridWidthINTTerminalRuleCall_2_6_2_0 = (RuleCall)cGridWidthAssignment_2_6_2.eContents().get(0);
-		private final Group cGroup_2_7 = (Group)cUnorderedGroup_2.eContents().get(7);
-		private final Keyword cWidth_pixelsKeyword_2_7_0 = (Keyword)cGroup_2_7.eContents().get(0);
-		private final Keyword cEqualsSignKeyword_2_7_1 = (Keyword)cGroup_2_7.eContents().get(1);
-		private final Assignment cWidthInPixelsAssignment_2_7_2 = (Assignment)cGroup_2_7.eContents().get(2);
-		private final RuleCall cWidthInPixelsINTTerminalRuleCall_2_7_2_0 = (RuleCall)cWidthInPixelsAssignment_2_7_2.eContents().get(0);
-		private final Group cGroup_2_8 = (Group)cUnorderedGroup_2.eContents().get(8);
-		private final Keyword cSuper_typeKeyword_2_8_0 = (Keyword)cGroup_2_8.eContents().get(0);
-		private final Keyword cEqualsSignKeyword_2_8_1 = (Keyword)cGroup_2_8.eContents().get(1);
-		private final Assignment cSuperTypeAssignment_2_8_2 = (Assignment)cGroup_2_8.eContents().get(2);
-		private final CrossReference cSuperTypeTemplateElementCrossReference_2_8_2_0 = (CrossReference)cSuperTypeAssignment_2_8_2.eContents().get(0);
-		private final RuleCall cSuperTypeTemplateElementIDTerminalRuleCall_2_8_2_0_1 = (RuleCall)cSuperTypeTemplateElementCrossReference_2_8_2_0.eContents().get(1);
+		private final Assignment cSuperTypeAssignment_2_6_2 = (Assignment)cGroup_2_6.eContents().get(2);
+		private final CrossReference cSuperTypeTemplateElementCrossReference_2_6_2_0 = (CrossReference)cSuperTypeAssignment_2_6_2.eContents().get(0);
+		private final RuleCall cSuperTypeTemplateElementIDTerminalRuleCall_2_6_2_0_1 = (RuleCall)cSuperTypeTemplateElementCrossReference_2_6_2_0.eContents().get(1);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Keyword cLeftCurlyBracketKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Alternatives cAlternatives_3_1 = (Alternatives)cGroup_3.eContents().get(1);
@@ -3507,24 +3466,20 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//
 		//	"button" name=ID (("text" "=" text=[TranslationElement|QualifiedName])? & ("enabled" "=" enabled=BooleanType)? &
 		//
-		//	("visible" "=" visible=BooleanType)? & ("label_visible" "=" labelVisible=BooleanType)? & ("master" "="
+		//	("visible" "=" visible=BooleanType)? & ("process_button" "=" processButton=BooleanType)? & ("width" "="
 		//
-		//	master=[ValueFieldElement])? & ("process_button" "=" processButton=BooleanType)? & ("width" "=" gridWidth=INT)? &
+		//	gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? & ("super_type" "=" superType=[TemplateElement])?) ("{"
 		//
-		//	("width_pixels" "=" widthInPixels=INT)? & ("super_type" "=" superType=[TemplateElement])?) ("{" (logic+=LogicElement
-		//
-		//	| menus+=MenuElement)* "}")?;
+		//	(logic+=LogicElement | menus+=MenuElement)* "}")?;
 		public ParserRule getRule() { return rule; }
 
 		//"button" name=ID (("text" "=" text=[TranslationElement|QualifiedName])? & ("enabled" "=" enabled=BooleanType)? &
 		//
-		//("visible" "=" visible=BooleanType)? & ("label_visible" "=" labelVisible=BooleanType)? & ("master" "="
+		//("visible" "=" visible=BooleanType)? & ("process_button" "=" processButton=BooleanType)? & ("width" "="
 		//
-		//master=[ValueFieldElement])? & ("process_button" "=" processButton=BooleanType)? & ("width" "=" gridWidth=INT)? &
+		//gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? & ("super_type" "=" superType=[TemplateElement])?) ("{"
 		//
-		//("width_pixels" "=" widthInPixels=INT)? & ("super_type" "=" superType=[TemplateElement])?) ("{" (logic+=LogicElement |
-		//
-		//menus+=MenuElement)* "}")?
+		//(logic+=LogicElement | menus+=MenuElement)* "}")?
 		public Group getGroup() { return cGroup; }
 
 		//"button"
@@ -3538,11 +3493,9 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 
 		//("text" "=" text=[TranslationElement|QualifiedName])? & ("enabled" "=" enabled=BooleanType)? & ("visible" "="
 		//
-		//visible=BooleanType)? & ("label_visible" "=" labelVisible=BooleanType)? & ("master" "=" master=[ValueFieldElement])? &
+		//visible=BooleanType)? & ("process_button" "=" processButton=BooleanType)? & ("width" "=" gridWidth=INT)? &
 		//
-		//("process_button" "=" processButton=BooleanType)? & ("width" "=" gridWidth=INT)? & ("width_pixels" "="
-		//
-		//widthInPixels=INT)? & ("super_type" "=" superType=[TemplateElement])?
+		//("width_pixels" "=" widthInPixels=INT)? & ("super_type" "=" superType=[TemplateElement])?
 		public UnorderedGroup getUnorderedGroup_2() { return cUnorderedGroup_2; }
 
 		//("text" "=" text=[TranslationElement|QualifiedName])?
@@ -3593,101 +3546,68 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//BooleanType
 		public RuleCall getVisibleBooleanTypeParserRuleCall_2_2_2_0() { return cVisibleBooleanTypeParserRuleCall_2_2_2_0; }
 
-		//("label_visible" "=" labelVisible=BooleanType)?
+		//("process_button" "=" processButton=BooleanType)?
 		public Group getGroup_2_3() { return cGroup_2_3; }
 
-		//"label_visible"
-		public Keyword getLabel_visibleKeyword_2_3_0() { return cLabel_visibleKeyword_2_3_0; }
+		//"process_button"
+		public Keyword getProcess_buttonKeyword_2_3_0() { return cProcess_buttonKeyword_2_3_0; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_2_3_1() { return cEqualsSignKeyword_2_3_1; }
 
-		//labelVisible=BooleanType
-		public Assignment getLabelVisibleAssignment_2_3_2() { return cLabelVisibleAssignment_2_3_2; }
+		//processButton=BooleanType
+		public Assignment getProcessButtonAssignment_2_3_2() { return cProcessButtonAssignment_2_3_2; }
 
 		//BooleanType
-		public RuleCall getLabelVisibleBooleanTypeParserRuleCall_2_3_2_0() { return cLabelVisibleBooleanTypeParserRuleCall_2_3_2_0; }
+		public RuleCall getProcessButtonBooleanTypeParserRuleCall_2_3_2_0() { return cProcessButtonBooleanTypeParserRuleCall_2_3_2_0; }
 
-		//("master" "=" master=[ValueFieldElement])?
+		//("width" "=" gridWidth=INT)?
 		public Group getGroup_2_4() { return cGroup_2_4; }
 
-		//"master"
-		public Keyword getMasterKeyword_2_4_0() { return cMasterKeyword_2_4_0; }
+		//"width"
+		public Keyword getWidthKeyword_2_4_0() { return cWidthKeyword_2_4_0; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_2_4_1() { return cEqualsSignKeyword_2_4_1; }
 
-		//master=[ValueFieldElement]
-		public Assignment getMasterAssignment_2_4_2() { return cMasterAssignment_2_4_2; }
+		//gridWidth=INT
+		public Assignment getGridWidthAssignment_2_4_2() { return cGridWidthAssignment_2_4_2; }
 
-		//[ValueFieldElement]
-		public CrossReference getMasterValueFieldElementCrossReference_2_4_2_0() { return cMasterValueFieldElementCrossReference_2_4_2_0; }
+		//INT
+		public RuleCall getGridWidthINTTerminalRuleCall_2_4_2_0() { return cGridWidthINTTerminalRuleCall_2_4_2_0; }
 
-		//ID
-		public RuleCall getMasterValueFieldElementIDTerminalRuleCall_2_4_2_0_1() { return cMasterValueFieldElementIDTerminalRuleCall_2_4_2_0_1; }
-
-		//("process_button" "=" processButton=BooleanType)?
+		//("width_pixels" "=" widthInPixels=INT)?
 		public Group getGroup_2_5() { return cGroup_2_5; }
 
-		//"process_button"
-		public Keyword getProcess_buttonKeyword_2_5_0() { return cProcess_buttonKeyword_2_5_0; }
+		//"width_pixels"
+		public Keyword getWidth_pixelsKeyword_2_5_0() { return cWidth_pixelsKeyword_2_5_0; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_2_5_1() { return cEqualsSignKeyword_2_5_1; }
 
-		//processButton=BooleanType
-		public Assignment getProcessButtonAssignment_2_5_2() { return cProcessButtonAssignment_2_5_2; }
+		//widthInPixels=INT
+		public Assignment getWidthInPixelsAssignment_2_5_2() { return cWidthInPixelsAssignment_2_5_2; }
 
-		//BooleanType
-		public RuleCall getProcessButtonBooleanTypeParserRuleCall_2_5_2_0() { return cProcessButtonBooleanTypeParserRuleCall_2_5_2_0; }
+		//INT
+		public RuleCall getWidthInPixelsINTTerminalRuleCall_2_5_2_0() { return cWidthInPixelsINTTerminalRuleCall_2_5_2_0; }
 
-		//("width" "=" gridWidth=INT)?
+		//("super_type" "=" superType=[TemplateElement])?
 		public Group getGroup_2_6() { return cGroup_2_6; }
 
-		//"width"
-		public Keyword getWidthKeyword_2_6_0() { return cWidthKeyword_2_6_0; }
+		//"super_type"
+		public Keyword getSuper_typeKeyword_2_6_0() { return cSuper_typeKeyword_2_6_0; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_2_6_1() { return cEqualsSignKeyword_2_6_1; }
 
-		//gridWidth=INT
-		public Assignment getGridWidthAssignment_2_6_2() { return cGridWidthAssignment_2_6_2; }
-
-		//INT
-		public RuleCall getGridWidthINTTerminalRuleCall_2_6_2_0() { return cGridWidthINTTerminalRuleCall_2_6_2_0; }
-
-		//("width_pixels" "=" widthInPixels=INT)?
-		public Group getGroup_2_7() { return cGroup_2_7; }
-
-		//"width_pixels"
-		public Keyword getWidth_pixelsKeyword_2_7_0() { return cWidth_pixelsKeyword_2_7_0; }
-
-		//"="
-		public Keyword getEqualsSignKeyword_2_7_1() { return cEqualsSignKeyword_2_7_1; }
-
-		//widthInPixels=INT
-		public Assignment getWidthInPixelsAssignment_2_7_2() { return cWidthInPixelsAssignment_2_7_2; }
-
-		//INT
-		public RuleCall getWidthInPixelsINTTerminalRuleCall_2_7_2_0() { return cWidthInPixelsINTTerminalRuleCall_2_7_2_0; }
-
-		//("super_type" "=" superType=[TemplateElement])?
-		public Group getGroup_2_8() { return cGroup_2_8; }
-
-		//"super_type"
-		public Keyword getSuper_typeKeyword_2_8_0() { return cSuper_typeKeyword_2_8_0; }
-
-		//"="
-		public Keyword getEqualsSignKeyword_2_8_1() { return cEqualsSignKeyword_2_8_1; }
-
 		//superType=[TemplateElement]
-		public Assignment getSuperTypeAssignment_2_8_2() { return cSuperTypeAssignment_2_8_2; }
+		public Assignment getSuperTypeAssignment_2_6_2() { return cSuperTypeAssignment_2_6_2; }
 
 		//[TemplateElement]
-		public CrossReference getSuperTypeTemplateElementCrossReference_2_8_2_0() { return cSuperTypeTemplateElementCrossReference_2_8_2_0; }
+		public CrossReference getSuperTypeTemplateElementCrossReference_2_6_2_0() { return cSuperTypeTemplateElementCrossReference_2_6_2_0; }
 
 		//ID
-		public RuleCall getSuperTypeTemplateElementIDTerminalRuleCall_2_8_2_0_1() { return cSuperTypeTemplateElementIDTerminalRuleCall_2_8_2_0_1; }
+		public RuleCall getSuperTypeTemplateElementIDTerminalRuleCall_2_6_2_0_1() { return cSuperTypeTemplateElementIDTerminalRuleCall_2_6_2_0_1; }
 
 		//("{" (logic+=LogicElement | menus+=MenuElement)* "}")?
 		public Group getGroup_3() { return cGroup_3; }
@@ -3886,37 +3806,31 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cVisibleAssignment_2_2_2 = (Assignment)cGroup_2_2.eContents().get(2);
 		private final RuleCall cVisibleBooleanTypeParserRuleCall_2_2_2_0 = (RuleCall)cVisibleAssignment_2_2_2.eContents().get(0);
 		private final Group cGroup_2_3 = (Group)cUnorderedGroup_2.eContents().get(3);
-		private final Keyword cMasterKeyword_2_3_0 = (Keyword)cGroup_2_3.eContents().get(0);
+		private final Keyword cLabel_visibleKeyword_2_3_0 = (Keyword)cGroup_2_3.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_3_1 = (Keyword)cGroup_2_3.eContents().get(1);
-		private final Assignment cMasterAssignment_2_3_2 = (Assignment)cGroup_2_3.eContents().get(2);
-		private final CrossReference cMasterValueFieldElementCrossReference_2_3_2_0 = (CrossReference)cMasterAssignment_2_3_2.eContents().get(0);
-		private final RuleCall cMasterValueFieldElementIDTerminalRuleCall_2_3_2_0_1 = (RuleCall)cMasterValueFieldElementCrossReference_2_3_2_0.eContents().get(1);
+		private final Assignment cLabelVisibleAssignment_2_3_2 = (Assignment)cGroup_2_3.eContents().get(2);
+		private final RuleCall cLabelVisibleBooleanTypeParserRuleCall_2_3_2_0 = (RuleCall)cLabelVisibleAssignment_2_3_2.eContents().get(0);
 		private final Group cGroup_2_4 = (Group)cUnorderedGroup_2.eContents().get(4);
-		private final Keyword cLabel_visibleKeyword_2_4_0 = (Keyword)cGroup_2_4.eContents().get(0);
+		private final Keyword cHeightKeyword_2_4_0 = (Keyword)cGroup_2_4.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_4_1 = (Keyword)cGroup_2_4.eContents().get(1);
-		private final Assignment cLabelVisibleAssignment_2_4_2 = (Assignment)cGroup_2_4.eContents().get(2);
-		private final RuleCall cLabelVisibleBooleanTypeParserRuleCall_2_4_2_0 = (RuleCall)cLabelVisibleAssignment_2_4_2.eContents().get(0);
+		private final Assignment cGridHeightAssignment_2_4_2 = (Assignment)cGroup_2_4.eContents().get(2);
+		private final RuleCall cGridHeightINTTerminalRuleCall_2_4_2_0 = (RuleCall)cGridHeightAssignment_2_4_2.eContents().get(0);
 		private final Group cGroup_2_5 = (Group)cUnorderedGroup_2.eContents().get(5);
-		private final Keyword cHeightKeyword_2_5_0 = (Keyword)cGroup_2_5.eContents().get(0);
+		private final Keyword cWidthKeyword_2_5_0 = (Keyword)cGroup_2_5.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_5_1 = (Keyword)cGroup_2_5.eContents().get(1);
-		private final Assignment cGridHeightAssignment_2_5_2 = (Assignment)cGroup_2_5.eContents().get(2);
-		private final RuleCall cGridHeightINTTerminalRuleCall_2_5_2_0 = (RuleCall)cGridHeightAssignment_2_5_2.eContents().get(0);
+		private final Assignment cGridWidthAssignment_2_5_2 = (Assignment)cGroup_2_5.eContents().get(2);
+		private final RuleCall cGridWidthINTTerminalRuleCall_2_5_2_0 = (RuleCall)cGridWidthAssignment_2_5_2.eContents().get(0);
 		private final Group cGroup_2_6 = (Group)cUnorderedGroup_2.eContents().get(6);
-		private final Keyword cWidthKeyword_2_6_0 = (Keyword)cGroup_2_6.eContents().get(0);
+		private final Keyword cWidth_pixelsKeyword_2_6_0 = (Keyword)cGroup_2_6.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_6_1 = (Keyword)cGroup_2_6.eContents().get(1);
-		private final Assignment cGridWidthAssignment_2_6_2 = (Assignment)cGroup_2_6.eContents().get(2);
-		private final RuleCall cGridWidthINTTerminalRuleCall_2_6_2_0 = (RuleCall)cGridWidthAssignment_2_6_2.eContents().get(0);
+		private final Assignment cWidthInPixelsAssignment_2_6_2 = (Assignment)cGroup_2_6.eContents().get(2);
+		private final RuleCall cWidthInPixelsINTTerminalRuleCall_2_6_2_0 = (RuleCall)cWidthInPixelsAssignment_2_6_2.eContents().get(0);
 		private final Group cGroup_2_7 = (Group)cUnorderedGroup_2.eContents().get(7);
-		private final Keyword cWidth_pixelsKeyword_2_7_0 = (Keyword)cGroup_2_7.eContents().get(0);
+		private final Keyword cSuper_typeKeyword_2_7_0 = (Keyword)cGroup_2_7.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_7_1 = (Keyword)cGroup_2_7.eContents().get(1);
-		private final Assignment cWidthInPixelsAssignment_2_7_2 = (Assignment)cGroup_2_7.eContents().get(2);
-		private final RuleCall cWidthInPixelsINTTerminalRuleCall_2_7_2_0 = (RuleCall)cWidthInPixelsAssignment_2_7_2.eContents().get(0);
-		private final Group cGroup_2_8 = (Group)cUnorderedGroup_2.eContents().get(8);
-		private final Keyword cSuper_typeKeyword_2_8_0 = (Keyword)cGroup_2_8.eContents().get(0);
-		private final Keyword cEqualsSignKeyword_2_8_1 = (Keyword)cGroup_2_8.eContents().get(1);
-		private final Assignment cSuperTypeAssignment_2_8_2 = (Assignment)cGroup_2_8.eContents().get(2);
-		private final CrossReference cSuperTypeTemplateElementCrossReference_2_8_2_0 = (CrossReference)cSuperTypeAssignment_2_8_2.eContents().get(0);
-		private final RuleCall cSuperTypeTemplateElementIDTerminalRuleCall_2_8_2_0_1 = (RuleCall)cSuperTypeTemplateElementCrossReference_2_8_2_0.eContents().get(1);
+		private final Assignment cSuperTypeAssignment_2_7_2 = (Assignment)cGroup_2_7.eContents().get(2);
+		private final CrossReference cSuperTypeTemplateElementCrossReference_2_7_2_0 = (CrossReference)cSuperTypeAssignment_2_7_2.eContents().get(0);
+		private final RuleCall cSuperTypeTemplateElementIDTerminalRuleCall_2_7_2_0_1 = (RuleCall)cSuperTypeTemplateElementCrossReference_2_7_2_0.eContents().get(1);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Keyword cLeftCurlyBracketKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Alternatives cAlternatives_3_1 = (Alternatives)cGroup_3.eContents().get(1);
@@ -3932,24 +3846,20 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//
 		//	"table" name=ID (("text" "=" text=[TranslationElement|QualifiedName])? & ("enabled" "=" enabled=BooleanType)? &
 		//
-		//	("visible" "=" visible=BooleanType)? & ("master" "=" master=[ValueFieldElement])? & ("label_visible" "="
+		//	("visible" "=" visible=BooleanType)? & ("label_visible" "=" labelVisible=BooleanType)? & ("height" "="
 		//
-		//	labelVisible=BooleanType)? & ("height" "=" gridHeight=INT)? & ("width" "=" gridWidth=INT)? & ("width_pixels" "="
+		//	gridHeight=INT)? & ("width" "=" gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? & ("super_type" "="
 		//
-		//	widthInPixels=INT)? & ("super_type" "=" superType=[TemplateElement])?) ("{" (logic+=LogicElement | menus+=MenuElement
-		//
-		//	| columns+=ColumnElement)* "}")?;
+		//	superType=[TemplateElement])?) ("{" (logic+=LogicElement | menus+=MenuElement | columns+=ColumnElement)* "}")?;
 		public ParserRule getRule() { return rule; }
 
 		//"table" name=ID (("text" "=" text=[TranslationElement|QualifiedName])? & ("enabled" "=" enabled=BooleanType)? &
 		//
-		//("visible" "=" visible=BooleanType)? & ("master" "=" master=[ValueFieldElement])? & ("label_visible" "="
+		//("visible" "=" visible=BooleanType)? & ("label_visible" "=" labelVisible=BooleanType)? & ("height" "="
 		//
-		//labelVisible=BooleanType)? & ("height" "=" gridHeight=INT)? & ("width" "=" gridWidth=INT)? & ("width_pixels" "="
+		//gridHeight=INT)? & ("width" "=" gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? & ("super_type" "="
 		//
-		//widthInPixels=INT)? & ("super_type" "=" superType=[TemplateElement])?) ("{" (logic+=LogicElement | menus+=MenuElement
-		//
-		//| columns+=ColumnElement)* "}")?
+		//superType=[TemplateElement])?) ("{" (logic+=LogicElement | menus+=MenuElement | columns+=ColumnElement)* "}")?
 		public Group getGroup() { return cGroup; }
 
 		//"table"
@@ -3963,11 +3873,9 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 
 		//("text" "=" text=[TranslationElement|QualifiedName])? & ("enabled" "=" enabled=BooleanType)? & ("visible" "="
 		//
-		//visible=BooleanType)? & ("master" "=" master=[ValueFieldElement])? & ("label_visible" "=" labelVisible=BooleanType)? &
+		//visible=BooleanType)? & ("label_visible" "=" labelVisible=BooleanType)? & ("height" "=" gridHeight=INT)? & ("width"
 		//
-		//("height" "=" gridHeight=INT)? & ("width" "=" gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? &
-		//
-		//("super_type" "=" superType=[TemplateElement])?
+		//"=" gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? & ("super_type" "=" superType=[TemplateElement])?
 		public UnorderedGroup getUnorderedGroup_2() { return cUnorderedGroup_2; }
 
 		//("text" "=" text=[TranslationElement|QualifiedName])?
@@ -4018,101 +3926,83 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//BooleanType
 		public RuleCall getVisibleBooleanTypeParserRuleCall_2_2_2_0() { return cVisibleBooleanTypeParserRuleCall_2_2_2_0; }
 
-		//("master" "=" master=[ValueFieldElement])?
+		//("label_visible" "=" labelVisible=BooleanType)?
 		public Group getGroup_2_3() { return cGroup_2_3; }
 
-		//"master"
-		public Keyword getMasterKeyword_2_3_0() { return cMasterKeyword_2_3_0; }
+		//"label_visible"
+		public Keyword getLabel_visibleKeyword_2_3_0() { return cLabel_visibleKeyword_2_3_0; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_2_3_1() { return cEqualsSignKeyword_2_3_1; }
 
-		//master=[ValueFieldElement]
-		public Assignment getMasterAssignment_2_3_2() { return cMasterAssignment_2_3_2; }
+		//labelVisible=BooleanType
+		public Assignment getLabelVisibleAssignment_2_3_2() { return cLabelVisibleAssignment_2_3_2; }
 
-		//[ValueFieldElement]
-		public CrossReference getMasterValueFieldElementCrossReference_2_3_2_0() { return cMasterValueFieldElementCrossReference_2_3_2_0; }
+		//BooleanType
+		public RuleCall getLabelVisibleBooleanTypeParserRuleCall_2_3_2_0() { return cLabelVisibleBooleanTypeParserRuleCall_2_3_2_0; }
 
-		//ID
-		public RuleCall getMasterValueFieldElementIDTerminalRuleCall_2_3_2_0_1() { return cMasterValueFieldElementIDTerminalRuleCall_2_3_2_0_1; }
-
-		//("label_visible" "=" labelVisible=BooleanType)?
+		//("height" "=" gridHeight=INT)?
 		public Group getGroup_2_4() { return cGroup_2_4; }
 
-		//"label_visible"
-		public Keyword getLabel_visibleKeyword_2_4_0() { return cLabel_visibleKeyword_2_4_0; }
+		//"height"
+		public Keyword getHeightKeyword_2_4_0() { return cHeightKeyword_2_4_0; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_2_4_1() { return cEqualsSignKeyword_2_4_1; }
 
-		//labelVisible=BooleanType
-		public Assignment getLabelVisibleAssignment_2_4_2() { return cLabelVisibleAssignment_2_4_2; }
+		//gridHeight=INT
+		public Assignment getGridHeightAssignment_2_4_2() { return cGridHeightAssignment_2_4_2; }
 
-		//BooleanType
-		public RuleCall getLabelVisibleBooleanTypeParserRuleCall_2_4_2_0() { return cLabelVisibleBooleanTypeParserRuleCall_2_4_2_0; }
+		//INT
+		public RuleCall getGridHeightINTTerminalRuleCall_2_4_2_0() { return cGridHeightINTTerminalRuleCall_2_4_2_0; }
 
-		//("height" "=" gridHeight=INT)?
+		//("width" "=" gridWidth=INT)?
 		public Group getGroup_2_5() { return cGroup_2_5; }
 
-		//"height"
-		public Keyword getHeightKeyword_2_5_0() { return cHeightKeyword_2_5_0; }
+		//"width"
+		public Keyword getWidthKeyword_2_5_0() { return cWidthKeyword_2_5_0; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_2_5_1() { return cEqualsSignKeyword_2_5_1; }
 
-		//gridHeight=INT
-		public Assignment getGridHeightAssignment_2_5_2() { return cGridHeightAssignment_2_5_2; }
+		//gridWidth=INT
+		public Assignment getGridWidthAssignment_2_5_2() { return cGridWidthAssignment_2_5_2; }
 
 		//INT
-		public RuleCall getGridHeightINTTerminalRuleCall_2_5_2_0() { return cGridHeightINTTerminalRuleCall_2_5_2_0; }
+		public RuleCall getGridWidthINTTerminalRuleCall_2_5_2_0() { return cGridWidthINTTerminalRuleCall_2_5_2_0; }
 
-		//("width" "=" gridWidth=INT)?
+		//("width_pixels" "=" widthInPixels=INT)?
 		public Group getGroup_2_6() { return cGroup_2_6; }
 
-		//"width"
-		public Keyword getWidthKeyword_2_6_0() { return cWidthKeyword_2_6_0; }
+		//"width_pixels"
+		public Keyword getWidth_pixelsKeyword_2_6_0() { return cWidth_pixelsKeyword_2_6_0; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_2_6_1() { return cEqualsSignKeyword_2_6_1; }
 
-		//gridWidth=INT
-		public Assignment getGridWidthAssignment_2_6_2() { return cGridWidthAssignment_2_6_2; }
+		//widthInPixels=INT
+		public Assignment getWidthInPixelsAssignment_2_6_2() { return cWidthInPixelsAssignment_2_6_2; }
 
 		//INT
-		public RuleCall getGridWidthINTTerminalRuleCall_2_6_2_0() { return cGridWidthINTTerminalRuleCall_2_6_2_0; }
+		public RuleCall getWidthInPixelsINTTerminalRuleCall_2_6_2_0() { return cWidthInPixelsINTTerminalRuleCall_2_6_2_0; }
 
-		//("width_pixels" "=" widthInPixels=INT)?
+		//("super_type" "=" superType=[TemplateElement])?
 		public Group getGroup_2_7() { return cGroup_2_7; }
 
-		//"width_pixels"
-		public Keyword getWidth_pixelsKeyword_2_7_0() { return cWidth_pixelsKeyword_2_7_0; }
+		//"super_type"
+		public Keyword getSuper_typeKeyword_2_7_0() { return cSuper_typeKeyword_2_7_0; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_2_7_1() { return cEqualsSignKeyword_2_7_1; }
 
-		//widthInPixels=INT
-		public Assignment getWidthInPixelsAssignment_2_7_2() { return cWidthInPixelsAssignment_2_7_2; }
-
-		//INT
-		public RuleCall getWidthInPixelsINTTerminalRuleCall_2_7_2_0() { return cWidthInPixelsINTTerminalRuleCall_2_7_2_0; }
-
-		//("super_type" "=" superType=[TemplateElement])?
-		public Group getGroup_2_8() { return cGroup_2_8; }
-
-		//"super_type"
-		public Keyword getSuper_typeKeyword_2_8_0() { return cSuper_typeKeyword_2_8_0; }
-
-		//"="
-		public Keyword getEqualsSignKeyword_2_8_1() { return cEqualsSignKeyword_2_8_1; }
-
 		//superType=[TemplateElement]
-		public Assignment getSuperTypeAssignment_2_8_2() { return cSuperTypeAssignment_2_8_2; }
+		public Assignment getSuperTypeAssignment_2_7_2() { return cSuperTypeAssignment_2_7_2; }
 
 		//[TemplateElement]
-		public CrossReference getSuperTypeTemplateElementCrossReference_2_8_2_0() { return cSuperTypeTemplateElementCrossReference_2_8_2_0; }
+		public CrossReference getSuperTypeTemplateElementCrossReference_2_7_2_0() { return cSuperTypeTemplateElementCrossReference_2_7_2_0; }
 
 		//ID
-		public RuleCall getSuperTypeTemplateElementIDTerminalRuleCall_2_8_2_0_1() { return cSuperTypeTemplateElementIDTerminalRuleCall_2_8_2_0_1; }
+		public RuleCall getSuperTypeTemplateElementIDTerminalRuleCall_2_7_2_0_1() { return cSuperTypeTemplateElementIDTerminalRuleCall_2_7_2_0_1; }
 
 		//("{" (logic+=LogicElement | menus+=MenuElement | columns+=ColumnElement)* "}")?
 		public Group getGroup_3() { return cGroup_3; }
@@ -4360,6 +4250,356 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 	}
+
+	public class TabElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "TabElement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cTabKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final UnorderedGroup cUnorderedGroup_2 = (UnorderedGroup)cGroup.eContents().get(2);
+		private final Group cGroup_2_0 = (Group)cUnorderedGroup_2.eContents().get(0);
+		private final Keyword cTextKeyword_2_0_0 = (Keyword)cGroup_2_0.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_0_1 = (Keyword)cGroup_2_0.eContents().get(1);
+		private final Assignment cTextAssignment_2_0_2 = (Assignment)cGroup_2_0.eContents().get(2);
+		private final CrossReference cTextTranslationElementCrossReference_2_0_2_0 = (CrossReference)cTextAssignment_2_0_2.eContents().get(0);
+		private final RuleCall cTextTranslationElementQualifiedNameParserRuleCall_2_0_2_0_1 = (RuleCall)cTextTranslationElementCrossReference_2_0_2_0.eContents().get(1);
+		private final Group cGroup_2_1 = (Group)cUnorderedGroup_2.eContents().get(1);
+		private final Keyword cColumnsKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_1_1 = (Keyword)cGroup_2_1.eContents().get(1);
+		private final Assignment cColumnsAssignment_2_1_2 = (Assignment)cGroup_2_1.eContents().get(2);
+		private final RuleCall cColumnsINTTerminalRuleCall_2_1_2_0 = (RuleCall)cColumnsAssignment_2_1_2.eContents().get(0);
+		private final Group cGroup_2_2 = (Group)cUnorderedGroup_2.eContents().get(2);
+		private final Keyword cEnabledKeyword_2_2_0 = (Keyword)cGroup_2_2.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_2_1 = (Keyword)cGroup_2_2.eContents().get(1);
+		private final Assignment cEnabledAssignment_2_2_2 = (Assignment)cGroup_2_2.eContents().get(2);
+		private final RuleCall cEnabledBooleanTypeParserRuleCall_2_2_2_0 = (RuleCall)cEnabledAssignment_2_2_2.eContents().get(0);
+		private final Group cGroup_2_3 = (Group)cUnorderedGroup_2.eContents().get(3);
+		private final Keyword cVisibleKeyword_2_3_0 = (Keyword)cGroup_2_3.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_3_1 = (Keyword)cGroup_2_3.eContents().get(1);
+		private final Assignment cVisibleAssignment_2_3_2 = (Assignment)cGroup_2_3.eContents().get(2);
+		private final RuleCall cVisibleBooleanTypeParserRuleCall_2_3_2_0 = (RuleCall)cVisibleAssignment_2_3_2.eContents().get(0);
+		private final Group cGroup_2_4 = (Group)cUnorderedGroup_2.eContents().get(4);
+		private final Keyword cSuper_typeKeyword_2_4_0 = (Keyword)cGroup_2_4.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_4_1 = (Keyword)cGroup_2_4.eContents().get(1);
+		private final Assignment cSuperTypeAssignment_2_4_2 = (Assignment)cGroup_2_4.eContents().get(2);
+		private final CrossReference cSuperTypeTemplateElementCrossReference_2_4_2_0 = (CrossReference)cSuperTypeAssignment_2_4_2.eContents().get(0);
+		private final RuleCall cSuperTypeTemplateElementIDTerminalRuleCall_2_4_2_0_1 = (RuleCall)cSuperTypeTemplateElementCrossReference_2_4_2_0.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Alternatives cAlternatives_4 = (Alternatives)cGroup.eContents().get(4);
+		private final Assignment cLogicAssignment_4_0 = (Assignment)cAlternatives_4.eContents().get(0);
+		private final RuleCall cLogicLogicElementParserRuleCall_4_0_0 = (RuleCall)cLogicAssignment_4_0.eContents().get(0);
+		private final Assignment cFieldsAssignment_4_1 = (Assignment)cAlternatives_4.eContents().get(1);
+		private final RuleCall cFieldsFormFieldElementParserRuleCall_4_1_0 = (RuleCall)cFieldsAssignment_4_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		
+		//TabElement:
+		//
+		//	"tab" name=ID (("text" "=" text=[TranslationElement|QualifiedName])? & ("columns" "=" columns=INT)? & ("enabled" "="
+		//
+		//	enabled=BooleanType)? & ("visible" "=" visible=BooleanType)? & ("super_type" "=" superType=[TemplateElement])?) "{"
+		//
+		//	(logic+=LogicElement | fields+=FormFieldElement)* "}";
+		public ParserRule getRule() { return rule; }
+
+		//"tab" name=ID (("text" "=" text=[TranslationElement|QualifiedName])? & ("columns" "=" columns=INT)? & ("enabled" "="
+		//
+		//enabled=BooleanType)? & ("visible" "=" visible=BooleanType)? & ("super_type" "=" superType=[TemplateElement])?) "{"
+		//
+		//(logic+=LogicElement | fields+=FormFieldElement)* "}"
+		public Group getGroup() { return cGroup; }
+
+		//"tab"
+		public Keyword getTabKeyword_0() { return cTabKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//("text" "=" text=[TranslationElement|QualifiedName])? & ("columns" "=" columns=INT)? & ("enabled" "="
+		//
+		//enabled=BooleanType)? & ("visible" "=" visible=BooleanType)? & ("super_type" "=" superType=[TemplateElement])?
+		public UnorderedGroup getUnorderedGroup_2() { return cUnorderedGroup_2; }
+
+		//("text" "=" text=[TranslationElement|QualifiedName])?
+		public Group getGroup_2_0() { return cGroup_2_0; }
+
+		//"text"
+		public Keyword getTextKeyword_2_0_0() { return cTextKeyword_2_0_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_2_0_1() { return cEqualsSignKeyword_2_0_1; }
+
+		//text=[TranslationElement|QualifiedName]
+		public Assignment getTextAssignment_2_0_2() { return cTextAssignment_2_0_2; }
+
+		//[TranslationElement|QualifiedName]
+		public CrossReference getTextTranslationElementCrossReference_2_0_2_0() { return cTextTranslationElementCrossReference_2_0_2_0; }
+
+		//QualifiedName
+		public RuleCall getTextTranslationElementQualifiedNameParserRuleCall_2_0_2_0_1() { return cTextTranslationElementQualifiedNameParserRuleCall_2_0_2_0_1; }
+
+		//("columns" "=" columns=INT)?
+		public Group getGroup_2_1() { return cGroup_2_1; }
+
+		//"columns"
+		public Keyword getColumnsKeyword_2_1_0() { return cColumnsKeyword_2_1_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_2_1_1() { return cEqualsSignKeyword_2_1_1; }
+
+		//columns=INT
+		public Assignment getColumnsAssignment_2_1_2() { return cColumnsAssignment_2_1_2; }
+
+		//INT
+		public RuleCall getColumnsINTTerminalRuleCall_2_1_2_0() { return cColumnsINTTerminalRuleCall_2_1_2_0; }
+
+		//("enabled" "=" enabled=BooleanType)?
+		public Group getGroup_2_2() { return cGroup_2_2; }
+
+		//"enabled"
+		public Keyword getEnabledKeyword_2_2_0() { return cEnabledKeyword_2_2_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_2_2_1() { return cEqualsSignKeyword_2_2_1; }
+
+		//enabled=BooleanType
+		public Assignment getEnabledAssignment_2_2_2() { return cEnabledAssignment_2_2_2; }
+
+		//BooleanType
+		public RuleCall getEnabledBooleanTypeParserRuleCall_2_2_2_0() { return cEnabledBooleanTypeParserRuleCall_2_2_2_0; }
+
+		//("visible" "=" visible=BooleanType)?
+		public Group getGroup_2_3() { return cGroup_2_3; }
+
+		//"visible"
+		public Keyword getVisibleKeyword_2_3_0() { return cVisibleKeyword_2_3_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_2_3_1() { return cEqualsSignKeyword_2_3_1; }
+
+		//visible=BooleanType
+		public Assignment getVisibleAssignment_2_3_2() { return cVisibleAssignment_2_3_2; }
+
+		//BooleanType
+		public RuleCall getVisibleBooleanTypeParserRuleCall_2_3_2_0() { return cVisibleBooleanTypeParserRuleCall_2_3_2_0; }
+
+		//("super_type" "=" superType=[TemplateElement])?
+		public Group getGroup_2_4() { return cGroup_2_4; }
+
+		//"super_type"
+		public Keyword getSuper_typeKeyword_2_4_0() { return cSuper_typeKeyword_2_4_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_2_4_1() { return cEqualsSignKeyword_2_4_1; }
+
+		//superType=[TemplateElement]
+		public Assignment getSuperTypeAssignment_2_4_2() { return cSuperTypeAssignment_2_4_2; }
+
+		//[TemplateElement]
+		public CrossReference getSuperTypeTemplateElementCrossReference_2_4_2_0() { return cSuperTypeTemplateElementCrossReference_2_4_2_0; }
+
+		//ID
+		public RuleCall getSuperTypeTemplateElementIDTerminalRuleCall_2_4_2_0_1() { return cSuperTypeTemplateElementIDTerminalRuleCall_2_4_2_0_1; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
+
+		//(logic+=LogicElement | fields+=FormFieldElement)*
+		public Alternatives getAlternatives_4() { return cAlternatives_4; }
+
+		//logic+=LogicElement
+		public Assignment getLogicAssignment_4_0() { return cLogicAssignment_4_0; }
+
+		//LogicElement
+		public RuleCall getLogicLogicElementParserRuleCall_4_0_0() { return cLogicLogicElementParserRuleCall_4_0_0; }
+
+		//fields+=FormFieldElement
+		public Assignment getFieldsAssignment_4_1() { return cFieldsAssignment_4_1; }
+
+		//FormFieldElement
+		public RuleCall getFieldsFormFieldElementParserRuleCall_4_1_0() { return cFieldsFormFieldElementParserRuleCall_4_1_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+	}
+
+	public class TabBoxElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "TabBoxElement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cTabboxKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final UnorderedGroup cUnorderedGroup_2 = (UnorderedGroup)cGroup.eContents().get(2);
+		private final Group cGroup_2_0 = (Group)cUnorderedGroup_2.eContents().get(0);
+		private final Keyword cEnabledKeyword_2_0_0 = (Keyword)cGroup_2_0.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_0_1 = (Keyword)cGroup_2_0.eContents().get(1);
+		private final Assignment cEnabledAssignment_2_0_2 = (Assignment)cGroup_2_0.eContents().get(2);
+		private final RuleCall cEnabledBooleanTypeParserRuleCall_2_0_2_0 = (RuleCall)cEnabledAssignment_2_0_2.eContents().get(0);
+		private final Group cGroup_2_1 = (Group)cUnorderedGroup_2.eContents().get(1);
+		private final Keyword cVisibleKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_1_1 = (Keyword)cGroup_2_1.eContents().get(1);
+		private final Assignment cVisibleAssignment_2_1_2 = (Assignment)cGroup_2_1.eContents().get(2);
+		private final RuleCall cVisibleBooleanTypeParserRuleCall_2_1_2_0 = (RuleCall)cVisibleAssignment_2_1_2.eContents().get(0);
+		private final Group cGroup_2_2 = (Group)cUnorderedGroup_2.eContents().get(2);
+		private final Keyword cWidthKeyword_2_2_0 = (Keyword)cGroup_2_2.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_2_1 = (Keyword)cGroup_2_2.eContents().get(1);
+		private final Assignment cGridWidthAssignment_2_2_2 = (Assignment)cGroup_2_2.eContents().get(2);
+		private final RuleCall cGridWidthINTTerminalRuleCall_2_2_2_0 = (RuleCall)cGridWidthAssignment_2_2_2.eContents().get(0);
+		private final Group cGroup_2_3 = (Group)cUnorderedGroup_2.eContents().get(3);
+		private final Keyword cWidth_pixelsKeyword_2_3_0 = (Keyword)cGroup_2_3.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_3_1 = (Keyword)cGroup_2_3.eContents().get(1);
+		private final Assignment cWidthInPixelsAssignment_2_3_2 = (Assignment)cGroup_2_3.eContents().get(2);
+		private final RuleCall cWidthInPixelsINTTerminalRuleCall_2_3_2_0 = (RuleCall)cWidthInPixelsAssignment_2_3_2.eContents().get(0);
+		private final Group cGroup_2_4 = (Group)cUnorderedGroup_2.eContents().get(4);
+		private final Keyword cSuper_typeKeyword_2_4_0 = (Keyword)cGroup_2_4.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_4_1 = (Keyword)cGroup_2_4.eContents().get(1);
+		private final Assignment cSuperTypeAssignment_2_4_2 = (Assignment)cGroup_2_4.eContents().get(2);
+		private final CrossReference cSuperTypeTemplateElementCrossReference_2_4_2_0 = (CrossReference)cSuperTypeAssignment_2_4_2.eContents().get(0);
+		private final RuleCall cSuperTypeTemplateElementIDTerminalRuleCall_2_4_2_0_1 = (RuleCall)cSuperTypeTemplateElementCrossReference_2_4_2_0.eContents().get(1);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cLeftCurlyBracketKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Alternatives cAlternatives_3_1 = (Alternatives)cGroup_3.eContents().get(1);
+		private final Assignment cLogicAssignment_3_1_0 = (Assignment)cAlternatives_3_1.eContents().get(0);
+		private final RuleCall cLogicLogicElementParserRuleCall_3_1_0_0 = (RuleCall)cLogicAssignment_3_1_0.eContents().get(0);
+		private final Assignment cTabsAssignment_3_1_1 = (Assignment)cAlternatives_3_1.eContents().get(1);
+		private final RuleCall cTabsTabElementParserRuleCall_3_1_1_0 = (RuleCall)cTabsAssignment_3_1_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
+		
+		//TabBoxElement:
+		//
+		//	"tabbox" name=ID (("enabled" "=" enabled=BooleanType)? & ("visible" "=" visible=BooleanType)? & ("width" "="
+		//
+		//	gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? & ("super_type" "=" superType=[TemplateElement])?) ("{"
+		//
+		//	(logic+=LogicElement | tabs+=TabElement)* "}")?;
+		public ParserRule getRule() { return rule; }
+
+		//"tabbox" name=ID (("enabled" "=" enabled=BooleanType)? & ("visible" "=" visible=BooleanType)? & ("width" "="
+		//
+		//gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? & ("super_type" "=" superType=[TemplateElement])?) ("{"
+		//
+		//(logic+=LogicElement | tabs+=TabElement)* "}")?
+		public Group getGroup() { return cGroup; }
+
+		//"tabbox"
+		public Keyword getTabboxKeyword_0() { return cTabboxKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//("enabled" "=" enabled=BooleanType)? & ("visible" "=" visible=BooleanType)? & ("width" "=" gridWidth=INT)? &
+		//
+		//("width_pixels" "=" widthInPixels=INT)? & ("super_type" "=" superType=[TemplateElement])?
+		public UnorderedGroup getUnorderedGroup_2() { return cUnorderedGroup_2; }
+
+		//("enabled" "=" enabled=BooleanType)?
+		public Group getGroup_2_0() { return cGroup_2_0; }
+
+		//"enabled"
+		public Keyword getEnabledKeyword_2_0_0() { return cEnabledKeyword_2_0_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_2_0_1() { return cEqualsSignKeyword_2_0_1; }
+
+		//enabled=BooleanType
+		public Assignment getEnabledAssignment_2_0_2() { return cEnabledAssignment_2_0_2; }
+
+		//BooleanType
+		public RuleCall getEnabledBooleanTypeParserRuleCall_2_0_2_0() { return cEnabledBooleanTypeParserRuleCall_2_0_2_0; }
+
+		//("visible" "=" visible=BooleanType)?
+		public Group getGroup_2_1() { return cGroup_2_1; }
+
+		//"visible"
+		public Keyword getVisibleKeyword_2_1_0() { return cVisibleKeyword_2_1_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_2_1_1() { return cEqualsSignKeyword_2_1_1; }
+
+		//visible=BooleanType
+		public Assignment getVisibleAssignment_2_1_2() { return cVisibleAssignment_2_1_2; }
+
+		//BooleanType
+		public RuleCall getVisibleBooleanTypeParserRuleCall_2_1_2_0() { return cVisibleBooleanTypeParserRuleCall_2_1_2_0; }
+
+		//("width" "=" gridWidth=INT)?
+		public Group getGroup_2_2() { return cGroup_2_2; }
+
+		//"width"
+		public Keyword getWidthKeyword_2_2_0() { return cWidthKeyword_2_2_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_2_2_1() { return cEqualsSignKeyword_2_2_1; }
+
+		//gridWidth=INT
+		public Assignment getGridWidthAssignment_2_2_2() { return cGridWidthAssignment_2_2_2; }
+
+		//INT
+		public RuleCall getGridWidthINTTerminalRuleCall_2_2_2_0() { return cGridWidthINTTerminalRuleCall_2_2_2_0; }
+
+		//("width_pixels" "=" widthInPixels=INT)?
+		public Group getGroup_2_3() { return cGroup_2_3; }
+
+		//"width_pixels"
+		public Keyword getWidth_pixelsKeyword_2_3_0() { return cWidth_pixelsKeyword_2_3_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_2_3_1() { return cEqualsSignKeyword_2_3_1; }
+
+		//widthInPixels=INT
+		public Assignment getWidthInPixelsAssignment_2_3_2() { return cWidthInPixelsAssignment_2_3_2; }
+
+		//INT
+		public RuleCall getWidthInPixelsINTTerminalRuleCall_2_3_2_0() { return cWidthInPixelsINTTerminalRuleCall_2_3_2_0; }
+
+		//("super_type" "=" superType=[TemplateElement])?
+		public Group getGroup_2_4() { return cGroup_2_4; }
+
+		//"super_type"
+		public Keyword getSuper_typeKeyword_2_4_0() { return cSuper_typeKeyword_2_4_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_2_4_1() { return cEqualsSignKeyword_2_4_1; }
+
+		//superType=[TemplateElement]
+		public Assignment getSuperTypeAssignment_2_4_2() { return cSuperTypeAssignment_2_4_2; }
+
+		//[TemplateElement]
+		public CrossReference getSuperTypeTemplateElementCrossReference_2_4_2_0() { return cSuperTypeTemplateElementCrossReference_2_4_2_0; }
+
+		//ID
+		public RuleCall getSuperTypeTemplateElementIDTerminalRuleCall_2_4_2_0_1() { return cSuperTypeTemplateElementIDTerminalRuleCall_2_4_2_0_1; }
+
+		//("{" (logic+=LogicElement | tabs+=TabElement)* "}")?
+		public Group getGroup_3() { return cGroup_3; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_3_0() { return cLeftCurlyBracketKeyword_3_0; }
+
+		//(logic+=LogicElement | tabs+=TabElement)*
+		public Alternatives getAlternatives_3_1() { return cAlternatives_3_1; }
+
+		//logic+=LogicElement
+		public Assignment getLogicAssignment_3_1_0() { return cLogicAssignment_3_1_0; }
+
+		//LogicElement
+		public RuleCall getLogicLogicElementParserRuleCall_3_1_0_0() { return cLogicLogicElementParserRuleCall_3_1_0_0; }
+
+		//tabs+=TabElement
+		public Assignment getTabsAssignment_3_1_1() { return cTabsAssignment_3_1_1; }
+
+		//TabElement
+		public RuleCall getTabsTabElementParserRuleCall_3_1_1_0() { return cTabsTabElementParserRuleCall_3_1_1_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_3_2() { return cRightCurlyBracketKeyword_3_2; }
+	}
 	
 	
 	private ModelElements pModel;
@@ -4392,6 +4632,8 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	private TableElementElements pTableElement;
 	private ColumnElementElements pColumnElement;
 	private KeyElementElements pKeyElement;
+	private TabElementElements pTabElement;
+	private TabBoxElementElements pTabBoxElement;
 	
 	private final Grammar grammar;
 
@@ -4607,7 +4849,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	//// UI FIELDS
 	// FormFieldElement:
 	//
-	//	CompositeFieldElement | ValueFieldElement | CustomFieldElement | ButtonElement | TableElement;
+	//	CompositeFieldElement | ValueFieldElement | CustomFieldElement | ButtonElement | TableElement | TabBoxElement;
 	public FormFieldElementElements getFormFieldElementAccess() {
 		return (pFormFieldElement != null) ? pFormFieldElement : (pFormFieldElement = new FormFieldElementElements());
 	}
@@ -4619,7 +4861,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	//// COMPOSITES
 	// CompositeFieldElement:
 	//
-	//	SequenceBoxElement | GroupBoxElement;
+	//	SequenceBoxElement | GroupBoxElement | TabElement;
 	public CompositeFieldElementElements getCompositeFieldElementAccess() {
 		return (pCompositeFieldElement != null) ? pCompositeFieldElement : (pCompositeFieldElement = new CompositeFieldElementElements());
 	}
@@ -4630,13 +4872,16 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 
 	//SequenceBoxElement:
 	//
-	//	"sequence" name=ID (("text" "=" text=[TranslationElement|QualifiedName])? & ("enabled" "=" enabled=BooleanType)? &
+	//	"sequence" name=ID (("text" "=" text=[TranslationElement|QualifiedName])?
 	//
-	//	("visible" "=" visible=BooleanType)? & ("label_visible" "=" labelVisible=BooleanType)? & ("master" "="
+	//	//('master' '=' master=[ValueFieldElement])? &
+	// & ("enabled" "=" enabled=BooleanType)? & ("visible" "="
 	//
-	//	master=[ValueFieldElement])? & ("width" "=" gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? & ("super_type"
+	//	visible=BooleanType)? & ("label_visible" "=" labelVisible=BooleanType)? & ("width" "=" gridWidth=INT)? &
 	//
-	//	"=" superType=[TemplateElement])?) ("{" (logic+=LogicElement | fields+=FormFieldElement)* "}")?;
+	//	("width_pixels" "=" widthInPixels=INT)? & ("super_type" "=" superType=[TemplateElement])?) ("{" (logic+=LogicElement
+	//
+	//	| fields+=FormFieldElement)* "}")?;
 	public SequenceBoxElementElements getSequenceBoxElementAccess() {
 		return (pSequenceBoxElement != null) ? pSequenceBoxElement : (pSequenceBoxElement = new SequenceBoxElementElements());
 	}
@@ -4647,17 +4892,18 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 
 	//GroupBoxElement:
 	//
-	//	"group" name=ID (("text" "=" text=[TranslationElement|QualifiedName])? & ("columns" "=" columns=INT)? & ("enabled"
+	//	"group" name=ID (("text" "=" text=[TranslationElement|QualifiedName])?
 	//
-	//	"=" enabled=BooleanType)? & ("visible" "=" visible=BooleanType)? & ("label_visible" "=" labelVisible=BooleanType)? &
+	//	//('master' '=' master=[ValueFieldElement])? &
+	// & ("columns" "=" columns=INT)? & ("enabled" "=" enabled=BooleanType)?
 	//
-	//	("border_visible" "=" borderVisible=BooleanType)? & ("border_decoration" "=" borderDecoration=("empty" | "line" |
+	//	& ("visible" "=" visible=BooleanType)? & ("label_visible" "=" labelVisible=BooleanType)? & ("border_visible" "="
 	//
-	//	"section" | "auto"))? & ("master" "=" master=[ValueFieldElement])? & ("height" "=" gridHeight=INT)? & ("width" "="
+	//	borderVisible=BooleanType)? & ("border_decoration" "=" borderDecoration=("empty" | "line" | "section" | "auto"))? &
 	//
-	//	gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? & ("super_type" "=" superType=[TemplateElement])?) ("{"
+	//	("height" "=" gridHeight=INT)? & ("width" "=" gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? &
 	//
-	//	(logic+=LogicElement | fields+=FormFieldElement)* "}")?;
+	//	("super_type" "=" superType=[TemplateElement])?) ("{" (logic+=LogicElement | fields+=FormFieldElement)* "}")?;
 	public GroupBoxElementElements getGroupBoxElementAccess() {
 		return (pGroupBoxElement != null) ? pGroupBoxElement : (pGroupBoxElement = new GroupBoxElementElements());
 	}
@@ -4808,13 +5054,11 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	//	"button" name=ID (("text" "=" text=[TranslationElement|QualifiedName])? & ("enabled" "=" enabled=BooleanType)? &
 	//
-	//	("visible" "=" visible=BooleanType)? & ("label_visible" "=" labelVisible=BooleanType)? & ("master" "="
+	//	("visible" "=" visible=BooleanType)? & ("process_button" "=" processButton=BooleanType)? & ("width" "="
 	//
-	//	master=[ValueFieldElement])? & ("process_button" "=" processButton=BooleanType)? & ("width" "=" gridWidth=INT)? &
+	//	gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? & ("super_type" "=" superType=[TemplateElement])?) ("{"
 	//
-	//	("width_pixels" "=" widthInPixels=INT)? & ("super_type" "=" superType=[TemplateElement])?) ("{" (logic+=LogicElement
-	//
-	//	| menus+=MenuElement)* "}")?;
+	//	(logic+=LogicElement | menus+=MenuElement)* "}")?;
 	public ButtonElementElements getButtonElementAccess() {
 		return (pButtonElement != null) ? pButtonElement : (pButtonElement = new ButtonElementElements());
 	}
@@ -4843,13 +5087,11 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	//	"table" name=ID (("text" "=" text=[TranslationElement|QualifiedName])? & ("enabled" "=" enabled=BooleanType)? &
 	//
-	//	("visible" "=" visible=BooleanType)? & ("master" "=" master=[ValueFieldElement])? & ("label_visible" "="
+	//	("visible" "=" visible=BooleanType)? & ("label_visible" "=" labelVisible=BooleanType)? & ("height" "="
 	//
-	//	labelVisible=BooleanType)? & ("height" "=" gridHeight=INT)? & ("width" "=" gridWidth=INT)? & ("width_pixels" "="
+	//	gridHeight=INT)? & ("width" "=" gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? & ("super_type" "="
 	//
-	//	widthInPixels=INT)? & ("super_type" "=" superType=[TemplateElement])?) ("{" (logic+=LogicElement | menus+=MenuElement
-	//
-	//	| columns+=ColumnElement)* "}")?;
+	//	superType=[TemplateElement])?) ("{" (logic+=LogicElement | menus+=MenuElement | columns+=ColumnElement)* "}")?;
 	public TableElementElements getTableElementAccess() {
 		return (pTableElement != null) ? pTableElement : (pTableElement = new TableElementElements());
 	}
@@ -4882,6 +5124,36 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getKeyElementRule() {
 		return getKeyElementAccess().getRule();
+	}
+
+	//TabElement:
+	//
+	//	"tab" name=ID (("text" "=" text=[TranslationElement|QualifiedName])? & ("columns" "=" columns=INT)? & ("enabled" "="
+	//
+	//	enabled=BooleanType)? & ("visible" "=" visible=BooleanType)? & ("super_type" "=" superType=[TemplateElement])?) "{"
+	//
+	//	(logic+=LogicElement | fields+=FormFieldElement)* "}";
+	public TabElementElements getTabElementAccess() {
+		return (pTabElement != null) ? pTabElement : (pTabElement = new TabElementElements());
+	}
+	
+	public ParserRule getTabElementRule() {
+		return getTabElementAccess().getRule();
+	}
+
+	//TabBoxElement:
+	//
+	//	"tabbox" name=ID (("enabled" "=" enabled=BooleanType)? & ("visible" "=" visible=BooleanType)? & ("width" "="
+	//
+	//	gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? & ("super_type" "=" superType=[TemplateElement])?) ("{"
+	//
+	//	(logic+=LogicElement | tabs+=TabElement)* "}")?;
+	public TabBoxElementElements getTabBoxElementAccess() {
+		return (pTabBoxElement != null) ? pTabBoxElement : (pTabBoxElement = new TabBoxElementElements());
+	}
+	
+	public ParserRule getTabBoxElementRule() {
+		return getTabBoxElementAccess().getRule();
 	}
 
 	//XExpression:

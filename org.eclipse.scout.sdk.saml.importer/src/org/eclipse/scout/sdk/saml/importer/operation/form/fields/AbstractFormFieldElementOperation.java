@@ -40,17 +40,6 @@ public abstract class AbstractFormFieldElementOperation extends AbstractUiElemen
     SamlLogicFillOperation.fillAllLogic(getFieldElement().getLogic(), getSamlFormContext(), createdField);
   }
 
-  protected void applyMasterAttribute(FormFieldElement a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
-    if (a != null && a.getName() != null) {
-      String fieldNameSuffix = getFieldNameSuffix(a);
-      if (fieldNameSuffix != null) {
-        String masterFieldName = a.getName() + fieldNameSuffix;
-        overrideMethod(field, h, "getConfiguredMasterField", "return " + masterFieldName + ".class;");
-        overrideMethod(field, h, "getConfiguredMasterRequired", "return true;");
-      }
-    }
-  }
-
   protected IType getDefaultSibling() {
     return ScoutTypeUtility.getFistProcessButton(getSamlFormContext().getCurrentParentBox(), getSamlFormContext().getCurrentParentBoxLocalTypeHierarchy());
   }
@@ -73,22 +62,9 @@ public abstract class AbstractFormFieldElementOperation extends AbstractUiElemen
     return SignatureCache.createTypeSignature(defaultFqn);
   }
 
-  private String getFieldNameSuffix(FormFieldElement field) throws CoreException {
-    IFormFieldElementOperation op = FormFieldExtension.getOperationFor(field);
-    if (op == null) {
-      throw new IllegalArgumentException("Unknown EObject field type: " + field.getClass());
-    }
-    return op.getFieldSuffix();
-  }
-
   protected void applyFormFieldProperties(IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
     applyEnabledAttribute(getFieldElement().getEnabled(), field, h);
-    applyMasterAttribute(getFieldElement().getMaster(), field, h);
-    applyLabelAttribute(getFieldElement().getText(), field, h);
     applyVisibleAttribute(getFieldElement().getVisible(), field, h);
-    applyLabelVisibleAttribute(getFieldElement().getLabelVisible(), field, h);
-    applyGridWidthAttribute(getFieldElement().getGridWidth(), field, h);
-    applyWidthInPixelsAttribute(getFieldElement().getWidthInPixels(), field, h);
   }
 
   protected void applyWidthInPixelsAttribute(int widthInPixels, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {

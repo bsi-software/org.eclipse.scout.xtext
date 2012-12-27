@@ -11,7 +11,6 @@
 package org.eclipse.scout.sdk.saml.importer.operation.form.fields.container;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.commons.StringUtility;
@@ -19,7 +18,6 @@ import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.GroupBoxElement;
 import org.eclipse.scout.sdk.operation.form.field.GroupBoxNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
-import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 
 /**
  * <h3>{@link GroupBoxElementImportOperation}</h3> ...
@@ -63,20 +61,14 @@ public class GroupBoxElementImportOperation extends AbstractBoxElementImportOper
   protected void applyFormFieldProperties(IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
     super.applyFormFieldProperties(field, h);
 
+    applyLabelAttribute(getGroupBoxElement().getText(), field, h);
     applyGridHeightAttribute(getGroupBoxElement().getGridHeight(), field, h);
     applyColumnsAttribute(getGroupBoxElement().getColumns(), field, h);
     applyBorderVisibleAttribute(getGroupBoxElement().getBorderVisible(), field, h);
     applyBorderDecorationAttribute(getGroupBoxElement().getBorderDecoration(), field, h);
-  }
-
-  protected void applyColumnsAttribute(int columns, IType mainBox, ITypeHierarchy h) throws IllegalArgumentException, CoreException {
-    applyColumnsAttribute(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager(), columns, mainBox, h);
-  }
-
-  public static void applyColumnsAttribute(IProgressMonitor monitor, IWorkingCopyManager workingcopyManager, int columns, IType mainBox, ITypeHierarchy h) throws IllegalArgumentException, CoreException {
-    if (columns > 0) {
-      overrideMethod(monitor, workingcopyManager, mainBox, h, "getConfiguredGridColumnCount", "return " + columns + ";");
-    }
+    applyLabelVisibleAttribute(getGroupBoxElement().getLabelVisible(), field, h);
+    applyGridWidthAttribute(getGroupBoxElement().getGridWidth(), field, h);
+    applyWidthInPixelsAttribute(getGroupBoxElement().getWidthInPixels(), field, h);
   }
 
   protected void applyBorderVisibleAttribute(String a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {

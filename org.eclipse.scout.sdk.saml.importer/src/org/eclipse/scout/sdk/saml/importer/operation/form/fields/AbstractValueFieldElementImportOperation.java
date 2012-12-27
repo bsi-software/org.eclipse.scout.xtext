@@ -13,7 +13,9 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
+import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.ValueFieldElement;
+import org.eclipse.scout.sdk.saml.importer.extension.FormFieldExtension;
 
 /**
  * <h3>{@link AbstractValueFieldElementImportOperation}</h3> ...
@@ -32,11 +34,36 @@ public abstract class AbstractValueFieldElementImportOperation extends AbstractF
     IType createdField = createField();
 
     ITypeHierarchy h = createdField.newSupertypeHierarchy(getSamlContext().getMonitor());
+    ValueFieldElement element = (ValueFieldElement) getFieldElement();
 
-    applyMandatoryAttribute(((ValueFieldElement) getFieldElement()).getMandatory(), createdField, h);
     applyFormFieldProperties(createdField, h);
+    applyMasterAttribute(element.getMaster(), createdField, h);
+    applyMandatoryAttribute(element.getMandatory(), createdField, h);
+    applyLabelAttribute(element.getText(), createdField, h);
+    applyLabelVisibleAttribute(element.getLabelVisible(), createdField, h);
+    applyGridWidthAttribute(element.getGridWidth(), createdField, h);
+    applyWidthInPixelsAttribute(element.getWidthInPixels(), createdField, h);
 
     fillLogic(createdField);
+  }
+
+  protected void applyMasterAttribute(FormFieldElement a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    if (a != null && a.getName() != null) {
+      String fieldNameSuffix = getFieldNameSuffix(a);
+      if (fieldNameSuffix != null) {
+        String masterFieldName = a.getName() + fieldNameSuffix;
+        overrideMethod(field, h, "getConfiguredMasterField", "return " + masterFieldName + ".class;");
+        overrideMethod(field, h, "getConfiguredMasterRequired", "return true;");
+      }
+    }
+  }
+
+  private String getFieldNameSuffix(FormFieldElement field) throws CoreException {
+    IFormFieldElementOperation op = FormFieldExtension.getOperationFor(field);
+    if (op == null) {
+      throw new IllegalArgumentException("Unknown EObject field type: " + field.getClass());
+    }
+    return op.getFieldSuffix();
   }
 
   protected void applyHorizontalAlignAttribute(String align, int defaultVal, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {

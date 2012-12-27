@@ -572,22 +572,13 @@ public interface SamlPackage extends EPackage
   int FORM_FIELD_ELEMENT__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Text</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FORM_FIELD_ELEMENT__TEXT = 1;
-
-  /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FORM_FIELD_ELEMENT__ENABLED = 2;
+  int FORM_FIELD_ELEMENT__ENABLED = 1;
 
   /**
    * The feature id for the '<em><b>Visible</b></em>' attribute.
@@ -596,43 +587,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_FIELD_ELEMENT__VISIBLE = 3;
-
-  /**
-   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FORM_FIELD_ELEMENT__LABEL_VISIBLE = 4;
-
-  /**
-   * The feature id for the '<em><b>Master</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FORM_FIELD_ELEMENT__MASTER = 5;
-
-  /**
-   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FORM_FIELD_ELEMENT__GRID_WIDTH = 6;
-
-  /**
-   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FORM_FIELD_ELEMENT__WIDTH_IN_PIXELS = 7;
+  int FORM_FIELD_ELEMENT__VISIBLE = 2;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -641,7 +596,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_FIELD_ELEMENT__SUPER_TYPE = 8;
+  int FORM_FIELD_ELEMENT__SUPER_TYPE = 3;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -650,7 +605,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_FIELD_ELEMENT__LOGIC = 9;
+  int FORM_FIELD_ELEMENT__LOGIC = 4;
 
   /**
    * The number of structural features of the '<em>Form Field Element</em>' class.
@@ -659,7 +614,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_FIELD_ELEMENT_FEATURE_COUNT = 10;
+  int FORM_FIELD_ELEMENT_FEATURE_COUNT = 5;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.CompositeFieldElementImpl <em>Composite Field Element</em>}' class.
@@ -681,15 +636,6 @@ public interface SamlPackage extends EPackage
   int COMPOSITE_FIELD_ELEMENT__NAME = FORM_FIELD_ELEMENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Text</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPOSITE_FIELD_ELEMENT__TEXT = FORM_FIELD_ELEMENT__TEXT;
-
-  /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -706,42 +652,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int COMPOSITE_FIELD_ELEMENT__VISIBLE = FORM_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPOSITE_FIELD_ELEMENT__LABEL_VISIBLE = FORM_FIELD_ELEMENT__LABEL_VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Master</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPOSITE_FIELD_ELEMENT__MASTER = FORM_FIELD_ELEMENT__MASTER;
-
-  /**
-   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPOSITE_FIELD_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT__GRID_WIDTH;
-
-  /**
-   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPOSITE_FIELD_ELEMENT__WIDTH_IN_PIXELS = FORM_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -762,13 +672,22 @@ public interface SamlPackage extends EPackage
   int COMPOSITE_FIELD_ELEMENT__LOGIC = FORM_FIELD_ELEMENT__LOGIC;
 
   /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPOSITE_FIELD_ELEMENT__TEXT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Fields</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMPOSITE_FIELD_ELEMENT__FIELDS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int COMPOSITE_FIELD_ELEMENT__FIELDS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Composite Field Element</em>' class.
@@ -777,7 +696,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 1;
+  int COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.SequenceBoxElementImpl <em>Sequence Box Element</em>}' class.
@@ -799,15 +718,6 @@ public interface SamlPackage extends EPackage
   int SEQUENCE_BOX_ELEMENT__NAME = COMPOSITE_FIELD_ELEMENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Text</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SEQUENCE_BOX_ELEMENT__TEXT = COMPOSITE_FIELD_ELEMENT__TEXT;
-
-  /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -824,42 +734,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int SEQUENCE_BOX_ELEMENT__VISIBLE = COMPOSITE_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SEQUENCE_BOX_ELEMENT__LABEL_VISIBLE = COMPOSITE_FIELD_ELEMENT__LABEL_VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Master</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SEQUENCE_BOX_ELEMENT__MASTER = COMPOSITE_FIELD_ELEMENT__MASTER;
-
-  /**
-   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SEQUENCE_BOX_ELEMENT__GRID_WIDTH = COMPOSITE_FIELD_ELEMENT__GRID_WIDTH;
-
-  /**
-   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SEQUENCE_BOX_ELEMENT__WIDTH_IN_PIXELS = COMPOSITE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -880,6 +754,15 @@ public interface SamlPackage extends EPackage
   int SEQUENCE_BOX_ELEMENT__LOGIC = COMPOSITE_FIELD_ELEMENT__LOGIC;
 
   /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SEQUENCE_BOX_ELEMENT__TEXT = COMPOSITE_FIELD_ELEMENT__TEXT;
+
+  /**
    * The feature id for the '<em><b>Fields</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -889,13 +772,40 @@ public interface SamlPackage extends EPackage
   int SEQUENCE_BOX_ELEMENT__FIELDS = COMPOSITE_FIELD_ELEMENT__FIELDS;
 
   /**
+   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SEQUENCE_BOX_ELEMENT__LABEL_VISIBLE = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SEQUENCE_BOX_ELEMENT__GRID_WIDTH = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SEQUENCE_BOX_ELEMENT__WIDTH_IN_PIXELS = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
    * The number of structural features of the '<em>Sequence Box Element</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SEQUENCE_BOX_ELEMENT_FEATURE_COUNT = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int SEQUENCE_BOX_ELEMENT_FEATURE_COUNT = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.GroupBoxElementImpl <em>Group Box Element</em>}' class.
@@ -917,15 +827,6 @@ public interface SamlPackage extends EPackage
   int GROUP_BOX_ELEMENT__NAME = COMPOSITE_FIELD_ELEMENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Text</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GROUP_BOX_ELEMENT__TEXT = COMPOSITE_FIELD_ELEMENT__TEXT;
-
-  /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -942,42 +843,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int GROUP_BOX_ELEMENT__VISIBLE = COMPOSITE_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GROUP_BOX_ELEMENT__LABEL_VISIBLE = COMPOSITE_FIELD_ELEMENT__LABEL_VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Master</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GROUP_BOX_ELEMENT__MASTER = COMPOSITE_FIELD_ELEMENT__MASTER;
-
-  /**
-   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GROUP_BOX_ELEMENT__GRID_WIDTH = COMPOSITE_FIELD_ELEMENT__GRID_WIDTH;
-
-  /**
-   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GROUP_BOX_ELEMENT__WIDTH_IN_PIXELS = COMPOSITE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -998,6 +863,15 @@ public interface SamlPackage extends EPackage
   int GROUP_BOX_ELEMENT__LOGIC = COMPOSITE_FIELD_ELEMENT__LOGIC;
 
   /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_BOX_ELEMENT__TEXT = COMPOSITE_FIELD_ELEMENT__TEXT;
+
+  /**
    * The feature id for the '<em><b>Fields</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1016,13 +890,22 @@ public interface SamlPackage extends EPackage
   int GROUP_BOX_ELEMENT__COLUMNS = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_BOX_ELEMENT__LABEL_VISIBLE = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
    * The feature id for the '<em><b>Border Visible</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GROUP_BOX_ELEMENT__BORDER_VISIBLE = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+  int GROUP_BOX_ELEMENT__BORDER_VISIBLE = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Border Decoration</b></em>' attribute.
@@ -1031,7 +914,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GROUP_BOX_ELEMENT__BORDER_DECORATION = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 2;
+  int GROUP_BOX_ELEMENT__BORDER_DECORATION = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Grid Height</b></em>' attribute.
@@ -1040,7 +923,25 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GROUP_BOX_ELEMENT__GRID_HEIGHT = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 3;
+  int GROUP_BOX_ELEMENT__GRID_HEIGHT = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 4;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_BOX_ELEMENT__GRID_WIDTH = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 5;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_BOX_ELEMENT__WIDTH_IN_PIXELS = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 6;
 
   /**
    * The number of structural features of the '<em>Group Box Element</em>' class.
@@ -1049,7 +950,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GROUP_BOX_ELEMENT_FEATURE_COUNT = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 4;
+  int GROUP_BOX_ELEMENT_FEATURE_COUNT = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 7;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.ValueFieldElementImpl <em>Value Field Element</em>}' class.
@@ -1071,15 +972,6 @@ public interface SamlPackage extends EPackage
   int VALUE_FIELD_ELEMENT__NAME = FORM_FIELD_ELEMENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Text</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VALUE_FIELD_ELEMENT__TEXT = FORM_FIELD_ELEMENT__TEXT;
-
-  /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1096,42 +988,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int VALUE_FIELD_ELEMENT__VISIBLE = FORM_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VALUE_FIELD_ELEMENT__LABEL_VISIBLE = FORM_FIELD_ELEMENT__LABEL_VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Master</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VALUE_FIELD_ELEMENT__MASTER = FORM_FIELD_ELEMENT__MASTER;
-
-  /**
-   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VALUE_FIELD_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT__GRID_WIDTH;
-
-  /**
-   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS = FORM_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -1152,13 +1008,58 @@ public interface SamlPackage extends EPackage
   int VALUE_FIELD_ELEMENT__LOGIC = FORM_FIELD_ELEMENT__LOGIC;
 
   /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE_FIELD_ELEMENT__TEXT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE_FIELD_ELEMENT__LABEL_VISIBLE = FORM_FIELD_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Master</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE_FIELD_ELEMENT__MASTER = FORM_FIELD_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
    * The feature id for the '<em><b>Mandatory</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VALUE_FIELD_ELEMENT__MANDATORY = FORM_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int VALUE_FIELD_ELEMENT__MANDATORY = FORM_FIELD_ELEMENT_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE_FIELD_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT_FEATURE_COUNT + 4;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 5;
 
   /**
    * The number of structural features of the '<em>Value Field Element</em>' class.
@@ -1167,7 +1068,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VALUE_FIELD_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 1;
+  int VALUE_FIELD_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 6;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.StringElementImpl <em>String Element</em>}' class.
@@ -1189,15 +1090,6 @@ public interface SamlPackage extends EPackage
   int STRING_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Text</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_ELEMENT__TEXT = VALUE_FIELD_ELEMENT__TEXT;
-
-  /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1214,42 +1106,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int STRING_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_ELEMENT__LABEL_VISIBLE = VALUE_FIELD_ELEMENT__LABEL_VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Master</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
-
-  /**
-   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
-
-  /**
-   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_ELEMENT__WIDTH_IN_PIXELS = VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -1270,6 +1126,33 @@ public interface SamlPackage extends EPackage
   int STRING_ELEMENT__LOGIC = VALUE_FIELD_ELEMENT__LOGIC;
 
   /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT__TEXT = VALUE_FIELD_ELEMENT__TEXT;
+
+  /**
+   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT__LABEL_VISIBLE = VALUE_FIELD_ELEMENT__LABEL_VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Master</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
+
+  /**
    * The feature id for the '<em><b>Mandatory</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1277,6 +1160,24 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int STRING_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT__MANDATORY;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT__WIDTH_IN_PIXELS = VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Maxlen</b></em>' attribute.
@@ -1334,15 +1235,6 @@ public interface SamlPackage extends EPackage
   int BIG_DECIMAL_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Text</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BIG_DECIMAL_ELEMENT__TEXT = VALUE_FIELD_ELEMENT__TEXT;
-
-  /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1359,42 +1251,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int BIG_DECIMAL_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BIG_DECIMAL_ELEMENT__LABEL_VISIBLE = VALUE_FIELD_ELEMENT__LABEL_VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Master</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BIG_DECIMAL_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
-
-  /**
-   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BIG_DECIMAL_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
-
-  /**
-   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BIG_DECIMAL_ELEMENT__WIDTH_IN_PIXELS = VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -1415,6 +1271,33 @@ public interface SamlPackage extends EPackage
   int BIG_DECIMAL_ELEMENT__LOGIC = VALUE_FIELD_ELEMENT__LOGIC;
 
   /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BIG_DECIMAL_ELEMENT__TEXT = VALUE_FIELD_ELEMENT__TEXT;
+
+  /**
+   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BIG_DECIMAL_ELEMENT__LABEL_VISIBLE = VALUE_FIELD_ELEMENT__LABEL_VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Master</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BIG_DECIMAL_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
+
+  /**
    * The feature id for the '<em><b>Mandatory</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1422,6 +1305,24 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int BIG_DECIMAL_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT__MANDATORY;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BIG_DECIMAL_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BIG_DECIMAL_ELEMENT__WIDTH_IN_PIXELS = VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Percent</b></em>' attribute.
@@ -1506,15 +1407,6 @@ public interface SamlPackage extends EPackage
   int LONG_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Text</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LONG_ELEMENT__TEXT = VALUE_FIELD_ELEMENT__TEXT;
-
-  /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1531,42 +1423,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int LONG_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LONG_ELEMENT__LABEL_VISIBLE = VALUE_FIELD_ELEMENT__LABEL_VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Master</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LONG_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
-
-  /**
-   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LONG_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
-
-  /**
-   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LONG_ELEMENT__WIDTH_IN_PIXELS = VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -1587,6 +1443,33 @@ public interface SamlPackage extends EPackage
   int LONG_ELEMENT__LOGIC = VALUE_FIELD_ELEMENT__LOGIC;
 
   /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LONG_ELEMENT__TEXT = VALUE_FIELD_ELEMENT__TEXT;
+
+  /**
+   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LONG_ELEMENT__LABEL_VISIBLE = VALUE_FIELD_ELEMENT__LABEL_VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Master</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LONG_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
+
+  /**
    * The feature id for the '<em><b>Mandatory</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1594,6 +1477,24 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int LONG_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT__MANDATORY;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LONG_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LONG_ELEMENT__WIDTH_IN_PIXELS = VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Horizontal Align</b></em>' attribute.
@@ -1651,15 +1552,6 @@ public interface SamlPackage extends EPackage
   int DATE_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Text</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DATE_ELEMENT__TEXT = VALUE_FIELD_ELEMENT__TEXT;
-
-  /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1676,42 +1568,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int DATE_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DATE_ELEMENT__LABEL_VISIBLE = VALUE_FIELD_ELEMENT__LABEL_VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Master</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DATE_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
-
-  /**
-   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DATE_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
-
-  /**
-   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DATE_ELEMENT__WIDTH_IN_PIXELS = VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -1732,6 +1588,33 @@ public interface SamlPackage extends EPackage
   int DATE_ELEMENT__LOGIC = VALUE_FIELD_ELEMENT__LOGIC;
 
   /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATE_ELEMENT__TEXT = VALUE_FIELD_ELEMENT__TEXT;
+
+  /**
+   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATE_ELEMENT__LABEL_VISIBLE = VALUE_FIELD_ELEMENT__LABEL_VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Master</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATE_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
+
+  /**
    * The feature id for the '<em><b>Mandatory</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1739,6 +1622,24 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int DATE_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT__MANDATORY;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATE_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATE_ELEMENT__WIDTH_IN_PIXELS = VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The number of structural features of the '<em>Date Element</em>' class.
@@ -1769,15 +1670,6 @@ public interface SamlPackage extends EPackage
   int SMARTFIELD_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Text</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SMARTFIELD_ELEMENT__TEXT = VALUE_FIELD_ELEMENT__TEXT;
-
-  /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1794,42 +1686,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int SMARTFIELD_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SMARTFIELD_ELEMENT__LABEL_VISIBLE = VALUE_FIELD_ELEMENT__LABEL_VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Master</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SMARTFIELD_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
-
-  /**
-   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SMARTFIELD_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
-
-  /**
-   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SMARTFIELD_ELEMENT__WIDTH_IN_PIXELS = VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -1850,6 +1706,33 @@ public interface SamlPackage extends EPackage
   int SMARTFIELD_ELEMENT__LOGIC = VALUE_FIELD_ELEMENT__LOGIC;
 
   /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SMARTFIELD_ELEMENT__TEXT = VALUE_FIELD_ELEMENT__TEXT;
+
+  /**
+   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SMARTFIELD_ELEMENT__LABEL_VISIBLE = VALUE_FIELD_ELEMENT__LABEL_VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Master</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SMARTFIELD_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
+
+  /**
    * The feature id for the '<em><b>Mandatory</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1857,6 +1740,24 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int SMARTFIELD_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT__MANDATORY;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SMARTFIELD_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SMARTFIELD_ELEMENT__WIDTH_IN_PIXELS = VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Code</b></em>' reference.
@@ -1923,15 +1824,6 @@ public interface SamlPackage extends EPackage
   int CUSTOM_FIELD_ELEMENT__NAME = FORM_FIELD_ELEMENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Text</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CUSTOM_FIELD_ELEMENT__TEXT = FORM_FIELD_ELEMENT__TEXT;
-
-  /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1948,42 +1840,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int CUSTOM_FIELD_ELEMENT__VISIBLE = FORM_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CUSTOM_FIELD_ELEMENT__LABEL_VISIBLE = FORM_FIELD_ELEMENT__LABEL_VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Master</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CUSTOM_FIELD_ELEMENT__MASTER = FORM_FIELD_ELEMENT__MASTER;
-
-  /**
-   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CUSTOM_FIELD_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT__GRID_WIDTH;
-
-  /**
-   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CUSTOM_FIELD_ELEMENT__WIDTH_IN_PIXELS = FORM_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -2004,13 +1860,58 @@ public interface SamlPackage extends EPackage
   int CUSTOM_FIELD_ELEMENT__LOGIC = FORM_FIELD_ELEMENT__LOGIC;
 
   /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CUSTOM_FIELD_ELEMENT__TEXT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CUSTOM_FIELD_ELEMENT__LABEL_VISIBLE = FORM_FIELD_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Master</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CUSTOM_FIELD_ELEMENT__MASTER = FORM_FIELD_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CUSTOM_FIELD_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CUSTOM_FIELD_ELEMENT__WIDTH_IN_PIXELS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 4;
+
+  /**
    * The feature id for the '<em><b>Fields</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CUSTOM_FIELD_ELEMENT__FIELDS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int CUSTOM_FIELD_ELEMENT__FIELDS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 5;
 
   /**
    * The number of structural features of the '<em>Custom Field Element</em>' class.
@@ -2019,7 +1920,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_FIELD_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 1;
+  int CUSTOM_FIELD_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 6;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.ButtonElementImpl <em>Button Element</em>}' class.
@@ -2041,15 +1942,6 @@ public interface SamlPackage extends EPackage
   int BUTTON_ELEMENT__NAME = FORM_FIELD_ELEMENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Text</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BUTTON_ELEMENT__TEXT = FORM_FIELD_ELEMENT__TEXT;
-
-  /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2066,42 +1958,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int BUTTON_ELEMENT__VISIBLE = FORM_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BUTTON_ELEMENT__LABEL_VISIBLE = FORM_FIELD_ELEMENT__LABEL_VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Master</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BUTTON_ELEMENT__MASTER = FORM_FIELD_ELEMENT__MASTER;
-
-  /**
-   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BUTTON_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT__GRID_WIDTH;
-
-  /**
-   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BUTTON_ELEMENT__WIDTH_IN_PIXELS = FORM_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -2122,13 +1978,40 @@ public interface SamlPackage extends EPackage
   int BUTTON_ELEMENT__LOGIC = FORM_FIELD_ELEMENT__LOGIC;
 
   /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUTTON_ELEMENT__TEXT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Process Button</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BUTTON_ELEMENT__PROCESS_BUTTON = FORM_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int BUTTON_ELEMENT__PROCESS_BUTTON = FORM_FIELD_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUTTON_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUTTON_ELEMENT__WIDTH_IN_PIXELS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Menus</b></em>' containment reference list.
@@ -2137,7 +2020,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUTTON_ELEMENT__MENUS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 1;
+  int BUTTON_ELEMENT__MENUS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The number of structural features of the '<em>Button Element</em>' class.
@@ -2146,7 +2029,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUTTON_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 2;
+  int BUTTON_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 5;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.MenuElementImpl <em>Menu Element</em>}' class.
@@ -2241,15 +2124,6 @@ public interface SamlPackage extends EPackage
   int TABLE_ELEMENT__NAME = FORM_FIELD_ELEMENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Text</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TABLE_ELEMENT__TEXT = FORM_FIELD_ELEMENT__TEXT;
-
-  /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2266,42 +2140,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int TABLE_ELEMENT__VISIBLE = FORM_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TABLE_ELEMENT__LABEL_VISIBLE = FORM_FIELD_ELEMENT__LABEL_VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Master</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TABLE_ELEMENT__MASTER = FORM_FIELD_ELEMENT__MASTER;
-
-  /**
-   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TABLE_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT__GRID_WIDTH;
-
-  /**
-   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TABLE_ELEMENT__WIDTH_IN_PIXELS = FORM_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -2322,13 +2160,49 @@ public interface SamlPackage extends EPackage
   int TABLE_ELEMENT__LOGIC = FORM_FIELD_ELEMENT__LOGIC;
 
   /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TABLE_ELEMENT__TEXT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TABLE_ELEMENT__LABEL_VISIBLE = FORM_FIELD_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
    * The feature id for the '<em><b>Grid Height</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TABLE_ELEMENT__GRID_HEIGHT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int TABLE_ELEMENT__GRID_HEIGHT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TABLE_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TABLE_ELEMENT__WIDTH_IN_PIXELS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Menus</b></em>' containment reference list.
@@ -2337,7 +2211,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TABLE_ELEMENT__MENUS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 1;
+  int TABLE_ELEMENT__MENUS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Columns</b></em>' containment reference list.
@@ -2346,7 +2220,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TABLE_ELEMENT__COLUMNS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 2;
+  int TABLE_ELEMENT__COLUMNS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 6;
 
   /**
    * The number of structural features of the '<em>Table Element</em>' class.
@@ -2355,7 +2229,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TABLE_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 3;
+  int TABLE_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 7;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.ColumnElementImpl <em>Column Element</em>}' class.
@@ -2475,6 +2349,188 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int KEY_ELEMENT_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.TabElementImpl <em>Tab Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.TabElementImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getTabElement()
+   * @generated
+   */
+  int TAB_ELEMENT = 26;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TAB_ELEMENT__NAME = COMPOSITE_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Enabled</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TAB_ELEMENT__ENABLED = COMPOSITE_FIELD_ELEMENT__ENABLED;
+
+  /**
+   * The feature id for the '<em><b>Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TAB_ELEMENT__VISIBLE = COMPOSITE_FIELD_ELEMENT__VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TAB_ELEMENT__SUPER_TYPE = COMPOSITE_FIELD_ELEMENT__SUPER_TYPE;
+
+  /**
+   * The feature id for the '<em><b>Logic</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TAB_ELEMENT__LOGIC = COMPOSITE_FIELD_ELEMENT__LOGIC;
+
+  /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TAB_ELEMENT__TEXT = COMPOSITE_FIELD_ELEMENT__TEXT;
+
+  /**
+   * The feature id for the '<em><b>Fields</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TAB_ELEMENT__FIELDS = COMPOSITE_FIELD_ELEMENT__FIELDS;
+
+  /**
+   * The feature id for the '<em><b>Columns</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TAB_ELEMENT__COLUMNS = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Tab Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TAB_ELEMENT_FEATURE_COUNT = COMPOSITE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.TabBoxElementImpl <em>Tab Box Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.TabBoxElementImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getTabBoxElement()
+   * @generated
+   */
+  int TAB_BOX_ELEMENT = 27;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TAB_BOX_ELEMENT__NAME = FORM_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Enabled</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TAB_BOX_ELEMENT__ENABLED = FORM_FIELD_ELEMENT__ENABLED;
+
+  /**
+   * The feature id for the '<em><b>Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TAB_BOX_ELEMENT__VISIBLE = FORM_FIELD_ELEMENT__VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TAB_BOX_ELEMENT__SUPER_TYPE = FORM_FIELD_ELEMENT__SUPER_TYPE;
+
+  /**
+   * The feature id for the '<em><b>Logic</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TAB_BOX_ELEMENT__LOGIC = FORM_FIELD_ELEMENT__LOGIC;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TAB_BOX_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TAB_BOX_ELEMENT__WIDTH_IN_PIXELS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Tabs</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TAB_BOX_ELEMENT__TABS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Tab Box Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TAB_BOX_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 3;
 
 
   /**
@@ -2973,17 +3029,6 @@ public interface SamlPackage extends EPackage
   EAttribute getFormFieldElement_Name();
 
   /**
-   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.FormFieldElement#getText <em>Text</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Text</em>'.
-   * @see org.eclipse.scout.saml.saml.FormFieldElement#getText()
-   * @see #getFormFieldElement()
-   * @generated
-   */
-  EReference getFormFieldElement_Text();
-
-  /**
    * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FormFieldElement#getEnabled <em>Enabled</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3004,50 +3049,6 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EAttribute getFormFieldElement_Visible();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FormFieldElement#getLabelVisible <em>Label Visible</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Label Visible</em>'.
-   * @see org.eclipse.scout.saml.saml.FormFieldElement#getLabelVisible()
-   * @see #getFormFieldElement()
-   * @generated
-   */
-  EAttribute getFormFieldElement_LabelVisible();
-
-  /**
-   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.FormFieldElement#getMaster <em>Master</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Master</em>'.
-   * @see org.eclipse.scout.saml.saml.FormFieldElement#getMaster()
-   * @see #getFormFieldElement()
-   * @generated
-   */
-  EReference getFormFieldElement_Master();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FormFieldElement#getGridWidth <em>Grid Width</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Grid Width</em>'.
-   * @see org.eclipse.scout.saml.saml.FormFieldElement#getGridWidth()
-   * @see #getFormFieldElement()
-   * @generated
-   */
-  EAttribute getFormFieldElement_GridWidth();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FormFieldElement#getWidthInPixels <em>Width In Pixels</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Width In Pixels</em>'.
-   * @see org.eclipse.scout.saml.saml.FormFieldElement#getWidthInPixels()
-   * @see #getFormFieldElement()
-   * @generated
-   */
-  EAttribute getFormFieldElement_WidthInPixels();
 
   /**
    * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.FormFieldElement#getSuperType <em>Super Type</em>}'.
@@ -3082,6 +3083,17 @@ public interface SamlPackage extends EPackage
   EClass getCompositeFieldElement();
 
   /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.CompositeFieldElement#getText <em>Text</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Text</em>'.
+   * @see org.eclipse.scout.saml.saml.CompositeFieldElement#getText()
+   * @see #getCompositeFieldElement()
+   * @generated
+   */
+  EReference getCompositeFieldElement_Text();
+
+  /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.CompositeFieldElement#getFields <em>Fields</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3103,6 +3115,39 @@ public interface SamlPackage extends EPackage
   EClass getSequenceBoxElement();
 
   /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.SequenceBoxElement#getLabelVisible <em>Label Visible</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Label Visible</em>'.
+   * @see org.eclipse.scout.saml.saml.SequenceBoxElement#getLabelVisible()
+   * @see #getSequenceBoxElement()
+   * @generated
+   */
+  EAttribute getSequenceBoxElement_LabelVisible();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.SequenceBoxElement#getGridWidth <em>Grid Width</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Grid Width</em>'.
+   * @see org.eclipse.scout.saml.saml.SequenceBoxElement#getGridWidth()
+   * @see #getSequenceBoxElement()
+   * @generated
+   */
+  EAttribute getSequenceBoxElement_GridWidth();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.SequenceBoxElement#getWidthInPixels <em>Width In Pixels</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Width In Pixels</em>'.
+   * @see org.eclipse.scout.saml.saml.SequenceBoxElement#getWidthInPixels()
+   * @see #getSequenceBoxElement()
+   * @generated
+   */
+  EAttribute getSequenceBoxElement_WidthInPixels();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.GroupBoxElement <em>Group Box Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3122,6 +3167,17 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EAttribute getGroupBoxElement_Columns();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.GroupBoxElement#getLabelVisible <em>Label Visible</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Label Visible</em>'.
+   * @see org.eclipse.scout.saml.saml.GroupBoxElement#getLabelVisible()
+   * @see #getGroupBoxElement()
+   * @generated
+   */
+  EAttribute getGroupBoxElement_LabelVisible();
 
   /**
    * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.GroupBoxElement#getBorderVisible <em>Border Visible</em>}'.
@@ -3157,6 +3213,28 @@ public interface SamlPackage extends EPackage
   EAttribute getGroupBoxElement_GridHeight();
 
   /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.GroupBoxElement#getGridWidth <em>Grid Width</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Grid Width</em>'.
+   * @see org.eclipse.scout.saml.saml.GroupBoxElement#getGridWidth()
+   * @see #getGroupBoxElement()
+   * @generated
+   */
+  EAttribute getGroupBoxElement_GridWidth();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.GroupBoxElement#getWidthInPixels <em>Width In Pixels</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Width In Pixels</em>'.
+   * @see org.eclipse.scout.saml.saml.GroupBoxElement#getWidthInPixels()
+   * @see #getGroupBoxElement()
+   * @generated
+   */
+  EAttribute getGroupBoxElement_WidthInPixels();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.ValueFieldElement <em>Value Field Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3165,6 +3243,39 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EClass getValueFieldElement();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.ValueFieldElement#getText <em>Text</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Text</em>'.
+   * @see org.eclipse.scout.saml.saml.ValueFieldElement#getText()
+   * @see #getValueFieldElement()
+   * @generated
+   */
+  EReference getValueFieldElement_Text();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.ValueFieldElement#getLabelVisible <em>Label Visible</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Label Visible</em>'.
+   * @see org.eclipse.scout.saml.saml.ValueFieldElement#getLabelVisible()
+   * @see #getValueFieldElement()
+   * @generated
+   */
+  EAttribute getValueFieldElement_LabelVisible();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.ValueFieldElement#getMaster <em>Master</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Master</em>'.
+   * @see org.eclipse.scout.saml.saml.ValueFieldElement#getMaster()
+   * @see #getValueFieldElement()
+   * @generated
+   */
+  EReference getValueFieldElement_Master();
 
   /**
    * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.ValueFieldElement#getMandatory <em>Mandatory</em>}'.
@@ -3176,6 +3287,28 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EAttribute getValueFieldElement_Mandatory();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.ValueFieldElement#getGridWidth <em>Grid Width</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Grid Width</em>'.
+   * @see org.eclipse.scout.saml.saml.ValueFieldElement#getGridWidth()
+   * @see #getValueFieldElement()
+   * @generated
+   */
+  EAttribute getValueFieldElement_GridWidth();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.ValueFieldElement#getWidthInPixels <em>Width In Pixels</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Width In Pixels</em>'.
+   * @see org.eclipse.scout.saml.saml.ValueFieldElement#getWidthInPixels()
+   * @see #getValueFieldElement()
+   * @generated
+   */
+  EAttribute getValueFieldElement_WidthInPixels();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.StringElement <em>String Element</em>}'.
@@ -3414,6 +3547,61 @@ public interface SamlPackage extends EPackage
   EClass getCustomFieldElement();
 
   /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.CustomFieldElement#getText <em>Text</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Text</em>'.
+   * @see org.eclipse.scout.saml.saml.CustomFieldElement#getText()
+   * @see #getCustomFieldElement()
+   * @generated
+   */
+  EReference getCustomFieldElement_Text();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.CustomFieldElement#getLabelVisible <em>Label Visible</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Label Visible</em>'.
+   * @see org.eclipse.scout.saml.saml.CustomFieldElement#getLabelVisible()
+   * @see #getCustomFieldElement()
+   * @generated
+   */
+  EAttribute getCustomFieldElement_LabelVisible();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.CustomFieldElement#getMaster <em>Master</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Master</em>'.
+   * @see org.eclipse.scout.saml.saml.CustomFieldElement#getMaster()
+   * @see #getCustomFieldElement()
+   * @generated
+   */
+  EReference getCustomFieldElement_Master();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.CustomFieldElement#getGridWidth <em>Grid Width</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Grid Width</em>'.
+   * @see org.eclipse.scout.saml.saml.CustomFieldElement#getGridWidth()
+   * @see #getCustomFieldElement()
+   * @generated
+   */
+  EAttribute getCustomFieldElement_GridWidth();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.CustomFieldElement#getWidthInPixels <em>Width In Pixels</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Width In Pixels</em>'.
+   * @see org.eclipse.scout.saml.saml.CustomFieldElement#getWidthInPixels()
+   * @see #getCustomFieldElement()
+   * @generated
+   */
+  EAttribute getCustomFieldElement_WidthInPixels();
+
+  /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.CustomFieldElement#getFields <em>Fields</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3435,6 +3623,17 @@ public interface SamlPackage extends EPackage
   EClass getButtonElement();
 
   /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.ButtonElement#getText <em>Text</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Text</em>'.
+   * @see org.eclipse.scout.saml.saml.ButtonElement#getText()
+   * @see #getButtonElement()
+   * @generated
+   */
+  EReference getButtonElement_Text();
+
+  /**
    * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.ButtonElement#getProcessButton <em>Process Button</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3444,6 +3643,28 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EAttribute getButtonElement_ProcessButton();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.ButtonElement#getGridWidth <em>Grid Width</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Grid Width</em>'.
+   * @see org.eclipse.scout.saml.saml.ButtonElement#getGridWidth()
+   * @see #getButtonElement()
+   * @generated
+   */
+  EAttribute getButtonElement_GridWidth();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.ButtonElement#getWidthInPixels <em>Width In Pixels</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Width In Pixels</em>'.
+   * @see org.eclipse.scout.saml.saml.ButtonElement#getWidthInPixels()
+   * @see #getButtonElement()
+   * @generated
+   */
+  EAttribute getButtonElement_WidthInPixels();
 
   /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.ButtonElement#getMenus <em>Menus</em>}'.
@@ -3543,6 +3764,28 @@ public interface SamlPackage extends EPackage
   EClass getTableElement();
 
   /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.TableElement#getText <em>Text</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Text</em>'.
+   * @see org.eclipse.scout.saml.saml.TableElement#getText()
+   * @see #getTableElement()
+   * @generated
+   */
+  EReference getTableElement_Text();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.TableElement#getLabelVisible <em>Label Visible</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Label Visible</em>'.
+   * @see org.eclipse.scout.saml.saml.TableElement#getLabelVisible()
+   * @see #getTableElement()
+   * @generated
+   */
+  EAttribute getTableElement_LabelVisible();
+
+  /**
    * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.TableElement#getGridHeight <em>Grid Height</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3552,6 +3795,28 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EAttribute getTableElement_GridHeight();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.TableElement#getGridWidth <em>Grid Width</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Grid Width</em>'.
+   * @see org.eclipse.scout.saml.saml.TableElement#getGridWidth()
+   * @see #getTableElement()
+   * @generated
+   */
+  EAttribute getTableElement_GridWidth();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.TableElement#getWidthInPixels <em>Width In Pixels</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Width In Pixels</em>'.
+   * @see org.eclipse.scout.saml.saml.TableElement#getWidthInPixels()
+   * @see #getTableElement()
+   * @generated
+   */
+  EAttribute getTableElement_WidthInPixels();
 
   /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.TableElement#getMenus <em>Menus</em>}'.
@@ -3693,6 +3958,70 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EReference getKeyElement_Logic();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.TabElement <em>Tab Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Tab Element</em>'.
+   * @see org.eclipse.scout.saml.saml.TabElement
+   * @generated
+   */
+  EClass getTabElement();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.TabElement#getColumns <em>Columns</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Columns</em>'.
+   * @see org.eclipse.scout.saml.saml.TabElement#getColumns()
+   * @see #getTabElement()
+   * @generated
+   */
+  EAttribute getTabElement_Columns();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.TabBoxElement <em>Tab Box Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Tab Box Element</em>'.
+   * @see org.eclipse.scout.saml.saml.TabBoxElement
+   * @generated
+   */
+  EClass getTabBoxElement();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.TabBoxElement#getGridWidth <em>Grid Width</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Grid Width</em>'.
+   * @see org.eclipse.scout.saml.saml.TabBoxElement#getGridWidth()
+   * @see #getTabBoxElement()
+   * @generated
+   */
+  EAttribute getTabBoxElement_GridWidth();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.TabBoxElement#getWidthInPixels <em>Width In Pixels</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Width In Pixels</em>'.
+   * @see org.eclipse.scout.saml.saml.TabBoxElement#getWidthInPixels()
+   * @see #getTabBoxElement()
+   * @generated
+   */
+  EAttribute getTabBoxElement_WidthInPixels();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.TabBoxElement#getTabs <em>Tabs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Tabs</em>'.
+   * @see org.eclipse.scout.saml.saml.TabBoxElement#getTabs()
+   * @see #getTabBoxElement()
+   * @generated
+   */
+  EReference getTabBoxElement_Tabs();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -4108,14 +4437,6 @@ public interface SamlPackage extends EPackage
     EAttribute FORM_FIELD_ELEMENT__NAME = eINSTANCE.getFormFieldElement_Name();
 
     /**
-     * The meta object literal for the '<em><b>Text</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference FORM_FIELD_ELEMENT__TEXT = eINSTANCE.getFormFieldElement_Text();
-
-    /**
      * The meta object literal for the '<em><b>Enabled</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4130,38 +4451,6 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EAttribute FORM_FIELD_ELEMENT__VISIBLE = eINSTANCE.getFormFieldElement_Visible();
-
-    /**
-     * The meta object literal for the '<em><b>Label Visible</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute FORM_FIELD_ELEMENT__LABEL_VISIBLE = eINSTANCE.getFormFieldElement_LabelVisible();
-
-    /**
-     * The meta object literal for the '<em><b>Master</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference FORM_FIELD_ELEMENT__MASTER = eINSTANCE.getFormFieldElement_Master();
-
-    /**
-     * The meta object literal for the '<em><b>Grid Width</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute FORM_FIELD_ELEMENT__GRID_WIDTH = eINSTANCE.getFormFieldElement_GridWidth();
-
-    /**
-     * The meta object literal for the '<em><b>Width In Pixels</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute FORM_FIELD_ELEMENT__WIDTH_IN_PIXELS = eINSTANCE.getFormFieldElement_WidthInPixels();
 
     /**
      * The meta object literal for the '<em><b>Super Type</b></em>' reference feature.
@@ -4190,6 +4479,14 @@ public interface SamlPackage extends EPackage
     EClass COMPOSITE_FIELD_ELEMENT = eINSTANCE.getCompositeFieldElement();
 
     /**
+     * The meta object literal for the '<em><b>Text</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COMPOSITE_FIELD_ELEMENT__TEXT = eINSTANCE.getCompositeFieldElement_Text();
+
+    /**
      * The meta object literal for the '<em><b>Fields</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4208,6 +4505,30 @@ public interface SamlPackage extends EPackage
     EClass SEQUENCE_BOX_ELEMENT = eINSTANCE.getSequenceBoxElement();
 
     /**
+     * The meta object literal for the '<em><b>Label Visible</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SEQUENCE_BOX_ELEMENT__LABEL_VISIBLE = eINSTANCE.getSequenceBoxElement_LabelVisible();
+
+    /**
+     * The meta object literal for the '<em><b>Grid Width</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SEQUENCE_BOX_ELEMENT__GRID_WIDTH = eINSTANCE.getSequenceBoxElement_GridWidth();
+
+    /**
+     * The meta object literal for the '<em><b>Width In Pixels</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SEQUENCE_BOX_ELEMENT__WIDTH_IN_PIXELS = eINSTANCE.getSequenceBoxElement_WidthInPixels();
+
+    /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.GroupBoxElementImpl <em>Group Box Element</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4224,6 +4545,14 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EAttribute GROUP_BOX_ELEMENT__COLUMNS = eINSTANCE.getGroupBoxElement_Columns();
+
+    /**
+     * The meta object literal for the '<em><b>Label Visible</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GROUP_BOX_ELEMENT__LABEL_VISIBLE = eINSTANCE.getGroupBoxElement_LabelVisible();
 
     /**
      * The meta object literal for the '<em><b>Border Visible</b></em>' attribute feature.
@@ -4250,6 +4579,22 @@ public interface SamlPackage extends EPackage
     EAttribute GROUP_BOX_ELEMENT__GRID_HEIGHT = eINSTANCE.getGroupBoxElement_GridHeight();
 
     /**
+     * The meta object literal for the '<em><b>Grid Width</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GROUP_BOX_ELEMENT__GRID_WIDTH = eINSTANCE.getGroupBoxElement_GridWidth();
+
+    /**
+     * The meta object literal for the '<em><b>Width In Pixels</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GROUP_BOX_ELEMENT__WIDTH_IN_PIXELS = eINSTANCE.getGroupBoxElement_WidthInPixels();
+
+    /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.ValueFieldElementImpl <em>Value Field Element</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4260,12 +4605,52 @@ public interface SamlPackage extends EPackage
     EClass VALUE_FIELD_ELEMENT = eINSTANCE.getValueFieldElement();
 
     /**
+     * The meta object literal for the '<em><b>Text</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference VALUE_FIELD_ELEMENT__TEXT = eINSTANCE.getValueFieldElement_Text();
+
+    /**
+     * The meta object literal for the '<em><b>Label Visible</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VALUE_FIELD_ELEMENT__LABEL_VISIBLE = eINSTANCE.getValueFieldElement_LabelVisible();
+
+    /**
+     * The meta object literal for the '<em><b>Master</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference VALUE_FIELD_ELEMENT__MASTER = eINSTANCE.getValueFieldElement_Master();
+
+    /**
      * The meta object literal for the '<em><b>Mandatory</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EAttribute VALUE_FIELD_ELEMENT__MANDATORY = eINSTANCE.getValueFieldElement_Mandatory();
+
+    /**
+     * The meta object literal for the '<em><b>Grid Width</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VALUE_FIELD_ELEMENT__GRID_WIDTH = eINSTANCE.getValueFieldElement_GridWidth();
+
+    /**
+     * The meta object literal for the '<em><b>Width In Pixels</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS = eINSTANCE.getValueFieldElement_WidthInPixels();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.StringElementImpl <em>String Element</em>}' class.
@@ -4456,6 +4841,46 @@ public interface SamlPackage extends EPackage
     EClass CUSTOM_FIELD_ELEMENT = eINSTANCE.getCustomFieldElement();
 
     /**
+     * The meta object literal for the '<em><b>Text</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CUSTOM_FIELD_ELEMENT__TEXT = eINSTANCE.getCustomFieldElement_Text();
+
+    /**
+     * The meta object literal for the '<em><b>Label Visible</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CUSTOM_FIELD_ELEMENT__LABEL_VISIBLE = eINSTANCE.getCustomFieldElement_LabelVisible();
+
+    /**
+     * The meta object literal for the '<em><b>Master</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CUSTOM_FIELD_ELEMENT__MASTER = eINSTANCE.getCustomFieldElement_Master();
+
+    /**
+     * The meta object literal for the '<em><b>Grid Width</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CUSTOM_FIELD_ELEMENT__GRID_WIDTH = eINSTANCE.getCustomFieldElement_GridWidth();
+
+    /**
+     * The meta object literal for the '<em><b>Width In Pixels</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CUSTOM_FIELD_ELEMENT__WIDTH_IN_PIXELS = eINSTANCE.getCustomFieldElement_WidthInPixels();
+
+    /**
      * The meta object literal for the '<em><b>Fields</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4474,12 +4899,36 @@ public interface SamlPackage extends EPackage
     EClass BUTTON_ELEMENT = eINSTANCE.getButtonElement();
 
     /**
+     * The meta object literal for the '<em><b>Text</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BUTTON_ELEMENT__TEXT = eINSTANCE.getButtonElement_Text();
+
+    /**
      * The meta object literal for the '<em><b>Process Button</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EAttribute BUTTON_ELEMENT__PROCESS_BUTTON = eINSTANCE.getButtonElement_ProcessButton();
+
+    /**
+     * The meta object literal for the '<em><b>Grid Width</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BUTTON_ELEMENT__GRID_WIDTH = eINSTANCE.getButtonElement_GridWidth();
+
+    /**
+     * The meta object literal for the '<em><b>Width In Pixels</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BUTTON_ELEMENT__WIDTH_IN_PIXELS = eINSTANCE.getButtonElement_WidthInPixels();
 
     /**
      * The meta object literal for the '<em><b>Menus</b></em>' containment reference list feature.
@@ -4558,12 +5007,44 @@ public interface SamlPackage extends EPackage
     EClass TABLE_ELEMENT = eINSTANCE.getTableElement();
 
     /**
+     * The meta object literal for the '<em><b>Text</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TABLE_ELEMENT__TEXT = eINSTANCE.getTableElement_Text();
+
+    /**
+     * The meta object literal for the '<em><b>Label Visible</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TABLE_ELEMENT__LABEL_VISIBLE = eINSTANCE.getTableElement_LabelVisible();
+
+    /**
      * The meta object literal for the '<em><b>Grid Height</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EAttribute TABLE_ELEMENT__GRID_HEIGHT = eINSTANCE.getTableElement_GridHeight();
+
+    /**
+     * The meta object literal for the '<em><b>Grid Width</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TABLE_ELEMENT__GRID_WIDTH = eINSTANCE.getTableElement_GridWidth();
+
+    /**
+     * The meta object literal for the '<em><b>Width In Pixels</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TABLE_ELEMENT__WIDTH_IN_PIXELS = eINSTANCE.getTableElement_WidthInPixels();
 
     /**
      * The meta object literal for the '<em><b>Menus</b></em>' containment reference list feature.
@@ -4672,6 +5153,58 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EReference KEY_ELEMENT__LOGIC = eINSTANCE.getKeyElement_Logic();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.TabElementImpl <em>Tab Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.TabElementImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getTabElement()
+     * @generated
+     */
+    EClass TAB_ELEMENT = eINSTANCE.getTabElement();
+
+    /**
+     * The meta object literal for the '<em><b>Columns</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TAB_ELEMENT__COLUMNS = eINSTANCE.getTabElement_Columns();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.TabBoxElementImpl <em>Tab Box Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.TabBoxElementImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getTabBoxElement()
+     * @generated
+     */
+    EClass TAB_BOX_ELEMENT = eINSTANCE.getTabBoxElement();
+
+    /**
+     * The meta object literal for the '<em><b>Grid Width</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TAB_BOX_ELEMENT__GRID_WIDTH = eINSTANCE.getTabBoxElement_GridWidth();
+
+    /**
+     * The meta object literal for the '<em><b>Width In Pixels</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TAB_BOX_ELEMENT__WIDTH_IN_PIXELS = eINSTANCE.getTabBoxElement_WidthInPixels();
+
+    /**
+     * The meta object literal for the '<em><b>Tabs</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TAB_BOX_ELEMENT__TABS = eINSTANCE.getTabBoxElement_Tabs();
 
   }
 

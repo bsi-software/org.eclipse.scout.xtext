@@ -273,6 +273,23 @@ public class SamlSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case SamlPackage.TAB_ELEMENT:
+      {
+        TabElement tabElement = (TabElement)theEObject;
+        T result = caseTabElement(tabElement);
+        if (result == null) result = caseCompositeFieldElement(tabElement);
+        if (result == null) result = caseFormFieldElement(tabElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.TAB_BOX_ELEMENT:
+      {
+        TabBoxElement tabBoxElement = (TabBoxElement)theEObject;
+        T result = caseTabBoxElement(tabBoxElement);
+        if (result == null) result = caseFormFieldElement(tabBoxElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -689,6 +706,38 @@ public class SamlSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseKeyElement(KeyElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Tab Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Tab Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTabElement(TabElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Tab Box Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Tab Box Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTabBoxElement(TabBoxElement object)
   {
     return null;
   }

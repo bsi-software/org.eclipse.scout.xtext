@@ -25,3 +25,16 @@ Changes:
 
 
 
+Version: 1.0.0 2012-12-27
+Changed: mvi
+Changes:
+	Deleted:
+		'master' attribute for 'sequence', 'group', 'button', 'table'
+		'label_visible' attribute for 'button'
+		
+	Added:
+		Element 'tabbox'
+			Attributes: 'enabled', 'visible', 'width', 'width_pixels', 'super_type'
+			
+		Element 'tab'
+			Attributes: 'text', 'columns', 'enabled', 'visible', 'super_type'

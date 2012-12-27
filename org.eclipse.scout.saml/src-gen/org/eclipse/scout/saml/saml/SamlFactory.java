@@ -257,6 +257,24 @@ public interface SamlFactory extends EFactory
   KeyElement createKeyElement();
 
   /**
+   * Returns a new object of class '<em>Tab Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Tab Element</em>'.
+   * @generated
+   */
+  TabElement createTabElement();
+
+  /**
+   * Returns a new object of class '<em>Tab Box Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Tab Box Element</em>'.
+   * @generated
+   */
+  TabBoxElement createTabBoxElement();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

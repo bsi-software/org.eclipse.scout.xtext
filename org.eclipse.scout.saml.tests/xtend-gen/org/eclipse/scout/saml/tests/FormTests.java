@@ -285,4 +285,72 @@ public class FormTests {
       throw Exceptions.sneakyThrow(_e);
     }
   }
+  
+  @Test
+  public void testTabBox() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module test.a.b");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("translation Tab01Text de=\"Tab 1\"");
+      _builder.newLine();
+      _builder.append("translation Tab02Text de=\"Tab 2\"");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("form TabTest01 columns=1 {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("group Grp01 columns=1 width=1 {");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("tabbox MyTab {");
+      _builder.newLine();
+      _builder.append("\t\t\t");
+      _builder.append("tab Detail text=Tab01Text {");
+      _builder.newLine();
+      _builder.append("\t\t\t\t");
+      _builder.append("long TestLong");
+      _builder.newLine();
+      _builder.append("\t\t\t\t");
+      _builder.append("string TestString");
+      _builder.newLine();
+      _builder.append("\t\t\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("\t\t\t");
+      _builder.append("tab Documents text=Tab02Text {");
+      _builder.newLine();
+      _builder.append("\t\t\t\t");
+      _builder.append("date TestDate");
+      _builder.newLine();
+      _builder.append("\t\t\t\t");
+      _builder.append("bigdecimal TestDecimal");
+      _builder.newLine();
+      _builder.append("\t\t\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("group Grp02 columns=1 width=1 {");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("string MyString");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      Model _parse = this._parseHelper.parse(_builder);
+      this._validationTestHelper.assertNoErrors(_parse);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
 }

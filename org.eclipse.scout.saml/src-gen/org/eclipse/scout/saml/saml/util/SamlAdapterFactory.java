@@ -205,6 +205,16 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
         return createKeyElementAdapter();
       }
       @Override
+      public Adapter caseTabElement(TabElement object)
+      {
+        return createTabElementAdapter();
+      }
+      @Override
+      public Adapter caseTabBoxElement(TabBoxElement object)
+      {
+        return createTabBoxElementAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -612,6 +622,36 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createKeyElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.TabElement <em>Tab Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.scout.saml.saml.TabElement
+   * @generated
+   */
+  public Adapter createTabElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.TabBoxElement <em>Tab Box Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.scout.saml.saml.TabBoxElement
+   * @generated
+   */
+  public Adapter createTabBoxElementAdapter()
   {
     return null;
   }

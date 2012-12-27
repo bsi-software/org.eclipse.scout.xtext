@@ -1,4 +1,4 @@
-module ch.raiffeisen.dialba.common
+module test.aa.bb
 
 
 translation AboutMenu de="&Info..."
@@ -244,7 +244,7 @@ form ComplexTest modal=true title=KOEmission {
 		}
 	}
 	
-	sequence DepotSequence master=MitTitel	{
+	sequence DepotSequence {
 		logic event=master_changed placement=client {
 			"Integer newMasterValue = form.getMitTitelField().getValue();
 		    if (newMasterValue != null) {

@@ -64,6 +64,8 @@ public class ButtonElementImportOperation extends AbstractFormFieldElementOperat
 
     applyFormFieldProperties(createdField, h);
     applyProcessButtonAttribute(getButtonElement().getProcessButton(), createdField, h);
+    applyGridWidthAttribute(getButtonElement().getGridWidth(), createdField, h);
+    applyWidthInPixelsAttribute(getButtonElement().getWidthInPixels(), createdField, h);
 
     fillLogic(createdField);
 

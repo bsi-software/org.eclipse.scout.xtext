@@ -61,7 +61,11 @@ public class SequenceBoxElementImportOperation extends AbstractBoxElementImportO
   protected void applyFormFieldProperties(IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
     super.applyFormFieldProperties(field, h);
 
+    applyLabelAttribute(getSequenceBoxElement().getText(), field, h);
     overrideMethod(field, h, "getConfiguredAutoCheckFromTo", "return false;");
+    applyLabelVisibleAttribute(getSequenceBoxElement().getLabelVisible(), field, h);
+    applyGridWidthAttribute(getSequenceBoxElement().getGridWidth(), field, h);
+    applyWidthInPixelsAttribute(getSequenceBoxElement().getWidthInPixels(), field, h);
   }
 
   public SequenceBoxElement getSequenceBoxElement() {
