@@ -14,6 +14,7 @@ import org.eclipse.scout.saml.saml.GroupBoxElement;
 import org.eclipse.scout.saml.saml.ImportElement;
 import org.eclipse.scout.saml.saml.KeyElement;
 import org.eclipse.scout.saml.saml.LanguageAttribute;
+import org.eclipse.scout.saml.saml.ListBoxElement;
 import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.saml.saml.LongElement;
 import org.eclipse.scout.saml.saml.LookupElement;
@@ -157,6 +158,14 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 			case SamlPackage.LANGUAGE_ATTRIBUTE:
 				if(context == grammarAccess.getLanguageAttributeRule()) {
 					sequence_LanguageAttribute(context, (LanguageAttribute) semanticObject); 
+					return; 
+				}
+				else break;
+			case SamlPackage.LIST_BOX_ELEMENT:
+				if(context == grammarAccess.getFormFieldElementRule() ||
+				   context == grammarAccess.getListBoxElementRule() ||
+				   context == grammarAccess.getValueFieldElementRule()) {
+					sequence_ListBoxElement(context, (ListBoxElement) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1319,6 +1328,31 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 		feeder.accept(grammarAccess.getLanguageAttributeAccess().getLangIDTerminalRuleCall_0_0(), semanticObject.getLang());
 		feeder.accept(grammarAccess.getLanguageAttributeAccess().getTextSTRINGTerminalRuleCall_2_0(), semanticObject.getText());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         name=ID 
+	 *         text=[TranslationElement|QualifiedName]? 
+	 *         enabled=BooleanType? 
+	 *         visible=BooleanType? 
+	 *         labelVisible=BooleanType? 
+	 *         master=[ValueFieldElement|ID]? 
+	 *         mandatory=BooleanType? 
+	 *         code=[CodeElement|ID]? 
+	 *         valueType=STRING? 
+	 *         lookup=[LookupElement|ID]? 
+	 *         gridWidth=INT? 
+	 *         widthInPixels=INT? 
+	 *         gridHeight=INT? 
+	 *         superType=[TemplateElement|ID]? 
+	 *         logic+=LogicElement*
+	 *     )
+	 */
+	protected void sequence_ListBoxElement(EObject context, ListBoxElement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

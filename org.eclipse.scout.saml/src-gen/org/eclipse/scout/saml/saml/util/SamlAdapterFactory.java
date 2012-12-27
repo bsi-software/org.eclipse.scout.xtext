@@ -175,6 +175,11 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
         return createSmartfieldElementAdapter();
       }
       @Override
+      public Adapter caseListBoxElement(ListBoxElement object)
+      {
+        return createListBoxElementAdapter();
+      }
+      @Override
       public Adapter caseCustomFieldElement(CustomFieldElement object)
       {
         return createCustomFieldElementAdapter();
@@ -532,6 +537,21 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createSmartfieldElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.ListBoxElement <em>List Box Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.scout.saml.saml.ListBoxElement
+   * @generated
+   */
+  public Adapter createListBoxElementAdapter()
   {
     return null;
   }

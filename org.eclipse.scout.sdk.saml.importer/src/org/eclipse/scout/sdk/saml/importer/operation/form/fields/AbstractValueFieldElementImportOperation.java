@@ -13,7 +13,9 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
+import org.eclipse.scout.saml.saml.CodeElement;
 import org.eclipse.scout.saml.saml.FormFieldElement;
+import org.eclipse.scout.saml.saml.LookupElement;
 import org.eclipse.scout.saml.saml.ValueFieldElement;
 import org.eclipse.scout.sdk.saml.importer.extension.FormFieldExtension;
 
@@ -72,6 +74,18 @@ public abstract class AbstractValueFieldElementImportOperation extends AbstractF
       if (alignValue != defaultVal) {
         overrideMethod(field, h, "getConfiguredHorizontalAlignment", "return " + alignValue + ";");
       }
+    }
+  }
+
+  protected void applyCodeAttribute(CodeElement a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    if (a != null && a.getName() != null) {
+      overrideMethod(field, h, "getConfiguredCodeType", "return " + a.getName() + "CodeType.class;");
+    }
+  }
+
+  protected void applyLookupAttribute(LookupElement a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    if (a != null && a.getName() != null) {
+      overrideMethod(field, h, "getConfiguredLookupCall", "return " + a.getName() + "LookupCall.class;");
     }
   }
 

@@ -148,10 +148,13 @@ class FormTests {
 	@Test
 	def void testTabBox() {
 		'''
-		module test.a.b
-
+		module a.b
+		
 		translation Tab01Text de="Tab 1"
 		translation Tab02Text de="Tab 2"
+		translation ListText de="ListBox"
+		
+		code MyCode id=100
 		
 		form TabTest01 columns=1 {
 			group Grp01 columns=1 width=1 {
@@ -167,7 +170,7 @@ class FormTests {
 				}
 			}
 			group Grp02 columns=1 width=1 {
-				string MyString
+				list MyList text=ListText code=MyCode height=4
 			}
 		}
 		'''.parse.assertNoErrors

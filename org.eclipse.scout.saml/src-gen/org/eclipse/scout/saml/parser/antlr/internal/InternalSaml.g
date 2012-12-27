@@ -2495,6 +2495,16 @@ ruleValueFieldElement returns [EObject current=null]
         $current = $this_SmartfieldElement_4.current; 
         afterParserOrEnumRuleCall();
     }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getValueFieldElementAccess().getListBoxElementParserRuleCall_5()); 
+    }
+    this_ListBoxElement_5=ruleListBoxElement
+    { 
+        $current = $this_ListBoxElement_5.current; 
+        afterParserOrEnumRuleCall();
+    }
 )
 ;
 
@@ -5143,6 +5153,562 @@ ruleSmartfieldElement returns [EObject current=null]
 ))*	otherlv_42='}' 
     {
     	newLeafNode(otherlv_42, grammarAccess.getSmartfieldElementAccess().getRightCurlyBracketKeyword_3_2());
+    }
+)?)
+;
+
+
+
+
+
+// Entry rule entryRuleListBoxElement
+entryRuleListBoxElement returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getListBoxElementRule()); }
+	 iv_ruleListBoxElement=ruleListBoxElement 
+	 { $current=$iv_ruleListBoxElement.current; } 
+	 EOF 
+;
+
+// Rule ListBoxElement
+ruleListBoxElement returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='list' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getListBoxElementAccess().getListKeyword_0());
+    }
+(
+(
+		lv_name_1_0=RULE_ID
+		{
+			newLeafNode(lv_name_1_0, grammarAccess.getListBoxElementAccess().getNameIDTerminalRuleCall_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getListBoxElementRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_1_0, 
+        		"ID");
+	    }
+
+)
+)(
+
+(
+	{ 
+	  getUnorderedGroupHelper().enter(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2());
+	}
+	(
+		(
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2(), 0)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2(), 0);
+	 				}
+					({true}?=>(	otherlv_3='text' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getListBoxElementAccess().getTextKeyword_2_0_0());
+    }
+	otherlv_4='=' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getListBoxElementAccess().getEqualsSignKeyword_2_0_1());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getListBoxElementRule());
+	        }
+        }
+		{ 
+	        newCompositeNode(grammarAccess.getListBoxElementAccess().getTextTranslationElementCrossReference_2_0_2_0()); 
+	    }
+		ruleQualifiedName		{ 
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2(), 1)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2(), 1);
+	 				}
+					({true}?=>(	otherlv_6='enabled' 
+    {
+    	newLeafNode(otherlv_6, grammarAccess.getListBoxElementAccess().getEnabledKeyword_2_1_0());
+    }
+	otherlv_7='=' 
+    {
+    	newLeafNode(otherlv_7, grammarAccess.getListBoxElementAccess().getEqualsSignKeyword_2_1_1());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getListBoxElementAccess().getEnabledBooleanTypeParserRuleCall_2_1_2_0()); 
+	    }
+		lv_enabled_8_0=ruleBooleanType		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getListBoxElementRule());
+	        }
+       		set(
+       			$current, 
+       			"enabled",
+        		lv_enabled_8_0, 
+        		"BooleanType");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2(), 2)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2(), 2);
+	 				}
+					({true}?=>(	otherlv_9='visible' 
+    {
+    	newLeafNode(otherlv_9, grammarAccess.getListBoxElementAccess().getVisibleKeyword_2_2_0());
+    }
+	otherlv_10='=' 
+    {
+    	newLeafNode(otherlv_10, grammarAccess.getListBoxElementAccess().getEqualsSignKeyword_2_2_1());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getListBoxElementAccess().getVisibleBooleanTypeParserRuleCall_2_2_2_0()); 
+	    }
+		lv_visible_11_0=ruleBooleanType		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getListBoxElementRule());
+	        }
+       		set(
+       			$current, 
+       			"visible",
+        		lv_visible_11_0, 
+        		"BooleanType");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2(), 3)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2(), 3);
+	 				}
+					({true}?=>(	otherlv_12='label_visible' 
+    {
+    	newLeafNode(otherlv_12, grammarAccess.getListBoxElementAccess().getLabel_visibleKeyword_2_3_0());
+    }
+	otherlv_13='=' 
+    {
+    	newLeafNode(otherlv_13, grammarAccess.getListBoxElementAccess().getEqualsSignKeyword_2_3_1());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getListBoxElementAccess().getLabelVisibleBooleanTypeParserRuleCall_2_3_2_0()); 
+	    }
+		lv_labelVisible_14_0=ruleBooleanType		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getListBoxElementRule());
+	        }
+       		set(
+       			$current, 
+       			"labelVisible",
+        		lv_labelVisible_14_0, 
+        		"BooleanType");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2(), 4)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2(), 4);
+	 				}
+					({true}?=>(	otherlv_15='master' 
+    {
+    	newLeafNode(otherlv_15, grammarAccess.getListBoxElementAccess().getMasterKeyword_2_4_0());
+    }
+	otherlv_16='=' 
+    {
+    	newLeafNode(otherlv_16, grammarAccess.getListBoxElementAccess().getEqualsSignKeyword_2_4_1());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getListBoxElementRule());
+	        }
+        }
+	otherlv_17=RULE_ID
+	{
+		newLeafNode(otherlv_17, grammarAccess.getListBoxElementAccess().getMasterValueFieldElementCrossReference_2_4_2_0()); 
+	}
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2(), 5)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2(), 5);
+	 				}
+					({true}?=>(	otherlv_18='mandatory' 
+    {
+    	newLeafNode(otherlv_18, grammarAccess.getListBoxElementAccess().getMandatoryKeyword_2_5_0());
+    }
+	otherlv_19='=' 
+    {
+    	newLeafNode(otherlv_19, grammarAccess.getListBoxElementAccess().getEqualsSignKeyword_2_5_1());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getListBoxElementAccess().getMandatoryBooleanTypeParserRuleCall_2_5_2_0()); 
+	    }
+		lv_mandatory_20_0=ruleBooleanType		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getListBoxElementRule());
+	        }
+       		set(
+       			$current, 
+       			"mandatory",
+        		lv_mandatory_20_0, 
+        		"BooleanType");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2(), 6)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2(), 6);
+	 				}
+					({true}?=>(	otherlv_21='code' 
+    {
+    	newLeafNode(otherlv_21, grammarAccess.getListBoxElementAccess().getCodeKeyword_2_6_0());
+    }
+	otherlv_22='=' 
+    {
+    	newLeafNode(otherlv_22, grammarAccess.getListBoxElementAccess().getEqualsSignKeyword_2_6_1());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getListBoxElementRule());
+	        }
+        }
+	otherlv_23=RULE_ID
+	{
+		newLeafNode(otherlv_23, grammarAccess.getListBoxElementAccess().getCodeCodeElementCrossReference_2_6_2_0()); 
+	}
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2(), 7)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2(), 7);
+	 				}
+					({true}?=>(	otherlv_24='value_type' 
+    {
+    	newLeafNode(otherlv_24, grammarAccess.getListBoxElementAccess().getValue_typeKeyword_2_7_0());
+    }
+	otherlv_25='=' 
+    {
+    	newLeafNode(otherlv_25, grammarAccess.getListBoxElementAccess().getEqualsSignKeyword_2_7_1());
+    }
+(
+(
+		lv_valueType_26_0=RULE_STRING
+		{
+			newLeafNode(lv_valueType_26_0, grammarAccess.getListBoxElementAccess().getValueTypeSTRINGTerminalRuleCall_2_7_2_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getListBoxElementRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"valueType",
+        		lv_valueType_26_0, 
+        		"STRING");
+	    }
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2(), 8)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2(), 8);
+	 				}
+					({true}?=>(	otherlv_27='lookup' 
+    {
+    	newLeafNode(otherlv_27, grammarAccess.getListBoxElementAccess().getLookupKeyword_2_8_0());
+    }
+	otherlv_28='=' 
+    {
+    	newLeafNode(otherlv_28, grammarAccess.getListBoxElementAccess().getEqualsSignKeyword_2_8_1());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getListBoxElementRule());
+	        }
+        }
+	otherlv_29=RULE_ID
+	{
+		newLeafNode(otherlv_29, grammarAccess.getListBoxElementAccess().getLookupLookupElementCrossReference_2_8_2_0()); 
+	}
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2(), 9)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2(), 9);
+	 				}
+					({true}?=>(	otherlv_30='width' 
+    {
+    	newLeafNode(otherlv_30, grammarAccess.getListBoxElementAccess().getWidthKeyword_2_9_0());
+    }
+	otherlv_31='=' 
+    {
+    	newLeafNode(otherlv_31, grammarAccess.getListBoxElementAccess().getEqualsSignKeyword_2_9_1());
+    }
+(
+(
+		lv_gridWidth_32_0=RULE_INT
+		{
+			newLeafNode(lv_gridWidth_32_0, grammarAccess.getListBoxElementAccess().getGridWidthINTTerminalRuleCall_2_9_2_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getListBoxElementRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"gridWidth",
+        		lv_gridWidth_32_0, 
+        		"INT");
+	    }
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2(), 10)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2(), 10);
+	 				}
+					({true}?=>(	otherlv_33='width_pixels' 
+    {
+    	newLeafNode(otherlv_33, grammarAccess.getListBoxElementAccess().getWidth_pixelsKeyword_2_10_0());
+    }
+	otherlv_34='=' 
+    {
+    	newLeafNode(otherlv_34, grammarAccess.getListBoxElementAccess().getEqualsSignKeyword_2_10_1());
+    }
+(
+(
+		lv_widthInPixels_35_0=RULE_INT
+		{
+			newLeafNode(lv_widthInPixels_35_0, grammarAccess.getListBoxElementAccess().getWidthInPixelsINTTerminalRuleCall_2_10_2_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getListBoxElementRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"widthInPixels",
+        		lv_widthInPixels_35_0, 
+        		"INT");
+	    }
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2(), 11)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2(), 11);
+	 				}
+					({true}?=>(	otherlv_36='height' 
+    {
+    	newLeafNode(otherlv_36, grammarAccess.getListBoxElementAccess().getHeightKeyword_2_11_0());
+    }
+	otherlv_37='=' 
+    {
+    	newLeafNode(otherlv_37, grammarAccess.getListBoxElementAccess().getEqualsSignKeyword_2_11_1());
+    }
+(
+(
+		lv_gridHeight_38_0=RULE_INT
+		{
+			newLeafNode(lv_gridHeight_38_0, grammarAccess.getListBoxElementAccess().getGridHeightINTTerminalRuleCall_2_11_2_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getListBoxElementRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"gridHeight",
+        		lv_gridHeight_38_0, 
+        		"INT");
+	    }
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2(), 12)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2(), 12);
+	 				}
+					({true}?=>(	otherlv_39='super_type' 
+    {
+    	newLeafNode(otherlv_39, grammarAccess.getListBoxElementAccess().getSuper_typeKeyword_2_12_0());
+    }
+	otherlv_40='=' 
+    {
+    	newLeafNode(otherlv_40, grammarAccess.getListBoxElementAccess().getEqualsSignKeyword_2_12_1());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getListBoxElementRule());
+	        }
+        }
+	otherlv_41=RULE_ID
+	{
+		newLeafNode(otherlv_41, grammarAccess.getListBoxElementAccess().getSuperTypeTemplateElementCrossReference_2_12_2_0()); 
+	}
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  
+
+		)*	
+	)
+)
+	{ 
+	  getUnorderedGroupHelper().leave(grammarAccess.getListBoxElementAccess().getUnorderedGroup_2());
+	}
+
+)(	otherlv_42='{' 
+    {
+    	newLeafNode(otherlv_42, grammarAccess.getListBoxElementAccess().getLeftCurlyBracketKeyword_3_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getListBoxElementAccess().getLogicLogicElementParserRuleCall_3_1_0()); 
+	    }
+		lv_logic_43_0=ruleLogicElement		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getListBoxElementRule());
+	        }
+       		add(
+       			$current, 
+       			"logic",
+        		lv_logic_43_0, 
+        		"LogicElement");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)*	otherlv_44='}' 
+    {
+    	newLeafNode(otherlv_44, grammarAccess.getListBoxElementAccess().getRightCurlyBracketKeyword_3_2());
     }
 )?)
 ;

@@ -290,12 +290,17 @@ public class FormTests {
   public void testTabBox() {
     try {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("module test.a.b");
+      _builder.append("module a.b");
       _builder.newLine();
       _builder.newLine();
       _builder.append("translation Tab01Text de=\"Tab 1\"");
       _builder.newLine();
       _builder.append("translation Tab02Text de=\"Tab 2\"");
+      _builder.newLine();
+      _builder.append("translation ListText de=\"ListBox\"");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("code MyCode id=100");
       _builder.newLine();
       _builder.newLine();
       _builder.append("form TabTest01 columns=1 {");
@@ -340,7 +345,7 @@ public class FormTests {
       _builder.append("group Grp02 columns=1 width=1 {");
       _builder.newLine();
       _builder.append("\t\t");
-      _builder.append("string MyString");
+      _builder.append("list MyList text=ListText code=MyCode height=4");
       _builder.newLine();
       _builder.append("\t");
       _builder.append("}");

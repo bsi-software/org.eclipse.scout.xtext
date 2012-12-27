@@ -84,6 +84,7 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
       case SamlPackage.LONG_ELEMENT: return createLongElement();
       case SamlPackage.DATE_ELEMENT: return createDateElement();
       case SamlPackage.SMARTFIELD_ELEMENT: return createSmartfieldElement();
+      case SamlPackage.LIST_BOX_ELEMENT: return createListBoxElement();
       case SamlPackage.CUSTOM_FIELD_ELEMENT: return createCustomFieldElement();
       case SamlPackage.BUTTON_ELEMENT: return createButtonElement();
       case SamlPackage.MENU_ELEMENT: return createMenuElement();
@@ -315,6 +316,17 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
   {
     SmartfieldElementImpl smartfieldElement = new SmartfieldElementImpl();
     return smartfieldElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ListBoxElement createListBoxElement()
+  {
+    ListBoxElementImpl listBoxElement = new ListBoxElementImpl();
+    return listBoxElement;
   }
 
   /**

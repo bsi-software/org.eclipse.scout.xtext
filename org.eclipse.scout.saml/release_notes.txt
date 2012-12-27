@@ -36,5 +36,10 @@ Changes:
 		Element 'tabbox'
 			Attributes: 'enabled', 'visible', 'width', 'width_pixels', 'super_type'
 			
-		Element 'tab'
+		Element 'tab' (below tabbox only)
 			Attributes: 'text', 'columns', 'enabled', 'visible', 'super_type'
+		
+		Element 'list'
+			Attributes: 'text', 'enabled', 'visible', 'label_visible', 'master', 'mandatory', 'code', 'value_type', 'lookup', 'width', 'width_pixels', 'height', 'super_type'
+
+

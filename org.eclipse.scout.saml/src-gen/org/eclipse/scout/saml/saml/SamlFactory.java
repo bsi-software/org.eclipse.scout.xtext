@@ -203,6 +203,15 @@ public interface SamlFactory extends EFactory
   SmartfieldElement createSmartfieldElement();
 
   /**
+   * Returns a new object of class '<em>List Box Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>List Box Element</em>'.
+   * @generated
+   */
+  ListBoxElement createListBoxElement();
+
+  /**
    * Returns a new object of class '<em>Custom Field Element</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
