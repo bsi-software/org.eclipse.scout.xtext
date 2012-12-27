@@ -60,6 +60,7 @@ public class CodeElementImportOperation extends AbstractSamlElementImportOperati
     ctno.setNextCodeId("" + getCodeElement().getId());
     ctno.setSharedBundle(sharedBundle);
     ctno.setSuperTypeSignature(superSignature);
+    ctno.setPackageName(sharedBundle.getDefaultPackage(IScoutBundle.SHARED_SERVICES_CODE));
     ctno.setGenericTypeSignature(SignatureCache.createTypeSignature(genericTypeFqn));
     ctno.setTypeName(name);
     ctno.validate();
@@ -69,7 +70,7 @@ public class CodeElementImportOperation extends AbstractSamlElementImportOperati
   }
 
   private void deleteExisting(IScoutBundle shared, String codeTypeName) throws CoreException, IllegalArgumentException {
-    IType old = TypeUtility.getType(shared.getPackageName(IScoutBundle.SHARED_PACKAGE_APPENDIX_SERVICES_CODE) + "." + codeTypeName);
+    IType old = TypeUtility.getType(shared.getDefaultPackage(IScoutBundle.SHARED_SERVICES_CODE) + "." + codeTypeName);
     if (TypeUtility.exists(old)) {
       TypeDeleteOperation delete = new TypeDeleteOperation(old);
       delete.validate();

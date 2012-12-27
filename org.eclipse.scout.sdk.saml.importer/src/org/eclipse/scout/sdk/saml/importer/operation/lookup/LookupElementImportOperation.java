@@ -55,13 +55,20 @@ public class LookupElementImportOperation extends AbstractSamlElementImportOpera
 
     // create classes
     LookupCallNewOperation op = new LookupCallNewOperation();
+
     op.setLookupCallName(lookupCallName);
     op.setFormatSource(false);
     op.setBundle(getCurrentScoutModule().getSharedBundle());
+    op.setLookupCallPackageName(getCurrentScoutModule().getSharedBundle().getDefaultPackage(IScoutBundle.SHARED_SERVICES_LOOKUP));
+
     op.setServiceInterfaceBundle(getCurrentScoutModule().getSharedBundle());
+    op.setServiceInterfacePackageName(getCurrentScoutModule().getSharedBundle().getDefaultPackage(IScoutBundle.SHARED_SERVICES_LOOKUP));
     op.setInterfaceRegistrationBundle(getCurrentScoutModule().getClientBundle());
+
+    op.setServiceImplementationPackage(getCurrentScoutModule().getServerBundle().getDefaultPackage(IScoutBundle.SERVER_SERVICES_LOOKUP));
     op.setImplementationRegistrationBundle(getCurrentScoutModule().getServerBundle());
     op.setServiceImplementationBundle(getCurrentScoutModule().getServerBundle());
+
     op.setServiceSuperTypeSignature(SignatureCache.createTypeSignature(RuntimeClasses.AbstractLookupService));
     op.validate();
     op.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
@@ -89,9 +96,9 @@ public class LookupElementImportOperation extends AbstractSamlElementImportOpera
     IScoutBundle shared = getCurrentScoutModule().getSharedBundle();
     IScoutBundle server = getCurrentScoutModule().getServerBundle();
 
-    IType oldService = TypeUtility.getType(server.getPackageName(IScoutBundle.SERVER_PACKAGE_APPENDIX_SERVICES_LOOKUP) + "." + name + SdkProperties.SUFFIX_LOOKUP_SERVICE);
-    IType oldCall = TypeUtility.getType(shared.getPackageName(IScoutBundle.SHARED_PACKAGE_APPENDIX_SERVICES_LOOKUP) + "." + name + SdkProperties.SUFFIX_LOOKUP_CALL);
-    IType oldServiceInterface = TypeUtility.getType(shared.getPackageName(IScoutBundle.SHARED_PACKAGE_APPENDIX_SERVICES_LOOKUP) + ".I" + name + SdkProperties.SUFFIX_LOOKUP_SERVICE);
+    IType oldService = TypeUtility.getType(server.getDefaultPackage(IScoutBundle.SERVER_SERVICES_LOOKUP) + "." + name + SdkProperties.SUFFIX_LOOKUP_SERVICE);
+    IType oldCall = TypeUtility.getType(shared.getDefaultPackage(IScoutBundle.SHARED_SERVICES_LOOKUP) + "." + name + SdkProperties.SUFFIX_LOOKUP_CALL);
+    IType oldServiceInterface = TypeUtility.getType(shared.getDefaultPackage(IScoutBundle.SHARED_SERVICES_LOOKUP) + ".I" + name + SdkProperties.SUFFIX_LOOKUP_SERVICE);
 
     if (TypeUtility.exists(oldService)) {
       ServiceDeleteOperation sdo = new ServiceDeleteOperation();

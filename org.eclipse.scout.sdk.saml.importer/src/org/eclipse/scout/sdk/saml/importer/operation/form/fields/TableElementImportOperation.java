@@ -62,7 +62,7 @@ public class TableElementImportOperation extends AbstractFormFieldElementOperati
     applyGridHeightAttribute(getTableFieldElement().getGridHeight(), createdField, h);
     fillLogic(createdField);
 
-    MenuElementImportOperation.processMenus(getTableFieldElement().getMenus(), createdField, getSamlFormContext());
+    MenuElementImportOperation.processMenus(getTableFieldElement().getMenus(), table, getSamlFormContext());
     ColumnElementImportOperation.processColumns(getTableFieldElement().getColumns(), table, getSamlFormContext());
   }
 

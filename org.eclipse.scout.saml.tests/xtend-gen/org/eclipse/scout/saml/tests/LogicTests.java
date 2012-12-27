@@ -85,6 +85,39 @@ public class LogicTests {
   }
   
   @Test
+  public void testNamedTopLevelLogic() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module a.b");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("logic Foo3 placement=server { \"\" }");
+      _builder.newLine();
+      _builder.append("logic Foo placement=server { \"\" }");
+      _builder.newLine();
+      _builder.append("logic Foo2 placement=client { \"\" }");
+      _builder.newLine();
+      Model _parse = this._parseHelper.parse(_builder);
+      this._validationTestHelper.assertNoErrors(_parse);
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("module a.b");
+      _builder_1.newLine();
+      _builder_1.newLine();
+      _builder_1.append("logic Foo3 placement=server { \"\" }");
+      _builder_1.newLine();
+      _builder_1.append("logic Foo placement=server { \"\" }");
+      _builder_1.newLine();
+      _builder_1.append("logic Foo placement=client { \"\" }");
+      _builder_1.newLine();
+      Model _parse_1 = this._parseHelper.parse(_builder_1);
+      EClass _logicElement = SamlPackage.eINSTANCE.getLogicElement();
+      this._validationTestHelper.assertError(_parse_1, _logicElement, SamlJavaValidator.DUPLICATE, SamlJavaValidator.MSG_DUPLICATE);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
   public void testLogicAttributes() {
     try {
       StringConcatenation _builder = new StringConcatenation();

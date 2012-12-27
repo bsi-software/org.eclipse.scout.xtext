@@ -1,10 +1,15 @@
 package org.eclipse.scout.saml.validation;
 
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.pde.internal.core.PDECore;
+import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.saml.saml.ButtonElement;
+import org.eclipse.scout.saml.saml.CodeElement;
 import org.eclipse.scout.saml.saml.FormElement;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.KeyElement;
@@ -13,15 +18,20 @@ import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.saml.saml.LookupElement;
 import org.eclipse.scout.saml.saml.MenuElement;
 import org.eclipse.scout.saml.saml.Model;
+import org.eclipse.scout.saml.saml.ModuleElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
 import org.eclipse.scout.saml.saml.TableElement;
+import org.eclipse.scout.saml.saml.TemplateElement;
 import org.eclipse.scout.saml.saml.TranslationElement;
 import org.eclipse.scout.saml.saml.ValueFieldElement;
 import org.eclipse.scout.saml.services.SamlGrammarAccess;
+import org.eclipse.scout.sdk.internal.workspace.ScoutWorkspace;
+import org.eclipse.scout.sdk.workspace.IScoutProject;
 import org.eclipse.xtext.validation.Check;
 
 import com.google.inject.Inject;
 
+@SuppressWarnings("restriction")
 public class SamlJavaValidator extends AbstractSamlJavaValidator implements ISamlValidatorConstants {
 
   @Inject
@@ -149,25 +159,74 @@ public class SamlJavaValidator extends AbstractSamlJavaValidator implements ISam
   }
 
   @Check
-  public void checkNoGlobalTopLevelDuplicates(Model element) {
+  public void checkModule(ModuleElement module) {
+    if (PDECore.getDefault() == null) {
+      // we are running as JUnit test: don't check module
+      return;
+    }
+    IScoutProject[] roots = ScoutWorkspace.getInstance().getRootProjects();
+    LinkedList<IScoutProject> collector = new LinkedList<IScoutProject>();
+    if (roots != null && roots.length > 0) {
+      for (IScoutProject p : roots) {
+        collectProjectsRec(p, collector);
+      }
+    }
+    for (IScoutProject p : collector) {
+      if (StringUtility.hasText(module.getName()) && module.getName().equals(p.getProjectName())) {
+        return;
+      }
+    }
+    warning(INVALID_MODULE_NOT_FOUND, SamlPackage.Literals.MODULE_ELEMENT__NAME, INVALID_MODULE);
+  }
+
+  private void collectProjectsRec(IScoutProject p, List<IScoutProject> collector) {
+    if (p != null) {
+      collector.add(p);
+      for (IScoutProject child : p.getSubProjects()) {
+        collectProjectsRec(child, collector);
+      }
+    }
+  }
+
+  @Check
+  public void checkNoTranslationDuplicates(TranslationElement element) {
     if (helper.hasGlobalDuplicate(element, SamlPackage.eINSTANCE.getTranslationElement())) {
-      error(MSG_DUPLICATE, null, DUPLICATE);
+      error(MSG_DUPLICATE, SamlPackage.eINSTANCE.getTranslationElement_Name(), DUPLICATE);
     }
+  }
 
+  @Check
+  public void checkNoLogicDuplicates(LogicElement element) {
+    if (helper.hasGlobalDuplicate(element, SamlPackage.eINSTANCE.getLogicElement())) {
+      error(MSG_DUPLICATE, SamlPackage.eINSTANCE.getLogicElement_Name(), DUPLICATE);
+    }
+  }
+
+  @Check
+  public void checkNoFormDuplicates(FormElement element) {
     if (helper.hasGlobalDuplicate(element, SamlPackage.eINSTANCE.getFormElement())) {
-      error(MSG_DUPLICATE, null, DUPLICATE);
+      error(MSG_DUPLICATE, SamlPackage.eINSTANCE.getFormElement_Name(), DUPLICATE);
     }
+  }
 
+  @Check
+  public void checkNoLookupDuplicates(LookupElement element) {
     if (helper.hasGlobalDuplicate(element, SamlPackage.eINSTANCE.getLookupElement())) {
-      error(MSG_DUPLICATE, null, DUPLICATE);
+      error(MSG_DUPLICATE, SamlPackage.eINSTANCE.getLookupElement_Name(), DUPLICATE);
     }
+  }
 
+  @Check
+  public void checkNoCodeDuplicates(CodeElement element) {
     if (helper.hasGlobalDuplicate(element, SamlPackage.eINSTANCE.getCodeElement())) {
-      error(MSG_DUPLICATE, null, DUPLICATE);
+      error(MSG_DUPLICATE, SamlPackage.eINSTANCE.getCodeElement_Name(), DUPLICATE);
     }
+  }
 
+  @Check
+  public void checkNoTemplateDuplicates(TemplateElement element) {
     if (helper.hasGlobalDuplicate(element, SamlPackage.eINSTANCE.getTemplateElement())) {
-      error(MSG_DUPLICATE, null, DUPLICATE);
+      error(MSG_DUPLICATE, SamlPackage.eINSTANCE.getTemplateElement_Name(), DUPLICATE);
     }
   }
 }

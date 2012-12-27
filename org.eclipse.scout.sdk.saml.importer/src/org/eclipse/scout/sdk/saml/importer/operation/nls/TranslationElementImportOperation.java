@@ -24,6 +24,7 @@ import org.eclipse.scout.nls.sdk.internal.jdt.NlsFolder;
 import org.eclipse.scout.nls.sdk.model.util.Language;
 import org.eclipse.scout.nls.sdk.model.workspace.NlsEntry;
 import org.eclipse.scout.nls.sdk.model.workspace.project.INlsProject;
+import org.eclipse.scout.nls.sdk.services.model.ws.NlsServiceType;
 import org.eclipse.scout.nls.sdk.services.model.ws.project.ServiceNlsProjectProvider;
 import org.eclipse.scout.nls.sdk.services.operation.CreateServiceNlsProjectOperation;
 import org.eclipse.scout.nls.sdk.simple.model.ws.INlsType;
@@ -103,6 +104,7 @@ public class TranslationElementImportOperation extends AbstractSamlElementImport
       if (moduleSimpleName != null) {
         CreateServiceNlsProjectOperation newTextServiceOp = new CreateServiceNlsProjectOperation();
         newTextServiceOp.setBundle(getCurrentScoutModule().getSharedBundle());
+        newTextServiceOp.setPackageName(getCurrentScoutModule().getSharedBundle().getDefaultPackage(NlsServiceType.TEXT_SERVICE_PACKAGE_ID));
         newTextServiceOp.setLanguages(new String[]{null /* default language */}); // other languages will be added as needed.
         newTextServiceOp.setServiceName(moduleSimpleName + SdkProperties.SUFFIX_TEXT_SERVICE);
         newTextServiceOp.setSuperType(TypeUtility.getType(RuntimeClasses.AbstractDynamicNlsTextProviderService));

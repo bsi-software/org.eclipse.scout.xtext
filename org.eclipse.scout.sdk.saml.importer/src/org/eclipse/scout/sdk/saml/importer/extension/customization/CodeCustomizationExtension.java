@@ -10,8 +10,6 @@
  ******************************************************************************/
 package org.eclipse.scout.sdk.saml.importer.extension.customization;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.TreeMap;
 
 import org.eclipse.core.runtime.CoreException;
@@ -35,6 +33,7 @@ public class CodeCustomizationExtension {
   public final static String EXTENSION_POINT_ID = "codeCustomization";
 
   public final static String CONFIGURATOR_ELEMENT_NAME = "projectConfigurator";
+  public final static String CONFIGURATOR_ORDER_ATTRIBUTE = "order";
   public final static String CONFIGURATOR_CLASS_ATTRIBUTE = "class";
 
   public final static String SOURCE_PROVIDER_ELEMENT_NAME = "sourceProvider";
@@ -51,7 +50,8 @@ public class CodeCustomizationExtension {
     if (projectConfigurators == null) {
       synchronized (confLock) {
         if (projectConfigurators == null) {
-          final List<IScoutProjectConfigurator> list = new ArrayList<IScoutProjectConfigurator>();
+          final TreeMap<Double, IScoutProjectConfigurator> map = new TreeMap<Double, IScoutProjectConfigurator>();
+
           IExtensionRegistry reg = Platform.getExtensionRegistry();
           IExtensionPoint xp = reg.getExtensionPoint(SamlImporterActivator.PLUGIN_ID, EXTENSION_POINT_ID);
           IExtension[] extensions = xp.getExtensions();
@@ -59,16 +59,29 @@ public class CodeCustomizationExtension {
             IConfigurationElement[] elements = extension.getConfigurationElements();
             for (IConfigurationElement element : elements) {
               if (CONFIGURATOR_ELEMENT_NAME.equals(element.getName())) {
+                String order = element.getAttribute(CONFIGURATOR_ORDER_ATTRIBUTE);
                 IScoutProjectConfigurator configurator = (IScoutProjectConfigurator) element.createExecutableExtension(CONFIGURATOR_CLASS_ATTRIBUTE);
-                list.add(configurator);
+                map.put(parseDouble(order), configurator);
               }
             }
           }
-          projectConfigurators = list.toArray(new IScoutProjectConfigurator[list.size()]);
+          projectConfigurators = map.values().toArray(new IScoutProjectConfigurator[map.values().size()]);
         }
       }
     }
     return projectConfigurators;
+  }
+
+  private static Double parseDouble(String order) {
+    if (StringUtility.hasText(order)) {
+      try {
+        return new Double(Double.parseDouble(order));
+      }
+      catch (NumberFormatException e) {
+        SamlImporterActivator.logWarning("Invalid numeric extension order: '" + order + "'.", e);
+      }
+    }
+    return new Double(0);
   }
 
   public static String getSource(SourceProviderInput input) throws CoreException {
@@ -86,7 +99,7 @@ public class CodeCustomizationExtension {
     if (sourceProviders == null) {
       synchronized (providerLock) {
         if (sourceProviders == null) {
-          TreeMap<String, ISourceProvider> map = new TreeMap<String, ISourceProvider>();
+          TreeMap<Double, ISourceProvider> map = new TreeMap<Double, ISourceProvider>();
 
           IExtensionRegistry reg = Platform.getExtensionRegistry();
           IExtensionPoint xp = reg.getExtensionPoint(SamlImporterActivator.PLUGIN_ID, EXTENSION_POINT_ID);
@@ -97,11 +110,11 @@ public class CodeCustomizationExtension {
               if (SOURCE_PROVIDER_ELEMENT_NAME.equals(element.getName())) {
                 String order = element.getAttribute(SOURCE_PROVIDER_ORDER_ATTRIBUTE);
                 ISourceProvider provider = (ISourceProvider) element.createExecutableExtension(SOURCE_PROVIDER_CLASS_ATTRIBUTE);
-                map.put(order, provider);
+                map.put(parseDouble(order), provider);
               }
             }
           }
-          sourceProviders = map.values().toArray(new ISourceProvider[map.size()]);
+          sourceProviders = map.values().toArray(new ISourceProvider[map.values().size()]);
         }
       }
     }

@@ -64,6 +64,10 @@
             class="org.eclipse.scout.sdk.saml.importer.operation.logic.DefaultSourceProvider"
             order="-1000">
       </sourceProvider>
+      <projectConfigurator
+            class="org.eclipse.scout.sdk.saml.importer.extension.customization.DefaultProjectConfigurator"
+            order="-1000">
+      </projectConfigurator>
    </extension>
 
 </plugin>

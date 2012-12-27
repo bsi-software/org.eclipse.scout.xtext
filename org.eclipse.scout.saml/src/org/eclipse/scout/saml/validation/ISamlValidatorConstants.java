@@ -18,22 +18,25 @@ package org.eclipse.scout.saml.validation;
  */
 public interface ISamlValidatorConstants {
 
-  static final String PLACEMENT_SERVER_ONLY_FOR_LOOKUP = "OnlyServerPlacementForLookups";
-  static final String MSG_PLACEMENT_SERVER_ONLY_FOR_LOOKUP = "lookups only support server placements";
+  final String PLACEMENT_SERVER_ONLY_FOR_LOOKUP = "OnlyServerPlacementForLookups";
+  final String MSG_PLACEMENT_SERVER_ONLY_FOR_LOOKUP = "lookups only support server placements";
 
-  static final String DUPLICATE = "DuplicateElement";
-  static final String MSG_DUPLICATE = "duplicate element name";
-  static final String MSG_DUPLICATE_FIELD = "form contains duplicate fields";
-  static final String MSG_DUPLICATE_LANG = "a language can only be defined once for each translation";
+  final String DUPLICATE = "DuplicateElement";
+  final String MSG_DUPLICATE = "duplicate element name";
+  final String MSG_DUPLICATE_FIELD = "form contains duplicate fields";
+  final String MSG_DUPLICATE_LANG = "a language can only be defined once for each translation";
 
-  static final String PLACEMENT_MANDATORY = "PlacementMandatory";
-  static final String MSG_PLACEMENT_MANDATORY = "source placement is missing";
+  final String PLACEMENT_MANDATORY = "PlacementMandatory";
+  final String MSG_PLACEMENT_MANDATORY = "source placement is missing";
 
-  static final String INVALID_LOGIC_ELEMENT = "InvalidLogicElement";
-  static final String MSG_NAMED_LOGIC_ELEMENTS_NEEDS_SOURCE = "a named logic element must contain source code";
-  static final String MSG_NAMED_LOGIC_ELEMENTS_NO_EVENT = "a named logic element must not define an event";
-  static final String MSG_NAMED_LOGIC_NO_EXEC = "a named logic element must not define an exec";
-  static final String MSG_SOURCE_LINKED_OR_GIVEN = "a logic element must either contain source or link to source code of a named logic element";
-  static final String MSG_WRONG_LOGIC_EVENT = "this event is not allowed in this context";
-  static final String MSG_ONLY_NAMED_LOGIC_ON_TOP_LEVEL = "top level logic elements must be named";
+  final String INVALID_LOGIC_ELEMENT = "InvalidLogicElement";
+  final String MSG_NAMED_LOGIC_ELEMENTS_NEEDS_SOURCE = "a named logic element must contain source code";
+  final String MSG_NAMED_LOGIC_ELEMENTS_NO_EVENT = "a named logic element must not define an event";
+  final String MSG_NAMED_LOGIC_NO_EXEC = "a named logic element must not define an exec";
+  final String MSG_SOURCE_LINKED_OR_GIVEN = "a logic element must either contain source or link to source code of a named logic element";
+  final String MSG_WRONG_LOGIC_EVENT = "this event is not allowed in this context";
+  final String MSG_ONLY_NAMED_LOGIC_ON_TOP_LEVEL = "top level logic elements must be named";
+
+  final String INVALID_MODULE = "InvalidModuleElement";
+  final String INVALID_MODULE_NOT_FOUND = "The given module could not be found in the current workspace.";
 }

@@ -252,8 +252,8 @@ public class FormTests {
       _builder_1.append("}");
       _builder_1.newLine();
       Model _parse_1 = this._parseHelper.parse(_builder_1, rs);
-      EClass _model = SamlPackage.eINSTANCE.getModel();
-      this._validationTestHelper.assertError(_parse_1, _model, SamlJavaValidator.DUPLICATE, SamlJavaValidator.MSG_DUPLICATE);
+      EClass _formElement = SamlPackage.eINSTANCE.getFormElement();
+      this._validationTestHelper.assertError(_parse_1, _formElement, SamlJavaValidator.DUPLICATE, SamlJavaValidator.MSG_DUPLICATE);
       final XtextResourceSet rs2 = this.resourceSetProvider.get();
       StringConcatenation _builder_2 = new StringConcatenation();
       _builder_2.append("module a.b");

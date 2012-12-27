@@ -52,6 +52,25 @@ class LogicTests {
 	}
 	
 	@Test
+	def void testNamedTopLevelLogic() {
+		'''
+		module a.b
+		
+		logic Foo3 placement=server { "" }
+		logic Foo placement=server { "" }
+		logic Foo2 placement=client { "" }
+		'''.parse.assertNoErrors
+		
+		'''
+		module a.b
+		
+		logic Foo3 placement=server { "" }
+		logic Foo placement=server { "" }
+		logic Foo placement=client { "" }
+		'''.parse.assertError(SamlPackage::eINSTANCE.logicElement, SamlJavaValidator::DUPLICATE, SamlJavaValidator::MSG_DUPLICATE)
+	}
+	
+	@Test
 	def void testLogicAttributes() {
 		'''
 		module a.b

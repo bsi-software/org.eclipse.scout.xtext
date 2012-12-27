@@ -125,7 +125,7 @@ class FormTests {
 		form FormA {
 			
 		}
-		'''.parse(rs).assertError(SamlPackage::eINSTANCE.model, SamlJavaValidator::DUPLICATE, SamlJavaValidator::MSG_DUPLICATE)
+		'''.parse(rs).assertError(SamlPackage::eINSTANCE.formElement, SamlJavaValidator::DUPLICATE, SamlJavaValidator::MSG_DUPLICATE)
 		
 		
 		val rs2 = resourceSetProvider.get()
