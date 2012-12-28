@@ -143,4 +143,37 @@ public class TranslationTests {
       throw Exceptions.sneakyThrow(_e);
     }
   }
+  
+  @Test
+  public void testDefaultLangMissing() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module a.b");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("translation MyTrans en=\"en\" default_lang=\"ab\"");
+      _builder.newLine();
+      Model _parse = this._parseHelper.parse(_builder);
+      this._validationTestHelper.assertNoErrors(_parse);
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("module a.b");
+      _builder_1.newLine();
+      _builder_1.newLine();
+      _builder_1.append("translation MyTrans en=\"en\" default_lang=\"ab\"");
+      _builder_1.newLine();
+      Model _parse_1 = this._parseHelper.parse(_builder_1);
+      this._validationTestHelper.assertNoIssues(_parse_1);
+      StringConcatenation _builder_2 = new StringConcatenation();
+      _builder_2.append("module a.b");
+      _builder_2.newLine();
+      _builder_2.newLine();
+      _builder_2.append("translation MyTrans en=\"en\" ab=\"ab\"");
+      _builder_2.newLine();
+      Model _parse_2 = this._parseHelper.parse(_builder_2);
+      EClass _translationElement = SamlPackage.eINSTANCE.getTranslationElement();
+      this._validationTestHelper.assertWarning(_parse_2, _translationElement, SamlJavaValidator.DEFAULT_LANG_MISSING, SamlJavaValidator.MSG_DEFAULT_LANG_MISSING);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
 }

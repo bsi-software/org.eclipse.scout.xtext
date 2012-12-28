@@ -33,6 +33,7 @@ import org.eclipse.scout.nls.sdk.simple.ui.dialog.language.TranslationFileNewMod
 import org.eclipse.scout.nls.sdk.ui.action.INewLanguageContext;
 import org.eclipse.scout.saml.saml.LanguageAttribute;
 import org.eclipse.scout.saml.saml.TranslationElement;
+import org.eclipse.scout.saml.validation.ISamlValidatorConstants;
 import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.saml.importer.internal.SamlImporterActivator;
 import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
@@ -140,7 +141,7 @@ public class TranslationElementImportOperation extends AbstractSamlElementImport
     String key = getTranslationElement().getName();
     NlsEntry entry = new NlsEntry(key, nlsProject);
     for (LanguageAttribute lang : getTranslationElement().getTranslations()) {
-      Language language = new Language(parseLocale(lang));
+      Language language = parseLanguage(lang);
 
       if (txtProvSvc != null && fld != null && !nlsProject.containsLanguage(language)) {
         INewLanguageContext translationCreationContext = nlsProject.getTranslationCreationContext();
@@ -154,18 +155,23 @@ public class TranslationElementImportOperation extends AbstractSamlElementImport
     nlsProject.updateRow(entry, getSamlContext().getMonitor());
   }
 
-  private static Locale parseLocale(LanguageAttribute lang) {
+  private static Language parseLanguage(LanguageAttribute lang) {
+    if (ISamlValidatorConstants.DEFAULT_LANG_NAME.equals(lang.getLang().toLowerCase())) {
+      return Language.LANGUAGE_DEFAULT;
+    }
+
     Matcher m = NLS_KEY_PATTERN.matcher(lang.getLang());
     if (m.matches()) {
       String l = m.group(2);
       String c = m.group(4);
       if (c != null) {
-        return new Locale(l, c);
+        return new Language(new Locale(l, c));
       }
       else if (l != null) {
-        return new Locale(l);
+        return new Language(new Locale(l));
       }
     }
+
     throw new IllegalArgumentException("Invalid language iso code: '" + lang.getLang() + "'.");
   }
 

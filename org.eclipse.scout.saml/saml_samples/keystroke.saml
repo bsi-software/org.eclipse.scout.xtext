@@ -1,6 +1,6 @@
 module test.aa.bb
 
-translation Message en="Message" de="Nachricht"
+translation Message en="Message" default_lang="Nachricht"
 
 form Desktop title=Message {
 	

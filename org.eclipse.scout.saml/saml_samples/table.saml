@@ -1,13 +1,13 @@
 module test.aa.bb
 
-translation BuDatum de="Bu-Datum"
-translation Text de="Text"
-translation Valuta de="Valuta"
-translation Sy de="Sy"
-translation CpNr de="Cp.-Nr."
-translation SollHaben de="Soll/Haben"
-translation Saldo de="Saldo"
-translation InfoF7Col de="Info                                     F7"
+translation BuDatum default_lang="Bu-Datum"
+translation Text default_lang="Text"
+translation Valuta default_lang="Valuta"
+translation Sy default_lang="Sy"
+translation CpNr default_lang="Cp.-Nr."
+translation SollHaben default_lang="Soll/Haben"
+translation Saldo default_lang="Saldo"
+translation InfoF7Col default_lang="Info                                     F7"
 
 
 form Rka021_gen {

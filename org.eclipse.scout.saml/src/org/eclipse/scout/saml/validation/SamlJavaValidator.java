@@ -149,12 +149,18 @@ public class SamlJavaValidator extends AbstractSamlJavaValidator implements ISam
 
   @Check
   public void checkTranslationAttributes(TranslationElement e) {
+    // check for duplicate languages
     HashSet<String> attribNames = new HashSet<String>(e.getTranslations().size());
     for (LanguageAttribute l : e.getTranslations()) {
       if (!attribNames.add(l.getLang())) {
         error(MSG_DUPLICATE_LANG, e, SamlPackage.Literals.TRANSLATION_ELEMENT__TRANSLATIONS, DUPLICATE);
         return;
       }
+    }
+
+    // check if a default language is specified
+    if (!attribNames.contains(DEFAULT_LANG_NAME)) {
+      warning(MSG_DEFAULT_LANG_MISSING, e, SamlPackage.Literals.TRANSLATION_ELEMENT__TRANSLATIONS, DEFAULT_LANG_MISSING);
     }
   }
 

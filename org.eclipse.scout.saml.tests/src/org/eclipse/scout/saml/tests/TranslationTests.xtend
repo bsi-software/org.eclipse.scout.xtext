@@ -89,4 +89,25 @@ class TranslationTests {
 		}
 		'''.parse(resourceSet).assertNoErrors
 	}
+	
+	@Test
+	def void testDefaultLangMissing() {
+		'''
+		module a.b
+		
+		translation MyTrans en="en" default_lang="ab"
+		'''.parse.assertNoErrors
+		
+		'''
+		module a.b
+		
+		translation MyTrans en="en" default_lang="ab"
+		'''.parse.assertNoIssues
+		
+		'''
+		module a.b
+		
+		translation MyTrans en="en" ab="ab"
+		'''.parse.assertWarning(SamlPackage::eINSTANCE.translationElement, SamlJavaValidator::DEFAULT_LANG_MISSING, SamlJavaValidator::MSG_DEFAULT_LANG_MISSING)
+	}
 }
