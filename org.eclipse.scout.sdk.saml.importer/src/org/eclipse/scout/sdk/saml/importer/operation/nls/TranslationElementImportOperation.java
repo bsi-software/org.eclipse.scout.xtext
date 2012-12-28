@@ -12,7 +12,6 @@ package org.eclipse.scout.sdk.saml.importer.operation.nls;
 
 import java.util.Locale;
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.runtime.CoreException;
@@ -49,8 +48,6 @@ import org.eclipse.scout.sdk.util.type.TypeUtility;
  * @since 3.8.0 25.09.2012
  */
 public class TranslationElementImportOperation extends AbstractSamlElementImportOperation {
-
-  private static final Pattern NLS_KEY_PATTERN = Pattern.compile("^(([A-Za-z]{2}))(_([A-Za-z]{2}))?$");
 
   private TranslationElement m_translationElement;
 
@@ -160,7 +157,7 @@ public class TranslationElementImportOperation extends AbstractSamlElementImport
       return Language.LANGUAGE_DEFAULT;
     }
 
-    Matcher m = NLS_KEY_PATTERN.matcher(lang.getLang());
+    Matcher m = ISamlValidatorConstants.NLS_KEY_PATTERN.matcher(lang.getLang());
     if (m.matches()) {
       String l = m.group(2);
       String c = m.group(4);

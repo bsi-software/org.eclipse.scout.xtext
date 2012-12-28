@@ -287,6 +287,35 @@ public class FormTests {
   }
   
   @Test
+  public void testTabs() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module a.b");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("form TabTest02 {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("tab MyTab {");
+      _builder.newLine();
+      _builder.append("\t\t\t");
+      _builder.append("string MyString");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      Model _parse = this._parseHelper.parse(_builder);
+      EClass _tabElement = SamlPackage.eINSTANCE.getTabElement();
+      this._validationTestHelper.assertError(_parse, _tabElement, SamlJavaValidator.TAB_ONLY_IN_TABBOX, SamlJavaValidator.MSG_TAB_ONLY_IN_TABBOX);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
   public void testTabBox() {
     try {
       StringConcatenation _builder = new StringConcatenation();

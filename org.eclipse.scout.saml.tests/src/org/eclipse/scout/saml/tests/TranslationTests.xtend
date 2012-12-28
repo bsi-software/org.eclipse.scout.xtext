@@ -91,11 +91,38 @@ class TranslationTests {
 	}
 	
 	@Test
+	def void testLanguagePattern() {
+		'''
+		module a.b
+		
+		translation MyTrans e="en" it_CH="it" default_lang="ab"
+		'''.parse.assertError(SamlPackage::eINSTANCE.translationElement, SamlJavaValidator::INVALID_LANG, SamlJavaValidator::MSG_INVALID_LANG)
+		
+		'''
+		module a.b
+		
+		translation MyTrans enn="en" it_CH="it" default_lang="ab"
+		'''.parse.assertError(SamlPackage::eINSTANCE.translationElement, SamlJavaValidator::INVALID_LANG, SamlJavaValidator::MSG_INVALID_LANG)
+		
+		'''
+		module a.b
+		
+		translation MyTrans eafdsadf="en" it_CH="it" default_lang="ab"
+		'''.parse.assertError(SamlPackage::eINSTANCE.translationElement, SamlJavaValidator::INVALID_LANG, SamlJavaValidator::MSG_INVALID_LANG)
+		
+		'''
+		module a.b
+		
+		translation MyTrans en_GBB="en" default_lang="ab"
+		'''.parse.assertError(SamlPackage::eINSTANCE.translationElement, SamlJavaValidator::INVALID_LANG, SamlJavaValidator::MSG_INVALID_LANG)
+	}
+	
+	@Test
 	def void testDefaultLangMissing() {
 		'''
 		module a.b
 		
-		translation MyTrans en="en" default_lang="ab"
+		translation MyTrans en="en" it_CH="it" default_lang="ab"
 		'''.parse.assertNoErrors
 		
 		'''

@@ -146,6 +146,20 @@ class FormTests {
 	}
 	
 	@Test
+	def void testTabs() {
+		'''
+		module a.b
+		
+		
+		form TabTest02 {
+			tab MyTab {
+					string MyString
+				}
+		}
+		'''.parse.assertError(SamlPackage::eINSTANCE.tabElement, SamlJavaValidator::TAB_ONLY_IN_TABBOX, SamlJavaValidator::MSG_TAB_ONLY_IN_TABBOX)
+	}
+	
+	@Test
 	def void testTabBox() {
 		'''
 		module a.b

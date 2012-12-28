@@ -20,6 +20,8 @@ import org.eclipse.scout.saml.saml.MenuElement;
 import org.eclipse.scout.saml.saml.Model;
 import org.eclipse.scout.saml.saml.ModuleElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
+import org.eclipse.scout.saml.saml.TabBoxElement;
+import org.eclipse.scout.saml.saml.TabElement;
 import org.eclipse.scout.saml.saml.TableElement;
 import org.eclipse.scout.saml.saml.TemplateElement;
 import org.eclipse.scout.saml.saml.TranslationElement;
@@ -158,6 +160,16 @@ public class SamlJavaValidator extends AbstractSamlJavaValidator implements ISam
       }
     }
 
+    // check language pattern
+    for (String lang : attribNames) {
+      if (!DEFAULT_LANG_NAME.equals(lang)) {
+        if (!NLS_KEY_PATTERN.matcher(lang).matches()) {
+          error(MSG_INVALID_LANG, e, SamlPackage.Literals.TRANSLATION_ELEMENT__TRANSLATIONS, INVALID_LANG);
+          return;
+        }
+      }
+    }
+
     // check if a default language is specified
     if (!attribNames.contains(DEFAULT_LANG_NAME)) {
       warning(MSG_DEFAULT_LANG_MISSING, e, SamlPackage.Literals.TRANSLATION_ELEMENT__TRANSLATIONS, DEFAULT_LANG_MISSING);
@@ -182,7 +194,14 @@ public class SamlJavaValidator extends AbstractSamlJavaValidator implements ISam
         return;
       }
     }
-    warning(INVALID_MODULE_NOT_FOUND, SamlPackage.Literals.MODULE_ELEMENT__NAME, INVALID_MODULE);
+    warning(INVALID_MODULE_NOT_FOUND, module, SamlPackage.Literals.MODULE_ELEMENT__NAME, INVALID_MODULE);
+  }
+
+  @Check
+  public void checkTab(TabElement tab) {
+    if (!(tab.eContainer() instanceof TabBoxElement)) {
+      error(MSG_TAB_ONLY_IN_TABBOX, tab, SamlPackage.Literals.FORM_FIELD_ELEMENT__NAME, TAB_ONLY_IN_TABBOX);
+    }
   }
 
   private void collectProjectsRec(IScoutProject p, List<IScoutProject> collector) {
@@ -197,42 +216,42 @@ public class SamlJavaValidator extends AbstractSamlJavaValidator implements ISam
   @Check
   public void checkNoTranslationDuplicates(TranslationElement element) {
     if (helper.hasGlobalDuplicate(element, SamlPackage.eINSTANCE.getTranslationElement())) {
-      error(MSG_DUPLICATE, SamlPackage.eINSTANCE.getTranslationElement_Name(), DUPLICATE);
+      error(MSG_DUPLICATE, element, SamlPackage.eINSTANCE.getTranslationElement_Name(), DUPLICATE);
     }
   }
 
   @Check
   public void checkNoLogicDuplicates(LogicElement element) {
     if (helper.hasGlobalDuplicate(element, SamlPackage.eINSTANCE.getLogicElement())) {
-      error(MSG_DUPLICATE, SamlPackage.eINSTANCE.getLogicElement_Name(), DUPLICATE);
+      error(MSG_DUPLICATE, element, SamlPackage.eINSTANCE.getLogicElement_Name(), DUPLICATE);
     }
   }
 
   @Check
   public void checkNoFormDuplicates(FormElement element) {
     if (helper.hasGlobalDuplicate(element, SamlPackage.eINSTANCE.getFormElement())) {
-      error(MSG_DUPLICATE, SamlPackage.eINSTANCE.getFormElement_Name(), DUPLICATE);
+      error(MSG_DUPLICATE, element, SamlPackage.eINSTANCE.getFormElement_Name(), DUPLICATE);
     }
   }
 
   @Check
   public void checkNoLookupDuplicates(LookupElement element) {
     if (helper.hasGlobalDuplicate(element, SamlPackage.eINSTANCE.getLookupElement())) {
-      error(MSG_DUPLICATE, SamlPackage.eINSTANCE.getLookupElement_Name(), DUPLICATE);
+      error(MSG_DUPLICATE, element, SamlPackage.eINSTANCE.getLookupElement_Name(), DUPLICATE);
     }
   }
 
   @Check
   public void checkNoCodeDuplicates(CodeElement element) {
     if (helper.hasGlobalDuplicate(element, SamlPackage.eINSTANCE.getCodeElement())) {
-      error(MSG_DUPLICATE, SamlPackage.eINSTANCE.getCodeElement_Name(), DUPLICATE);
+      error(MSG_DUPLICATE, element, SamlPackage.eINSTANCE.getCodeElement_Name(), DUPLICATE);
     }
   }
 
   @Check
   public void checkNoTemplateDuplicates(TemplateElement element) {
     if (helper.hasGlobalDuplicate(element, SamlPackage.eINSTANCE.getTemplateElement())) {
-      error(MSG_DUPLICATE, SamlPackage.eINSTANCE.getTemplateElement_Name(), DUPLICATE);
+      error(MSG_DUPLICATE, element, SamlPackage.eINSTANCE.getTemplateElement_Name(), DUPLICATE);
     }
   }
 }

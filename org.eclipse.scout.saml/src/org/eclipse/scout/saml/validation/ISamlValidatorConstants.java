@@ -10,6 +10,8 @@
  ******************************************************************************/
 package org.eclipse.scout.saml.validation;
 
+import java.util.regex.Pattern;
+
 /**
  * <h3>{@link ISamlValidatorConstants}</h3> ...
  * 
@@ -17,6 +19,10 @@ package org.eclipse.scout.saml.validation;
  * @since 3.8.0 18.10.2012
  */
 public interface ISamlValidatorConstants {
+
+  Pattern NLS_KEY_PATTERN = Pattern.compile("^(([A-Za-z]{2}))(_([A-Za-z]{2}))?$");
+  String INVALID_LANG = "InvalidLanguage";
+  String MSG_INVALID_LANG = "Invalid language";
 
   String DEFAULT_LANG_NAME = "default_lang";
   String DEFAULT_LANG_MISSING = "DefaultLangMissing";
@@ -43,4 +49,7 @@ public interface ISamlValidatorConstants {
 
   String INVALID_MODULE = "InvalidModuleElement";
   String INVALID_MODULE_NOT_FOUND = "The given module could not be found in the current workspace.";
+
+  String TAB_ONLY_IN_TABBOX = "TabOnlyInTabbox";
+  String MSG_TAB_ONLY_IN_TABBOX = "A tab element is only allowed inside a tabbox.";
 }
