@@ -16,7 +16,8 @@ Require-Bundle: org.eclipse.scout.saml;visibility:=reexport,
  org.eclipse.xtext.common.types.ui,
  org.eclipse.xtext.ui.codetemplates.ui,
  org.eclipse.compare,
- org.eclipse.xtext.xbase.ui
+ org.eclipse.xtext.xbase.ui,
+ org.eclipse.scout.sdk.ui;bundle-version="3.9.0"
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.scout.saml.ui.contentassist,

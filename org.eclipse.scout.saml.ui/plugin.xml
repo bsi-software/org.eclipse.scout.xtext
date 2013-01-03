@@ -51,9 +51,10 @@
     <extension
             point="org.eclipse.ui.preferencePages">
         <page
-            class="org.eclipse.scout.saml.ui.SamlExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="org.eclipse.scout.saml.Saml"
-            name="Saml">
+              category="org.eclipse.scout.sdk.ui.extensions.preferences.ScoutSdkPreferencePage"
+              class="org.eclipse.scout.saml.ui.SamlExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+              id="org.eclipse.scout.saml.Saml"
+              name="Saml">
             <keywordReference id="org.eclipse.scout.saml.ui.keyword_Saml"/>
         </page>
         <page
