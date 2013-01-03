@@ -121,8 +121,7 @@ public class SamlJavaValidator extends AbstractSamlJavaValidator implements ISam
           grammar.getLogicEventTypeAccess().getInitKeyword_8().getValue());
     }
     else if (container instanceof FormFieldElement) {
-      return newSet(grammar.getLogicEventTypeAccess().getMaster_changedKeyword_7().getValue(),
-          grammar.getLogicEventTypeAccess().getInitKeyword_8().getValue());
+      return newSet(grammar.getLogicEventTypeAccess().getInitKeyword_8().getValue());
     }
     else if (container instanceof TableElement) {
       return newSet(grammar.getLogicEventTypeAccess().getInitKeyword_8().getValue());

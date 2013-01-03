@@ -273,20 +273,6 @@ class ComplexFormTests {
 			}
 			
 			sequence DepotSequence {
-				logic event=master_changed placement=client {
-					"Integer newMasterValue = form.getMitTitelField().getValue();
-				    if (newMasterValue != null) {
-				      if (newMasterValue.equals(1)) {
-				        // in case \"Mit Titeldruck\" is selected we disable the depotField
-				        form.getDepotField().setEnabled(false);
-				        form.getDepotField().setMandatory(false);
-				      }
-				      else {
-				        form.getDepotField().setEnabled(true);
-				        form.getDepotField().setMandatory(true);
-				      }
-				    }"
-				}
 				smartfield Depot text=DepotText lookup=DepotNumber value_type="java.lang.Double" {
 					logic exec=ZregAsMasterField
 				}

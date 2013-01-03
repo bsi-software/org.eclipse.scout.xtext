@@ -129,7 +129,6 @@
     <genClasses ecoreClass="Saml.ecore#//CustomFieldElement">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//CustomFieldElement/text"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//CustomFieldElement/labelVisible"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//CustomFieldElement/master"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//CustomFieldElement/gridWidth"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//CustomFieldElement/widthInPixels"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//CustomFieldElement/fields"/>

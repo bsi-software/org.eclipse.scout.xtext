@@ -210,6 +210,7 @@ ListBoxElement:'list' name=ID
 		('super_type' '=' superType=[TemplateElement])?
 	)
 	('{' (logic+=LogicElement)* '}')?;
+
 // CUSTOM FIELDS
 CustomFieldElement:'custom_field' name=ID 
 	(
@@ -218,12 +219,10 @@ CustomFieldElement:'custom_field' name=ID
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
 		('label_visible' '=' labelVisible=BooleanType)? &
-		('master' '=' master=[ValueFieldElement])? &
 		('width' '=' gridWidth=INT)? &
 		('width_pixels' '=' widthInPixels=INT)?
 	)
 	('{' (logic+=LogicElement | fields+=FormFieldElement)* '}')?;
-
 
 // BUTTONS
 ButtonElement:'button' name=ID

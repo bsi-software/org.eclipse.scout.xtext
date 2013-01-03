@@ -14,7 +14,6 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.eclipse.scout.saml.saml.CustomFieldElement#getText <em>Text</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.CustomFieldElement#getLabelVisible <em>Label Visible</em>}</li>
- *   <li>{@link org.eclipse.scout.saml.saml.CustomFieldElement#getMaster <em>Master</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.CustomFieldElement#getGridWidth <em>Grid Width</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.CustomFieldElement#getWidthInPixels <em>Width In Pixels</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.CustomFieldElement#getFields <em>Fields</em>}</li>
@@ -78,32 +77,6 @@ public interface CustomFieldElement extends FormFieldElement
    * @generated
    */
   void setLabelVisible(String value);
-
-  /**
-   * Returns the value of the '<em><b>Master</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Master</em>' reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Master</em>' reference.
-   * @see #setMaster(ValueFieldElement)
-   * @see org.eclipse.scout.saml.saml.SamlPackage#getCustomFieldElement_Master()
-   * @model
-   * @generated
-   */
-  ValueFieldElement getMaster();
-
-  /**
-   * Sets the value of the '{@link org.eclipse.scout.saml.saml.CustomFieldElement#getMaster <em>Master</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Master</em>' reference.
-   * @see #getMaster()
-   * @generated
-   */
-  void setMaster(ValueFieldElement value);
 
   /**
    * Returns the value of the '<em><b>Grid Width</b></em>' attribute.

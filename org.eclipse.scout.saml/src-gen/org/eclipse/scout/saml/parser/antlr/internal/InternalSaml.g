@@ -5987,9 +5987,9 @@ ruleCustomFieldElement returns [EObject current=null]
 					{ 
 	 				  getUnorderedGroupHelper().select(grammarAccess.getCustomFieldElementAccess().getUnorderedGroup_2(), 5);
 	 				}
-					({true}?=>(	otherlv_18='master' 
+					({true}?=>(	otherlv_18='width' 
     {
-    	newLeafNode(otherlv_18, grammarAccess.getCustomFieldElementAccess().getMasterKeyword_2_5_0());
+    	newLeafNode(otherlv_18, grammarAccess.getCustomFieldElementAccess().getWidthKeyword_2_5_0());
     }
 	otherlv_19='=' 
     {
@@ -5997,15 +5997,20 @@ ruleCustomFieldElement returns [EObject current=null]
     }
 (
 (
+		lv_gridWidth_20_0=RULE_INT
 		{
-			if ($current==null) {
+			newLeafNode(lv_gridWidth_20_0, grammarAccess.getCustomFieldElementAccess().getGridWidthINTTerminalRuleCall_2_5_2_0()); 
+		}
+		{
+	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getCustomFieldElementRule());
 	        }
-        }
-	otherlv_20=RULE_ID
-	{
-		newLeafNode(otherlv_20, grammarAccess.getCustomFieldElementAccess().getMasterValueFieldElementCrossReference_2_5_2_0()); 
-	}
+       		setWithLastConsumed(
+       			$current, 
+       			"gridWidth",
+        		lv_gridWidth_20_0, 
+        		"INT");
+	    }
 
 )
 )))
@@ -6020,9 +6025,9 @@ ruleCustomFieldElement returns [EObject current=null]
 					{ 
 	 				  getUnorderedGroupHelper().select(grammarAccess.getCustomFieldElementAccess().getUnorderedGroup_2(), 6);
 	 				}
-					({true}?=>(	otherlv_21='width' 
+					({true}?=>(	otherlv_21='width_pixels' 
     {
-    	newLeafNode(otherlv_21, grammarAccess.getCustomFieldElementAccess().getWidthKeyword_2_6_0());
+    	newLeafNode(otherlv_21, grammarAccess.getCustomFieldElementAccess().getWidth_pixelsKeyword_2_6_0());
     }
 	otherlv_22='=' 
     {
@@ -6030,47 +6035,9 @@ ruleCustomFieldElement returns [EObject current=null]
     }
 (
 (
-		lv_gridWidth_23_0=RULE_INT
+		lv_widthInPixels_23_0=RULE_INT
 		{
-			newLeafNode(lv_gridWidth_23_0, grammarAccess.getCustomFieldElementAccess().getGridWidthINTTerminalRuleCall_2_6_2_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getCustomFieldElementRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"gridWidth",
-        		lv_gridWidth_23_0, 
-        		"INT");
-	    }
-
-)
-)))
-					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getCustomFieldElementAccess().getUnorderedGroup_2());
-	 				}
- 				)
-			)  |
-
-			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getCustomFieldElementAccess().getUnorderedGroup_2(), 7)}?=>(
-					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getCustomFieldElementAccess().getUnorderedGroup_2(), 7);
-	 				}
-					({true}?=>(	otherlv_24='width_pixels' 
-    {
-    	newLeafNode(otherlv_24, grammarAccess.getCustomFieldElementAccess().getWidth_pixelsKeyword_2_7_0());
-    }
-	otherlv_25='=' 
-    {
-    	newLeafNode(otherlv_25, grammarAccess.getCustomFieldElementAccess().getEqualsSignKeyword_2_7_1());
-    }
-(
-(
-		lv_widthInPixels_26_0=RULE_INT
-		{
-			newLeafNode(lv_widthInPixels_26_0, grammarAccess.getCustomFieldElementAccess().getWidthInPixelsINTTerminalRuleCall_2_7_2_0()); 
+			newLeafNode(lv_widthInPixels_23_0, grammarAccess.getCustomFieldElementAccess().getWidthInPixelsINTTerminalRuleCall_2_6_2_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -6079,7 +6046,7 @@ ruleCustomFieldElement returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"widthInPixels",
-        		lv_widthInPixels_26_0, 
+        		lv_widthInPixels_23_0, 
         		"INT");
 	    }
 
@@ -6098,23 +6065,23 @@ ruleCustomFieldElement returns [EObject current=null]
 	  getUnorderedGroupHelper().leave(grammarAccess.getCustomFieldElementAccess().getUnorderedGroup_2());
 	}
 
-)(	otherlv_27='{' 
+)(	otherlv_24='{' 
     {
-    	newLeafNode(otherlv_27, grammarAccess.getCustomFieldElementAccess().getLeftCurlyBracketKeyword_3_0());
+    	newLeafNode(otherlv_24, grammarAccess.getCustomFieldElementAccess().getLeftCurlyBracketKeyword_3_0());
     }
 ((
 (
 		{ 
 	        newCompositeNode(grammarAccess.getCustomFieldElementAccess().getLogicLogicElementParserRuleCall_3_1_0_0()); 
 	    }
-		lv_logic_28_0=ruleLogicElement		{
+		lv_logic_25_0=ruleLogicElement		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getCustomFieldElementRule());
 	        }
        		add(
        			$current, 
        			"logic",
-        		lv_logic_28_0, 
+        		lv_logic_25_0, 
         		"LogicElement");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -6126,22 +6093,22 @@ ruleCustomFieldElement returns [EObject current=null]
 		{ 
 	        newCompositeNode(grammarAccess.getCustomFieldElementAccess().getFieldsFormFieldElementParserRuleCall_3_1_1_0()); 
 	    }
-		lv_fields_29_0=ruleFormFieldElement		{
+		lv_fields_26_0=ruleFormFieldElement		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getCustomFieldElementRule());
 	        }
        		add(
        			$current, 
        			"fields",
-        		lv_fields_29_0, 
+        		lv_fields_26_0, 
         		"FormFieldElement");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))*	otherlv_30='}' 
+))*	otherlv_27='}' 
     {
-    	newLeafNode(otherlv_30, grammarAccess.getCustomFieldElementAccess().getRightCurlyBracketKeyword_3_2());
+    	newLeafNode(otherlv_27, grammarAccess.getCustomFieldElementAccess().getRightCurlyBracketKeyword_3_2());
     }
 )?)
 ;

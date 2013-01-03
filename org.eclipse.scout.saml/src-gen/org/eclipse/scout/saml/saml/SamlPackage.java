@@ -2041,22 +2041,13 @@ public interface SamlPackage extends EPackage
   int CUSTOM_FIELD_ELEMENT__LABEL_VISIBLE = FORM_FIELD_ELEMENT_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Master</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CUSTOM_FIELD_ELEMENT__MASTER = FORM_FIELD_ELEMENT_FEATURE_COUNT + 2;
-
-  /**
    * The feature id for the '<em><b>Grid Width</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CUSTOM_FIELD_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT_FEATURE_COUNT + 3;
+  int CUSTOM_FIELD_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
@@ -2065,7 +2056,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_FIELD_ELEMENT__WIDTH_IN_PIXELS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 4;
+  int CUSTOM_FIELD_ELEMENT__WIDTH_IN_PIXELS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Fields</b></em>' containment reference list.
@@ -2074,7 +2065,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_FIELD_ELEMENT__FIELDS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 5;
+  int CUSTOM_FIELD_ELEMENT__FIELDS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The number of structural features of the '<em>Custom Field Element</em>' class.
@@ -2083,7 +2074,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_FIELD_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 6;
+  int CUSTOM_FIELD_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 5;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.ButtonElementImpl <em>Button Element</em>}' class.
@@ -3797,17 +3788,6 @@ public interface SamlPackage extends EPackage
   EAttribute getCustomFieldElement_LabelVisible();
 
   /**
-   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.CustomFieldElement#getMaster <em>Master</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Master</em>'.
-   * @see org.eclipse.scout.saml.saml.CustomFieldElement#getMaster()
-   * @see #getCustomFieldElement()
-   * @generated
-   */
-  EReference getCustomFieldElement_Master();
-
-  /**
    * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.CustomFieldElement#getGridWidth <em>Grid Width</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -5133,14 +5113,6 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EAttribute CUSTOM_FIELD_ELEMENT__LABEL_VISIBLE = eINSTANCE.getCustomFieldElement_LabelVisible();
-
-    /**
-     * The meta object literal for the '<em><b>Master</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CUSTOM_FIELD_ELEMENT__MASTER = eINSTANCE.getCustomFieldElement_Master();
 
     /**
      * The meta object literal for the '<em><b>Grid Width</b></em>' attribute feature.

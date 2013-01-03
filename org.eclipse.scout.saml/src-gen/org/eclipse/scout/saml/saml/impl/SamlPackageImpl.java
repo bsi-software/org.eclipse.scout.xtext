@@ -1340,19 +1340,9 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getCustomFieldElement_Master()
-  {
-    return (EReference)customFieldElementEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EAttribute getCustomFieldElement_GridWidth()
   {
-    return (EAttribute)customFieldElementEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)customFieldElementEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1362,7 +1352,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    */
   public EAttribute getCustomFieldElement_WidthInPixels()
   {
-    return (EAttribute)customFieldElementEClass.getEStructuralFeatures().get(4);
+    return (EAttribute)customFieldElementEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -1372,7 +1362,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    */
   public EReference getCustomFieldElement_Fields()
   {
-    return (EReference)customFieldElementEClass.getEStructuralFeatures().get(5);
+    return (EReference)customFieldElementEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -1908,7 +1898,6 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     customFieldElementEClass = createEClass(CUSTOM_FIELD_ELEMENT);
     createEReference(customFieldElementEClass, CUSTOM_FIELD_ELEMENT__TEXT);
     createEAttribute(customFieldElementEClass, CUSTOM_FIELD_ELEMENT__LABEL_VISIBLE);
-    createEReference(customFieldElementEClass, CUSTOM_FIELD_ELEMENT__MASTER);
     createEAttribute(customFieldElementEClass, CUSTOM_FIELD_ELEMENT__GRID_WIDTH);
     createEAttribute(customFieldElementEClass, CUSTOM_FIELD_ELEMENT__WIDTH_IN_PIXELS);
     createEReference(customFieldElementEClass, CUSTOM_FIELD_ELEMENT__FIELDS);
@@ -2128,7 +2117,6 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEClass(customFieldElementEClass, CustomFieldElement.class, "CustomFieldElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCustomFieldElement_Text(), this.getTranslationElement(), null, "text", null, 0, 1, CustomFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCustomFieldElement_LabelVisible(), ecorePackage.getEString(), "labelVisible", null, 0, 1, CustomFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCustomFieldElement_Master(), this.getValueFieldElement(), null, "master", null, 0, 1, CustomFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCustomFieldElement_GridWidth(), ecorePackage.getEInt(), "gridWidth", null, 0, 1, CustomFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCustomFieldElement_WidthInPixels(), ecorePackage.getEInt(), "widthInPixels", null, 0, 1, CustomFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCustomFieldElement_Fields(), this.getFormFieldElement(), null, "fields", null, 0, -1, CustomFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

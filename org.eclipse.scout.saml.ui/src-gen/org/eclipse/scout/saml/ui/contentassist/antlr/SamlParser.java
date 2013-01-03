@@ -226,7 +226,6 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCustomFieldElementAccess().getGroup_2_4(), "rule__CustomFieldElement__Group_2_4__0");
 					put(grammarAccess.getCustomFieldElementAccess().getGroup_2_5(), "rule__CustomFieldElement__Group_2_5__0");
 					put(grammarAccess.getCustomFieldElementAccess().getGroup_2_6(), "rule__CustomFieldElement__Group_2_6__0");
-					put(grammarAccess.getCustomFieldElementAccess().getGroup_2_7(), "rule__CustomFieldElement__Group_2_7__0");
 					put(grammarAccess.getCustomFieldElementAccess().getGroup_3(), "rule__CustomFieldElement__Group_3__0");
 					put(grammarAccess.getButtonElementAccess().getGroup(), "rule__ButtonElement__Group__0");
 					put(grammarAccess.getButtonElementAccess().getGroup_2_0(), "rule__ButtonElement__Group_2_0__0");
@@ -566,9 +565,8 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCustomFieldElementAccess().getEnabledAssignment_2_2_2(), "rule__CustomFieldElement__EnabledAssignment_2_2_2");
 					put(grammarAccess.getCustomFieldElementAccess().getVisibleAssignment_2_3_2(), "rule__CustomFieldElement__VisibleAssignment_2_3_2");
 					put(grammarAccess.getCustomFieldElementAccess().getLabelVisibleAssignment_2_4_2(), "rule__CustomFieldElement__LabelVisibleAssignment_2_4_2");
-					put(grammarAccess.getCustomFieldElementAccess().getMasterAssignment_2_5_2(), "rule__CustomFieldElement__MasterAssignment_2_5_2");
-					put(grammarAccess.getCustomFieldElementAccess().getGridWidthAssignment_2_6_2(), "rule__CustomFieldElement__GridWidthAssignment_2_6_2");
-					put(grammarAccess.getCustomFieldElementAccess().getWidthInPixelsAssignment_2_7_2(), "rule__CustomFieldElement__WidthInPixelsAssignment_2_7_2");
+					put(grammarAccess.getCustomFieldElementAccess().getGridWidthAssignment_2_5_2(), "rule__CustomFieldElement__GridWidthAssignment_2_5_2");
+					put(grammarAccess.getCustomFieldElementAccess().getWidthInPixelsAssignment_2_6_2(), "rule__CustomFieldElement__WidthInPixelsAssignment_2_6_2");
 					put(grammarAccess.getCustomFieldElementAccess().getLogicAssignment_3_1_0(), "rule__CustomFieldElement__LogicAssignment_3_1_0");
 					put(grammarAccess.getCustomFieldElementAccess().getFieldsAssignment_3_1_1(), "rule__CustomFieldElement__FieldsAssignment_3_1_1");
 					put(grammarAccess.getButtonElementAccess().getNameAssignment_1(), "rule__ButtonElement__NameAssignment_1");

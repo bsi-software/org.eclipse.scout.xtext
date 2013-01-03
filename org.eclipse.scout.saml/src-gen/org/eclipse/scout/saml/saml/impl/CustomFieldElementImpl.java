@@ -21,7 +21,6 @@ import org.eclipse.scout.saml.saml.CustomFieldElement;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
 import org.eclipse.scout.saml.saml.TranslationElement;
-import org.eclipse.scout.saml.saml.ValueFieldElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,7 +31,6 @@ import org.eclipse.scout.saml.saml.ValueFieldElement;
  * <ul>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.CustomFieldElementImpl#getText <em>Text</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.CustomFieldElementImpl#getLabelVisible <em>Label Visible</em>}</li>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.CustomFieldElementImpl#getMaster <em>Master</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.CustomFieldElementImpl#getGridWidth <em>Grid Width</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.CustomFieldElementImpl#getWidthInPixels <em>Width In Pixels</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.CustomFieldElementImpl#getFields <em>Fields</em>}</li>
@@ -72,16 +70,6 @@ public class CustomFieldElementImpl extends FormFieldElementImpl implements Cust
    * @ordered
    */
   protected String labelVisible = LABEL_VISIBLE_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getMaster() <em>Master</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getMaster()
-   * @generated
-   * @ordered
-   */
-  protected ValueFieldElement master;
 
   /**
    * The default value of the '{@link #getGridWidth() <em>Grid Width</em>}' attribute.
@@ -225,49 +213,6 @@ public class CustomFieldElementImpl extends FormFieldElementImpl implements Cust
    * <!-- end-user-doc -->
    * @generated
    */
-  public ValueFieldElement getMaster()
-  {
-    if (master != null && master.eIsProxy())
-    {
-      InternalEObject oldMaster = (InternalEObject)master;
-      master = (ValueFieldElement)eResolveProxy(oldMaster);
-      if (master != oldMaster)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SamlPackage.CUSTOM_FIELD_ELEMENT__MASTER, oldMaster, master));
-      }
-    }
-    return master;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ValueFieldElement basicGetMaster()
-  {
-    return master;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setMaster(ValueFieldElement newMaster)
-  {
-    ValueFieldElement oldMaster = master;
-    master = newMaster;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.CUSTOM_FIELD_ELEMENT__MASTER, oldMaster, master));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public int getGridWidth()
   {
     return gridWidth;
@@ -354,9 +299,6 @@ public class CustomFieldElementImpl extends FormFieldElementImpl implements Cust
         return basicGetText();
       case SamlPackage.CUSTOM_FIELD_ELEMENT__LABEL_VISIBLE:
         return getLabelVisible();
-      case SamlPackage.CUSTOM_FIELD_ELEMENT__MASTER:
-        if (resolve) return getMaster();
-        return basicGetMaster();
       case SamlPackage.CUSTOM_FIELD_ELEMENT__GRID_WIDTH:
         return getGridWidth();
       case SamlPackage.CUSTOM_FIELD_ELEMENT__WIDTH_IN_PIXELS:
@@ -383,9 +325,6 @@ public class CustomFieldElementImpl extends FormFieldElementImpl implements Cust
         return;
       case SamlPackage.CUSTOM_FIELD_ELEMENT__LABEL_VISIBLE:
         setLabelVisible((String)newValue);
-        return;
-      case SamlPackage.CUSTOM_FIELD_ELEMENT__MASTER:
-        setMaster((ValueFieldElement)newValue);
         return;
       case SamlPackage.CUSTOM_FIELD_ELEMENT__GRID_WIDTH:
         setGridWidth((Integer)newValue);
@@ -417,9 +356,6 @@ public class CustomFieldElementImpl extends FormFieldElementImpl implements Cust
       case SamlPackage.CUSTOM_FIELD_ELEMENT__LABEL_VISIBLE:
         setLabelVisible(LABEL_VISIBLE_EDEFAULT);
         return;
-      case SamlPackage.CUSTOM_FIELD_ELEMENT__MASTER:
-        setMaster((ValueFieldElement)null);
-        return;
       case SamlPackage.CUSTOM_FIELD_ELEMENT__GRID_WIDTH:
         setGridWidth(GRID_WIDTH_EDEFAULT);
         return;
@@ -447,8 +383,6 @@ public class CustomFieldElementImpl extends FormFieldElementImpl implements Cust
         return text != null;
       case SamlPackage.CUSTOM_FIELD_ELEMENT__LABEL_VISIBLE:
         return LABEL_VISIBLE_EDEFAULT == null ? labelVisible != null : !LABEL_VISIBLE_EDEFAULT.equals(labelVisible);
-      case SamlPackage.CUSTOM_FIELD_ELEMENT__MASTER:
-        return master != null;
       case SamlPackage.CUSTOM_FIELD_ELEMENT__GRID_WIDTH:
         return gridWidth != GRID_WIDTH_EDEFAULT;
       case SamlPackage.CUSTOM_FIELD_ELEMENT__WIDTH_IN_PIXELS:
