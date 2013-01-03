@@ -13,6 +13,7 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.fields;
 import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.saml.saml.FormFieldElement;
@@ -24,6 +25,7 @@ import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
 import org.eclipse.scout.sdk.saml.importer.operation.logic.SamlLogicFillOperation;
 import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
 import org.eclipse.scout.sdk.util.type.TypeUtility;
+import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 import org.eclipse.scout.sdk.workspace.type.ScoutTypeUtility;
 
 /**
@@ -68,8 +70,12 @@ public abstract class AbstractFormFieldElementOperation extends AbstractUiElemen
   }
 
   protected void applyWidthInPixelsAttribute(int widthInPixels, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    applyWidthInPixelsAttribute(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager(), widthInPixels, field, h);
+  }
+
+  public static void applyWidthInPixelsAttribute(IProgressMonitor monitor, IWorkingCopyManager workingcopyManager, int widthInPixels, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
     if (widthInPixels > 0) {
-      overrideMethod(field, h, "getConfiguredWidthInPixel", "return " + widthInPixels + ";");
+      overrideMethod(monitor, workingcopyManager, field, h, "getConfiguredWidthInPixel", "return " + widthInPixels + ";");
     }
   }
 

@@ -508,13 +508,22 @@ public interface SamlPackage extends EPackage
   int FORM_ELEMENT__SUBTITLE = 4;
 
   /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORM_ELEMENT__WIDTH_IN_PIXELS = 5;
+
+  /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FORM_ELEMENT__SUPER_TYPE = 5;
+  int FORM_ELEMENT__SUPER_TYPE = 6;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -523,7 +532,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_ELEMENT__LOGIC = 6;
+  int FORM_ELEMENT__LOGIC = 7;
 
   /**
    * The feature id for the '<em><b>Fields</b></em>' containment reference list.
@@ -532,7 +541,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_ELEMENT__FIELDS = 7;
+  int FORM_ELEMENT__FIELDS = 8;
 
   /**
    * The feature id for the '<em><b>Key Strokes</b></em>' containment reference list.
@@ -541,7 +550,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_ELEMENT__KEY_STROKES = 8;
+  int FORM_ELEMENT__KEY_STROKES = 9;
 
   /**
    * The number of structural features of the '<em>Form Element</em>' class.
@@ -550,7 +559,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_ELEMENT_FEATURE_COUNT = 9;
+  int FORM_ELEMENT_FEATURE_COUNT = 10;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl <em>Form Field Element</em>}' class.
@@ -3118,6 +3127,17 @@ public interface SamlPackage extends EPackage
   EReference getFormElement_Subtitle();
 
   /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FormElement#getWidthInPixels <em>Width In Pixels</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Width In Pixels</em>'.
+   * @see org.eclipse.scout.saml.saml.FormElement#getWidthInPixels()
+   * @see #getFormElement()
+   * @generated
+   */
+  EAttribute getFormElement_WidthInPixels();
+
+  /**
    * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.FormElement#getSuperType <em>Super Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -4593,6 +4613,14 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EReference FORM_ELEMENT__SUBTITLE = eINSTANCE.getFormElement_Subtitle();
+
+    /**
+     * The meta object literal for the '<em><b>Width In Pixels</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FORM_ELEMENT__WIDTH_IN_PIXELS = eINSTANCE.getFormElement_WidthInPixels();
 
     /**
      * The meta object literal for the '<em><b>Super Type</b></em>' reference feature.

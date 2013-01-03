@@ -294,6 +294,13 @@
             </elements>
           </elements>
           <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="width_pixels"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="widthInPixels" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.55"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
             <elements xsi:type="xtext:Keyword" value="super_type"/>
             <elements xsi:type="xtext:Keyword" value="="/>
             <elements xsi:type="xtext:Assignment" feature="superType" operator="=">

@@ -38,6 +38,7 @@ import org.eclipse.scout.saml.saml.TranslationElement;
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getColumns <em>Columns</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getSubtitle <em>Subtitle</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getWidthInPixels <em>Width In Pixels</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getSuperType <em>Super Type</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getLogic <em>Logic</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getFields <em>Fields</em>}</li>
@@ -128,6 +129,26 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
    * @ordered
    */
   protected TranslationElement subtitle;
+
+  /**
+   * The default value of the '{@link #getWidthInPixels() <em>Width In Pixels</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getWidthInPixels()
+   * @generated
+   * @ordered
+   */
+  protected static final int WIDTH_IN_PIXELS_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getWidthInPixels() <em>Width In Pixels</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getWidthInPixels()
+   * @generated
+   * @ordered
+   */
+  protected int widthInPixels = WIDTH_IN_PIXELS_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getSuperType() <em>Super Type</em>}' reference.
@@ -350,6 +371,29 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
    * <!-- end-user-doc -->
    * @generated
    */
+  public int getWidthInPixels()
+  {
+    return widthInPixels;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setWidthInPixels(int newWidthInPixels)
+  {
+    int oldWidthInPixels = widthInPixels;
+    widthInPixels = newWidthInPixels;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.FORM_ELEMENT__WIDTH_IN_PIXELS, oldWidthInPixels, widthInPixels));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public TemplateElement getSuperType()
   {
     if (superType != null && superType.eIsProxy())
@@ -472,6 +516,8 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
       case SamlPackage.FORM_ELEMENT__SUBTITLE:
         if (resolve) return getSubtitle();
         return basicGetSubtitle();
+      case SamlPackage.FORM_ELEMENT__WIDTH_IN_PIXELS:
+        return getWidthInPixels();
       case SamlPackage.FORM_ELEMENT__SUPER_TYPE:
         if (resolve) return getSuperType();
         return basicGetSuperType();
@@ -510,6 +556,9 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
         return;
       case SamlPackage.FORM_ELEMENT__SUBTITLE:
         setSubtitle((TranslationElement)newValue);
+        return;
+      case SamlPackage.FORM_ELEMENT__WIDTH_IN_PIXELS:
+        setWidthInPixels((Integer)newValue);
         return;
       case SamlPackage.FORM_ELEMENT__SUPER_TYPE:
         setSuperType((TemplateElement)newValue);
@@ -555,6 +604,9 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
       case SamlPackage.FORM_ELEMENT__SUBTITLE:
         setSubtitle((TranslationElement)null);
         return;
+      case SamlPackage.FORM_ELEMENT__WIDTH_IN_PIXELS:
+        setWidthInPixels(WIDTH_IN_PIXELS_EDEFAULT);
+        return;
       case SamlPackage.FORM_ELEMENT__SUPER_TYPE:
         setSuperType((TemplateElement)null);
         return;
@@ -591,6 +643,8 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
         return title != null;
       case SamlPackage.FORM_ELEMENT__SUBTITLE:
         return subtitle != null;
+      case SamlPackage.FORM_ELEMENT__WIDTH_IN_PIXELS:
+        return widthInPixels != WIDTH_IN_PIXELS_EDEFAULT;
       case SamlPackage.FORM_ELEMENT__SUPER_TYPE:
         return superType != null;
       case SamlPackage.FORM_ELEMENT__LOGIC:
@@ -620,6 +674,8 @@ public class FormElementImpl extends MinimalEObjectImpl.Container implements For
     result.append(modal);
     result.append(", columns: ");
     result.append(columns);
+    result.append(", widthInPixels: ");
+    result.append(widthInPixels);
     result.append(')');
     return result.toString();
   }

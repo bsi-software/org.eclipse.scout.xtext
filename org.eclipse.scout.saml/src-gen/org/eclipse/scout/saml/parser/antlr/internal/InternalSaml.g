@@ -1284,13 +1284,51 @@ ruleFormElement returns [EObject current=null]
 					{ 
 	 				  getUnorderedGroupHelper().select(grammarAccess.getFormElementAccess().getUnorderedGroup_2(), 4);
 	 				}
-					({true}?=>(	otherlv_15='super_type' 
+					({true}?=>(	otherlv_15='width_pixels' 
     {
-    	newLeafNode(otherlv_15, grammarAccess.getFormElementAccess().getSuper_typeKeyword_2_4_0());
+    	newLeafNode(otherlv_15, grammarAccess.getFormElementAccess().getWidth_pixelsKeyword_2_4_0());
     }
 	otherlv_16='=' 
     {
     	newLeafNode(otherlv_16, grammarAccess.getFormElementAccess().getEqualsSignKeyword_2_4_1());
+    }
+(
+(
+		lv_widthInPixels_17_0=RULE_INT
+		{
+			newLeafNode(lv_widthInPixels_17_0, grammarAccess.getFormElementAccess().getWidthInPixelsINTTerminalRuleCall_2_4_2_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getFormElementRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"widthInPixels",
+        		lv_widthInPixels_17_0, 
+        		"INT");
+	    }
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getFormElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getFormElementAccess().getUnorderedGroup_2(), 5)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getFormElementAccess().getUnorderedGroup_2(), 5);
+	 				}
+					({true}?=>(	otherlv_18='super_type' 
+    {
+    	newLeafNode(otherlv_18, grammarAccess.getFormElementAccess().getSuper_typeKeyword_2_5_0());
+    }
+	otherlv_19='=' 
+    {
+    	newLeafNode(otherlv_19, grammarAccess.getFormElementAccess().getEqualsSignKeyword_2_5_1());
     }
 (
 (
@@ -1299,9 +1337,9 @@ ruleFormElement returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getFormElementRule());
 	        }
         }
-	otherlv_17=RULE_ID
+	otherlv_20=RULE_ID
 	{
-		newLeafNode(otherlv_17, grammarAccess.getFormElementAccess().getSuperTypeTemplateElementCrossReference_2_4_2_0()); 
+		newLeafNode(otherlv_20, grammarAccess.getFormElementAccess().getSuperTypeTemplateElementCrossReference_2_5_2_0()); 
 	}
 
 )
@@ -1319,23 +1357,23 @@ ruleFormElement returns [EObject current=null]
 	  getUnorderedGroupHelper().leave(grammarAccess.getFormElementAccess().getUnorderedGroup_2());
 	}
 
-)(	otherlv_18='{' 
+)(	otherlv_21='{' 
     {
-    	newLeafNode(otherlv_18, grammarAccess.getFormElementAccess().getLeftCurlyBracketKeyword_3_0());
+    	newLeafNode(otherlv_21, grammarAccess.getFormElementAccess().getLeftCurlyBracketKeyword_3_0());
     }
 ((
 (
 		{ 
 	        newCompositeNode(grammarAccess.getFormElementAccess().getLogicLogicElementParserRuleCall_3_1_0_0()); 
 	    }
-		lv_logic_19_0=ruleLogicElement		{
+		lv_logic_22_0=ruleLogicElement		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFormElementRule());
 	        }
        		add(
        			$current, 
        			"logic",
-        		lv_logic_19_0, 
+        		lv_logic_22_0, 
         		"LogicElement");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -1347,14 +1385,14 @@ ruleFormElement returns [EObject current=null]
 		{ 
 	        newCompositeNode(grammarAccess.getFormElementAccess().getFieldsFormFieldElementParserRuleCall_3_1_1_0()); 
 	    }
-		lv_fields_20_0=ruleFormFieldElement		{
+		lv_fields_23_0=ruleFormFieldElement		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFormElementRule());
 	        }
        		add(
        			$current, 
        			"fields",
-        		lv_fields_20_0, 
+        		lv_fields_23_0, 
         		"FormFieldElement");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -1366,22 +1404,22 @@ ruleFormElement returns [EObject current=null]
 		{ 
 	        newCompositeNode(grammarAccess.getFormElementAccess().getKeyStrokesKeyElementParserRuleCall_3_1_2_0()); 
 	    }
-		lv_keyStrokes_21_0=ruleKeyElement		{
+		lv_keyStrokes_24_0=ruleKeyElement		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFormElementRule());
 	        }
        		add(
        			$current, 
        			"keyStrokes",
-        		lv_keyStrokes_21_0, 
+        		lv_keyStrokes_24_0, 
         		"KeyElement");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))*	otherlv_22='}' 
+))*	otherlv_25='}' 
     {
-    	newLeafNode(otherlv_22, grammarAccess.getFormElementAccess().getRightCurlyBracketKeyword_3_2());
+    	newLeafNode(otherlv_25, grammarAccess.getFormElementAccess().getRightCurlyBracketKeyword_3_2());
     }
 )?)
 ;

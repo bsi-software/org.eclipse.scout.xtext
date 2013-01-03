@@ -656,11 +656,16 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final CrossReference cSubtitleTranslationElementCrossReference_2_3_2_0 = (CrossReference)cSubtitleAssignment_2_3_2.eContents().get(0);
 		private final RuleCall cSubtitleTranslationElementQualifiedNameParserRuleCall_2_3_2_0_1 = (RuleCall)cSubtitleTranslationElementCrossReference_2_3_2_0.eContents().get(1);
 		private final Group cGroup_2_4 = (Group)cUnorderedGroup_2.eContents().get(4);
-		private final Keyword cSuper_typeKeyword_2_4_0 = (Keyword)cGroup_2_4.eContents().get(0);
+		private final Keyword cWidth_pixelsKeyword_2_4_0 = (Keyword)cGroup_2_4.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_4_1 = (Keyword)cGroup_2_4.eContents().get(1);
-		private final Assignment cSuperTypeAssignment_2_4_2 = (Assignment)cGroup_2_4.eContents().get(2);
-		private final CrossReference cSuperTypeTemplateElementCrossReference_2_4_2_0 = (CrossReference)cSuperTypeAssignment_2_4_2.eContents().get(0);
-		private final RuleCall cSuperTypeTemplateElementIDTerminalRuleCall_2_4_2_0_1 = (RuleCall)cSuperTypeTemplateElementCrossReference_2_4_2_0.eContents().get(1);
+		private final Assignment cWidthInPixelsAssignment_2_4_2 = (Assignment)cGroup_2_4.eContents().get(2);
+		private final RuleCall cWidthInPixelsINTTerminalRuleCall_2_4_2_0 = (RuleCall)cWidthInPixelsAssignment_2_4_2.eContents().get(0);
+		private final Group cGroup_2_5 = (Group)cUnorderedGroup_2.eContents().get(5);
+		private final Keyword cSuper_typeKeyword_2_5_0 = (Keyword)cGroup_2_5.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_5_1 = (Keyword)cGroup_2_5.eContents().get(1);
+		private final Assignment cSuperTypeAssignment_2_5_2 = (Assignment)cGroup_2_5.eContents().get(2);
+		private final CrossReference cSuperTypeTemplateElementCrossReference_2_5_2_0 = (CrossReference)cSuperTypeAssignment_2_5_2.eContents().get(0);
+		private final RuleCall cSuperTypeTemplateElementIDTerminalRuleCall_2_5_2_0_1 = (RuleCall)cSuperTypeTemplateElementCrossReference_2_5_2_0.eContents().get(1);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Keyword cLeftCurlyBracketKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Alternatives cAlternatives_3_1 = (Alternatives)cGroup_3.eContents().get(1);
@@ -678,18 +683,18 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//
 		//	title=[TranslationElement|QualifiedName])? & ("subtitle" "=" subtitle=[TranslationElement|QualifiedName])? &
 		//
-		//	("super_type" "=" superType=[TemplateElement])?) ("{" (logic+=LogicElement | fields+=FormFieldElement |
+		//	("width_pixels" "=" widthInPixels=INT)? & ("super_type" "=" superType=[TemplateElement])?) ("{" (logic+=LogicElement
 		//
-		//	keyStrokes+=KeyElement)* "}")?;
+		//	| fields+=FormFieldElement | keyStrokes+=KeyElement)* "}")?;
 		public ParserRule getRule() { return rule; }
 
 		//"form" name=ID (("modal" "=" modal=BooleanType)? & ("columns" "=" columns=INT)? & ("title" "="
 		//
 		//title=[TranslationElement|QualifiedName])? & ("subtitle" "=" subtitle=[TranslationElement|QualifiedName])? &
 		//
-		//("super_type" "=" superType=[TemplateElement])?) ("{" (logic+=LogicElement | fields+=FormFieldElement |
+		//("width_pixels" "=" widthInPixels=INT)? & ("super_type" "=" superType=[TemplateElement])?) ("{" (logic+=LogicElement |
 		//
-		//keyStrokes+=KeyElement)* "}")?
+		//fields+=FormFieldElement | keyStrokes+=KeyElement)* "}")?
 		public Group getGroup() { return cGroup; }
 
 		//"form"
@@ -705,7 +710,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//
 		//title=[TranslationElement|QualifiedName])? & ("subtitle" "=" subtitle=[TranslationElement|QualifiedName])? &
 		//
-		//("super_type" "=" superType=[TemplateElement])?
+		//("width_pixels" "=" widthInPixels=INT)? & ("super_type" "=" superType=[TemplateElement])?
 		public UnorderedGroup getUnorderedGroup_2() { return cUnorderedGroup_2; }
 
 		//("modal" "=" modal=BooleanType)?
@@ -774,23 +779,38 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getSubtitleTranslationElementQualifiedNameParserRuleCall_2_3_2_0_1() { return cSubtitleTranslationElementQualifiedNameParserRuleCall_2_3_2_0_1; }
 
-		//("super_type" "=" superType=[TemplateElement])?
+		//("width_pixels" "=" widthInPixels=INT)?
 		public Group getGroup_2_4() { return cGroup_2_4; }
 
-		//"super_type"
-		public Keyword getSuper_typeKeyword_2_4_0() { return cSuper_typeKeyword_2_4_0; }
+		//"width_pixels"
+		public Keyword getWidth_pixelsKeyword_2_4_0() { return cWidth_pixelsKeyword_2_4_0; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_2_4_1() { return cEqualsSignKeyword_2_4_1; }
 
+		//widthInPixels=INT
+		public Assignment getWidthInPixelsAssignment_2_4_2() { return cWidthInPixelsAssignment_2_4_2; }
+
+		//INT
+		public RuleCall getWidthInPixelsINTTerminalRuleCall_2_4_2_0() { return cWidthInPixelsINTTerminalRuleCall_2_4_2_0; }
+
+		//("super_type" "=" superType=[TemplateElement])?
+		public Group getGroup_2_5() { return cGroup_2_5; }
+
+		//"super_type"
+		public Keyword getSuper_typeKeyword_2_5_0() { return cSuper_typeKeyword_2_5_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_2_5_1() { return cEqualsSignKeyword_2_5_1; }
+
 		//superType=[TemplateElement]
-		public Assignment getSuperTypeAssignment_2_4_2() { return cSuperTypeAssignment_2_4_2; }
+		public Assignment getSuperTypeAssignment_2_5_2() { return cSuperTypeAssignment_2_5_2; }
 
 		//[TemplateElement]
-		public CrossReference getSuperTypeTemplateElementCrossReference_2_4_2_0() { return cSuperTypeTemplateElementCrossReference_2_4_2_0; }
+		public CrossReference getSuperTypeTemplateElementCrossReference_2_5_2_0() { return cSuperTypeTemplateElementCrossReference_2_5_2_0; }
 
 		//ID
-		public RuleCall getSuperTypeTemplateElementIDTerminalRuleCall_2_4_2_0_1() { return cSuperTypeTemplateElementIDTerminalRuleCall_2_4_2_0_1; }
+		public RuleCall getSuperTypeTemplateElementIDTerminalRuleCall_2_5_2_0_1() { return cSuperTypeTemplateElementIDTerminalRuleCall_2_5_2_0_1; }
 
 		//("{" (logic+=LogicElement | fields+=FormFieldElement | keyStrokes+=KeyElement)* "}")?
 		public Group getGroup_3() { return cGroup_3; }
@@ -5187,9 +5207,9 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	//	title=[TranslationElement|QualifiedName])? & ("subtitle" "=" subtitle=[TranslationElement|QualifiedName])? &
 	//
-	//	("super_type" "=" superType=[TemplateElement])?) ("{" (logic+=LogicElement | fields+=FormFieldElement |
+	//	("width_pixels" "=" widthInPixels=INT)? & ("super_type" "=" superType=[TemplateElement])?) ("{" (logic+=LogicElement
 	//
-	//	keyStrokes+=KeyElement)* "}")?;
+	//	| fields+=FormFieldElement | keyStrokes+=KeyElement)* "}")?;
 	public FormElementElements getFormElementAccess() {
 		return (pFormElement != null) ? pFormElement : (pFormElement = new FormElementElements());
 	}

@@ -79,6 +79,7 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
     // apply form attributes
     applyModalAttribute(getFormElement().getModal(), getCreatedForm());
     applySubtitleAttribute(getFormElement().getSubtitle(), getCreatedForm());
+    AbstractFormFieldElementOperation.applyWidthInPixelsAttribute(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager(), getFormElement().getWidthInPixels(), getCreatedMainBox(), null);
     AbstractBoxElementImportOperation.applyColumnsAttribute(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager(), getFormElement().getColumns(), getCreatedMainBox(), null);
 
     createFormContext();

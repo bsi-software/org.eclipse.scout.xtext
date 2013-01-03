@@ -37,7 +37,7 @@ public class FormTests {
       _builder.append("module a.b");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("form MyForm {");
+      _builder.append("form MyForm width_pixels=1000 {");
       _builder.newLine();
       _builder.append("\t");
       _builder.append("sequence MyBox {");

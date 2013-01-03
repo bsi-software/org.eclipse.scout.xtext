@@ -27,7 +27,7 @@ class FormTests {
 		'''
 		module a.b
 		
-		form MyForm {
+		form MyForm width_pixels=1000 {
 			sequence MyBox {
 				string my
 			}

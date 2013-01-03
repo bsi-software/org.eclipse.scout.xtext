@@ -63,6 +63,7 @@ public class ButtonElementImportOperation extends AbstractFormFieldElementOperat
     ITypeHierarchy h = createdField.newSupertypeHierarchy(getSamlContext().getMonitor());
 
     applyFormFieldProperties(createdField, h);
+    applyLabelAttribute(getButtonElement().getText(), createdField, h);
     applyProcessButtonAttribute(getButtonElement().getProcessButton(), createdField, h);
     applyGridWidthAttribute(getButtonElement().getGridWidth(), createdField, h);
     applyWidthInPixelsAttribute(getButtonElement().getWidthInPixels(), createdField, h);

@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getColumns <em>Columns</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getTitle <em>Title</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getSubtitle <em>Subtitle</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getWidthInPixels <em>Width In Pixels</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getSuperType <em>Super Type</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getLogic <em>Logic</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getFields <em>Fields</em>}</li>
@@ -161,6 +162,32 @@ public interface FormElement extends EObject
    * @generated
    */
   void setSubtitle(TranslationElement value);
+
+  /**
+   * Returns the value of the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Width In Pixels</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Width In Pixels</em>' attribute.
+   * @see #setWidthInPixels(int)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getFormElement_WidthInPixels()
+   * @model
+   * @generated
+   */
+  int getWidthInPixels();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.FormElement#getWidthInPixels <em>Width In Pixels</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Width In Pixels</em>' attribute.
+   * @see #getWidthInPixels()
+   * @generated
+   */
+  void setWidthInPixels(int value);
 
   /**
    * Returns the value of the '<em><b>Super Type</b></em>' reference.

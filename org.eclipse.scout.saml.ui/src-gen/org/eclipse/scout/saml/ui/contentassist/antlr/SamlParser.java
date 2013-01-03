@@ -109,6 +109,7 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFormElementAccess().getGroup_2_2(), "rule__FormElement__Group_2_2__0");
 					put(grammarAccess.getFormElementAccess().getGroup_2_3(), "rule__FormElement__Group_2_3__0");
 					put(grammarAccess.getFormElementAccess().getGroup_2_4(), "rule__FormElement__Group_2_4__0");
+					put(grammarAccess.getFormElementAccess().getGroup_2_5(), "rule__FormElement__Group_2_5__0");
 					put(grammarAccess.getFormElementAccess().getGroup_3(), "rule__FormElement__Group_3__0");
 					put(grammarAccess.getSequenceBoxElementAccess().getGroup(), "rule__SequenceBoxElement__Group__0");
 					put(grammarAccess.getSequenceBoxElementAccess().getGroup_2_0(), "rule__SequenceBoxElement__Group_2_0__0");
@@ -444,7 +445,8 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFormElementAccess().getColumnsAssignment_2_1_2(), "rule__FormElement__ColumnsAssignment_2_1_2");
 					put(grammarAccess.getFormElementAccess().getTitleAssignment_2_2_2(), "rule__FormElement__TitleAssignment_2_2_2");
 					put(grammarAccess.getFormElementAccess().getSubtitleAssignment_2_3_2(), "rule__FormElement__SubtitleAssignment_2_3_2");
-					put(grammarAccess.getFormElementAccess().getSuperTypeAssignment_2_4_2(), "rule__FormElement__SuperTypeAssignment_2_4_2");
+					put(grammarAccess.getFormElementAccess().getWidthInPixelsAssignment_2_4_2(), "rule__FormElement__WidthInPixelsAssignment_2_4_2");
+					put(grammarAccess.getFormElementAccess().getSuperTypeAssignment_2_5_2(), "rule__FormElement__SuperTypeAssignment_2_5_2");
 					put(grammarAccess.getFormElementAccess().getLogicAssignment_3_1_0(), "rule__FormElement__LogicAssignment_3_1_0");
 					put(grammarAccess.getFormElementAccess().getFieldsAssignment_3_1_1(), "rule__FormElement__FieldsAssignment_3_1_1");
 					put(grammarAccess.getFormElementAccess().getKeyStrokesAssignment_3_1_2(), "rule__FormElement__KeyStrokesAssignment_3_1_2");
