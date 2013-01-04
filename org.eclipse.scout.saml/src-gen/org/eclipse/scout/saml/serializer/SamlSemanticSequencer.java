@@ -1173,20 +1173,10 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=ID id=INT)
+	 *     (name=ID id=INT text=[TranslationElement|QualifiedName]? logic+=LogicElement*)
 	 */
 	protected void sequence_CodeElement(EObject context, CodeElement semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, SamlPackage.Literals.CODE_ELEMENT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SamlPackage.Literals.CODE_ELEMENT__NAME));
-			if(transientValues.isValueTransient(semanticObject, SamlPackage.Literals.CODE_ELEMENT__ID) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SamlPackage.Literals.CODE_ELEMENT__ID));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getCodeElementAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getCodeElementAccess().getIdINTTerminalRuleCall_4_0(), semanticObject.getId());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

@@ -175,6 +175,9 @@ public class LogicInfoFactory {
     else if (event.equals(elements.getActivatedKeyword_10().getValue())) {
       return "execAction";
     }
+    else if (event.equals(elements.getLoadKeyword_11().getValue())) {
+      return "execLoadCodes";
+    }
     else {
       throw new IllegalArgumentException("Unknown logic type: " + event);
     }
@@ -275,6 +278,9 @@ public class LogicInfoFactory {
       // 'activated' is only used by key strokes
       KeyElement container = (KeyElement) element.eContainer();
       return NamingUtility.toJavaCamelCase(container.getStroke()) + "Pressed";
+    }
+    else if (event.equals(elements.getLoadKeyword_11().getValue())) {
+      return getSourceElementPrefix(sourceType) + "Loaded";
     }
     else {
       throw new IllegalArgumentException("Unknown logic type: " + event);

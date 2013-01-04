@@ -17,6 +17,8 @@ import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.CodeTypeNewOperation;
 import org.eclipse.scout.sdk.operation.util.TypeDeleteOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
+import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
+import org.eclipse.scout.sdk.saml.importer.operation.logic.SamlLogicFillOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
 import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
 import org.eclipse.scout.sdk.util.type.TypeUtility;
@@ -57,7 +59,7 @@ public class CodeElementImportOperation extends AbstractSamlElementImportOperati
 
     CodeTypeNewOperation ctno = new CodeTypeNewOperation();
     ctno.setFormatSource(false);
-    ctno.setNextCodeId("" + getCodeElement().getId());
+    ctno.setNextCodeId("Integer.valueOf(" + getCodeElement().getId() + ")");
     ctno.setSharedBundle(sharedBundle);
     ctno.setSuperTypeSignature(superSignature);
     ctno.setPackageName(sharedBundle.getDefaultPackage(IScoutBundle.SHARED_SERVICES_CODE));
@@ -66,7 +68,16 @@ public class CodeElementImportOperation extends AbstractSamlElementImportOperati
     ctno.validate();
     ctno.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
 
-    postProcessType(ctno.getCreatedType());
+    IType createdCode = ctno.getCreatedType();
+
+    applyTextAttribute(getCodeElement().getText(), createdCode, null);
+
+    SamlFormContext formContext = new SamlFormContext();
+    formContext.setClientType(createdCode);
+    formContext.setSamlContext(getSamlContext());
+    SamlLogicFillOperation.fillAllLogic(getCodeElement().getLogic(), formContext, createdCode);
+
+    postProcessType(createdCode);
   }
 
   private void deleteExisting(IScoutBundle shared, String codeTypeName) throws CoreException, IllegalArgumentException {

@@ -16,7 +16,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.saml.saml.MenuElement;
-import org.eclipse.scout.saml.saml.TranslationElement;
 import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.MenuNewOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.form.AbstractUiElementImportOperation;
@@ -58,12 +57,6 @@ public class MenuElementImportOperation extends AbstractUiElementImportOperation
     applyVisibleAttribute(getMenuElement().getVisible(), menu, h);
 
     SamlLogicFillOperation.fillAllLogic(getMenuElement().getLogic(), getSamlFormContext(), menu);
-  }
-
-  protected void applyTextAttribute(TranslationElement a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
-    if (a != null) {
-      overrideMethod(field, h, "getConfiguredText", getNlsReturnClause(a));
-    }
   }
 
   @Override

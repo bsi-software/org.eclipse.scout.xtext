@@ -56,6 +56,13 @@ public class SamlJavaValidator extends AbstractSamlJavaValidator implements ISam
       }
     }
 
+    // code elements can only contain inline logic
+    if (logicElement.eContainer() instanceof CodeElement) {
+      if (logicElement.getPlacement() != null && !logicElement.getPlacement().equals(grammar.getLogicElementAccess().getPlacementInlineKeyword_3_1_2_0_2().getValue())) {
+        error(MSG_PLACEMENT_INLINE_ONLY_FOR_CODE, logicElement, SamlPackage.Literals.LOGIC_ELEMENT__PLACEMENT, PLACEMENT_INLINE_ONLY_FOR_CODE);
+      }
+    }
+
     if (logicElement.eContainer() instanceof Model) {
       // top level logic elements must define a name (references only)
       if (logicElement.getName() == null) {
@@ -107,6 +114,9 @@ public class SamlJavaValidator extends AbstractSamlJavaValidator implements ISam
           grammar.getLogicEventTypeAccess().getModify_storeKeyword_2().getValue(),
           grammar.getLogicEventTypeAccess().getNew_loadKeyword_3().getValue(),
           grammar.getLogicEventTypeAccess().getNew_storeKeyword_4().getValue());
+    }
+    else if (container instanceof CodeElement) {
+      return newSet(grammar.getLogicEventTypeAccess().getLoadKeyword_11().getValue());
     }
     else if (container instanceof ButtonElement || container instanceof MenuElement) {
       return newSet(grammar.getLogicEventTypeAccess().getClickKeyword_6().getValue());

@@ -177,18 +177,19 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cInitKeyword_8 = (Keyword)cAlternatives.eContents().get(8);
 		private final Keyword cFormat_valueKeyword_9 = (Keyword)cAlternatives.eContents().get(9);
 		private final Keyword cActivatedKeyword_10 = (Keyword)cAlternatives.eContents().get(10);
+		private final Keyword cLoadKeyword_11 = (Keyword)cAlternatives.eContents().get(11);
 		
 		////TODO: code completion depending on element we are on
 		// LogicEventType:
 		//
 		//	"all" | "modify_load" | "modify_store" | "new_load" | "new_store" | "changed" | "click" | "master_changed" | "init" |
 		//
-		//	"format_value" | "activated";
+		//	"format_value" | "activated" | "load";
 		public ParserRule getRule() { return rule; }
 
 		//"all" | "modify_load" | "modify_store" | "new_load" | "new_store" | "changed" | "click" | "master_changed" | "init" |
 		//
-		//"format_value" | "activated"
+		//"format_value" | "activated" | "load"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//"all"
@@ -223,6 +224,9 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"activated"
 		public Keyword getActivatedKeyword_10() { return cActivatedKeyword_10; }
+
+		//"load"
+		public Keyword getLoadKeyword_11() { return cLoadKeyword_11; }
 	}
 
 	public class HorizontalAlignmentTypeElements extends AbstractParserRuleElementFinder {
@@ -509,17 +513,32 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cCodeKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cIdKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Keyword cEqualsSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cIdAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cIdINTTerminalRuleCall_4_0 = (RuleCall)cIdAssignment_4.eContents().get(0);
+		private final UnorderedGroup cUnorderedGroup_2 = (UnorderedGroup)cGroup.eContents().get(2);
+		private final Group cGroup_2_0 = (Group)cUnorderedGroup_2.eContents().get(0);
+		private final Keyword cIdKeyword_2_0_0 = (Keyword)cGroup_2_0.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_0_1 = (Keyword)cGroup_2_0.eContents().get(1);
+		private final Assignment cIdAssignment_2_0_2 = (Assignment)cGroup_2_0.eContents().get(2);
+		private final RuleCall cIdINTTerminalRuleCall_2_0_2_0 = (RuleCall)cIdAssignment_2_0_2.eContents().get(0);
+		private final Group cGroup_2_1 = (Group)cUnorderedGroup_2.eContents().get(1);
+		private final Keyword cTextKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_1_1 = (Keyword)cGroup_2_1.eContents().get(1);
+		private final Assignment cTextAssignment_2_1_2 = (Assignment)cGroup_2_1.eContents().get(2);
+		private final CrossReference cTextTranslationElementCrossReference_2_1_2_0 = (CrossReference)cTextAssignment_2_1_2.eContents().get(0);
+		private final RuleCall cTextTranslationElementQualifiedNameParserRuleCall_2_1_2_0_1 = (RuleCall)cTextTranslationElementCrossReference_2_1_2_0.eContents().get(1);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cLeftCurlyBracketKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cLogicAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cLogicLogicElementParserRuleCall_3_1_0 = (RuleCall)cLogicAssignment_3_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
 		
 		//CodeElement:
 		//
-		//	"code" name=ID "id" "=" id=INT;
+		//	"code" name=ID ("id" "=" id=INT & ("text" "=" text=[TranslationElement|QualifiedName])?) ("{" logic+=LogicElement*
+		//
+		//	"}")?;
 		public ParserRule getRule() { return rule; }
 
-		//"code" name=ID "id" "=" id=INT
+		//"code" name=ID ("id" "=" id=INT & ("text" "=" text=[TranslationElement|QualifiedName])?) ("{" logic+=LogicElement* "}")?
 		public Group getGroup() { return cGroup; }
 
 		//"code"
@@ -531,17 +550,56 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
+		//"id" "=" id=INT & ("text" "=" text=[TranslationElement|QualifiedName])?
+		public UnorderedGroup getUnorderedGroup_2() { return cUnorderedGroup_2; }
+
+		//"id" "=" id=INT
+		public Group getGroup_2_0() { return cGroup_2_0; }
+
 		//"id"
-		public Keyword getIdKeyword_2() { return cIdKeyword_2; }
+		public Keyword getIdKeyword_2_0_0() { return cIdKeyword_2_0_0; }
 
 		//"="
-		public Keyword getEqualsSignKeyword_3() { return cEqualsSignKeyword_3; }
+		public Keyword getEqualsSignKeyword_2_0_1() { return cEqualsSignKeyword_2_0_1; }
 
 		//id=INT
-		public Assignment getIdAssignment_4() { return cIdAssignment_4; }
+		public Assignment getIdAssignment_2_0_2() { return cIdAssignment_2_0_2; }
 
 		//INT
-		public RuleCall getIdINTTerminalRuleCall_4_0() { return cIdINTTerminalRuleCall_4_0; }
+		public RuleCall getIdINTTerminalRuleCall_2_0_2_0() { return cIdINTTerminalRuleCall_2_0_2_0; }
+
+		//("text" "=" text=[TranslationElement|QualifiedName])?
+		public Group getGroup_2_1() { return cGroup_2_1; }
+
+		//"text"
+		public Keyword getTextKeyword_2_1_0() { return cTextKeyword_2_1_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_2_1_1() { return cEqualsSignKeyword_2_1_1; }
+
+		//text=[TranslationElement|QualifiedName]
+		public Assignment getTextAssignment_2_1_2() { return cTextAssignment_2_1_2; }
+
+		//[TranslationElement|QualifiedName]
+		public CrossReference getTextTranslationElementCrossReference_2_1_2_0() { return cTextTranslationElementCrossReference_2_1_2_0; }
+
+		//QualifiedName
+		public RuleCall getTextTranslationElementQualifiedNameParserRuleCall_2_1_2_0_1() { return cTextTranslationElementQualifiedNameParserRuleCall_2_1_2_0_1; }
+
+		//("{" logic+=LogicElement* "}")?
+		public Group getGroup_3() { return cGroup_3; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_3_0() { return cLeftCurlyBracketKeyword_3_0; }
+
+		//logic+=LogicElement*
+		public Assignment getLogicAssignment_3_1() { return cLogicAssignment_3_1; }
+
+		//LogicElement
+		public RuleCall getLogicLogicElementParserRuleCall_3_1_0() { return cLogicLogicElementParserRuleCall_3_1_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_3_2() { return cRightCurlyBracketKeyword_3_2; }
 	}
 
 	public class LookupElementElements extends AbstractParserRuleElementFinder {
@@ -5061,7 +5119,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	//	"all" | "modify_load" | "modify_store" | "new_load" | "new_store" | "changed" | "click" | "master_changed" | "init" |
 	//
-	//	"format_value" | "activated";
+	//	"format_value" | "activated" | "load";
 	public LogicEventTypeElements getLogicEventTypeAccess() {
 		return (pLogicEventType != null) ? pLogicEventType : (pLogicEventType = new LogicEventTypeElements());
 	}
@@ -5142,7 +5200,9 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 
 	//CodeElement:
 	//
-	//	"code" name=ID "id" "=" id=INT;
+	//	"code" name=ID ("id" "=" id=INT & ("text" "=" text=[TranslationElement|QualifiedName])?) ("{" logic+=LogicElement*
+	//
+	//	"}")?;
 	public CodeElementElements getCodeElementAccess() {
 		return (pCodeElement != null) ? pCodeElement : (pCodeElement = new CodeElementElements());
 	}

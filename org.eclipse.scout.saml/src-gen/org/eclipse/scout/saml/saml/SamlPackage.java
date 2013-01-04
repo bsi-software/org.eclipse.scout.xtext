@@ -370,13 +370,31 @@ public interface SamlPackage extends EPackage
   int CODE_ELEMENT__ID = 1;
 
   /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CODE_ELEMENT__TEXT = 2;
+
+  /**
+   * The feature id for the '<em><b>Logic</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CODE_ELEMENT__LOGIC = 3;
+
+  /**
    * The number of structural features of the '<em>Code Element</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CODE_ELEMENT_FEATURE_COUNT = 2;
+  int CODE_ELEMENT_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.LookupElementImpl <em>Lookup Element</em>}' class.
@@ -2989,6 +3007,28 @@ public interface SamlPackage extends EPackage
   EAttribute getCodeElement_Id();
 
   /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.CodeElement#getText <em>Text</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Text</em>'.
+   * @see org.eclipse.scout.saml.saml.CodeElement#getText()
+   * @see #getCodeElement()
+   * @generated
+   */
+  EReference getCodeElement_Text();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.CodeElement#getLogic <em>Logic</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Logic</em>'.
+   * @see org.eclipse.scout.saml.saml.CodeElement#getLogic()
+   * @see #getCodeElement()
+   * @generated
+   */
+  EReference getCodeElement_Logic();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.LookupElement <em>Lookup Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -4491,6 +4531,22 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EAttribute CODE_ELEMENT__ID = eINSTANCE.getCodeElement_Id();
+
+    /**
+     * The meta object literal for the '<em><b>Text</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CODE_ELEMENT__TEXT = eINSTANCE.getCodeElement_Text();
+
+    /**
+     * The meta object literal for the '<em><b>Logic</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CODE_ELEMENT__LOGIC = eINSTANCE.getCodeElement_Logic();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.LookupElementImpl <em>Lookup Element</em>}' class.

@@ -2,6 +2,8 @@
  */
 package org.eclipse.scout.saml.saml;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -14,6 +16,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.eclipse.scout.saml.saml.CodeElement#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.CodeElement#getId <em>Id</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.CodeElement#getText <em>Text</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.CodeElement#getLogic <em>Logic</em>}</li>
  * </ul>
  * </p>
  *
@@ -74,5 +78,47 @@ public interface CodeElement extends EObject
    * @generated
    */
   void setId(int value);
+
+  /**
+   * Returns the value of the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Text</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Text</em>' reference.
+   * @see #setText(TranslationElement)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getCodeElement_Text()
+   * @model
+   * @generated
+   */
+  TranslationElement getText();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.CodeElement#getText <em>Text</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Text</em>' reference.
+   * @see #getText()
+   * @generated
+   */
+  void setText(TranslationElement value);
+
+  /**
+   * Returns the value of the '<em><b>Logic</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.scout.saml.saml.LogicElement}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Logic</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Logic</em>' containment reference list.
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getCodeElement_Logic()
+   * @model containment="true"
+   * @generated
+   */
+  EList<LogicElement> getLogic();
 
 } // CodeElement

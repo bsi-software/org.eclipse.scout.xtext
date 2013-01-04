@@ -101,6 +101,9 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLogicElementAccess().getGroup_3_2(), "rule__LogicElement__Group_3_2__0");
 					put(grammarAccess.getLogicElementAccess().getGroup_4(), "rule__LogicElement__Group_4__0");
 					put(grammarAccess.getCodeElementAccess().getGroup(), "rule__CodeElement__Group__0");
+					put(grammarAccess.getCodeElementAccess().getGroup_2_0(), "rule__CodeElement__Group_2_0__0");
+					put(grammarAccess.getCodeElementAccess().getGroup_2_1(), "rule__CodeElement__Group_2_1__0");
+					put(grammarAccess.getCodeElementAccess().getGroup_3(), "rule__CodeElement__Group_3__0");
 					put(grammarAccess.getLookupElementAccess().getGroup(), "rule__LookupElement__Group__0");
 					put(grammarAccess.getTemplateElementAccess().getGroup(), "rule__TemplateElement__Group__0");
 					put(grammarAccess.getFormElementAccess().getGroup(), "rule__FormElement__Group__0");
@@ -434,7 +437,9 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLogicElementAccess().getExecAssignment_3_2_2(), "rule__LogicElement__ExecAssignment_3_2_2");
 					put(grammarAccess.getLogicElementAccess().getSourceAssignment_4_1(), "rule__LogicElement__SourceAssignment_4_1");
 					put(grammarAccess.getCodeElementAccess().getNameAssignment_1(), "rule__CodeElement__NameAssignment_1");
-					put(grammarAccess.getCodeElementAccess().getIdAssignment_4(), "rule__CodeElement__IdAssignment_4");
+					put(grammarAccess.getCodeElementAccess().getIdAssignment_2_0_2(), "rule__CodeElement__IdAssignment_2_0_2");
+					put(grammarAccess.getCodeElementAccess().getTextAssignment_2_1_2(), "rule__CodeElement__TextAssignment_2_1_2");
+					put(grammarAccess.getCodeElementAccess().getLogicAssignment_3_1(), "rule__CodeElement__LogicAssignment_3_1");
 					put(grammarAccess.getLookupElementAccess().getNameAssignment_1(), "rule__LookupElement__NameAssignment_1");
 					put(grammarAccess.getLookupElementAccess().getLogicAssignment_3(), "rule__LookupElement__LogicAssignment_3");
 					put(grammarAccess.getTemplateElementAccess().getNameAssignment_1(), "rule__TemplateElement__NameAssignment_1");
@@ -738,6 +743,7 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getJvmTypeParameterAccess().getConstraintsAssignment_1_0_1(), "rule__JvmTypeParameter__ConstraintsAssignment_1_0_1");
 					put(grammarAccess.getJvmTypeParameterAccess().getConstraintsAssignment_1_1(), "rule__JvmTypeParameter__ConstraintsAssignment_1_1");
 					put(grammarAccess.getLogicElementAccess().getUnorderedGroup_3(), "rule__LogicElement__UnorderedGroup_3");
+					put(grammarAccess.getCodeElementAccess().getUnorderedGroup_2(), "rule__CodeElement__UnorderedGroup_2");
 					put(grammarAccess.getFormElementAccess().getUnorderedGroup_2(), "rule__FormElement__UnorderedGroup_2");
 					put(grammarAccess.getSequenceBoxElementAccess().getUnorderedGroup_2(), "rule__SequenceBoxElement__UnorderedGroup_2");
 					put(grammarAccess.getGroupBoxElementAccess().getUnorderedGroup_2(), "rule__GroupBoxElement__UnorderedGroup_2");

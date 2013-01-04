@@ -28,7 +28,7 @@ QualifiedNameWithWildCard: QualifiedName  ('.' '*')?;
 BooleanType: 'true'|'false';	//TODO: code completion
 
 //TODO: code completion depending on element we are on
-LogicEventType: 'all'|'modify_load'|'modify_store'|'new_load'|'new_store'|'changed'|'click'|'master_changed'|'init'|'format_value'|'activated';
+LogicEventType: 'all'|'modify_load'|'modify_store'|'new_load'|'new_store'|'changed'|'click'|'master_changed'|'init'|'format_value'|'activated'|'load';
 
 HorizontalAlignmentType:'left'|'center'|'right';	//TODO: code completion
 
@@ -47,7 +47,12 @@ LanguageAttribute:lang=ID '=' text=STRING;
 LogicElement: {LogicElement} 'logic' (name=ID)? (('event' '=' event=LogicEventType)? & ('placement' '=' placement=('client'|'server'|'inline'))? & ('exec' '=' exec=[LogicElement])?) ('{'source=STRING/*XBlockExpression*/'}')?;
 
 
-CodeElement:'code' name=ID 'id' '=' id=INT;
+CodeElement:'code' name=ID 
+	(
+		('id' '=' id=INT) &
+		('text' '=' text=[TranslationElement|QualifiedName])?
+	)
+	('{' logic+=LogicElement* '}')?;
 
 
 LookupElement:'lookup' name=ID '{' logic+=LogicElement* '}';

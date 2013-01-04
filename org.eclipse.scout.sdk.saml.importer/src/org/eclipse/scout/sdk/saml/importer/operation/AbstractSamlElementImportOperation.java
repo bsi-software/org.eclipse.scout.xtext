@@ -85,6 +85,12 @@ public abstract class AbstractSamlElementImportOperation implements ISamlElement
     new SamlImportPostProcessOperation(t).run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
   }
 
+  protected void applyTextAttribute(TranslationElement a, IType type, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    if (a != null) {
+      overrideMethod(type, h, "getConfiguredText", getNlsReturnClause(a));
+    }
+  }
+
   @Override
   public SamlContext getSamlContext() {
     return m_samlContext;

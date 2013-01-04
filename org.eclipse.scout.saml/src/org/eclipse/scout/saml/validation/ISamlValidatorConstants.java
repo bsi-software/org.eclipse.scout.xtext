@@ -31,6 +31,9 @@ public interface ISamlValidatorConstants {
   String PLACEMENT_SERVER_ONLY_FOR_LOOKUP = "OnlyServerPlacementForLookups";
   String MSG_PLACEMENT_SERVER_ONLY_FOR_LOOKUP = "lookups only support server placements";
 
+  String PLACEMENT_INLINE_ONLY_FOR_CODE = "OnlyInlniePlacementForCodes";
+  String MSG_PLACEMENT_INLINE_ONLY_FOR_CODE = "codes only support inline placements";
+
   String DUPLICATE = "DuplicateElement";
   String MSG_DUPLICATE = "duplicate element name";
   String MSG_DUPLICATE_FIELD = "form contains duplicate fields";
