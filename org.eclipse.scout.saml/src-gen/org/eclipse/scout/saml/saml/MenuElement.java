@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.scout.saml.saml.MenuElement#getText <em>Text</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.MenuElement#getSuperType <em>Super Type</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.MenuElement#getLogic <em>Logic</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.MenuElement#getMenus <em>Menus</em>}</li>
  * </ul>
  * </p>
  *
@@ -174,5 +175,21 @@ public interface MenuElement extends EObject
    * @generated
    */
   EList<LogicElement> getLogic();
+
+  /**
+   * Returns the value of the '<em><b>Menus</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.scout.saml.saml.MenuElement}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Menus</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Menus</em>' containment reference list.
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getMenuElement_Menus()
+   * @model containment="true"
+   * @generated
+   */
+  EList<MenuElement> getMenus();
 
 } // MenuElement

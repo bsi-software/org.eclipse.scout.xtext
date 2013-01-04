@@ -1396,7 +1396,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         visible=BooleanType? 
 	 *         text=[TranslationElement|QualifiedName]? 
 	 *         superType=[TemplateElement|ID]? 
-	 *         logic+=LogicElement*
+	 *         (logic+=LogicElement | menus+=MenuElement)*
 	 *     )
 	 */
 	protected void sequence_MenuElement(EObject context, MenuElement semanticObject) {

@@ -4066,8 +4066,11 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cSuperTypeTemplateElementIDTerminalRuleCall_2_3_2_0_1 = (RuleCall)cSuperTypeTemplateElementCrossReference_2_3_2_0.eContents().get(1);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Keyword cLeftCurlyBracketKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cLogicAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cLogicLogicElementParserRuleCall_3_1_0 = (RuleCall)cLogicAssignment_3_1.eContents().get(0);
+		private final Alternatives cAlternatives_3_1 = (Alternatives)cGroup_3.eContents().get(1);
+		private final Assignment cLogicAssignment_3_1_0 = (Assignment)cAlternatives_3_1.eContents().get(0);
+		private final RuleCall cLogicLogicElementParserRuleCall_3_1_0_0 = (RuleCall)cLogicAssignment_3_1_0.eContents().get(0);
+		private final Assignment cMenusAssignment_3_1_1 = (Assignment)cAlternatives_3_1.eContents().get(1);
+		private final RuleCall cMenusMenuElementParserRuleCall_3_1_1_0 = (RuleCall)cMenusAssignment_3_1_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
 		
 		//// MENUS
@@ -4077,14 +4080,14 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//
 		//	text=[TranslationElement|QualifiedName])? & ("super_type" "=" superType=[TemplateElement])?) ("{"
 		//
-		//	logic+=LogicElement* "}")?;
+		//	(logic+=LogicElement | menus+=MenuElement)* "}")?;
 		public ParserRule getRule() { return rule; }
 
 		//"menu" name=ID (("enabled" "=" enabled=BooleanType)? & ("visible" "=" visible=BooleanType)? & ("text" "="
 		//
-		//text=[TranslationElement|QualifiedName])? & ("super_type" "=" superType=[TemplateElement])?) ("{" logic+=LogicElement*
+		//text=[TranslationElement|QualifiedName])? & ("super_type" "=" superType=[TemplateElement])?) ("{" (logic+=LogicElement
 		//
-		//"}")?
+		//| menus+=MenuElement)* "}")?
 		public Group getGroup() { return cGroup; }
 
 		//"menu"
@@ -4167,17 +4170,26 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getSuperTypeTemplateElementIDTerminalRuleCall_2_3_2_0_1() { return cSuperTypeTemplateElementIDTerminalRuleCall_2_3_2_0_1; }
 
-		//("{" logic+=LogicElement* "}")?
+		//("{" (logic+=LogicElement | menus+=MenuElement)* "}")?
 		public Group getGroup_3() { return cGroup_3; }
 
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_3_0() { return cLeftCurlyBracketKeyword_3_0; }
 
-		//logic+=LogicElement*
-		public Assignment getLogicAssignment_3_1() { return cLogicAssignment_3_1; }
+		//(logic+=LogicElement | menus+=MenuElement)*
+		public Alternatives getAlternatives_3_1() { return cAlternatives_3_1; }
+
+		//logic+=LogicElement
+		public Assignment getLogicAssignment_3_1_0() { return cLogicAssignment_3_1_0; }
 
 		//LogicElement
-		public RuleCall getLogicLogicElementParserRuleCall_3_1_0() { return cLogicLogicElementParserRuleCall_3_1_0; }
+		public RuleCall getLogicLogicElementParserRuleCall_3_1_0_0() { return cLogicLogicElementParserRuleCall_3_1_0_0; }
+
+		//menus+=MenuElement
+		public Assignment getMenusAssignment_3_1_1() { return cMenusAssignment_3_1_1; }
+
+		//MenuElement
+		public RuleCall getMenusMenuElementParserRuleCall_3_1_1_0() { return cMenusMenuElementParserRuleCall_3_1_1_0; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_3_2() { return cRightCurlyBracketKeyword_3_2; }
@@ -5493,7 +5505,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	//	text=[TranslationElement|QualifiedName])? & ("super_type" "=" superType=[TemplateElement])?) ("{"
 	//
-	//	logic+=LogicElement* "}")?;
+	//	(logic+=LogicElement | menus+=MenuElement)* "}")?;
 	public MenuElementElements getMenuElementAccess() {
 		return (pMenuElement != null) ? pMenuElement : (pMenuElement = new MenuElementElements());
 	}

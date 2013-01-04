@@ -62,5 +62,7 @@ Changes:
 		For 'code' element:
 			Attribute: 'text'
 			Child: 'logic' with event 'load'
+		For 'menu' element:
+			Child: 'menu'
 
 

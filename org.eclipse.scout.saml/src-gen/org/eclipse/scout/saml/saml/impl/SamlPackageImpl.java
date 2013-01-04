@@ -1520,6 +1520,16 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getMenuElement_Menus()
+  {
+    return (EReference)menuElementEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getTableElement()
   {
     return tableElementEClass;
@@ -1938,6 +1948,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     createEReference(menuElementEClass, MENU_ELEMENT__TEXT);
     createEReference(menuElementEClass, MENU_ELEMENT__SUPER_TYPE);
     createEReference(menuElementEClass, MENU_ELEMENT__LOGIC);
+    createEReference(menuElementEClass, MENU_ELEMENT__MENUS);
 
     tableElementEClass = createEClass(TABLE_ELEMENT);
     createEReference(tableElementEClass, TABLE_ELEMENT__TEXT);
@@ -2159,6 +2170,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEReference(getMenuElement_Text(), this.getTranslationElement(), null, "text", null, 0, 1, MenuElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMenuElement_SuperType(), this.getTemplateElement(), null, "superType", null, 0, 1, MenuElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMenuElement_Logic(), this.getLogicElement(), null, "logic", null, 0, -1, MenuElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMenuElement_Menus(), this.getMenuElement(), null, "menus", null, 0, -1, MenuElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(tableElementEClass, TableElement.class, "TableElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getTableElement_Text(), this.getTranslationElement(), null, "text", null, 0, 1, TableElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

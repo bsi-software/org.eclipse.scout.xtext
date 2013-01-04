@@ -20,7 +20,7 @@ import org.junit.runners.Suite;
  * @since 3.8.0 18.10.2012
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({TranslationTests.class, LogicTests.class, FormTests.class, ComplexFormTests.class, CodeTests.class})
+@Suite.SuiteClasses({TranslationTests.class, LogicTests.class, FormTests.class, ComplexFormTests.class, CodeTests.class, MenuTests.class})
 public class _AllTestsSuite {
 
 }

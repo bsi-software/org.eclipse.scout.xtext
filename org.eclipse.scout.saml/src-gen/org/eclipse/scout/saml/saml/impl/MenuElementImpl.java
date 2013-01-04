@@ -37,6 +37,7 @@ import org.eclipse.scout.saml.saml.TranslationElement;
  *   <li>{@link org.eclipse.scout.saml.saml.impl.MenuElementImpl#getText <em>Text</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.MenuElementImpl#getSuperType <em>Super Type</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.MenuElementImpl#getLogic <em>Logic</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.MenuElementImpl#getMenus <em>Menus</em>}</li>
  * </ul>
  * </p>
  *
@@ -133,6 +134,16 @@ public class MenuElementImpl extends MinimalEObjectImpl.Container implements Men
    * @ordered
    */
   protected EList<LogicElement> logic;
+
+  /**
+   * The cached value of the '{@link #getMenus() <em>Menus</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMenus()
+   * @generated
+   * @ordered
+   */
+  protected EList<MenuElement> menus;
 
   /**
    * <!-- begin-user-doc -->
@@ -329,6 +340,20 @@ public class MenuElementImpl extends MinimalEObjectImpl.Container implements Men
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<MenuElement> getMenus()
+  {
+    if (menus == null)
+    {
+      menus = new EObjectContainmentEList<MenuElement>(MenuElement.class, this, SamlPackage.MENU_ELEMENT__MENUS);
+    }
+    return menus;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -336,6 +361,8 @@ public class MenuElementImpl extends MinimalEObjectImpl.Container implements Men
     {
       case SamlPackage.MENU_ELEMENT__LOGIC:
         return ((InternalEList<?>)getLogic()).basicRemove(otherEnd, msgs);
+      case SamlPackage.MENU_ELEMENT__MENUS:
+        return ((InternalEList<?>)getMenus()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -364,6 +391,8 @@ public class MenuElementImpl extends MinimalEObjectImpl.Container implements Men
         return basicGetSuperType();
       case SamlPackage.MENU_ELEMENT__LOGIC:
         return getLogic();
+      case SamlPackage.MENU_ELEMENT__MENUS:
+        return getMenus();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -398,6 +427,10 @@ public class MenuElementImpl extends MinimalEObjectImpl.Container implements Men
         getLogic().clear();
         getLogic().addAll((Collection<? extends LogicElement>)newValue);
         return;
+      case SamlPackage.MENU_ELEMENT__MENUS:
+        getMenus().clear();
+        getMenus().addAll((Collection<? extends MenuElement>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -430,6 +463,9 @@ public class MenuElementImpl extends MinimalEObjectImpl.Container implements Men
       case SamlPackage.MENU_ELEMENT__LOGIC:
         getLogic().clear();
         return;
+      case SamlPackage.MENU_ELEMENT__MENUS:
+        getMenus().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -456,6 +492,8 @@ public class MenuElementImpl extends MinimalEObjectImpl.Container implements Men
         return superType != null;
       case SamlPackage.MENU_ELEMENT__LOGIC:
         return logic != null && !logic.isEmpty();
+      case SamlPackage.MENU_ELEMENT__MENUS:
+        return menus != null && !menus.isEmpty();
     }
     return super.eIsSet(featureID);
   }

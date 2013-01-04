@@ -163,6 +163,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="superType" eType="#//TemplateElement"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="logic" upperBound="-1"
         eType="#//LogicElement" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="menus" upperBound="-1"
+        eType="#//MenuElement" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TableElement" eSuperTypes="#//FormFieldElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="text" eType="#//TranslationElement"/>

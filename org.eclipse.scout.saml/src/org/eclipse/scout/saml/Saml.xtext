@@ -251,7 +251,7 @@ MenuElement:'menu' name=ID
 		('text' '=' text=[TranslationElement|QualifiedName])? &
 		('super_type' '=' superType=[TemplateElement])?
 	)
-	('{' logic+=LogicElement* '}')?;
+	('{' (logic+=LogicElement | menus+=MenuElement)* '}')?;
 
 TableElement:'table' name=ID
 	(

@@ -57,6 +57,8 @@ public class MenuElementImportOperation extends AbstractUiElementImportOperation
     applyVisibleAttribute(getMenuElement().getVisible(), menu, h);
 
     SamlLogicFillOperation.fillAllLogic(getMenuElement().getLogic(), getSamlFormContext(), menu);
+
+    processMenus(getMenuElement().getMenus(), menu, getSamlFormContext());
   }
 
   @Override

@@ -3317,6 +3317,28 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+rule__MenuElement__Alternatives_3_1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getMenuElementAccess().getLogicAssignment_3_1_0()); }
+(rule__MenuElement__LogicAssignment_3_1_0)
+{ after(grammarAccess.getMenuElementAccess().getLogicAssignment_3_1_0()); }
+)
+
+    |(
+{ before(grammarAccess.getMenuElementAccess().getMenusAssignment_3_1_1()); }
+(rule__MenuElement__MenusAssignment_3_1_1)
+{ after(grammarAccess.getMenuElementAccess().getMenusAssignment_3_1_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__TableElement__Alternatives_3_1
     @init {
 		int stackSize = keepStackSize();
@@ -19791,9 +19813,9 @@ rule__MenuElement__Group_3__1__Impl
     }
 :
 (
-{ before(grammarAccess.getMenuElementAccess().getLogicAssignment_3_1()); }
-(rule__MenuElement__LogicAssignment_3_1)*
-{ after(grammarAccess.getMenuElementAccess().getLogicAssignment_3_1()); }
+{ before(grammarAccess.getMenuElementAccess().getAlternatives_3_1()); }
+(rule__MenuElement__Alternatives_3_1)*
+{ after(grammarAccess.getMenuElementAccess().getAlternatives_3_1()); }
 )
 
 ;
@@ -41530,14 +41552,29 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__MenuElement__LogicAssignment_3_1
+rule__MenuElement__LogicAssignment_3_1_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getMenuElementAccess().getLogicLogicElementParserRuleCall_3_1_0()); }
-	ruleLogicElement{ after(grammarAccess.getMenuElementAccess().getLogicLogicElementParserRuleCall_3_1_0()); }
+{ before(grammarAccess.getMenuElementAccess().getLogicLogicElementParserRuleCall_3_1_0_0()); }
+	ruleLogicElement{ after(grammarAccess.getMenuElementAccess().getLogicLogicElementParserRuleCall_3_1_0_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__MenuElement__MenusAssignment_3_1_1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getMenuElementAccess().getMenusMenuElementParserRuleCall_3_1_1_0()); }
+	ruleMenuElement{ after(grammarAccess.getMenuElementAccess().getMenusMenuElementParserRuleCall_3_1_1_0()); }
 )
 
 ;

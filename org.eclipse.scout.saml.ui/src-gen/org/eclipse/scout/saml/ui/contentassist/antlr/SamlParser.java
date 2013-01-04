@@ -52,6 +52,7 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getSmartfieldElementAccess().getAlternatives_3_1(), "rule__SmartfieldElement__Alternatives_3_1");
 					put(grammarAccess.getCustomFieldElementAccess().getAlternatives_3_1(), "rule__CustomFieldElement__Alternatives_3_1");
 					put(grammarAccess.getButtonElementAccess().getAlternatives_3_1(), "rule__ButtonElement__Alternatives_3_1");
+					put(grammarAccess.getMenuElementAccess().getAlternatives_3_1(), "rule__MenuElement__Alternatives_3_1");
 					put(grammarAccess.getTableElementAccess().getAlternatives_3_1(), "rule__TableElement__Alternatives_3_1");
 					put(grammarAccess.getColumnElementAccess().getTypeAlternatives_2_0_2_0(), "rule__ColumnElement__TypeAlternatives_2_0_2_0");
 					put(grammarAccess.getTabElementAccess().getAlternatives_4(), "rule__TabElement__Alternatives_4");
@@ -589,7 +590,8 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMenuElementAccess().getVisibleAssignment_2_1_2(), "rule__MenuElement__VisibleAssignment_2_1_2");
 					put(grammarAccess.getMenuElementAccess().getTextAssignment_2_2_2(), "rule__MenuElement__TextAssignment_2_2_2");
 					put(grammarAccess.getMenuElementAccess().getSuperTypeAssignment_2_3_2(), "rule__MenuElement__SuperTypeAssignment_2_3_2");
-					put(grammarAccess.getMenuElementAccess().getLogicAssignment_3_1(), "rule__MenuElement__LogicAssignment_3_1");
+					put(grammarAccess.getMenuElementAccess().getLogicAssignment_3_1_0(), "rule__MenuElement__LogicAssignment_3_1_0");
+					put(grammarAccess.getMenuElementAccess().getMenusAssignment_3_1_1(), "rule__MenuElement__MenusAssignment_3_1_1");
 					put(grammarAccess.getTableElementAccess().getNameAssignment_1(), "rule__TableElement__NameAssignment_1");
 					put(grammarAccess.getTableElementAccess().getTextAssignment_2_0_2(), "rule__TableElement__TextAssignment_2_0_2");
 					put(grammarAccess.getTableElementAccess().getEnabledAssignment_2_1_2(), "rule__TableElement__EnabledAssignment_2_1_2");
