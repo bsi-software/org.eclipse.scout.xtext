@@ -219,7 +219,7 @@ ListBoxElement:'list' name=ID
 // CUSTOM FIELDS
 CustomFieldElement:'custom_field' name=ID 
 	(
-		('super_type' '=' superType=[TemplateElement])? &
+		('super_type' '=' superType=[TemplateElement]) &
 		('text' '=' text=[TranslationElement|QualifiedName])? &
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &

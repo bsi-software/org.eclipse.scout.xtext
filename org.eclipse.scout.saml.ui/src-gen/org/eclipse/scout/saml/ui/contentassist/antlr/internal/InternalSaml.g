@@ -37292,7 +37292,8 @@ rule__CustomFieldElement__UnorderedGroup_2
     }
 :
 	rule__CustomFieldElement__UnorderedGroup_2__0
-	?
+	
+	{getUnorderedGroupHelper().canLeave(grammarAccess.getCustomFieldElementAccess().getUnorderedGroup_2())}?
 	
 ;
 finally {

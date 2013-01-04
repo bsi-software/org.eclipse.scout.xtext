@@ -3639,7 +3639,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//// CUSTOM FIELDS
 		// CustomFieldElement:
 		//
-		//	"custom_field" name=ID (("super_type" "=" superType=[TemplateElement])? & ("text" "="
+		//	"custom_field" name=ID ("super_type" "=" superType=[TemplateElement] & ("text" "="
 		//
 		//	text=[TranslationElement|QualifiedName])? & ("enabled" "=" enabled=BooleanType)? & ("visible" "="
 		//
@@ -3648,7 +3648,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//	("width_pixels" "=" widthInPixels=INT)?) ("{" (logic+=LogicElement | fields+=FormFieldElement)* "}")?;
 		public ParserRule getRule() { return rule; }
 
-		//"custom_field" name=ID (("super_type" "=" superType=[TemplateElement])? & ("text" "="
+		//"custom_field" name=ID ("super_type" "=" superType=[TemplateElement] & ("text" "="
 		//
 		//text=[TranslationElement|QualifiedName])? & ("enabled" "=" enabled=BooleanType)? & ("visible" "="
 		//
@@ -3666,14 +3666,14 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//("super_type" "=" superType=[TemplateElement])? & ("text" "=" text=[TranslationElement|QualifiedName])? & ("enabled" "="
+		//"super_type" "=" superType=[TemplateElement] & ("text" "=" text=[TranslationElement|QualifiedName])? & ("enabled" "="
 		//
 		//enabled=BooleanType)? & ("visible" "=" visible=BooleanType)? & ("label_visible" "=" labelVisible=BooleanType)? &
 		//
 		//("width" "=" gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)?
 		public UnorderedGroup getUnorderedGroup_2() { return cUnorderedGroup_2; }
 
-		//("super_type" "=" superType=[TemplateElement])?
+		//"super_type" "=" superType=[TemplateElement]
 		public Group getGroup_2_0() { return cGroup_2_0; }
 
 		//"super_type"
@@ -5465,7 +5465,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	//// CUSTOM FIELDS
 	// CustomFieldElement:
 	//
-	//	"custom_field" name=ID (("super_type" "=" superType=[TemplateElement])? & ("text" "="
+	//	"custom_field" name=ID ("super_type" "=" superType=[TemplateElement] & ("text" "="
 	//
 	//	text=[TranslationElement|QualifiedName])? & ("enabled" "=" enabled=BooleanType)? & ("visible" "="
 	//

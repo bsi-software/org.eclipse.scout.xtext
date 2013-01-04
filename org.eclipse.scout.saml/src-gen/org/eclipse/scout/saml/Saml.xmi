@@ -1347,7 +1347,7 @@
           <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
         </elements>
         <elements xsi:type="xtext:UnorderedGroup">
-          <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Group">
             <elements xsi:type="xtext:Keyword" value="super_type"/>
             <elements xsi:type="xtext:Keyword" value="="/>
             <elements xsi:type="xtext:Assignment" feature="superType" operator="=">

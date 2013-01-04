@@ -6155,7 +6155,8 @@ ruleCustomFieldElement returns [EObject current=null]
  				)
 			)  
 
-		)*	
+		)+
+	  	{getUnorderedGroupHelper().canLeave(grammarAccess.getCustomFieldElementAccess().getUnorderedGroup_2())}?	
 	)
 )
 	{ 

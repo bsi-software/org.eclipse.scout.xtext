@@ -1200,7 +1200,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         name=ID 
-	 *         superType=[TemplateElement|ID]? 
+	 *         superType=[TemplateElement|ID] 
 	 *         text=[TranslationElement|QualifiedName]? 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
