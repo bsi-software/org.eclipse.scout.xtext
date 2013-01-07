@@ -38,6 +38,7 @@ public interface ISamlValidatorConstants {
   String MSG_DUPLICATE = "duplicate element name";
   String MSG_DUPLICATE_FIELD = "form contains duplicate fields";
   String MSG_DUPLICATE_LANG = "a language can only be defined once for each translation";
+  String MSG_DUPLICATE_MENU = "form contains duplicate menus";
 
   String PLACEMENT_MANDATORY = "PlacementMandatory";
   String MSG_PLACEMENT_MANDATORY = "source placement is missing";

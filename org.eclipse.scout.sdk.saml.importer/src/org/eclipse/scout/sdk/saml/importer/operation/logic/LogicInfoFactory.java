@@ -62,11 +62,13 @@ public class LogicInfoFactory {
     ret.setSourceType(sourceType);
     if (element.getEvent() != null) {
       if (element.getEvent().equals(eventElements.getModify_loadKeyword_1().getValue()) ||
-          element.getEvent().equals(eventElements.getModify_storeKeyword_2().getValue())) {
+          element.getEvent().equals(eventElements.getModify_storeKeyword_2().getValue()) ||
+          element.getEvent().equals(eventElements.getModify_discardKeyword_3().getValue())) {
         ret.setSourceType(getHandler(context.getFormType(), SamlImportUtility.FORM_HANDLER_MODIFY));
       }
-      else if (element.getEvent().equals(eventElements.getNew_loadKeyword_3().getValue()) ||
-          element.getEvent().equals(eventElements.getNew_storeKeyword_4().getValue())) {
+      else if (element.getEvent().equals(eventElements.getNew_loadKeyword_4().getValue()) ||
+          element.getEvent().equals(eventElements.getNew_storeKeyword_5().getValue()) ||
+          element.getEvent().equals(eventElements.getNew_discardKeyword_6().getValue())) {
         ret.setSourceType(getHandler(context.getFormType(), SamlImportUtility.FORM_HANDLER_NEW));
       }
     }
@@ -151,31 +153,37 @@ public class LogicInfoFactory {
     else if (event.equals(elements.getModify_storeKeyword_2().getValue())) {
       return "execStore";
     }
-    else if (event.equals(elements.getNew_loadKeyword_3().getValue())) {
+    else if (event.equals(elements.getModify_discardKeyword_3().getValue())) {
+      return "execDiscard";
+    }
+    else if (event.equals(elements.getNew_loadKeyword_4().getValue())) {
       return "execLoad";
     }
-    else if (event.equals(elements.getNew_storeKeyword_4().getValue())) {
+    else if (event.equals(elements.getNew_storeKeyword_5().getValue())) {
       return "execStore";
     }
-    else if (event.equals(elements.getChangedKeyword_5().getValue())) {
+    else if (event.equals(elements.getNew_discardKeyword_6().getValue())) {
+      return "execDiscard";
+    }
+    else if (event.equals(elements.getChangedKeyword_7().getValue())) {
       return "execChangedValue";
     }
-    else if (event.equals(elements.getClickKeyword_6().getValue())) {
+    else if (event.equals(elements.getClickKeyword_8().getValue())) {
       return "execAction";
     }
-    else if (event.equals(elements.getMaster_changedKeyword_7().getValue())) {
+    else if (event.equals(elements.getMaster_changedKeyword_9().getValue())) {
       return "execChangedMasterValue";
     }
-    else if (event.equals(elements.getInitKeyword_8().getValue())) {
+    else if (event.equals(elements.getInitKeyword_10().getValue())) {
       return "execInitField";
     }
-    else if (event.equals(elements.getFormat_valueKeyword_9().getValue())) {
+    else if (event.equals(elements.getFormat_valueKeyword_11().getValue())) {
       return "execFormatValue";
     }
-    else if (event.equals(elements.getActivatedKeyword_10().getValue())) {
+    else if (event.equals(elements.getActivatedKeyword_12().getValue())) {
       return "execAction";
     }
-    else if (event.equals(elements.getLoadKeyword_11().getValue())) {
+    else if (event.equals(elements.getLoadKeyword_13().getValue())) {
       return "execLoadCodes";
     }
     else {
@@ -253,33 +261,39 @@ public class LogicInfoFactory {
     else if (event.equals(elements.getModify_storeKeyword_2().getValue())) {
       return "store";
     }
-    else if (event.equals(elements.getNew_loadKeyword_3().getValue())) {
+    else if (event.equals(elements.getModify_discardKeyword_3().getValue())) {
+      return "close";
+    }
+    else if (event.equals(elements.getNew_loadKeyword_4().getValue())) {
       return "prepareCreate";
     }
-    else if (event.equals(elements.getNew_storeKeyword_4().getValue())) {
+    else if (event.equals(elements.getNew_storeKeyword_5().getValue())) {
       return "create";
     }
-    else if (event.equals(elements.getChangedKeyword_5().getValue())) {
+    else if (event.equals(elements.getNew_discardKeyword_6().getValue())) {
+      return "discard";
+    }
+    else if (event.equals(elements.getChangedKeyword_7().getValue())) {
       return getSourceElementPrefix(sourceType) + "Changed";
     }
-    else if (event.equals(elements.getClickKeyword_6().getValue())) {
+    else if (event.equals(elements.getClickKeyword_8().getValue())) {
       return getSourceElementPrefix(sourceType) + "Clicked";
     }
-    else if (event.equals(elements.getMaster_changedKeyword_7().getValue())) {
+    else if (event.equals(elements.getMaster_changedKeyword_9().getValue())) {
       return getSourceElementPrefix(sourceType) + "MasterChanged";
     }
-    else if (event.equals(elements.getInitKeyword_8().getValue())) {
+    else if (event.equals(elements.getInitKeyword_10().getValue())) {
       return getSourceElementPrefix(sourceType) + "Init";
     }
-    else if (event.equals(elements.getFormat_valueKeyword_9().getValue())) {
+    else if (event.equals(elements.getFormat_valueKeyword_11().getValue())) {
       return getSourceElementPrefix(sourceType) + "FormatValue";
     }
-    else if (event.equals(elements.getActivatedKeyword_10().getValue())) {
+    else if (event.equals(elements.getActivatedKeyword_12().getValue())) {
       // 'activated' is only used by key strokes
       KeyElement container = (KeyElement) element.eContainer();
       return NamingUtility.toJavaCamelCase(container.getStroke()) + "Pressed";
     }
-    else if (event.equals(elements.getLoadKeyword_11().getValue())) {
+    else if (event.equals(elements.getLoadKeyword_13().getValue())) {
       return getSourceElementPrefix(sourceType) + "Loaded";
     }
     else {

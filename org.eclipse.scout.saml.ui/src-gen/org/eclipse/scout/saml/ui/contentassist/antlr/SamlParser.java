@@ -52,6 +52,7 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getSmartfieldElementAccess().getAlternatives_3_1(), "rule__SmartfieldElement__Alternatives_3_1");
 					put(grammarAccess.getCustomFieldElementAccess().getAlternatives_3_1(), "rule__CustomFieldElement__Alternatives_3_1");
 					put(grammarAccess.getButtonElementAccess().getAlternatives_3_1(), "rule__ButtonElement__Alternatives_3_1");
+					put(grammarAccess.getMenuElementAccess().getTypeAlternatives_2_5_2_0(), "rule__MenuElement__TypeAlternatives_2_5_2_0");
 					put(grammarAccess.getMenuElementAccess().getAlternatives_3_1(), "rule__MenuElement__Alternatives_3_1");
 					put(grammarAccess.getTableElementAccess().getAlternatives_3_1(), "rule__TableElement__Alternatives_3_1");
 					put(grammarAccess.getColumnElementAccess().getTypeAlternatives_2_0_2_0(), "rule__ColumnElement__TypeAlternatives_2_0_2_0");
@@ -245,6 +246,10 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMenuElementAccess().getGroup_2_1(), "rule__MenuElement__Group_2_1__0");
 					put(grammarAccess.getMenuElementAccess().getGroup_2_2(), "rule__MenuElement__Group_2_2__0");
 					put(grammarAccess.getMenuElementAccess().getGroup_2_3(), "rule__MenuElement__Group_2_3__0");
+					put(grammarAccess.getMenuElementAccess().getGroup_2_4(), "rule__MenuElement__Group_2_4__0");
+					put(grammarAccess.getMenuElementAccess().getGroup_2_5(), "rule__MenuElement__Group_2_5__0");
+					put(grammarAccess.getMenuElementAccess().getGroup_2_6(), "rule__MenuElement__Group_2_6__0");
+					put(grammarAccess.getMenuElementAccess().getGroup_2_7(), "rule__MenuElement__Group_2_7__0");
 					put(grammarAccess.getMenuElementAccess().getGroup_3(), "rule__MenuElement__Group_3__0");
 					put(grammarAccess.getTableElementAccess().getGroup(), "rule__TableElement__Group__0");
 					put(grammarAccess.getTableElementAccess().getGroup_2_0(), "rule__TableElement__Group_2_0__0");
@@ -588,8 +593,12 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMenuElementAccess().getNameAssignment_1(), "rule__MenuElement__NameAssignment_1");
 					put(grammarAccess.getMenuElementAccess().getEnabledAssignment_2_0_2(), "rule__MenuElement__EnabledAssignment_2_0_2");
 					put(grammarAccess.getMenuElementAccess().getVisibleAssignment_2_1_2(), "rule__MenuElement__VisibleAssignment_2_1_2");
-					put(grammarAccess.getMenuElementAccess().getTextAssignment_2_2_2(), "rule__MenuElement__TextAssignment_2_2_2");
-					put(grammarAccess.getMenuElementAccess().getSuperTypeAssignment_2_3_2(), "rule__MenuElement__SuperTypeAssignment_2_3_2");
+					put(grammarAccess.getMenuElementAccess().getSingleSelectAssignment_2_2_2(), "rule__MenuElement__SingleSelectAssignment_2_2_2");
+					put(grammarAccess.getMenuElementAccess().getMultiSelectAssignment_2_3_2(), "rule__MenuElement__MultiSelectAssignment_2_3_2");
+					put(grammarAccess.getMenuElementAccess().getEmptySelectAssignment_2_4_2(), "rule__MenuElement__EmptySelectAssignment_2_4_2");
+					put(grammarAccess.getMenuElementAccess().getTypeAssignment_2_5_2(), "rule__MenuElement__TypeAssignment_2_5_2");
+					put(grammarAccess.getMenuElementAccess().getTextAssignment_2_6_2(), "rule__MenuElement__TextAssignment_2_6_2");
+					put(grammarAccess.getMenuElementAccess().getSuperTypeAssignment_2_7_2(), "rule__MenuElement__SuperTypeAssignment_2_7_2");
 					put(grammarAccess.getMenuElementAccess().getLogicAssignment_3_1_0(), "rule__MenuElement__LogicAssignment_3_1_0");
 					put(grammarAccess.getMenuElementAccess().getMenusAssignment_3_1_1(), "rule__MenuElement__MenusAssignment_3_1_1");
 					put(grammarAccess.getTableElementAccess().getNameAssignment_1(), "rule__TableElement__NameAssignment_1");

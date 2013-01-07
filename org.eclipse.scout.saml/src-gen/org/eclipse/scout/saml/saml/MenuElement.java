@@ -17,6 +17,10 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.scout.saml.saml.MenuElement#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.MenuElement#getEnabled <em>Enabled</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.MenuElement#getVisible <em>Visible</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.MenuElement#getSingleSelect <em>Single Select</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.MenuElement#getMultiSelect <em>Multi Select</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.MenuElement#getEmptySelect <em>Empty Select</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.MenuElement#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.MenuElement#getText <em>Text</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.MenuElement#getSuperType <em>Super Type</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.MenuElement#getLogic <em>Logic</em>}</li>
@@ -107,6 +111,110 @@ public interface MenuElement extends EObject
    * @generated
    */
   void setVisible(String value);
+
+  /**
+   * Returns the value of the '<em><b>Single Select</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Single Select</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Single Select</em>' attribute.
+   * @see #setSingleSelect(String)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getMenuElement_SingleSelect()
+   * @model
+   * @generated
+   */
+  String getSingleSelect();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.MenuElement#getSingleSelect <em>Single Select</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Single Select</em>' attribute.
+   * @see #getSingleSelect()
+   * @generated
+   */
+  void setSingleSelect(String value);
+
+  /**
+   * Returns the value of the '<em><b>Multi Select</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Multi Select</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Multi Select</em>' attribute.
+   * @see #setMultiSelect(String)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getMenuElement_MultiSelect()
+   * @model
+   * @generated
+   */
+  String getMultiSelect();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.MenuElement#getMultiSelect <em>Multi Select</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Multi Select</em>' attribute.
+   * @see #getMultiSelect()
+   * @generated
+   */
+  void setMultiSelect(String value);
+
+  /**
+   * Returns the value of the '<em><b>Empty Select</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Empty Select</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Empty Select</em>' attribute.
+   * @see #setEmptySelect(String)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getMenuElement_EmptySelect()
+   * @model
+   * @generated
+   */
+  String getEmptySelect();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.MenuElement#getEmptySelect <em>Empty Select</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Empty Select</em>' attribute.
+   * @see #getEmptySelect()
+   * @generated
+   */
+  void setEmptySelect(String value);
+
+  /**
+   * Returns the value of the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Type</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Type</em>' attribute.
+   * @see #setType(String)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getMenuElement_Type()
+   * @model
+   * @generated
+   */
+  String getType();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.MenuElement#getType <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type</em>' attribute.
+   * @see #getType()
+   * @generated
+   */
+  void setType(String value);
 
   /**
    * Returns the value of the '<em><b>Text</b></em>' reference.

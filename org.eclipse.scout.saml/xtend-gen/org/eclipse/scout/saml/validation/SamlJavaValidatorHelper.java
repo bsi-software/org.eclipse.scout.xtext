@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.scout.saml.saml.FormElement;
 import org.eclipse.scout.saml.saml.FormFieldElement;
+import org.eclipse.scout.saml.saml.MenuElement;
 import org.eclipse.scout.saml.saml.Model;
 import org.eclipse.scout.saml.saml.SamlPackage;
 import org.eclipse.xtext.EcoreUtil2;
@@ -91,6 +92,11 @@ public class SamlJavaValidatorHelper {
   
   public List<FormFieldElement> allFieldsOfForm(final FormElement form) {
     List<FormFieldElement> _eAllOfType = EcoreUtil2.<FormFieldElement>eAllOfType(form, FormFieldElement.class);
+    return _eAllOfType;
+  }
+  
+  public List<MenuElement> allMenusOfForm(final FormElement form) {
+    List<MenuElement> _eAllOfType = EcoreUtil2.<MenuElement>eAllOfType(form, MenuElement.class);
     return _eAllOfType;
   }
   

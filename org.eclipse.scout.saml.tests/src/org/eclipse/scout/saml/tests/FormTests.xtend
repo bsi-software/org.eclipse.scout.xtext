@@ -160,6 +160,18 @@ class FormTests {
 	}
 	
 	@Test
+	def void testDiscardEvent() {
+		'''
+		module a.b
+		form FormA {
+			logic event=modify_discard placement=server {
+				"java logic"
+			}
+		}
+		'''.parse.assertNoErrors
+	}
+	
+	@Test
 	def void testTabBox() {
 		'''
 		module a.b

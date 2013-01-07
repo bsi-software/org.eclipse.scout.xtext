@@ -72,8 +72,10 @@
         <elements xsi:type="xtext:Keyword" value="all"/>
         <elements xsi:type="xtext:Keyword" value="modify_load"/>
         <elements xsi:type="xtext:Keyword" value="modify_store"/>
+        <elements xsi:type="xtext:Keyword" value="modify_discard"/>
         <elements xsi:type="xtext:Keyword" value="new_load"/>
         <elements xsi:type="xtext:Keyword" value="new_store"/>
+        <elements xsi:type="xtext:Keyword" value="new_discard"/>
         <elements xsi:type="xtext:Keyword" value="changed"/>
         <elements xsi:type="xtext:Keyword" value="click"/>
         <elements xsi:type="xtext:Keyword" value="master_changed"/>
@@ -1527,6 +1529,38 @@
             <elements xsi:type="xtext:Keyword" value="="/>
             <elements xsi:type="xtext:Assignment" feature="visible" operator="=">
               <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="single_select"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="singleSelect" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="multi_select"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="multiSelect" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="empty_select"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="emptySelect" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="type"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+              <terminal xsi:type="xtext:Alternatives">
+                <elements xsi:type="xtext:Keyword" value="normal"/>
+                <elements xsi:type="xtext:Keyword" value="separator"/>
+                <elements xsi:type="xtext:Keyword" value="cancel"/>
+              </terminal>
             </elements>
           </elements>
           <elements xsi:type="xtext:Group" cardinality="?">

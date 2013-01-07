@@ -34,6 +34,10 @@ import org.eclipse.scout.saml.saml.TranslationElement;
  *   <li>{@link org.eclipse.scout.saml.saml.impl.MenuElementImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.MenuElementImpl#getEnabled <em>Enabled</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.MenuElementImpl#getVisible <em>Visible</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.MenuElementImpl#getSingleSelect <em>Single Select</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.MenuElementImpl#getMultiSelect <em>Multi Select</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.MenuElementImpl#getEmptySelect <em>Empty Select</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.MenuElementImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.MenuElementImpl#getText <em>Text</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.MenuElementImpl#getSuperType <em>Super Type</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.MenuElementImpl#getLogic <em>Logic</em>}</li>
@@ -104,6 +108,86 @@ public class MenuElementImpl extends MinimalEObjectImpl.Container implements Men
    * @ordered
    */
   protected String visible = VISIBLE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getSingleSelect() <em>Single Select</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSingleSelect()
+   * @generated
+   * @ordered
+   */
+  protected static final String SINGLE_SELECT_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getSingleSelect() <em>Single Select</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSingleSelect()
+   * @generated
+   * @ordered
+   */
+  protected String singleSelect = SINGLE_SELECT_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getMultiSelect() <em>Multi Select</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMultiSelect()
+   * @generated
+   * @ordered
+   */
+  protected static final String MULTI_SELECT_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getMultiSelect() <em>Multi Select</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMultiSelect()
+   * @generated
+   * @ordered
+   */
+  protected String multiSelect = MULTI_SELECT_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getEmptySelect() <em>Empty Select</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEmptySelect()
+   * @generated
+   * @ordered
+   */
+  protected static final String EMPTY_SELECT_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getEmptySelect() <em>Empty Select</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEmptySelect()
+   * @generated
+   * @ordered
+   */
+  protected String emptySelect = EMPTY_SELECT_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
+  protected static final String TYPE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
+  protected String type = TYPE_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getText() <em>Text</em>}' reference.
@@ -233,6 +317,98 @@ public class MenuElementImpl extends MinimalEObjectImpl.Container implements Men
     visible = newVisible;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.MENU_ELEMENT__VISIBLE, oldVisible, visible));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getSingleSelect()
+  {
+    return singleSelect;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSingleSelect(String newSingleSelect)
+  {
+    String oldSingleSelect = singleSelect;
+    singleSelect = newSingleSelect;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.MENU_ELEMENT__SINGLE_SELECT, oldSingleSelect, singleSelect));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getMultiSelect()
+  {
+    return multiSelect;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setMultiSelect(String newMultiSelect)
+  {
+    String oldMultiSelect = multiSelect;
+    multiSelect = newMultiSelect;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.MENU_ELEMENT__MULTI_SELECT, oldMultiSelect, multiSelect));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getEmptySelect()
+  {
+    return emptySelect;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setEmptySelect(String newEmptySelect)
+  {
+    String oldEmptySelect = emptySelect;
+    emptySelect = newEmptySelect;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.MENU_ELEMENT__EMPTY_SELECT, oldEmptySelect, emptySelect));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getType()
+  {
+    return type;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setType(String newType)
+  {
+    String oldType = type;
+    type = newType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.MENU_ELEMENT__TYPE, oldType, type));
   }
 
   /**
@@ -383,6 +559,14 @@ public class MenuElementImpl extends MinimalEObjectImpl.Container implements Men
         return getEnabled();
       case SamlPackage.MENU_ELEMENT__VISIBLE:
         return getVisible();
+      case SamlPackage.MENU_ELEMENT__SINGLE_SELECT:
+        return getSingleSelect();
+      case SamlPackage.MENU_ELEMENT__MULTI_SELECT:
+        return getMultiSelect();
+      case SamlPackage.MENU_ELEMENT__EMPTY_SELECT:
+        return getEmptySelect();
+      case SamlPackage.MENU_ELEMENT__TYPE:
+        return getType();
       case SamlPackage.MENU_ELEMENT__TEXT:
         if (resolve) return getText();
         return basicGetText();
@@ -416,6 +600,18 @@ public class MenuElementImpl extends MinimalEObjectImpl.Container implements Men
         return;
       case SamlPackage.MENU_ELEMENT__VISIBLE:
         setVisible((String)newValue);
+        return;
+      case SamlPackage.MENU_ELEMENT__SINGLE_SELECT:
+        setSingleSelect((String)newValue);
+        return;
+      case SamlPackage.MENU_ELEMENT__MULTI_SELECT:
+        setMultiSelect((String)newValue);
+        return;
+      case SamlPackage.MENU_ELEMENT__EMPTY_SELECT:
+        setEmptySelect((String)newValue);
+        return;
+      case SamlPackage.MENU_ELEMENT__TYPE:
+        setType((String)newValue);
         return;
       case SamlPackage.MENU_ELEMENT__TEXT:
         setText((TranslationElement)newValue);
@@ -454,6 +650,18 @@ public class MenuElementImpl extends MinimalEObjectImpl.Container implements Men
       case SamlPackage.MENU_ELEMENT__VISIBLE:
         setVisible(VISIBLE_EDEFAULT);
         return;
+      case SamlPackage.MENU_ELEMENT__SINGLE_SELECT:
+        setSingleSelect(SINGLE_SELECT_EDEFAULT);
+        return;
+      case SamlPackage.MENU_ELEMENT__MULTI_SELECT:
+        setMultiSelect(MULTI_SELECT_EDEFAULT);
+        return;
+      case SamlPackage.MENU_ELEMENT__EMPTY_SELECT:
+        setEmptySelect(EMPTY_SELECT_EDEFAULT);
+        return;
+      case SamlPackage.MENU_ELEMENT__TYPE:
+        setType(TYPE_EDEFAULT);
+        return;
       case SamlPackage.MENU_ELEMENT__TEXT:
         setText((TranslationElement)null);
         return;
@@ -486,6 +694,14 @@ public class MenuElementImpl extends MinimalEObjectImpl.Container implements Men
         return ENABLED_EDEFAULT == null ? enabled != null : !ENABLED_EDEFAULT.equals(enabled);
       case SamlPackage.MENU_ELEMENT__VISIBLE:
         return VISIBLE_EDEFAULT == null ? visible != null : !VISIBLE_EDEFAULT.equals(visible);
+      case SamlPackage.MENU_ELEMENT__SINGLE_SELECT:
+        return SINGLE_SELECT_EDEFAULT == null ? singleSelect != null : !SINGLE_SELECT_EDEFAULT.equals(singleSelect);
+      case SamlPackage.MENU_ELEMENT__MULTI_SELECT:
+        return MULTI_SELECT_EDEFAULT == null ? multiSelect != null : !MULTI_SELECT_EDEFAULT.equals(multiSelect);
+      case SamlPackage.MENU_ELEMENT__EMPTY_SELECT:
+        return EMPTY_SELECT_EDEFAULT == null ? emptySelect != null : !EMPTY_SELECT_EDEFAULT.equals(emptySelect);
+      case SamlPackage.MENU_ELEMENT__TYPE:
+        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
       case SamlPackage.MENU_ELEMENT__TEXT:
         return text != null;
       case SamlPackage.MENU_ELEMENT__SUPER_TYPE:
@@ -515,6 +731,14 @@ public class MenuElementImpl extends MinimalEObjectImpl.Container implements Men
     result.append(enabled);
     result.append(", visible: ");
     result.append(visible);
+    result.append(", singleSelect: ");
+    result.append(singleSelect);
+    result.append(", multiSelect: ");
+    result.append(multiSelect);
+    result.append(", emptySelect: ");
+    result.append(emptySelect);
+    result.append(", type: ");
+    result.append(type);
     result.append(')');
     return result.toString();
   }

@@ -146,15 +146,25 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
     op.setCreateButtonOk(true);
     op.setCreateButtonCancel(true);
 
+    op.setCreateExecLoad(false);
+    op.setCreateExecStore(false);
+
+    op.setCreateCreateMethod(false);
+    op.setCreateLoadMethod(false);
+    op.setCreatePrepareCreateMethod(false);
+    op.setCreateStoreMethod(false);
+
     boolean createModifyHandler = hasOneOfLogicEvents(new String[]{
         getSamlContext().getGrammarAccess().getLogicEventTypeAccess().getModify_loadKeyword_1().getValue(),
-        getSamlContext().getGrammarAccess().getLogicEventTypeAccess().getModify_storeKeyword_2().getValue()
+        getSamlContext().getGrammarAccess().getLogicEventTypeAccess().getModify_storeKeyword_2().getValue(),
+        getSamlContext().getGrammarAccess().getLogicEventTypeAccess().getModify_discardKeyword_3().getValue()
     });
 
     op.setCreateModifyHandler(createModifyHandler);
     op.setCreateNewHandler(!createModifyHandler || hasOneOfLogicEvents(new String[]{
-        getSamlContext().getGrammarAccess().getLogicEventTypeAccess().getNew_loadKeyword_3().getValue(),
-        getSamlContext().getGrammarAccess().getLogicEventTypeAccess().getNew_storeKeyword_4().getValue()
+        getSamlContext().getGrammarAccess().getLogicEventTypeAccess().getNew_loadKeyword_4().getValue(),
+        getSamlContext().getGrammarAccess().getLogicEventTypeAccess().getNew_storeKeyword_5().getValue(),
+        getSamlContext().getGrammarAccess().getLogicEventTypeAccess().getNew_discardKeyword_6().getValue()
     }));
 
     op.setFormBundle(getCurrentScoutModule().getClientBundle());

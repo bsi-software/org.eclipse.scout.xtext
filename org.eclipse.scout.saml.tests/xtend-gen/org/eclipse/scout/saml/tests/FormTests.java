@@ -316,6 +316,32 @@ public class FormTests {
   }
   
   @Test
+  public void testDiscardEvent() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module a.b");
+      _builder.newLine();
+      _builder.append("form FormA {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("logic event=modify_discard placement=server {");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("\"java logic\"");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      Model _parse = this._parseHelper.parse(_builder);
+      this._validationTestHelper.assertNoErrors(_parse);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
   public void testTabBox() {
     try {
       StringConcatenation _builder = new StringConcatenation();

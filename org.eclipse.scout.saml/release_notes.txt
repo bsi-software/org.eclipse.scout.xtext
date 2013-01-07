@@ -66,3 +66,15 @@ Changes:
 			Child: 'menu'
 
 
+
+Version: 1.0.0 2013-01-07
+Changed: mvi
+Changes:
+	Added:
+		For 'menu' element:
+			Attributes: 'single_select', 'multi_select', 'empty_select', 'type'
+		For 'event' attribute below 'form' element:
+			Options: 'modify_discard', 'new_discard'
+
+
+

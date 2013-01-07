@@ -1,0 +1,29 @@
+module test.aa.bb
+		
+translation M1 default_lang="Test Menu 1"
+translation M2 default_lang="Test Menu 2"
+translation M3 default_lang="Test Menu 3"
+translation M4 default_lang="Test Menu 4"
+		
+form MenuTest {
+	logic placement=server event=new_discard {
+		"System.out.println(\"closed\"); return formData;"
+	}
+
+	smartfield MySmart {
+		menu M1 enabled=true visible=true single_select=true multi_select=true empty_select=true text=M1
+		menu M2 enabled=false visible=true type=separator empty_select=true text=M2
+		menu M3 enabled=true visible=true empty_select=true type=cancel text=M3 {
+			logic event=click placement=inline {
+				"System.out.println(\"cancel menu inline\");"
+			}
+			logic event=click placement=server {
+				"System.out.println(\"cancel menu server\"); return formData;"
+			}
+			logic event=click placement=client {
+				"System.out.println(\"cancel menu client\");"
+			}
+		}
+		menu M4 enabled=true empty_select=true visible=true type=normal text=M4
+	}
+}

@@ -17,6 +17,7 @@ import static extension org.eclipse.xtext.EcoreUtil2.*
 import org.eclipse.emf.ecore.EClass
 import java.util.Set
 import java.util.List
+import org.eclipse.scout.saml.saml.MenuElement
 
 class SamlJavaValidatorHelper {
 	
@@ -41,6 +42,10 @@ class SamlJavaValidatorHelper {
 	
 	def allFieldsOfForm(FormElement form) {
 		form.eAllOfType(typeof(FormFieldElement));
+	}
+	
+	def allMenusOfForm(FormElement form) {
+		form.eAllOfType(typeof(MenuElement));
 	}
 	
 	def allFieldsInSameForm(EObject element) {

@@ -110,34 +110,37 @@ public class SamlJavaValidator extends AbstractSamlJavaValidator implements ISam
 
   private Set<String> getPossibleLogicEventsFor(EObject container) {
     if (container instanceof FormElement) {
-      return newSet(grammar.getLogicEventTypeAccess().getModify_loadKeyword_1().getValue(),
+      return newSet(
+          grammar.getLogicEventTypeAccess().getModify_loadKeyword_1().getValue(),
           grammar.getLogicEventTypeAccess().getModify_storeKeyword_2().getValue(),
-          grammar.getLogicEventTypeAccess().getNew_loadKeyword_3().getValue(),
-          grammar.getLogicEventTypeAccess().getNew_storeKeyword_4().getValue());
+          grammar.getLogicEventTypeAccess().getModify_discardKeyword_3().getValue(),
+          grammar.getLogicEventTypeAccess().getNew_loadKeyword_4().getValue(),
+          grammar.getLogicEventTypeAccess().getNew_storeKeyword_5().getValue(),
+          grammar.getLogicEventTypeAccess().getNew_discardKeyword_6().getValue());
     }
     else if (container instanceof CodeElement) {
-      return newSet(grammar.getLogicEventTypeAccess().getLoadKeyword_11().getValue());
+      return newSet(grammar.getLogicEventTypeAccess().getLoadKeyword_13().getValue());
     }
     else if (container instanceof ButtonElement || container instanceof MenuElement) {
-      return newSet(grammar.getLogicEventTypeAccess().getClickKeyword_6().getValue());
+      return newSet(grammar.getLogicEventTypeAccess().getClickKeyword_8().getValue());
     }
     else if (container instanceof LookupElement) {
       return newSet(grammar.getLogicEventTypeAccess().getAllKeyword_0().getValue());
     }
     else if (container instanceof ValueFieldElement) {
-      return newSet(grammar.getLogicEventTypeAccess().getChangedKeyword_5().getValue(),
-          grammar.getLogicEventTypeAccess().getFormat_valueKeyword_9().getValue(),
-          grammar.getLogicEventTypeAccess().getMaster_changedKeyword_7().getValue(),
-          grammar.getLogicEventTypeAccess().getInitKeyword_8().getValue());
+      return newSet(grammar.getLogicEventTypeAccess().getChangedKeyword_7().getValue(),
+          grammar.getLogicEventTypeAccess().getFormat_valueKeyword_11().getValue(),
+          grammar.getLogicEventTypeAccess().getMaster_changedKeyword_9().getValue(),
+          grammar.getLogicEventTypeAccess().getInitKeyword_10().getValue());
     }
     else if (container instanceof FormFieldElement) {
-      return newSet(grammar.getLogicEventTypeAccess().getInitKeyword_8().getValue());
+      return newSet(grammar.getLogicEventTypeAccess().getInitKeyword_10().getValue());
     }
     else if (container instanceof TableElement) {
-      return newSet(grammar.getLogicEventTypeAccess().getInitKeyword_8().getValue());
+      return newSet(grammar.getLogicEventTypeAccess().getInitKeyword_10().getValue());
     }
     else if (container instanceof KeyElement) {
-      return newSet(grammar.getLogicEventTypeAccess().getActivatedKeyword_10().getValue());
+      return newSet(grammar.getLogicEventTypeAccess().getActivatedKeyword_12().getValue());
     }
 
     return newSet();
@@ -155,6 +158,13 @@ public class SamlJavaValidator extends AbstractSamlJavaValidator implements ISam
   public void checkFormFieldNameUniqueness(FormElement formElement) {
     if (helper.hasDuplicate(helper.allFieldsOfForm(formElement))) {
       error(MSG_DUPLICATE_FIELD, formElement, SamlPackage.Literals.FORM_ELEMENT__FIELDS, DUPLICATE);
+    }
+  }
+
+  @Check
+  public void checkMenuNameUniqueness(FormElement formElement) {
+    if (helper.hasDuplicate(helper.allMenusOfForm(formElement))) {
+      error(MSG_DUPLICATE_MENU, formElement, SamlPackage.Literals.FORM_ELEMENT__FIELDS, DUPLICATE);
     }
   }
 

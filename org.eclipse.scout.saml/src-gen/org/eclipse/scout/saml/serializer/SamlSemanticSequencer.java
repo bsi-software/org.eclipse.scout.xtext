@@ -1394,6 +1394,10 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         name=ID 
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
+	 *         singleSelect=BooleanType? 
+	 *         multiSelect=BooleanType? 
+	 *         emptySelect=BooleanType? 
+	 *         (type='normal' | type='separator' | type='cancel')? 
 	 *         text=[TranslationElement|QualifiedName]? 
 	 *         superType=[TemplateElement|ID]? 
 	 *         (logic+=LogicElement | menus+=MenuElement)*

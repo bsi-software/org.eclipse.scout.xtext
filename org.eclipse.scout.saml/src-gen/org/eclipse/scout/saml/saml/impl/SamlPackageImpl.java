@@ -1490,9 +1490,49 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getMenuElement_SingleSelect()
+  {
+    return (EAttribute)menuElementEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getMenuElement_MultiSelect()
+  {
+    return (EAttribute)menuElementEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getMenuElement_EmptySelect()
+  {
+    return (EAttribute)menuElementEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getMenuElement_Type()
+  {
+    return (EAttribute)menuElementEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getMenuElement_Text()
   {
-    return (EReference)menuElementEClass.getEStructuralFeatures().get(3);
+    return (EReference)menuElementEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -1502,7 +1542,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    */
   public EReference getMenuElement_SuperType()
   {
-    return (EReference)menuElementEClass.getEStructuralFeatures().get(4);
+    return (EReference)menuElementEClass.getEStructuralFeatures().get(8);
   }
 
   /**
@@ -1512,7 +1552,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    */
   public EReference getMenuElement_Logic()
   {
-    return (EReference)menuElementEClass.getEStructuralFeatures().get(5);
+    return (EReference)menuElementEClass.getEStructuralFeatures().get(9);
   }
 
   /**
@@ -1522,7 +1562,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    */
   public EReference getMenuElement_Menus()
   {
-    return (EReference)menuElementEClass.getEStructuralFeatures().get(6);
+    return (EReference)menuElementEClass.getEStructuralFeatures().get(10);
   }
 
   /**
@@ -1945,6 +1985,10 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     createEAttribute(menuElementEClass, MENU_ELEMENT__NAME);
     createEAttribute(menuElementEClass, MENU_ELEMENT__ENABLED);
     createEAttribute(menuElementEClass, MENU_ELEMENT__VISIBLE);
+    createEAttribute(menuElementEClass, MENU_ELEMENT__SINGLE_SELECT);
+    createEAttribute(menuElementEClass, MENU_ELEMENT__MULTI_SELECT);
+    createEAttribute(menuElementEClass, MENU_ELEMENT__EMPTY_SELECT);
+    createEAttribute(menuElementEClass, MENU_ELEMENT__TYPE);
     createEReference(menuElementEClass, MENU_ELEMENT__TEXT);
     createEReference(menuElementEClass, MENU_ELEMENT__SUPER_TYPE);
     createEReference(menuElementEClass, MENU_ELEMENT__LOGIC);
@@ -2167,6 +2211,10 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEAttribute(getMenuElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, MenuElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMenuElement_Enabled(), ecorePackage.getEString(), "enabled", null, 0, 1, MenuElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMenuElement_Visible(), ecorePackage.getEString(), "visible", null, 0, 1, MenuElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMenuElement_SingleSelect(), ecorePackage.getEString(), "singleSelect", null, 0, 1, MenuElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMenuElement_MultiSelect(), ecorePackage.getEString(), "multiSelect", null, 0, 1, MenuElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMenuElement_EmptySelect(), ecorePackage.getEString(), "emptySelect", null, 0, 1, MenuElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMenuElement_Type(), ecorePackage.getEString(), "type", null, 0, 1, MenuElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMenuElement_Text(), this.getTranslationElement(), null, "text", null, 0, 1, MenuElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMenuElement_SuperType(), this.getTemplateElement(), null, "superType", null, 0, 1, MenuElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMenuElement_Logic(), this.getLogicElement(), null, "logic", null, 0, -1, MenuElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

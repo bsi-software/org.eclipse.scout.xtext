@@ -10,12 +10,15 @@
  ******************************************************************************/
 package org.eclipse.scout.sdk.saml.importer.operation.menu;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
+import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.saml.saml.MenuElement;
+import org.eclipse.scout.saml.saml.SamlFactory;
 import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.MenuNewOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.form.AbstractUiElementImportOperation;
@@ -55,10 +58,53 @@ public class MenuElementImportOperation extends AbstractUiElementImportOperation
     applyEnabledAttribute(getMenuElement().getEnabled(), menu, h);
     applyTextAttribute(getMenuElement().getText(), menu, h);
     applyVisibleAttribute(getMenuElement().getVisible(), menu, h);
+    applySingleSelectionAction(getMenuElement().getSingleSelect(), menu, h);
+    applyMultiSelectionAction(getMenuElement().getMultiSelect(), menu, h);
+    applyEmptySpaceAction(getMenuElement().getEmptySelect(), menu, h);
+    applyTypeSeparatorAttribute(getMenuElement().getType(), menu, h);
 
     SamlLogicFillOperation.fillAllLogic(getMenuElement().getLogic(), getSamlFormContext(), menu);
+    applyTypeExitLogic(getMenuElement().getType(), menu);
 
     processMenus(getMenuElement().getMenus(), menu, getSamlFormContext());
+  }
+
+  protected void applyTypeExitLogic(String a, IType field) throws CoreException, IllegalArgumentException {
+    if (a != null && a.equals(getSamlContext().getGrammarAccess().getMenuElementAccess().getTypeCancelKeyword_2_5_2_0_2().getValue())) {
+      SamlFactory factory = SamlFactory.eINSTANCE;
+      LogicElement exitLogic = factory.createLogicElement();
+      exitLogic.setEvent(getSamlContext().getGrammarAccess().getLogicEventTypeAccess().getClickKeyword_8().getValue());
+      exitLogic.setPlacement(getSamlContext().getGrammarAccess().getLogicElementAccess().getPlacementInlineKeyword_3_1_2_0_2().getValue());
+      exitLogic.setSource("doCancel();");
+
+      ArrayList<LogicElement> logicList = new ArrayList<LogicElement>(1);
+      logicList.add(exitLogic);
+      SamlLogicFillOperation.fillAllLogic(logicList, getSamlFormContext(), field);
+    }
+  }
+
+  protected void applyTypeSeparatorAttribute(String a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    if (a != null && a.equals(getSamlContext().getGrammarAccess().getMenuElementAccess().getTypeSeparatorKeyword_2_5_2_0_1().getValue())) {
+      overrideMethod(field, h, "getConfiguredSeparator", "return true;");
+    }
+  }
+
+  protected void applySingleSelectionAction(String a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    if ("false".equals(a)) {
+      overrideMethod(field, h, "getConfiguredSingleSelectionAction", "return false;");
+    }
+  }
+
+  protected void applyMultiSelectionAction(String a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    if ("true".equals(a)) {
+      overrideMethod(field, h, "getConfiguredMultiSelectionAction", "return true;");
+    }
+  }
+
+  protected void applyEmptySpaceAction(String a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+    if ("true".equals(a)) {
+      overrideMethod(field, h, "getConfiguredEmptySpaceAction", "return true;");
+    }
   }
 
   @Override

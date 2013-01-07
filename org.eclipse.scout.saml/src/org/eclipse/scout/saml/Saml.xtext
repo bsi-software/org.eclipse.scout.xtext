@@ -28,7 +28,7 @@ QualifiedNameWithWildCard: QualifiedName  ('.' '*')?;
 BooleanType: 'true'|'false';	//TODO: code completion
 
 //TODO: code completion depending on element we are on
-LogicEventType: 'all'|'modify_load'|'modify_store'|'new_load'|'new_store'|'changed'|'click'|'master_changed'|'init'|'format_value'|'activated'|'load';
+LogicEventType: 'all'|'modify_load'|'modify_store'|'modify_discard'|'new_load'|'new_store'|'new_discard'|'changed'|'click'|'master_changed'|'init'|'format_value'|'activated'|'load';
 
 HorizontalAlignmentType:'left'|'center'|'right';	//TODO: code completion
 
@@ -248,6 +248,10 @@ MenuElement:'menu' name=ID
 	(
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
+		('single_select' '=' singleSelect=BooleanType)? &
+		('multi_select' '=' multiSelect=BooleanType)? &
+		('empty_select' '=' emptySelect=BooleanType)? &
+		('type' '=' type=('normal'|'separator'|'cancel'))? &
 		('text' '=' text=[TranslationElement|QualifiedName])? &
 		('super_type' '=' superType=[TemplateElement])?
 	)
