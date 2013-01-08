@@ -29,8 +29,9 @@ public class ClientSyncJobDecorator implements ISourceFragment {
 
   @Override
   public void createSource(SourceProviderInput input, StringBuilder src) throws CoreException {
-    //TODO [mvi]: change to new formDataImport using formfield filter?
-    src.append("new ClientSyncJob(\"import formdata\", ClientSession.get(), true) { @Override protected void runVoid(IProgressMonitor monitor) throws Throwable {");
+    //TODO [mvi]: change to new formDataImport using formfield filter (when bug 392409)?
+    //TODO [mvi]: then the event triggering field could not be imported. required?
+    src.append("new ClientSyncJob(\"exec backend call\", ClientSession.get(), true) { @Override protected void runVoid(IProgressMonitor monitor) throws Throwable {");
     if (m_content != null) {
       m_content.createSource(input, src);
     }
