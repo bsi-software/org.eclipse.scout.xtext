@@ -8,17 +8,21 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  ******************************************************************************/
-package org.eclipse.scout.sdk.saml.importer.operation;
+package org.eclipse.scout.sdk.saml.importer.preprocess;
 
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.emf.ecore.EObject;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
- * <h3>{@link IRootElementVisitor}</h3> ...
+ * <h3>{@link SamlPreProcess}</h3> ...
  * 
  * @author mvi
- * @since 3.8.0 21.11.2012
+ * @since 3.8.0 09.01.2013
  */
-public interface IRootElementVisitor {
-  void visit(EObject o, SamlContext context) throws CoreException, IllegalArgumentException;
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.METHOD})
+public @interface SamlPreProcess {
+
 }

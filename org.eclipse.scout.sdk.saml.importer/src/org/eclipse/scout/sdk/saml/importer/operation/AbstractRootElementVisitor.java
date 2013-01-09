@@ -11,10 +11,8 @@
 package org.eclipse.scout.sdk.saml.importer.operation;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.scout.saml.saml.ModuleElement;
-import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 import org.eclipse.scout.sdk.workspace.IScoutProject;
 
 /**
@@ -33,7 +31,7 @@ public abstract class AbstractRootElementVisitor<T extends EObject> implements I
 
   @SuppressWarnings("unchecked")
   @Override
-  public void visit(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, EObject o, SamlContext context) throws CoreException, IllegalArgumentException {
+  public void visit(EObject o, SamlContext context) throws CoreException, IllegalArgumentException {
     if (o instanceof ModuleElement) {
       ModuleElement mod = (ModuleElement) o;
       String moduleName = mod.getName();
@@ -50,7 +48,7 @@ public abstract class AbstractRootElementVisitor<T extends EObject> implements I
       if (op != null) {
         op.setSamlContext(context);
         op.validate();
-        op.run(monitor, workingCopyManager);
+        op.run(context.getMonitor(), context.getWorkingCopyManager());
       }
     }
   }

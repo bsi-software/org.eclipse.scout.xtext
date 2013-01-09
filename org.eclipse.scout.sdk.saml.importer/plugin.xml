@@ -3,6 +3,7 @@
 <plugin>
    <extension-point id="formFieldOperation" name="formFieldOperation" schema="schema/formFieldOperation.exsd"/>
    <extension-point id="codeCustomization" name="codeCustomization" schema="schema/codeCustomization.exsd"/>
+   <extension-point id="elementPreProcessors" name="elementPreProcessors" schema="schema/elementPreProcessors.exsd"/>
    <extension
          id="samlImport"
          point="org.eclipse.core.runtime.applications">

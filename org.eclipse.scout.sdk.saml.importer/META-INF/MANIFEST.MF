@@ -29,5 +29,6 @@ Export-Package: org.eclipse.scout.sdk.saml.importer,
  org.eclipse.scout.sdk.saml.importer.operation.menu,
  org.eclipse.scout.sdk.saml.importer.operation.nls,
  org.eclipse.scout.sdk.saml.importer.operation.util,
+ org.eclipse.scout.sdk.saml.importer.preprocess,
  org.eclipse.scout.sdk.saml.importer.util
 Bundle-Vendor: Eclipse Scout Project

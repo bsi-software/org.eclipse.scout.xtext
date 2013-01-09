@@ -31,6 +31,7 @@ import org.eclipse.scout.sdk.saml.importer.operation.codetype.CodeElementImportO
 import org.eclipse.scout.sdk.saml.importer.operation.form.FormElementImportOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.lookup.LookupElementImportOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.nls.TranslationElementImportOperation;
+import org.eclipse.scout.sdk.saml.importer.preprocess.SamlElementPreProcessorExtension;
 import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 import org.eclipse.scout.sdk.workspace.IScoutProject;
 import org.eclipse.xtext.resource.XtextResource;
@@ -156,31 +157,36 @@ public class SamlImportOperation implements IOperation {
       // no errors: start import
 
       m_context = new SamlContext(monitor, workingCopyManager, getInjector(), getScoutRootProject());
-      // 0. allow all configurators to do their tasks
+
+      // 0. allow all configurators & pre-processors to do their tasks
       for (IScoutProjectConfigurator configurator : CodeCustomizationExtension.getScoutProjectConfigurators()) {
         configurator.configure(getSamlContext());
       }
+      visitRootElements(new PreProcessVisitor());
+      if (monitor.isCanceled()) {
+        return;
+      }
 
       // 1. all translations over all files
-      visitRootElements(monitor, workingCopyManager, new TranslationElementVisitor());
+      visitRootElements(new TranslationElementVisitor());
       if (monitor.isCanceled()) {
         return;
       }
 
       // 2. all codes over all files
-      visitRootElements(monitor, workingCopyManager, new CodeElementVisitor());
+      visitRootElements(new CodeElementVisitor());
       if (monitor.isCanceled()) {
         return;
       }
 
       // 3. all lookups over all files
-      visitRootElements(monitor, workingCopyManager, new LookupElementVisitor());
+      visitRootElements(new LookupElementVisitor());
       if (monitor.isCanceled()) {
         return;
       }
 
       // 4. all forms over all files
-      visitRootElements(monitor, workingCopyManager, new FormElementVisitor());
+      visitRootElements(new FormElementVisitor());
       if (monitor.isCanceled()) {
         return;
       }
@@ -189,15 +195,15 @@ public class SamlImportOperation implements IOperation {
     }
   }
 
-  private void visitRootElements(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, IRootElementVisitor visitor) throws IllegalArgumentException, CoreException {
+  private void visitRootElements(IRootElementVisitor visitor) throws IllegalArgumentException, CoreException {
     for (Resource r : getResourceSet().getResources()) {
       EList<EObject> contents = r.getContents();
       for (EObject model : contents) {
         for (EObject root : model.eContents()) {
-          if (monitor.isCanceled()) {
+          if (getSamlContext().getMonitor().isCanceled()) {
             return;
           }
-          visitor.visit(monitor, workingCopyManager, root, getSamlContext());
+          visitor.visit(root, getSamlContext());
         }
       }
     }
@@ -237,6 +243,20 @@ public class SamlImportOperation implements IOperation {
 
   public void setResourceSet(XtextResourceSet resourceSet) {
     m_resourceSet = resourceSet;
+  }
+
+  private static class PreProcessVisitor implements IRootElementVisitor {
+    @Override
+    public void visit(EObject o, SamlContext context) throws CoreException, IllegalArgumentException {
+      preProcess(o, context);
+    }
+
+    private void preProcess(EObject element, SamlContext context) throws CoreException {
+      SamlElementPreProcessorExtension.preProcess(element, context);
+      for (EObject child : element.eContents()) {
+        preProcess(child, context);
+      }
+    }
   }
 
   private static class TranslationElementVisitor extends AbstractRootElementVisitor<TranslationElement> {
