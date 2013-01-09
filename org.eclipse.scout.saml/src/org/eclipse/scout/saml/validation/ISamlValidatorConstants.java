@@ -50,6 +50,7 @@ public interface ISamlValidatorConstants {
   String MSG_SOURCE_LINKED_OR_GIVEN = "a logic element must either contain source or link to source code of a named logic element";
   String MSG_WRONG_LOGIC_EVENT = "this event is not allowed in this context";
   String MSG_ONLY_NAMED_LOGIC_ON_TOP_LEVEL = "top level logic elements must be named";
+  String MSG_EVENT_ONLY_INLINE = "this event logic cannot be placed inline";
 
   String INVALID_MODULE = "InvalidModuleElement";
   String INVALID_MODULE_NOT_FOUND = "The given module could not be found in the current workspace.";

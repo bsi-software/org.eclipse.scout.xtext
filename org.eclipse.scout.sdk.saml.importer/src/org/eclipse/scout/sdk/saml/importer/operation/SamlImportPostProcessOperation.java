@@ -46,6 +46,7 @@ public class SamlImportPostProcessOperation implements IOperation {
 
   @Override
   public void run(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException, IllegalArgumentException {
+    workingCopyManager.reconcile(getType().getCompilationUnit(), monitor);
     JavaElementFormatOperation formatOp = new JavaElementFormatOperation(getType(), true);
     formatOp.validate();
     formatOp.run(monitor, workingCopyManager);

@@ -14,9 +14,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.scout.sdk.saml.importer.extension.customization.ISourceProvider;
 import org.eclipse.scout.sdk.saml.importer.extension.customization.SourceProviderInput;
 import org.eclipse.scout.sdk.saml.importer.operation.logic.LogicInfoFactory.Placement;
-import org.eclipse.scout.sdk.saml.importer.operation.logic.fragments.CatchProcessingExDecorator;
 import org.eclipse.scout.sdk.saml.importer.operation.logic.fragments.ClientCallLogicFragment;
-import org.eclipse.scout.sdk.saml.importer.operation.logic.fragments.ClientSyncJobDecorator;
 import org.eclipse.scout.sdk.saml.importer.operation.logic.fragments.ISourceFragment;
 import org.eclipse.scout.sdk.saml.importer.operation.logic.fragments.InlineLogicFragment;
 import org.eclipse.scout.sdk.saml.importer.operation.logic.fragments.ServerCallLogicFragment;
@@ -55,11 +53,11 @@ public class DefaultSourceProvider implements ISourceProvider {
   }
 
   protected ISourceFragment getClientCallSourceFragment(SourceProviderInput input) {
-    return new CatchProcessingExDecorator(new ClientCallLogicFragment());
+    return new ClientCallLogicFragment();
   }
 
   protected ISourceFragment getServerCallSourceFragment(SourceProviderInput input) {
-    return new ClientSyncJobDecorator(new CatchProcessingExDecorator(new ServerCallLogicFragment()));
+    return new ServerCallLogicFragment();
   }
 
   protected ISourceFragment getInlineSourceFragment(SourceProviderInput input) {

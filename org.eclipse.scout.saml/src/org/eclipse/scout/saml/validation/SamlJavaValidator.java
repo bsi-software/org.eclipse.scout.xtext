@@ -106,6 +106,12 @@ public class SamlJavaValidator extends AbstractSamlJavaValidator implements ISam
     else if (logicElement.getExec() != null && logicElement.getSource() != null) {
       error(MSG_SOURCE_LINKED_OR_GIVEN, logicElement, SamlPackage.Literals.LOGIC_ELEMENT__SOURCE, INVALID_LOGIC_ELEMENT);
     }
+
+    // format_value event does not allow server logic
+    if (grammar.getLogicEventTypeAccess().getFormat_valueKeyword_11().getValue().equals(logicElement.getEvent()) &&
+        !grammar.getLogicElementAccess().getPlacementInlineKeyword_3_1_2_0_2().getValue().equals(logicElement.getPlacement())) {
+      error(MSG_EVENT_ONLY_INLINE, logicElement, SamlPackage.Literals.LOGIC_ELEMENT__PLACEMENT, INVALID_LOGIC_ELEMENT);
+    }
   }
 
   private Set<String> getPossibleLogicEventsFor(EObject container) {

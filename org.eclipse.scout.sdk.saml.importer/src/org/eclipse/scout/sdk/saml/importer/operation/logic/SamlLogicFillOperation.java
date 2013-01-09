@@ -10,7 +10,11 @@
  ******************************************************************************/
 package org.eclipse.scout.sdk.saml.importer.operation.logic;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map.Entry;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -39,8 +43,7 @@ import org.eclipse.scout.sdk.util.type.TypeUtility;
  */
 public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
 
-  private LogicElement m_logicElement;
-  private LogicInfo m_logicInfo;
+  private LogicInfo[] m_logicInfos;
 
   @Override
   public String getOperationName() {
@@ -49,66 +52,111 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
 
   @Override
   public void validate() throws IllegalArgumentException {
-    if (getLogicElement() == null) {
-      throw new IllegalArgumentException("logic element cannot be null.");
+    if (getLogicInfos() == null || getLogicInfos().length < 1) {
+      throw new IllegalArgumentException("No logic infos found.");
     }
-    if (getSamlContext() == null || getLogicInfo() == null) {
+    if (getSamlContext() == null) {
       throw new IllegalArgumentException("Context missing for logic wiring.");
+    }
+  }
+
+  private void collectTargetInfos(LogicInfo i, HashMap<IType, P_TargetLogicComposite> map) {
+    if (TypeUtility.exists(i.getTargetType())) {
+      P_TargetLogicComposite comp = map.get(i.getTargetType());
+      if (comp == null) {
+        comp = new P_TargetLogicComposite(i);
+        map.put(i.getTargetType(), comp);
+      }
+      comp.sb.append(i.getTargetLogic());
+    }
+  }
+
+  private void collectSourceInfos(LogicInfo i, HashMap<IType, StringBuilder> map) {
+    if (TypeUtility.exists(i.getSourceType())) {
+      StringBuilder sb = map.get(i.getTargetType());
+      if (sb == null) {
+        sb = new StringBuilder(i.getSourceLogic());
+        map.put(i.getTargetType(), sb);
+      }
+      else if (i.getTargetType() == i.getSourceType()) {
+        // inline: always add because there is no call to a service which has the logic collected
+        sb.append(i.getSourceLogic());
+      }
     }
   }
 
   @Override
   public void run() throws CoreException, IllegalArgumentException {
-    /* logic elements with name are just named snippets used at several places. nothing to do for them. they will be referred to from a non-named element later on */
-    if (getLogicElement().getName() == null) {
-      if (getLogicInfo().isClassLevel()) {
-        fillClassLevelLogic(getLogicInfo().getTargetType(), getLogicInfo().getTargetLogic());
+    // at this place all logics have the same event and there exists at least one logic element!
+
+    LinkedHashMap<IType /* target type */, P_TargetLogicComposite> classLevelSources = new LinkedHashMap<IType, P_TargetLogicComposite>();
+    LinkedHashMap<IType /* target type */, P_TargetLogicComposite> targetMethodSources = new LinkedHashMap<IType, P_TargetLogicComposite>();
+    LinkedHashMap<IType /* target type */, StringBuilder> sourceMethodSources = new LinkedHashMap<IType, StringBuilder>();
+    LogicInfo sourceLogicInfo = null;
+
+    for (LogicInfo i : getLogicInfos()) {
+      if (i.isClassLevel()) {
+        collectTargetInfos(i, classLevelSources);
       }
       else {
-        if (TypeUtility.exists(getLogicInfo().getTargetInterfaceType())) {
-          IMethod target = createTargetMethod(getLogicInfo());
-          appendMethodLogic(target, getLogicInfo().getTargetLogic());
-        }
-
-        if (TypeUtility.exists(getLogicInfo().getSourceType())) {
-          IMethod source = createSourceMethod(getLogicInfo());
-          appendMethodLogic(source, getLogicInfo().getSourceLogic());
+        collectTargetInfos(i, targetMethodSources);
+        collectSourceInfos(i, sourceMethodSources);
+        if (TypeUtility.exists(i.getSourceType())) {
+          sourceLogicInfo = i;
         }
       }
     }
+
+    // CLASS LEVEL: INSERT COLLECTED SOURCE
+    for (P_TargetLogicComposite e : classLevelSources.values()) {
+      fillClassLevelLogic(e.li.getTargetType(), e.sb.toString());
+    }
+
+    // TARGET METHODS: CREATE AND INSERT COLLECTED SOURCE
+    for (P_TargetLogicComposite e : targetMethodSources.values()) {
+      if (TypeUtility.exists(e.li.getTargetInterfaceType())) { // inline events have no interface and there is no need to create a target method
+        IMethod targetMethod = createTargetMethod(e.li);
+        String source = e.sb.toString();
+        setMethodContent(targetMethod, source);
+      }
+    }
+
+    // SOURCE METHOD: call to all target methods collected
+    if (sourceLogicInfo != null) { /* class level logic has no source method */
+      IMethod sourceMethod = createSourceMethod(sourceLogicInfo);
+      StringBuilder sourceLogic = new StringBuilder();
+      boolean isForeignCallPresent = isForeignCallPresent();
+      if (isForeignCallPresent) {
+        sourceLogic.append("new ClientSyncJob(\"execute event\", ClientSession.get(), true) { @Override protected void runVoid(IProgressMonitor monitor) throws Throwable {");
+      }
+      for (StringBuilder src : sourceMethodSources.values()) {
+        sourceLogic.append(src);
+      }
+      if (isForeignCallPresent) {
+        sourceLogic.append("} }.schedule();");
+      }
+      setMethodContent(sourceMethod, sourceLogic.toString());
+    }
   }
 
-  private void appendMethodLogic(final IMethod method, final String logic) throws CoreException, IllegalArgumentException {
-    final boolean visited = getSamlContext().isMethodChanged(method);
+  private boolean isForeignCallPresent() {
+    for (LogicInfo i : getLogicInfos()) {
+      if (i.getSourceType() != i.getTargetType()) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private void setMethodContent(final IMethod method, final String logic) throws CoreException, IllegalArgumentException {
     MethodUpdateContentOperation op = new MethodUpdateContentOperation(method, null, false) {
       @Override
       protected String createMethodBody(String originalBody, IImportValidator validator) throws JavaModelException {
-        if (visited) {
-          // we already replaced the body: this time we must append
-          String existing = method.getSource();
-          int start = existing.indexOf('{');
-          int end = existing.lastIndexOf('}');
-          String body = existing.substring(start + 1, end);
-
-          StringBuilder sb = new StringBuilder(existing.length() * 2);
-          sb.append(body);
-          sb.append(ResourceUtility.getLineSeparator(method.getCompilationUnit()));
-          sb.append(ScoutUtility.cleanLineSeparator(logic, method.getCompilationUnit()));
-          return sb.toString();
-        }
-        else {
-          // first time: we must replace
-          return ScoutUtility.cleanLineSeparator(logic, method.getCompilationUnit());
-        }
+        return ScoutUtility.cleanLineSeparator(logic, method.getCompilationUnit());
       }
     };
     op.validate();
     op.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
-
-    if (!visited) {
-      // remember that we already replaced the content of this method
-      getSamlContext().markMethodChanged(method);
-    }
   }
 
   private void fillClassLevelLogic(IType target, String addSource) throws CoreException, IllegalArgumentException {
@@ -153,7 +201,7 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
   }
 
   private IMethod createSourceMethod(LogicInfo info) throws CoreException, IllegalArgumentException {
-    if (info.getSourceMethod().isImplemented()) {
+    if (info.getSourceMethod() != null && info.getSourceMethod().isImplemented()) {
       return info.getSourceMethod().peekMethod();
     }
     else {
@@ -170,47 +218,65 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
   }
 
   public static void fillAllLogic(List<LogicElement> logics, SamlFormContext formContext, IType sourceType) throws CoreException, IllegalArgumentException {
+    // collect all logics of the same event
+    HashMap<String /* event */, ArrayList<LogicElement>> logicByEvent = new HashMap<String, ArrayList<LogicElement>>(logics.size());
+    for (LogicElement logic : logics) {
+
+      /* logic elements with name are just named snippets used at several places. nothing to do for them. they will be referred to from a non-named element later on */
+      if (!StringUtility.hasText(logic.getName())) {
+        String ev = logic.getEvent();
+        ArrayList<LogicElement> eventLogics = logicByEvent.get(ev);
+        if (eventLogics == null) {
+          eventLogics = new ArrayList<LogicElement>();
+          logicByEvent.put(ev, eventLogics);
+        }
+        eventLogics.add(logic);
+      }
+    }
+
     // first all event logics
-    for (LogicElement logic : logics) {
-      if (logic.getEvent() != null) {
-        runLogicOperation(logic, formContext, sourceType);
+    for (Entry<String, ArrayList<LogicElement>> entry : logicByEvent.entrySet()) {
+      if (entry.getKey() != null) {
+        runLogicOperation(entry.getValue(), formContext, sourceType);
       }
     }
+
     // then all class-level logics
-    for (LogicElement logic : logics) {
-      if (logic.getEvent() == null) {
-        runLogicOperation(logic, formContext, sourceType);
-      }
+    runLogicOperation(logicByEvent.get(null), formContext, sourceType);
+  }
+
+  private static void runLogicOperation(ArrayList<LogicElement> logics, SamlFormContext formContext, IType sourceType) throws CoreException, IllegalArgumentException {
+    if (logics == null || logics.size() < 1) {
+      return;
     }
-  }
 
-  private static void runLogicOperation(LogicElement logic, SamlFormContext formContext, IType sourceType) throws CoreException, IllegalArgumentException {
-    if (!StringUtility.hasText(logic.getName())) {
-      LogicInfo info = LogicInfoFactory.create(logic, sourceType, formContext);
-      SamlLogicFillOperation slfo = new SamlLogicFillOperation();
-
-      slfo.setSamlContext(formContext.getSamlContext());
-      slfo.setLogicElement(logic);
-      slfo.setLogicInfo(info);
-
-      slfo.validate();
-      slfo.run();
+    LogicInfo[] logicInfos = new LogicInfo[logics.size()];
+    for (int i = 0; i < logicInfos.length; i++) {
+      logicInfos[i] = LogicInfoFactory.create(logics.get(i), sourceType, formContext);
     }
+
+    SamlLogicFillOperation slfo = new SamlLogicFillOperation();
+    slfo.setSamlContext(formContext.getSamlContext());
+    slfo.setLogicInfos(logicInfos);
+    slfo.validate();
+    slfo.run();
   }
 
-  public LogicElement getLogicElement() {
-    return m_logicElement;
+  private LogicInfo[] getLogicInfos() {
+    return m_logicInfos;
   }
 
-  public void setLogicElement(LogicElement logicElement) {
-    m_logicElement = logicElement;
+  private void setLogicInfos(LogicInfo[] logicInfos) {
+    m_logicInfos = logicInfos;
   }
 
-  public LogicInfo getLogicInfo() {
-    return m_logicInfo;
-  }
+  private static class P_TargetLogicComposite {
+    private final StringBuilder sb;
+    private final LogicInfo li;
 
-  public void setLogicInfo(LogicInfo logicInfo) {
-    m_logicInfo = logicInfo;
+    private P_TargetLogicComposite(LogicInfo i) {
+      sb = new StringBuilder();
+      li = i;
+    }
   }
 }

@@ -63,23 +63,21 @@ public class MenuElementImportOperation extends AbstractUiElementImportOperation
     applyEmptySpaceAction(getMenuElement().getEmptySelect(), menu, h);
     applyTypeSeparatorAttribute(getMenuElement().getType(), menu, h);
 
-    SamlLogicFillOperation.fillAllLogic(getMenuElement().getLogic(), getSamlFormContext(), menu);
-    applyTypeExitLogic(getMenuElement().getType(), menu);
+    ArrayList<LogicElement> logics = new ArrayList<LogicElement>(getMenuElement().getLogic());
+    addTypeExitLogic(logics, getMenuElement().getType(), menu);
+    SamlLogicFillOperation.fillAllLogic(logics, getSamlFormContext(), menu);
 
     processMenus(getMenuElement().getMenus(), menu, getSamlFormContext());
   }
 
-  protected void applyTypeExitLogic(String a, IType field) throws CoreException, IllegalArgumentException {
+  protected void addTypeExitLogic(List<LogicElement> logicList, String a, IType field) throws CoreException, IllegalArgumentException {
     if (a != null && a.equals(getSamlContext().getGrammarAccess().getMenuElementAccess().getTypeCancelKeyword_2_5_2_0_2().getValue())) {
       SamlFactory factory = SamlFactory.eINSTANCE;
       LogicElement exitLogic = factory.createLogicElement();
       exitLogic.setEvent(getSamlContext().getGrammarAccess().getLogicEventTypeAccess().getClickKeyword_8().getValue());
       exitLogic.setPlacement(getSamlContext().getGrammarAccess().getLogicElementAccess().getPlacementInlineKeyword_3_1_2_0_2().getValue());
       exitLogic.setSource("doCancel();");
-
-      ArrayList<LogicElement> logicList = new ArrayList<LogicElement>(1);
       logicList.add(exitLogic);
-      SamlLogicFillOperation.fillAllLogic(logicList, getSamlFormContext(), field);
     }
   }
 

@@ -10,11 +10,7 @@
  ******************************************************************************/
 package org.eclipse.scout.sdk.saml.importer.operation;
 
-import java.util.HashSet;
-
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.jdt.core.IMethod;
-import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.scout.saml.services.SamlGrammarAccess;
 import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 import org.eclipse.scout.sdk.workspace.IScoutProject;
@@ -31,7 +27,6 @@ public class SamlContext {
   private final IProgressMonitor m_monitor;
   private final IWorkingCopyManager m_workingCopyManager;
   private final Injector m_injector;
-  private final HashSet<String> m_modifiedMethods;
   private final SamlGrammarAccess m_grammarAccess;
   private final IScoutProject m_rootProject;
   private IScoutProject m_currentScoutModule;
@@ -42,21 +37,6 @@ public class SamlContext {
     m_injector = injector;
     m_rootProject = rootProject;
     m_grammarAccess = m_injector.getInstance(SamlGrammarAccess.class);
-    m_modifiedMethods = new HashSet<String>();
-  }
-
-  public void markMethodChanged(IMethod m) throws JavaModelException {
-    String methodId = getMethodId(m);
-    m_modifiedMethods.add(methodId);
-  }
-
-  public boolean isMethodChanged(IMethod m) throws JavaModelException {
-    String methodId = getMethodId(m);
-    return m_modifiedMethods.contains(methodId);
-  }
-
-  private String getMethodId(IMethod m) throws JavaModelException {
-    return m.getDeclaringType().getFullyQualifiedName() + "#" + m.getElementName() + m.getSignature();
   }
 
   public IScoutProject getCurrentScoutModule() {

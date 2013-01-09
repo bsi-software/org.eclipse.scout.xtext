@@ -48,12 +48,12 @@ public class ColumnElementImportOperation extends AbstractUiElementImportOperati
     ITypeHierarchy h = createdColumn.newSupertypeHierarchy(getSamlContext().getMonitor());
 
     applyVisibleAttribute(getColumnElement().getVisible(), createdColumn, h);
-    applyTextAttribute(getColumnElement().getText(), createdColumn, h);
+    applyHeaderTextAttribute(getColumnElement().getText(), createdColumn, h);
     applyWidthAttribute(getColumnElement().getWidth(), createdColumn, h);
     applyDisplayableAttribute(getColumnElement().getDisplayable(), createdColumn, h);
   }
 
-  protected void applyTextAttribute(TranslationElement a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
+  protected void applyHeaderTextAttribute(TranslationElement a, IType field, ITypeHierarchy h) throws CoreException, IllegalArgumentException {
     if (a != null) {
       overrideMethod(field, h, "getConfiguredHeaderText", getNlsReturnClause(a));
     }

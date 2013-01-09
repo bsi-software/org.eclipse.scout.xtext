@@ -85,6 +85,65 @@ public class LogicTests {
   }
   
   @Test
+  public void testNoFormatValue() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module a.b");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("form MyTest {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("string MyString  {");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("logic event=format_value placement=server {");
+      _builder.newLine();
+      _builder.append("\t\t\t");
+      _builder.append("\"whatever\"");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      Model _parse = this._parseHelper.parse(_builder);
+      EClass _logicElement = SamlPackage.eINSTANCE.getLogicElement();
+      this._validationTestHelper.assertError(_parse, _logicElement, SamlJavaValidator.INVALID_LOGIC_ELEMENT, SamlJavaValidator.MSG_EVENT_ONLY_INLINE);
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("module a.b");
+      _builder_1.newLine();
+      _builder_1.newLine();
+      _builder_1.append("form MyTest {");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.append("string MyString  {");
+      _builder_1.newLine();
+      _builder_1.append("\t\t");
+      _builder_1.append("logic event=format_value placement=inline {");
+      _builder_1.newLine();
+      _builder_1.append("\t\t\t");
+      _builder_1.append("\"whatever\"");
+      _builder_1.newLine();
+      _builder_1.append("\t\t");
+      _builder_1.append("}");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.append("}");
+      _builder_1.newLine();
+      _builder_1.append("}");
+      _builder_1.newLine();
+      Model _parse_1 = this._parseHelper.parse(_builder_1);
+      this._validationTestHelper.assertNoErrors(_parse_1);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
   public void testNamedTopLevelLogic() {
     try {
       StringConcatenation _builder = new StringConcatenation();

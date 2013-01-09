@@ -111,6 +111,8 @@ public class TranslationElementImportOperation extends AbstractSamlElementImport
         newTextServiceOp.validate();
         newTextServiceOp.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
         curTxtSvc = newTextServiceOp.getCreatedServiceType();
+
+        postProcessType(curTxtSvc);
       }
       else {
         throw new IllegalArgumentException("Invalid project name: '" + projectName + "'.");

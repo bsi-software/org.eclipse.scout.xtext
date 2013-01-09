@@ -52,6 +52,33 @@ class LogicTests {
 	}
 	
 	@Test
+	def void testNoFormatValue() {
+		'''
+		module a.b
+		
+		form MyTest {
+			string MyString  {
+				logic event=format_value placement=server {
+					"whatever"
+				}
+			}
+		}
+		'''.parse.assertError(SamlPackage::eINSTANCE.logicElement, SamlJavaValidator::INVALID_LOGIC_ELEMENT, SamlJavaValidator::MSG_EVENT_ONLY_INLINE)
+		
+		'''
+		module a.b
+		
+		form MyTest {
+			string MyString  {
+				logic event=format_value placement=inline {
+					"whatever"
+				}
+			}
+		}
+		'''.parse.assertNoErrors
+	}
+	
+	@Test
 	def void testNamedTopLevelLogic() {
 		'''
 		module a.b
