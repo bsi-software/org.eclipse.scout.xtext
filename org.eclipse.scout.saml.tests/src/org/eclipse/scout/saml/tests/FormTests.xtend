@@ -180,7 +180,7 @@ class FormTests {
 		translation Tab02Text de="Tab 2"
 		translation ListText de="ListBox"
 		
-		code MyCode id=100
+		code MyCode id="Integer.valueOf(100)"
 		
 		form TabTest01 columns=1 {
 			group Grp01 columns=1 width=1 {

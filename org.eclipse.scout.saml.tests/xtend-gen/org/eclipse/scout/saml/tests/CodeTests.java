@@ -26,6 +26,58 @@ public class CodeTests {
   private ValidationTestHelper _validationTestHelper;
   
   @Test
+  public void testCodeSuperType() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module a.b");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("template CodeTypeAbs definition=\"org.eclipse.test.shared.services.codes.CodeTypeAbs\"");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("code C1 id=\"Integer.valueOf(1234)\" value_type=\"java.lang.Integer\" ");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("code C2 id=\"new CodeType()\" value_type=\"org.eclipse.test.shared.services.codes.CodeType\" super_type=CodeTypeAbs");
+      _builder.newLine();
+      Model _parse = this._parseHelper.parse(_builder);
+      this._validationTestHelper.assertNoErrors(_parse);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testChildCodes() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module a.b");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("code Parent id=\"1234\" {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("code Child1 id=\"\\\"child1\\\"\" value_type=\"java.lang.String\"");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("code Child2 id=\"\\\"child2\\\"\" {");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("code Child2_1 id=\"1234\" value_type=\"java.lang.Integer\"");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      Model _parse = this._parseHelper.parse(_builder);
+      this._validationTestHelper.assertNoErrors(_parse);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
   public void testCodeLogic() {
     try {
       StringConcatenation _builder = new StringConcatenation();
@@ -35,7 +87,7 @@ public class CodeTests {
       _builder.append("translation CodeName default_lang=\"Test\" en_GB=\"Testing\"");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("code MyTest id=1234 text=CodeName {");
+      _builder.append("code MyTest id=\"Integer.valueOf(1234)\" text=CodeName {");
       _builder.newLine();
       _builder.append("\t");
       _builder.append("logic event=load placement=inline {");
@@ -55,7 +107,7 @@ public class CodeTests {
       _builder_1.newLine();
       _builder_1.newLine();
       _builder_1.newLine();
-      _builder_1.append("code MyTest id=1234 {");
+      _builder_1.append("code MyTest id=\"Integer.valueOf(1234)\" {");
       _builder_1.newLine();
       _builder_1.append("\t");
       _builder_1.append("logic event=load placement=server {");
@@ -75,7 +127,7 @@ public class CodeTests {
       _builder_2.append("module a.b");
       _builder_2.newLine();
       _builder_2.newLine();
-      _builder_2.append("code MyTest id=1234 {");
+      _builder_2.append("code MyTest id=\"Integer.valueOf(1234)\" {");
       _builder_2.newLine();
       _builder_2.append("\t");
       _builder_2.append("logic event=init placement=inline {");

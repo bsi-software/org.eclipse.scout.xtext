@@ -355,7 +355,7 @@ public class FormTests {
       _builder.append("translation ListText de=\"ListBox\"");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("code MyCode id=100");
+      _builder.append("code MyCode id=\"Integer.valueOf(100)\"");
       _builder.newLine();
       _builder.newLine();
       _builder.append("form TabTest01 columns=1 {");

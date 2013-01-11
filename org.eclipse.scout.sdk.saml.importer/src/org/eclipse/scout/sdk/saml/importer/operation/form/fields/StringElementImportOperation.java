@@ -15,6 +15,7 @@ import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.StringElement;
+import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.form.field.StringFieldNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
 
@@ -59,10 +60,7 @@ public class StringElementImportOperation extends AbstractValueFieldElementImpor
     StringFieldNewOperation o = new StringFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getStringElement().getName() + getFieldSuffix());
     o.setSibling(getDefaultSibling());
-    String configuredSuperTypeSig = getSuperTypeSigValidated();
-    if (configuredSuperTypeSig != null) {
-      o.setSuperTypeSignature(configuredSuperTypeSig);
-    }
+    o.setSuperTypeSignature(getSuperTypeSignature(RuntimeClasses.IStringField));
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
 

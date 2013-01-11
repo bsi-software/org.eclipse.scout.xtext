@@ -1173,7 +1173,14 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=ID id=INT text=[TranslationElement|QualifiedName]? logic+=LogicElement*)
+	 *     (
+	 *         name=ID 
+	 *         id=STRING 
+	 *         valueType=STRING? 
+	 *         text=[TranslationElement|QualifiedName]? 
+	 *         superType=[TemplateElement|ID]? 
+	 *         (logic+=LogicElement | codes+=CodeElement)*
+	 *     )
 	 */
 	protected void sequence_CodeElement(EObject context, CodeElement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -526,27 +526,47 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cIdKeyword_2_0_0 = (Keyword)cGroup_2_0.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_0_1 = (Keyword)cGroup_2_0.eContents().get(1);
 		private final Assignment cIdAssignment_2_0_2 = (Assignment)cGroup_2_0.eContents().get(2);
-		private final RuleCall cIdINTTerminalRuleCall_2_0_2_0 = (RuleCall)cIdAssignment_2_0_2.eContents().get(0);
+		private final RuleCall cIdSTRINGTerminalRuleCall_2_0_2_0 = (RuleCall)cIdAssignment_2_0_2.eContents().get(0);
 		private final Group cGroup_2_1 = (Group)cUnorderedGroup_2.eContents().get(1);
-		private final Keyword cTextKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
+		private final Keyword cValue_typeKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_1_1 = (Keyword)cGroup_2_1.eContents().get(1);
-		private final Assignment cTextAssignment_2_1_2 = (Assignment)cGroup_2_1.eContents().get(2);
-		private final CrossReference cTextTranslationElementCrossReference_2_1_2_0 = (CrossReference)cTextAssignment_2_1_2.eContents().get(0);
-		private final RuleCall cTextTranslationElementQualifiedNameParserRuleCall_2_1_2_0_1 = (RuleCall)cTextTranslationElementCrossReference_2_1_2_0.eContents().get(1);
+		private final Assignment cValueTypeAssignment_2_1_2 = (Assignment)cGroup_2_1.eContents().get(2);
+		private final RuleCall cValueTypeSTRINGTerminalRuleCall_2_1_2_0 = (RuleCall)cValueTypeAssignment_2_1_2.eContents().get(0);
+		private final Group cGroup_2_2 = (Group)cUnorderedGroup_2.eContents().get(2);
+		private final Keyword cTextKeyword_2_2_0 = (Keyword)cGroup_2_2.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_2_1 = (Keyword)cGroup_2_2.eContents().get(1);
+		private final Assignment cTextAssignment_2_2_2 = (Assignment)cGroup_2_2.eContents().get(2);
+		private final CrossReference cTextTranslationElementCrossReference_2_2_2_0 = (CrossReference)cTextAssignment_2_2_2.eContents().get(0);
+		private final RuleCall cTextTranslationElementQualifiedNameParserRuleCall_2_2_2_0_1 = (RuleCall)cTextTranslationElementCrossReference_2_2_2_0.eContents().get(1);
+		private final Group cGroup_2_3 = (Group)cUnorderedGroup_2.eContents().get(3);
+		private final Keyword cSuper_typeKeyword_2_3_0 = (Keyword)cGroup_2_3.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_3_1 = (Keyword)cGroup_2_3.eContents().get(1);
+		private final Assignment cSuperTypeAssignment_2_3_2 = (Assignment)cGroup_2_3.eContents().get(2);
+		private final CrossReference cSuperTypeTemplateElementCrossReference_2_3_2_0 = (CrossReference)cSuperTypeAssignment_2_3_2.eContents().get(0);
+		private final RuleCall cSuperTypeTemplateElementIDTerminalRuleCall_2_3_2_0_1 = (RuleCall)cSuperTypeTemplateElementCrossReference_2_3_2_0.eContents().get(1);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Keyword cLeftCurlyBracketKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cLogicAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cLogicLogicElementParserRuleCall_3_1_0 = (RuleCall)cLogicAssignment_3_1.eContents().get(0);
+		private final Alternatives cAlternatives_3_1 = (Alternatives)cGroup_3.eContents().get(1);
+		private final Assignment cLogicAssignment_3_1_0 = (Assignment)cAlternatives_3_1.eContents().get(0);
+		private final RuleCall cLogicLogicElementParserRuleCall_3_1_0_0 = (RuleCall)cLogicAssignment_3_1_0.eContents().get(0);
+		private final Assignment cCodesAssignment_3_1_1 = (Assignment)cAlternatives_3_1.eContents().get(1);
+		private final RuleCall cCodesCodeElementParserRuleCall_3_1_1_0 = (RuleCall)cCodesAssignment_3_1_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
 		
 		//CodeElement:
 		//
-		//	"code" name=ID ("id" "=" id=INT & ("text" "=" text=[TranslationElement|QualifiedName])?) ("{" logic+=LogicElement*
+		//	"code" name=ID ("id" "=" id=STRING / *JvmTypeReference* / & ("value_type" "=" valueType=STRING)? & ("text" "="
 		//
-		//	"}")?;
+		//	text=[TranslationElement|QualifiedName])? & ("super_type" "=" superType=[TemplateElement])?) ("{"
+		//
+		//	(logic+=LogicElement | codes+=CodeElement)* "}")?;
 		public ParserRule getRule() { return rule; }
 
-		//"code" name=ID ("id" "=" id=INT & ("text" "=" text=[TranslationElement|QualifiedName])?) ("{" logic+=LogicElement* "}")?
+		//"code" name=ID ("id" "=" id=STRING / *JvmTypeReference* / & ("value_type" "=" valueType=STRING)? & ("text" "="
+		//
+		//text=[TranslationElement|QualifiedName])? & ("super_type" "=" superType=[TemplateElement])?) ("{" (logic+=LogicElement
+		//
+		//| codes+=CodeElement)* "}")?
 		public Group getGroup() { return cGroup; }
 
 		//"code"
@@ -558,10 +578,12 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//"id" "=" id=INT & ("text" "=" text=[TranslationElement|QualifiedName])?
+		//"id" "=" id=STRING / *JvmTypeReference* / & ("value_type" "=" valueType=STRING)? & ("text" "="
+		//
+		//text=[TranslationElement|QualifiedName])? & ("super_type" "=" superType=[TemplateElement])?
 		public UnorderedGroup getUnorderedGroup_2() { return cUnorderedGroup_2; }
 
-		//"id" "=" id=INT
+		//"id" "=" id=STRING
 		public Group getGroup_2_0() { return cGroup_2_0; }
 
 		//"id"
@@ -570,41 +592,83 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//"="
 		public Keyword getEqualsSignKeyword_2_0_1() { return cEqualsSignKeyword_2_0_1; }
 
-		//id=INT
+		//id=STRING
 		public Assignment getIdAssignment_2_0_2() { return cIdAssignment_2_0_2; }
 
-		//INT
-		public RuleCall getIdINTTerminalRuleCall_2_0_2_0() { return cIdINTTerminalRuleCall_2_0_2_0; }
+		//STRING
+		public RuleCall getIdSTRINGTerminalRuleCall_2_0_2_0() { return cIdSTRINGTerminalRuleCall_2_0_2_0; }
 
-		//("text" "=" text=[TranslationElement|QualifiedName])?
+		//("value_type" "=" valueType=STRING)?
 		public Group getGroup_2_1() { return cGroup_2_1; }
 
-		//"text"
-		public Keyword getTextKeyword_2_1_0() { return cTextKeyword_2_1_0; }
+		//"value_type"
+		public Keyword getValue_typeKeyword_2_1_0() { return cValue_typeKeyword_2_1_0; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_2_1_1() { return cEqualsSignKeyword_2_1_1; }
 
+		//valueType=STRING
+		public Assignment getValueTypeAssignment_2_1_2() { return cValueTypeAssignment_2_1_2; }
+
+		//STRING
+		public RuleCall getValueTypeSTRINGTerminalRuleCall_2_1_2_0() { return cValueTypeSTRINGTerminalRuleCall_2_1_2_0; }
+
+		//("text" "=" text=[TranslationElement|QualifiedName])?
+		public Group getGroup_2_2() { return cGroup_2_2; }
+
+		//"text"
+		public Keyword getTextKeyword_2_2_0() { return cTextKeyword_2_2_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_2_2_1() { return cEqualsSignKeyword_2_2_1; }
+
 		//text=[TranslationElement|QualifiedName]
-		public Assignment getTextAssignment_2_1_2() { return cTextAssignment_2_1_2; }
+		public Assignment getTextAssignment_2_2_2() { return cTextAssignment_2_2_2; }
 
 		//[TranslationElement|QualifiedName]
-		public CrossReference getTextTranslationElementCrossReference_2_1_2_0() { return cTextTranslationElementCrossReference_2_1_2_0; }
+		public CrossReference getTextTranslationElementCrossReference_2_2_2_0() { return cTextTranslationElementCrossReference_2_2_2_0; }
 
 		//QualifiedName
-		public RuleCall getTextTranslationElementQualifiedNameParserRuleCall_2_1_2_0_1() { return cTextTranslationElementQualifiedNameParserRuleCall_2_1_2_0_1; }
+		public RuleCall getTextTranslationElementQualifiedNameParserRuleCall_2_2_2_0_1() { return cTextTranslationElementQualifiedNameParserRuleCall_2_2_2_0_1; }
 
-		//("{" logic+=LogicElement* "}")?
+		//("super_type" "=" superType=[TemplateElement])?
+		public Group getGroup_2_3() { return cGroup_2_3; }
+
+		//"super_type"
+		public Keyword getSuper_typeKeyword_2_3_0() { return cSuper_typeKeyword_2_3_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_2_3_1() { return cEqualsSignKeyword_2_3_1; }
+
+		//superType=[TemplateElement]
+		public Assignment getSuperTypeAssignment_2_3_2() { return cSuperTypeAssignment_2_3_2; }
+
+		//[TemplateElement]
+		public CrossReference getSuperTypeTemplateElementCrossReference_2_3_2_0() { return cSuperTypeTemplateElementCrossReference_2_3_2_0; }
+
+		//ID
+		public RuleCall getSuperTypeTemplateElementIDTerminalRuleCall_2_3_2_0_1() { return cSuperTypeTemplateElementIDTerminalRuleCall_2_3_2_0_1; }
+
+		//("{" (logic+=LogicElement | codes+=CodeElement)* "}")?
 		public Group getGroup_3() { return cGroup_3; }
 
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_3_0() { return cLeftCurlyBracketKeyword_3_0; }
 
-		//logic+=LogicElement*
-		public Assignment getLogicAssignment_3_1() { return cLogicAssignment_3_1; }
+		//(logic+=LogicElement | codes+=CodeElement)*
+		public Alternatives getAlternatives_3_1() { return cAlternatives_3_1; }
+
+		//logic+=LogicElement
+		public Assignment getLogicAssignment_3_1_0() { return cLogicAssignment_3_1_0; }
 
 		//LogicElement
-		public RuleCall getLogicLogicElementParserRuleCall_3_1_0() { return cLogicLogicElementParserRuleCall_3_1_0; }
+		public RuleCall getLogicLogicElementParserRuleCall_3_1_0_0() { return cLogicLogicElementParserRuleCall_3_1_0_0; }
+
+		//codes+=CodeElement
+		public Assignment getCodesAssignment_3_1_1() { return cCodesAssignment_3_1_1; }
+
+		//CodeElement
+		public RuleCall getCodesCodeElementParserRuleCall_3_1_1_0() { return cCodesCodeElementParserRuleCall_3_1_1_0; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_3_2() { return cRightCurlyBracketKeyword_3_2; }
@@ -5324,9 +5388,11 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 
 	//CodeElement:
 	//
-	//	"code" name=ID ("id" "=" id=INT & ("text" "=" text=[TranslationElement|QualifiedName])?) ("{" logic+=LogicElement*
+	//	"code" name=ID ("id" "=" id=STRING / *JvmTypeReference* / & ("value_type" "=" valueType=STRING)? & ("text" "="
 	//
-	//	"}")?;
+	//	text=[TranslationElement|QualifiedName])? & ("super_type" "=" superType=[TemplateElement])?) ("{"
+	//
+	//	(logic+=LogicElement | codes+=CodeElement)* "}")?;
 	public CodeElementElements getCodeElementAccess() {
 		return (pCodeElement != null) ? pCodeElement : (pCodeElement = new CodeElementElements());
 	}

@@ -600,9 +600,29 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getCodeElement_ValueType()
+  {
+    return (EAttribute)codeElementEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getCodeElement_Text()
   {
-    return (EReference)codeElementEClass.getEStructuralFeatures().get(2);
+    return (EReference)codeElementEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCodeElement_SuperType()
+  {
+    return (EReference)codeElementEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -612,7 +632,17 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    */
   public EReference getCodeElement_Logic()
   {
-    return (EReference)codeElementEClass.getEStructuralFeatures().get(3);
+    return (EReference)codeElementEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCodeElement_Codes()
+  {
+    return (EReference)codeElementEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -1879,8 +1909,11 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     codeElementEClass = createEClass(CODE_ELEMENT);
     createEAttribute(codeElementEClass, CODE_ELEMENT__NAME);
     createEAttribute(codeElementEClass, CODE_ELEMENT__ID);
+    createEAttribute(codeElementEClass, CODE_ELEMENT__VALUE_TYPE);
     createEReference(codeElementEClass, CODE_ELEMENT__TEXT);
+    createEReference(codeElementEClass, CODE_ELEMENT__SUPER_TYPE);
     createEReference(codeElementEClass, CODE_ELEMENT__LOGIC);
+    createEReference(codeElementEClass, CODE_ELEMENT__CODES);
 
     lookupElementEClass = createEClass(LOOKUP_ELEMENT);
     createEAttribute(lookupElementEClass, LOOKUP_ELEMENT__NAME);
@@ -2104,9 +2137,12 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
 
     initEClass(codeElementEClass, CodeElement.class, "CodeElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getCodeElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, CodeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getCodeElement_Id(), ecorePackage.getEInt(), "id", null, 0, 1, CodeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCodeElement_Id(), ecorePackage.getEString(), "id", null, 0, 1, CodeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCodeElement_ValueType(), ecorePackage.getEString(), "valueType", null, 0, 1, CodeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCodeElement_Text(), this.getTranslationElement(), null, "text", null, 0, 1, CodeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCodeElement_SuperType(), this.getTemplateElement(), null, "superType", null, 0, 1, CodeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCodeElement_Logic(), this.getLogicElement(), null, "logic", null, 0, -1, CodeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCodeElement_Codes(), this.getCodeElement(), null, "codes", null, 0, -1, CodeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(lookupElementEClass, LookupElement.class, "LookupElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLookupElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, LookupElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

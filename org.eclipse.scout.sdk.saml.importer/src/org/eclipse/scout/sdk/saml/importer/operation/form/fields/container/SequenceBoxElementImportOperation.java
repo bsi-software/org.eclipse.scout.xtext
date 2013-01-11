@@ -15,6 +15,7 @@ import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.SequenceBoxElement;
+import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.form.field.SequenceBoxNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
 
@@ -45,12 +46,7 @@ public class SequenceBoxElementImportOperation extends AbstractBoxElementImportO
     SequenceBoxNewOperation o = new SequenceBoxNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getSequenceBoxElement().getName() + getFieldSuffix());
     o.setSibling(getDefaultSibling());
-
-    String configuredSuperTypeSig = getSuperTypeSigValidated();
-    if (configuredSuperTypeSig != null) {
-      o.setSuperTypeSignature(configuredSuperTypeSig);
-    }
-
+    o.setSuperTypeSignature(getSuperTypeSignature(RuntimeClasses.ISequenceBox));
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
 

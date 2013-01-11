@@ -1,4 +1,4 @@
-module test.aa.bb
+module ch.raiffeisen.dialba.common
 
 
 translation AboutMenu default_lang="&Info..."
@@ -96,9 +96,9 @@ translation someErrorsOccured default_lang="Folgende Fehler sind aufgetreten"
 // ========================
 // CODE TYPES
 // ========================
-code KOArt id=1112
-code KOLaufzeit id=9687
-code KOTiteldruck id=2569
+code KOArt id="1112" value_type="java.lang.Integer"
+code KOLaufzeit id="9687" value_type="java.lang.Integer"
+code KOTiteldruck id="2569" value_type="java.lang.Integer"
 
 
 // ========================

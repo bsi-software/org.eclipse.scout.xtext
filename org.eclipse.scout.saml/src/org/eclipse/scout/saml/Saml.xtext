@@ -49,10 +49,12 @@ LogicElement: {LogicElement} 'logic' (name=ID)? (('event' '=' event=LogicEventTy
 
 CodeElement:'code' name=ID 
 	(
-		('id' '=' id=INT) &
-		('text' '=' text=[TranslationElement|QualifiedName])?
+		('id' '=' id=STRING) &
+		('value_type' '=' valueType=STRING/*JvmTypeReference*/)? &
+		('text' '=' text=[TranslationElement|QualifiedName])? &
+		('super_type' '=' superType=[TemplateElement])?
 	)
-	('{' logic+=LogicElement* '}')?;
+	('{' (logic+=LogicElement | codes+=CodeElement)* '}')?;
 
 
 LookupElement:'lookup' name=ID '{' logic+=LogicElement* '}';

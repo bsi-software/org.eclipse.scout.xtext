@@ -4,7 +4,7 @@ translation Tab01Text default_lang="Tab 1"
 translation Tab02Text default_lang="Tab 2"
 translation ListText default_lang="ListBox"
 
-code MyCode id=100
+code MyCode id="100" value_type="java.lang.Integer"
 
 form TabTest01 columns=1 {
 	group Grp01 columns=1 width=1 {

@@ -10,13 +10,17 @@
  ******************************************************************************/
 package org.eclipse.scout.sdk.saml.importer.operation.codetype;
 
+import java.util.List;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.scout.saml.saml.CodeElement;
 import org.eclipse.scout.sdk.RuntimeClasses;
+import org.eclipse.scout.sdk.operation.CodeNewOperation;
 import org.eclipse.scout.sdk.operation.CodeTypeNewOperation;
 import org.eclipse.scout.sdk.operation.util.TypeDeleteOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
+import org.eclipse.scout.sdk.saml.importer.operation.SamlContext;
 import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
 import org.eclipse.scout.sdk.saml.importer.operation.logic.SamlLogicFillOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
@@ -33,6 +37,7 @@ import org.eclipse.scout.sdk.workspace.IScoutBundle;
 public class CodeElementImportOperation extends AbstractSamlElementImportOperation {
 
   private CodeElement m_codeElement;
+  private IType m_parentCode;
 
   @Override
   public String getOperationName() {
@@ -46,38 +51,81 @@ public class CodeElementImportOperation extends AbstractSamlElementImportOperati
     }
   }
 
+  public static void processCodes(List<CodeElement> codes, IType codeType, SamlContext context) throws CoreException, IllegalArgumentException {
+    for (CodeElement ce : codes) {
+      CodeElementImportOperation ceio = new CodeElementImportOperation();
+      ceio.setCodeElement(ce);
+      ceio.setParentCode(codeType);
+      ceio.setSamlContext(context);
+      ceio.validate();
+      ceio.run();
+    }
+  }
+
   @Override
   public void run() throws CoreException, IllegalArgumentException {
-    String genericTypeFqn = Integer.class.getName();
-    String superTypeName = RuntimeClasses.getSuperTypeName(RuntimeClasses.ICodeType, getSamlContext().getRootProject());
-    String superSignature = SignatureCache.createTypeSignature(superTypeName + "<" + genericTypeFqn + ">");
+    String valueType = getCodeElement().getValueType();
+    if (valueType == null) {
+      valueType = Object.class.getName();
+    }
+
+    IType createdType = null;
+    boolean isCreateCodeType = !TypeUtility.exists(getParentCode());
+    if (isCreateCodeType) {
+      createdType = createCodeType(valueType);
+    }
+    else {
+      createdType = createCode(valueType);
+    }
+
+    applyTextAttribute(getCodeElement().getText(), createdType, null);
+
+    SamlFormContext formContext = new SamlFormContext();
+    formContext.setClientType(createdType);
+    formContext.setSamlContext(getSamlContext());
+    SamlLogicFillOperation.fillAllLogic(getCodeElement().getLogic(), formContext, createdType);
+
+    CodeElementImportOperation.processCodes(getCodeElement().getCodes(), createdType, getSamlContext());
+
+    if (isCreateCodeType) {
+      postProcessType(createdType);
+    }
+  }
+
+  private IType createCode(String valueType) throws CoreException {
+    String name = getCodeElement().getName() + SdkProperties.SUFFIX_CODE;
+    String superTypeSig = getSuperTypeSignature(RuntimeClasses.ICode, getCodeElement().getSuperType(), valueType);
+
+    CodeNewOperation cno = new CodeNewOperation(getParentCode(), false);
+    cno.setGenericTypeSignature(SignatureCache.createTypeSignature(valueType));
+    cno.setNextCodeId(getCodeElement().getId());
+    cno.setSuperTypeSignature(superTypeSig);
+    cno.setTypeName(name);
+    cno.validate();
+    cno.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
+
+    return cno.getCreatedCode();
+  }
+
+  private IType createCodeType(String valueType) throws IllegalArgumentException, CoreException {
+    String name = getCodeElement().getName() + SdkProperties.SUFFIX_CODE_TYPE;
+    String superTypeSig = getSuperTypeSignature(RuntimeClasses.ICodeType, getCodeElement().getSuperType(), valueType);
 
     IScoutBundle sharedBundle = getCurrentScoutModule().getSharedBundle();
-    String name = getCodeElement().getName() + SdkProperties.SUFFIX_CODE_TYPE;
-
     deleteExisting(sharedBundle, name);
 
     CodeTypeNewOperation ctno = new CodeTypeNewOperation();
     ctno.setFormatSource(false);
-    ctno.setNextCodeId("Integer.valueOf(" + getCodeElement().getId() + ")");
+    ctno.setNextCodeId(getCodeElement().getId());
     ctno.setSharedBundle(sharedBundle);
-    ctno.setSuperTypeSignature(superSignature);
+    ctno.setSuperTypeSignature(superTypeSig);
     ctno.setPackageName(sharedBundle.getDefaultPackage(IScoutBundle.SHARED_SERVICES_CODE));
-    ctno.setGenericTypeSignature(SignatureCache.createTypeSignature(genericTypeFqn));
+    ctno.setGenericTypeSignature(SignatureCache.createTypeSignature(valueType));
     ctno.setTypeName(name);
     ctno.validate();
     ctno.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
 
-    IType createdCode = ctno.getCreatedType();
-
-    applyTextAttribute(getCodeElement().getText(), createdCode, null);
-
-    SamlFormContext formContext = new SamlFormContext();
-    formContext.setClientType(createdCode);
-    formContext.setSamlContext(getSamlContext());
-    SamlLogicFillOperation.fillAllLogic(getCodeElement().getLogic(), formContext, createdCode);
-
-    postProcessType(createdCode);
+    return ctno.getCreatedType();
   }
 
   private void deleteExisting(IScoutBundle shared, String codeTypeName) throws CoreException, IllegalArgumentException {
@@ -95,5 +143,13 @@ public class CodeElementImportOperation extends AbstractSamlElementImportOperati
 
   public void setCodeElement(CodeElement codeElement) {
     m_codeElement = codeElement;
+  }
+
+  public IType getParentCode() {
+    return m_parentCode;
+  }
+
+  public void setParentCode(IType parentCode) {
+    m_parentCode = parentCode;
   }
 }

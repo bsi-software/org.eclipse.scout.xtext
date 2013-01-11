@@ -15,9 +15,13 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.nls.sdk.model.INlsEntry;
+import org.eclipse.scout.saml.saml.TemplateElement;
 import org.eclipse.scout.saml.saml.TranslationElement;
+import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.method.MethodOverrideOperation;
 import org.eclipse.scout.sdk.saml.importer.internal.SamlImporterActivator;
+import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
+import org.eclipse.scout.sdk.util.type.TypeUtility;
 import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 import org.eclipse.scout.sdk.workspace.IScoutProject;
 
@@ -89,6 +93,37 @@ public abstract class AbstractSamlElementImportOperation implements ISamlElement
     if (a != null) {
       overrideMethod(type, h, "getConfiguredText", getNlsReturnClause(a));
     }
+  }
+
+  protected String getSuperTypeSignature(String defaultSuperInterfaceFqn, TemplateElement superTypeElement) {
+    return getSuperTypeSignature(defaultSuperInterfaceFqn, superTypeElement, null);
+  }
+
+  protected String getSuperTypeSignature(String defaultSuperInterfaceFqn, TemplateElement superTypeElement, String valueType) {
+    IType superType = null;
+    if (superTypeElement == null) {
+      // no explicit super type is defined: use default
+      superType = RuntimeClasses.getSuperType(defaultSuperInterfaceFqn, getSamlContext().getRootProject());
+    }
+    else {
+      // explicit type is used: get and validate that it exists
+      superType = TypeUtility.getType(superTypeElement.getDefinition());
+      if (!TypeUtility.exists(superType)) {
+        throw new IllegalArgumentException("Specified super type '" + superTypeElement.getDefinition() + "' could not be found. ");
+      }
+    }
+
+    StringBuilder superTypeFqn = new StringBuilder(superType.getFullyQualifiedName());
+    if (TypeUtility.isGenericType(superType)) {
+      if (valueType == null) {
+        valueType = Object.class.getName();
+      }
+      superTypeFqn.append('<');
+      superTypeFqn.append(valueType);
+      superTypeFqn.append('>');
+    }
+
+    return SignatureCache.createTypeSignature(superTypeFqn.toString());
   }
 
   @Override

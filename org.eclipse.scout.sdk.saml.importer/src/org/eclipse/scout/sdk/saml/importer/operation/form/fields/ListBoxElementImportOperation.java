@@ -41,19 +41,11 @@ public class ListBoxElementImportOperation extends AbstractValueFieldElementImpo
     }
   }
 
-  private String getValueType() {
-    if (getListBoxElement().getValueType() != null) {
-      return getListBoxElement().getValueType();
-    }
-    return Object.class.getName();
-  }
-
   @Override
   protected IType createField() throws CoreException, IllegalArgumentException {
     ListBoxFieldNewOperation o = new ListBoxFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getListBoxElement().getName() + getFieldSuffix());
-    String superTypeFqn = RuntimeClasses.getSuperTypeName(RuntimeClasses.IListBox, getSamlContext().getRootProject());
-    o.setSuperTypeSignature(getSuperTypeSigValidated(superTypeFqn + "<" + getValueType() + ">"));
+    o.setSuperTypeSignature(getSuperTypeSignature(RuntimeClasses.IListBox, getListBoxElement().getValueType()));
     o.setSibling(getDefaultSibling());
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());

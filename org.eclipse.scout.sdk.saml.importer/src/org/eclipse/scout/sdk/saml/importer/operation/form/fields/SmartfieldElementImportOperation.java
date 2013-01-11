@@ -42,19 +42,11 @@ public class SmartfieldElementImportOperation extends AbstractValueFieldElementI
     }
   }
 
-  private String getValueType() {
-    if (getSmartfieldElement().getValueType() != null) {
-      return getSmartfieldElement().getValueType();
-    }
-    return Object.class.getName();
-  }
-
   @Override
   protected IType createField() throws CoreException, IllegalArgumentException {
     SmartFieldNewOperation o = new SmartFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getSmartfieldElement().getName() + getFieldSuffix());
-    String superTypeFqn = RuntimeClasses.getSuperTypeName(RuntimeClasses.ISmartField, getSamlContext().getRootProject());
-    o.setSuperTypeSignature(getSuperTypeSigValidated(superTypeFqn + "<" + getValueType() + ">"));
+    o.setSuperTypeSignature(getSuperTypeSignature(RuntimeClasses.ISmartField, getSmartfieldElement().getValueType()));
     o.setSibling(getDefaultSibling());
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());

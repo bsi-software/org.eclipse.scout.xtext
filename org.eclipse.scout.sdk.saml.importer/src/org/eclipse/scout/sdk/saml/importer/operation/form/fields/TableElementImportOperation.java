@@ -45,11 +45,9 @@ public class TableElementImportOperation extends AbstractFormFieldElementOperati
 
   @Override
   public void run() throws CoreException, IllegalArgumentException {
-    String configuredSuperTypeSig = getSuperTypeSigValidated(RuntimeClasses.getSuperTypeName(RuntimeClasses.ITableField, getSamlContext().getRootProject()));
-
     TableFieldNewOperation o = new TableFieldNewOperation(getSamlFormContext().getCurrentParentBox());
     o.setFormatSource(false);
-    o.setSuperTypeSignature(configuredSuperTypeSig);
+    o.setSuperTypeSignature(getSuperTypeSignature(RuntimeClasses.ITableField));
     o.setTypeName(getTableFieldElement().getName() + getFieldSuffix());
     o.setSibling(getDefaultSibling());
     o.validate();

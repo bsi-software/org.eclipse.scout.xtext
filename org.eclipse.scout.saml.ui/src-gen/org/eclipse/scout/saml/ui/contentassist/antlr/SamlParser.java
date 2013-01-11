@@ -42,6 +42,7 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLogicEventTypeAccess().getAlternatives(), "rule__LogicEventType__Alternatives");
 					put(grammarAccess.getHorizontalAlignmentTypeAccess().getAlternatives(), "rule__HorizontalAlignmentType__Alternatives");
 					put(grammarAccess.getLogicElementAccess().getPlacementAlternatives_3_1_2_0(), "rule__LogicElement__PlacementAlternatives_3_1_2_0");
+					put(grammarAccess.getCodeElementAccess().getAlternatives_3_1(), "rule__CodeElement__Alternatives_3_1");
 					put(grammarAccess.getFormElementAccess().getAlternatives_3_1(), "rule__FormElement__Alternatives_3_1");
 					put(grammarAccess.getFormFieldElementAccess().getAlternatives(), "rule__FormFieldElement__Alternatives");
 					put(grammarAccess.getCompositeFieldElementAccess().getAlternatives(), "rule__CompositeFieldElement__Alternatives");
@@ -105,6 +106,8 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCodeElementAccess().getGroup(), "rule__CodeElement__Group__0");
 					put(grammarAccess.getCodeElementAccess().getGroup_2_0(), "rule__CodeElement__Group_2_0__0");
 					put(grammarAccess.getCodeElementAccess().getGroup_2_1(), "rule__CodeElement__Group_2_1__0");
+					put(grammarAccess.getCodeElementAccess().getGroup_2_2(), "rule__CodeElement__Group_2_2__0");
+					put(grammarAccess.getCodeElementAccess().getGroup_2_3(), "rule__CodeElement__Group_2_3__0");
 					put(grammarAccess.getCodeElementAccess().getGroup_3(), "rule__CodeElement__Group_3__0");
 					put(grammarAccess.getLookupElementAccess().getGroup(), "rule__LookupElement__Group__0");
 					put(grammarAccess.getTemplateElementAccess().getGroup(), "rule__TemplateElement__Group__0");
@@ -444,8 +447,11 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLogicElementAccess().getSourceAssignment_4_1(), "rule__LogicElement__SourceAssignment_4_1");
 					put(grammarAccess.getCodeElementAccess().getNameAssignment_1(), "rule__CodeElement__NameAssignment_1");
 					put(grammarAccess.getCodeElementAccess().getIdAssignment_2_0_2(), "rule__CodeElement__IdAssignment_2_0_2");
-					put(grammarAccess.getCodeElementAccess().getTextAssignment_2_1_2(), "rule__CodeElement__TextAssignment_2_1_2");
-					put(grammarAccess.getCodeElementAccess().getLogicAssignment_3_1(), "rule__CodeElement__LogicAssignment_3_1");
+					put(grammarAccess.getCodeElementAccess().getValueTypeAssignment_2_1_2(), "rule__CodeElement__ValueTypeAssignment_2_1_2");
+					put(grammarAccess.getCodeElementAccess().getTextAssignment_2_2_2(), "rule__CodeElement__TextAssignment_2_2_2");
+					put(grammarAccess.getCodeElementAccess().getSuperTypeAssignment_2_3_2(), "rule__CodeElement__SuperTypeAssignment_2_3_2");
+					put(grammarAccess.getCodeElementAccess().getLogicAssignment_3_1_0(), "rule__CodeElement__LogicAssignment_3_1_0");
+					put(grammarAccess.getCodeElementAccess().getCodesAssignment_3_1_1(), "rule__CodeElement__CodesAssignment_3_1_1");
 					put(grammarAccess.getLookupElementAccess().getNameAssignment_1(), "rule__LookupElement__NameAssignment_1");
 					put(grammarAccess.getLookupElementAccess().getLogicAssignment_3(), "rule__LookupElement__LogicAssignment_3");
 					put(grammarAccess.getTemplateElementAccess().getNameAssignment_1(), "rule__TemplateElement__NameAssignment_1");

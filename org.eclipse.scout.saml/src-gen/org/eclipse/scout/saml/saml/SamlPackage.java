@@ -370,13 +370,31 @@ public interface SamlPackage extends EPackage
   int CODE_ELEMENT__ID = 1;
 
   /**
+   * The feature id for the '<em><b>Value Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CODE_ELEMENT__VALUE_TYPE = 2;
+
+  /**
    * The feature id for the '<em><b>Text</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CODE_ELEMENT__TEXT = 2;
+  int CODE_ELEMENT__TEXT = 3;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CODE_ELEMENT__SUPER_TYPE = 4;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -385,7 +403,16 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CODE_ELEMENT__LOGIC = 3;
+  int CODE_ELEMENT__LOGIC = 5;
+
+  /**
+   * The feature id for the '<em><b>Codes</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CODE_ELEMENT__CODES = 6;
 
   /**
    * The number of structural features of the '<em>Code Element</em>' class.
@@ -394,7 +421,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CODE_ELEMENT_FEATURE_COUNT = 4;
+  int CODE_ELEMENT_FEATURE_COUNT = 7;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.LookupElementImpl <em>Lookup Element</em>}' class.
@@ -3052,6 +3079,17 @@ public interface SamlPackage extends EPackage
   EAttribute getCodeElement_Id();
 
   /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.CodeElement#getValueType <em>Value Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value Type</em>'.
+   * @see org.eclipse.scout.saml.saml.CodeElement#getValueType()
+   * @see #getCodeElement()
+   * @generated
+   */
+  EAttribute getCodeElement_ValueType();
+
+  /**
    * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.CodeElement#getText <em>Text</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3063,6 +3101,17 @@ public interface SamlPackage extends EPackage
   EReference getCodeElement_Text();
 
   /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.CodeElement#getSuperType <em>Super Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Super Type</em>'.
+   * @see org.eclipse.scout.saml.saml.CodeElement#getSuperType()
+   * @see #getCodeElement()
+   * @generated
+   */
+  EReference getCodeElement_SuperType();
+
+  /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.CodeElement#getLogic <em>Logic</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3072,6 +3121,17 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EReference getCodeElement_Logic();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.CodeElement#getCodes <em>Codes</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Codes</em>'.
+   * @see org.eclipse.scout.saml.saml.CodeElement#getCodes()
+   * @see #getCodeElement()
+   * @generated
+   */
+  EReference getCodeElement_Codes();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.LookupElement <em>Lookup Element</em>}'.
@@ -4633,6 +4693,14 @@ public interface SamlPackage extends EPackage
     EAttribute CODE_ELEMENT__ID = eINSTANCE.getCodeElement_Id();
 
     /**
+     * The meta object literal for the '<em><b>Value Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CODE_ELEMENT__VALUE_TYPE = eINSTANCE.getCodeElement_ValueType();
+
+    /**
      * The meta object literal for the '<em><b>Text</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4641,12 +4709,28 @@ public interface SamlPackage extends EPackage
     EReference CODE_ELEMENT__TEXT = eINSTANCE.getCodeElement_Text();
 
     /**
+     * The meta object literal for the '<em><b>Super Type</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CODE_ELEMENT__SUPER_TYPE = eINSTANCE.getCodeElement_SuperType();
+
+    /**
      * The meta object literal for the '<em><b>Logic</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference CODE_ELEMENT__LOGIC = eINSTANCE.getCodeElement_Logic();
+
+    /**
+     * The meta object literal for the '<em><b>Codes</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CODE_ELEMENT__CODES = eINSTANCE.getCodeElement_Codes();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.LookupElementImpl <em>Lookup Element</em>}' class.

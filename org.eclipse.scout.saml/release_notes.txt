@@ -78,3 +78,16 @@ Changes:
 
 
 
+Version: 1.0.0 2013-01-11
+Changed: mvi
+Changes:
+	Modified:
+		For 'code' element:
+			Attribute 'id': type changed to String
+	Added:
+		For 'code' element:
+			Child: 'code'
+			Attribute: 'value_type', 'super_type'
+
+
+

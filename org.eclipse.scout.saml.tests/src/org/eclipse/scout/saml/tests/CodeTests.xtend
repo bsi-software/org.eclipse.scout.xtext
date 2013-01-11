@@ -20,13 +20,40 @@ class CodeTests {
 	@Inject extension ValidationTestHelper
 	
 	@Test
+	def void testCodeSuperType() {
+		'''
+		module a.b
+		
+		template CodeTypeAbs definition="org.eclipse.test.shared.services.codes.CodeTypeAbs"
+
+		code C1 id="Integer.valueOf(1234)" value_type="java.lang.Integer" 
+		
+		code C2 id="new CodeType()" value_type="org.eclipse.test.shared.services.codes.CodeType" super_type=CodeTypeAbs
+		'''.parse.assertNoErrors
+	}
+	
+	@Test
+	def void testChildCodes() {
+		'''
+		module a.b
+		
+		code Parent id="1234" {
+			code Child1 id="\"child1\"" value_type="java.lang.String"
+			code Child2 id="\"child2\"" {
+				code Child2_1 id="1234" value_type="java.lang.Integer"
+			}
+		}
+		'''.parse.assertNoErrors
+	}
+	
+	@Test
 	def void testCodeLogic() {
 		'''
 		module a.b
 		
 		translation CodeName default_lang="Test" en_GB="Testing"
 		
-		code MyTest id=1234 text=CodeName {
+		code MyTest id="Integer.valueOf(1234)" text=CodeName {
 			logic event=load placement=inline {
 				"whatever"
 			}
@@ -37,7 +64,7 @@ class CodeTests {
 		module a.b
 		
 		
-		code MyTest id=1234 {
+		code MyTest id="Integer.valueOf(1234)" {
 			logic event=load placement=server {
 				"whatever"
 			}
@@ -47,7 +74,7 @@ class CodeTests {
 		'''
 		module a.b
 		
-		code MyTest id=1234 {
+		code MyTest id="Integer.valueOf(1234)" {
 			logic event=init placement=inline {
 				"whatever"
 			}

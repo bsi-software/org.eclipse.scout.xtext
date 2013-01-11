@@ -227,11 +227,11 @@ public class ComplexFormTests {
       _builder.newLine();
       _builder.append("// ========================");
       _builder.newLine();
-      _builder.append("code KOArt id=1112");
+      _builder.append("code KOArt id=\"Integer.valueOf(1112)\"");
       _builder.newLine();
-      _builder.append("code KOLaufzeit id=9687");
+      _builder.append("code KOLaufzeit id=\"Integer.valueOf(9687)\"");
       _builder.newLine();
-      _builder.append("code KOTiteldruck id=2569");
+      _builder.append("code KOTiteldruck id=\"Integer.valueOf(2569)\"");
       _builder.newLine();
       _builder.newLine();
       _builder.newLine();

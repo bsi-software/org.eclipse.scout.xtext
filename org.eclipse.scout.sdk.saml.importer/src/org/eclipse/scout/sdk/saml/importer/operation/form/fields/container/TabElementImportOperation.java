@@ -17,6 +17,7 @@ import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.TabElement;
+import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.form.field.GroupBoxNewOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
 import org.eclipse.scout.sdk.util.SdkProperties;
@@ -85,12 +86,7 @@ public class TabElementImportOperation extends AbstractBoxElementImportOperation
     GroupBoxNewOperation o = new GroupBoxNewOperation(getTabBox(), false);
     o.setTypeName(getTabElement().getName() + getFieldSuffix());
     o.setSibling(getDefaultSibling());
-
-    String configuredSuperTypeSig = getSuperTypeSigValidated();
-    if (configuredSuperTypeSig != null) {
-      o.setSuperTypeSignature(configuredSuperTypeSig);
-    }
-
+    o.setSuperTypeSignature(getSuperTypeSignature(RuntimeClasses.IGroupBox));
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
     return o.getCreatedField();

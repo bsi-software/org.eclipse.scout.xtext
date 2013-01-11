@@ -14,6 +14,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.scout.saml.saml.DateElement;
 import org.eclipse.scout.saml.saml.FormFieldElement;
+import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.form.field.DateFieldNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
 
@@ -44,10 +45,7 @@ public class DateElementImportOperation extends AbstractValueFieldElementImportO
     DateFieldNewOperation o = new DateFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getDateElement().getName() + getFieldSuffix());
     o.setSibling(getDefaultSibling());
-    String configuredSuperTypeSig = getSuperTypeSigValidated();
-    if (configuredSuperTypeSig != null) {
-      o.setSuperTypeSignature(configuredSuperTypeSig);
-    }
+    o.setSuperTypeSignature(getSuperTypeSignature(RuntimeClasses.IDateField));
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
     return o.getCreatedField();

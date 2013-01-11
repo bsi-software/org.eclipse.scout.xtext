@@ -124,9 +124,9 @@ class ComplexFormTests {
 		// ========================
 		// CODE TYPES
 		// ========================
-		code KOArt id=1112
-		code KOLaufzeit id=9687
-		code KOTiteldruck id=2569
+		code KOArt id="Integer.valueOf(1112)"
+		code KOLaufzeit id="Integer.valueOf(9687)"
+		code KOTiteldruck id="Integer.valueOf(2569)"
 		
 		
 		// ========================

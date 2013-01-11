@@ -41,8 +41,11 @@
     <genClasses ecoreClass="Saml.ecore#//CodeElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//CodeElement/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//CodeElement/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//CodeElement/valueType"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//CodeElement/text"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//CodeElement/superType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//CodeElement/logic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//CodeElement/codes"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//LookupElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LookupElement/name"/>

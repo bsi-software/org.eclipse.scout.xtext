@@ -15,6 +15,7 @@ import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.saml.saml.ButtonElement;
 import org.eclipse.scout.saml.saml.FormFieldElement;
+import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.form.field.ButtonFieldNewOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.menu.MenuElementImportOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
@@ -52,10 +53,7 @@ public class ButtonElementImportOperation extends AbstractFormFieldElementOperat
     ButtonFieldNewOperation o = new ButtonFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getButtonElement().getName() + getFieldSuffix());
     o.setSibling(getDefaultSibling());
-    String configuredSuperTypeSig = getSuperTypeSigValidated();
-    if (configuredSuperTypeSig != null) {
-      o.setSuperTypeSignature(configuredSuperTypeSig);
-    }
+    o.setSuperTypeSignature(getSuperTypeSignature(RuntimeClasses.IButton));
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
     IType createdField = o.getCreatedButton();

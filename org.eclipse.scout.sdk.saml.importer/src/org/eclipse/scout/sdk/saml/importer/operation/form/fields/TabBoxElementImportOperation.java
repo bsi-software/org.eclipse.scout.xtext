@@ -47,11 +47,9 @@ public class TabBoxElementImportOperation extends AbstractFormFieldElementOperat
 
   @Override
   public void run() throws CoreException, IllegalArgumentException {
-    String configuredSuperTypeSig = getSuperTypeSigValidated(RuntimeClasses.getSuperTypeName(RuntimeClasses.ITabBox, getSamlContext().getRootProject()));
-
     TabBoxNewOperation o = new TabBoxNewOperation(getSamlFormContext().getCurrentParentBox());
     o.setFormatSource(false);
-    o.setSuperTypeSignature(configuredSuperTypeSig);
+    o.setSuperTypeSignature(getSuperTypeSignature(RuntimeClasses.ITabBox));
     o.setTypeName(getTabBoxElement().getName() + getFieldSuffix());
     o.setSibling(getDefaultSibling());
     o.validate();

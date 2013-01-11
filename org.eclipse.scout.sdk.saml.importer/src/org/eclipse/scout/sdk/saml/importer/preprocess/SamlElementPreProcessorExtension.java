@@ -71,8 +71,8 @@ public final class SamlElementPreProcessorExtension {
   public static void preProcess(EObject e, SamlContext context) throws CoreException {
     for (Object proc : getPreProcessors()) {
       for (Method m : proc.getClass().getDeclaredMethods()) {
-        if (m.isAnnotationPresent(SamlPreProcess.class)) {
-          if (Modifier.isPublic(m.getModifiers())) {
+        if (Modifier.isPublic(m.getModifiers())) {
+          if (m.isAnnotationPresent(SamlPreProcess.class)) {
             Class<?>[] paramTypes = m.getParameterTypes();
             try {
               if (paramTypes.length == 1 && paramTypes[0].isAssignableFrom(e.getClass())) {

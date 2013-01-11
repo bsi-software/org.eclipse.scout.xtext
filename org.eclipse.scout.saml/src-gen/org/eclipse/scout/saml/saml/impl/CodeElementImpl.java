@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.scout.saml.saml.CodeElement;
 import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
+import org.eclipse.scout.saml.saml.TemplateElement;
 import org.eclipse.scout.saml.saml.TranslationElement;
 
 /**
@@ -32,8 +33,11 @@ import org.eclipse.scout.saml.saml.TranslationElement;
  * <ul>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.CodeElementImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.CodeElementImpl#getId <em>Id</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.CodeElementImpl#getValueType <em>Value Type</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.CodeElementImpl#getText <em>Text</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.CodeElementImpl#getSuperType <em>Super Type</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.CodeElementImpl#getLogic <em>Logic</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.CodeElementImpl#getCodes <em>Codes</em>}</li>
  * </ul>
  * </p>
  *
@@ -69,7 +73,7 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
    * @generated
    * @ordered
    */
-  protected static final int ID_EDEFAULT = 0;
+  protected static final String ID_EDEFAULT = null;
 
   /**
    * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
@@ -79,7 +83,27 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
    * @generated
    * @ordered
    */
-  protected int id = ID_EDEFAULT;
+  protected String id = ID_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getValueType() <em>Value Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getValueType()
+   * @generated
+   * @ordered
+   */
+  protected static final String VALUE_TYPE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getValueType() <em>Value Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getValueType()
+   * @generated
+   * @ordered
+   */
+  protected String valueType = VALUE_TYPE_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getText() <em>Text</em>}' reference.
@@ -92,6 +116,16 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
   protected TranslationElement text;
 
   /**
+   * The cached value of the '{@link #getSuperType() <em>Super Type</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSuperType()
+   * @generated
+   * @ordered
+   */
+  protected TemplateElement superType;
+
+  /**
    * The cached value of the '{@link #getLogic() <em>Logic</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -100,6 +134,16 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
    * @ordered
    */
   protected EList<LogicElement> logic;
+
+  /**
+   * The cached value of the '{@link #getCodes() <em>Codes</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCodes()
+   * @generated
+   * @ordered
+   */
+  protected EList<CodeElement> codes;
 
   /**
    * <!-- begin-user-doc -->
@@ -150,7 +194,7 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getId()
+  public String getId()
   {
     return id;
   }
@@ -160,12 +204,35 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setId(int newId)
+  public void setId(String newId)
   {
-    int oldId = id;
+    String oldId = id;
     id = newId;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.CODE_ELEMENT__ID, oldId, id));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getValueType()
+  {
+    return valueType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setValueType(String newValueType)
+  {
+    String oldValueType = valueType;
+    valueType = newValueType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.CODE_ELEMENT__VALUE_TYPE, oldValueType, valueType));
   }
 
   /**
@@ -216,6 +283,49 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
    * <!-- end-user-doc -->
    * @generated
    */
+  public TemplateElement getSuperType()
+  {
+    if (superType != null && superType.eIsProxy())
+    {
+      InternalEObject oldSuperType = (InternalEObject)superType;
+      superType = (TemplateElement)eResolveProxy(oldSuperType);
+      if (superType != oldSuperType)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SamlPackage.CODE_ELEMENT__SUPER_TYPE, oldSuperType, superType));
+      }
+    }
+    return superType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TemplateElement basicGetSuperType()
+  {
+    return superType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSuperType(TemplateElement newSuperType)
+  {
+    TemplateElement oldSuperType = superType;
+    superType = newSuperType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.CODE_ELEMENT__SUPER_TYPE, oldSuperType, superType));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<LogicElement> getLogic()
   {
     if (logic == null)
@@ -230,6 +340,20 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<CodeElement> getCodes()
+  {
+    if (codes == null)
+    {
+      codes = new EObjectContainmentEList<CodeElement>(CodeElement.class, this, SamlPackage.CODE_ELEMENT__CODES);
+    }
+    return codes;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -237,6 +361,8 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
     {
       case SamlPackage.CODE_ELEMENT__LOGIC:
         return ((InternalEList<?>)getLogic()).basicRemove(otherEnd, msgs);
+      case SamlPackage.CODE_ELEMENT__CODES:
+        return ((InternalEList<?>)getCodes()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -255,11 +381,18 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
         return getName();
       case SamlPackage.CODE_ELEMENT__ID:
         return getId();
+      case SamlPackage.CODE_ELEMENT__VALUE_TYPE:
+        return getValueType();
       case SamlPackage.CODE_ELEMENT__TEXT:
         if (resolve) return getText();
         return basicGetText();
+      case SamlPackage.CODE_ELEMENT__SUPER_TYPE:
+        if (resolve) return getSuperType();
+        return basicGetSuperType();
       case SamlPackage.CODE_ELEMENT__LOGIC:
         return getLogic();
+      case SamlPackage.CODE_ELEMENT__CODES:
+        return getCodes();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -279,14 +412,24 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
         setName((String)newValue);
         return;
       case SamlPackage.CODE_ELEMENT__ID:
-        setId((Integer)newValue);
+        setId((String)newValue);
+        return;
+      case SamlPackage.CODE_ELEMENT__VALUE_TYPE:
+        setValueType((String)newValue);
         return;
       case SamlPackage.CODE_ELEMENT__TEXT:
         setText((TranslationElement)newValue);
         return;
+      case SamlPackage.CODE_ELEMENT__SUPER_TYPE:
+        setSuperType((TemplateElement)newValue);
+        return;
       case SamlPackage.CODE_ELEMENT__LOGIC:
         getLogic().clear();
         getLogic().addAll((Collection<? extends LogicElement>)newValue);
+        return;
+      case SamlPackage.CODE_ELEMENT__CODES:
+        getCodes().clear();
+        getCodes().addAll((Collection<? extends CodeElement>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -308,11 +451,20 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
       case SamlPackage.CODE_ELEMENT__ID:
         setId(ID_EDEFAULT);
         return;
+      case SamlPackage.CODE_ELEMENT__VALUE_TYPE:
+        setValueType(VALUE_TYPE_EDEFAULT);
+        return;
       case SamlPackage.CODE_ELEMENT__TEXT:
         setText((TranslationElement)null);
         return;
+      case SamlPackage.CODE_ELEMENT__SUPER_TYPE:
+        setSuperType((TemplateElement)null);
+        return;
       case SamlPackage.CODE_ELEMENT__LOGIC:
         getLogic().clear();
+        return;
+      case SamlPackage.CODE_ELEMENT__CODES:
+        getCodes().clear();
         return;
     }
     super.eUnset(featureID);
@@ -331,11 +483,17 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
       case SamlPackage.CODE_ELEMENT__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case SamlPackage.CODE_ELEMENT__ID:
-        return id != ID_EDEFAULT;
+        return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+      case SamlPackage.CODE_ELEMENT__VALUE_TYPE:
+        return VALUE_TYPE_EDEFAULT == null ? valueType != null : !VALUE_TYPE_EDEFAULT.equals(valueType);
       case SamlPackage.CODE_ELEMENT__TEXT:
         return text != null;
+      case SamlPackage.CODE_ELEMENT__SUPER_TYPE:
+        return superType != null;
       case SamlPackage.CODE_ELEMENT__LOGIC:
         return logic != null && !logic.isEmpty();
+      case SamlPackage.CODE_ELEMENT__CODES:
+        return codes != null && !codes.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -355,6 +513,8 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
     result.append(name);
     result.append(", id: ");
     result.append(id);
+    result.append(", valueType: ");
+    result.append(valueType);
     result.append(')');
     return result.toString();
   }

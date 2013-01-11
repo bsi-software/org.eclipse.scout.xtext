@@ -42,14 +42,9 @@ public class CustomFieldElementImportOperation extends AbstractFormFieldElementO
 
   @Override
   public void run() throws CoreException, IllegalArgumentException {
-    String configuredSuperTypeSig = getSuperTypeSigValidated();
-    if (configuredSuperTypeSig == null) {
-      throw new IllegalArgumentException("A custom field must specify a super type property.");
-    }
-
     FormFieldNewOperation o = new FormFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getCustomFieldElement().getName() + getFieldSuffix());
-    o.setSuperTypeSignature(configuredSuperTypeSig);
+    o.setSuperTypeSignature(getSuperTypeSignature(null));
     o.setSiblingField(getDefaultSibling());
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
