@@ -40,7 +40,12 @@ public abstract class AbstractRootElementVisitor<T extends EObject> implements I
         throw new IllegalArgumentException("module '" + moduleName + "' could not be found.");
       }
       else {
-        context.setCurrentScoutModule(curModule);
+        if (curModule.getClientBundle() == null || curModule.getSharedBundle() == null || curModule.getServerBundle() == null) {
+          throw new IllegalArgumentException("module '" + moduleName + "' is not complete. It must contain a client, server & shared bundle.");
+        }
+        else {
+          context.setCurrentScoutModule(curModule);
+        }
       }
     }
     else if (m_type.isAssignableFrom(o.getClass())) {
