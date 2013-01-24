@@ -63,16 +63,22 @@ class SamlJavaValidatorHelper {
 		return allVisibileObjects;
 	}
 	
-	
-	
 	def hasGlobalDuplicate(EObject context, EClass type) {
-		context.allObjectsOfType(type).hasDuplicate
+		hasGlobalDuplicate(context, type, false)
 	}
 	
-	def hasDuplicate(Set<IEObjectDescription> d) {
+	def hasGlobalDuplicate(EObject context, EClass type, boolean useFqn) {
+		context.allObjectsOfType(type).hasDuplicate(useFqn)
+	}
+	
+	def hasDuplicate(Set<IEObjectDescription> d, boolean useFqn) {
 		val qualifiedNames = new HashSet<String>()
 		!d.forall [
-			qualifiedNames.add(it.qualifiedName.lastSegment)
+			if(useFqn) {
+				qualifiedNames.add(it.qualifiedName.toString)
+			} else {
+				qualifiedNames.add(it.qualifiedName.lastSegment)
+			}
 		]
 	}
 	

@@ -82,6 +82,45 @@ public class TranslationTests {
   }
   
   @Test
+  public void testFqnDuplicate() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module a.b");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("translation MyTrans.test.blub en=\"en\"");
+      _builder.newLine();
+      _builder.append("translation MyTrans.test2.blub en=\"en\"");
+      _builder.newLine();
+      _builder.append("translation MyTrans2.test.blub en=\"en\"");
+      _builder.newLine();
+      Model _parse = this._parseHelper.parse(_builder);
+      this._validationTestHelper.assertNoErrors(_parse);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testTranslationDuplicate() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module a.b");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("translation MyTrans.test.blub en=\"en\"");
+      _builder.newLine();
+      _builder.append("translation MyTrans.test.blub en=\"en\"");
+      _builder.newLine();
+      Model _parse = this._parseHelper.parse(_builder);
+      EClass _translationElement = SamlPackage.eINSTANCE.getTranslationElement();
+      this._validationTestHelper.assertError(_parse, _translationElement, SamlJavaValidator.DUPLICATE, SamlJavaValidator.MSG_DUPLICATE);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
   public void testQualifiedNlsKeyReference() {
     try {
       final XtextResourceSet resourceSet = this.resourceSetProvider.get();

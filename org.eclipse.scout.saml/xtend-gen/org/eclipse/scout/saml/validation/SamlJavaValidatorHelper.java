@@ -122,22 +122,36 @@ public class SamlJavaValidatorHelper {
   }
   
   public boolean hasGlobalDuplicate(final EObject context, final EClass type) {
+    boolean _hasGlobalDuplicate = this.hasGlobalDuplicate(context, type, false);
+    return _hasGlobalDuplicate;
+  }
+  
+  public boolean hasGlobalDuplicate(final EObject context, final EClass type, final boolean useFqn) {
     HashSet<IEObjectDescription> _allObjectsOfType = this.allObjectsOfType(context, type);
-    boolean _hasDuplicate = this.hasDuplicate(_allObjectsOfType);
+    boolean _hasDuplicate = this.hasDuplicate(_allObjectsOfType, useFqn);
     return _hasDuplicate;
   }
   
-  public boolean hasDuplicate(final Set<IEObjectDescription> d) {
+  public boolean hasDuplicate(final Set<IEObjectDescription> d, final boolean useFqn) {
     boolean _xblockexpression = false;
     {
       HashSet<String> _hashSet = new HashSet<String>();
       final HashSet<String> qualifiedNames = _hashSet;
       final Function1<IEObjectDescription,Boolean> _function = new Function1<IEObjectDescription,Boolean>() {
           public Boolean apply(final IEObjectDescription it) {
-            QualifiedName _qualifiedName = it.getQualifiedName();
-            String _lastSegment = _qualifiedName.getLastSegment();
-            boolean _add = qualifiedNames.add(_lastSegment);
-            return Boolean.valueOf(_add);
+            boolean _xifexpression = false;
+            if (useFqn) {
+              QualifiedName _qualifiedName = it.getQualifiedName();
+              String _string = _qualifiedName.toString();
+              boolean _add = qualifiedNames.add(_string);
+              _xifexpression = _add;
+            } else {
+              QualifiedName _qualifiedName_1 = it.getQualifiedName();
+              String _lastSegment = _qualifiedName_1.getLastSegment();
+              boolean _add_1 = qualifiedNames.add(_lastSegment);
+              _xifexpression = _add_1;
+            }
+            return Boolean.valueOf(_xifexpression);
           }
         };
       boolean _forall = IterableExtensions.<IEObjectDescription>forall(d, _function);

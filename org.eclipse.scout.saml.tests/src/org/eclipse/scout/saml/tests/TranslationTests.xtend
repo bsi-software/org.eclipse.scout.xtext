@@ -52,6 +52,27 @@ class TranslationTests {
 	}
 	
 	@Test
+	def void testFqnDuplicate() {
+		'''
+		module a.b
+		
+		translation MyTrans.test.blub en="en"
+		translation MyTrans.test2.blub en="en"
+		translation MyTrans2.test.blub en="en"
+		'''.parse.assertNoErrors
+	}
+	
+	@Test
+	def void testTranslationDuplicate() {
+		'''
+		module a.b
+		
+		translation MyTrans.test.blub en="en"
+		translation MyTrans.test.blub en="en"
+		'''.parse.assertError(SamlPackage::eINSTANCE.translationElement, SamlJavaValidator::DUPLICATE, SamlJavaValidator::MSG_DUPLICATE)
+	}
+	
+	@Test
 	def void testQualifiedNlsKeyReference() {
 		val resourceSet = resourceSetProvider.get()
 		'''

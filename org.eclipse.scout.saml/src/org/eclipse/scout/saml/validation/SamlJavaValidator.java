@@ -240,7 +240,7 @@ public class SamlJavaValidator extends AbstractSamlJavaValidator implements ISam
 
   @Check
   public void checkNoTranslationDuplicates(TranslationElement element) {
-    if (helper.hasGlobalDuplicate(element, SamlPackage.eINSTANCE.getTranslationElement())) {
+    if (helper.hasGlobalDuplicate(element, SamlPackage.eINSTANCE.getTranslationElement(), true)) {
       error(MSG_DUPLICATE, element, SamlPackage.eINSTANCE.getTranslationElement_Name(), DUPLICATE);
     }
   }
