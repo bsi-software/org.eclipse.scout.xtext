@@ -24,7 +24,6 @@ import org.eclipse.scout.sdk.saml.importer.operation.form.AbstractUiElementImpor
 import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
 import org.eclipse.scout.sdk.saml.importer.operation.logic.SamlLogicFillOperation;
 import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
-import org.eclipse.scout.sdk.workspace.type.ScoutTypeUtility;
 
 /**
  * <h3>{@link AbstractFormFieldElementOperation}</h3> ...
@@ -35,13 +34,10 @@ import org.eclipse.scout.sdk.workspace.type.ScoutTypeUtility;
 public abstract class AbstractFormFieldElementOperation extends AbstractUiElementImportOperation implements IFormFieldElementOperation {
 
   private SamlFormContext m_samlContext;
+  private double m_order;
 
   protected void fillLogic(IType createdField) throws CoreException, IllegalArgumentException {
     SamlLogicFillOperation.fillAllLogic(getFieldElement().getLogic(), getSamlFormContext(), createdField);
-  }
-
-  protected IType getDefaultSibling() {
-    return ScoutTypeUtility.getFistProcessButton(getSamlFormContext().getCurrentParentBox(), getSamlFormContext().getCurrentParentBoxLocalTypeHierarchy());
   }
 
   protected String getSuperTypeSignature(String defaultSuperInterfaceFqn, String valueType) throws IllegalArgumentException {
@@ -98,14 +94,27 @@ public abstract class AbstractFormFieldElementOperation extends AbstractUiElemen
   }
 
   public static void dispatchFieldElements(List<FormFieldElement> fields, SamlContext context, SamlFormContext formContext) throws CoreException {
+    double order = 10.0;
     for (FormFieldElement field : fields) {
       IFormFieldElementOperation op = FormFieldExtension.getOperationFor(field);
       op.setSamlContext(context);
+      op.setOrder(order);
       op.setSamlFormContext(formContext);
       op.setFieldElement(field);
       op.validate();
       op.run();
+      order += 10.0;
     }
+  }
+
+  @Override
+  public void setOrder(double order) {
+    m_order = order;
+  }
+
+  @Override
+  public double getOrder() {
+    return m_order;
   }
 
   @Override

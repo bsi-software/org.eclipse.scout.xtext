@@ -16,7 +16,7 @@ import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.StringElement;
 import org.eclipse.scout.sdk.RuntimeClasses;
-import org.eclipse.scout.sdk.operation.form.field.StringFieldNewOperation;
+import org.eclipse.scout.sdk.operation.form.field.FormFieldNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
 
 /**
@@ -57,14 +57,15 @@ public class StringElementImportOperation extends AbstractValueFieldElementImpor
 
   @Override
   protected IType createField() throws CoreException, IllegalArgumentException {
-    StringFieldNewOperation o = new StringFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
+    FormFieldNewOperation o = new FormFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getStringElement().getName() + getFieldSuffix());
-    o.setSibling(getDefaultSibling());
+    o.setOrderNr(getOrder());
+    o.setFormType(getSamlFormContext().getFormType());
     o.setSuperTypeSignature(getSuperTypeSignature(RuntimeClasses.IStringField));
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
 
-    return o.getCreatedField();
+    return o.getCreatedFormField();
   }
 
   @Override

@@ -16,7 +16,7 @@ import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.TabBoxElement;
 import org.eclipse.scout.sdk.RuntimeClasses;
-import org.eclipse.scout.sdk.operation.form.field.TabBoxNewOperation;
+import org.eclipse.scout.sdk.operation.form.field.FormFieldNewOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.form.fields.container.TabElementImportOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
 
@@ -47,14 +47,15 @@ public class TabBoxElementImportOperation extends AbstractFormFieldElementOperat
 
   @Override
   public void run() throws CoreException, IllegalArgumentException {
-    TabBoxNewOperation o = new TabBoxNewOperation(getSamlFormContext().getCurrentParentBox());
+    FormFieldNewOperation o = new FormFieldNewOperation(getSamlFormContext().getCurrentParentBox());
     o.setFormatSource(false);
     o.setSuperTypeSignature(getSuperTypeSignature(RuntimeClasses.ITabBox));
     o.setTypeName(getTabBoxElement().getName() + getFieldSuffix());
-    o.setSibling(getDefaultSibling());
+    o.setOrderNr(getOrder());
+    o.setFormType(getSamlFormContext().getFormType());
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
-    IType createdField = o.getCreatedField();
+    IType createdField = o.getCreatedFormField();
 
     ITypeHierarchy h = createdField.newSupertypeHierarchy(getSamlContext().getMonitor());
     applyFormFieldProperties(createdField, h);

@@ -45,7 +45,8 @@ public class CustomFieldElementImportOperation extends AbstractFormFieldElementO
     FormFieldNewOperation o = new FormFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getCustomFieldElement().getName() + getFieldSuffix());
     o.setSuperTypeSignature(getSuperTypeSignature(null));
-    o.setSiblingField(getDefaultSibling());
+    o.setOrderNr(getOrder());
+    o.setFormType(getSamlFormContext().getFormType());
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
     IType createdField = o.getCreatedFormField();

@@ -16,7 +16,7 @@ import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.SequenceBoxElement;
 import org.eclipse.scout.sdk.RuntimeClasses;
-import org.eclipse.scout.sdk.operation.form.field.SequenceBoxNewOperation;
+import org.eclipse.scout.sdk.operation.form.field.FormFieldNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
 
 /**
@@ -43,14 +43,15 @@ public class SequenceBoxElementImportOperation extends AbstractBoxElementImportO
 
   @Override
   public IType createBox() throws CoreException, IllegalArgumentException {
-    SequenceBoxNewOperation o = new SequenceBoxNewOperation(getSamlFormContext().getCurrentParentBox(), false);
+    FormFieldNewOperation o = new FormFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getSequenceBoxElement().getName() + getFieldSuffix());
-    o.setSibling(getDefaultSibling());
+    o.setOrderNr(getOrder());
+    o.setFormType(getSamlFormContext().getFormType());
     o.setSuperTypeSignature(getSuperTypeSignature(RuntimeClasses.ISequenceBox));
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
 
-    return o.getCreatedField();
+    return o.getCreatedFormField();
   }
 
   @Override

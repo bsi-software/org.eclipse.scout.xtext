@@ -17,7 +17,7 @@ import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.LongElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
 import org.eclipse.scout.sdk.RuntimeClasses;
-import org.eclipse.scout.sdk.operation.form.field.LongFieldNewOperation;
+import org.eclipse.scout.sdk.operation.form.field.FormFieldNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
 
 /**
@@ -56,15 +56,15 @@ public class LongElementImportOperation extends AbstractValueFieldElementImportO
 
   @Override
   protected IType createField() throws CoreException, IllegalArgumentException {
-    LongFieldNewOperation o = new LongFieldNewOperation(getSamlFormContext().getCurrentParentBox());
-    o.setFormatSource(false);
-    o.setSibling(getDefaultSibling());
+    FormFieldNewOperation o = new FormFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
+    o.setOrderNr(getOrder());
+    o.setFormType(getSamlFormContext().getFormType());
     o.setTypeName(getLongElement().getName() + getFieldSuffix());
     o.setSuperTypeSignature(getSuperTypeSignature(RuntimeClasses.ILongField));
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
 
-    return o.getCreatedField();
+    return o.getCreatedFormField();
   }
 
   @Override

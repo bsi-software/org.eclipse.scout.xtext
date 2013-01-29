@@ -11,9 +11,13 @@
 package org.eclipse.scout.sdk.saml.importer.operation.form;
 
 import java.util.HashMap;
+import java.util.Map.Entry;
 import java.util.Stack;
+import java.util.TreeMap;
 
+import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.scout.sdk.saml.importer.operation.SamlContext;
 import org.eclipse.scout.sdk.util.type.TypeUtility;
 import org.eclipse.scout.sdk.util.typecache.ITypeHierarchy;
@@ -31,13 +35,16 @@ public class SamlFormContext {
   private IType m_serverInterface;
   private IType m_formDataType;
   private IType m_formType;
-  private Stack<IType> m_parentBoxStack;
   private SamlContext m_samlContext;
-  private HashMap<IType, ITypeHierarchy> m_parentBoxLocalTypeHierarchies;
+
+  private final Stack<IType> m_parentBoxStack;
+  private final HashMap<IType, ITypeHierarchy> m_parentBoxLocalTypeHierarchies;
+  private final TreeMap<String, IMethod> m_fieldGetterMethods;
 
   public SamlFormContext() {
     m_parentBoxStack = new Stack<IType>();
     m_parentBoxLocalTypeHierarchies = new HashMap<IType, ITypeHierarchy>();
+    m_fieldGetterMethods = new TreeMap<String, IMethod>();
   }
 
   public void pushParentBox(IType container) {
@@ -46,6 +53,15 @@ public class SamlFormContext {
 
   public IType getCurrentParentBox() {
     return m_parentBoxStack.peek();
+  }
+
+  public void addFieldGetterMethod(IMethod method) throws JavaModelException {
+    m_fieldGetterMethods.put(method.getElementName(), method);
+  }
+
+  public IMethod getSiblingFor(String elementName) {
+    Entry<String, IMethod> siblingEntry = m_fieldGetterMethods.ceilingEntry(elementName);
+    return siblingEntry.getValue();
   }
 
   public ITypeHierarchy getCurrentParentBoxLocalTypeHierarchy() {

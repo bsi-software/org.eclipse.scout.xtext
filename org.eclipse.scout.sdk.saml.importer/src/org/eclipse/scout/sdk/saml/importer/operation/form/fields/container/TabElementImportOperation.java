@@ -18,7 +18,7 @@ import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.TabElement;
 import org.eclipse.scout.sdk.RuntimeClasses;
-import org.eclipse.scout.sdk.operation.form.field.GroupBoxNewOperation;
+import org.eclipse.scout.sdk.operation.form.field.FormFieldNewOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
 import org.eclipse.scout.sdk.util.SdkProperties;
 
@@ -83,13 +83,15 @@ public class TabElementImportOperation extends AbstractBoxElementImportOperation
 
   @Override
   protected IType createBox() throws CoreException, IllegalArgumentException {
-    GroupBoxNewOperation o = new GroupBoxNewOperation(getTabBox(), false);
+    FormFieldNewOperation o = new FormFieldNewOperation(getTabBox(), false);
     o.setTypeName(getTabElement().getName() + getFieldSuffix());
-    o.setSibling(getDefaultSibling());
+    o.setOrderNr(getOrder());
+    o.setFormType(getSamlFormContext().getFormType());
     o.setSuperTypeSignature(getSuperTypeSignature(RuntimeClasses.IGroupBox));
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
-    return o.getCreatedField();
+
+    return o.getCreatedFormField();
   }
 
   @Override

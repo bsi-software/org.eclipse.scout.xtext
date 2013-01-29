@@ -16,7 +16,7 @@ import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.ListBoxElement;
 import org.eclipse.scout.sdk.RuntimeClasses;
-import org.eclipse.scout.sdk.operation.form.field.ListBoxFieldNewOperation;
+import org.eclipse.scout.sdk.operation.form.field.FormFieldNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
 
 /**
@@ -43,13 +43,14 @@ public class ListBoxElementImportOperation extends AbstractValueFieldElementImpo
 
   @Override
   protected IType createField() throws CoreException, IllegalArgumentException {
-    ListBoxFieldNewOperation o = new ListBoxFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
+    FormFieldNewOperation o = new FormFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getListBoxElement().getName() + getFieldSuffix());
     o.setSuperTypeSignature(getSuperTypeSignature(RuntimeClasses.IListBox, getListBoxElement().getValueType()));
-    o.setSibling(getDefaultSibling());
+    o.setOrderNr(getOrder());
+    o.setFormType(getSamlFormContext().getFormType());
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
-    return o.getCreatedField();
+    return o.getCreatedFormField();
   }
 
   @Override

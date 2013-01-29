@@ -16,7 +16,7 @@ import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.saml.saml.ButtonElement;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.sdk.RuntimeClasses;
-import org.eclipse.scout.sdk.operation.form.field.ButtonFieldNewOperation;
+import org.eclipse.scout.sdk.operation.form.field.FormFieldNewOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.menu.MenuElementImportOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
 
@@ -50,13 +50,14 @@ public class ButtonElementImportOperation extends AbstractFormFieldElementOperat
 
   @Override
   public final void run() throws CoreException, IllegalArgumentException {
-    ButtonFieldNewOperation o = new ButtonFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
+    FormFieldNewOperation o = new FormFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getButtonElement().getName() + getFieldSuffix());
-    o.setSibling(getDefaultSibling());
+    o.setOrderNr(getOrder());
+    o.setFormType(getSamlFormContext().getFormType());
     o.setSuperTypeSignature(getSuperTypeSignature(RuntimeClasses.IButton));
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
-    IType createdField = o.getCreatedButton();
+    IType createdField = o.getCreatedFormField();
 
     ITypeHierarchy h = createdField.newSupertypeHierarchy(getSamlContext().getMonitor());
 

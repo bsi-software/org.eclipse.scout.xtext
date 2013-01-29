@@ -16,7 +16,7 @@ import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.saml.saml.BigDecimalElement;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.sdk.RuntimeClasses;
-import org.eclipse.scout.sdk.operation.form.field.BigdecimalFieldNewOperation;
+import org.eclipse.scout.sdk.operation.form.field.FormFieldNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
 
 /**
@@ -78,14 +78,14 @@ public class BigDecimalElementImportOperation extends AbstractValueFieldElementI
 
   @Override
   protected IType createField() throws CoreException, IllegalArgumentException {
-    BigdecimalFieldNewOperation o = new BigdecimalFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
+    FormFieldNewOperation o = new FormFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getBigDecimalElement().getName() + getFieldSuffix());
-    o.setSibling(getDefaultSibling());
+    o.setOrderNr(getOrder());
+    o.setFormType(getSamlFormContext().getFormType());
     o.setSuperTypeSignature(getSuperTypeSignature(RuntimeClasses.IBigDecimalField));
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
-
-    return o.getCreatedField();
+    return o.getCreatedFormField();
   }
 
   @Override

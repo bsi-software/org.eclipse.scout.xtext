@@ -13,7 +13,9 @@ package org.eclipse.scout.sdk.saml.importer.operation.form;
 import java.util.ArrayList;
 
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.scout.saml.saml.FormElement;
 import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.saml.saml.TranslationElement;
@@ -55,6 +57,7 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
   private IType m_createdForm;
   private IType m_createdFormData;
   private IType m_createdMainBox;
+  private IMethod m_createdMainBoxGetter;
 
   private SamlFormContext m_formContext;
 
@@ -108,7 +111,7 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
     postProcessType(getCreatedFormData());
   }
 
-  private void createFormContext() {
+  private void createFormContext() throws JavaModelException {
     m_formContext = new SamlFormContext();
     m_formContext.setClientType(getCreatedClientServiceImplementation());
     m_formContext.setClientInterface(getCreatedClientServiceInterface());
@@ -118,6 +121,7 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
     m_formContext.setFormType(getCreatedForm());
     m_formContext.setSamlContext(getSamlContext());
     m_formContext.pushParentBox(getCreatedMainBox());
+    m_formContext.addFieldGetterMethod(getCreatedMainBoxGetter());
   }
 
   private boolean hasOneOfLogicEvents(final String[] logicEvents) {
@@ -143,8 +147,8 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
       String nlsKey = getFormElement().getTitle().getName();
       op.setNlsEntry(getNlsEntry(nlsKey));
     }
-    op.setCreateButtonOk(true);
-    op.setCreateButtonCancel(true);
+    op.setCreateButtonOk(false);
+    op.setCreateButtonCancel(false);
 
     op.setCreateExecLoad(false);
     op.setCreateExecStore(false);
@@ -206,6 +210,7 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
     setCreatedMainBox(op.getOutMainBox());
     setCreatedForm(op.getOutForm());
     setCreatedFormData(getFormDataType(getFormElement().getName()));
+    setCreatedMainBoxGetter(op.getOutMainBoxGetterMethod());
 
     // client service
     ServiceNewOperation clientSvcOp = new ServiceNewOperation();
@@ -348,5 +353,13 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
 
   private void setCreatedFormData(IType createdFormData) {
     m_createdFormData = createdFormData;
+  }
+
+  public IMethod getCreatedMainBoxGetter() {
+    return m_createdMainBoxGetter;
+  }
+
+  private void setCreatedMainBoxGetter(IMethod createdMainBoxGetter) {
+    m_createdMainBoxGetter = createdMainBoxGetter;
   }
 }

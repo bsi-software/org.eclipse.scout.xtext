@@ -15,7 +15,7 @@ import org.eclipse.jdt.core.IType;
 import org.eclipse.scout.saml.saml.DateElement;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.sdk.RuntimeClasses;
-import org.eclipse.scout.sdk.operation.form.field.DateFieldNewOperation;
+import org.eclipse.scout.sdk.operation.form.field.FormFieldNewOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
 
 /**
@@ -42,13 +42,14 @@ public class DateElementImportOperation extends AbstractValueFieldElementImportO
 
   @Override
   protected IType createField() throws CoreException, IllegalArgumentException {
-    DateFieldNewOperation o = new DateFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
+    FormFieldNewOperation o = new FormFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getDateElement().getName() + getFieldSuffix());
-    o.setSibling(getDefaultSibling());
+    o.setOrderNr(getOrder());
+    o.setFormType(getSamlFormContext().getFormType());
     o.setSuperTypeSignature(getSuperTypeSignature(RuntimeClasses.IDateField));
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
-    return o.getCreatedField();
+    return o.getCreatedFormField();
   }
 
   public DateElement getDateElement() {

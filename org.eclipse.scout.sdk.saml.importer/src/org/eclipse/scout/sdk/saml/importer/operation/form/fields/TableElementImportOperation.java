@@ -49,7 +49,8 @@ public class TableElementImportOperation extends AbstractFormFieldElementOperati
     o.setFormatSource(false);
     o.setSuperTypeSignature(getSuperTypeSignature(RuntimeClasses.ITableField));
     o.setTypeName(getTableFieldElement().getName() + getFieldSuffix());
-    o.setSibling(getDefaultSibling());
+//    o.setOrderNr(getOrder());
+//    o.setFormType(getSamlFormContext().getFormType());
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
     IType createdField = o.getCreatedField();

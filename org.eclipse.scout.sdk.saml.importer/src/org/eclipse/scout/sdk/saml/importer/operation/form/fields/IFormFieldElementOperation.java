@@ -27,6 +27,10 @@ public interface IFormFieldElementOperation extends ISamlElementImportOperation 
 
   void setFieldElement(FormFieldElement fieldElement);
 
+  void setOrder(double order);
+
+  double getOrder();
+
   FormFieldElement getFieldElement();
 
   String getFieldSuffix();

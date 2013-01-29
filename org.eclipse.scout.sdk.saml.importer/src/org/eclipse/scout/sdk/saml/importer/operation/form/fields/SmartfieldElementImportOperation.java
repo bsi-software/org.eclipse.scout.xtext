@@ -16,7 +16,7 @@ import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.SmartfieldElement;
 import org.eclipse.scout.sdk.RuntimeClasses;
-import org.eclipse.scout.sdk.operation.form.field.SmartFieldNewOperation;
+import org.eclipse.scout.sdk.operation.form.field.FormFieldNewOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.menu.MenuElementImportOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
 
@@ -44,13 +44,14 @@ public class SmartfieldElementImportOperation extends AbstractValueFieldElementI
 
   @Override
   protected IType createField() throws CoreException, IllegalArgumentException {
-    SmartFieldNewOperation o = new SmartFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
+    FormFieldNewOperation o = new FormFieldNewOperation(getSamlFormContext().getCurrentParentBox(), false);
     o.setTypeName(getSmartfieldElement().getName() + getFieldSuffix());
     o.setSuperTypeSignature(getSuperTypeSignature(RuntimeClasses.ISmartField, getSmartfieldElement().getValueType()));
-    o.setSibling(getDefaultSibling());
+    o.setOrderNr(getOrder());
+    o.setFormType(getSamlFormContext().getFormType());
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
-    IType createdField = o.getCreatedField();
+    IType createdField = o.getCreatedFormField();
 
     MenuElementImportOperation.processMenus(getSmartfieldElement().getMenus(), createdField, getSamlFormContext());
 
