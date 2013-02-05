@@ -13,6 +13,7 @@ package org.eclipse.scout.sdk.saml.importer.operation.form;
 import java.util.ArrayList;
 
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaModelException;
@@ -96,10 +97,24 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
     postProcessType(m_createdClientServiceImplementation);
 
     postProcessType(m_createdServerServiceInterface);
+
+    serverServiceImportsCorrection();
     postProcessType(m_createdServerServiceImplementation);
 
     postProcessType(m_createdForm);
     postProcessType(m_createdFormData);
+  }
+
+  private void serverServiceImportsCorrection() throws JavaModelException {
+    //TODO Why necessary? check organize imports!
+    ICompilationUnit compilationUnit = m_createdServerServiceImplementation.getCompilationUnit();
+    String src = compilationUnit.getSource();
+    if (src.contains(m_createdFormData.getElementName())) {
+      String fqn = m_createdFormData.getFullyQualifiedName();
+      if (!src.contains("import " + fqn + ";")) {
+        compilationUnit.createImport(fqn, null, getSamlContext().getMonitor());
+      }
+    }
   }
 
   private SamlFormContext createFormContext() throws JavaModelException {
