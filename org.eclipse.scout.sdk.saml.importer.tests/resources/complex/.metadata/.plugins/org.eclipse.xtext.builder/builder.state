@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="ASCII"?>
-<builderState:ResourceDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:builderState="http://www.eclipse.org/xtext/builderstate/1.0" URI="platform:/resource/org.eclipse.scout.saml.tests.complex.input/saml/complex.saml">
-  <exportedObjects xsi:type="builderState:EObjectDescription" name="3:org7:eclipse5:scout4:saml5:tests7:complex" fragment="/0/@module">
-    <eClass href="http://www.eclipse.org/scout/saml/Saml#//ModuleElement"/>
-  </exportedObjects>
-  <exportedObjects xsi:type="builderState:EObjectDescription" name="5:trans5:text1" fragment="/0/@translations.0">
-    <eClass href="http://www.eclipse.org/scout/saml/Saml#//TranslationElement"/>
-  </exportedObjects>
-</builderState:ResourceDescription>

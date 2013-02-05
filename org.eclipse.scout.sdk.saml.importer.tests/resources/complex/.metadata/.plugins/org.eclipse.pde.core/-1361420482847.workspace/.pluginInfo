@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<map>
-	<bundle bundleID="657" class="org.eclipse.scout.saml.tests.complex.input.Activator" localization="OSGI-INF/l10n/bundle" name="SAML Input" project="org.eclipse.scout.saml.tests.complex.input"/>
-	<bundle bundleID="656" class="org.eclipse.scout.saml.tests.complex.client.Activator" localization="OSGI-INF/l10n/bundle" name="org.eclipse.scout.saml.tests.complex.client" project="org.eclipse.scout.saml.tests.complex.client"/>
-	<bundle bundleID="654" class="org.eclipse.scout.saml.tests.complex.shared.Activator" localization="OSGI-INF/l10n/bundle" name="org.eclipse.scout.saml.tests.complex.shared" project="org.eclipse.scout.saml.tests.complex.shared"/>
-	<bundle bundleID="655" class="org.eclipse.scout.saml.tests.complex.server.Activator" localization="OSGI-INF/l10n/bundle" name="org.eclipse.scout.saml.tests.complex.server" project="org.eclipse.scout.saml.tests.complex.server">
-		<library name="."/>
-	</bundle>
-</map>
