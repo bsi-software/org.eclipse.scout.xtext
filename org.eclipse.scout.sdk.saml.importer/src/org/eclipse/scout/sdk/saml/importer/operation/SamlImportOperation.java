@@ -23,15 +23,13 @@ import org.eclipse.scout.saml.SamlStandaloneSetup;
 import org.eclipse.scout.saml.saml.CodeElement;
 import org.eclipse.scout.saml.saml.FormElement;
 import org.eclipse.scout.saml.saml.LookupElement;
+import org.eclipse.scout.saml.saml.ModuleElement;
 import org.eclipse.scout.saml.saml.TranslationElement;
 import org.eclipse.scout.sdk.operation.IOperation;
-import org.eclipse.scout.sdk.saml.importer.extension.customization.CodeCustomizationExtension;
-import org.eclipse.scout.sdk.saml.importer.extension.customization.IScoutProjectConfigurator;
-import org.eclipse.scout.sdk.saml.importer.operation.codetype.CodeElementImportOperation;
-import org.eclipse.scout.sdk.saml.importer.operation.form.FormElementImportOperation;
-import org.eclipse.scout.sdk.saml.importer.operation.lookup.LookupElementImportOperation;
-import org.eclipse.scout.sdk.saml.importer.operation.nls.TranslationElementImportOperation;
-import org.eclipse.scout.sdk.saml.importer.preprocess.SamlElementPreProcessorExtension;
+import org.eclipse.scout.sdk.saml.importer.extension.configurator.CodeConfiguratorsExtension;
+import org.eclipse.scout.sdk.saml.importer.extension.configurator.IScoutProjectConfigurator;
+import org.eclipse.scout.sdk.saml.importer.extension.element.ElementImportersExtension;
+import org.eclipse.scout.sdk.saml.importer.extension.preprocess.SamlElementPreProcessorExtension;
 import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 import org.eclipse.scout.sdk.workspace.IScoutProject;
 import org.eclipse.xtext.resource.XtextResource;
@@ -158,35 +156,37 @@ public class SamlImportOperation implements IOperation {
 
       m_context = new SamlContext(monitor, workingCopyManager, getInjector(), getScoutRootProject());
 
-      // 0. allow all configurators & pre-processors to do their tasks
-      for (IScoutProjectConfigurator configurator : CodeCustomizationExtension.getScoutProjectConfigurators()) {
+      // 1. all configurators
+      for (IScoutProjectConfigurator configurator : CodeConfiguratorsExtension.getScoutProjectConfigurators()) {
         configurator.configure(getSamlContext());
       }
+
+      // 2. all pre-processors
       visitRootElements(new PreProcessVisitor());
       if (monitor.isCanceled()) {
         return;
       }
 
-      // 1. all translations over all files
-      visitRootElements(new TranslationElementVisitor());
+      // 3. all translations
+      visitRootElements(new RootElementVisitor(TranslationElement.class));
       if (monitor.isCanceled()) {
         return;
       }
 
-      // 2. all codes over all files
-      visitRootElements(new CodeElementVisitor());
+      // 4. all codes
+      visitRootElements(new RootElementVisitor(CodeElement.class));
       if (monitor.isCanceled()) {
         return;
       }
 
-      // 3. all lookups over all files
-      visitRootElements(new LookupElementVisitor());
+      // 5. all lookups
+      visitRootElements(new RootElementVisitor(LookupElement.class));
       if (monitor.isCanceled()) {
         return;
       }
 
-      // 4. all forms over all files
-      visitRootElements(new FormElementVisitor());
+      // 6. all forms
+      visitRootElements(new RootElementVisitor(FormElement.class));
       if (monitor.isCanceled()) {
         return;
       }
@@ -245,6 +245,10 @@ public class SamlImportOperation implements IOperation {
     m_resourceSet = resourceSet;
   }
 
+  private static interface IRootElementVisitor {
+    void visit(EObject o, SamlContext context) throws CoreException, IllegalArgumentException;
+  }
+
   private static class PreProcessVisitor implements IRootElementVisitor {
     @Override
     public void visit(EObject o, SamlContext context) throws CoreException, IllegalArgumentException {
@@ -259,55 +263,20 @@ public class SamlImportOperation implements IOperation {
     }
   }
 
-  private static class TranslationElementVisitor extends AbstractRootElementVisitor<TranslationElement> {
-    private TranslationElementVisitor() {
-      super(TranslationElement.class);
+  private static class RootElementVisitor implements IRootElementVisitor {
+    private Class<? extends EObject> m_elementType;
+
+    private RootElementVisitor(Class<? extends EObject> elementType) {
+      m_elementType = elementType;
     }
 
     @Override
-    protected ISamlElementImportOperation prepareOperation(TranslationElement element) {
-      TranslationElementImportOperation teio = new TranslationElementImportOperation();
-      teio.setTranslationElement(element);
-      return teio;
-    }
-  }
-
-  private static class CodeElementVisitor extends AbstractRootElementVisitor<CodeElement> {
-    private CodeElementVisitor() {
-      super(CodeElement.class);
-    }
-
-    @Override
-    protected ISamlElementImportOperation prepareOperation(CodeElement element) {
-      CodeElementImportOperation ceio = new CodeElementImportOperation();
-      ceio.setCodeElement(element);
-      return ceio;
-    }
-  }
-
-  private static class LookupElementVisitor extends AbstractRootElementVisitor<LookupElement> {
-    private LookupElementVisitor() {
-      super(LookupElement.class);
-    }
-
-    @Override
-    protected ISamlElementImportOperation prepareOperation(LookupElement element) {
-      LookupElementImportOperation leio = new LookupElementImportOperation();
-      leio.setLookupElement(element);
-      return leio;
-    }
-  }
-
-  private static class FormElementVisitor extends AbstractRootElementVisitor<FormElement> {
-    private FormElementVisitor() {
-      super(FormElement.class);
-    }
-
-    @Override
-    protected ISamlElementImportOperation prepareOperation(FormElement element) {
-      FormElementImportOperation feio = new FormElementImportOperation();
-      feio.setFormElement(element);
-      return feio;
+    public void visit(EObject o, SamlContext context) throws CoreException, IllegalArgumentException {
+      if (m_elementType.isAssignableFrom(o.getClass()) || o instanceof ModuleElement) {
+        IOperation rootImporter = ElementImportersExtension.getImporterFor(o, context);
+        rootImporter.validate();
+        rootImporter.run(context.getMonitor(), context.getWorkingCopyManager());
+      }
     }
   }
 }

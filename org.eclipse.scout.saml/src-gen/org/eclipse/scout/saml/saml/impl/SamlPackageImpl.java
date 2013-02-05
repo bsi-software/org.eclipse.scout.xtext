@@ -18,6 +18,7 @@ import org.eclipse.scout.saml.saml.CustomFieldElement;
 import org.eclipse.scout.saml.saml.DateElement;
 import org.eclipse.scout.saml.saml.FormElement;
 import org.eclipse.scout.saml.saml.FormFieldElement;
+import org.eclipse.scout.saml.saml.GenericValueFieldElement;
 import org.eclipse.scout.saml.saml.GroupBoxElement;
 import org.eclipse.scout.saml.saml.ImportElement;
 import org.eclipse.scout.saml.saml.KeyElement;
@@ -153,6 +154,13 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * @generated
    */
   private EClass valueFieldElementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass genericValueFieldElementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1100,6 +1108,46 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getGenericValueFieldElement()
+  {
+    return genericValueFieldElementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getGenericValueFieldElement_Code()
+  {
+    return (EReference)genericValueFieldElementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getGenericValueFieldElement_ValueType()
+  {
+    return (EAttribute)genericValueFieldElementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getGenericValueFieldElement_Lookup()
+  {
+    return (EReference)genericValueFieldElementEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getStringElement()
   {
     return stringElementEClass;
@@ -1270,39 +1318,9 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSmartfieldElement_Code()
-  {
-    return (EReference)smartfieldElementEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getSmartfieldElement_ValueType()
-  {
-    return (EAttribute)smartfieldElementEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getSmartfieldElement_Lookup()
-  {
-    return (EReference)smartfieldElementEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getSmartfieldElement_Menus()
   {
-    return (EReference)smartfieldElementEClass.getEStructuralFeatures().get(3);
+    return (EReference)smartfieldElementEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1320,39 +1338,9 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getListBoxElement_Code()
-  {
-    return (EReference)listBoxElementEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getListBoxElement_ValueType()
-  {
-    return (EAttribute)listBoxElementEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getListBoxElement_Lookup()
-  {
-    return (EReference)listBoxElementEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EAttribute getListBoxElement_GridHeight()
   {
-    return (EAttribute)listBoxElementEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)listBoxElementEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1968,6 +1956,11 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     createEAttribute(valueFieldElementEClass, VALUE_FIELD_ELEMENT__GRID_WIDTH);
     createEAttribute(valueFieldElementEClass, VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS);
 
+    genericValueFieldElementEClass = createEClass(GENERIC_VALUE_FIELD_ELEMENT);
+    createEReference(genericValueFieldElementEClass, GENERIC_VALUE_FIELD_ELEMENT__CODE);
+    createEAttribute(genericValueFieldElementEClass, GENERIC_VALUE_FIELD_ELEMENT__VALUE_TYPE);
+    createEReference(genericValueFieldElementEClass, GENERIC_VALUE_FIELD_ELEMENT__LOOKUP);
+
     stringElementEClass = createEClass(STRING_ELEMENT);
     createEAttribute(stringElementEClass, STRING_ELEMENT__MAXLEN);
     createEAttribute(stringElementEClass, STRING_ELEMENT__GRID_HEIGHT);
@@ -1989,15 +1982,9 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     dateElementEClass = createEClass(DATE_ELEMENT);
 
     smartfieldElementEClass = createEClass(SMARTFIELD_ELEMENT);
-    createEReference(smartfieldElementEClass, SMARTFIELD_ELEMENT__CODE);
-    createEAttribute(smartfieldElementEClass, SMARTFIELD_ELEMENT__VALUE_TYPE);
-    createEReference(smartfieldElementEClass, SMARTFIELD_ELEMENT__LOOKUP);
     createEReference(smartfieldElementEClass, SMARTFIELD_ELEMENT__MENUS);
 
     listBoxElementEClass = createEClass(LIST_BOX_ELEMENT);
-    createEReference(listBoxElementEClass, LIST_BOX_ELEMENT__CODE);
-    createEAttribute(listBoxElementEClass, LIST_BOX_ELEMENT__VALUE_TYPE);
-    createEReference(listBoxElementEClass, LIST_BOX_ELEMENT__LOOKUP);
     createEAttribute(listBoxElementEClass, LIST_BOX_ELEMENT__GRID_HEIGHT);
 
     customFieldElementEClass = createEClass(CUSTOM_FIELD_ELEMENT);
@@ -2091,12 +2078,13 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     sequenceBoxElementEClass.getESuperTypes().add(this.getCompositeFieldElement());
     groupBoxElementEClass.getESuperTypes().add(this.getCompositeFieldElement());
     valueFieldElementEClass.getESuperTypes().add(this.getFormFieldElement());
+    genericValueFieldElementEClass.getESuperTypes().add(this.getValueFieldElement());
     stringElementEClass.getESuperTypes().add(this.getValueFieldElement());
     bigDecimalElementEClass.getESuperTypes().add(this.getValueFieldElement());
     longElementEClass.getESuperTypes().add(this.getValueFieldElement());
     dateElementEClass.getESuperTypes().add(this.getValueFieldElement());
-    smartfieldElementEClass.getESuperTypes().add(this.getValueFieldElement());
-    listBoxElementEClass.getESuperTypes().add(this.getValueFieldElement());
+    smartfieldElementEClass.getESuperTypes().add(this.getGenericValueFieldElement());
+    listBoxElementEClass.getESuperTypes().add(this.getGenericValueFieldElement());
     customFieldElementEClass.getESuperTypes().add(this.getFormFieldElement());
     buttonElementEClass.getESuperTypes().add(this.getFormFieldElement());
     tableElementEClass.getESuperTypes().add(this.getFormFieldElement());
@@ -2197,6 +2185,11 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEAttribute(getValueFieldElement_GridWidth(), ecorePackage.getEInt(), "gridWidth", null, 0, 1, ValueFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getValueFieldElement_WidthInPixels(), ecorePackage.getEInt(), "widthInPixels", null, 0, 1, ValueFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(genericValueFieldElementEClass, GenericValueFieldElement.class, "GenericValueFieldElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getGenericValueFieldElement_Code(), this.getCodeElement(), null, "code", null, 0, 1, GenericValueFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGenericValueFieldElement_ValueType(), ecorePackage.getEString(), "valueType", null, 0, 1, GenericValueFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGenericValueFieldElement_Lookup(), this.getLookupElement(), null, "lookup", null, 0, 1, GenericValueFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(stringElementEClass, StringElement.class, "StringElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getStringElement_Maxlen(), ecorePackage.getEInt(), "maxlen", null, 0, 1, StringElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getStringElement_GridHeight(), ecorePackage.getEInt(), "gridHeight", null, 0, 1, StringElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2218,15 +2211,9 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEClass(dateElementEClass, DateElement.class, "DateElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(smartfieldElementEClass, SmartfieldElement.class, "SmartfieldElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getSmartfieldElement_Code(), this.getCodeElement(), null, "code", null, 0, 1, SmartfieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getSmartfieldElement_ValueType(), ecorePackage.getEString(), "valueType", null, 0, 1, SmartfieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSmartfieldElement_Lookup(), this.getLookupElement(), null, "lookup", null, 0, 1, SmartfieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSmartfieldElement_Menus(), this.getMenuElement(), null, "menus", null, 0, -1, SmartfieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(listBoxElementEClass, ListBoxElement.class, "ListBoxElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getListBoxElement_Code(), this.getCodeElement(), null, "code", null, 0, 1, ListBoxElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getListBoxElement_ValueType(), ecorePackage.getEString(), "valueType", null, 0, 1, ListBoxElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getListBoxElement_Lookup(), this.getLookupElement(), null, "lookup", null, 0, 1, ListBoxElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getListBoxElement_GridHeight(), ecorePackage.getEInt(), "gridHeight", null, 0, 1, ListBoxElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(customFieldElementEClass, CustomFieldElement.class, "CustomFieldElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

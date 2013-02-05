@@ -2727,21 +2727,51 @@ ruleValueFieldElement returns [EObject current=null]
 
     |
     { 
-        newCompositeNode(grammarAccess.getValueFieldElementAccess().getSmartfieldElementParserRuleCall_4()); 
+        newCompositeNode(grammarAccess.getValueFieldElementAccess().getGenericValueFieldElementParserRuleCall_4()); 
     }
-    this_SmartfieldElement_4=ruleSmartfieldElement
+    this_GenericValueFieldElement_4=ruleGenericValueFieldElement
     { 
-        $current = $this_SmartfieldElement_4.current; 
+        $current = $this_GenericValueFieldElement_4.current; 
+        afterParserOrEnumRuleCall();
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleGenericValueFieldElement
+entryRuleGenericValueFieldElement returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getGenericValueFieldElementRule()); }
+	 iv_ruleGenericValueFieldElement=ruleGenericValueFieldElement 
+	 { $current=$iv_ruleGenericValueFieldElement.current; } 
+	 EOF 
+;
+
+// Rule GenericValueFieldElement
+ruleGenericValueFieldElement returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(
+    { 
+        newCompositeNode(grammarAccess.getGenericValueFieldElementAccess().getSmartfieldElementParserRuleCall_0()); 
+    }
+    this_SmartfieldElement_0=ruleSmartfieldElement
+    { 
+        $current = $this_SmartfieldElement_0.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getValueFieldElementAccess().getListBoxElementParserRuleCall_5()); 
+        newCompositeNode(grammarAccess.getGenericValueFieldElementAccess().getListBoxElementParserRuleCall_1()); 
     }
-    this_ListBoxElement_5=ruleListBoxElement
+    this_ListBoxElement_1=ruleListBoxElement
     { 
-        $current = $this_ListBoxElement_5.current; 
+        $current = $this_ListBoxElement_1.current; 
         afterParserOrEnumRuleCall();
     }
 )
@@ -7621,9 +7651,9 @@ ruleColumnElement returns [EObject current=null]
        		setWithLastConsumed($current, "type", lv_type_5_3, null);
 	    }
 
-    |		lv_type_5_4=	'double' 
+    |		lv_type_5_4=	'bigdecimal' 
     {
-        newLeafNode(lv_type_5_4, grammarAccess.getColumnElementAccess().getTypeDoubleKeyword_2_0_2_0_3());
+        newLeafNode(lv_type_5_4, grammarAccess.getColumnElementAccess().getTypeBigdecimalKeyword_2_0_2_0_3());
     }
  
 	    {

@@ -50,6 +50,7 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGroupBoxElementAccess().getBorderDecorationAlternatives_2_6_2_0(), "rule__GroupBoxElement__BorderDecorationAlternatives_2_6_2_0");
 					put(grammarAccess.getGroupBoxElementAccess().getAlternatives_3_1(), "rule__GroupBoxElement__Alternatives_3_1");
 					put(grammarAccess.getValueFieldElementAccess().getAlternatives(), "rule__ValueFieldElement__Alternatives");
+					put(grammarAccess.getGenericValueFieldElementAccess().getAlternatives(), "rule__GenericValueFieldElement__Alternatives");
 					put(grammarAccess.getSmartfieldElementAccess().getAlternatives_3_1(), "rule__SmartfieldElement__Alternatives_3_1");
 					put(grammarAccess.getCustomFieldElementAccess().getAlternatives_3_1(), "rule__CustomFieldElement__Alternatives_3_1");
 					put(grammarAccess.getButtonElementAccess().getAlternatives_3_1(), "rule__ButtonElement__Alternatives_3_1");

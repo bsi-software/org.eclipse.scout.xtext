@@ -1,0 +1,19 @@
+!SESSION 2013-02-04 10:01:47.662 -----------------------------------------------
+eclipse.buildId=M20120914-1540
+java.version=1.7.0_07
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=de_CH
+Framework arguments:  -product org.eclipse.sdk.ide
+Command-line arguments:  -product org.eclipse.sdk.ide -data C:\BSI\Projects\SAML\workspace\org.eclipse.scout.xtext\org.eclipse.scout.sdk.saml.importer.tests\resources\complex -dev file:C:/BSI/Projects/SAML/workspace/.metadata/.plugins/org.eclipse.pde.core/SAML Importer Test WS Setup/dev.properties -os win32 -ws win32 -arch x86 -consoleLog
+
+!ENTRY org.eclipse.scout.sdk 1 0 2013-02-04 10:02:04.604
+!MESSAGE org.eclipse.osgi.framework.internal.core.BundleContextImpl$1.run(BundleContextImpl.java:711)
+	Starting SCOUT SDK Plugin.
+
+!ENTRY org.eclipse.scout.sdk.ui 1 0 2013-02-04 10:03:08.806
+!MESSAGE org.eclipse.scout.sdk.ui.internal.view.outline.pages.ProjectsTablePage.loadChildrenImpl(ProjectsTablePage.java:76)
+	INVISIBLE ROOT NODE: found 1 root projects.
+
+!ENTRY org.eclipse.scout.sdk.util 1 0 2013-02-04 10:03:38.012
+!MESSAGE org.eclipse.scout.sdk.util.internal.typecache.TypeCache.getTypesInternal(TypeCache.java:156)
+	could not resolve type 'org.eclipse.scout.jaxws.Activator'.

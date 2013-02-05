@@ -10,15 +10,11 @@
  ******************************************************************************/
 package org.eclipse.scout.sdk.saml.importer.operation.key;
 
-import java.util.List;
-
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.scout.saml.saml.KeyElement;
 import org.eclipse.scout.sdk.operation.KeyStrokeNewOperation;
-import org.eclipse.scout.sdk.saml.importer.operation.form.AbstractUiElementImportOperation;
-import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
-import org.eclipse.scout.sdk.saml.importer.operation.logic.SamlLogicFillOperation;
+import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
 import org.eclipse.scout.sdk.workspace.type.IStructuredType;
 import org.eclipse.scout.sdk.workspace.type.ScoutTypeUtility;
@@ -29,75 +25,39 @@ import org.eclipse.scout.sdk.workspace.type.ScoutTypeUtility;
  * @author mvi
  * @since 3.8.0 11.10.2012
  */
-public class KeyElementImportOperation extends AbstractUiElementImportOperation {
+public class KeyElementImportOperation extends AbstractSamlElementImportOperation {
 
-  private KeyElement m_keyElement;
-  private IType m_container;
-  private SamlFormContext m_samlContext;
+  public final static int EVENT_OBJECT_TYPE_KEY_STROKE = 10;
+
+  private IType m_createdKeyStroke;
 
   @Override
   public void run() throws CoreException, IllegalArgumentException {
-    IStructuredType structuredType = ScoutTypeUtility.createStructuredForm(getContainer());
-    String name = getKeyElement().getName() + SdkProperties.SUFFIX_KEY_STROKE;
+    IStructuredType structuredType = ScoutTypeUtility.createStructuredForm(getSamlContext().getCurrentParentType());
+    String name = getElement().getName() + SdkProperties.SUFFIX_KEY_STROKE;
 
-    KeyStrokeNewOperation ksno = new KeyStrokeNewOperation(getContainer(), false);
+    KeyStrokeNewOperation ksno = new KeyStrokeNewOperation(getSamlContext().getCurrentParentType(), false);
     ksno.setTypeName(name);
-    ksno.setKeyStroke(getKeyElement().getStroke());
+    ksno.setKeyStroke(getElement().getStroke());
     ksno.setSibling(structuredType.getSiblingTypeKeyStroke(name));
     ksno.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
 
-    IType createdStroke = ksno.getCreatedKeyStroke();
-    SamlLogicFillOperation.fillAllLogic(getKeyElement().getLogic(), getSamlFormContext(), createdStroke);
-  }
+    m_createdKeyStroke = ksno.getCreatedKeyStroke();
 
-  @Override
-  public String getOperationName() {
-    return "create key stroke";
+    processChildren(m_createdKeyStroke, getSamlContext().getCurrentFormContext());
+
+    fireTypeCreated(m_createdKeyStroke, EVENT_OBJECT_TYPE_KEY_STROKE);
   }
 
   @Override
   public void validate() throws IllegalArgumentException {
-    if (getKeyElement() == null) {
+    if (getElement() == null) {
       throw new IllegalArgumentException("key element cannot be null");
     }
-    if (getContainer() == null) {
-      throw new IllegalArgumentException("key container cannot be null");
-    }
   }
 
-  public static void processKeyStrokes(List<KeyElement> keys, IType parent, SamlFormContext context) throws CoreException, IllegalArgumentException {
-    for (KeyElement m : keys) {
-      KeyElementImportOperation o = new KeyElementImportOperation();
-      o.setContainer(parent);
-      o.setKeyElement(m);
-      o.setSamlFormContext(context);
-      o.setSamlContext(context.getSamlContext());
-      o.validate();
-      o.run();
-    }
-  }
-
-  public IType getContainer() {
-    return m_container;
-  }
-
-  public void setContainer(IType container) {
-    m_container = container;
-  }
-
-  public SamlFormContext getSamlFormContext() {
-    return m_samlContext;
-  }
-
-  public void setSamlFormContext(SamlFormContext samlContext) {
-    m_samlContext = samlContext;
-  }
-
-  public KeyElement getKeyElement() {
-    return m_keyElement;
-  }
-
-  public void setKeyElement(KeyElement keyElement) {
-    m_keyElement = keyElement;
+  @Override
+  protected KeyElement getElement() {
+    return (KeyElement) super.getElement();
   }
 }

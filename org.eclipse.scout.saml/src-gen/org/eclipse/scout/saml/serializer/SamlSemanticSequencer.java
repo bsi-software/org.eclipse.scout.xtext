@@ -163,6 +163,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 				else break;
 			case SamlPackage.LIST_BOX_ELEMENT:
 				if(context == grammarAccess.getFormFieldElementRule() ||
+				   context == grammarAccess.getGenericValueFieldElementRule() ||
 				   context == grammarAccess.getListBoxElementRule() ||
 				   context == grammarAccess.getValueFieldElementRule()) {
 					sequence_ListBoxElement(context, (ListBoxElement) semanticObject); 
@@ -217,6 +218,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 				else break;
 			case SamlPackage.SMARTFIELD_ELEMENT:
 				if(context == grammarAccess.getFormFieldElementRule() ||
+				   context == grammarAccess.getGenericValueFieldElementRule() ||
 				   context == grammarAccess.getSmartfieldElementRule() ||
 				   context == grammarAccess.getValueFieldElementRule()) {
 					sequence_SmartfieldElement(context, (SmartfieldElement) semanticObject); 
@@ -1191,7 +1193,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         name=ID 
-	 *         (type='date' | type='string' | type='int' | type='double') 
+	 *         (type='date' | type='string' | type='int' | type='bigdecimal') 
 	 *         text=[TranslationElement|QualifiedName]? 
 	 *         width=INT? 
 	 *         visible=BooleanType? 

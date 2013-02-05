@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.eclipse.scout.saml.tests.complex.client
+Bundle-SymbolicName: org.eclipse.scout.saml.tests.complex.client;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.eclipse.scout.saml.tests.complex.client.Activator
+Export-Package: org.eclipse.scout.saml.tests.complex.client,
+ org.eclipse.scout.saml.tests.complex.client.ui.desktop
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.scout.rt.client;visibility:=reexport,
+ org.eclipse.scout.rt.extension.client;visibility:=reexport,
+ org.eclipse.scout.saml.tests.complex.shared
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy

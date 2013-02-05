@@ -10,8 +10,14 @@
  ******************************************************************************/
 package org.eclipse.scout.sdk.saml.importer.operation;
 
+import java.util.Stack;
+
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.core.ITypeHierarchy;
+import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.scout.saml.services.SamlGrammarAccess;
+import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
 import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 import org.eclipse.scout.sdk.workspace.IScoutProject;
 
@@ -29,14 +35,40 @@ public class SamlContext {
   private final Injector m_injector;
   private final SamlGrammarAccess m_grammarAccess;
   private final IScoutProject m_rootProject;
+  private final Stack<IType> m_parentTypeStack;
+  private final SuperTypeHierarchyCache m_hierarchyCache;
+
   private IScoutProject m_currentScoutModule;
+  private SamlFormContext m_currentFormContext;
 
   public SamlContext(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, Injector injector, IScoutProject rootProject) {
     m_monitor = monitor;
     m_workingCopyManager = workingCopyManager;
     m_injector = injector;
     m_rootProject = rootProject;
+    m_hierarchyCache = new SuperTypeHierarchyCache();
     m_grammarAccess = m_injector.getInstance(SamlGrammarAccess.class);
+    m_parentTypeStack = new Stack<IType>();
+  }
+
+  public void pushParentType(IType container) {
+    m_parentTypeStack.push(container);
+  }
+
+  public IType getCurrentParentType() {
+    return m_parentTypeStack.peek();
+  }
+
+  public boolean isParentTypeSet() {
+    return !m_parentTypeStack.isEmpty();
+  }
+
+  public IType popParentType() {
+    return m_parentTypeStack.pop();
+  }
+
+  public ITypeHierarchy getSuperTypeHierarchy(IType t) throws JavaModelException {
+    return m_hierarchyCache.getSuperTypeHierarchyFor(t);
   }
 
   public IScoutProject getCurrentScoutModule() {
@@ -65,5 +97,17 @@ public class SamlContext {
 
   public IScoutProject getRootProject() {
     return m_rootProject;
+  }
+
+  public SamlFormContext getCurrentFormContext() {
+    return m_currentFormContext;
+  }
+
+  public void setCurrentFormContext(SamlFormContext currentFormContext) {
+    m_currentFormContext = currentFormContext;
+  }
+
+  public void resetCurrentFormContext() {
+    m_currentFormContext = null;
   }
 }

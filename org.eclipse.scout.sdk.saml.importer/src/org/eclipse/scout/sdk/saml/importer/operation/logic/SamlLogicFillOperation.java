@@ -10,11 +10,8 @@
  ******************************************************************************/
 package org.eclipse.scout.sdk.saml.importer.operation.logic;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map.Entry;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -22,13 +19,10 @@ import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.ISourceRange;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaModelException;
-import org.eclipse.scout.commons.StringUtility;
-import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.sdk.operation.method.MethodOverrideOperation;
 import org.eclipse.scout.sdk.operation.method.MethodUpdateContentOperation;
 import org.eclipse.scout.sdk.operation.service.ServiceOperationNewOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
-import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
 import org.eclipse.scout.sdk.util.ScoutUtility;
 import org.eclipse.scout.sdk.util.log.ScoutStatus;
 import org.eclipse.scout.sdk.util.resources.ResourceUtility;
@@ -43,12 +37,7 @@ import org.eclipse.scout.sdk.util.type.TypeUtility;
  */
 public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
 
-  private LogicInfo[] m_logicInfos;
-
-  @Override
-  public String getOperationName() {
-    return "Fill business logic";
-  }
+  private LogicSnippetInfo[] m_logicInfos;
 
   @Override
   public void validate() throws IllegalArgumentException {
@@ -60,7 +49,7 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
     }
   }
 
-  private void collectTargetInfos(LogicInfo i, HashMap<IType, P_TargetLogicComposite> map) {
+  private void collectTargetInfos(LogicSnippetInfo i, HashMap<IType, P_TargetLogicComposite> map) {
     if (TypeUtility.exists(i.getTargetType())) {
       P_TargetLogicComposite comp = map.get(i.getTargetType());
       if (comp == null) {
@@ -71,7 +60,7 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
     }
   }
 
-  private void collectSourceInfos(LogicInfo i, HashMap<IType, StringBuilder> map) {
+  private void collectSourceInfos(LogicSnippetInfo i, HashMap<IType, StringBuilder> map) {
     if (TypeUtility.exists(i.getSourceType())) {
       StringBuilder sb = map.get(i.getTargetType());
       if (sb == null) {
@@ -92,9 +81,9 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
     LinkedHashMap<IType /* target type */, P_TargetLogicComposite> classLevelSources = new LinkedHashMap<IType, P_TargetLogicComposite>();
     LinkedHashMap<IType /* target type */, P_TargetLogicComposite> targetMethodSources = new LinkedHashMap<IType, P_TargetLogicComposite>();
     LinkedHashMap<IType /* target type */, StringBuilder> sourceMethodSources = new LinkedHashMap<IType, StringBuilder>();
-    LogicInfo sourceLogicInfo = null;
+    LogicSnippetInfo sourceLogicInfo = null;
 
-    for (LogicInfo i : getLogicInfos()) {
+    for (LogicSnippetInfo i : getLogicInfos()) {
       if (i.isClassLevel()) {
         collectTargetInfos(i, classLevelSources);
       }
@@ -140,7 +129,7 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
   }
 
   private boolean isForeignCallPresent() {
-    for (LogicInfo i : getLogicInfos()) {
+    for (LogicSnippetInfo i : getLogicInfos()) {
       if (i.getSourceType() != i.getTargetType()) {
         return true;
       }
@@ -181,7 +170,7 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
     }
   }
 
-  private IMethod createTargetMethod(LogicInfo info) throws CoreException, IllegalArgumentException {
+  private IMethod createTargetMethod(LogicSnippetInfo info) throws CoreException, IllegalArgumentException {
     // always in a service class
     IMethod method = TypeUtility.getMethod(info.getTargetType(), info.getTargetMethodName());
     if (TypeUtility.exists(method)) {
@@ -200,7 +189,7 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
     }
   }
 
-  private IMethod createSourceMethod(LogicInfo info) throws CoreException, IllegalArgumentException {
+  private IMethod createSourceMethod(LogicSnippetInfo info) throws CoreException, IllegalArgumentException {
     if (info.getSourceMethod() != null && info.getSourceMethod().isImplemented()) {
       return info.getSourceMethod().peekMethod();
     }
@@ -213,68 +202,19 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
     }
   }
 
-  public static void fillAllLogic(List<LogicElement> logics, SamlFormContext formContext) throws CoreException, IllegalArgumentException {
-    fillAllLogic(logics, formContext, null);
-  }
-
-  public static void fillAllLogic(List<LogicElement> logics, SamlFormContext formContext, IType sourceType) throws CoreException, IllegalArgumentException {
-    // collect all logics of the same event
-    HashMap<String /* event */, ArrayList<LogicElement>> logicByEvent = new HashMap<String, ArrayList<LogicElement>>(logics.size());
-    for (LogicElement logic : logics) {
-
-      /* logic elements with name are just named snippets used at several places. nothing to do for them. they will be referred to from a non-named element later on */
-      if (!StringUtility.hasText(logic.getName())) {
-        String ev = logic.getEvent();
-        ArrayList<LogicElement> eventLogics = logicByEvent.get(ev);
-        if (eventLogics == null) {
-          eventLogics = new ArrayList<LogicElement>();
-          logicByEvent.put(ev, eventLogics);
-        }
-        eventLogics.add(logic);
-      }
-    }
-
-    // first all event logics
-    for (Entry<String, ArrayList<LogicElement>> entry : logicByEvent.entrySet()) {
-      if (entry.getKey() != null) {
-        runLogicOperation(entry.getValue(), formContext, sourceType);
-      }
-    }
-
-    // then all class-level logics
-    runLogicOperation(logicByEvent.get(null), formContext, sourceType);
-  }
-
-  private static void runLogicOperation(ArrayList<LogicElement> logics, SamlFormContext formContext, IType sourceType) throws CoreException, IllegalArgumentException {
-    if (logics == null || logics.size() < 1) {
-      return;
-    }
-
-    LogicInfo[] logicInfos = new LogicInfo[logics.size()];
-    for (int i = 0; i < logicInfos.length; i++) {
-      logicInfos[i] = LogicInfoFactory.create(logics.get(i), sourceType, formContext);
-    }
-
-    SamlLogicFillOperation slfo = new SamlLogicFillOperation();
-    slfo.setSamlContext(formContext.getSamlContext());
-    slfo.setLogicInfos(logicInfos);
-    slfo.validate();
-    slfo.run();
-  }
-
-  private LogicInfo[] getLogicInfos() {
+  protected LogicSnippetInfo[] getLogicInfos() {
     return m_logicInfos;
   }
 
-  private void setLogicInfos(LogicInfo[] logicInfos) {
-    m_logicInfos = logicInfos;
+  public void setEventLogics(EventLogicsInfo eventLogic) throws CoreException {
+    m_logicInfos = LogicSnippetInfoFactory.create(eventLogic, getSamlContext());
   }
 
   private static class P_TargetLogicComposite {
     private final StringBuilder sb;
-    private final LogicInfo li;
+    private final LogicSnippetInfo li;
 
-    private P_TargetLogicComposite(LogicInfo i) {
+    private P_TargetLogicComposite(LogicSnippetInfo i) {
       sb = new StringBuilder();
       li = i;
     }

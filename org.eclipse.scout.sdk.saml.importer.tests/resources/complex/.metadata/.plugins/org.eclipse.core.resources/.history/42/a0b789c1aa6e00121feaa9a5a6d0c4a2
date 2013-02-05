@@ -1,0 +1,3 @@
+module org.eclipse.scout.saml.tests.complex
+
+translation trans.text1 default_lang=""

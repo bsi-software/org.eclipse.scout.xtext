@@ -943,7 +943,7 @@ public class ComplexFormTests {
       _builder_1.append("column ColSollHaben text=SollHaben type=string width=222");
       _builder_1.newLine();
       _builder_1.append("\t\t");
-      _builder_1.append("column ColSaldo text=Saldo type=double width=160");
+      _builder_1.append("column ColSaldo text=Saldo type=bigdecimal width=160");
       _builder_1.newLine();
       _builder_1.append("\t");
       _builder_1.append("}");

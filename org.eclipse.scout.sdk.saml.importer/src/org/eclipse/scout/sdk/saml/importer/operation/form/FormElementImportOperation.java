@@ -18,16 +18,12 @@ import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.scout.saml.saml.FormElement;
 import org.eclipse.scout.saml.saml.LogicElement;
-import org.eclipse.scout.saml.saml.TranslationElement;
 import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.form.FormStackNewOperation;
 import org.eclipse.scout.sdk.operation.service.ServiceDeleteOperation;
 import org.eclipse.scout.sdk.operation.service.ServiceNewOperation;
 import org.eclipse.scout.sdk.operation.util.JavaElementDeleteOperation;
-import org.eclipse.scout.sdk.saml.importer.operation.form.fields.AbstractFormFieldElementOperation;
-import org.eclipse.scout.sdk.saml.importer.operation.form.fields.container.AbstractBoxElementImportOperation;
-import org.eclipse.scout.sdk.saml.importer.operation.key.KeyElementImportOperation;
-import org.eclipse.scout.sdk.saml.importer.operation.logic.SamlLogicFillOperation;
+import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
 import org.eclipse.scout.sdk.saml.importer.util.IItemVisitor;
 import org.eclipse.scout.sdk.saml.importer.util.SamlImportUtility;
 import org.eclipse.scout.sdk.util.SdkProperties;
@@ -41,12 +37,18 @@ import org.eclipse.scout.sdk.workspace.IScoutBundle;
  * @author mvi
  * @since 3.8.0 26.09.2012
  */
-public class FormElementImportOperation extends AbstractUiElementImportOperation {
+public class FormElementImportOperation extends AbstractSamlElementImportOperation {
+
+  public final static int EVENT_OBJECT_TYPE_SERVER_SERVICE = 3;
+  public final static int EVENT_OBJECT_TYPE_SERVER_INTERFACE = 4;
+  public final static int EVENT_OBJECT_TYPE_CLIENT_SERVICE = 5;
+  public final static int EVENT_OBJECT_TYPE_CLIENT_INTERFACE = 6;
+  public final static int EVENT_OBJECT_TYPE_FORM = 7;
+  public final static int EVENT_OBJECT_TYPE_FORM_DATA = 8;
+  public final static int EVENT_OBJECT_TYPE_MAIN_BOX = 9;
 
   private final static String CLIENT_FORM_SERVICE_SUFFIX = "ClientService";
   private final static String SERVER_FORM_SERVICE_SUFFIX = SdkProperties.SUFFIX_SERVICE;
-
-  private FormElement m_formElement;
 
   private IType m_createdServerServiceImplementation;
   private IType m_createdServerServiceInterface;
@@ -59,16 +61,9 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
   private IType m_createdMainBox;
   private IMethod m_createdMainBoxGetter;
 
-  private SamlFormContext m_formContext;
-
-  @Override
-  public String getOperationName() {
-    return "Create Form & corresponding services";
-  }
-
   @Override
   public void validate() throws IllegalArgumentException {
-    if (getFormElement() == null) {
+    if (getElement() == null) {
       throw new IllegalArgumentException("FormElement cannot be null.");
     }
   }
@@ -79,53 +74,49 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
 
     createFormStack();
 
-    // apply form attributes
-    applyModalAttribute(getFormElement().getModal(), getCreatedForm());
-    applySubtitleAttribute(getFormElement().getSubtitle(), getCreatedForm());
-    AbstractFormFieldElementOperation.applyWidthInPixelsAttribute(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager(), getFormElement().getWidthInPixels(), getCreatedMainBox(), null);
-    AbstractBoxElementImportOperation.applyColumnsAttribute(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager(), getFormElement().getColumns(), getCreatedMainBox(), null);
+    processChildren(m_createdMainBox, createFormContext());
 
-    createFormContext();
+    fireEvents();
 
-    // apply logic
-    SamlLogicFillOperation.fillAllLogic(getFormElement().getLogic(), m_formContext, getCreatedForm());
-
-    // apply key strokes
-    KeyElementImportOperation.processKeyStrokes(getFormElement().getKeyStrokes(), getCreatedMainBox(), m_formContext);
-
-    // create child form fields recursive
-    AbstractFormFieldElementOperation.dispatchFieldElements(getFormElement().getFields(), getSamlContext(), m_formContext);
-
-    // post processing
     postProcessForm();
   }
 
-  private void postProcessForm() throws CoreException, IllegalArgumentException {
-    postProcessType(getCreatedClientServiceImplementation());
-    postProcessType(getCreatedClientServiceInterface());
-
-    postProcessType(getCreatedServerServiceImplementation());
-    postProcessType(getCreatedServerServiceInterface());
-
-    postProcessType(getCreatedForm());
-    postProcessType(getCreatedFormData());
+  private void fireEvents() throws IllegalArgumentException, CoreException {
+    fireTypeCreated(m_createdServerServiceImplementation, EVENT_OBJECT_TYPE_SERVER_SERVICE);
+    fireTypeCreated(m_createdServerServiceInterface, EVENT_OBJECT_TYPE_SERVER_INTERFACE);
+    fireTypeCreated(m_createdClientServiceImplementation, EVENT_OBJECT_TYPE_CLIENT_SERVICE);
+    fireTypeCreated(m_createdClientServiceInterface, EVENT_OBJECT_TYPE_CLIENT_INTERFACE);
+    fireTypeCreated(m_createdForm, EVENT_OBJECT_TYPE_FORM);
+    fireTypeCreated(m_createdFormData, EVENT_OBJECT_TYPE_FORM_DATA);
+    fireTypeCreated(m_createdMainBox, EVENT_OBJECT_TYPE_MAIN_BOX);
   }
 
-  private void createFormContext() throws JavaModelException {
-    m_formContext = new SamlFormContext();
-    m_formContext.setClientType(getCreatedClientServiceImplementation());
-    m_formContext.setClientInterface(getCreatedClientServiceInterface());
-    m_formContext.setServerType(getCreatedServerServiceImplementation());
-    m_formContext.setServerInterface(getCreatedServerServiceInterface());
-    m_formContext.setFormDataType(getCreatedFormData());
-    m_formContext.setFormType(getCreatedForm());
-    m_formContext.setSamlContext(getSamlContext());
-    m_formContext.pushParentBox(getCreatedMainBox());
-    m_formContext.addFieldGetterMethod(getCreatedMainBoxGetter());
+  private void postProcessForm() throws CoreException, IllegalArgumentException {
+    postProcessType(m_createdClientServiceInterface);
+    postProcessType(m_createdClientServiceImplementation);
+
+    postProcessType(m_createdServerServiceInterface);
+    postProcessType(m_createdServerServiceImplementation);
+
+    postProcessType(m_createdForm);
+    postProcessType(m_createdFormData);
+  }
+
+  private SamlFormContext createFormContext() throws JavaModelException {
+    SamlFormContext formContext = new SamlFormContext();
+    formContext.setClientType(m_createdClientServiceImplementation);
+    formContext.setClientInterface(m_createdClientServiceInterface);
+    formContext.setServerType(m_createdServerServiceImplementation);
+    formContext.setServerInterface(m_createdServerServiceInterface);
+    formContext.setFormDataType(m_createdFormData);
+    formContext.setFormType(m_createdForm);
+    formContext.setMainBoxType(m_createdMainBox);
+    formContext.addFieldGetterMethod(m_createdMainBoxGetter);
+    return formContext;
   }
 
   private boolean hasOneOfLogicEvents(final String[] logicEvents) {
-    LogicElement handler = SamlImportUtility.findFirst(getFormElement().getLogic(), new IItemVisitor<LogicElement>() {
+    LogicElement handler = SamlImportUtility.findFirst(getElement().getLogic(), new IItemVisitor<LogicElement>() {
       @Override
       public boolean visit(LogicElement t) {
         for (String handlerType : logicEvents) {
@@ -140,13 +131,10 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
   }
 
   private void createFormStack() throws CoreException {
-    String formName = getFormElement().getName();
+    String formName = getElement().getName();
 
     FormStackNewOperation op = new FormStackNewOperation(false);
-    if (getFormElement().getTitle() != null) {
-      String nlsKey = getFormElement().getTitle().getName();
-      op.setNlsEntry(getNlsEntry(nlsKey));
-    }
+    op.setNlsEntry(null);
     op.setCreateButtonOk(false);
     op.setCreateButtonCancel(false);
 
@@ -196,8 +184,8 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
     op.setServiceInterfacePackage(getCurrentScoutModule().getSharedBundle().getDefaultPackage(IScoutBundle.SHARED_SERVICES));
 
     String superType = RuntimeClasses.getSuperTypeName(RuntimeClasses.IForm, getSamlContext().getRootProject());
-    if (getFormElement().getSuperType() != null) {
-      superType = getFormElement().getSuperType().getDefinition();
+    if (getElement().getSuperType() != null) {
+      superType = getElement().getSuperType().getDefinition();
     }
     op.setFormSuperTypeSignature(SignatureCache.createTypeSignature(superType));
     op.setFormName(formName + SdkProperties.SUFFIX_FORM);
@@ -205,12 +193,12 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
     op.validate();
     op.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
 
-    setCreatedServerServiceImplementation(op.getOutProcessService());
-    setCreatedServerServiceInterface(op.getOutProcessServiceInterface());
-    setCreatedMainBox(op.getOutMainBox());
-    setCreatedForm(op.getOutForm());
-    setCreatedFormData(getFormDataType(getFormElement().getName()));
-    setCreatedMainBoxGetter(op.getOutMainBoxGetterMethod());
+    m_createdServerServiceImplementation = op.getOutProcessService();
+    m_createdServerServiceInterface = op.getOutProcessServiceInterface();
+    m_createdMainBox = op.getOutMainBox();
+    m_createdForm = op.getOutForm();
+    m_createdFormData = getFormDataType(getElement().getName());
+    m_createdMainBoxGetter = op.getOutMainBoxGetterMethod();
 
     // client service
     ServiceNewOperation clientSvcOp = new ServiceNewOperation();
@@ -228,8 +216,8 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
     clientSvcOp.validate();
     clientSvcOp.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
 
-    setCreatedClientServiceImplementation(clientSvcOp.getCreatedServiceImplementation());
-    setCreatedClientServiceInterface(clientSvcOp.getCreatedServiceInterface());
+    m_createdClientServiceImplementation = clientSvcOp.getCreatedServiceImplementation();
+    m_createdClientServiceInterface = clientSvcOp.getCreatedServiceInterface();
   }
 
   private IType getFormDataType(String formName) {
@@ -237,7 +225,7 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
   }
 
   private void deleteExistingForm() throws CoreException {
-    String formName = getFormElement().getName();
+    String formName = getElement().getName();
 
     //IType formData = getFormDataType(formName);
     IType form = TypeUtility.getType(getCurrentScoutModule().getClientBundle().getDefaultPackage(IScoutBundle.CLIENT_FORMS) + "." + formName + SdkProperties.SUFFIX_FORM);
@@ -279,87 +267,8 @@ public class FormElementImportOperation extends AbstractUiElementImportOperation
     }
   }
 
-  private void applyModalAttribute(String a, IType form) throws CoreException, IllegalArgumentException {
-    if ("false".equals(a)) {
-      overrideMethod(form, null, "getConfiguredModal", "return false;");
-    }
-  }
-
-  private void applySubtitleAttribute(TranslationElement a, IType field) throws CoreException, IllegalArgumentException {
-    if (a != null) {
-      overrideMethod(field, null, "getConfiguredSubTitle", getNlsReturnClause(a));
-    }
-  }
-
-  public FormElement getFormElement() {
-    return m_formElement;
-  }
-
-  public void setFormElement(FormElement formElement) {
-    m_formElement = formElement;
-  }
-
-  public IType getCreatedServerServiceImplementation() {
-    return m_createdServerServiceImplementation;
-  }
-
-  private void setCreatedServerServiceImplementation(IType createdServerServiceImplementation) {
-    m_createdServerServiceImplementation = createdServerServiceImplementation;
-  }
-
-  public IType getCreatedClientServiceImplementation() {
-    return m_createdClientServiceImplementation;
-  }
-
-  private void setCreatedClientServiceImplementation(IType createdClientServiceImplementation) {
-    m_createdClientServiceImplementation = createdClientServiceImplementation;
-  }
-
-  public IType getCreatedForm() {
-    return m_createdForm;
-  }
-
-  private void setCreatedForm(IType createdForm) {
-    m_createdForm = createdForm;
-  }
-
-  public IType getCreatedServerServiceInterface() {
-    return m_createdServerServiceInterface;
-  }
-
-  private void setCreatedServerServiceInterface(IType createdServerServiceInterface) {
-    m_createdServerServiceInterface = createdServerServiceInterface;
-  }
-
-  public IType getCreatedClientServiceInterface() {
-    return m_createdClientServiceInterface;
-  }
-
-  private void setCreatedClientServiceInterface(IType createdClientServiceInterface) {
-    m_createdClientServiceInterface = createdClientServiceInterface;
-  }
-
-  public IType getCreatedMainBox() {
-    return m_createdMainBox;
-  }
-
-  private void setCreatedMainBox(IType createdMainBox) {
-    m_createdMainBox = createdMainBox;
-  }
-
-  public IType getCreatedFormData() {
-    return m_createdFormData;
-  }
-
-  private void setCreatedFormData(IType createdFormData) {
-    m_createdFormData = createdFormData;
-  }
-
-  public IMethod getCreatedMainBoxGetter() {
-    return m_createdMainBoxGetter;
-  }
-
-  private void setCreatedMainBoxGetter(IMethod createdMainBoxGetter) {
-    m_createdMainBoxGetter = createdMainBoxGetter;
+  @Override
+  protected FormElement getElement() {
+    return (FormElement) super.getElement();
   }
 }

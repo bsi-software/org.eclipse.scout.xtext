@@ -11,7 +11,7 @@
 package org.eclipse.scout.sdk.saml.importer.operation.logic.fragments;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.scout.sdk.saml.importer.extension.customization.SourceProviderInput;
+import org.eclipse.scout.sdk.saml.importer.extension.configurator.SourceProviderInput;
 import org.eclipse.scout.sdk.util.resources.ResourceUtility;
 
 /**

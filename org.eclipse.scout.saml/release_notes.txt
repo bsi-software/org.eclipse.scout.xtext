@@ -91,3 +91,11 @@ Changes:
 
 
 
+Version: 1.0.0 2013-02-05
+Changed: mvi
+Changes:
+	Attribute 'type' of 'column' Renamed:
+		from 'double' to 'bigdecimal'
+
+
+

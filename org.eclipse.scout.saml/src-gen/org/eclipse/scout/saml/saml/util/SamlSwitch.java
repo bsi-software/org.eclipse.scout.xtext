@@ -183,6 +183,15 @@ public class SamlSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case SamlPackage.GENERIC_VALUE_FIELD_ELEMENT:
+      {
+        GenericValueFieldElement genericValueFieldElement = (GenericValueFieldElement)theEObject;
+        T result = caseGenericValueFieldElement(genericValueFieldElement);
+        if (result == null) result = caseValueFieldElement(genericValueFieldElement);
+        if (result == null) result = caseFormFieldElement(genericValueFieldElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case SamlPackage.STRING_ELEMENT:
       {
         StringElement stringElement = (StringElement)theEObject;
@@ -223,6 +232,7 @@ public class SamlSwitch<T> extends Switch<T>
       {
         SmartfieldElement smartfieldElement = (SmartfieldElement)theEObject;
         T result = caseSmartfieldElement(smartfieldElement);
+        if (result == null) result = caseGenericValueFieldElement(smartfieldElement);
         if (result == null) result = caseValueFieldElement(smartfieldElement);
         if (result == null) result = caseFormFieldElement(smartfieldElement);
         if (result == null) result = defaultCase(theEObject);
@@ -232,6 +242,7 @@ public class SamlSwitch<T> extends Switch<T>
       {
         ListBoxElement listBoxElement = (ListBoxElement)theEObject;
         T result = caseListBoxElement(listBoxElement);
+        if (result == null) result = caseGenericValueFieldElement(listBoxElement);
         if (result == null) result = caseValueFieldElement(listBoxElement);
         if (result == null) result = caseFormFieldElement(listBoxElement);
         if (result == null) result = defaultCase(theEObject);
@@ -539,6 +550,22 @@ public class SamlSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseValueFieldElement(ValueFieldElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Generic Value Field Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Generic Value Field Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGenericValueFieldElement(GenericValueFieldElement object)
   {
     return null;
   }

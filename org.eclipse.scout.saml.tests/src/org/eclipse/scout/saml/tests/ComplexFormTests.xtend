@@ -391,7 +391,7 @@ class ComplexFormTests {
 				column ColSy text=Sy type=int width=27
 				column ColCpNr text=CpNr type=int width=53
 				column ColSollHaben text=SollHaben type=string width=222
-				column ColSaldo text=Saldo type=double width=160
+				column ColSaldo text=Saldo type=bigdecimal width=160
 			}
 		}
 		'''.parse(resourceSet).assertNoErrors

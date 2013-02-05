@@ -100,6 +100,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//ValueFieldElement/gridWidth"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//ValueFieldElement/widthInPixels"/>
     </genClasses>
+    <genClasses ecoreClass="Saml.ecore#//GenericValueFieldElement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//GenericValueFieldElement/code"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//GenericValueFieldElement/valueType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//GenericValueFieldElement/lookup"/>
+    </genClasses>
     <genClasses ecoreClass="Saml.ecore#//StringElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//StringElement/maxlen"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//StringElement/gridHeight"/>
@@ -120,15 +125,9 @@
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//DateElement"/>
     <genClasses ecoreClass="Saml.ecore#//SmartfieldElement">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartfieldElement/code"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//SmartfieldElement/valueType"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartfieldElement/lookup"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartfieldElement/menus"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//ListBoxElement">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//ListBoxElement/code"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//ListBoxElement/valueType"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//ListBoxElement/lookup"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//ListBoxElement/gridHeight"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//CustomFieldElement">

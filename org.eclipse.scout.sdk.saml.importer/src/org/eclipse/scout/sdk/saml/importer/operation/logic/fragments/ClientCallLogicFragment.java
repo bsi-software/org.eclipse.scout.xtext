@@ -11,7 +11,7 @@
 package org.eclipse.scout.sdk.saml.importer.operation.logic.fragments;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.scout.sdk.saml.importer.extension.customization.SourceProviderInput;
+import org.eclipse.scout.sdk.saml.importer.extension.configurator.SourceProviderInput;
 
 /**
  * <h3>{@link ClientCallLogicFragment}</h3> ...

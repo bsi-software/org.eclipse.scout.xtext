@@ -18,7 +18,6 @@ import org.eclipse.scout.sdk.operation.lookupcall.LookupCallNewOperation;
 import org.eclipse.scout.sdk.operation.service.ServiceDeleteOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
-import org.eclipse.scout.sdk.saml.importer.operation.logic.SamlLogicFillOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
 import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
 import org.eclipse.scout.sdk.util.type.TypeUtility;
@@ -32,28 +31,47 @@ import org.eclipse.scout.sdk.workspace.IScoutBundle;
  */
 public class LookupElementImportOperation extends AbstractSamlElementImportOperation {
 
-  private LookupElement m_lookupElement;
+  public final static int EVENT_OBJECT_TYPE_LOOKUP_CALL = 13;
+  public final static int EVENT_OBJECT_TYPE_LOOKUP_SERVICE = 14;
+  public final static int EVENT_OBJECT_TYPE_LOOKUP_INTERFACE = 15;
 
-  @Override
-  public String getOperationName() {
-    return "Create Lookup Call & Lookup Service";
-  }
+  private IType m_lookupService;
+  private IType m_lookukpServiceInterface;
+  private IType m_lookupCall;
 
   @Override
   public void validate() throws IllegalArgumentException {
-    if (getLookupElement() == null) {
+    if (getElement() == null) {
       throw new IllegalArgumentException("LookupElement cannot be null.");
     }
   }
 
   @Override
-  public void run() throws CoreException, IllegalArgumentException {
-    String baseName = getLookupElement().getName();
-    String lookupCallName = baseName + SdkProperties.SUFFIX_LOOKUP_CALL;
+  protected void run() throws CoreException, IllegalArgumentException {
+    deleteExisting();
 
-    deleteExisting(baseName);
+    createLookup();
 
-    // create classes
+    processChildren(null, createFormContext());
+
+    fireTypeCreated(m_lookukpServiceInterface, EVENT_OBJECT_TYPE_LOOKUP_INTERFACE);
+    fireTypeCreated(m_lookupService, EVENT_OBJECT_TYPE_LOOKUP_SERVICE);
+    fireTypeCreated(m_lookupCall, EVENT_OBJECT_TYPE_LOOKUP_CALL);
+
+    postProcess();
+  }
+
+  private SamlFormContext createFormContext() {
+    SamlFormContext formContext = new SamlFormContext();
+    formContext.setClientType(m_lookupCall);
+    formContext.setServerInterface(m_lookukpServiceInterface);
+    formContext.setServerType(m_lookupService);
+    return formContext;
+  }
+
+  private void createLookup() throws IllegalArgumentException, CoreException {
+    String lookupCallName = getElement().getName() + SdkProperties.SUFFIX_LOOKUP_CALL;
+
     LookupCallNewOperation op = new LookupCallNewOperation();
 
     op.setLookupCallName(lookupCallName);
@@ -73,32 +91,24 @@ public class LookupElementImportOperation extends AbstractSamlElementImportOpera
     op.validate();
     op.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
 
-    // remember modified classes
-    IType lookupService = op.getOutLookupService();
-    IType lookukpServiceInterface = op.getOutLookupServiceInterface();
-    IType lookupCall = op.getOutLookupCall();
-
-    // fill logic
-    SamlFormContext formContext = new SamlFormContext();
-    formContext.setClientType(lookupCall);
-    formContext.setServerInterface(lookukpServiceInterface);
-    formContext.setServerType(lookupService);
-    formContext.setSamlContext(getSamlContext());
-
-    SamlLogicFillOperation.fillAllLogic(getLookupElement().getLogic(), formContext);
-
-    postProcessType(lookupService);
-    postProcessType(lookukpServiceInterface);
-    postProcessType(lookupCall);
+    m_lookupService = op.getOutLookupService();
+    m_lookukpServiceInterface = op.getOutLookupServiceInterface();
+    m_lookupCall = op.getOutLookupCall();
   }
 
-  private void deleteExisting(String name) throws CoreException, IllegalArgumentException {
+  private void postProcess() throws IllegalArgumentException, CoreException {
+    postProcessType(m_lookupService);
+    postProcessType(m_lookukpServiceInterface);
+    postProcessType(m_lookupCall);
+  }
+
+  private void deleteExisting() throws CoreException, IllegalArgumentException {
     IScoutBundle shared = getCurrentScoutModule().getSharedBundle();
     IScoutBundle server = getCurrentScoutModule().getServerBundle();
 
-    IType oldService = TypeUtility.getType(server.getDefaultPackage(IScoutBundle.SERVER_SERVICES_LOOKUP) + "." + name + SdkProperties.SUFFIX_LOOKUP_SERVICE);
-    IType oldCall = TypeUtility.getType(shared.getDefaultPackage(IScoutBundle.SHARED_SERVICES_LOOKUP) + "." + name + SdkProperties.SUFFIX_LOOKUP_CALL);
-    IType oldServiceInterface = TypeUtility.getType(shared.getDefaultPackage(IScoutBundle.SHARED_SERVICES_LOOKUP) + ".I" + name + SdkProperties.SUFFIX_LOOKUP_SERVICE);
+    IType oldService = TypeUtility.getType(server.getDefaultPackage(IScoutBundle.SERVER_SERVICES_LOOKUP) + "." + getElement().getName() + SdkProperties.SUFFIX_LOOKUP_SERVICE);
+    IType oldCall = TypeUtility.getType(shared.getDefaultPackage(IScoutBundle.SHARED_SERVICES_LOOKUP) + "." + getElement().getName() + SdkProperties.SUFFIX_LOOKUP_CALL);
+    IType oldServiceInterface = TypeUtility.getType(shared.getDefaultPackage(IScoutBundle.SHARED_SERVICES_LOOKUP) + ".I" + getElement().getName() + SdkProperties.SUFFIX_LOOKUP_SERVICE);
 
     if (TypeUtility.exists(oldService)) {
       ServiceDeleteOperation sdo = new ServiceDeleteOperation();
@@ -110,11 +120,8 @@ public class LookupElementImportOperation extends AbstractSamlElementImportOpera
     }
   }
 
-  public LookupElement getLookupElement() {
-    return m_lookupElement;
-  }
-
-  public void setLookupElement(LookupElement lookupElement) {
-    m_lookupElement = lookupElement;
+  @Override
+  protected LookupElement getElement() {
+    return (LookupElement) super.getElement();
   }
 }

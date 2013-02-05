@@ -41,12 +41,12 @@ import com.google.inject.Injector;
 @SuppressWarnings("restriction")
 public class SamlImportHelper {
 
-  public static void importSamlSync(IProject samlInputProject) throws IllegalArgumentException {
-    importSamlSync(samlInputProject, null, null);
+  public static IStatus importSamlSync(IProject samlInputProject) throws IllegalArgumentException {
+    return importSamlSync(samlInputProject, null, null);
   }
 
-  public static void importSamlSync(IProject samlInputProject, Injector injector, XtextResourceSet resourceSet) throws IllegalArgumentException {
-    doImport(samlInputProject, injector, resourceSet, true);
+  public static IStatus importSamlSync(IProject samlInputProject, Injector injector, XtextResourceSet resourceSet) throws IllegalArgumentException {
+    return doImport(samlInputProject, injector, resourceSet, true);
   }
 
   public static void importSamlAsync(IProject samlInputProject) throws IllegalArgumentException {
@@ -57,8 +57,9 @@ public class SamlImportHelper {
     doImport(samlInputProject, injector, resourceSet, false);
   }
 
-  private static void doImport(IProject samlInputProject, Injector injector, XtextResourceSet resourceSet, final boolean sync) throws IllegalArgumentException {
+  private static IStatus doImport(IProject samlInputProject, Injector injector, XtextResourceSet resourceSet, final boolean sync) throws IllegalArgumentException {
     IScoutProject[] roots = ScoutWorkspace.getInstance().getRootProjects();
+    IStatus result = null;
     if (roots == null || roots.length != 1) {
       throw new IllegalArgumentException("the running workspace must contain exactly one scout project");
     }
@@ -99,6 +100,7 @@ public class SamlImportHelper {
         try {
           SamlImporterActivator.logInfo("Sync SAML import requested. Waiting for SAML Import Job to complete.");
           importJob.join();
+          result = importJob.getResult();
         }
         catch (InterruptedException e) {
           SamlImporterActivator.logWarning("Interrupted while waiting for import job.", e);
@@ -118,6 +120,7 @@ public class SamlImportHelper {
         ScoutSdk.getDefault().setFormDataAutoUpdate(origFormDataAutoUpdate);
       }
     }
+    return result;
   }
 
   /**

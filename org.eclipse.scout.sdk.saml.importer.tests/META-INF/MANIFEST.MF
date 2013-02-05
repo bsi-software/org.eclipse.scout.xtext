@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Scout Application Modeling Language Importer Tests
+Bundle-SymbolicName: org.eclipse.scout.sdk.saml.importer.tests;singleton:=true
+Bundle-Version: 3.9.0.qualifier
+Bundle-Activator: org.eclipse.scout.sdk.saml.importer.tests.internal.SamlImporterTestsActivator
+Bundle-Vendor: Eclipse Scout Project
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.scout.sdk.test;bundle-version="3.9.0",
+ org.eclipse.scout.saml;bundle-version="1.0.0",
+ org.eclipse.scout.saml.ui;bundle-version="1.0.0",
+ org.eclipse.scout.sdk.saml.importer;bundle-version="3.9.0",
+ org.eclipse.scout.sdk.saml.importer.ui;bundle-version="3.9.0",
+ org.eclipse.xtext.ui,
+ org.eclipse.scout.nls.sdk.services;bundle-version="3.9.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Export-Package: org.eclipse.scout.sdk.saml.importer.tests,
+ org.eclipse.scout.sdk.saml.importer.tests.internal,
+ org.eclipse.scout.sdk.saml.importer.tests.internal.complex,
+ org.eclipse.scout.sdk.saml.importer.tests.internal.complex.fields

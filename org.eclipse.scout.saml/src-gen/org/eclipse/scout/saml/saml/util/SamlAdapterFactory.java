@@ -150,6 +150,11 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
         return createValueFieldElementAdapter();
       }
       @Override
+      public Adapter caseGenericValueFieldElement(GenericValueFieldElement object)
+      {
+        return createGenericValueFieldElementAdapter();
+      }
+      @Override
       public Adapter caseStringElement(StringElement object)
       {
         return createStringElementAdapter();
@@ -462,6 +467,21 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createValueFieldElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.GenericValueFieldElement <em>Generic Value Field Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.scout.saml.saml.GenericValueFieldElement
+   * @generated
+   */
+  public Adapter createGenericValueFieldElementAdapter()
   {
     return null;
   }

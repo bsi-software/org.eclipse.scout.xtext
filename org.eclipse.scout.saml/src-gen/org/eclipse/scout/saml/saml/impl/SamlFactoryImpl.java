@@ -79,6 +79,7 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
       case SamlPackage.SEQUENCE_BOX_ELEMENT: return createSequenceBoxElement();
       case SamlPackage.GROUP_BOX_ELEMENT: return createGroupBoxElement();
       case SamlPackage.VALUE_FIELD_ELEMENT: return createValueFieldElement();
+      case SamlPackage.GENERIC_VALUE_FIELD_ELEMENT: return createGenericValueFieldElement();
       case SamlPackage.STRING_ELEMENT: return createStringElement();
       case SamlPackage.BIG_DECIMAL_ELEMENT: return createBigDecimalElement();
       case SamlPackage.LONG_ELEMENT: return createLongElement();
@@ -261,6 +262,17 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
   {
     ValueFieldElementImpl valueFieldElement = new ValueFieldElementImpl();
     return valueFieldElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GenericValueFieldElement createGenericValueFieldElement()
+  {
+    GenericValueFieldElementImpl genericValueFieldElement = new GenericValueFieldElementImpl();
+    return genericValueFieldElement;
   }
 
   /**

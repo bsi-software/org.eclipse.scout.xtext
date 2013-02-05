@@ -589,6 +589,34 @@ finally {
 
 
 
+// Entry rule entryRuleGenericValueFieldElement
+entryRuleGenericValueFieldElement 
+:
+{ before(grammarAccess.getGenericValueFieldElementRule()); }
+	 ruleGenericValueFieldElement
+{ after(grammarAccess.getGenericValueFieldElementRule()); } 
+	 EOF 
+;
+
+// Rule GenericValueFieldElement
+ruleGenericValueFieldElement
+    @init {
+		int stackSize = keepStackSize();
+    }
+	:
+(
+{ before(grammarAccess.getGenericValueFieldElementAccess().getAlternatives()); }
+(rule__GenericValueFieldElement__Alternatives)
+{ after(grammarAccess.getGenericValueFieldElementAccess().getAlternatives()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
 // Entry rule entryRuleStringElement
 entryRuleStringElement 
 :
@@ -3273,15 +3301,31 @@ rule__ValueFieldElement__Alternatives
 )
 
     |(
-{ before(grammarAccess.getValueFieldElementAccess().getSmartfieldElementParserRuleCall_4()); }
+{ before(grammarAccess.getValueFieldElementAccess().getGenericValueFieldElementParserRuleCall_4()); }
+	ruleGenericValueFieldElement
+{ after(grammarAccess.getValueFieldElementAccess().getGenericValueFieldElementParserRuleCall_4()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__GenericValueFieldElement__Alternatives
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getGenericValueFieldElementAccess().getSmartfieldElementParserRuleCall_0()); }
 	ruleSmartfieldElement
-{ after(grammarAccess.getValueFieldElementAccess().getSmartfieldElementParserRuleCall_4()); }
+{ after(grammarAccess.getGenericValueFieldElementAccess().getSmartfieldElementParserRuleCall_0()); }
 )
 
     |(
-{ before(grammarAccess.getValueFieldElementAccess().getListBoxElementParserRuleCall_5()); }
+{ before(grammarAccess.getGenericValueFieldElementAccess().getListBoxElementParserRuleCall_1()); }
 	ruleListBoxElement
-{ after(grammarAccess.getValueFieldElementAccess().getListBoxElementParserRuleCall_5()); }
+{ after(grammarAccess.getGenericValueFieldElementAccess().getListBoxElementParserRuleCall_1()); }
 )
 
 ;
@@ -3469,11 +3513,11 @@ rule__ColumnElement__TypeAlternatives_2_0_2_0
 )
 
     |(
-{ before(grammarAccess.getColumnElementAccess().getTypeDoubleKeyword_2_0_2_0_3()); }
+{ before(grammarAccess.getColumnElementAccess().getTypeBigdecimalKeyword_2_0_2_0_3()); }
 
-	'double' 
+	'bigdecimal' 
 
-{ after(grammarAccess.getColumnElementAccess().getTypeDoubleKeyword_2_0_2_0_3()); }
+{ after(grammarAccess.getColumnElementAccess().getTypeBigdecimalKeyword_2_0_2_0_3()); }
 )
 
 ;

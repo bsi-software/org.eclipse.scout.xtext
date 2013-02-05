@@ -1602,16 +1602,15 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cBigDecimalElementParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cLongElementParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cDateElementParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cSmartfieldElementParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		private final RuleCall cListBoxElementParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cGenericValueFieldElementParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		
 		//// VALUE FIELDS
 		// ValueFieldElement:
 		//
-		//	StringElement | BigDecimalElement | LongElement | DateElement | SmartfieldElement | ListBoxElement;
+		//	StringElement | BigDecimalElement | LongElement | DateElement | GenericValueFieldElement;
 		public ParserRule getRule() { return rule; }
 
-		//StringElement | BigDecimalElement | LongElement | DateElement | SmartfieldElement | ListBoxElement
+		//StringElement | BigDecimalElement | LongElement | DateElement | GenericValueFieldElement
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//StringElement
@@ -1626,11 +1625,29 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//DateElement
 		public RuleCall getDateElementParserRuleCall_3() { return cDateElementParserRuleCall_3; }
 
+		//GenericValueFieldElement
+		public RuleCall getGenericValueFieldElementParserRuleCall_4() { return cGenericValueFieldElementParserRuleCall_4; }
+	}
+
+	public class GenericValueFieldElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "GenericValueFieldElement");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cSmartfieldElementParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cListBoxElementParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//GenericValueFieldElement:
+		//
+		//	SmartfieldElement | ListBoxElement;
+		public ParserRule getRule() { return rule; }
+
+		//SmartfieldElement | ListBoxElement
+		public Alternatives getAlternatives() { return cAlternatives; }
+
 		//SmartfieldElement
-		public RuleCall getSmartfieldElementParserRuleCall_4() { return cSmartfieldElementParserRuleCall_4; }
+		public RuleCall getSmartfieldElementParserRuleCall_0() { return cSmartfieldElementParserRuleCall_0; }
 
 		//ListBoxElement
-		public RuleCall getListBoxElementParserRuleCall_5() { return cListBoxElementParserRuleCall_5; }
+		public RuleCall getListBoxElementParserRuleCall_1() { return cListBoxElementParserRuleCall_1; }
 	}
 
 	public class StringElementElements extends AbstractParserRuleElementFinder {
@@ -4639,7 +4656,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cTypeDateKeyword_2_0_2_0_0 = (Keyword)cTypeAlternatives_2_0_2_0.eContents().get(0);
 		private final Keyword cTypeStringKeyword_2_0_2_0_1 = (Keyword)cTypeAlternatives_2_0_2_0.eContents().get(1);
 		private final Keyword cTypeIntKeyword_2_0_2_0_2 = (Keyword)cTypeAlternatives_2_0_2_0.eContents().get(2);
-		private final Keyword cTypeDoubleKeyword_2_0_2_0_3 = (Keyword)cTypeAlternatives_2_0_2_0.eContents().get(3);
+		private final Keyword cTypeBigdecimalKeyword_2_0_2_0_3 = (Keyword)cTypeAlternatives_2_0_2_0.eContents().get(3);
 		private final Group cGroup_2_1 = (Group)cUnorderedGroup_2.eContents().get(1);
 		private final Keyword cTextKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_1_1 = (Keyword)cGroup_2_1.eContents().get(1);
@@ -4664,14 +4681,14 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ColumnElement:
 		//
-		//	"column" name=ID ("type" "=" type=("date" | "string" | "int" | "double") & ("text" "="
+		//	"column" name=ID ("type" "=" type=("date" | "string" | "int" | "bigdecimal") & ("text" "="
 		//
 		//	text=[TranslationElement|QualifiedName])? & ("width" "=" width=INT)? & ("visible" "=" visible=BooleanType)? &
 		//
 		//	("displayable" "=" displayable=BooleanType)?);
 		public ParserRule getRule() { return rule; }
 
-		//"column" name=ID ("type" "=" type=("date" | "string" | "int" | "double") & ("text" "="
+		//"column" name=ID ("type" "=" type=("date" | "string" | "int" | "bigdecimal") & ("text" "="
 		//
 		//text=[TranslationElement|QualifiedName])? & ("width" "=" width=INT)? & ("visible" "=" visible=BooleanType)? &
 		//
@@ -4687,12 +4704,12 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//"type" "=" type=("date" | "string" | "int" | "double") & ("text" "=" text=[TranslationElement|QualifiedName])? &
+		//"type" "=" type=("date" | "string" | "int" | "bigdecimal") & ("text" "=" text=[TranslationElement|QualifiedName])? &
 		//
 		//("width" "=" width=INT)? & ("visible" "=" visible=BooleanType)? & ("displayable" "=" displayable=BooleanType)?
 		public UnorderedGroup getUnorderedGroup_2() { return cUnorderedGroup_2; }
 
-		//"type" "=" type=("date" | "string" | "int" | "double")
+		//"type" "=" type=("date" | "string" | "int" | "bigdecimal")
 		public Group getGroup_2_0() { return cGroup_2_0; }
 
 		//"type"
@@ -4701,10 +4718,10 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//"="
 		public Keyword getEqualsSignKeyword_2_0_1() { return cEqualsSignKeyword_2_0_1; }
 
-		//type=("date" | "string" | "int" | "double")
+		//type=("date" | "string" | "int" | "bigdecimal")
 		public Assignment getTypeAssignment_2_0_2() { return cTypeAssignment_2_0_2; }
 
-		//"date" | "string" | "int" | "double"
+		//"date" | "string" | "int" | "bigdecimal"
 		public Alternatives getTypeAlternatives_2_0_2_0() { return cTypeAlternatives_2_0_2_0; }
 
 		//"date"
@@ -4716,8 +4733,8 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//"int"
 		public Keyword getTypeIntKeyword_2_0_2_0_2() { return cTypeIntKeyword_2_0_2_0_2; }
 
-		//"double"
-		public Keyword getTypeDoubleKeyword_2_0_2_0_3() { return cTypeDoubleKeyword_2_0_2_0_3; }
+		//"bigdecimal"
+		public Keyword getTypeBigdecimalKeyword_2_0_2_0_3() { return cTypeBigdecimalKeyword_2_0_2_0_3; }
 
 		//("text" "=" text=[TranslationElement|QualifiedName])?
 		public Group getGroup_2_1() { return cGroup_2_1; }
@@ -5210,6 +5227,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	private SequenceBoxElementElements pSequenceBoxElement;
 	private GroupBoxElementElements pGroupBoxElement;
 	private ValueFieldElementElements pValueFieldElement;
+	private GenericValueFieldElementElements pGenericValueFieldElement;
 	private StringElementElements pStringElement;
 	private BigDecimalElementElements pBigDecimalElement;
 	private LongElementElements pLongElement;
@@ -5505,13 +5523,24 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	//// VALUE FIELDS
 	// ValueFieldElement:
 	//
-	//	StringElement | BigDecimalElement | LongElement | DateElement | SmartfieldElement | ListBoxElement;
+	//	StringElement | BigDecimalElement | LongElement | DateElement | GenericValueFieldElement;
 	public ValueFieldElementElements getValueFieldElementAccess() {
 		return (pValueFieldElement != null) ? pValueFieldElement : (pValueFieldElement = new ValueFieldElementElements());
 	}
 	
 	public ParserRule getValueFieldElementRule() {
 		return getValueFieldElementAccess().getRule();
+	}
+
+	//GenericValueFieldElement:
+	//
+	//	SmartfieldElement | ListBoxElement;
+	public GenericValueFieldElementElements getGenericValueFieldElementAccess() {
+		return (pGenericValueFieldElement != null) ? pGenericValueFieldElement : (pGenericValueFieldElement = new GenericValueFieldElementElements());
+	}
+	
+	public ParserRule getGenericValueFieldElementRule() {
+		return getGenericValueFieldElementAccess().getRule();
 	}
 
 	//StringElement:
@@ -5715,7 +5744,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 
 	//ColumnElement:
 	//
-	//	"column" name=ID ("type" "=" type=("date" | "string" | "int" | "double") & ("text" "="
+	//	"column" name=ID ("type" "=" type=("date" | "string" | "int" | "bigdecimal") & ("text" "="
 	//
 	//	text=[TranslationElement|QualifiedName])? & ("width" "=" width=INT)? & ("visible" "=" visible=BooleanType)? &
 	//

@@ -10,17 +10,13 @@
  ******************************************************************************/
 package org.eclipse.scout.sdk.saml.importer.operation.form;
 
-import java.util.HashMap;
 import java.util.Map.Entry;
-import java.util.Stack;
 import java.util.TreeMap;
 
+import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaModelException;
-import org.eclipse.scout.sdk.saml.importer.operation.SamlContext;
-import org.eclipse.scout.sdk.util.type.TypeUtility;
-import org.eclipse.scout.sdk.util.typecache.ITypeHierarchy;
 
 /**
  * <h3>{@link SamlFormContext}</h3> ...
@@ -35,50 +31,24 @@ public class SamlFormContext {
   private IType m_serverInterface;
   private IType m_formDataType;
   private IType m_formType;
-  private SamlContext m_samlContext;
+  private IType m_mainBoxType;
 
-  private final Stack<IType> m_parentBoxStack;
-  private final HashMap<IType, ITypeHierarchy> m_parentBoxLocalTypeHierarchies;
   private final TreeMap<String, IMethod> m_fieldGetterMethods;
 
   public SamlFormContext() {
-    m_parentBoxStack = new Stack<IType>();
-    m_parentBoxLocalTypeHierarchies = new HashMap<IType, ITypeHierarchy>();
     m_fieldGetterMethods = new TreeMap<String, IMethod>();
-  }
-
-  public void pushParentBox(IType container) {
-    m_parentBoxStack.push(container);
-  }
-
-  public IType getCurrentParentBox() {
-    return m_parentBoxStack.peek();
   }
 
   public void addFieldGetterMethod(IMethod method) throws JavaModelException {
     m_fieldGetterMethods.put(method.getElementName(), method);
   }
 
-  public IMethod getSiblingFor(String elementName) {
+  public IJavaElement getSiblingFor(String elementName) {
     Entry<String, IMethod> siblingEntry = m_fieldGetterMethods.ceilingEntry(elementName);
+    if (siblingEntry == null) {
+      return getMainBoxType();
+    }
     return siblingEntry.getValue();
-  }
-
-  public ITypeHierarchy getCurrentParentBoxLocalTypeHierarchy() {
-    IType currentParentBox = getCurrentParentBox();
-    if (currentParentBox == null) {
-      return null;
-    }
-    ITypeHierarchy result = m_parentBoxLocalTypeHierarchies.get(currentParentBox);
-    if (result == null) {
-      result = TypeUtility.getLocalTypeHierarchy(currentParentBox);
-      m_parentBoxLocalTypeHierarchies.put(currentParentBox, result);
-    }
-    return result;
-  }
-
-  public IType popParentBox() {
-    return m_parentBoxStack.pop();
   }
 
   public IType getClientType() {
@@ -129,11 +99,11 @@ public class SamlFormContext {
     m_formType = formType;
   }
 
-  public SamlContext getSamlContext() {
-    return m_samlContext;
+  public IType getMainBoxType() {
+    return m_mainBoxType;
   }
 
-  public void setSamlContext(SamlContext samlContext) {
-    m_samlContext = samlContext;
+  public void setMainBoxType(IType mainBoxType) {
+    m_mainBoxType = mainBoxType;
   }
 }

@@ -158,6 +158,15 @@ public interface SamlFactory extends EFactory
   ValueFieldElement createValueFieldElement();
 
   /**
+   * Returns a new object of class '<em>Generic Value Field Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Generic Value Field Element</em>'.
+   * @generated
+   */
+  GenericValueFieldElement createGenericValueFieldElement();
+
+  /**
    * Returns a new object of class '<em>String Element</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

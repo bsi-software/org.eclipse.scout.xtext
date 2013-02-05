@@ -111,7 +111,8 @@ GroupBoxElement:'group' name=ID
 	('{' (logic+=LogicElement | fields+=FormFieldElement)* '}')?;
 
 // VALUE FIELDS
-ValueFieldElement: StringElement|BigDecimalElement|LongElement|DateElement|SmartfieldElement|ListBoxElement;
+ValueFieldElement: StringElement|BigDecimalElement|LongElement|DateElement|GenericValueFieldElement;
+GenericValueFieldElement:SmartfieldElement|ListBoxElement;
 
 StringElement:'string' name=ID 
 	(
@@ -275,7 +276,7 @@ TableElement:'table' name=ID
 	
 ColumnElement:'column' name=ID
 	(
-		('type' '=' type=('date'|'string'|'int'|'double')) &
+		('type' '=' type=('date'|'string'|'int'|'bigdecimal')) &
 		('text' '=' text=[TranslationElement|QualifiedName])? &
 		('width' '=' width=INT)? &
 		('visible' '=' visible=BooleanType)? &

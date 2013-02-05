@@ -11,9 +11,9 @@
 package org.eclipse.scout.sdk.saml.importer.operation.logic;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.scout.sdk.saml.importer.extension.customization.ISourceProvider;
-import org.eclipse.scout.sdk.saml.importer.extension.customization.SourceProviderInput;
-import org.eclipse.scout.sdk.saml.importer.operation.logic.LogicInfoFactory.Placement;
+import org.eclipse.scout.sdk.saml.importer.extension.configurator.ISourceProvider;
+import org.eclipse.scout.sdk.saml.importer.extension.configurator.SourceProviderInput;
+import org.eclipse.scout.sdk.saml.importer.operation.logic.LogicSnippetInfoFactory.Placement;
 import org.eclipse.scout.sdk.saml.importer.operation.logic.fragments.ClientCallLogicFragment;
 import org.eclipse.scout.sdk.saml.importer.operation.logic.fragments.ISourceFragment;
 import org.eclipse.scout.sdk.saml.importer.operation.logic.fragments.InlineLogicFragment;

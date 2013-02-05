@@ -1125,6 +1125,151 @@ public interface SamlPackage extends EPackage
   int VALUE_FIELD_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 6;
 
   /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.GenericValueFieldElementImpl <em>Generic Value Field Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.GenericValueFieldElementImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getGenericValueFieldElement()
+   * @generated
+   */
+  int GENERIC_VALUE_FIELD_ELEMENT = 15;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERIC_VALUE_FIELD_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Enabled</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERIC_VALUE_FIELD_ELEMENT__ENABLED = VALUE_FIELD_ELEMENT__ENABLED;
+
+  /**
+   * The feature id for the '<em><b>Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERIC_VALUE_FIELD_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERIC_VALUE_FIELD_ELEMENT__SUPER_TYPE = VALUE_FIELD_ELEMENT__SUPER_TYPE;
+
+  /**
+   * The feature id for the '<em><b>Logic</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERIC_VALUE_FIELD_ELEMENT__LOGIC = VALUE_FIELD_ELEMENT__LOGIC;
+
+  /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERIC_VALUE_FIELD_ELEMENT__TEXT = VALUE_FIELD_ELEMENT__TEXT;
+
+  /**
+   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERIC_VALUE_FIELD_ELEMENT__LABEL_VISIBLE = VALUE_FIELD_ELEMENT__LABEL_VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Master</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERIC_VALUE_FIELD_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
+
+  /**
+   * The feature id for the '<em><b>Mandatory</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERIC_VALUE_FIELD_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT__MANDATORY;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERIC_VALUE_FIELD_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERIC_VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS = VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
+
+  /**
+   * The feature id for the '<em><b>Code</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERIC_VALUE_FIELD_ELEMENT__CODE = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Value Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERIC_VALUE_FIELD_ELEMENT__VALUE_TYPE = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Lookup</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERIC_VALUE_FIELD_ELEMENT__LOOKUP = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Generic Value Field Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 3;
+
+  /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.StringElementImpl <em>String Element</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1132,7 +1277,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getStringElement()
    * @generated
    */
-  int STRING_ELEMENT = 15;
+  int STRING_ELEMENT = 16;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1277,7 +1422,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getBigDecimalElement()
    * @generated
    */
-  int BIG_DECIMAL_ELEMENT = 16;
+  int BIG_DECIMAL_ELEMENT = 17;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1449,7 +1594,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getLongElement()
    * @generated
    */
-  int LONG_ELEMENT = 17;
+  int LONG_ELEMENT = 18;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1594,7 +1739,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getDateElement()
    * @generated
    */
-  int DATE_ELEMENT = 18;
+  int DATE_ELEMENT = 19;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1712,7 +1857,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getSmartfieldElement()
    * @generated
    */
-  int SMARTFIELD_ELEMENT = 19;
+  int SMARTFIELD_ELEMENT = 20;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1721,7 +1866,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
+  int SMARTFIELD_ELEMENT__NAME = GENERIC_VALUE_FIELD_ELEMENT__NAME;
 
   /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -1730,7 +1875,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT__ENABLED = VALUE_FIELD_ELEMENT__ENABLED;
+  int SMARTFIELD_ELEMENT__ENABLED = GENERIC_VALUE_FIELD_ELEMENT__ENABLED;
 
   /**
    * The feature id for the '<em><b>Visible</b></em>' attribute.
@@ -1739,7 +1884,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
+  int SMARTFIELD_ELEMENT__VISIBLE = GENERIC_VALUE_FIELD_ELEMENT__VISIBLE;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -1748,7 +1893,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT__SUPER_TYPE = VALUE_FIELD_ELEMENT__SUPER_TYPE;
+  int SMARTFIELD_ELEMENT__SUPER_TYPE = GENERIC_VALUE_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -1757,7 +1902,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT__LOGIC = VALUE_FIELD_ELEMENT__LOGIC;
+  int SMARTFIELD_ELEMENT__LOGIC = GENERIC_VALUE_FIELD_ELEMENT__LOGIC;
 
   /**
    * The feature id for the '<em><b>Text</b></em>' reference.
@@ -1766,7 +1911,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT__TEXT = VALUE_FIELD_ELEMENT__TEXT;
+  int SMARTFIELD_ELEMENT__TEXT = GENERIC_VALUE_FIELD_ELEMENT__TEXT;
 
   /**
    * The feature id for the '<em><b>Label Visible</b></em>' attribute.
@@ -1775,7 +1920,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT__LABEL_VISIBLE = VALUE_FIELD_ELEMENT__LABEL_VISIBLE;
+  int SMARTFIELD_ELEMENT__LABEL_VISIBLE = GENERIC_VALUE_FIELD_ELEMENT__LABEL_VISIBLE;
 
   /**
    * The feature id for the '<em><b>Master</b></em>' reference.
@@ -1784,7 +1929,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
+  int SMARTFIELD_ELEMENT__MASTER = GENERIC_VALUE_FIELD_ELEMENT__MASTER;
 
   /**
    * The feature id for the '<em><b>Mandatory</b></em>' attribute.
@@ -1793,7 +1938,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT__MANDATORY;
+  int SMARTFIELD_ELEMENT__MANDATORY = GENERIC_VALUE_FIELD_ELEMENT__MANDATORY;
 
   /**
    * The feature id for the '<em><b>Grid Width</b></em>' attribute.
@@ -1802,7 +1947,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
+  int SMARTFIELD_ELEMENT__GRID_WIDTH = GENERIC_VALUE_FIELD_ELEMENT__GRID_WIDTH;
 
   /**
    * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
@@ -1811,7 +1956,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT__WIDTH_IN_PIXELS = VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
+  int SMARTFIELD_ELEMENT__WIDTH_IN_PIXELS = GENERIC_VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Code</b></em>' reference.
@@ -1820,7 +1965,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT__CODE = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int SMARTFIELD_ELEMENT__CODE = GENERIC_VALUE_FIELD_ELEMENT__CODE;
 
   /**
    * The feature id for the '<em><b>Value Type</b></em>' attribute.
@@ -1829,7 +1974,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT__VALUE_TYPE = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+  int SMARTFIELD_ELEMENT__VALUE_TYPE = GENERIC_VALUE_FIELD_ELEMENT__VALUE_TYPE;
 
   /**
    * The feature id for the '<em><b>Lookup</b></em>' reference.
@@ -1838,7 +1983,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT__LOOKUP = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 2;
+  int SMARTFIELD_ELEMENT__LOOKUP = GENERIC_VALUE_FIELD_ELEMENT__LOOKUP;
 
   /**
    * The feature id for the '<em><b>Menus</b></em>' containment reference list.
@@ -1847,7 +1992,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT__MENUS = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 3;
+  int SMARTFIELD_ELEMENT__MENUS = GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Smartfield Element</em>' class.
@@ -1856,7 +2001,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 4;
+  int SMARTFIELD_ELEMENT_FEATURE_COUNT = GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.ListBoxElementImpl <em>List Box Element</em>}' class.
@@ -1866,7 +2011,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getListBoxElement()
    * @generated
    */
-  int LIST_BOX_ELEMENT = 20;
+  int LIST_BOX_ELEMENT = 21;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1875,7 +2020,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LIST_BOX_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
+  int LIST_BOX_ELEMENT__NAME = GENERIC_VALUE_FIELD_ELEMENT__NAME;
 
   /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -1884,7 +2029,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LIST_BOX_ELEMENT__ENABLED = VALUE_FIELD_ELEMENT__ENABLED;
+  int LIST_BOX_ELEMENT__ENABLED = GENERIC_VALUE_FIELD_ELEMENT__ENABLED;
 
   /**
    * The feature id for the '<em><b>Visible</b></em>' attribute.
@@ -1893,7 +2038,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LIST_BOX_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
+  int LIST_BOX_ELEMENT__VISIBLE = GENERIC_VALUE_FIELD_ELEMENT__VISIBLE;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -1902,7 +2047,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LIST_BOX_ELEMENT__SUPER_TYPE = VALUE_FIELD_ELEMENT__SUPER_TYPE;
+  int LIST_BOX_ELEMENT__SUPER_TYPE = GENERIC_VALUE_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -1911,7 +2056,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LIST_BOX_ELEMENT__LOGIC = VALUE_FIELD_ELEMENT__LOGIC;
+  int LIST_BOX_ELEMENT__LOGIC = GENERIC_VALUE_FIELD_ELEMENT__LOGIC;
 
   /**
    * The feature id for the '<em><b>Text</b></em>' reference.
@@ -1920,7 +2065,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LIST_BOX_ELEMENT__TEXT = VALUE_FIELD_ELEMENT__TEXT;
+  int LIST_BOX_ELEMENT__TEXT = GENERIC_VALUE_FIELD_ELEMENT__TEXT;
 
   /**
    * The feature id for the '<em><b>Label Visible</b></em>' attribute.
@@ -1929,7 +2074,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LIST_BOX_ELEMENT__LABEL_VISIBLE = VALUE_FIELD_ELEMENT__LABEL_VISIBLE;
+  int LIST_BOX_ELEMENT__LABEL_VISIBLE = GENERIC_VALUE_FIELD_ELEMENT__LABEL_VISIBLE;
 
   /**
    * The feature id for the '<em><b>Master</b></em>' reference.
@@ -1938,7 +2083,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LIST_BOX_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
+  int LIST_BOX_ELEMENT__MASTER = GENERIC_VALUE_FIELD_ELEMENT__MASTER;
 
   /**
    * The feature id for the '<em><b>Mandatory</b></em>' attribute.
@@ -1947,7 +2092,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LIST_BOX_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT__MANDATORY;
+  int LIST_BOX_ELEMENT__MANDATORY = GENERIC_VALUE_FIELD_ELEMENT__MANDATORY;
 
   /**
    * The feature id for the '<em><b>Grid Width</b></em>' attribute.
@@ -1956,7 +2101,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LIST_BOX_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
+  int LIST_BOX_ELEMENT__GRID_WIDTH = GENERIC_VALUE_FIELD_ELEMENT__GRID_WIDTH;
 
   /**
    * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
@@ -1965,7 +2110,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LIST_BOX_ELEMENT__WIDTH_IN_PIXELS = VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
+  int LIST_BOX_ELEMENT__WIDTH_IN_PIXELS = GENERIC_VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
    * The feature id for the '<em><b>Code</b></em>' reference.
@@ -1974,7 +2119,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LIST_BOX_ELEMENT__CODE = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int LIST_BOX_ELEMENT__CODE = GENERIC_VALUE_FIELD_ELEMENT__CODE;
 
   /**
    * The feature id for the '<em><b>Value Type</b></em>' attribute.
@@ -1983,7 +2128,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LIST_BOX_ELEMENT__VALUE_TYPE = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+  int LIST_BOX_ELEMENT__VALUE_TYPE = GENERIC_VALUE_FIELD_ELEMENT__VALUE_TYPE;
 
   /**
    * The feature id for the '<em><b>Lookup</b></em>' reference.
@@ -1992,7 +2137,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LIST_BOX_ELEMENT__LOOKUP = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 2;
+  int LIST_BOX_ELEMENT__LOOKUP = GENERIC_VALUE_FIELD_ELEMENT__LOOKUP;
 
   /**
    * The feature id for the '<em><b>Grid Height</b></em>' attribute.
@@ -2001,7 +2146,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LIST_BOX_ELEMENT__GRID_HEIGHT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 3;
+  int LIST_BOX_ELEMENT__GRID_HEIGHT = GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>List Box Element</em>' class.
@@ -2010,7 +2155,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LIST_BOX_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 4;
+  int LIST_BOX_ELEMENT_FEATURE_COUNT = GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.CustomFieldElementImpl <em>Custom Field Element</em>}' class.
@@ -2020,7 +2165,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getCustomFieldElement()
    * @generated
    */
-  int CUSTOM_FIELD_ELEMENT = 21;
+  int CUSTOM_FIELD_ELEMENT = 22;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2129,7 +2274,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getButtonElement()
    * @generated
    */
-  int BUTTON_ELEMENT = 22;
+  int BUTTON_ELEMENT = 23;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2238,7 +2383,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getMenuElement()
    * @generated
    */
-  int MENU_ELEMENT = 23;
+  int MENU_ELEMENT = 24;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2356,7 +2501,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getTableElement()
    * @generated
    */
-  int TABLE_ELEMENT = 24;
+  int TABLE_ELEMENT = 25;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2483,7 +2628,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getColumnElement()
    * @generated
    */
-  int COLUMN_ELEMENT = 25;
+  int COLUMN_ELEMENT = 26;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2556,7 +2701,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getKeyElement()
    * @generated
    */
-  int KEY_ELEMENT = 26;
+  int KEY_ELEMENT = 27;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2602,7 +2747,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getTabElement()
    * @generated
    */
-  int TAB_ELEMENT = 27;
+  int TAB_ELEMENT = 28;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2693,7 +2838,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getTabBoxElement()
    * @generated
    */
-  int TAB_BOX_ELEMENT = 28;
+  int TAB_BOX_ELEMENT = 29;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3621,6 +3766,49 @@ public interface SamlPackage extends EPackage
   EAttribute getValueFieldElement_WidthInPixels();
 
   /**
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.GenericValueFieldElement <em>Generic Value Field Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Generic Value Field Element</em>'.
+   * @see org.eclipse.scout.saml.saml.GenericValueFieldElement
+   * @generated
+   */
+  EClass getGenericValueFieldElement();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.GenericValueFieldElement#getCode <em>Code</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Code</em>'.
+   * @see org.eclipse.scout.saml.saml.GenericValueFieldElement#getCode()
+   * @see #getGenericValueFieldElement()
+   * @generated
+   */
+  EReference getGenericValueFieldElement_Code();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.GenericValueFieldElement#getValueType <em>Value Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value Type</em>'.
+   * @see org.eclipse.scout.saml.saml.GenericValueFieldElement#getValueType()
+   * @see #getGenericValueFieldElement()
+   * @generated
+   */
+  EAttribute getGenericValueFieldElement_ValueType();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.GenericValueFieldElement#getLookup <em>Lookup</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Lookup</em>'.
+   * @see org.eclipse.scout.saml.saml.GenericValueFieldElement#getLookup()
+   * @see #getGenericValueFieldElement()
+   * @generated
+   */
+  EReference getGenericValueFieldElement_Lookup();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.StringElement <em>String Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3803,39 +3991,6 @@ public interface SamlPackage extends EPackage
   EClass getSmartfieldElement();
 
   /**
-   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getCode <em>Code</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Code</em>'.
-   * @see org.eclipse.scout.saml.saml.SmartfieldElement#getCode()
-   * @see #getSmartfieldElement()
-   * @generated
-   */
-  EReference getSmartfieldElement_Code();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getValueType <em>Value Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value Type</em>'.
-   * @see org.eclipse.scout.saml.saml.SmartfieldElement#getValueType()
-   * @see #getSmartfieldElement()
-   * @generated
-   */
-  EAttribute getSmartfieldElement_ValueType();
-
-  /**
-   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getLookup <em>Lookup</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Lookup</em>'.
-   * @see org.eclipse.scout.saml.saml.SmartfieldElement#getLookup()
-   * @see #getSmartfieldElement()
-   * @generated
-   */
-  EReference getSmartfieldElement_Lookup();
-
-  /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getMenus <em>Menus</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3855,39 +4010,6 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EClass getListBoxElement();
-
-  /**
-   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.ListBoxElement#getCode <em>Code</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Code</em>'.
-   * @see org.eclipse.scout.saml.saml.ListBoxElement#getCode()
-   * @see #getListBoxElement()
-   * @generated
-   */
-  EReference getListBoxElement_Code();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.ListBoxElement#getValueType <em>Value Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value Type</em>'.
-   * @see org.eclipse.scout.saml.saml.ListBoxElement#getValueType()
-   * @see #getListBoxElement()
-   * @generated
-   */
-  EAttribute getListBoxElement_ValueType();
-
-  /**
-   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.ListBoxElement#getLookup <em>Lookup</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Lookup</em>'.
-   * @see org.eclipse.scout.saml.saml.ListBoxElement#getLookup()
-   * @see #getListBoxElement()
-   * @generated
-   */
-  EReference getListBoxElement_Lookup();
 
   /**
    * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.ListBoxElement#getGridHeight <em>Grid Height</em>}'.
@@ -5109,6 +5231,40 @@ public interface SamlPackage extends EPackage
     EAttribute VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS = eINSTANCE.getValueFieldElement_WidthInPixels();
 
     /**
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.GenericValueFieldElementImpl <em>Generic Value Field Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.GenericValueFieldElementImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getGenericValueFieldElement()
+     * @generated
+     */
+    EClass GENERIC_VALUE_FIELD_ELEMENT = eINSTANCE.getGenericValueFieldElement();
+
+    /**
+     * The meta object literal for the '<em><b>Code</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GENERIC_VALUE_FIELD_ELEMENT__CODE = eINSTANCE.getGenericValueFieldElement_Code();
+
+    /**
+     * The meta object literal for the '<em><b>Value Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GENERIC_VALUE_FIELD_ELEMENT__VALUE_TYPE = eINSTANCE.getGenericValueFieldElement_ValueType();
+
+    /**
+     * The meta object literal for the '<em><b>Lookup</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GENERIC_VALUE_FIELD_ELEMENT__LOOKUP = eINSTANCE.getGenericValueFieldElement_Lookup();
+
+    /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.StringElementImpl <em>String Element</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -5255,30 +5411,6 @@ public interface SamlPackage extends EPackage
     EClass SMARTFIELD_ELEMENT = eINSTANCE.getSmartfieldElement();
 
     /**
-     * The meta object literal for the '<em><b>Code</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference SMARTFIELD_ELEMENT__CODE = eINSTANCE.getSmartfieldElement_Code();
-
-    /**
-     * The meta object literal for the '<em><b>Value Type</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute SMARTFIELD_ELEMENT__VALUE_TYPE = eINSTANCE.getSmartfieldElement_ValueType();
-
-    /**
-     * The meta object literal for the '<em><b>Lookup</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference SMARTFIELD_ELEMENT__LOOKUP = eINSTANCE.getSmartfieldElement_Lookup();
-
-    /**
      * The meta object literal for the '<em><b>Menus</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -5295,30 +5427,6 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EClass LIST_BOX_ELEMENT = eINSTANCE.getListBoxElement();
-
-    /**
-     * The meta object literal for the '<em><b>Code</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference LIST_BOX_ELEMENT__CODE = eINSTANCE.getListBoxElement_Code();
-
-    /**
-     * The meta object literal for the '<em><b>Value Type</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute LIST_BOX_ELEMENT__VALUE_TYPE = eINSTANCE.getListBoxElement_ValueType();
-
-    /**
-     * The meta object literal for the '<em><b>Lookup</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference LIST_BOX_ELEMENT__LOOKUP = eINSTANCE.getListBoxElement_Lookup();
 
     /**
      * The meta object literal for the '<em><b>Grid Height</b></em>' attribute feature.
