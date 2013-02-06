@@ -10,10 +10,14 @@
  ******************************************************************************/
 package org.eclipse.scout.sdk.saml.importer.operation;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.core.ICompilationUnit;
+import org.eclipse.jdt.core.IPackageFragmentRoot;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.scout.saml.saml.TemplateElement;
 import org.eclipse.scout.sdk.RuntimeClasses;
@@ -27,6 +31,7 @@ import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
 import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
 import org.eclipse.scout.sdk.util.type.TypeUtility;
 import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
+import org.eclipse.scout.sdk.workspace.IScoutBundle;
 import org.eclipse.scout.sdk.workspace.IScoutProject;
 
 /**
@@ -136,5 +141,24 @@ public abstract class AbstractSamlElementImportOperation implements IOperation {
 
   protected void fireTypeCreated(IType createdType, int type) throws IllegalArgumentException, CoreException {
     ImportEventEmitter.get().fireEventSync(new SamlImportEvent(SamlImportEventType.ADDED, EVENT_OBJECT_KIND_ITYPE, type, createdType, this, getSamlContext()));
+  }
+
+  protected void deleteClass(IScoutBundle bundle, String pckName, String className) throws CoreException {
+    String fileName = className + ".java";
+    for (IPackageFragmentRoot r : bundle.getJavaProject().getPackageFragmentRoots()) {
+      if (!r.isArchive() && !r.isReadOnly() && !r.isExternal()) {
+        IFolder fld = (IFolder) r.getResource();
+        if (fld.exists()) {
+          IFolder packageFolder = fld.getFolder(new Path(pckName.replace('.', '/')));
+          if (packageFolder.exists()) {
+            IFile javaFile = packageFolder.getFile(fileName);
+            if (javaFile.exists()) {
+              javaFile.delete(true, false, getSamlContext().getMonitor());
+              break;
+            }
+          }
+        }
+      }
+    }
   }
 }

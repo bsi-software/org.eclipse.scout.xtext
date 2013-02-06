@@ -15,12 +15,10 @@ import org.eclipse.jdt.core.IType;
 import org.eclipse.scout.saml.saml.LookupElement;
 import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.lookupcall.LookupCallNewOperation;
-import org.eclipse.scout.sdk.operation.service.ServiceDeleteOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
 import org.eclipse.scout.sdk.util.SdkProperties;
 import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
-import org.eclipse.scout.sdk.util.type.TypeUtility;
 import org.eclipse.scout.sdk.workspace.IScoutBundle;
 
 /**
@@ -48,8 +46,6 @@ public class LookupElementImportOperation extends AbstractSamlElementImportOpera
 
   @Override
   protected void run() throws CoreException, IllegalArgumentException {
-    deleteExisting();
-
     createLookup();
 
     processChildren(null, createFormContext());
@@ -70,20 +66,25 @@ public class LookupElementImportOperation extends AbstractSamlElementImportOpera
   }
 
   private void createLookup() throws IllegalArgumentException, CoreException {
-    String lookupCallName = getElement().getName() + SdkProperties.SUFFIX_LOOKUP_CALL;
+    String lookupSvcPackageShared = getCurrentScoutModule().getSharedBundle().getDefaultPackage(IScoutBundle.SHARED_SERVICES_LOOKUP);
+    String lookupSvcPackageServer = getCurrentScoutModule().getServerBundle().getDefaultPackage(IScoutBundle.SERVER_SERVICES_LOOKUP);
+
+    // delete old
+    deleteClass(getCurrentScoutModule().getSharedBundle(), lookupSvcPackageShared, "I" + getElement().getName() + SdkProperties.SUFFIX_LOOKUP_SERVICE);
+    deleteClass(getCurrentScoutModule().getSharedBundle(), lookupSvcPackageShared, getElement().getName() + SdkProperties.SUFFIX_LOOKUP_CALL);
+    deleteClass(getCurrentScoutModule().getServerBundle(), lookupSvcPackageServer, getElement().getName() + SdkProperties.SUFFIX_LOOKUP_SERVICE);
 
     LookupCallNewOperation op = new LookupCallNewOperation();
-
-    op.setLookupCallName(lookupCallName);
+    op.setLookupCallName(getElement().getName() + SdkProperties.SUFFIX_LOOKUP_CALL);
     op.setFormatSource(false);
     op.setBundle(getCurrentScoutModule().getSharedBundle());
-    op.setLookupCallPackageName(getCurrentScoutModule().getSharedBundle().getDefaultPackage(IScoutBundle.SHARED_SERVICES_LOOKUP));
+    op.setLookupCallPackageName(lookupSvcPackageShared);
 
     op.setServiceInterfaceBundle(getCurrentScoutModule().getSharedBundle());
-    op.setServiceInterfacePackageName(getCurrentScoutModule().getSharedBundle().getDefaultPackage(IScoutBundle.SHARED_SERVICES_LOOKUP));
+    op.setServiceInterfacePackageName(lookupSvcPackageShared);
     op.setInterfaceRegistrationBundle(getCurrentScoutModule().getClientBundle());
 
-    op.setServiceImplementationPackage(getCurrentScoutModule().getServerBundle().getDefaultPackage(IScoutBundle.SERVER_SERVICES_LOOKUP));
+    op.setServiceImplementationPackage(lookupSvcPackageServer);
     op.setImplementationRegistrationBundle(getCurrentScoutModule().getServerBundle());
     op.setServiceImplementationBundle(getCurrentScoutModule().getServerBundle());
 
@@ -100,24 +101,6 @@ public class LookupElementImportOperation extends AbstractSamlElementImportOpera
     postProcessType(m_lookupService);
     postProcessType(m_lookukpServiceInterface);
     postProcessType(m_lookupCall);
-  }
-
-  private void deleteExisting() throws CoreException, IllegalArgumentException {
-    IScoutBundle shared = getCurrentScoutModule().getSharedBundle();
-    IScoutBundle server = getCurrentScoutModule().getServerBundle();
-
-    IType oldService = TypeUtility.getType(server.getDefaultPackage(IScoutBundle.SERVER_SERVICES_LOOKUP) + "." + getElement().getName() + SdkProperties.SUFFIX_LOOKUP_SERVICE);
-    IType oldCall = TypeUtility.getType(shared.getDefaultPackage(IScoutBundle.SHARED_SERVICES_LOOKUP) + "." + getElement().getName() + SdkProperties.SUFFIX_LOOKUP_CALL);
-    IType oldServiceInterface = TypeUtility.getType(shared.getDefaultPackage(IScoutBundle.SHARED_SERVICES_LOOKUP) + ".I" + getElement().getName() + SdkProperties.SUFFIX_LOOKUP_SERVICE);
-
-    if (TypeUtility.exists(oldService)) {
-      ServiceDeleteOperation sdo = new ServiceDeleteOperation();
-      sdo.setServiceImplementation(oldService);
-      sdo.setServiceInterface(oldServiceInterface);
-      sdo.setAdditionalTypesToBeDeleted(new IType[]{oldCall});
-      sdo.validate();
-      sdo.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
-    }
   }
 
   @Override

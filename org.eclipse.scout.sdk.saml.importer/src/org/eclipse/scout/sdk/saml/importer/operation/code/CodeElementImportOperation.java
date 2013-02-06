@@ -16,12 +16,10 @@ import org.eclipse.scout.saml.saml.CodeElement;
 import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.CodeNewOperation;
 import org.eclipse.scout.sdk.operation.CodeTypeNewOperation;
-import org.eclipse.scout.sdk.operation.util.TypeDeleteOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
 import org.eclipse.scout.sdk.util.SdkProperties;
 import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
-import org.eclipse.scout.sdk.util.type.TypeUtility;
 import org.eclipse.scout.sdk.workspace.IScoutBundle;
 
 /**
@@ -94,29 +92,21 @@ public class CodeElementImportOperation extends AbstractSamlElementImportOperati
     String superTypeSig = getSuperTypeSignature(RuntimeClasses.ICodeType, getElement().getSuperType(), valueType);
 
     IScoutBundle sharedBundle = getCurrentScoutModule().getSharedBundle();
-    deleteExisting(sharedBundle, name);
+    String targetPackage = sharedBundle.getDefaultPackage(IScoutBundle.SHARED_SERVICES_CODE);
+    deleteClass(sharedBundle, targetPackage, name);
 
     CodeTypeNewOperation ctno = new CodeTypeNewOperation();
     ctno.setFormatSource(false);
     ctno.setNextCodeId(getElement().getId());
     ctno.setSharedBundle(sharedBundle);
     ctno.setSuperTypeSignature(superTypeSig);
-    ctno.setPackageName(sharedBundle.getDefaultPackage(IScoutBundle.SHARED_SERVICES_CODE));
+    ctno.setPackageName(targetPackage);
     ctno.setGenericTypeSignature(SignatureCache.createTypeSignature(valueType));
     ctno.setTypeName(name);
     ctno.validate();
     ctno.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
 
     return ctno.getCreatedType();
-  }
-
-  private void deleteExisting(IScoutBundle shared, String codeTypeName) throws CoreException, IllegalArgumentException {
-    IType old = TypeUtility.getType(shared.getDefaultPackage(IScoutBundle.SHARED_SERVICES_CODE) + "." + codeTypeName);
-    if (TypeUtility.exists(old)) {
-      TypeDeleteOperation delete = new TypeDeleteOperation(old);
-      delete.validate();
-      delete.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
-    }
   }
 
   @Override

@@ -10,8 +10,6 @@
  ******************************************************************************/
 package org.eclipse.scout.sdk.saml.importer.operation.form;
 
-import java.util.ArrayList;
-
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IMethod;
@@ -21,15 +19,12 @@ import org.eclipse.scout.saml.saml.FormElement;
 import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.sdk.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.form.FormStackNewOperation;
-import org.eclipse.scout.sdk.operation.service.ServiceDeleteOperation;
 import org.eclipse.scout.sdk.operation.service.ServiceNewOperation;
-import org.eclipse.scout.sdk.operation.util.JavaElementDeleteOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
 import org.eclipse.scout.sdk.saml.importer.util.IItemVisitor;
 import org.eclipse.scout.sdk.saml.importer.util.SamlImportUtility;
 import org.eclipse.scout.sdk.util.SdkProperties;
 import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
-import org.eclipse.scout.sdk.util.type.TypeUtility;
 import org.eclipse.scout.sdk.workspace.IScoutBundle;
 
 /**
@@ -71,8 +66,6 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
 
   @Override
   public void run() throws CoreException, IllegalArgumentException {
-    deleteExistingForm();
-
     createFormStack();
 
     processChildren(m_createdMainBox, createFormContext());
@@ -97,7 +90,6 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
     postProcessType(m_createdClientServiceImplementation);
 
     postProcessType(m_createdServerServiceInterface);
-
     serverServiceImportsCorrection();
     postProcessType(m_createdServerServiceImplementation);
 
@@ -146,16 +138,32 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
   }
 
   private void createFormStack() throws CoreException {
-    String formName = getElement().getName();
+    String baseName = getElement().getName();
+
+    String clientFormsPackage = getCurrentScoutModule().getClientBundle().getDefaultPackage(IScoutBundle.CLIENT_FORMS);
+    String formClassName = baseName + SdkProperties.SUFFIX_FORM;
+    String serverSvcPackage = getCurrentScoutModule().getServerBundle().getDefaultPackage(IScoutBundle.SERVER_SERVICES);
+    String serverSvcName = baseName + SERVER_FORM_SERVICE_SUFFIX;
+    String sharedIfcPackage = getCurrentScoutModule().getSharedBundle().getDefaultPackage(IScoutBundle.SHARED_SERVICES);
+    String sharedIfcName = "I" + serverSvcName;
+    String clientSvcPackage = getCurrentScoutModule().getClientBundle().getDefaultPackage(IScoutBundle.CLIENT_SERVICES);
+    String clientSvcName = baseName + CLIENT_FORM_SERVICE_SUFFIX;
+    String clientIfcName = "I" + clientSvcName;
+
+    // delete old
+    deleteClass(getCurrentScoutModule().getClientBundle(), clientFormsPackage, formClassName);
+    deleteClass(getCurrentScoutModule().getServerBundle(), serverSvcPackage, serverSvcName);
+    deleteClass(getCurrentScoutModule().getSharedBundle(), sharedIfcPackage, sharedIfcName);
+    deleteClass(getCurrentScoutModule().getSharedBundle(), sharedIfcPackage, baseName + SdkProperties.SUFFIX_FORM_DATA);
+    deleteClass(getCurrentScoutModule().getClientBundle(), clientSvcPackage, clientSvcName);
+    deleteClass(getCurrentScoutModule().getClientBundle(), clientSvcPackage, clientIfcName);
 
     FormStackNewOperation op = new FormStackNewOperation(false);
     op.setNlsEntry(null);
     op.setCreateButtonOk(false);
     op.setCreateButtonCancel(false);
-
     op.setCreateExecLoad(false);
     op.setCreateExecStore(false);
-
     op.setCreateCreateMethod(false);
     op.setCreateLoadMethod(false);
     op.setCreatePrepareCreateMethod(false);
@@ -175,35 +183,26 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
     }));
 
     op.setFormBundle(getCurrentScoutModule().getClientBundle());
-    op.setFormPackage(getCurrentScoutModule().getClientBundle().getDefaultPackage(IScoutBundle.CLIENT_FORMS));
-
+    op.setFormPackage(clientFormsPackage);
     op.setFormDataBundle(getCurrentScoutModule().getSharedBundle());
-    op.setFormDataPackage(getCurrentScoutModule().getSharedBundle().getDefaultPackage(IScoutBundle.SHARED_SERVICES));
+    op.setFormDataPackage(sharedIfcPackage);
 
     op.setClientServiceRegistryBundles(new IScoutBundle[]{getCurrentScoutModule().getClientBundle()});
-
     op.setPermissionCreateBundle(null);
     op.setPermissionCreateName(null);
     op.setPermissionReadBundle(null);
     op.setPermissionReadName(null);
     op.setPermissionUpdateBundle(null);
     op.setPermissionUpdateName(null);
-
     op.setServerServiceRegistryBundles(new IScoutBundle[]{getCurrentScoutModule().getServerBundle()});
     op.setServiceImplementationBundle(getCurrentScoutModule().getServerBundle());
-    op.setServiceImplementationName(formName + SERVER_FORM_SERVICE_SUFFIX);
-    op.setServiceImplementationPackage(getCurrentScoutModule().getServerBundle().getDefaultPackage(IScoutBundle.SERVER_SERVICES));
-
+    op.setServiceImplementationName(serverSvcName);
+    op.setServiceImplementationPackage(serverSvcPackage);
     op.setServiceInterfaceBundle(getCurrentScoutModule().getSharedBundle());
-    op.setServiceInterfaceName("I" + formName + SERVER_FORM_SERVICE_SUFFIX);
-    op.setServiceInterfacePackage(getCurrentScoutModule().getSharedBundle().getDefaultPackage(IScoutBundle.SHARED_SERVICES));
-
-    String superType = RuntimeClasses.getSuperTypeName(RuntimeClasses.IForm, getSamlContext().getRootProject());
-    if (getElement().getSuperType() != null) {
-      superType = getElement().getSuperType().getDefinition();
-    }
-    op.setFormSuperTypeSignature(SignatureCache.createTypeSignature(superType));
-    op.setFormName(formName + SdkProperties.SUFFIX_FORM);
+    op.setServiceInterfaceName(sharedIfcName);
+    op.setServiceInterfacePackage(sharedIfcPackage);
+    op.setFormSuperTypeSignature(getSuperTypeSignature(RuntimeClasses.IForm, getElement().getSuperType()));
+    op.setFormName(formClassName);
 
     op.validate();
     op.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
@@ -212,19 +211,19 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
     m_createdServerServiceInterface = op.getOutProcessServiceInterface();
     m_createdMainBox = op.getOutMainBox();
     m_createdForm = op.getOutForm();
-    m_createdFormData = getFormDataType(getElement().getName());
+    m_createdFormData = op.getOutFormData();
     m_createdMainBoxGetter = op.getOutMainBoxGetterMethod();
 
     // client service
     ServiceNewOperation clientSvcOp = new ServiceNewOperation();
     clientSvcOp.setImplementationBundle(getCurrentScoutModule().getClientBundle());
-    clientSvcOp.setServicePackageName(getCurrentScoutModule().getClientBundle().getDefaultPackage(IScoutBundle.CLIENT_SERVICES));
-    clientSvcOp.setServiceName(formName + CLIENT_FORM_SERVICE_SUFFIX);
+    clientSvcOp.setServicePackageName(clientSvcPackage);
+    clientSvcOp.setServiceName(clientSvcName);
     clientSvcOp.setServiceSuperTypeSignature(RuntimeClasses.getSuperTypeSignature(RuntimeClasses.IService2, getSamlContext().getRootProject()));
 
     clientSvcOp.setInterfaceBundle(getCurrentScoutModule().getClientBundle());
-    clientSvcOp.setServiceInterfacePackageName(getCurrentScoutModule().getClientBundle().getDefaultPackage(IScoutBundle.CLIENT_SERVICES));
-    clientSvcOp.setServiceInterfaceName("I" + formName + CLIENT_FORM_SERVICE_SUFFIX);
+    clientSvcOp.setServiceInterfacePackageName(clientSvcPackage);
+    clientSvcOp.setServiceInterfaceName(clientIfcName);
     clientSvcOp.setServiceInterfaceSuperTypeSignature(SignatureCache.createTypeSignature(RuntimeClasses.IService2));
     clientSvcOp.addServiceRegistrationBundle(getCurrentScoutModule().getClientBundle());
 
@@ -233,53 +232,6 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
 
     m_createdClientServiceImplementation = clientSvcOp.getCreatedServiceImplementation();
     m_createdClientServiceInterface = clientSvcOp.getCreatedServiceInterface();
-  }
-
-  private IType getFormDataType(String formName) {
-    return TypeUtility.getType(getCurrentScoutModule().getSharedBundle().getDefaultPackage(IScoutBundle.SHARED_SERVICES) + "." + formName + SdkProperties.SUFFIX_FORM_DATA);
-  }
-
-  private void deleteExistingForm() throws CoreException {
-    String formName = getElement().getName();
-
-    //IType formData = getFormDataType(formName);
-    IType form = TypeUtility.getType(getCurrentScoutModule().getClientBundle().getDefaultPackage(IScoutBundle.CLIENT_FORMS) + "." + formName + SdkProperties.SUFFIX_FORM);
-
-    IType serverService = TypeUtility.getType(getCurrentScoutModule().getServerBundle().getDefaultPackage(IScoutBundle.SERVER_SERVICES) + "." + formName + SERVER_FORM_SERVICE_SUFFIX);
-    IType serverSvcInterface = TypeUtility.getType(getCurrentScoutModule().getSharedBundle().getDefaultPackage(IScoutBundle.SHARED_SERVICES) + ".I" + formName + SERVER_FORM_SERVICE_SUFFIX);
-
-    IType clientService = TypeUtility.getType(getCurrentScoutModule().getClientBundle().getDefaultPackage(IScoutBundle.CLIENT_SERVICES) + "." + formName + CLIENT_FORM_SERVICE_SUFFIX);
-    IType clientSvcInterface = TypeUtility.getType(getCurrentScoutModule().getClientBundle().getDefaultPackage(IScoutBundle.CLIENT_SERVICES) + ".I" + formName + CLIENT_FORM_SERVICE_SUFFIX);
-
-    ArrayList<IType> formArtifacts = new ArrayList<IType>(2);
-    if (TypeUtility.exists(form)) {
-      formArtifacts.add(form);
-    }
-    //if (TypeUtility.exists(formData)) {
-    //  formArtifacts.add(formData);
-    //}
-    if (formArtifacts.size() > 0) {
-      JavaElementDeleteOperation jedo = new JavaElementDeleteOperation();
-      jedo.setMembers(formArtifacts.toArray(new IType[formArtifacts.size()]));
-      jedo.validate();
-      jedo.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
-    }
-
-    if (TypeUtility.exists(serverService) || TypeUtility.exists(serverSvcInterface)) {
-      ServiceDeleteOperation sdo = new ServiceDeleteOperation();
-      sdo.setServiceImplementation(serverService);
-      sdo.setServiceInterface(serverSvcInterface);
-      sdo.validate();
-      sdo.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
-    }
-
-    if (TypeUtility.exists(clientService) || TypeUtility.exists(clientSvcInterface)) {
-      ServiceDeleteOperation sdo = new ServiceDeleteOperation();
-      sdo.setServiceImplementation(clientService);
-      sdo.setServiceInterface(clientSvcInterface);
-      sdo.validate();
-      sdo.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
-    }
   }
 
   @Override
