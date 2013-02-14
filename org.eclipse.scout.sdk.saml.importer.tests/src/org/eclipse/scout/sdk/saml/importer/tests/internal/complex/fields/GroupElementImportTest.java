@@ -23,7 +23,6 @@ import org.junit.Test;
  * @since 3.9.0 05.02.2013
  */
 public class GroupElementImportTest extends AbstractSamlFieldImporterTest implements IComplexFieldTestConstants {
-  // group GroupTest border_decoration=line
 
   private final static String[] LOCATION = new String[]{"GroupTest"};
 
@@ -48,8 +47,9 @@ public class GroupElementImportTest extends AbstractSamlFieldImporterTest implem
     testBoolConfigMethod(getField(FORM_NAME, LOCATION), "getConfiguredEnabled", false);
   }
 
+  @Test
   public void testBorderDecorationAttribute() throws Exception {
-    testStringConfigMethod(getField(FORM_NAME, LOCATION), "getConfiguredBorderDecoration", "BORDER_DECORATION_LINE");
+    testStringConfigMethod(getField(FORM_NAME, LOCATION), "getConfiguredBorderDecoration", "line");
   }
 
   @Test

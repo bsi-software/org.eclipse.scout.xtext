@@ -5,6 +5,7 @@ import com.google.inject.Provider;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.scout.saml.saml.BigDecimalElement;
 import org.eclipse.scout.saml.saml.ButtonElement;
+import org.eclipse.scout.saml.saml.CheckboxElement;
 import org.eclipse.scout.saml.saml.CodeElement;
 import org.eclipse.scout.saml.saml.ColumnElement;
 import org.eclipse.scout.saml.saml.CustomFieldElement;
@@ -99,6 +100,14 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 				if(context == grammarAccess.getButtonElementRule() ||
 				   context == grammarAccess.getFormFieldElementRule()) {
 					sequence_ButtonElement(context, (ButtonElement) semanticObject); 
+					return; 
+				}
+				else break;
+			case SamlPackage.CHECKBOX_ELEMENT:
+				if(context == grammarAccess.getCheckboxElementRule() ||
+				   context == grammarAccess.getFormFieldElementRule() ||
+				   context == grammarAccess.getValueFieldElementRule()) {
+					sequence_CheckboxElement(context, (CheckboxElement) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1162,6 +1171,14 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         enabled=BooleanType? 
 	 *         visible=BooleanType? 
 	 *         processButton=BooleanType? 
+	 *         (
+	 *             type='normal' | 
+	 *             type='cancel' | 
+	 *             type='close' | 
+	 *             type='ok' | 
+	 *             type='reset' | 
+	 *             type='save'
+	 *         )? 
 	 *         gridWidth=INT? 
 	 *         widthInPixels=INT? 
 	 *         superType=[TemplateElement|ID]? 
@@ -1169,6 +1186,27 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *     )
 	 */
 	protected void sequence_ButtonElement(EObject context, ButtonElement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         name=ID 
+	 *         text=[TranslationElement|QualifiedName]? 
+	 *         enabled=BooleanType? 
+	 *         visible=BooleanType? 
+	 *         gridWidth=INT? 
+	 *         widthInPixels=INT? 
+	 *         labelVisible=BooleanType? 
+	 *         master=[ValueFieldElement|ID]? 
+	 *         mandatory=BooleanType? 
+	 *         superType=[TemplateElement|ID]? 
+	 *         logic+=LogicElement*
+	 *     )
+	 */
+	protected void sequence_CheckboxElement(EObject context, CheckboxElement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

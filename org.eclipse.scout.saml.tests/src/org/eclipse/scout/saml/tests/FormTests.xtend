@@ -201,4 +201,30 @@ class FormTests {
 		}
 		'''.parse.assertNoErrors
 	}
+	
+	@Test
+	def void testCheckbox() {
+		'''
+		module a.b
+		
+		translation texts.chkbox01 de="aa"
+		
+		form TabTest01 columns=1 {
+			check MyTestCheckbox text=texts.chkbox01 enabled=false visible=false width=3 width_pixels=100 label_visible=false mandatory=true 
+		}
+		'''.parse.assertNoErrors
+	}
+	
+	@Test
+	def void testOkButton() {
+		'''
+		module a.b
+		
+		translation texts.okbutt de="Ok"
+		
+		form TabTest01 columns=1 {
+			button TestOkButton text=texts.okbutt process_button=true type=ok
+		}
+		'''.parse.assertNoErrors
+	}
 }

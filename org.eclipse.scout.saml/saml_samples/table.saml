@@ -10,9 +10,9 @@ translation Saldo default_lang="Saldo"
 translation InfoF7Col default_lang="Info                                     F7"
 
 
-form Rka021_gen {
+form TableTest {
 	logic event=modify_load placement=server {
-		"System.out.println(\"Rka021 form startup\");
+		"System.out.println(\"TableTest form startup\");
 		formData.getStornoTable().addRow(new Object[]{new java.util.Date(), \"text\", new java.util.Date(), 15, 134592, \"sollhaben text\", 135.25});
 		return formData;"
 	}
@@ -25,6 +25,6 @@ form Rka021_gen {
 		column ColSy text=Sy type=int width=27
 		column ColCpNr text=CpNr type=int width=53
 		column ColSollHaben text=SollHaben type=string width=222
-		column ColSaldo text=Saldo type=double width=160
+		column ColSaldo text=Saldo type=bigdecimal width=160
 	}
 }

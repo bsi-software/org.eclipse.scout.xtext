@@ -94,6 +94,7 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
       case SamlPackage.KEY_ELEMENT: return createKeyElement();
       case SamlPackage.TAB_ELEMENT: return createTabElement();
       case SamlPackage.TAB_BOX_ELEMENT: return createTabBoxElement();
+      case SamlPackage.CHECKBOX_ELEMENT: return createCheckboxElement();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -427,6 +428,17 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
   {
     TabBoxElementImpl tabBoxElement = new TabBoxElementImpl();
     return tabBoxElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CheckboxElement createCheckboxElement()
+  {
+    CheckboxElementImpl checkboxElement = new CheckboxElementImpl();
+    return checkboxElement;
   }
 
   /**

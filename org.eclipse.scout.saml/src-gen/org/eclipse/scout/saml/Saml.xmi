@@ -613,6 +613,7 @@
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.23"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.34"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
       </alternatives>
     </rules>
@@ -1499,6 +1500,20 @@
             </elements>
           </elements>
           <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="type"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+              <terminal xsi:type="xtext:Alternatives">
+                <elements xsi:type="xtext:Keyword" value="normal"/>
+                <elements xsi:type="xtext:Keyword" value="cancel"/>
+                <elements xsi:type="xtext:Keyword" value="close"/>
+                <elements xsi:type="xtext:Keyword" value="ok"/>
+                <elements xsi:type="xtext:Keyword" value="reset"/>
+                <elements xsi:type="xtext:Keyword" value="save"/>
+              </terminal>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
             <elements xsi:type="xtext:Keyword" value="width"/>
             <elements xsi:type="xtext:Keyword" value="="/>
             <elements xsi:type="xtext:Assignment" feature="gridWidth" operator="=">
@@ -1935,6 +1950,104 @@
             <elements xsi:type="xtext:Assignment" feature="tabs" operator="+=">
               <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.32"/>
             </elements>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="}"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="CheckboxElement">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//CheckboxElement"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="check"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+        </elements>
+        <elements xsi:type="xtext:UnorderedGroup">
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="text"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="text" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//TranslationElement"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.52"/>
+              </terminal>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="enabled"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="enabled" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="visible"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="visible" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="width"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="gridWidth" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.55"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="width_pixels"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="widthInPixels" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.55"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="label_visible"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="labelVisible" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="master"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="master" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//ValueFieldElement"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+              </terminal>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="mandatory"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="mandatory" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="super_type"/>
+            <elements xsi:type="xtext:Keyword" value="="/>
+            <elements xsi:type="xtext:Assignment" feature="superType" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/scout/saml/Saml#//TemplateElement"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+              </terminal>
+            </elements>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" value="{"/>
+          <elements xsi:type="xtext:Assignment" cardinality="*" feature="logic" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
           </elements>
           <elements xsi:type="xtext:Keyword" value="}"/>
         </elements>

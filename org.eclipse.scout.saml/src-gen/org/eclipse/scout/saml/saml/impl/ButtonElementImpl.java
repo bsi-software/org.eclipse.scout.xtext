@@ -31,6 +31,7 @@ import org.eclipse.scout.saml.saml.TranslationElement;
  * <ul>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.ButtonElementImpl#getText <em>Text</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.ButtonElementImpl#getProcessButton <em>Process Button</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.ButtonElementImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.ButtonElementImpl#getGridWidth <em>Grid Width</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.ButtonElementImpl#getWidthInPixels <em>Width In Pixels</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.ButtonElementImpl#getMenus <em>Menus</em>}</li>
@@ -70,6 +71,26 @@ public class ButtonElementImpl extends FormFieldElementImpl implements ButtonEle
    * @ordered
    */
   protected String processButton = PROCESS_BUTTON_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
+  protected static final String TYPE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
+  protected String type = TYPE_EDEFAULT;
 
   /**
    * The default value of the '{@link #getGridWidth() <em>Grid Width</em>}' attribute.
@@ -213,6 +234,29 @@ public class ButtonElementImpl extends FormFieldElementImpl implements ButtonEle
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getType()
+  {
+    return type;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setType(String newType)
+  {
+    String oldType = type;
+    type = newType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.BUTTON_ELEMENT__TYPE, oldType, type));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public int getGridWidth()
   {
     return gridWidth;
@@ -299,6 +343,8 @@ public class ButtonElementImpl extends FormFieldElementImpl implements ButtonEle
         return basicGetText();
       case SamlPackage.BUTTON_ELEMENT__PROCESS_BUTTON:
         return getProcessButton();
+      case SamlPackage.BUTTON_ELEMENT__TYPE:
+        return getType();
       case SamlPackage.BUTTON_ELEMENT__GRID_WIDTH:
         return getGridWidth();
       case SamlPackage.BUTTON_ELEMENT__WIDTH_IN_PIXELS:
@@ -325,6 +371,9 @@ public class ButtonElementImpl extends FormFieldElementImpl implements ButtonEle
         return;
       case SamlPackage.BUTTON_ELEMENT__PROCESS_BUTTON:
         setProcessButton((String)newValue);
+        return;
+      case SamlPackage.BUTTON_ELEMENT__TYPE:
+        setType((String)newValue);
         return;
       case SamlPackage.BUTTON_ELEMENT__GRID_WIDTH:
         setGridWidth((Integer)newValue);
@@ -356,6 +405,9 @@ public class ButtonElementImpl extends FormFieldElementImpl implements ButtonEle
       case SamlPackage.BUTTON_ELEMENT__PROCESS_BUTTON:
         setProcessButton(PROCESS_BUTTON_EDEFAULT);
         return;
+      case SamlPackage.BUTTON_ELEMENT__TYPE:
+        setType(TYPE_EDEFAULT);
+        return;
       case SamlPackage.BUTTON_ELEMENT__GRID_WIDTH:
         setGridWidth(GRID_WIDTH_EDEFAULT);
         return;
@@ -383,6 +435,8 @@ public class ButtonElementImpl extends FormFieldElementImpl implements ButtonEle
         return text != null;
       case SamlPackage.BUTTON_ELEMENT__PROCESS_BUTTON:
         return PROCESS_BUTTON_EDEFAULT == null ? processButton != null : !PROCESS_BUTTON_EDEFAULT.equals(processButton);
+      case SamlPackage.BUTTON_ELEMENT__TYPE:
+        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
       case SamlPackage.BUTTON_ELEMENT__GRID_WIDTH:
         return gridWidth != GRID_WIDTH_EDEFAULT;
       case SamlPackage.BUTTON_ELEMENT__WIDTH_IN_PIXELS:
@@ -406,6 +460,8 @@ public class ButtonElementImpl extends FormFieldElementImpl implements ButtonEle
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (processButton: ");
     result.append(processButton);
+    result.append(", type: ");
+    result.append(type);
     result.append(", gridWidth: ");
     result.append(gridWidth);
     result.append(", widthInPixels: ");

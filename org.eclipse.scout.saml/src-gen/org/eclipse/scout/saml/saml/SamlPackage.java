@@ -2340,13 +2340,22 @@ public interface SamlPackage extends EPackage
   int BUTTON_ELEMENT__PROCESS_BUTTON = FORM_FIELD_ELEMENT_FEATURE_COUNT + 1;
 
   /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUTTON_ELEMENT__TYPE = FORM_FIELD_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
    * The feature id for the '<em><b>Grid Width</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BUTTON_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT_FEATURE_COUNT + 2;
+  int BUTTON_ELEMENT__GRID_WIDTH = FORM_FIELD_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
@@ -2355,7 +2364,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUTTON_ELEMENT__WIDTH_IN_PIXELS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 3;
+  int BUTTON_ELEMENT__WIDTH_IN_PIXELS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Menus</b></em>' containment reference list.
@@ -2364,7 +2373,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUTTON_ELEMENT__MENUS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 4;
+  int BUTTON_ELEMENT__MENUS = FORM_FIELD_ELEMENT_FEATURE_COUNT + 5;
 
   /**
    * The number of structural features of the '<em>Button Element</em>' class.
@@ -2373,7 +2382,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUTTON_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 5;
+  int BUTTON_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 6;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.MenuElementImpl <em>Menu Element</em>}' class.
@@ -2920,6 +2929,124 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int TAB_BOX_ELEMENT_FEATURE_COUNT = FORM_FIELD_ELEMENT_FEATURE_COUNT + 3;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.CheckboxElementImpl <em>Checkbox Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.CheckboxElementImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getCheckboxElement()
+   * @generated
+   */
+  int CHECKBOX_ELEMENT = 30;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHECKBOX_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Enabled</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHECKBOX_ELEMENT__ENABLED = VALUE_FIELD_ELEMENT__ENABLED;
+
+  /**
+   * The feature id for the '<em><b>Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHECKBOX_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHECKBOX_ELEMENT__SUPER_TYPE = VALUE_FIELD_ELEMENT__SUPER_TYPE;
+
+  /**
+   * The feature id for the '<em><b>Logic</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHECKBOX_ELEMENT__LOGIC = VALUE_FIELD_ELEMENT__LOGIC;
+
+  /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHECKBOX_ELEMENT__TEXT = VALUE_FIELD_ELEMENT__TEXT;
+
+  /**
+   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHECKBOX_ELEMENT__LABEL_VISIBLE = VALUE_FIELD_ELEMENT__LABEL_VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Master</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHECKBOX_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
+
+  /**
+   * The feature id for the '<em><b>Mandatory</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHECKBOX_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT__MANDATORY;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHECKBOX_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHECKBOX_ELEMENT__WIDTH_IN_PIXELS = VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
+
+  /**
+   * The number of structural features of the '<em>Checkbox Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHECKBOX_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
 
 
   /**
@@ -4120,6 +4247,17 @@ public interface SamlPackage extends EPackage
   EAttribute getButtonElement_ProcessButton();
 
   /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.ButtonElement#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see org.eclipse.scout.saml.saml.ButtonElement#getType()
+   * @see #getButtonElement()
+   * @generated
+   */
+  EAttribute getButtonElement_Type();
+
+  /**
    * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.ButtonElement#getGridWidth <em>Grid Width</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -4552,6 +4690,16 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EReference getTabBoxElement_Tabs();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.CheckboxElement <em>Checkbox Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Checkbox Element</em>'.
+   * @see org.eclipse.scout.saml.saml.CheckboxElement
+   * @generated
+   */
+  EClass getCheckboxElement();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -5513,6 +5661,14 @@ public interface SamlPackage extends EPackage
     EAttribute BUTTON_ELEMENT__PROCESS_BUTTON = eINSTANCE.getButtonElement_ProcessButton();
 
     /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BUTTON_ELEMENT__TYPE = eINSTANCE.getButtonElement_Type();
+
+    /**
      * The meta object literal for the '<em><b>Grid Width</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -5843,6 +5999,16 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EReference TAB_BOX_ELEMENT__TABS = eINSTANCE.getTabBoxElement_Tabs();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.CheckboxElementImpl <em>Checkbox Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.CheckboxElementImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getCheckboxElement()
+     * @generated
+     */
+    EClass CHECKBOX_ELEMENT = eINSTANCE.getCheckboxElement();
 
   }
 

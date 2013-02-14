@@ -4,6 +4,7 @@ import org.eclipse.scout.commons.TuningUtility;
 import org.eclipse.scout.sdk.saml.importer.tests.AbstractSamlImporterTest;
 import org.eclipse.scout.sdk.saml.importer.tests.internal.complex.fields.BigdecimalElementImportTest;
 import org.eclipse.scout.sdk.saml.importer.tests.internal.complex.fields.ButtonElementImportTest;
+import org.eclipse.scout.sdk.saml.importer.tests.internal.complex.fields.CheckboxElementImportTest;
 import org.eclipse.scout.sdk.saml.importer.tests.internal.complex.fields.ColumnElementImportTest;
 import org.eclipse.scout.sdk.saml.importer.tests.internal.complex.fields.CustomFieldElementImportTest;
 import org.eclipse.scout.sdk.saml.importer.tests.internal.complex.fields.DateElementImportTest;
@@ -26,7 +27,7 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({TranslationElementImportTest.class, CodeElementImportTest.class, LookupElementImportTest.class, FormElementImportTest.class, KeyElementImportTest.class,
     BigdecimalElementImportTest.class, ButtonElementImportTest.class, ColumnElementImportTest.class, DateElementImportTest.class, GroupElementImportTest.class,
     ListElementImportTest.class, MenuElementImportTest.class, SequenceElementImportTest.class, SmartfieldElementImportTest.class, StringElementImportTest.class,
-    TabboxElementImportTest.class, TabElementImportTest.class, TableElementImportTest.class, CustomFieldElementImportTest.class})
+    TabboxElementImportTest.class, TabElementImportTest.class, TableElementImportTest.class, CustomFieldElementImportTest.class, CheckboxElementImportTest.class})
 public class _SuiteComplexImporterTests extends AbstractSamlImporterTest {
 
   public final static String SHARED_BUNDLE = "org.eclipse.scout.saml.tests.complex.shared";

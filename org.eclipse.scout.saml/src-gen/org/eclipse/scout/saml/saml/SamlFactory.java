@@ -293,6 +293,15 @@ public interface SamlFactory extends EFactory
   TabBoxElement createTabBoxElement();
 
   /**
+   * Returns a new object of class '<em>Checkbox Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Checkbox Element</em>'.
+   * @generated
+   */
+  CheckboxElement createCheckboxElement();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

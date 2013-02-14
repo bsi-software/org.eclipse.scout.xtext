@@ -111,7 +111,7 @@ GroupBoxElement:'group' name=ID
 	('{' (logic+=LogicElement | fields+=FormFieldElement)* '}')?;
 
 // VALUE FIELDS
-ValueFieldElement: StringElement|BigDecimalElement|LongElement|DateElement|GenericValueFieldElement;
+ValueFieldElement: StringElement|BigDecimalElement|LongElement|DateElement|CheckboxElement|GenericValueFieldElement;
 GenericValueFieldElement:SmartfieldElement|ListBoxElement;
 
 StringElement:'string' name=ID 
@@ -239,6 +239,7 @@ ButtonElement:'button' name=ID
 		('enabled' '=' enabled=BooleanType)? &
 		('visible' '=' visible=BooleanType)? &
 		('process_button' '=' processButton=BooleanType)? &
+		('type' '=' type=('normal'|'cancel'|'close'|'ok'|'reset'|'save'))? &
 		('width' '=' gridWidth=INT)? &
 		('width_pixels' '=' widthInPixels=INT)? &
 		('super_type' '=' superType=[TemplateElement])?
@@ -304,3 +305,17 @@ TabBoxElement:'tabbox' name=ID
 		('super_type' '=' superType=[TemplateElement])?
 	)
 	('{' (logic+=LogicElement | tabs+=TabElement)* '}')?;
+
+CheckboxElement:'check' name=ID
+	(
+		('text' '=' text=[TranslationElement|QualifiedName])? &
+		('enabled' '=' enabled=BooleanType)? &
+		('visible' '=' visible=BooleanType)? &
+		('width' '=' gridWidth=INT)? &
+		('width_pixels' '=' widthInPixels=INT)? &
+		('label_visible' '=' labelVisible=BooleanType)? &
+		('master' '=' master=[ValueFieldElement])? &
+		('mandatory' '=' mandatory=BooleanType)? &
+		('super_type' '=' superType=[TemplateElement])?
+	)
+	('{' logic+=LogicElement* '}')?;

@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.scout.saml.saml.BigDecimalElement;
 import org.eclipse.scout.saml.saml.ButtonElement;
+import org.eclipse.scout.saml.saml.CheckboxElement;
 import org.eclipse.scout.saml.saml.CodeElement;
 import org.eclipse.scout.saml.saml.ColumnElement;
 import org.eclipse.scout.saml.saml.CompositeFieldElement;
@@ -259,6 +260,13 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * @generated
    */
   private EClass tabBoxElementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass checkboxElementEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -1438,7 +1446,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getButtonElement_GridWidth()
+  public EAttribute getButtonElement_Type()
   {
     return (EAttribute)buttonElementEClass.getEStructuralFeatures().get(2);
   }
@@ -1448,7 +1456,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getButtonElement_WidthInPixels()
+  public EAttribute getButtonElement_GridWidth()
   {
     return (EAttribute)buttonElementEClass.getEStructuralFeatures().get(3);
   }
@@ -1458,9 +1466,19 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getButtonElement_WidthInPixels()
+  {
+    return (EAttribute)buttonElementEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getButtonElement_Menus()
   {
-    return (EReference)buttonElementEClass.getEStructuralFeatures().get(4);
+    return (EReference)buttonElementEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -1838,6 +1856,16 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getCheckboxElement()
+  {
+    return checkboxElementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public SamlFactory getSamlFactory()
   {
     return (SamlFactory)getEFactoryInstance();
@@ -1997,6 +2025,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     buttonElementEClass = createEClass(BUTTON_ELEMENT);
     createEReference(buttonElementEClass, BUTTON_ELEMENT__TEXT);
     createEAttribute(buttonElementEClass, BUTTON_ELEMENT__PROCESS_BUTTON);
+    createEAttribute(buttonElementEClass, BUTTON_ELEMENT__TYPE);
     createEAttribute(buttonElementEClass, BUTTON_ELEMENT__GRID_WIDTH);
     createEAttribute(buttonElementEClass, BUTTON_ELEMENT__WIDTH_IN_PIXELS);
     createEReference(buttonElementEClass, BUTTON_ELEMENT__MENUS);
@@ -2043,6 +2072,8 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     createEAttribute(tabBoxElementEClass, TAB_BOX_ELEMENT__GRID_WIDTH);
     createEAttribute(tabBoxElementEClass, TAB_BOX_ELEMENT__WIDTH_IN_PIXELS);
     createEReference(tabBoxElementEClass, TAB_BOX_ELEMENT__TABS);
+
+    checkboxElementEClass = createEClass(CHECKBOX_ELEMENT);
   }
 
   /**
@@ -2090,6 +2121,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     tableElementEClass.getESuperTypes().add(this.getFormFieldElement());
     tabElementEClass.getESuperTypes().add(this.getCompositeFieldElement());
     tabBoxElementEClass.getESuperTypes().add(this.getFormFieldElement());
+    checkboxElementEClass.getESuperTypes().add(this.getValueFieldElement());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2226,6 +2258,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEClass(buttonElementEClass, ButtonElement.class, "ButtonElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getButtonElement_Text(), this.getTranslationElement(), null, "text", null, 0, 1, ButtonElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getButtonElement_ProcessButton(), ecorePackage.getEString(), "processButton", null, 0, 1, ButtonElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getButtonElement_Type(), ecorePackage.getEString(), "type", null, 0, 1, ButtonElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getButtonElement_GridWidth(), ecorePackage.getEInt(), "gridWidth", null, 0, 1, ButtonElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getButtonElement_WidthInPixels(), ecorePackage.getEInt(), "widthInPixels", null, 0, 1, ButtonElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getButtonElement_Menus(), this.getMenuElement(), null, "menus", null, 0, -1, ButtonElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2272,6 +2305,8 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEAttribute(getTabBoxElement_GridWidth(), ecorePackage.getEInt(), "gridWidth", null, 0, 1, TabBoxElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getTabBoxElement_WidthInPixels(), ecorePackage.getEInt(), "widthInPixels", null, 0, 1, TabBoxElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTabBoxElement_Tabs(), this.getTabElement(), null, "tabs", null, 0, -1, TabBoxElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(checkboxElementEClass, CheckboxElement.class, "CheckboxElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     // Create resource
     createResource(eNS_URI);

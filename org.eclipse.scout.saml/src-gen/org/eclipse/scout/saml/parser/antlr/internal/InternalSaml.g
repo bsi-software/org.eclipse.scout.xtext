@@ -2727,11 +2727,21 @@ ruleValueFieldElement returns [EObject current=null]
 
     |
     { 
-        newCompositeNode(grammarAccess.getValueFieldElementAccess().getGenericValueFieldElementParserRuleCall_4()); 
+        newCompositeNode(grammarAccess.getValueFieldElementAccess().getCheckboxElementParserRuleCall_4()); 
     }
-    this_GenericValueFieldElement_4=ruleGenericValueFieldElement
+    this_CheckboxElement_4=ruleCheckboxElement
     { 
-        $current = $this_GenericValueFieldElement_4.current; 
+        $current = $this_CheckboxElement_4.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getValueFieldElementAccess().getGenericValueFieldElementParserRuleCall_5()); 
+    }
+    this_GenericValueFieldElement_5=ruleGenericValueFieldElement
+    { 
+        $current = $this_GenericValueFieldElement_5.current; 
         afterParserOrEnumRuleCall();
     }
 )
@@ -6548,9 +6558,9 @@ ruleButtonElement returns [EObject current=null]
 					{ 
 	 				  getUnorderedGroupHelper().select(grammarAccess.getButtonElementAccess().getUnorderedGroup_2(), 4);
 	 				}
-					({true}?=>(	otherlv_15='width' 
+					({true}?=>(	otherlv_15='type' 
     {
-    	newLeafNode(otherlv_15, grammarAccess.getButtonElementAccess().getWidthKeyword_2_4_0());
+    	newLeafNode(otherlv_15, grammarAccess.getButtonElementAccess().getTypeKeyword_2_4_0());
     }
 	otherlv_16='=' 
     {
@@ -6558,20 +6568,80 @@ ruleButtonElement returns [EObject current=null]
     }
 (
 (
-		lv_gridWidth_17_0=RULE_INT
-		{
-			newLeafNode(lv_gridWidth_17_0, grammarAccess.getButtonElementAccess().getGridWidthINTTerminalRuleCall_2_4_2_0()); 
-		}
-		{
+(
+		lv_type_17_1=	'normal' 
+    {
+        newLeafNode(lv_type_17_1, grammarAccess.getButtonElementAccess().getTypeNormalKeyword_2_4_2_0_0());
+    }
+ 
+	    {
 	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getButtonElementRule());
 	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"gridWidth",
-        		lv_gridWidth_17_0, 
-        		"INT");
+       		setWithLastConsumed($current, "type", lv_type_17_1, null);
 	    }
+
+    |		lv_type_17_2=	'cancel' 
+    {
+        newLeafNode(lv_type_17_2, grammarAccess.getButtonElementAccess().getTypeCancelKeyword_2_4_2_0_1());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getButtonElementRule());
+	        }
+       		setWithLastConsumed($current, "type", lv_type_17_2, null);
+	    }
+
+    |		lv_type_17_3=	'close' 
+    {
+        newLeafNode(lv_type_17_3, grammarAccess.getButtonElementAccess().getTypeCloseKeyword_2_4_2_0_2());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getButtonElementRule());
+	        }
+       		setWithLastConsumed($current, "type", lv_type_17_3, null);
+	    }
+
+    |		lv_type_17_4=	'ok' 
+    {
+        newLeafNode(lv_type_17_4, grammarAccess.getButtonElementAccess().getTypeOkKeyword_2_4_2_0_3());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getButtonElementRule());
+	        }
+       		setWithLastConsumed($current, "type", lv_type_17_4, null);
+	    }
+
+    |		lv_type_17_5=	'reset' 
+    {
+        newLeafNode(lv_type_17_5, grammarAccess.getButtonElementAccess().getTypeResetKeyword_2_4_2_0_4());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getButtonElementRule());
+	        }
+       		setWithLastConsumed($current, "type", lv_type_17_5, null);
+	    }
+
+    |		lv_type_17_6=	'save' 
+    {
+        newLeafNode(lv_type_17_6, grammarAccess.getButtonElementAccess().getTypeSaveKeyword_2_4_2_0_5());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getButtonElementRule());
+	        }
+       		setWithLastConsumed($current, "type", lv_type_17_6, null);
+	    }
+
+)
 
 )
 )))
@@ -6586,9 +6656,9 @@ ruleButtonElement returns [EObject current=null]
 					{ 
 	 				  getUnorderedGroupHelper().select(grammarAccess.getButtonElementAccess().getUnorderedGroup_2(), 5);
 	 				}
-					({true}?=>(	otherlv_18='width_pixels' 
+					({true}?=>(	otherlv_18='width' 
     {
-    	newLeafNode(otherlv_18, grammarAccess.getButtonElementAccess().getWidth_pixelsKeyword_2_5_0());
+    	newLeafNode(otherlv_18, grammarAccess.getButtonElementAccess().getWidthKeyword_2_5_0());
     }
 	otherlv_19='=' 
     {
@@ -6596,9 +6666,9 @@ ruleButtonElement returns [EObject current=null]
     }
 (
 (
-		lv_widthInPixels_20_0=RULE_INT
+		lv_gridWidth_20_0=RULE_INT
 		{
-			newLeafNode(lv_widthInPixels_20_0, grammarAccess.getButtonElementAccess().getWidthInPixelsINTTerminalRuleCall_2_5_2_0()); 
+			newLeafNode(lv_gridWidth_20_0, grammarAccess.getButtonElementAccess().getGridWidthINTTerminalRuleCall_2_5_2_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -6606,8 +6676,8 @@ ruleButtonElement returns [EObject current=null]
 	        }
        		setWithLastConsumed(
        			$current, 
-       			"widthInPixels",
-        		lv_widthInPixels_20_0, 
+       			"gridWidth",
+        		lv_gridWidth_20_0, 
         		"INT");
 	    }
 
@@ -6624,13 +6694,51 @@ ruleButtonElement returns [EObject current=null]
 					{ 
 	 				  getUnorderedGroupHelper().select(grammarAccess.getButtonElementAccess().getUnorderedGroup_2(), 6);
 	 				}
-					({true}?=>(	otherlv_21='super_type' 
+					({true}?=>(	otherlv_21='width_pixels' 
     {
-    	newLeafNode(otherlv_21, grammarAccess.getButtonElementAccess().getSuper_typeKeyword_2_6_0());
+    	newLeafNode(otherlv_21, grammarAccess.getButtonElementAccess().getWidth_pixelsKeyword_2_6_0());
     }
 	otherlv_22='=' 
     {
     	newLeafNode(otherlv_22, grammarAccess.getButtonElementAccess().getEqualsSignKeyword_2_6_1());
+    }
+(
+(
+		lv_widthInPixels_23_0=RULE_INT
+		{
+			newLeafNode(lv_widthInPixels_23_0, grammarAccess.getButtonElementAccess().getWidthInPixelsINTTerminalRuleCall_2_6_2_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getButtonElementRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"widthInPixels",
+        		lv_widthInPixels_23_0, 
+        		"INT");
+	    }
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getButtonElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getButtonElementAccess().getUnorderedGroup_2(), 7)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getButtonElementAccess().getUnorderedGroup_2(), 7);
+	 				}
+					({true}?=>(	otherlv_24='super_type' 
+    {
+    	newLeafNode(otherlv_24, grammarAccess.getButtonElementAccess().getSuper_typeKeyword_2_7_0());
+    }
+	otherlv_25='=' 
+    {
+    	newLeafNode(otherlv_25, grammarAccess.getButtonElementAccess().getEqualsSignKeyword_2_7_1());
     }
 (
 (
@@ -6639,9 +6747,9 @@ ruleButtonElement returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getButtonElementRule());
 	        }
         }
-	otherlv_23=RULE_ID
+	otherlv_26=RULE_ID
 	{
-		newLeafNode(otherlv_23, grammarAccess.getButtonElementAccess().getSuperTypeTemplateElementCrossReference_2_6_2_0()); 
+		newLeafNode(otherlv_26, grammarAccess.getButtonElementAccess().getSuperTypeTemplateElementCrossReference_2_7_2_0()); 
 	}
 
 )
@@ -6659,23 +6767,23 @@ ruleButtonElement returns [EObject current=null]
 	  getUnorderedGroupHelper().leave(grammarAccess.getButtonElementAccess().getUnorderedGroup_2());
 	}
 
-)(	otherlv_24='{' 
+)(	otherlv_27='{' 
     {
-    	newLeafNode(otherlv_24, grammarAccess.getButtonElementAccess().getLeftCurlyBracketKeyword_3_0());
+    	newLeafNode(otherlv_27, grammarAccess.getButtonElementAccess().getLeftCurlyBracketKeyword_3_0());
     }
 ((
 (
 		{ 
 	        newCompositeNode(grammarAccess.getButtonElementAccess().getLogicLogicElementParserRuleCall_3_1_0_0()); 
 	    }
-		lv_logic_25_0=ruleLogicElement		{
+		lv_logic_28_0=ruleLogicElement		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getButtonElementRule());
 	        }
        		add(
        			$current, 
        			"logic",
-        		lv_logic_25_0, 
+        		lv_logic_28_0, 
         		"LogicElement");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -6687,22 +6795,22 @@ ruleButtonElement returns [EObject current=null]
 		{ 
 	        newCompositeNode(grammarAccess.getButtonElementAccess().getMenusMenuElementParserRuleCall_3_1_1_0()); 
 	    }
-		lv_menus_26_0=ruleMenuElement		{
+		lv_menus_29_0=ruleMenuElement		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getButtonElementRule());
 	        }
        		add(
        			$current, 
        			"menus",
-        		lv_menus_26_0, 
+        		lv_menus_29_0, 
         		"MenuElement");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))*	otherlv_27='}' 
+))*	otherlv_30='}' 
     {
-    	newLeafNode(otherlv_27, grammarAccess.getButtonElementAccess().getRightCurlyBracketKeyword_3_2());
+    	newLeafNode(otherlv_30, grammarAccess.getButtonElementAccess().getRightCurlyBracketKeyword_3_2());
     }
 )?)
 ;
@@ -8499,6 +8607,420 @@ ruleTabBoxElement returns [EObject current=null]
 ))*	otherlv_21='}' 
     {
     	newLeafNode(otherlv_21, grammarAccess.getTabBoxElementAccess().getRightCurlyBracketKeyword_3_2());
+    }
+)?)
+;
+
+
+
+
+
+// Entry rule entryRuleCheckboxElement
+entryRuleCheckboxElement returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getCheckboxElementRule()); }
+	 iv_ruleCheckboxElement=ruleCheckboxElement 
+	 { $current=$iv_ruleCheckboxElement.current; } 
+	 EOF 
+;
+
+// Rule CheckboxElement
+ruleCheckboxElement returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='check' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getCheckboxElementAccess().getCheckKeyword_0());
+    }
+(
+(
+		lv_name_1_0=RULE_ID
+		{
+			newLeafNode(lv_name_1_0, grammarAccess.getCheckboxElementAccess().getNameIDTerminalRuleCall_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCheckboxElementRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_1_0, 
+        		"ID");
+	    }
+
+)
+)(
+
+(
+	{ 
+	  getUnorderedGroupHelper().enter(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2());
+	}
+	(
+		(
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 0)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 0);
+	 				}
+					({true}?=>(	otherlv_3='text' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getCheckboxElementAccess().getTextKeyword_2_0_0());
+    }
+	otherlv_4='=' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getCheckboxElementAccess().getEqualsSignKeyword_2_0_1());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCheckboxElementRule());
+	        }
+        }
+		{ 
+	        newCompositeNode(grammarAccess.getCheckboxElementAccess().getTextTranslationElementCrossReference_2_0_2_0()); 
+	    }
+		ruleQualifiedName		{ 
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 1)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 1);
+	 				}
+					({true}?=>(	otherlv_6='enabled' 
+    {
+    	newLeafNode(otherlv_6, grammarAccess.getCheckboxElementAccess().getEnabledKeyword_2_1_0());
+    }
+	otherlv_7='=' 
+    {
+    	newLeafNode(otherlv_7, grammarAccess.getCheckboxElementAccess().getEqualsSignKeyword_2_1_1());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getCheckboxElementAccess().getEnabledBooleanTypeParserRuleCall_2_1_2_0()); 
+	    }
+		lv_enabled_8_0=ruleBooleanType		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getCheckboxElementRule());
+	        }
+       		set(
+       			$current, 
+       			"enabled",
+        		lv_enabled_8_0, 
+        		"BooleanType");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 2)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 2);
+	 				}
+					({true}?=>(	otherlv_9='visible' 
+    {
+    	newLeafNode(otherlv_9, grammarAccess.getCheckboxElementAccess().getVisibleKeyword_2_2_0());
+    }
+	otherlv_10='=' 
+    {
+    	newLeafNode(otherlv_10, grammarAccess.getCheckboxElementAccess().getEqualsSignKeyword_2_2_1());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getCheckboxElementAccess().getVisibleBooleanTypeParserRuleCall_2_2_2_0()); 
+	    }
+		lv_visible_11_0=ruleBooleanType		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getCheckboxElementRule());
+	        }
+       		set(
+       			$current, 
+       			"visible",
+        		lv_visible_11_0, 
+        		"BooleanType");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 3)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 3);
+	 				}
+					({true}?=>(	otherlv_12='width' 
+    {
+    	newLeafNode(otherlv_12, grammarAccess.getCheckboxElementAccess().getWidthKeyword_2_3_0());
+    }
+	otherlv_13='=' 
+    {
+    	newLeafNode(otherlv_13, grammarAccess.getCheckboxElementAccess().getEqualsSignKeyword_2_3_1());
+    }
+(
+(
+		lv_gridWidth_14_0=RULE_INT
+		{
+			newLeafNode(lv_gridWidth_14_0, grammarAccess.getCheckboxElementAccess().getGridWidthINTTerminalRuleCall_2_3_2_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCheckboxElementRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"gridWidth",
+        		lv_gridWidth_14_0, 
+        		"INT");
+	    }
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 4)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 4);
+	 				}
+					({true}?=>(	otherlv_15='width_pixels' 
+    {
+    	newLeafNode(otherlv_15, grammarAccess.getCheckboxElementAccess().getWidth_pixelsKeyword_2_4_0());
+    }
+	otherlv_16='=' 
+    {
+    	newLeafNode(otherlv_16, grammarAccess.getCheckboxElementAccess().getEqualsSignKeyword_2_4_1());
+    }
+(
+(
+		lv_widthInPixels_17_0=RULE_INT
+		{
+			newLeafNode(lv_widthInPixels_17_0, grammarAccess.getCheckboxElementAccess().getWidthInPixelsINTTerminalRuleCall_2_4_2_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCheckboxElementRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"widthInPixels",
+        		lv_widthInPixels_17_0, 
+        		"INT");
+	    }
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 5)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 5);
+	 				}
+					({true}?=>(	otherlv_18='label_visible' 
+    {
+    	newLeafNode(otherlv_18, grammarAccess.getCheckboxElementAccess().getLabel_visibleKeyword_2_5_0());
+    }
+	otherlv_19='=' 
+    {
+    	newLeafNode(otherlv_19, grammarAccess.getCheckboxElementAccess().getEqualsSignKeyword_2_5_1());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getCheckboxElementAccess().getLabelVisibleBooleanTypeParserRuleCall_2_5_2_0()); 
+	    }
+		lv_labelVisible_20_0=ruleBooleanType		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getCheckboxElementRule());
+	        }
+       		set(
+       			$current, 
+       			"labelVisible",
+        		lv_labelVisible_20_0, 
+        		"BooleanType");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 6)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 6);
+	 				}
+					({true}?=>(	otherlv_21='master' 
+    {
+    	newLeafNode(otherlv_21, grammarAccess.getCheckboxElementAccess().getMasterKeyword_2_6_0());
+    }
+	otherlv_22='=' 
+    {
+    	newLeafNode(otherlv_22, grammarAccess.getCheckboxElementAccess().getEqualsSignKeyword_2_6_1());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCheckboxElementRule());
+	        }
+        }
+	otherlv_23=RULE_ID
+	{
+		newLeafNode(otherlv_23, grammarAccess.getCheckboxElementAccess().getMasterValueFieldElementCrossReference_2_6_2_0()); 
+	}
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 7)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 7);
+	 				}
+					({true}?=>(	otherlv_24='mandatory' 
+    {
+    	newLeafNode(otherlv_24, grammarAccess.getCheckboxElementAccess().getMandatoryKeyword_2_7_0());
+    }
+	otherlv_25='=' 
+    {
+    	newLeafNode(otherlv_25, grammarAccess.getCheckboxElementAccess().getEqualsSignKeyword_2_7_1());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getCheckboxElementAccess().getMandatoryBooleanTypeParserRuleCall_2_7_2_0()); 
+	    }
+		lv_mandatory_26_0=ruleBooleanType		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getCheckboxElementRule());
+	        }
+       		set(
+       			$current, 
+       			"mandatory",
+        		lv_mandatory_26_0, 
+        		"BooleanType");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 8)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 8);
+	 				}
+					({true}?=>(	otherlv_27='super_type' 
+    {
+    	newLeafNode(otherlv_27, grammarAccess.getCheckboxElementAccess().getSuper_typeKeyword_2_8_0());
+    }
+	otherlv_28='=' 
+    {
+    	newLeafNode(otherlv_28, grammarAccess.getCheckboxElementAccess().getEqualsSignKeyword_2_8_1());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCheckboxElementRule());
+	        }
+        }
+	otherlv_29=RULE_ID
+	{
+		newLeafNode(otherlv_29, grammarAccess.getCheckboxElementAccess().getSuperTypeTemplateElementCrossReference_2_8_2_0()); 
+	}
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  
+
+		)*	
+	)
+)
+	{ 
+	  getUnorderedGroupHelper().leave(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2());
+	}
+
+)(	otherlv_30='{' 
+    {
+    	newLeafNode(otherlv_30, grammarAccess.getCheckboxElementAccess().getLeftCurlyBracketKeyword_3_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getCheckboxElementAccess().getLogicLogicElementParserRuleCall_3_1_0()); 
+	    }
+		lv_logic_31_0=ruleLogicElement		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getCheckboxElementRule());
+	        }
+       		add(
+       			$current, 
+       			"logic",
+        		lv_logic_31_0, 
+        		"LogicElement");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)*	otherlv_32='}' 
+    {
+    	newLeafNode(otherlv_32, grammarAccess.getCheckboxElementAccess().getRightCurlyBracketKeyword_3_2());
     }
 )?)
 ;

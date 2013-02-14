@@ -413,4 +413,52 @@ public class FormTests {
       throw Exceptions.sneakyThrow(_e);
     }
   }
+  
+  @Test
+  public void testCheckbox() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module a.b");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("translation texts.chkbox01 de=\"aa\"");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("form TabTest01 columns=1 {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("check MyTestCheckbox text=texts.chkbox01 enabled=false visible=false width=3 width_pixels=100 label_visible=false mandatory=true ");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      Model _parse = this._parseHelper.parse(_builder);
+      this._validationTestHelper.assertNoErrors(_parse);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testOkButton() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module a.b");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("translation texts.okbutt de=\"Ok\"");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("form TabTest01 columns=1 {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("button TestOkButton text=texts.okbutt process_button=true type=ok");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      Model _parse = this._parseHelper.parse(_builder);
+      this._validationTestHelper.assertNoErrors(_parse);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
 }

@@ -254,6 +254,18 @@
             element="org.eclipse.scout.saml.saml.TemplateElement"
             operation="org.eclipse.scout.sdk.saml.importer.operation.template.TemplateElementImportOperation">
       </importer>
+      <importer
+            element="org.eclipse.scout.saml.saml.CheckboxElement"
+            operation="org.eclipse.scout.sdk.saml.importer.operation.form.field.FormFieldElementImportOperation">
+         <property
+               name="fieldSuffix"
+               value="Field">
+         </property>
+         <property
+               name="defaultSuperInterfaceFqn"
+               value="org.eclipse.scout.rt.client.ui.form.fields.booleanfield.IBooleanField">
+         </property>
+      </importer>
    </extension>
 
 </plugin>

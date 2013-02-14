@@ -94,8 +94,20 @@ Changes:
 Version: 1.0.0 2013-02-05
 Changed: mvi
 Changes:
-	Attribute 'type' of 'column' Renamed:
-		from 'double' to 'bigdecimal'
+	Renamed:
+		For Attribute 'type' of element 'column'
+			from 'double' to 'bigdecimal'
+
+
+
+Version: 1.0.0 2013-02-13
+Changed: mvi
+Changes:
+	Added:
+		For 'button' element:
+			Attribute 'type'
+		Element 'check'
+			Attributes: 'text', 'enabled', 'visible', 'width', 'width_pixels', 'label_visible', 'master', 'mandatory', 'super_type'
 
 
 

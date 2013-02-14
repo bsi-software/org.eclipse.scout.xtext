@@ -1009,6 +1009,34 @@ finally {
 
 
 
+// Entry rule entryRuleCheckboxElement
+entryRuleCheckboxElement 
+:
+{ before(grammarAccess.getCheckboxElementRule()); }
+	 ruleCheckboxElement
+{ after(grammarAccess.getCheckboxElementRule()); } 
+	 EOF 
+;
+
+// Rule CheckboxElement
+ruleCheckboxElement
+    @init {
+		int stackSize = keepStackSize();
+    }
+	:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getGroup()); }
+(rule__CheckboxElement__Group__0)
+{ after(grammarAccess.getCheckboxElementAccess().getGroup()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
 // Entry rule entryRuleXExpression
 entryRuleXExpression 
 :
@@ -3301,9 +3329,15 @@ rule__ValueFieldElement__Alternatives
 )
 
     |(
-{ before(grammarAccess.getValueFieldElementAccess().getGenericValueFieldElementParserRuleCall_4()); }
+{ before(grammarAccess.getValueFieldElementAccess().getCheckboxElementParserRuleCall_4()); }
+	ruleCheckboxElement
+{ after(grammarAccess.getValueFieldElementAccess().getCheckboxElementParserRuleCall_4()); }
+)
+
+    |(
+{ before(grammarAccess.getValueFieldElementAccess().getGenericValueFieldElementParserRuleCall_5()); }
 	ruleGenericValueFieldElement
-{ after(grammarAccess.getValueFieldElementAccess().getGenericValueFieldElementParserRuleCall_4()); }
+{ after(grammarAccess.getValueFieldElementAccess().getGenericValueFieldElementParserRuleCall_5()); }
 )
 
 ;
@@ -3370,6 +3404,64 @@ rule__CustomFieldElement__Alternatives_3_1
 { before(grammarAccess.getCustomFieldElementAccess().getFieldsAssignment_3_1_1()); }
 (rule__CustomFieldElement__FieldsAssignment_3_1_1)
 { after(grammarAccess.getCustomFieldElementAccess().getFieldsAssignment_3_1_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ButtonElement__TypeAlternatives_2_4_2_0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getButtonElementAccess().getTypeNormalKeyword_2_4_2_0_0()); }
+
+	'normal' 
+
+{ after(grammarAccess.getButtonElementAccess().getTypeNormalKeyword_2_4_2_0_0()); }
+)
+
+    |(
+{ before(grammarAccess.getButtonElementAccess().getTypeCancelKeyword_2_4_2_0_1()); }
+
+	'cancel' 
+
+{ after(grammarAccess.getButtonElementAccess().getTypeCancelKeyword_2_4_2_0_1()); }
+)
+
+    |(
+{ before(grammarAccess.getButtonElementAccess().getTypeCloseKeyword_2_4_2_0_2()); }
+
+	'close' 
+
+{ after(grammarAccess.getButtonElementAccess().getTypeCloseKeyword_2_4_2_0_2()); }
+)
+
+    |(
+{ before(grammarAccess.getButtonElementAccess().getTypeOkKeyword_2_4_2_0_3()); }
+
+	'ok' 
+
+{ after(grammarAccess.getButtonElementAccess().getTypeOkKeyword_2_4_2_0_3()); }
+)
+
+    |(
+{ before(grammarAccess.getButtonElementAccess().getTypeResetKeyword_2_4_2_0_4()); }
+
+	'reset' 
+
+{ after(grammarAccess.getButtonElementAccess().getTypeResetKeyword_2_4_2_0_4()); }
+)
+
+    |(
+{ before(grammarAccess.getButtonElementAccess().getTypeSaveKeyword_2_4_2_0_5()); }
+
+	'save' 
+
+{ after(grammarAccess.getButtonElementAccess().getTypeSaveKeyword_2_4_2_0_5()); }
 )
 
 ;
@@ -19197,11 +19289,11 @@ rule__ButtonElement__Group_2_4__0__Impl
     }
 :
 (
-{ before(grammarAccess.getButtonElementAccess().getWidthKeyword_2_4_0()); }
+{ before(grammarAccess.getButtonElementAccess().getTypeKeyword_2_4_0()); }
 
-	'width' 
+	'type' 
 
-{ after(grammarAccess.getButtonElementAccess().getWidthKeyword_2_4_0()); }
+{ after(grammarAccess.getButtonElementAccess().getTypeKeyword_2_4_0()); }
 )
 
 ;
@@ -19258,9 +19350,9 @@ rule__ButtonElement__Group_2_4__2__Impl
     }
 :
 (
-{ before(grammarAccess.getButtonElementAccess().getGridWidthAssignment_2_4_2()); }
-(rule__ButtonElement__GridWidthAssignment_2_4_2)
-{ after(grammarAccess.getButtonElementAccess().getGridWidthAssignment_2_4_2()); }
+{ before(grammarAccess.getButtonElementAccess().getTypeAssignment_2_4_2()); }
+(rule__ButtonElement__TypeAssignment_2_4_2)
+{ after(grammarAccess.getButtonElementAccess().getTypeAssignment_2_4_2()); }
 )
 
 ;
@@ -19293,11 +19385,11 @@ rule__ButtonElement__Group_2_5__0__Impl
     }
 :
 (
-{ before(grammarAccess.getButtonElementAccess().getWidth_pixelsKeyword_2_5_0()); }
+{ before(grammarAccess.getButtonElementAccess().getWidthKeyword_2_5_0()); }
 
-	'width_pixels' 
+	'width' 
 
-{ after(grammarAccess.getButtonElementAccess().getWidth_pixelsKeyword_2_5_0()); }
+{ after(grammarAccess.getButtonElementAccess().getWidthKeyword_2_5_0()); }
 )
 
 ;
@@ -19354,9 +19446,9 @@ rule__ButtonElement__Group_2_5__2__Impl
     }
 :
 (
-{ before(grammarAccess.getButtonElementAccess().getWidthInPixelsAssignment_2_5_2()); }
-(rule__ButtonElement__WidthInPixelsAssignment_2_5_2)
-{ after(grammarAccess.getButtonElementAccess().getWidthInPixelsAssignment_2_5_2()); }
+{ before(grammarAccess.getButtonElementAccess().getGridWidthAssignment_2_5_2()); }
+(rule__ButtonElement__GridWidthAssignment_2_5_2)
+{ after(grammarAccess.getButtonElementAccess().getGridWidthAssignment_2_5_2()); }
 )
 
 ;
@@ -19389,11 +19481,11 @@ rule__ButtonElement__Group_2_6__0__Impl
     }
 :
 (
-{ before(grammarAccess.getButtonElementAccess().getSuper_typeKeyword_2_6_0()); }
+{ before(grammarAccess.getButtonElementAccess().getWidth_pixelsKeyword_2_6_0()); }
 
-	'super_type' 
+	'width_pixels' 
 
-{ after(grammarAccess.getButtonElementAccess().getSuper_typeKeyword_2_6_0()); }
+{ after(grammarAccess.getButtonElementAccess().getWidth_pixelsKeyword_2_6_0()); }
 )
 
 ;
@@ -19450,9 +19542,105 @@ rule__ButtonElement__Group_2_6__2__Impl
     }
 :
 (
-{ before(grammarAccess.getButtonElementAccess().getSuperTypeAssignment_2_6_2()); }
-(rule__ButtonElement__SuperTypeAssignment_2_6_2)
-{ after(grammarAccess.getButtonElementAccess().getSuperTypeAssignment_2_6_2()); }
+{ before(grammarAccess.getButtonElementAccess().getWidthInPixelsAssignment_2_6_2()); }
+(rule__ButtonElement__WidthInPixelsAssignment_2_6_2)
+{ after(grammarAccess.getButtonElementAccess().getWidthInPixelsAssignment_2_6_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
+rule__ButtonElement__Group_2_7__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__ButtonElement__Group_2_7__0__Impl
+	rule__ButtonElement__Group_2_7__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ButtonElement__Group_2_7__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getButtonElementAccess().getSuper_typeKeyword_2_7_0()); }
+
+	'super_type' 
+
+{ after(grammarAccess.getButtonElementAccess().getSuper_typeKeyword_2_7_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__ButtonElement__Group_2_7__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__ButtonElement__Group_2_7__1__Impl
+	rule__ButtonElement__Group_2_7__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ButtonElement__Group_2_7__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getButtonElementAccess().getEqualsSignKeyword_2_7_1()); }
+
+	'=' 
+
+{ after(grammarAccess.getButtonElementAccess().getEqualsSignKeyword_2_7_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__ButtonElement__Group_2_7__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__ButtonElement__Group_2_7__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ButtonElement__Group_2_7__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getButtonElementAccess().getSuperTypeAssignment_2_7_2()); }
+(rule__ButtonElement__SuperTypeAssignment_2_7_2)
+{ after(grammarAccess.getButtonElementAccess().getSuperTypeAssignment_2_7_2()); }
 )
 
 ;
@@ -23737,6 +23925,1091 @@ rule__TabBoxElement__Group_3__2__Impl
 	'}' 
 
 { after(grammarAccess.getTabBoxElementAccess().getRightCurlyBracketKeyword_3_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
+rule__CheckboxElement__Group__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group__0__Impl
+	rule__CheckboxElement__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getCheckKeyword_0()); }
+
+	'check' 
+
+{ after(grammarAccess.getCheckboxElementAccess().getCheckKeyword_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__Group__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group__1__Impl
+	rule__CheckboxElement__Group__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getNameAssignment_1()); }
+(rule__CheckboxElement__NameAssignment_1)
+{ after(grammarAccess.getCheckboxElementAccess().getNameAssignment_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__Group__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group__2__Impl
+	rule__CheckboxElement__Group__3
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2()); }
+(rule__CheckboxElement__UnorderedGroup_2)
+{ after(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__Group__3
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group__3__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group__3__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getGroup_3()); }
+(rule__CheckboxElement__Group_3__0)?
+{ after(grammarAccess.getCheckboxElementAccess().getGroup_3()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
+
+
+rule__CheckboxElement__Group_2_0__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_2_0__0__Impl
+	rule__CheckboxElement__Group_2_0__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_2_0__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getTextKeyword_2_0_0()); }
+
+	'text' 
+
+{ after(grammarAccess.getCheckboxElementAccess().getTextKeyword_2_0_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__Group_2_0__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_2_0__1__Impl
+	rule__CheckboxElement__Group_2_0__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_2_0__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getEqualsSignKeyword_2_0_1()); }
+
+	'=' 
+
+{ after(grammarAccess.getCheckboxElementAccess().getEqualsSignKeyword_2_0_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__Group_2_0__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_2_0__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_2_0__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getTextAssignment_2_0_2()); }
+(rule__CheckboxElement__TextAssignment_2_0_2)
+{ after(grammarAccess.getCheckboxElementAccess().getTextAssignment_2_0_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
+rule__CheckboxElement__Group_2_1__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_2_1__0__Impl
+	rule__CheckboxElement__Group_2_1__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_2_1__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getEnabledKeyword_2_1_0()); }
+
+	'enabled' 
+
+{ after(grammarAccess.getCheckboxElementAccess().getEnabledKeyword_2_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__Group_2_1__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_2_1__1__Impl
+	rule__CheckboxElement__Group_2_1__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_2_1__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getEqualsSignKeyword_2_1_1()); }
+
+	'=' 
+
+{ after(grammarAccess.getCheckboxElementAccess().getEqualsSignKeyword_2_1_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__Group_2_1__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_2_1__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_2_1__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getEnabledAssignment_2_1_2()); }
+(rule__CheckboxElement__EnabledAssignment_2_1_2)
+{ after(grammarAccess.getCheckboxElementAccess().getEnabledAssignment_2_1_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
+rule__CheckboxElement__Group_2_2__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_2_2__0__Impl
+	rule__CheckboxElement__Group_2_2__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_2_2__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getVisibleKeyword_2_2_0()); }
+
+	'visible' 
+
+{ after(grammarAccess.getCheckboxElementAccess().getVisibleKeyword_2_2_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__Group_2_2__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_2_2__1__Impl
+	rule__CheckboxElement__Group_2_2__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_2_2__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getEqualsSignKeyword_2_2_1()); }
+
+	'=' 
+
+{ after(grammarAccess.getCheckboxElementAccess().getEqualsSignKeyword_2_2_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__Group_2_2__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_2_2__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_2_2__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getVisibleAssignment_2_2_2()); }
+(rule__CheckboxElement__VisibleAssignment_2_2_2)
+{ after(grammarAccess.getCheckboxElementAccess().getVisibleAssignment_2_2_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
+rule__CheckboxElement__Group_2_3__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_2_3__0__Impl
+	rule__CheckboxElement__Group_2_3__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_2_3__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getWidthKeyword_2_3_0()); }
+
+	'width' 
+
+{ after(grammarAccess.getCheckboxElementAccess().getWidthKeyword_2_3_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__Group_2_3__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_2_3__1__Impl
+	rule__CheckboxElement__Group_2_3__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_2_3__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getEqualsSignKeyword_2_3_1()); }
+
+	'=' 
+
+{ after(grammarAccess.getCheckboxElementAccess().getEqualsSignKeyword_2_3_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__Group_2_3__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_2_3__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_2_3__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getGridWidthAssignment_2_3_2()); }
+(rule__CheckboxElement__GridWidthAssignment_2_3_2)
+{ after(grammarAccess.getCheckboxElementAccess().getGridWidthAssignment_2_3_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
+rule__CheckboxElement__Group_2_4__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_2_4__0__Impl
+	rule__CheckboxElement__Group_2_4__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_2_4__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getWidth_pixelsKeyword_2_4_0()); }
+
+	'width_pixels' 
+
+{ after(grammarAccess.getCheckboxElementAccess().getWidth_pixelsKeyword_2_4_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__Group_2_4__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_2_4__1__Impl
+	rule__CheckboxElement__Group_2_4__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_2_4__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getEqualsSignKeyword_2_4_1()); }
+
+	'=' 
+
+{ after(grammarAccess.getCheckboxElementAccess().getEqualsSignKeyword_2_4_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__Group_2_4__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_2_4__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_2_4__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getWidthInPixelsAssignment_2_4_2()); }
+(rule__CheckboxElement__WidthInPixelsAssignment_2_4_2)
+{ after(grammarAccess.getCheckboxElementAccess().getWidthInPixelsAssignment_2_4_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
+rule__CheckboxElement__Group_2_5__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_2_5__0__Impl
+	rule__CheckboxElement__Group_2_5__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_2_5__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getLabel_visibleKeyword_2_5_0()); }
+
+	'label_visible' 
+
+{ after(grammarAccess.getCheckboxElementAccess().getLabel_visibleKeyword_2_5_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__Group_2_5__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_2_5__1__Impl
+	rule__CheckboxElement__Group_2_5__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_2_5__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getEqualsSignKeyword_2_5_1()); }
+
+	'=' 
+
+{ after(grammarAccess.getCheckboxElementAccess().getEqualsSignKeyword_2_5_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__Group_2_5__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_2_5__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_2_5__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getLabelVisibleAssignment_2_5_2()); }
+(rule__CheckboxElement__LabelVisibleAssignment_2_5_2)
+{ after(grammarAccess.getCheckboxElementAccess().getLabelVisibleAssignment_2_5_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
+rule__CheckboxElement__Group_2_6__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_2_6__0__Impl
+	rule__CheckboxElement__Group_2_6__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_2_6__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getMasterKeyword_2_6_0()); }
+
+	'master' 
+
+{ after(grammarAccess.getCheckboxElementAccess().getMasterKeyword_2_6_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__Group_2_6__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_2_6__1__Impl
+	rule__CheckboxElement__Group_2_6__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_2_6__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getEqualsSignKeyword_2_6_1()); }
+
+	'=' 
+
+{ after(grammarAccess.getCheckboxElementAccess().getEqualsSignKeyword_2_6_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__Group_2_6__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_2_6__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_2_6__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getMasterAssignment_2_6_2()); }
+(rule__CheckboxElement__MasterAssignment_2_6_2)
+{ after(grammarAccess.getCheckboxElementAccess().getMasterAssignment_2_6_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
+rule__CheckboxElement__Group_2_7__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_2_7__0__Impl
+	rule__CheckboxElement__Group_2_7__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_2_7__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getMandatoryKeyword_2_7_0()); }
+
+	'mandatory' 
+
+{ after(grammarAccess.getCheckboxElementAccess().getMandatoryKeyword_2_7_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__Group_2_7__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_2_7__1__Impl
+	rule__CheckboxElement__Group_2_7__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_2_7__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getEqualsSignKeyword_2_7_1()); }
+
+	'=' 
+
+{ after(grammarAccess.getCheckboxElementAccess().getEqualsSignKeyword_2_7_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__Group_2_7__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_2_7__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_2_7__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getMandatoryAssignment_2_7_2()); }
+(rule__CheckboxElement__MandatoryAssignment_2_7_2)
+{ after(grammarAccess.getCheckboxElementAccess().getMandatoryAssignment_2_7_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
+rule__CheckboxElement__Group_2_8__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_2_8__0__Impl
+	rule__CheckboxElement__Group_2_8__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_2_8__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getSuper_typeKeyword_2_8_0()); }
+
+	'super_type' 
+
+{ after(grammarAccess.getCheckboxElementAccess().getSuper_typeKeyword_2_8_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__Group_2_8__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_2_8__1__Impl
+	rule__CheckboxElement__Group_2_8__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_2_8__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getEqualsSignKeyword_2_8_1()); }
+
+	'=' 
+
+{ after(grammarAccess.getCheckboxElementAccess().getEqualsSignKeyword_2_8_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__Group_2_8__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_2_8__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_2_8__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getSuperTypeAssignment_2_8_2()); }
+(rule__CheckboxElement__SuperTypeAssignment_2_8_2)
+{ after(grammarAccess.getCheckboxElementAccess().getSuperTypeAssignment_2_8_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
+rule__CheckboxElement__Group_3__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_3__0__Impl
+	rule__CheckboxElement__Group_3__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_3__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getLeftCurlyBracketKeyword_3_0()); }
+
+	'{' 
+
+{ after(grammarAccess.getCheckboxElementAccess().getLeftCurlyBracketKeyword_3_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__Group_3__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_3__1__Impl
+	rule__CheckboxElement__Group_3__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_3__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getLogicAssignment_3_1()); }
+(rule__CheckboxElement__LogicAssignment_3_1)*
+{ after(grammarAccess.getCheckboxElementAccess().getLogicAssignment_3_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__Group_3__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__Group_3__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__Group_3__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getRightCurlyBracketKeyword_3_2()); }
+
+	'}' 
+
+{ after(grammarAccess.getCheckboxElementAccess().getRightCurlyBracketKeyword_3_2()); }
 )
 
 ;
@@ -38439,6 +39712,23 @@ rule__ButtonElement__UnorderedGroup_2__Impl
 						{ after(grammarAccess.getButtonElementAccess().getGroup_2_6()); }
 					)
  				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getButtonElementAccess().getUnorderedGroup_2(), 7)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getButtonElementAccess().getUnorderedGroup_2(), 7);
+	 				}
+	 				{
+	 				  selected = true;
+	 				}
+					(
+					
+						{ before(grammarAccess.getButtonElementAccess().getGroup_2_7()); }
+						(rule__ButtonElement__Group_2_7__0)
+						{ after(grammarAccess.getButtonElementAccess().getGroup_2_7()); }
+					)
+ 				)
 			)  
 
 		)
@@ -38534,10 +39824,25 @@ rule__ButtonElement__UnorderedGroup_2__6
     }
 :
 	rule__ButtonElement__UnorderedGroup_2__Impl
+	rule__ButtonElement__UnorderedGroup_2__7?
 ;
 finally {
 	restoreStackSize(stackSize);
 }
+
+
+rule__ButtonElement__UnorderedGroup_2__7
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__ButtonElement__UnorderedGroup_2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
 
 
 
@@ -39695,6 +41000,326 @@ rule__TabBoxElement__UnorderedGroup_2__4
 finally {
 	restoreStackSize(stackSize);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+rule__CheckboxElement__UnorderedGroup_2
+    @init {
+    	int stackSize = keepStackSize();
+		getUnorderedGroupHelper().enter(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2());
+    }
+:
+	rule__CheckboxElement__UnorderedGroup_2__0
+	?
+	
+;
+finally {
+	getUnorderedGroupHelper().leave(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2());
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__UnorderedGroup_2__Impl
+	@init {
+		int stackSize = keepStackSize();
+		boolean selected = false;
+    }
+:
+		(
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 0)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 0);
+	 				}
+	 				{
+	 				  selected = true;
+	 				}
+					(
+					
+						{ before(grammarAccess.getCheckboxElementAccess().getGroup_2_0()); }
+						(rule__CheckboxElement__Group_2_0__0)
+						{ after(grammarAccess.getCheckboxElementAccess().getGroup_2_0()); }
+					)
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 1)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 1);
+	 				}
+	 				{
+	 				  selected = true;
+	 				}
+					(
+					
+						{ before(grammarAccess.getCheckboxElementAccess().getGroup_2_1()); }
+						(rule__CheckboxElement__Group_2_1__0)
+						{ after(grammarAccess.getCheckboxElementAccess().getGroup_2_1()); }
+					)
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 2)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 2);
+	 				}
+	 				{
+	 				  selected = true;
+	 				}
+					(
+					
+						{ before(grammarAccess.getCheckboxElementAccess().getGroup_2_2()); }
+						(rule__CheckboxElement__Group_2_2__0)
+						{ after(grammarAccess.getCheckboxElementAccess().getGroup_2_2()); }
+					)
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 3)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 3);
+	 				}
+	 				{
+	 				  selected = true;
+	 				}
+					(
+					
+						{ before(grammarAccess.getCheckboxElementAccess().getGroup_2_3()); }
+						(rule__CheckboxElement__Group_2_3__0)
+						{ after(grammarAccess.getCheckboxElementAccess().getGroup_2_3()); }
+					)
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 4)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 4);
+	 				}
+	 				{
+	 				  selected = true;
+	 				}
+					(
+					
+						{ before(grammarAccess.getCheckboxElementAccess().getGroup_2_4()); }
+						(rule__CheckboxElement__Group_2_4__0)
+						{ after(grammarAccess.getCheckboxElementAccess().getGroup_2_4()); }
+					)
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 5)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 5);
+	 				}
+	 				{
+	 				  selected = true;
+	 				}
+					(
+					
+						{ before(grammarAccess.getCheckboxElementAccess().getGroup_2_5()); }
+						(rule__CheckboxElement__Group_2_5__0)
+						{ after(grammarAccess.getCheckboxElementAccess().getGroup_2_5()); }
+					)
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 6)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 6);
+	 				}
+	 				{
+	 				  selected = true;
+	 				}
+					(
+					
+						{ before(grammarAccess.getCheckboxElementAccess().getGroup_2_6()); }
+						(rule__CheckboxElement__Group_2_6__0)
+						{ after(grammarAccess.getCheckboxElementAccess().getGroup_2_6()); }
+					)
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 7)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 7);
+	 				}
+	 				{
+	 				  selected = true;
+	 				}
+					(
+					
+						{ before(grammarAccess.getCheckboxElementAccess().getGroup_2_7()); }
+						(rule__CheckboxElement__Group_2_7__0)
+						{ after(grammarAccess.getCheckboxElementAccess().getGroup_2_7()); }
+					)
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 8)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), 8);
+	 				}
+	 				{
+	 				  selected = true;
+	 				}
+					(
+					
+						{ before(grammarAccess.getCheckboxElementAccess().getGroup_2_8()); }
+						(rule__CheckboxElement__Group_2_8__0)
+						{ after(grammarAccess.getCheckboxElementAccess().getGroup_2_8()); }
+					)
+ 				)
+			)  
+
+		)
+;
+finally {
+	if (selected)
+		getUnorderedGroupHelper().returnFromSelection(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2());
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__UnorderedGroup_2__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__UnorderedGroup_2__Impl
+	rule__CheckboxElement__UnorderedGroup_2__1?
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__UnorderedGroup_2__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__UnorderedGroup_2__Impl
+	rule__CheckboxElement__UnorderedGroup_2__2?
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__UnorderedGroup_2__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__UnorderedGroup_2__Impl
+	rule__CheckboxElement__UnorderedGroup_2__3?
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__UnorderedGroup_2__3
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__UnorderedGroup_2__Impl
+	rule__CheckboxElement__UnorderedGroup_2__4?
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__UnorderedGroup_2__4
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__UnorderedGroup_2__Impl
+	rule__CheckboxElement__UnorderedGroup_2__5?
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__UnorderedGroup_2__5
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__UnorderedGroup_2__Impl
+	rule__CheckboxElement__UnorderedGroup_2__6?
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__UnorderedGroup_2__6
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__UnorderedGroup_2__Impl
+	rule__CheckboxElement__UnorderedGroup_2__7?
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__UnorderedGroup_2__7
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__UnorderedGroup_2__Impl
+	rule__CheckboxElement__UnorderedGroup_2__8?
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__CheckboxElement__UnorderedGroup_2__8
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__CheckboxElement__UnorderedGroup_2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -42324,14 +43949,15 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ButtonElement__GridWidthAssignment_2_4_2
+rule__ButtonElement__TypeAssignment_2_4_2
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getButtonElementAccess().getGridWidthINTTerminalRuleCall_2_4_2_0()); }
-	RULE_INT{ after(grammarAccess.getButtonElementAccess().getGridWidthINTTerminalRuleCall_2_4_2_0()); }
+{ before(grammarAccess.getButtonElementAccess().getTypeAlternatives_2_4_2_0()); }
+(rule__ButtonElement__TypeAlternatives_2_4_2_0)
+{ after(grammarAccess.getButtonElementAccess().getTypeAlternatives_2_4_2_0()); }
 )
 
 ;
@@ -42339,14 +43965,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ButtonElement__WidthInPixelsAssignment_2_5_2
+rule__ButtonElement__GridWidthAssignment_2_5_2
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getButtonElementAccess().getWidthInPixelsINTTerminalRuleCall_2_5_2_0()); }
-	RULE_INT{ after(grammarAccess.getButtonElementAccess().getWidthInPixelsINTTerminalRuleCall_2_5_2_0()); }
+{ before(grammarAccess.getButtonElementAccess().getGridWidthINTTerminalRuleCall_2_5_2_0()); }
+	RULE_INT{ after(grammarAccess.getButtonElementAccess().getGridWidthINTTerminalRuleCall_2_5_2_0()); }
 )
 
 ;
@@ -42354,18 +43980,33 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ButtonElement__SuperTypeAssignment_2_6_2
+rule__ButtonElement__WidthInPixelsAssignment_2_6_2
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getButtonElementAccess().getSuperTypeTemplateElementCrossReference_2_6_2_0()); }
-(
-{ before(grammarAccess.getButtonElementAccess().getSuperTypeTemplateElementIDTerminalRuleCall_2_6_2_0_1()); }
-	RULE_ID{ after(grammarAccess.getButtonElementAccess().getSuperTypeTemplateElementIDTerminalRuleCall_2_6_2_0_1()); }
+{ before(grammarAccess.getButtonElementAccess().getWidthInPixelsINTTerminalRuleCall_2_6_2_0()); }
+	RULE_INT{ after(grammarAccess.getButtonElementAccess().getWidthInPixelsINTTerminalRuleCall_2_6_2_0()); }
 )
-{ after(grammarAccess.getButtonElementAccess().getSuperTypeTemplateElementCrossReference_2_6_2_0()); }
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ButtonElement__SuperTypeAssignment_2_7_2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getButtonElementAccess().getSuperTypeTemplateElementCrossReference_2_7_2_0()); }
+(
+{ before(grammarAccess.getButtonElementAccess().getSuperTypeTemplateElementIDTerminalRuleCall_2_7_2_0_1()); }
+	RULE_ID{ after(grammarAccess.getButtonElementAccess().getSuperTypeTemplateElementIDTerminalRuleCall_2_7_2_0_1()); }
+)
+{ after(grammarAccess.getButtonElementAccess().getSuperTypeTemplateElementCrossReference_2_7_2_0()); }
 )
 
 ;
@@ -43150,6 +44791,183 @@ rule__TabBoxElement__TabsAssignment_3_1_1
 (
 { before(grammarAccess.getTabBoxElementAccess().getTabsTabElementParserRuleCall_3_1_1_0()); }
 	ruleTabElement{ after(grammarAccess.getTabBoxElementAccess().getTabsTabElementParserRuleCall_3_1_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__NameAssignment_1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getNameIDTerminalRuleCall_1_0()); }
+	RULE_ID{ after(grammarAccess.getCheckboxElementAccess().getNameIDTerminalRuleCall_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__TextAssignment_2_0_2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getTextTranslationElementCrossReference_2_0_2_0()); }
+(
+{ before(grammarAccess.getCheckboxElementAccess().getTextTranslationElementQualifiedNameParserRuleCall_2_0_2_0_1()); }
+	ruleQualifiedName{ after(grammarAccess.getCheckboxElementAccess().getTextTranslationElementQualifiedNameParserRuleCall_2_0_2_0_1()); }
+)
+{ after(grammarAccess.getCheckboxElementAccess().getTextTranslationElementCrossReference_2_0_2_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__EnabledAssignment_2_1_2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getEnabledBooleanTypeParserRuleCall_2_1_2_0()); }
+	ruleBooleanType{ after(grammarAccess.getCheckboxElementAccess().getEnabledBooleanTypeParserRuleCall_2_1_2_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__VisibleAssignment_2_2_2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getVisibleBooleanTypeParserRuleCall_2_2_2_0()); }
+	ruleBooleanType{ after(grammarAccess.getCheckboxElementAccess().getVisibleBooleanTypeParserRuleCall_2_2_2_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__GridWidthAssignment_2_3_2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getGridWidthINTTerminalRuleCall_2_3_2_0()); }
+	RULE_INT{ after(grammarAccess.getCheckboxElementAccess().getGridWidthINTTerminalRuleCall_2_3_2_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__WidthInPixelsAssignment_2_4_2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getWidthInPixelsINTTerminalRuleCall_2_4_2_0()); }
+	RULE_INT{ after(grammarAccess.getCheckboxElementAccess().getWidthInPixelsINTTerminalRuleCall_2_4_2_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__LabelVisibleAssignment_2_5_2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getLabelVisibleBooleanTypeParserRuleCall_2_5_2_0()); }
+	ruleBooleanType{ after(grammarAccess.getCheckboxElementAccess().getLabelVisibleBooleanTypeParserRuleCall_2_5_2_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__MasterAssignment_2_6_2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getMasterValueFieldElementCrossReference_2_6_2_0()); }
+(
+{ before(grammarAccess.getCheckboxElementAccess().getMasterValueFieldElementIDTerminalRuleCall_2_6_2_0_1()); }
+	RULE_ID{ after(grammarAccess.getCheckboxElementAccess().getMasterValueFieldElementIDTerminalRuleCall_2_6_2_0_1()); }
+)
+{ after(grammarAccess.getCheckboxElementAccess().getMasterValueFieldElementCrossReference_2_6_2_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__MandatoryAssignment_2_7_2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getMandatoryBooleanTypeParserRuleCall_2_7_2_0()); }
+	ruleBooleanType{ after(grammarAccess.getCheckboxElementAccess().getMandatoryBooleanTypeParserRuleCall_2_7_2_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__SuperTypeAssignment_2_8_2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getSuperTypeTemplateElementCrossReference_2_8_2_0()); }
+(
+{ before(grammarAccess.getCheckboxElementAccess().getSuperTypeTemplateElementIDTerminalRuleCall_2_8_2_0_1()); }
+	RULE_ID{ after(grammarAccess.getCheckboxElementAccess().getSuperTypeTemplateElementIDTerminalRuleCall_2_8_2_0_1()); }
+)
+{ after(grammarAccess.getCheckboxElementAccess().getSuperTypeTemplateElementCrossReference_2_8_2_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__CheckboxElement__LogicAssignment_3_1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCheckboxElementAccess().getLogicLogicElementParserRuleCall_3_1_0()); }
+	ruleLogicElement{ after(grammarAccess.getCheckboxElementAccess().getLogicLogicElementParserRuleCall_3_1_0()); }
 )
 
 ;

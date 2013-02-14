@@ -24,41 +24,58 @@ import org.junit.Test;
  */
 public class ButtonElementImportTest extends AbstractSamlFieldImporterTest implements IComplexFieldTestConstants {
 
-  private final static String[] LOCATION = new String[]{"GroupTest", "TestButton"};
+  private final static String[] LOCATION1 = new String[]{"GroupTest", "TestButton"};
+  private final static String[] LOCATION2 = new String[]{"GroupTest", "TestOkButton"};
 
   @Test
-  public void testNumAttributes() throws Exception {
-    IType field = getField(FORM_NAME, LOCATION);
+  public void testNumAttributes1() throws Exception {
+    IType field = getField(FORM_NAME, LOCATION1);
     Assert.assertEquals(6, TypeUtility.getMethods(field).length);
   }
 
   @Test
-  public void testProcessButtonAttribute() throws Exception {
-    testBoolConfigMethod(getField(FORM_NAME, LOCATION), "getConfiguredProcessButton", false);
+  public void testProcessButtonAttribute1() throws Exception {
+    testBoolConfigMethod(getField(FORM_NAME, LOCATION1), "getConfiguredProcessButton", false);
   }
 
   @Test
-  public void testTextAttribute() throws Exception {
-    testNlsConfigMethod(getField(FORM_NAME, LOCATION), "getConfiguredLabel", "trans.text1");
+  public void testTextAttribute1() throws Exception {
+    testNlsConfigMethod(getField(FORM_NAME, LOCATION1), "getConfiguredLabel", "trans.text1");
   }
 
   @Test
-  public void testEnabledAttribute() throws Exception {
-    testBoolConfigMethod(getField(FORM_NAME, LOCATION), "getConfiguredEnabled", false);
+  public void testEnabledAttribute1() throws Exception {
+    testBoolConfigMethod(getField(FORM_NAME, LOCATION1), "getConfiguredEnabled", false);
   }
 
   @Test
-  public void testVisibleAttribute() throws Exception {
-    testBoolConfigMethod(getField(FORM_NAME, LOCATION), "getConfiguredVisible", false);
+  public void testVisibleAttribute1() throws Exception {
+    testBoolConfigMethod(getField(FORM_NAME, LOCATION1), "getConfiguredVisible", false);
   }
 
   @Test
-  public void testWidthAttribute() throws Exception {
-    testIntConfigMethod(getField(FORM_NAME, LOCATION), "getConfiguredGridW", 2);
+  public void testWidthAttribute1() throws Exception {
+    testIntConfigMethod(getField(FORM_NAME, LOCATION1), "getConfiguredGridW", 2);
   }
 
   @Test
-  public void testWidthPixelsAttribute() throws Exception {
-    testIntConfigMethod(getField(FORM_NAME, LOCATION), "getConfiguredWidthInPixel", 30);
+  public void testWidthPixelsAttribute1() throws Exception {
+    testIntConfigMethod(getField(FORM_NAME, LOCATION1), "getConfiguredWidthInPixel", 30);
+  }
+
+  @Test
+  public void testNumAttributes2() throws Exception {
+    IType field = getField(FORM_NAME, LOCATION2);
+    Assert.assertEquals(2, TypeUtility.getMethods(field).length);
+  }
+
+  @Test
+  public void testTextAttribute2() throws Exception {
+    testNlsConfigMethod(getField(FORM_NAME, LOCATION2), "getConfiguredLabel", "trans.text2");
+  }
+
+  @Test
+  public void testSystemTypeAttribute2() throws Exception {
+    testIntConfigMethod(getField(FORM_NAME, LOCATION2), "getConfiguredSystemType", 3);
   }
 }

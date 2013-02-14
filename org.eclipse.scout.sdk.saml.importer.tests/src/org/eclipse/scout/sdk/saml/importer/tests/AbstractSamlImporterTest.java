@@ -49,6 +49,7 @@ public class AbstractSamlImporterTest extends AbstractScoutSdkTest {
   private static final String RESOURCES_FOLDER_NAME = "resources";
 
   protected static void setupWorkspace(String baseFolder, String... projects) throws Exception {
+    showEgitMessageBoxes(false);
     JdtUtility.setWorkspaceAutoBuilding(false);
     setAutoUpdateFormData(false);
     clearWorkspace();

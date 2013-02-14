@@ -53,6 +53,7 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGenericValueFieldElementAccess().getAlternatives(), "rule__GenericValueFieldElement__Alternatives");
 					put(grammarAccess.getSmartfieldElementAccess().getAlternatives_3_1(), "rule__SmartfieldElement__Alternatives_3_1");
 					put(grammarAccess.getCustomFieldElementAccess().getAlternatives_3_1(), "rule__CustomFieldElement__Alternatives_3_1");
+					put(grammarAccess.getButtonElementAccess().getTypeAlternatives_2_4_2_0(), "rule__ButtonElement__TypeAlternatives_2_4_2_0");
 					put(grammarAccess.getButtonElementAccess().getAlternatives_3_1(), "rule__ButtonElement__Alternatives_3_1");
 					put(grammarAccess.getMenuElementAccess().getTypeAlternatives_2_5_2_0(), "rule__MenuElement__TypeAlternatives_2_5_2_0");
 					put(grammarAccess.getMenuElementAccess().getAlternatives_3_1(), "rule__MenuElement__Alternatives_3_1");
@@ -244,6 +245,7 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getButtonElementAccess().getGroup_2_4(), "rule__ButtonElement__Group_2_4__0");
 					put(grammarAccess.getButtonElementAccess().getGroup_2_5(), "rule__ButtonElement__Group_2_5__0");
 					put(grammarAccess.getButtonElementAccess().getGroup_2_6(), "rule__ButtonElement__Group_2_6__0");
+					put(grammarAccess.getButtonElementAccess().getGroup_2_7(), "rule__ButtonElement__Group_2_7__0");
 					put(grammarAccess.getButtonElementAccess().getGroup_3(), "rule__ButtonElement__Group_3__0");
 					put(grammarAccess.getMenuElementAccess().getGroup(), "rule__MenuElement__Group__0");
 					put(grammarAccess.getMenuElementAccess().getGroup_2_0(), "rule__MenuElement__Group_2_0__0");
@@ -285,6 +287,17 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTabBoxElementAccess().getGroup_2_3(), "rule__TabBoxElement__Group_2_3__0");
 					put(grammarAccess.getTabBoxElementAccess().getGroup_2_4(), "rule__TabBoxElement__Group_2_4__0");
 					put(grammarAccess.getTabBoxElementAccess().getGroup_3(), "rule__TabBoxElement__Group_3__0");
+					put(grammarAccess.getCheckboxElementAccess().getGroup(), "rule__CheckboxElement__Group__0");
+					put(grammarAccess.getCheckboxElementAccess().getGroup_2_0(), "rule__CheckboxElement__Group_2_0__0");
+					put(grammarAccess.getCheckboxElementAccess().getGroup_2_1(), "rule__CheckboxElement__Group_2_1__0");
+					put(grammarAccess.getCheckboxElementAccess().getGroup_2_2(), "rule__CheckboxElement__Group_2_2__0");
+					put(grammarAccess.getCheckboxElementAccess().getGroup_2_3(), "rule__CheckboxElement__Group_2_3__0");
+					put(grammarAccess.getCheckboxElementAccess().getGroup_2_4(), "rule__CheckboxElement__Group_2_4__0");
+					put(grammarAccess.getCheckboxElementAccess().getGroup_2_5(), "rule__CheckboxElement__Group_2_5__0");
+					put(grammarAccess.getCheckboxElementAccess().getGroup_2_6(), "rule__CheckboxElement__Group_2_6__0");
+					put(grammarAccess.getCheckboxElementAccess().getGroup_2_7(), "rule__CheckboxElement__Group_2_7__0");
+					put(grammarAccess.getCheckboxElementAccess().getGroup_2_8(), "rule__CheckboxElement__Group_2_8__0");
+					put(grammarAccess.getCheckboxElementAccess().getGroup_3(), "rule__CheckboxElement__Group_3__0");
 					put(grammarAccess.getXAssignmentAccess().getGroup_0(), "rule__XAssignment__Group_0__0");
 					put(grammarAccess.getXAssignmentAccess().getGroup_1(), "rule__XAssignment__Group_1__0");
 					put(grammarAccess.getXAssignmentAccess().getGroup_1_1(), "rule__XAssignment__Group_1_1__0");
@@ -592,9 +605,10 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getButtonElementAccess().getEnabledAssignment_2_1_2(), "rule__ButtonElement__EnabledAssignment_2_1_2");
 					put(grammarAccess.getButtonElementAccess().getVisibleAssignment_2_2_2(), "rule__ButtonElement__VisibleAssignment_2_2_2");
 					put(grammarAccess.getButtonElementAccess().getProcessButtonAssignment_2_3_2(), "rule__ButtonElement__ProcessButtonAssignment_2_3_2");
-					put(grammarAccess.getButtonElementAccess().getGridWidthAssignment_2_4_2(), "rule__ButtonElement__GridWidthAssignment_2_4_2");
-					put(grammarAccess.getButtonElementAccess().getWidthInPixelsAssignment_2_5_2(), "rule__ButtonElement__WidthInPixelsAssignment_2_5_2");
-					put(grammarAccess.getButtonElementAccess().getSuperTypeAssignment_2_6_2(), "rule__ButtonElement__SuperTypeAssignment_2_6_2");
+					put(grammarAccess.getButtonElementAccess().getTypeAssignment_2_4_2(), "rule__ButtonElement__TypeAssignment_2_4_2");
+					put(grammarAccess.getButtonElementAccess().getGridWidthAssignment_2_5_2(), "rule__ButtonElement__GridWidthAssignment_2_5_2");
+					put(grammarAccess.getButtonElementAccess().getWidthInPixelsAssignment_2_6_2(), "rule__ButtonElement__WidthInPixelsAssignment_2_6_2");
+					put(grammarAccess.getButtonElementAccess().getSuperTypeAssignment_2_7_2(), "rule__ButtonElement__SuperTypeAssignment_2_7_2");
 					put(grammarAccess.getButtonElementAccess().getLogicAssignment_3_1_0(), "rule__ButtonElement__LogicAssignment_3_1_0");
 					put(grammarAccess.getButtonElementAccess().getMenusAssignment_3_1_1(), "rule__ButtonElement__MenusAssignment_3_1_1");
 					put(grammarAccess.getMenuElementAccess().getNameAssignment_1(), "rule__MenuElement__NameAssignment_1");
@@ -645,6 +659,17 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTabBoxElementAccess().getSuperTypeAssignment_2_4_2(), "rule__TabBoxElement__SuperTypeAssignment_2_4_2");
 					put(grammarAccess.getTabBoxElementAccess().getLogicAssignment_3_1_0(), "rule__TabBoxElement__LogicAssignment_3_1_0");
 					put(grammarAccess.getTabBoxElementAccess().getTabsAssignment_3_1_1(), "rule__TabBoxElement__TabsAssignment_3_1_1");
+					put(grammarAccess.getCheckboxElementAccess().getNameAssignment_1(), "rule__CheckboxElement__NameAssignment_1");
+					put(grammarAccess.getCheckboxElementAccess().getTextAssignment_2_0_2(), "rule__CheckboxElement__TextAssignment_2_0_2");
+					put(grammarAccess.getCheckboxElementAccess().getEnabledAssignment_2_1_2(), "rule__CheckboxElement__EnabledAssignment_2_1_2");
+					put(grammarAccess.getCheckboxElementAccess().getVisibleAssignment_2_2_2(), "rule__CheckboxElement__VisibleAssignment_2_2_2");
+					put(grammarAccess.getCheckboxElementAccess().getGridWidthAssignment_2_3_2(), "rule__CheckboxElement__GridWidthAssignment_2_3_2");
+					put(grammarAccess.getCheckboxElementAccess().getWidthInPixelsAssignment_2_4_2(), "rule__CheckboxElement__WidthInPixelsAssignment_2_4_2");
+					put(grammarAccess.getCheckboxElementAccess().getLabelVisibleAssignment_2_5_2(), "rule__CheckboxElement__LabelVisibleAssignment_2_5_2");
+					put(grammarAccess.getCheckboxElementAccess().getMasterAssignment_2_6_2(), "rule__CheckboxElement__MasterAssignment_2_6_2");
+					put(grammarAccess.getCheckboxElementAccess().getMandatoryAssignment_2_7_2(), "rule__CheckboxElement__MandatoryAssignment_2_7_2");
+					put(grammarAccess.getCheckboxElementAccess().getSuperTypeAssignment_2_8_2(), "rule__CheckboxElement__SuperTypeAssignment_2_8_2");
+					put(grammarAccess.getCheckboxElementAccess().getLogicAssignment_3_1(), "rule__CheckboxElement__LogicAssignment_3_1");
 					put(grammarAccess.getXAssignmentAccess().getFeatureAssignment_0_1(), "rule__XAssignment__FeatureAssignment_0_1");
 					put(grammarAccess.getXAssignmentAccess().getValueAssignment_0_3(), "rule__XAssignment__ValueAssignment_0_3");
 					put(grammarAccess.getXAssignmentAccess().getFeatureAssignment_1_1_0_0_1(), "rule__XAssignment__FeatureAssignment_1_1_0_0_1");
@@ -778,6 +803,7 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getColumnElementAccess().getUnorderedGroup_2(), "rule__ColumnElement__UnorderedGroup_2");
 					put(grammarAccess.getTabElementAccess().getUnorderedGroup_2(), "rule__TabElement__UnorderedGroup_2");
 					put(grammarAccess.getTabBoxElementAccess().getUnorderedGroup_2(), "rule__TabBoxElement__UnorderedGroup_2");
+					put(grammarAccess.getCheckboxElementAccess().getUnorderedGroup_2(), "rule__CheckboxElement__UnorderedGroup_2");
 				}
 			};
 		}

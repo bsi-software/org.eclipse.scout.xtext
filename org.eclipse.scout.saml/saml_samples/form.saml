@@ -1,331 +1,106 @@
-module ch.raiffeisen.dialba.common
+module org.eclipse.scout.saml.tests.complex
 
+translation trans.text1 default_lang="text1_default" en="text1_en" de_CH="text1_de_CH"
+translation trans.text2 default_lang="text2_default"
 
-translation AboutMenu default_lang="&Info..."
-translation Abschluss default_lang="Abschluss"
-translation AbsichernRefinanz default_lang="Absichern / Refinanz."
-translation AlteNeueKONr default_lang="Alte / Neue KO-Nr."
-translation Anlegen default_lang="Anlegen"
-translation ApplicationTitle default_lang="Meine Applikation"
-translation Art default_lang="Art"
-translation AuthorizationFailed default_lang="Zugriff verweigert"
-translation Basiskredit default_lang="Basiskredit"
-translation Bearbeiten default_lang="Bearbeiten"
-translation BemF4 default_lang="Bem.                                   F4"
-translation BeratungsModus default_lang="Beratungs-Modus"
-translation BetragSpesen default_lang="Betrag / Spesen"
-translation Buchungstext1 default_lang="Buchungstext 1"
-translation Buchungstext2 default_lang="Buchungstext 2"
-translation Buchungstext3 default_lang="Buchungstext 3"
-translation CHF default_lang="CHF"
-translation ContactVendorMenu default_lang="BSI kontaktieren"
-translation DatumEmission default_lang="Datum / Emission"
-translation DepotText default_lang="Depot"
-translation DepotCode default_lang="Depot "
-translation DepotTwin default_lang="DepotTwin"
-translation Dienste default_lang="Dienste"
-translation EDossierStarten default_lang="eDossier starten"
-translation ESC default_lang="Ende               ESC"
-translation Emissionsabgabe default_lang="Emissionsabgabe"
-translation EndeESC default_lang="Ende                                   ESC"
-translation ExitMenu default_lang="&Beenden"
-translation ExportToExcelDiagramMenu default_lang="Ausgabe in Excel &Diagramm"
-translation ExportToExcelMenu default_lang="Ausgabe in &Excel"
-translation FiT default_lang="FiT"
-translation FileMenu default_lang="&Datei"
-translation Finanzieren default_lang="Finanzieren"
-translation FondsSparplan default_lang="Fonds-Sparplan"
-translation Funktionen default_lang="Funktionen "
-translation GesamtobligoEN default_lang="Gesamtobligo"
-translation HelpMenu default_lang="&Hilfe"
-translation IndexHilfe default_lang="Index Hilfe"
-translation Info default_lang="Info"
-translation InfoF7 default_lang="Info                                     F7"
-translation InfoUmschF7 default_lang="Info (Umsch + F7)"
-translation Inhaber default_lang="Inhaber"
-translation KOEmission default_lang="KO Emission"
-translation KOEmissionMenu default_lang="KO Emission..."
-translation KOEmmissionTc200 default_lang="200 KO Emission"
-translation Kassenobligationen default_lang="Kassenobligationen"
-translation KassenobligationenArt default_lang="Kassenobligationen Art"
-translation KontoIBAN default_lang="Konto / IBAN"
-translation Kontobelastung default_lang="Kontobelastung"
-translation Kreditkarte default_lang="Kreditkarte"
-translation Kunde default_lang="Kunde"
-translation Kurzbezeichnung default_lang="Kurzbezeichnung"
-translation LaufzeitText default_lang="Laufzeit"
-translation MitTiteldruck default_lang="Mit Titeldruck"
-translation Namen default_lang="Namen"
-translation NamenMitglied default_lang="Namen Mitglied"
-translation ObligoF5 default_lang="Obligo                                F5"
-translation ProgrammSuchenUmschF2EN default_lang="Programm suchen (Umsch + F2)"
-translation RAIweb default_lang="RAIweb"
-translation RIAG default_lang="RIAG"
-translation RaiffeisenEBanking default_lang="Raiffeisen E-Banking"
-translation Schnellzugriff default_lang="Schnellzugriff..."
-translation SchnellzugriffForm default_lang="Schnellzugriff"
-translation SpezialzinsF2 default_lang="Spezialzins                         F2"
-translation StornoF6 default_lang="Storno                                F6"
-translation TC0 default_lang="TC ..."
-translation TC default_lang="TC"
-translation TCButton default_lang="..."
-translation Test default_lang="Test"
-translation TestForm default_lang="TestForm"
-translation ToolsMenu default_lang="&Extras"
-translation TransactionsCodeForKOEmission default_lang="200 KO Emission"
-translation Transaktionscode default_lang="TC"
-translation TransaktionscodeTwin default_lang="TransaktionscodeTwin"
-translation UKVKF3 default_lang="UK/VK                                 F3"
-translation UKVollmachtenkarte default_lang="UK / Vollmachtenkarte"
-translation Valorennummer default_lang="Valorennummer"
-translation Versicherung default_lang="Versicherung"
-translation Vorsorgen default_lang="Vorsorgen"
-translation Zahlen default_lang="Zahlen"
-translation Zentralregister default_lang="Zentralregister"
-translation ZentralregisterUmschF12 default_lang="Zentralregister (Umsch + F12) "
-translation ZinssatzText default_lang="Zinssatz"
-translation ZinstermAuslauf default_lang="Zinsterm / Auslauf"
-translation ZregNumber default_lang="ZREG-Nr."
-translation ZregQuickSearchForm default_lang="Zreg Schnellsuche"
-translation anErrorOccured default_lang="Ein Fehler ist aufgetreten"
-translation loggingFileNotFound default_lang="Das Logging wurde nicht korrekt inizilisiert. Bitte Kevin kontaktieren..."
-translation loggingMalformedUrl default_lang="Das Logging wurde nicht korrekt inizilisiert. Bitte Kevin kontaktieren..."
-translation someErrorsOccured default_lang="Folgende Fehler sind aufgetreten"
+logic CodeLoadLogSnippet placement=inline {
+  "System.out.println(\"execLoadCodes\");"
+}
 
+logic FormLoadLogSnippet placement=server {
+  "System.out.println(\"execLoad\"); return formData;"
+}
 
-// ========================
-// CODE TYPES
-// ========================
-code KOArt id="1112" value_type="java.lang.Integer"
-code KOLaufzeit id="9687" value_type="java.lang.Integer"
-code KOTiteldruck id="2569" value_type="java.lang.Integer"
+template CheckBoxField definition="org.eclipse.scout.rt.client.ui.form.fields.checkbox.AbstractCheckBox"
 
+code Departments id="\"Main\"" value_type="java.lang.String" text=trans.text1 {
+  code Germany id="2" value_type="java.lang.Integer"
+  code France id="3" value_type="java.lang.Integer" {
+    code Paris id="4" value_type="java.lang.Integer"
+    code Marseille id="5" value_type="java.lang.Integer"
+  }
+  
+  logic event=load exec=CodeLoadLogSnippet
+  logic event=load placement=inline {
+    "return null;"
+  }
+  logic placement=inline {
+    "public final static int CustomIntField = 101;"
+  }
+}
 
-// ========================
-// LOOKUP CALLS & SERVICES
-// ========================
-lookup DepotNumber {
-	logic placement=server {
-		"private LookupRow[] createDummyData() {
-  		  return new LookupRow[]{new LookupRow(new DepotId(), \"Depot id 1\"), new LookupRow(new DepotId(), \"Depot id 2\"), new LookupRow(new DepotId(), \"Depot id 3\")};
-  		}"
+lookup Levels {
+  logic placement=server {
+    "private LookupRow[] createDummyData() {
+        return new LookupRow[]{new LookupRow(100L, \"Value 1\"), new LookupRow(200L, \"Value 2\")};
+     }"
+  }
+  logic event=all placement=server {
+    "return createDummyData();"
+  }
+}
+
+form ComplexLogicTest modal=false columns=3 title=trans.text1 subtitle=trans.text2 width_pixels=1000  {
+  logic placement=server event=new_store {
+    "System.out.println(\"server call create\"); return formData;"
+  }
+  logic placement=inline event=new_store {
+    "System.out.println(\"inline logic between backendcall and client logic call\");"
+  }
+  logic placement=client event=new_store {
+    "System.out.println(\"client call create\");"
+  }
+  logic event=new_load exec=FormLoadLogSnippet
+  
+  logic InlineRefreshSnippet placement=client {
+    "System.out.println(\"client service refresh 2\");"
+  }
+  
+  key Refresh stroke="f5" {
+    logic event=activated placement=server {
+      "System.out.println(\"refresh on backend\"); return formData;"
     }
-	logic event=all placement=server {
-		"return createDummyData();"
-	}
+    logic event=activated placement=inline {
+      "System.out.println(\"inline refresh\");"
+    }
+    logic event=activated placement=client {
+      "System.out.println(\"client service refresh 1\");"
+    }
+    logic event=activated exec=InlineRefreshSnippet
+  }
 }
 
-lookup OldObliNumber {
-	logic event=all placement=server {
-		"return new LookupRow[]{
-		new org.eclipse.scout.rt.shared.services.lookup.LookupRow(1L, \"Value 1\"),
-		new org.eclipse.scout.rt.shared.services.lookup.LookupRow(2L, \"Value 2\"),
-		new org.eclipse.scout.rt.shared.services.lookup.LookupRow(3L, \"Value 3\")};
-		"
-	}
-}
-
-lookup KontoByZrnr {
-	logic placement=server { 
-		"private LookupRow[] createDummyData() {
-  		  return new LookupRow[]{new LookupRow(new KontoData(), \"KontoData id 1\"), new LookupRow(new KontoData(), \"KontoData id 2\"), new LookupRow(new KontoData(), \"KontoData id 3\")};
-  		}"
-  	}
-	logic event=all placement=server {
-		"return createDummyData();"
-	}
-}
-
-// ========================
-// UI TEMPLATE DEFINITIONS
-// ========================
-template zreg_sequence definition="ch.raiffeisen.dialba.common.client.ui.forms.fields.ZregSequenceBoxAbs"
-
-
-// ========================
-// FORMS
-// ========================
-form ComplexTest modal=true title=KOEmission {
-	logic EvalForm placement=client {
-		"evaluateZinstermFields();
-	     evaluateBuchungstext1And2();"
-	}
-	
-	logic ZregAsMasterField placement=inline {
-		"@Override
-        protected Class<? extends IValueField> getConfiguredMasterField() {
-            return getZregBoxField().getZregNumberField().getClass();
+form ComplexFieldTest {
+  sequence SequenceTest text=trans.text1 enabled=false visible=false label_visible=false width=2 width_pixels=600 {
+    string StringAreaTest text=trans.text1 enabled=false visible=false label_visible=false master=StringTest mandatory=true maxlen=64 height=4 width=2 width_pixels=100 horizontal_align=right
+    string StringTest text=trans.text2 enabled=false visible=false label_visible=false mandatory=true maxlen=128 height=1 width=2 width_pixels=200 horizontal_align=center
+  }
+  group GroupTest text=trans.text2 columns=3 enabled=false visible=false label_visible=false border_visible=false border_decoration=line height=10 width=3 width_pixels=500 {
+    bigdecimal BigDecimalTest text=trans.text1 enabled=false visible=false percent=true grouping=false label_visible=false mandatory=true width=2 width_pixels=333 horizontal_align=left fraction_digits=4 min=20.2 max=200.002
+    date DateTest text=trans.text2 enabled=false visible=false label_visible=false mandatory=true width=2
+    smartfield SmartFieldTest1 text=trans.text1 enabled=false visible=false label_visible=false mandatory=true code=Departments width=2 value_type="java.lang.String" 
+    list TestList1 text=trans.text1 enabled=false visible=false label_visible=false mandatory=true code=Departments width=2 value_type="java.lang.String"
+    button TestButton text=trans.text1 enabled=false visible=false process_button=false width=2 width_pixels=30 {
+      menu MenuTest1 text=trans.text1 enabled=true visible=true single_select=true multi_select=false empty_select=true type=cancel
+    }
+    table TestTable text=trans.text1 enabled=false visible=false label_visible=false height=6 width=3 width_pixels=700 {
+      menu MenuTest2 text=trans.text1 enabled=true visible=true single_select=false multi_select=true empty_select=true type=separator
+      column ColumnTest1 type=date visible=false text=trans.text1 width=30 displayable=false
+      column ColumnTest2 type=string visible=true text=trans.text2 width=31 displayable=true
+      column ColumnTest3 type=int visible=true text=trans.text1 width=32 displayable=true
+      column ColumnTest4 type=bigdecimal visible=true text=trans.text2 width=33 displayable=true
+    }
+    tabbox TestTabBox enabled=false visible=false width=3 width_pixels=650 {
+      tab TestTab1 text=trans.text1 enabled=false visible=false columns=1 {
+        list TestList2 text=trans.text2 enabled=true visible=true label_visible=true mandatory=false lookup=Levels width_pixels=100 value_type="java.lang.Long"
+        smartfield SmartFieldTest2 text=trans.text2 enabled=true visible=true label_visible=true mandatory=false lookup=Levels width_pixels=77 value_type="java.lang.Long" {
+          menu MenuTest3 text=trans.text2 enabled=false visible=false single_select=true multi_select=true empty_select=true type=normal
         }
-
-        @Override
-        protected boolean getConfiguredMasterRequired() {
-            return true;
-        }"
-	}
-	
-	logic placement=server event=new_store {
-		"System.out.println(\"server call create\");
-		 return formData;"
-	}
-	
-	logic placement=client {
-		"private void evaluateBuchungstext1And2() throws ProcessingException {
-	        System.out.println(\"client method evaluateBuchungstext1And2\");	
-		}
-	
-		private void evaluateZinstermFields() {
-	        System.out.println(\"client method evaluateZinstermFields\");
-	    }"
-	}
-	
-	group Tool label_visible=false border_decoration=empty border_visible=false {
-		button FunktionenButton text=Funktionen process_button=false {
-			menu EndeESCMenu text=EndeESC
-			menu SpezialzinsF2Menu text=SpezialzinsF2
-			menu UKVKF3Menu text=UKVKF3
-			menu BemF4Menu text=BemF4
-			menu ObligoF5Menu text=ObligoF5
-			menu StornoF6Menu text=StornoF6
-			menu InfoF7Menu text=InfoF7
-		}
-	}
-
-	sequence TransaktionscodeSequence {
-		string BuchungsCode text=Transaktionscode enabled=false {
-			logic placement=inline event=format_value {
-				"return TEXTS.get(\"TransactionsCodeForKOEmission\");"
-			}
-		}
-	}
-	
-	custom_field ZregBox super_type=zreg_sequence text=Zentralregister {
-		logic event=init placement=client {
-			"System.out.println(\"init zregboxfield\");"
-		}
-		logic placement=inline {
-			"@Override
-            public ch.raiffeisen.dialba.common.shared.services.process.ZregSequenceBoxDataAbs getBoxData() {
-                return new ComplexTestFormData().getZregBox();
-            }"
-		}
-	}
-
-	sequence KoArtSequence {
-		smartfield KoArt text=Art mandatory=true value_type="Integer" code=KOArt
-	}
-	
-	sequence LaufzeitSequence {
-		smartfield Laufzeit text=LaufzeitText mandatory=true code=KOLaufzeit value_type="Integer" {
-			logic event=changed placement=server {
-				"System.out.println(\"server call LaufzeitfieldChanged\");
-				 return formData;"
-			}
-			logic event=changed exec=EvalForm
-		}
-	}
-
-	sequence ValorSequence {
-		string Valor text=Valorennummer enabled=false
-	}
-	
-	sequence ZinssatzSequence {
-		bigdecimal Zinssatz text=ZinssatzText enabled=false
-	}
-
-	sequence MitTiteldruckSequence {
-		smartfield MitTitel text=MitTiteldruck mandatory=true code=KOTiteldruck value_type="Integer" {
-			logic event=changed placement=server {
-				"System.out.println(\"server call MitTitelFieldChanged\");
-				 return formData;"
-			}
-			logic event=changed placement=client {
-				"evaluateBuchungstext1And2();"
-			}
-		}
-	}
-	
-	sequence DepotSequence {
-		smartfield Depot text=DepotText lookup=DepotNumber value_type="DepotId" {
-			logic exec=ZregAsMasterField
-		}
-	}
-
-	sequence AlteNeueKONrSequence {
-		smartfield ObligationNrAlt text=AlteNeueKONr mandatory=true lookup=OldObliNumber value_type="Integer" {
-			logic exec=ZregAsMasterField
-		}
-		long ObligationNr enabled=false label_visible=false
-	}
-  
-	sequence DatumEmissionSequence {
-		date BuchungsDatum text=DatumEmission enabled=false {
-			logic event=init placement=client {
-				"form.getBuchungsDatumField().setValue(new java.util.Date());"
-			}
-		}
-    	date EmissionsDatum mandatory=true label_visible=false {
-    		logic event=init placement=client {
-				"form.getEmissionsDatumField().setValue(new java.util.Date());"
-			}
-			logic event=changed placement=server {
-				"System.out.println(\"server call EmissionsDatumFieldChanged\");
-				 return formData;"
-			}
-    	}
-	}
-
-	sequence ZinstermAuslaufSequence {
-		string Zinsterm text=ZinstermAuslauf enabled=false
-		string EndJahr enabled=false label_visible=false
-	}
-  
-	sequence BetragSpesenSequence {
-		long Betrag text=BetragSpesen mandatory=true {
-			logic event=changed placement=client {
-				"form.getEmissionField().setValue(new BigDecimal(0));"
-			}
-		}
-		string BetragsWaehrung enabled=false label_visible=false {
-			logic placement=inline event=format_value {
-				"return TEXTS.get(\"CHF\");"
-			}
-		}
-	}
-  
-	sequence EmissionsabgabeSequence {
-		bigdecimal Emission text=Emissionsabgabe enabled=false
-		string EmissionsWaehrung enabled=false label_visible=false {
-			logic placement=inline event=format_value {
-				"return TEXTS.get(\"CHF\");"
-			}
-		}
-	}
-  
-  	sequence KontobelastungSequence {
-		smartfield KontoNr text=Kontobelastung mandatory=true lookup=KontoByZrnr value_type="KontoData" {
-			logic exec=ZregAsMasterField
-			logic event=changed placement=client {
-				"KontoData kontoData = form.getKontoNrField().getValue();
-			    if (kontoData != null) {
-			      form.getZregKurzbezeichnungField().setValue(kontoData.getZregKurzBez());
-			      form.getKontostandField().setValue(kontoData.getSaldo());
-			    }"
-			}
-		}
-		string ZregKurzbezeichnung enabled=false label_visible=false master=KontoNr 
-		string Kontostand enabled=false label_visible=false
-	}
-
-	sequence Buchungstext1Sequence {
-		string KontoText1 text=Buchungstext1 enabled=false
-	}
-  
-	sequence Buchungstext2Sequence {
-		string KontoText2 text=Buchungstext2 enabled=false
-	}
-  
-	sequence Buchungstext3Sequence {
-		string KontoText3 text=Buchungstext3
-	}
-} // end form
+      }
+    }
+    custom_field CheckBoxCustom super_type=CheckBoxField text=trans.text1 enabled=false visible=false label_visible=false width=3 width_pixels=44
+    check TestCheckbox text=trans.text2 enabled=false visible=false width=3 width_pixels=102 label_visible=false mandatory=true
+    button TestOkButton text=trans.text2 process_button=true type=ok
+  }
+}
 

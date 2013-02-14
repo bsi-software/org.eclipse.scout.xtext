@@ -225,6 +225,11 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
         return createTabBoxElementAdapter();
       }
       @Override
+      public Adapter caseCheckboxElement(CheckboxElement object)
+      {
+        return createCheckboxElementAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -692,6 +697,21 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createTabBoxElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.CheckboxElement <em>Checkbox Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.scout.saml.saml.CheckboxElement
+   * @generated
+   */
+  public Adapter createCheckboxElementAdapter()
   {
     return null;
   }

@@ -310,6 +310,15 @@ public class SamlSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case SamlPackage.CHECKBOX_ELEMENT:
+      {
+        CheckboxElement checkboxElement = (CheckboxElement)theEObject;
+        T result = caseCheckboxElement(checkboxElement);
+        if (result == null) result = caseValueFieldElement(checkboxElement);
+        if (result == null) result = caseFormFieldElement(checkboxElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -790,6 +799,22 @@ public class SamlSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseTabBoxElement(TabBoxElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Checkbox Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Checkbox Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCheckboxElement(CheckboxElement object)
   {
     return null;
   }

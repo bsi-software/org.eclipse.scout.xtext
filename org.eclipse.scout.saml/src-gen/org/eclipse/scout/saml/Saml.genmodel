@@ -140,6 +140,7 @@
     <genClasses ecoreClass="Saml.ecore#//ButtonElement">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//ButtonElement/text"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//ButtonElement/processButton"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//ButtonElement/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//ButtonElement/gridWidth"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//ButtonElement/widthInPixels"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//ButtonElement/menus"/>
@@ -187,5 +188,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//TabBoxElement/widthInPixels"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//TabBoxElement/tabs"/>
     </genClasses>
+    <genClasses ecoreClass="Saml.ecore#//CheckboxElement"/>
   </genPackages>
 </genmodel:GenModel>

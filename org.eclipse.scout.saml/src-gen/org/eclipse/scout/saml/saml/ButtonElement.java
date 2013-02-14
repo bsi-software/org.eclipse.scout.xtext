@@ -14,6 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.eclipse.scout.saml.saml.ButtonElement#getText <em>Text</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.ButtonElement#getProcessButton <em>Process Button</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.ButtonElement#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.ButtonElement#getGridWidth <em>Grid Width</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.ButtonElement#getWidthInPixels <em>Width In Pixels</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.ButtonElement#getMenus <em>Menus</em>}</li>
@@ -77,6 +78,32 @@ public interface ButtonElement extends FormFieldElement
    * @generated
    */
   void setProcessButton(String value);
+
+  /**
+   * Returns the value of the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Type</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Type</em>' attribute.
+   * @see #setType(String)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getButtonElement_Type()
+   * @model
+   * @generated
+   */
+  String getType();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.ButtonElement#getType <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type</em>' attribute.
+   * @see #getType()
+   * @generated
+   */
+  void setType(String value);
 
   /**
    * Returns the value of the '<em><b>Grid Width</b></em>' attribute.

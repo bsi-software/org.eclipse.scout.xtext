@@ -356,4 +356,37 @@ public class FormFieldAttributeHandlersProvider extends AbstractAttributeHandler
     }
   }
 
+  @SamlAttributeHandler(handles = {@SamlAttribute(elementType = ButtonElement.class, featureId = SamlPackage.BUTTON_ELEMENT__TYPE)})
+  public void applyButtonSystemTypeAttribute(String type) throws CoreException, IllegalArgumentException {
+    if (StringUtility.hasText(type)) {
+      String constant = getButtonSystemTypeConstant(type);
+      if (constant != null) {
+        overrideMethod("getConfiguredSystemType", "return " + constant + ";");
+      }
+    }
+  }
+
+  private String getButtonSystemTypeConstant(String type) {
+    if (type.equals(getSamlContext().getGrammarAccess().getButtonElementAccess().getTypeNormalKeyword_2_4_2_0_0().getValue())) {
+      return null; // default: SYSTEM_TYPE_NONE
+    }
+    else if (type.equals(getSamlContext().getGrammarAccess().getButtonElementAccess().getTypeCancelKeyword_2_4_2_0_1().getValue())) {
+      return "SYSTEM_TYPE_CANCEL";
+    }
+    else if (type.equals(getSamlContext().getGrammarAccess().getButtonElementAccess().getTypeCloseKeyword_2_4_2_0_2().getValue())) {
+      return "SYSTEM_TYPE_CLOSE";
+    }
+    else if (type.equals(getSamlContext().getGrammarAccess().getButtonElementAccess().getTypeOkKeyword_2_4_2_0_3().getValue())) {
+      return "SYSTEM_TYPE_OK";
+    }
+    else if (type.equals(getSamlContext().getGrammarAccess().getButtonElementAccess().getTypeResetKeyword_2_4_2_0_4().getValue())) {
+      return "SYSTEM_TYPE_RESET";
+    }
+    else if (type.equals(getSamlContext().getGrammarAccess().getButtonElementAccess().getTypeSaveKeyword_2_4_2_0_5().getValue())) {
+      return "SYSTEM_TYPE_SAVE";
+    }
+    else {
+      throw new IllegalArgumentException("unknown button system type: " + type);
+    }
+  }
 }
