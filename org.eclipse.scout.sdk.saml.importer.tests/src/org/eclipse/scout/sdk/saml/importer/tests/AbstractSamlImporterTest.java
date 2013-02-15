@@ -10,26 +10,21 @@
  ******************************************************************************/
 package org.eclipse.scout.sdk.saml.importer.tests;
 
-import java.io.IOException;
-import java.net.URL;
-
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
+import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.commons.holders.BooleanHolder;
 import org.eclipse.scout.saml.ui.internal.SamlActivator;
 import org.eclipse.scout.sdk.ScoutSdkCore;
 import org.eclipse.scout.sdk.saml.importer.SamlImportHelper;
-import org.eclipse.scout.sdk.saml.importer.tests.internal.SamlImporterTestsActivator;
 import org.eclipse.scout.sdk.test.AbstractScoutSdkTest;
 import org.eclipse.scout.sdk.util.ScoutSeverityManager;
-import org.eclipse.scout.sdk.util.jdt.JdtUtility;
+import org.eclipse.scout.sdk.util.signature.SignatureUtility;
 import org.eclipse.scout.sdk.util.type.TypeUtility;
 import org.eclipse.scout.sdk.workspace.IScoutBundle;
 import org.eclipse.scout.sdk.workspace.type.config.PropertyMethodSourceUtility;
@@ -47,24 +42,6 @@ import com.google.inject.Injector;
  */
 public class AbstractSamlImporterTest extends AbstractScoutSdkTest {
   private static final String RESOURCES_FOLDER_NAME = "resources";
-
-  protected static void setupWorkspace(String baseFolder, String... projects) throws Exception {
-    showEgitMessageBoxes(false);
-    JdtUtility.setWorkspaceAutoBuilding(false);
-    setAutoUpdateFormData(false);
-    clearWorkspace();
-    Assert.assertNotNull("baseFolder must not be null", baseFolder);
-    if (projects == null || projects.length == 0) {
-      projects = new String[]{null};
-    }
-    for (String project : projects) {
-      IProject javaProject = createProject(project);
-      copyProject(RESOURCES_FOLDER_NAME, baseFolder, project);
-      javaProject.close(null);
-      javaProject.open(null);
-    }
-    buildWorkspace();
-  }
 
   protected static IScoutBundle getScoutBundle(String name) {
     return ScoutSdkCore.getScoutWorkspace().getScoutBundle(getProject(name));
@@ -184,11 +161,24 @@ public class AbstractSamlImporterTest extends AbstractScoutSdkTest {
     }
   }
 
-  protected static void copyProject(String... pathElements) throws IOException {
-    URL resource = FileLocator.find(Platform.getBundle(SamlImporterTestsActivator.PLUGIN_ID), createPath(pathElements), null);
-    if (resource != null) {
-      String path = FileLocator.toFileURL(resource).getPath();
-      copyFilesRecursive(path, ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString());
+  protected void testHasGenericArgument(IType type, String simpleName) throws Exception {
+    Assert.assertTrue(TypeUtility.exists(type));
+
+    String superSig = type.getSuperclassTypeSignature();
+    Assert.assertTrue(SignatureUtility.isGenericSignature(superSig));
+
+    String[] genericArguments = Signature.getTypeArguments(superSig);
+    Assert.assertNotNull(genericArguments);
+    Assert.assertTrue(genericArguments.length > 0);
+
+    boolean found = false;
+    for (String argSig : genericArguments) {
+      String name = Signature.toString(argSig);
+      if (name.contains(simpleName)) {
+        found = true;
+        break;
+      }
     }
+    Assert.assertTrue(found);
   }
 }

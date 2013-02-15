@@ -122,6 +122,15 @@ public interface SamlFactory extends EFactory
   FormFieldElement createFormFieldElement();
 
   /**
+   * Returns a new object of class '<em>Named Type Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Named Type Element</em>'.
+   * @generated
+   */
+  NamedTypeElement createNamedTypeElement();
+
+  /**
    * Returns a new object of class '<em>Composite Field Element</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -149,15 +158,6 @@ public interface SamlFactory extends EFactory
   GroupBoxElement createGroupBoxElement();
 
   /**
-   * Returns a new object of class '<em>Value Field Element</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Value Field Element</em>'.
-   * @generated
-   */
-  ValueFieldElement createValueFieldElement();
-
-  /**
    * Returns a new object of class '<em>Generic Value Field Element</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -165,6 +165,15 @@ public interface SamlFactory extends EFactory
    * @generated
    */
   GenericValueFieldElement createGenericValueFieldElement();
+
+  /**
+   * Returns a new object of class '<em>Value Field Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Value Field Element</em>'.
+   * @generated
+   */
+  ValueFieldElement createValueFieldElement();
 
   /**
    * Returns a new object of class '<em>String Element</em>'.
@@ -300,6 +309,33 @@ public interface SamlFactory extends EFactory
    * @generated
    */
   CheckboxElement createCheckboxElement();
+
+  /**
+   * Returns a new object of class '<em>File Chooser Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>File Chooser Element</em>'.
+   * @generated
+   */
+  FileChooserElement createFileChooserElement();
+
+  /**
+   * Returns a new object of class '<em>Radio Group Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Radio Group Element</em>'.
+   * @generated
+   */
+  RadioGroupElement createRadioGroupElement();
+
+  /**
+   * Returns a new object of class '<em>Radio Button Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Radio Button Element</em>'.
+   * @generated
+   */
+  RadioButtonElement createRadioButtonElement();
 
   /**
    * Returns the package supported by this factory.

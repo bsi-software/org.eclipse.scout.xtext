@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -21,7 +20,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
-import org.eclipse.scout.saml.saml.TemplateElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,38 +28,16 @@ import org.eclipse.scout.saml.saml.TemplateElement;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getEnabled <em>Enabled</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getVisible <em>Visible</em>}</li>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getSuperType <em>Super Type</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl#getLogic <em>Logic</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class FormFieldElementImpl extends MinimalEObjectImpl.Container implements FormFieldElement
+public class FormFieldElementImpl extends NamedTypeElementImpl implements FormFieldElement
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The default value of the '{@link #getEnabled() <em>Enabled</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -103,16 +79,6 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
   protected String visible = VISIBLE_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getSuperType() <em>Super Type</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSuperType()
-   * @generated
-   * @ordered
-   */
-  protected TemplateElement superType;
-
-  /**
    * The cached value of the '{@link #getLogic() <em>Logic</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -141,29 +107,6 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
   protected EClass eStaticClass()
   {
     return SamlPackage.Literals.FORM_FIELD_ELEMENT;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.FORM_FIELD_ELEMENT__NAME, oldName, name));
   }
 
   /**
@@ -217,49 +160,6 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public TemplateElement getSuperType()
-  {
-    if (superType != null && superType.eIsProxy())
-    {
-      InternalEObject oldSuperType = (InternalEObject)superType;
-      superType = (TemplateElement)eResolveProxy(oldSuperType);
-      if (superType != oldSuperType)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SamlPackage.FORM_FIELD_ELEMENT__SUPER_TYPE, oldSuperType, superType));
-      }
-    }
-    return superType;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public TemplateElement basicGetSuperType()
-  {
-    return superType;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setSuperType(TemplateElement newSuperType)
-  {
-    TemplateElement oldSuperType = superType;
-    superType = newSuperType;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.FORM_FIELD_ELEMENT__SUPER_TYPE, oldSuperType, superType));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EList<LogicElement> getLogic()
   {
     if (logic == null)
@@ -295,15 +195,10 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case SamlPackage.FORM_FIELD_ELEMENT__NAME:
-        return getName();
       case SamlPackage.FORM_FIELD_ELEMENT__ENABLED:
         return getEnabled();
       case SamlPackage.FORM_FIELD_ELEMENT__VISIBLE:
         return getVisible();
-      case SamlPackage.FORM_FIELD_ELEMENT__SUPER_TYPE:
-        if (resolve) return getSuperType();
-        return basicGetSuperType();
       case SamlPackage.FORM_FIELD_ELEMENT__LOGIC:
         return getLogic();
     }
@@ -321,17 +216,11 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case SamlPackage.FORM_FIELD_ELEMENT__NAME:
-        setName((String)newValue);
-        return;
       case SamlPackage.FORM_FIELD_ELEMENT__ENABLED:
         setEnabled((String)newValue);
         return;
       case SamlPackage.FORM_FIELD_ELEMENT__VISIBLE:
         setVisible((String)newValue);
-        return;
-      case SamlPackage.FORM_FIELD_ELEMENT__SUPER_TYPE:
-        setSuperType((TemplateElement)newValue);
         return;
       case SamlPackage.FORM_FIELD_ELEMENT__LOGIC:
         getLogic().clear();
@@ -351,17 +240,11 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case SamlPackage.FORM_FIELD_ELEMENT__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case SamlPackage.FORM_FIELD_ELEMENT__ENABLED:
         setEnabled(ENABLED_EDEFAULT);
         return;
       case SamlPackage.FORM_FIELD_ELEMENT__VISIBLE:
         setVisible(VISIBLE_EDEFAULT);
-        return;
-      case SamlPackage.FORM_FIELD_ELEMENT__SUPER_TYPE:
-        setSuperType((TemplateElement)null);
         return;
       case SamlPackage.FORM_FIELD_ELEMENT__LOGIC:
         getLogic().clear();
@@ -380,14 +263,10 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case SamlPackage.FORM_FIELD_ELEMENT__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case SamlPackage.FORM_FIELD_ELEMENT__ENABLED:
         return ENABLED_EDEFAULT == null ? enabled != null : !ENABLED_EDEFAULT.equals(enabled);
       case SamlPackage.FORM_FIELD_ELEMENT__VISIBLE:
         return VISIBLE_EDEFAULT == null ? visible != null : !VISIBLE_EDEFAULT.equals(visible);
-      case SamlPackage.FORM_FIELD_ELEMENT__SUPER_TYPE:
-        return superType != null;
       case SamlPackage.FORM_FIELD_ELEMENT__LOGIC:
         return logic != null && !logic.isEmpty();
     }
@@ -405,9 +284,7 @@ public class FormFieldElementImpl extends MinimalEObjectImpl.Container implement
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(", enabled: ");
+    result.append(" (enabled: ");
     result.append(enabled);
     result.append(", visible: ");
     result.append(visible);

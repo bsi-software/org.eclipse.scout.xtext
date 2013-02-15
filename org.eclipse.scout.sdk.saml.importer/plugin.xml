@@ -266,6 +266,42 @@
                value="org.eclipse.scout.rt.client.ui.form.fields.booleanfield.IBooleanField">
          </property>
       </importer>
+      <importer
+            element="org.eclipse.scout.saml.saml.FileChooserElement"
+            operation="org.eclipse.scout.sdk.saml.importer.operation.form.field.FormFieldElementImportOperation">
+         <property
+               name="fieldSuffix"
+               value="Field">
+         </property>
+         <property
+               name="defaultSuperInterfaceFqn"
+               value="org.eclipse.scout.rt.client.ui.form.fields.filechooserfield.IFileChooserField">
+         </property>
+      </importer>
+      <importer
+            element="org.eclipse.scout.saml.saml.RadioGroupElement"
+            operation="org.eclipse.scout.sdk.saml.importer.operation.form.field.FormFieldElementImportOperation">
+         <property
+               name="fieldSuffix"
+               value="Group">
+         </property>
+         <property
+               name="defaultSuperInterfaceFqn"
+               value="org.eclipse.scout.rt.client.ui.form.fields.radiobuttongroup.IRadioButtonGroup">
+         </property>
+      </importer>
+      <importer
+            element="org.eclipse.scout.saml.saml.RadioButtonElement"
+            operation="org.eclipse.scout.sdk.saml.importer.operation.form.field.FormFieldElementImportOperation">
+         <property
+               name="fieldSuffix"
+               value="Button">
+         </property>
+         <property
+               name="defaultSuperInterfaceFqn"
+               value="org.eclipse.scout.rt.client.ui.form.fields.button.AbstractRadioButton">
+         </property>
+      </importer>
    </extension>
 
 </plugin>

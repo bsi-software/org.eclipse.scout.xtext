@@ -118,6 +118,7 @@ public class SamlSwitch<T> extends Switch<T>
       {
         CodeElement codeElement = (CodeElement)theEObject;
         T result = caseCodeElement(codeElement);
+        if (result == null) result = caseNamedTypeElement(codeElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -139,6 +140,7 @@ public class SamlSwitch<T> extends Switch<T>
       {
         FormElement formElement = (FormElement)theEObject;
         T result = caseFormElement(formElement);
+        if (result == null) result = caseNamedTypeElement(formElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -146,6 +148,14 @@ public class SamlSwitch<T> extends Switch<T>
       {
         FormFieldElement formFieldElement = (FormFieldElement)theEObject;
         T result = caseFormFieldElement(formFieldElement);
+        if (result == null) result = caseNamedTypeElement(formFieldElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.NAMED_TYPE_ELEMENT:
+      {
+        NamedTypeElement namedTypeElement = (NamedTypeElement)theEObject;
+        T result = caseNamedTypeElement(namedTypeElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -154,6 +164,7 @@ public class SamlSwitch<T> extends Switch<T>
         CompositeFieldElement compositeFieldElement = (CompositeFieldElement)theEObject;
         T result = caseCompositeFieldElement(compositeFieldElement);
         if (result == null) result = caseFormFieldElement(compositeFieldElement);
+        if (result == null) result = caseNamedTypeElement(compositeFieldElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -163,6 +174,7 @@ public class SamlSwitch<T> extends Switch<T>
         T result = caseSequenceBoxElement(sequenceBoxElement);
         if (result == null) result = caseCompositeFieldElement(sequenceBoxElement);
         if (result == null) result = caseFormFieldElement(sequenceBoxElement);
+        if (result == null) result = caseNamedTypeElement(sequenceBoxElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -172,14 +184,7 @@ public class SamlSwitch<T> extends Switch<T>
         T result = caseGroupBoxElement(groupBoxElement);
         if (result == null) result = caseCompositeFieldElement(groupBoxElement);
         if (result == null) result = caseFormFieldElement(groupBoxElement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SamlPackage.VALUE_FIELD_ELEMENT:
-      {
-        ValueFieldElement valueFieldElement = (ValueFieldElement)theEObject;
-        T result = caseValueFieldElement(valueFieldElement);
-        if (result == null) result = caseFormFieldElement(valueFieldElement);
+        if (result == null) result = caseNamedTypeElement(groupBoxElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -189,6 +194,16 @@ public class SamlSwitch<T> extends Switch<T>
         T result = caseGenericValueFieldElement(genericValueFieldElement);
         if (result == null) result = caseValueFieldElement(genericValueFieldElement);
         if (result == null) result = caseFormFieldElement(genericValueFieldElement);
+        if (result == null) result = caseNamedTypeElement(genericValueFieldElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.VALUE_FIELD_ELEMENT:
+      {
+        ValueFieldElement valueFieldElement = (ValueFieldElement)theEObject;
+        T result = caseValueFieldElement(valueFieldElement);
+        if (result == null) result = caseFormFieldElement(valueFieldElement);
+        if (result == null) result = caseNamedTypeElement(valueFieldElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -198,6 +213,7 @@ public class SamlSwitch<T> extends Switch<T>
         T result = caseStringElement(stringElement);
         if (result == null) result = caseValueFieldElement(stringElement);
         if (result == null) result = caseFormFieldElement(stringElement);
+        if (result == null) result = caseNamedTypeElement(stringElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -207,6 +223,7 @@ public class SamlSwitch<T> extends Switch<T>
         T result = caseBigDecimalElement(bigDecimalElement);
         if (result == null) result = caseValueFieldElement(bigDecimalElement);
         if (result == null) result = caseFormFieldElement(bigDecimalElement);
+        if (result == null) result = caseNamedTypeElement(bigDecimalElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -216,6 +233,7 @@ public class SamlSwitch<T> extends Switch<T>
         T result = caseLongElement(longElement);
         if (result == null) result = caseValueFieldElement(longElement);
         if (result == null) result = caseFormFieldElement(longElement);
+        if (result == null) result = caseNamedTypeElement(longElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -225,6 +243,7 @@ public class SamlSwitch<T> extends Switch<T>
         T result = caseDateElement(dateElement);
         if (result == null) result = caseValueFieldElement(dateElement);
         if (result == null) result = caseFormFieldElement(dateElement);
+        if (result == null) result = caseNamedTypeElement(dateElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -235,6 +254,7 @@ public class SamlSwitch<T> extends Switch<T>
         if (result == null) result = caseGenericValueFieldElement(smartfieldElement);
         if (result == null) result = caseValueFieldElement(smartfieldElement);
         if (result == null) result = caseFormFieldElement(smartfieldElement);
+        if (result == null) result = caseNamedTypeElement(smartfieldElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -245,6 +265,7 @@ public class SamlSwitch<T> extends Switch<T>
         if (result == null) result = caseGenericValueFieldElement(listBoxElement);
         if (result == null) result = caseValueFieldElement(listBoxElement);
         if (result == null) result = caseFormFieldElement(listBoxElement);
+        if (result == null) result = caseNamedTypeElement(listBoxElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -253,6 +274,7 @@ public class SamlSwitch<T> extends Switch<T>
         CustomFieldElement customFieldElement = (CustomFieldElement)theEObject;
         T result = caseCustomFieldElement(customFieldElement);
         if (result == null) result = caseFormFieldElement(customFieldElement);
+        if (result == null) result = caseNamedTypeElement(customFieldElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -261,6 +283,7 @@ public class SamlSwitch<T> extends Switch<T>
         ButtonElement buttonElement = (ButtonElement)theEObject;
         T result = caseButtonElement(buttonElement);
         if (result == null) result = caseFormFieldElement(buttonElement);
+        if (result == null) result = caseNamedTypeElement(buttonElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -276,6 +299,7 @@ public class SamlSwitch<T> extends Switch<T>
         TableElement tableElement = (TableElement)theEObject;
         T result = caseTableElement(tableElement);
         if (result == null) result = caseFormFieldElement(tableElement);
+        if (result == null) result = caseNamedTypeElement(tableElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -299,6 +323,7 @@ public class SamlSwitch<T> extends Switch<T>
         T result = caseTabElement(tabElement);
         if (result == null) result = caseCompositeFieldElement(tabElement);
         if (result == null) result = caseFormFieldElement(tabElement);
+        if (result == null) result = caseNamedTypeElement(tabElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -307,6 +332,7 @@ public class SamlSwitch<T> extends Switch<T>
         TabBoxElement tabBoxElement = (TabBoxElement)theEObject;
         T result = caseTabBoxElement(tabBoxElement);
         if (result == null) result = caseFormFieldElement(tabBoxElement);
+        if (result == null) result = caseNamedTypeElement(tabBoxElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -316,6 +342,36 @@ public class SamlSwitch<T> extends Switch<T>
         T result = caseCheckboxElement(checkboxElement);
         if (result == null) result = caseValueFieldElement(checkboxElement);
         if (result == null) result = caseFormFieldElement(checkboxElement);
+        if (result == null) result = caseNamedTypeElement(checkboxElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.FILE_CHOOSER_ELEMENT:
+      {
+        FileChooserElement fileChooserElement = (FileChooserElement)theEObject;
+        T result = caseFileChooserElement(fileChooserElement);
+        if (result == null) result = caseValueFieldElement(fileChooserElement);
+        if (result == null) result = caseFormFieldElement(fileChooserElement);
+        if (result == null) result = caseNamedTypeElement(fileChooserElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.RADIO_GROUP_ELEMENT:
+      {
+        RadioGroupElement radioGroupElement = (RadioGroupElement)theEObject;
+        T result = caseRadioGroupElement(radioGroupElement);
+        if (result == null) result = caseGenericValueFieldElement(radioGroupElement);
+        if (result == null) result = caseValueFieldElement(radioGroupElement);
+        if (result == null) result = caseFormFieldElement(radioGroupElement);
+        if (result == null) result = caseNamedTypeElement(radioGroupElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.RADIO_BUTTON_ELEMENT:
+      {
+        RadioButtonElement radioButtonElement = (RadioButtonElement)theEObject;
+        T result = caseRadioButtonElement(radioButtonElement);
+        if (result == null) result = caseNamedTypeElement(radioButtonElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -500,6 +556,22 @@ public class SamlSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Named Type Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Named Type Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNamedTypeElement(NamedTypeElement object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Composite Field Element</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -548,22 +620,6 @@ public class SamlSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Value Field Element</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Value Field Element</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseValueFieldElement(ValueFieldElement object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Generic Value Field Element</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -575,6 +631,22 @@ public class SamlSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseGenericValueFieldElement(GenericValueFieldElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Value Field Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Value Field Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseValueFieldElement(ValueFieldElement object)
   {
     return null;
   }
@@ -815,6 +887,54 @@ public class SamlSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCheckboxElement(CheckboxElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>File Chooser Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>File Chooser Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFileChooserElement(FileChooserElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Radio Group Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Radio Group Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRadioGroupElement(RadioGroupElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Radio Button Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Radio Button Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRadioButtonElement(RadioButtonElement object)
   {
     return null;
   }

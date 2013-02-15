@@ -28,7 +28,7 @@ public class ComplexFormTests {
   private Provider<XtextResourceSet> resourceSetProvider;
   
   @Test
-  public void testTextRefOverFiles() {
+  public void testComplexFormsOverFiles() {
     try {
       final XtextResourceSet resourceSet = this.resourceSetProvider.get();
       StringConcatenation _builder = new StringConcatenation();
@@ -38,6 +38,8 @@ public class ComplexFormTests {
       _builder.append("translation trans.text1 default_lang=\"text1_default\" en=\"text1_en\" de_CH=\"text1_de_CH\"");
       _builder.newLine();
       _builder.append("translation trans.text2 default_lang=\"text2_default\"");
+      _builder.newLine();
+      _builder.append("translation trans.text3 default_lang=\"text3_default\"");
       _builder.newLine();
       _builder.newLine();
       _builder.append("logic CodeLoadLogSnippet placement=inline {");
@@ -245,7 +247,7 @@ public class ComplexFormTests {
       _builder.append("list TestList1 text=trans.text1 enabled=false visible=false label_visible=false mandatory=true code=Departments width=2 value_type=\"java.lang.String\"");
       _builder.newLine();
       _builder.append("    ");
-      _builder.append("button TestButton text=trans.text1 enabled=false visible=false process_button=false width=2 width_pixels=30 {");
+      _builder.append("button TestButton text=trans.text1 enabled=false visible=false process_button=false width=2 width_pixels=30 type=normal {");
       _builder.newLine();
       _builder.append("      ");
       _builder.append("menu MenuTest1 text=trans.text1 enabled=true visible=true single_select=true multi_select=false empty_select=true type=cancel");
@@ -295,6 +297,33 @@ public class ComplexFormTests {
       _builder.append("      ");
       _builder.append("}");
       _builder.newLine();
+      _builder.append("      ");
+      _builder.append("tab TestTab2 text=trans.text2 columns=1 {");
+      _builder.newLine();
+      _builder.append("      \t");
+      _builder.append("filechooser TestFileChooser1 text=trans.text1 enabled=false visible=false width=5 width_pixels=105 label_visible=false mandatory=true maxlen=300 mode=directory type=load default_directory=\"C:\\\\Users\" show_directory=true show_filename=false show_extension=false");
+      _builder.newLine();
+      _builder.append("        ");
+      _builder.append("filechooser TestFileChooser2 text=trans.text2 mode=file type=store extensions=\"jpg jpeg png bmp gif\" default_directory=\"C:\\\\Program Files\" show_directory=false show_filename=true show_extension=true");
+      _builder.newLine();
+      _builder.append("        ");
+      _builder.append("radio_group TestRadioButtons text=trans.text1 enabled=false visible=false width=5 width_pixels=105 label_visible=false mandatory=true value_type=\"java.lang.Integer\" {");
+      _builder.newLine();
+      _builder.append("          ");
+      _builder.append("option Opt1 text=trans.text1 value=\"10\" enabled=false");
+      _builder.newLine();
+      _builder.append("          ");
+      _builder.append("option Opt2 text=trans.text2 value=\"20\" visible=false");
+      _builder.newLine();
+      _builder.append("          ");
+      _builder.append("option Opt3 text=trans.text3 value=\"30\"");
+      _builder.newLine();
+      _builder.append("        ");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("      ");
+      _builder.append("}");
+      _builder.newLine();
       _builder.append("    ");
       _builder.append("}");
       _builder.newLine();
@@ -303,6 +332,9 @@ public class ComplexFormTests {
       _builder.newLine();
       _builder.append("    ");
       _builder.append("check TestCheckbox text=trans.text2 enabled=false visible=false width=3 width_pixels=102 label_visible=false mandatory=true");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("button TestOkButton text=trans.text2 process_button=true type=ok");
       _builder.newLine();
       _builder.append("  ");
       _builder.append("}");

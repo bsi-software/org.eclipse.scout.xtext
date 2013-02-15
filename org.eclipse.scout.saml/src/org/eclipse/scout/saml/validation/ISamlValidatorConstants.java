@@ -57,4 +57,7 @@ public interface ISamlValidatorConstants {
 
   String TAB_ONLY_IN_TABBOX = "TabOnlyInTabbox";
   String MSG_TAB_ONLY_IN_TABBOX = "A tab element is only allowed inside a tabbox.";
+
+  String ONLY_FOR_MODE_FILE = "OnlyForModeFile";
+  String MSG_ONLY_FOR_MODE_FILE = "This attribute can only be set if the filechooser is in mode 'file'.";
 }

@@ -69,6 +69,11 @@ public class SmartfieldElementImportTest extends AbstractSamlFieldImporterTest i
   }
 
   @Test
+  public void testGenericType1() throws Exception {
+    testHasGenericArgument(getField(FORM_NAME, LOCATION1), String.class.getSimpleName());
+  }
+
+  @Test
   public void testNumAttributes2() throws Exception {
     IType field = getField(FORM_NAME, LOCATION2);
     Assert.assertEquals(3, TypeUtility.getMethods(field).length);
@@ -87,5 +92,10 @@ public class SmartfieldElementImportTest extends AbstractSamlFieldImporterTest i
   @Test
   public void testLookupAttribute2() throws Exception {
     super.testMethod(getField(FORM_NAME, LOCATION2), "getConfiguredLookupCall", "Levels" + SdkProperties.SUFFIX_LOOKUP_CALL);
+  }
+
+  @Test
+  public void testGenericType2() throws Exception {
+    testHasGenericArgument(getField(FORM_NAME, LOCATION2), Long.class.getSimpleName());
   }
 }

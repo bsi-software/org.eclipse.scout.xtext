@@ -4,8 +4,6 @@ package org.eclipse.scout.saml.saml;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Form Element</b></em>'.
@@ -14,13 +12,11 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getModal <em>Modal</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getColumns <em>Columns</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getTitle <em>Title</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getSubtitle <em>Subtitle</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getWidthInPixels <em>Width In Pixels</em>}</li>
- *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getSuperType <em>Super Type</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getLogic <em>Logic</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getFields <em>Fields</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getKeyStrokes <em>Key Strokes</em>}</li>
@@ -31,34 +27,8 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface FormElement extends EObject
+public interface FormElement extends NamedTypeElement
 {
-  /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see org.eclipse.scout.saml.saml.SamlPackage#getFormElement_Name()
-   * @model
-   * @generated
-   */
-  String getName();
-
-  /**
-   * Sets the value of the '{@link org.eclipse.scout.saml.saml.FormElement#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
-  void setName(String value);
-
   /**
    * Returns the value of the '<em><b>Modal</b></em>' attribute.
    * <!-- begin-user-doc -->
@@ -188,32 +158,6 @@ public interface FormElement extends EObject
    * @generated
    */
   void setWidthInPixels(int value);
-
-  /**
-   * Returns the value of the '<em><b>Super Type</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Super Type</em>' reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Super Type</em>' reference.
-   * @see #setSuperType(TemplateElement)
-   * @see org.eclipse.scout.saml.saml.SamlPackage#getFormElement_SuperType()
-   * @model
-   * @generated
-   */
-  TemplateElement getSuperType();
-
-  /**
-   * Sets the value of the '{@link org.eclipse.scout.saml.saml.FormElement#getSuperType <em>Super Type</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Super Type</em>' reference.
-   * @see #getSuperType()
-   * @generated
-   */
-  void setSuperType(TemplateElement value);
 
   /**
    * Returns the value of the '<em><b>Logic</b></em>' containment reference list.

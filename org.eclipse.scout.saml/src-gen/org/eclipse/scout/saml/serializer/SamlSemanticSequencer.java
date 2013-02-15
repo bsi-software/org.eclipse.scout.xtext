@@ -10,6 +10,7 @@ import org.eclipse.scout.saml.saml.CodeElement;
 import org.eclipse.scout.saml.saml.ColumnElement;
 import org.eclipse.scout.saml.saml.CustomFieldElement;
 import org.eclipse.scout.saml.saml.DateElement;
+import org.eclipse.scout.saml.saml.FileChooserElement;
 import org.eclipse.scout.saml.saml.FormElement;
 import org.eclipse.scout.saml.saml.GroupBoxElement;
 import org.eclipse.scout.saml.saml.ImportElement;
@@ -22,6 +23,8 @@ import org.eclipse.scout.saml.saml.LookupElement;
 import org.eclipse.scout.saml.saml.MenuElement;
 import org.eclipse.scout.saml.saml.Model;
 import org.eclipse.scout.saml.saml.ModuleElement;
+import org.eclipse.scout.saml.saml.RadioButtonElement;
+import org.eclipse.scout.saml.saml.RadioGroupElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
 import org.eclipse.scout.saml.saml.SequenceBoxElement;
 import org.eclipse.scout.saml.saml.SmartfieldElement;
@@ -91,6 +94,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 			case SamlPackage.BIG_DECIMAL_ELEMENT:
 				if(context == grammarAccess.getBigDecimalElementRule() ||
 				   context == grammarAccess.getFormFieldElementRule() ||
+				   context == grammarAccess.getNamedTypeElementRule() ||
 				   context == grammarAccess.getValueFieldElementRule()) {
 					sequence_BigDecimalElement(context, (BigDecimalElement) semanticObject); 
 					return; 
@@ -98,7 +102,8 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 				else break;
 			case SamlPackage.BUTTON_ELEMENT:
 				if(context == grammarAccess.getButtonElementRule() ||
-				   context == grammarAccess.getFormFieldElementRule()) {
+				   context == grammarAccess.getFormFieldElementRule() ||
+				   context == grammarAccess.getNamedTypeElementRule()) {
 					sequence_ButtonElement(context, (ButtonElement) semanticObject); 
 					return; 
 				}
@@ -106,13 +111,15 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 			case SamlPackage.CHECKBOX_ELEMENT:
 				if(context == grammarAccess.getCheckboxElementRule() ||
 				   context == grammarAccess.getFormFieldElementRule() ||
+				   context == grammarAccess.getNamedTypeElementRule() ||
 				   context == grammarAccess.getValueFieldElementRule()) {
 					sequence_CheckboxElement(context, (CheckboxElement) semanticObject); 
 					return; 
 				}
 				else break;
 			case SamlPackage.CODE_ELEMENT:
-				if(context == grammarAccess.getCodeElementRule()) {
+				if(context == grammarAccess.getCodeElementRule() ||
+				   context == grammarAccess.getNamedTypeElementRule()) {
 					sequence_CodeElement(context, (CodeElement) semanticObject); 
 					return; 
 				}
@@ -125,7 +132,8 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 				else break;
 			case SamlPackage.CUSTOM_FIELD_ELEMENT:
 				if(context == grammarAccess.getCustomFieldElementRule() ||
-				   context == grammarAccess.getFormFieldElementRule()) {
+				   context == grammarAccess.getFormFieldElementRule() ||
+				   context == grammarAccess.getNamedTypeElementRule()) {
 					sequence_CustomFieldElement(context, (CustomFieldElement) semanticObject); 
 					return; 
 				}
@@ -133,13 +141,24 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 			case SamlPackage.DATE_ELEMENT:
 				if(context == grammarAccess.getDateElementRule() ||
 				   context == grammarAccess.getFormFieldElementRule() ||
+				   context == grammarAccess.getNamedTypeElementRule() ||
 				   context == grammarAccess.getValueFieldElementRule()) {
 					sequence_DateElement(context, (DateElement) semanticObject); 
 					return; 
 				}
 				else break;
+			case SamlPackage.FILE_CHOOSER_ELEMENT:
+				if(context == grammarAccess.getFileChooserElementRule() ||
+				   context == grammarAccess.getFormFieldElementRule() ||
+				   context == grammarAccess.getNamedTypeElementRule() ||
+				   context == grammarAccess.getValueFieldElementRule()) {
+					sequence_FileChooserElement(context, (FileChooserElement) semanticObject); 
+					return; 
+				}
+				else break;
 			case SamlPackage.FORM_ELEMENT:
-				if(context == grammarAccess.getFormElementRule()) {
+				if(context == grammarAccess.getFormElementRule() ||
+				   context == grammarAccess.getNamedTypeElementRule()) {
 					sequence_FormElement(context, (FormElement) semanticObject); 
 					return; 
 				}
@@ -147,7 +166,8 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 			case SamlPackage.GROUP_BOX_ELEMENT:
 				if(context == grammarAccess.getCompositeFieldElementRule() ||
 				   context == grammarAccess.getFormFieldElementRule() ||
-				   context == grammarAccess.getGroupBoxElementRule()) {
+				   context == grammarAccess.getGroupBoxElementRule() ||
+				   context == grammarAccess.getNamedTypeElementRule()) {
 					sequence_GroupBoxElement(context, (GroupBoxElement) semanticObject); 
 					return; 
 				}
@@ -174,6 +194,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 				if(context == grammarAccess.getFormFieldElementRule() ||
 				   context == grammarAccess.getGenericValueFieldElementRule() ||
 				   context == grammarAccess.getListBoxElementRule() ||
+				   context == grammarAccess.getNamedTypeElementRule() ||
 				   context == grammarAccess.getValueFieldElementRule()) {
 					sequence_ListBoxElement(context, (ListBoxElement) semanticObject); 
 					return; 
@@ -188,6 +209,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 			case SamlPackage.LONG_ELEMENT:
 				if(context == grammarAccess.getFormFieldElementRule() ||
 				   context == grammarAccess.getLongElementRule() ||
+				   context == grammarAccess.getNamedTypeElementRule() ||
 				   context == grammarAccess.getValueFieldElementRule()) {
 					sequence_LongElement(context, (LongElement) semanticObject); 
 					return; 
@@ -217,9 +239,27 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 					return; 
 				}
 				else break;
+			case SamlPackage.RADIO_BUTTON_ELEMENT:
+				if(context == grammarAccess.getNamedTypeElementRule() ||
+				   context == grammarAccess.getRadioButtonElementRule()) {
+					sequence_RadioButtonElement(context, (RadioButtonElement) semanticObject); 
+					return; 
+				}
+				else break;
+			case SamlPackage.RADIO_GROUP_ELEMENT:
+				if(context == grammarAccess.getFormFieldElementRule() ||
+				   context == grammarAccess.getGenericValueFieldElementRule() ||
+				   context == grammarAccess.getNamedTypeElementRule() ||
+				   context == grammarAccess.getRadioGroupElementRule() ||
+				   context == grammarAccess.getValueFieldElementRule()) {
+					sequence_RadioGroupElement(context, (RadioGroupElement) semanticObject); 
+					return; 
+				}
+				else break;
 			case SamlPackage.SEQUENCE_BOX_ELEMENT:
 				if(context == grammarAccess.getCompositeFieldElementRule() ||
 				   context == grammarAccess.getFormFieldElementRule() ||
+				   context == grammarAccess.getNamedTypeElementRule() ||
 				   context == grammarAccess.getSequenceBoxElementRule()) {
 					sequence_SequenceBoxElement(context, (SequenceBoxElement) semanticObject); 
 					return; 
@@ -228,6 +268,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 			case SamlPackage.SMARTFIELD_ELEMENT:
 				if(context == grammarAccess.getFormFieldElementRule() ||
 				   context == grammarAccess.getGenericValueFieldElementRule() ||
+				   context == grammarAccess.getNamedTypeElementRule() ||
 				   context == grammarAccess.getSmartfieldElementRule() ||
 				   context == grammarAccess.getValueFieldElementRule()) {
 					sequence_SmartfieldElement(context, (SmartfieldElement) semanticObject); 
@@ -236,6 +277,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 				else break;
 			case SamlPackage.STRING_ELEMENT:
 				if(context == grammarAccess.getFormFieldElementRule() ||
+				   context == grammarAccess.getNamedTypeElementRule() ||
 				   context == grammarAccess.getStringElementRule() ||
 				   context == grammarAccess.getValueFieldElementRule()) {
 					sequence_StringElement(context, (StringElement) semanticObject); 
@@ -244,6 +286,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 				else break;
 			case SamlPackage.TAB_BOX_ELEMENT:
 				if(context == grammarAccess.getFormFieldElementRule() ||
+				   context == grammarAccess.getNamedTypeElementRule() ||
 				   context == grammarAccess.getTabBoxElementRule()) {
 					sequence_TabBoxElement(context, (TabBoxElement) semanticObject); 
 					return; 
@@ -252,6 +295,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 			case SamlPackage.TAB_ELEMENT:
 				if(context == grammarAccess.getCompositeFieldElementRule() ||
 				   context == grammarAccess.getFormFieldElementRule() ||
+				   context == grammarAccess.getNamedTypeElementRule() ||
 				   context == grammarAccess.getTabElementRule()) {
 					sequence_TabElement(context, (TabElement) semanticObject); 
 					return; 
@@ -259,6 +303,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 				else break;
 			case SamlPackage.TABLE_ELEMENT:
 				if(context == grammarAccess.getFormFieldElementRule() ||
+				   context == grammarAccess.getNamedTypeElementRule() ||
 				   context == grammarAccess.getTableElementRule()) {
 					sequence_TableElement(context, (TableElement) semanticObject); 
 					return; 
@@ -1287,6 +1332,35 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         name=ID 
+	 *         text=[TranslationElement|QualifiedName]? 
+	 *         enabled=BooleanType? 
+	 *         visible=BooleanType? 
+	 *         gridWidth=INT? 
+	 *         widthInPixels=INT? 
+	 *         labelVisible=BooleanType? 
+	 *         master=[ValueFieldElement|ID]? 
+	 *         mandatory=BooleanType? 
+	 *         maxlen=INT? 
+	 *         (mode='directory' | mode='file')? 
+	 *         (type='load' | type='store')? 
+	 *         extensions=STRING? 
+	 *         defaultDirectory=STRING? 
+	 *         showDirectory=BooleanType? 
+	 *         showFileName=BooleanType? 
+	 *         showFileExtension=BooleanType? 
+	 *         superType=[TemplateElement|ID]? 
+	 *         logic+=LogicElement*
+	 *     )
+	 */
+	protected void sequence_FileChooserElement(EObject context, FileChooserElement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         name=ID 
 	 *         modal=BooleanType? 
 	 *         columns=INT? 
 	 *         title=[TranslationElement|QualifiedName]? 
@@ -1488,6 +1562,44 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getModuleElementAccess().getNameQualifiedNameParserRuleCall_1_0(), semanticObject.getName());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         name=ID 
+	 *         text=[TranslationElement|QualifiedName]? 
+	 *         value=STRING 
+	 *         enabled=BooleanType? 
+	 *         visible=BooleanType? 
+	 *         superType=[TemplateElement|ID]?
+	 *     )
+	 */
+	protected void sequence_RadioButtonElement(EObject context, RadioButtonElement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         name=ID 
+	 *         text=[TranslationElement|QualifiedName]? 
+	 *         enabled=BooleanType? 
+	 *         visible=BooleanType? 
+	 *         gridWidth=INT? 
+	 *         widthInPixels=INT? 
+	 *         labelVisible=BooleanType? 
+	 *         master=[ValueFieldElement|ID]? 
+	 *         mandatory=BooleanType? 
+	 *         valueType=STRING? 
+	 *         superType=[TemplateElement|ID]? 
+	 *         (logic+=LogicElement | options+=RadioButtonElement)+
+	 *     )
+	 */
+	protected void sequence_RadioGroupElement(EObject context, RadioGroupElement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

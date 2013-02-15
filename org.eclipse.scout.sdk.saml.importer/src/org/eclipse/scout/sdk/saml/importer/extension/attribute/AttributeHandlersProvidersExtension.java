@@ -156,7 +156,7 @@ public class AttributeHandlersProvidersExtension {
     EList<EStructuralFeature> eAllStructuralFeatures = element.eClass().getEAllStructuralFeatures();
     if (eAllStructuralFeatures.size() > 0) {
       for (EStructuralFeature feature : eAllStructuralFeatures) {
-        if (element.eIsSet(feature) && !containsAny(EXCLUDED_ATTRIBUTES, feature.getName())) {
+        if (element.eIsSet(feature)) {
           int id = feature.getFeatureID();
           Class<?> type = element.getClass();
           Map<Method, IAttributeHandlersProvider> handlers = getMostSpecificHandlersFor(id, type);
@@ -175,7 +175,7 @@ public class AttributeHandlersProvidersExtension {
               }
             }
           }
-          else {
+          else if (!containsAny(EXCLUDED_ATTRIBUTES, feature.getName())) {
             SamlImporterActivator.logWarning("No attribute handler found for feature '" + feature.getName() + "' on type '" + element.getClass().getName() + "'.");
           }
         }

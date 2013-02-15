@@ -75,11 +75,12 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
       case SamlPackage.TEMPLATE_ELEMENT: return createTemplateElement();
       case SamlPackage.FORM_ELEMENT: return createFormElement();
       case SamlPackage.FORM_FIELD_ELEMENT: return createFormFieldElement();
+      case SamlPackage.NAMED_TYPE_ELEMENT: return createNamedTypeElement();
       case SamlPackage.COMPOSITE_FIELD_ELEMENT: return createCompositeFieldElement();
       case SamlPackage.SEQUENCE_BOX_ELEMENT: return createSequenceBoxElement();
       case SamlPackage.GROUP_BOX_ELEMENT: return createGroupBoxElement();
-      case SamlPackage.VALUE_FIELD_ELEMENT: return createValueFieldElement();
       case SamlPackage.GENERIC_VALUE_FIELD_ELEMENT: return createGenericValueFieldElement();
+      case SamlPackage.VALUE_FIELD_ELEMENT: return createValueFieldElement();
       case SamlPackage.STRING_ELEMENT: return createStringElement();
       case SamlPackage.BIG_DECIMAL_ELEMENT: return createBigDecimalElement();
       case SamlPackage.LONG_ELEMENT: return createLongElement();
@@ -95,6 +96,9 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
       case SamlPackage.TAB_ELEMENT: return createTabElement();
       case SamlPackage.TAB_BOX_ELEMENT: return createTabBoxElement();
       case SamlPackage.CHECKBOX_ELEMENT: return createCheckboxElement();
+      case SamlPackage.FILE_CHOOSER_ELEMENT: return createFileChooserElement();
+      case SamlPackage.RADIO_GROUP_ELEMENT: return createRadioGroupElement();
+      case SamlPackage.RADIO_BUTTON_ELEMENT: return createRadioButtonElement();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -226,6 +230,17 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public NamedTypeElement createNamedTypeElement()
+  {
+    NamedTypeElementImpl namedTypeElement = new NamedTypeElementImpl();
+    return namedTypeElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public CompositeFieldElement createCompositeFieldElement()
   {
     CompositeFieldElementImpl compositeFieldElement = new CompositeFieldElementImpl();
@@ -259,10 +274,10 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ValueFieldElement createValueFieldElement()
+  public GenericValueFieldElement createGenericValueFieldElement()
   {
-    ValueFieldElementImpl valueFieldElement = new ValueFieldElementImpl();
-    return valueFieldElement;
+    GenericValueFieldElementImpl genericValueFieldElement = new GenericValueFieldElementImpl();
+    return genericValueFieldElement;
   }
 
   /**
@@ -270,10 +285,10 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public GenericValueFieldElement createGenericValueFieldElement()
+  public ValueFieldElement createValueFieldElement()
   {
-    GenericValueFieldElementImpl genericValueFieldElement = new GenericValueFieldElementImpl();
-    return genericValueFieldElement;
+    ValueFieldElementImpl valueFieldElement = new ValueFieldElementImpl();
+    return valueFieldElement;
   }
 
   /**
@@ -439,6 +454,39 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
   {
     CheckboxElementImpl checkboxElement = new CheckboxElementImpl();
     return checkboxElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FileChooserElement createFileChooserElement()
+  {
+    FileChooserElementImpl fileChooserElement = new FileChooserElementImpl();
+    return fileChooserElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RadioGroupElement createRadioGroupElement()
+  {
+    RadioGroupElementImpl radioGroupElement = new RadioGroupElementImpl();
+    return radioGroupElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RadioButtonElement createRadioButtonElement()
+  {
+    RadioButtonElementImpl radioButtonElement = new RadioButtonElementImpl();
+    return radioButtonElement;
   }
 
   /**

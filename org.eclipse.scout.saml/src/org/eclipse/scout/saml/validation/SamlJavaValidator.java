@@ -10,6 +10,7 @@ import org.eclipse.pde.internal.core.PDECore;
 import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.saml.saml.ButtonElement;
 import org.eclipse.scout.saml.saml.CodeElement;
+import org.eclipse.scout.saml.saml.FileChooserElement;
 import org.eclipse.scout.saml.saml.FormElement;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.KeyElement;
@@ -225,7 +226,23 @@ public class SamlJavaValidator extends AbstractSamlJavaValidator implements ISam
   @Check
   public void checkTab(TabElement tab) {
     if (!(tab.eContainer() instanceof TabBoxElement)) {
-      error(MSG_TAB_ONLY_IN_TABBOX, tab, SamlPackage.Literals.FORM_FIELD_ELEMENT__NAME, TAB_ONLY_IN_TABBOX);
+      error(MSG_TAB_ONLY_IN_TABBOX, tab, SamlPackage.Literals.NAMED_TYPE_ELEMENT__NAME, TAB_ONLY_IN_TABBOX);
+    }
+  }
+
+  @Check
+  public void checkFileChooserConfig(FileChooserElement fce) {
+    if (fce.getMode().equals(grammar.getFileChooserElementAccess().getModeDirectoryKeyword_2_9_2_0_0().getValue())) {
+      // extensions and filenames make only sense when we are in file mode.
+      if ("true".equals(fce.getShowFileName())) {
+        error(MSG_ONLY_FOR_MODE_FILE, fce, SamlPackage.Literals.FILE_CHOOSER_ELEMENT__SHOW_FILE_NAME, ONLY_FOR_MODE_FILE);
+      }
+      if ("true".equals(fce.getShowFileExtension())) {
+        error(MSG_ONLY_FOR_MODE_FILE, fce, SamlPackage.Literals.FILE_CHOOSER_ELEMENT__SHOW_FILE_EXTENSION, ONLY_FOR_MODE_FILE);
+      }
+      if (StringUtility.hasText(fce.getExtensions())) {
+        error(MSG_ONLY_FOR_MODE_FILE, fce, SamlPackage.Literals.FILE_CHOOSER_ELEMENT__EXTENSIONS, ONLY_FOR_MODE_FILE);
+      }
     }
   }
 
@@ -255,7 +272,7 @@ public class SamlJavaValidator extends AbstractSamlJavaValidator implements ISam
   @Check
   public void checkNoFormDuplicates(FormElement element) {
     if (helper.hasGlobalDuplicate(element, SamlPackage.eINSTANCE.getFormElement())) {
-      error(MSG_DUPLICATE, element, SamlPackage.eINSTANCE.getFormElement_Name(), DUPLICATE);
+      error(MSG_DUPLICATE, element, SamlPackage.eINSTANCE.getNamedTypeElement_Name(), DUPLICATE);
     }
   }
 
@@ -269,7 +286,7 @@ public class SamlJavaValidator extends AbstractSamlJavaValidator implements ISam
   @Check
   public void checkNoCodeDuplicates(CodeElement element) {
     if (helper.hasGlobalDuplicate(element, SamlPackage.eINSTANCE.getCodeElement())) {
-      error(MSG_DUPLICATE, element, SamlPackage.eINSTANCE.getCodeElement_Name(), DUPLICATE);
+      error(MSG_DUPLICATE, element, SamlPackage.eINSTANCE.getNamedTypeElement_Name(), DUPLICATE);
     }
   }
 

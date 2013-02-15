@@ -130,6 +130,11 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
         return createFormFieldElementAdapter();
       }
       @Override
+      public Adapter caseNamedTypeElement(NamedTypeElement object)
+      {
+        return createNamedTypeElementAdapter();
+      }
+      @Override
       public Adapter caseCompositeFieldElement(CompositeFieldElement object)
       {
         return createCompositeFieldElementAdapter();
@@ -145,14 +150,14 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
         return createGroupBoxElementAdapter();
       }
       @Override
-      public Adapter caseValueFieldElement(ValueFieldElement object)
-      {
-        return createValueFieldElementAdapter();
-      }
-      @Override
       public Adapter caseGenericValueFieldElement(GenericValueFieldElement object)
       {
         return createGenericValueFieldElementAdapter();
+      }
+      @Override
+      public Adapter caseValueFieldElement(ValueFieldElement object)
+      {
+        return createValueFieldElementAdapter();
       }
       @Override
       public Adapter caseStringElement(StringElement object)
@@ -228,6 +233,21 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
       public Adapter caseCheckboxElement(CheckboxElement object)
       {
         return createCheckboxElementAdapter();
+      }
+      @Override
+      public Adapter caseFileChooserElement(FileChooserElement object)
+      {
+        return createFileChooserElementAdapter();
+      }
+      @Override
+      public Adapter caseRadioGroupElement(RadioGroupElement object)
+      {
+        return createRadioGroupElementAdapter();
+      }
+      @Override
+      public Adapter caseRadioButtonElement(RadioButtonElement object)
+      {
+        return createRadioButtonElementAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -417,6 +437,21 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.NamedTypeElement <em>Named Type Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.scout.saml.saml.NamedTypeElement
+   * @generated
+   */
+  public Adapter createNamedTypeElementAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.CompositeFieldElement <em>Composite Field Element</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -462,21 +497,6 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.ValueFieldElement <em>Value Field Element</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.scout.saml.saml.ValueFieldElement
-   * @generated
-   */
-  public Adapter createValueFieldElementAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.GenericValueFieldElement <em>Generic Value Field Element</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -487,6 +507,21 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createGenericValueFieldElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.ValueFieldElement <em>Value Field Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.scout.saml.saml.ValueFieldElement
+   * @generated
+   */
+  public Adapter createValueFieldElementAdapter()
   {
     return null;
   }
@@ -712,6 +747,51 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCheckboxElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.FileChooserElement <em>File Chooser Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.scout.saml.saml.FileChooserElement
+   * @generated
+   */
+  public Adapter createFileChooserElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.RadioGroupElement <em>Radio Group Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.scout.saml.saml.RadioGroupElement
+   * @generated
+   */
+  public Adapter createRadioGroupElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.RadioButtonElement <em>Radio Button Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.scout.saml.saml.RadioButtonElement
+   * @generated
+   */
+  public Adapter createRadioButtonElementAdapter()
   {
     return null;
   }

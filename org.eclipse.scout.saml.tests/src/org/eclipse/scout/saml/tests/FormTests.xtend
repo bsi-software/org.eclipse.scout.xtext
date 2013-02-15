@@ -216,6 +216,30 @@ class FormTests {
 	}
 	
 	@Test
+	def void testFileChooserMode() {
+		'''
+		module a.b
+		form FileChooserTest {
+			filechooser TestFileChooser1 mode=directory show_filename=true
+		}
+		'''.parse.assertError(SamlPackage::eINSTANCE.fileChooserElement, SamlJavaValidator::ONLY_FOR_MODE_FILE, SamlJavaValidator::MSG_ONLY_FOR_MODE_FILE)
+		
+		'''
+		module a.b
+		form FileChooserTest {
+			filechooser TestFileChooser2 mode=directory show_extension=true
+		}
+		'''.parse.assertError(SamlPackage::eINSTANCE.fileChooserElement, SamlJavaValidator::ONLY_FOR_MODE_FILE, SamlJavaValidator::MSG_ONLY_FOR_MODE_FILE)
+		
+		'''
+		module a.b
+		form FileChooserTest {
+			filechooser TestFileChooser3 mode=directory extensions="png jpg"
+		}
+		'''.parse.assertError(SamlPackage::eINSTANCE.fileChooserElement, SamlJavaValidator::ONLY_FOR_MODE_FILE, SamlJavaValidator::MSG_ONLY_FOR_MODE_FILE)
+	}
+	
+	@Test
 	def void testOkButton() {
 		'''
 		module a.b

@@ -342,6 +342,43 @@ public interface SamlPackage extends EPackage
   int LOGIC_ELEMENT_FEATURE_COUNT = 5;
 
   /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.NamedTypeElementImpl <em>Named Type Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.NamedTypeElementImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getNamedTypeElement()
+   * @generated
+   */
+  int NAMED_TYPE_ELEMENT = 11;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NAMED_TYPE_ELEMENT__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NAMED_TYPE_ELEMENT__SUPER_TYPE = 1;
+
+  /**
+   * The number of structural features of the '<em>Named Type Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NAMED_TYPE_ELEMENT_FEATURE_COUNT = 2;
+
+  /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.CodeElementImpl <em>Code Element</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -358,34 +395,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CODE_ELEMENT__NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Id</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CODE_ELEMENT__ID = 1;
-
-  /**
-   * The feature id for the '<em><b>Value Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CODE_ELEMENT__VALUE_TYPE = 2;
-
-  /**
-   * The feature id for the '<em><b>Text</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CODE_ELEMENT__TEXT = 3;
+  int CODE_ELEMENT__NAME = NAMED_TYPE_ELEMENT__NAME;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -394,7 +404,34 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CODE_ELEMENT__SUPER_TYPE = 4;
+  int CODE_ELEMENT__SUPER_TYPE = NAMED_TYPE_ELEMENT__SUPER_TYPE;
+
+  /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CODE_ELEMENT__ID = NAMED_TYPE_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Value Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CODE_ELEMENT__VALUE_TYPE = NAMED_TYPE_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CODE_ELEMENT__TEXT = NAMED_TYPE_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -403,7 +440,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CODE_ELEMENT__LOGIC = 5;
+  int CODE_ELEMENT__LOGIC = NAMED_TYPE_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Codes</b></em>' containment reference list.
@@ -412,7 +449,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CODE_ELEMENT__CODES = 6;
+  int CODE_ELEMENT__CODES = NAMED_TYPE_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The number of structural features of the '<em>Code Element</em>' class.
@@ -421,7 +458,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CODE_ELEMENT_FEATURE_COUNT = 7;
+  int CODE_ELEMENT_FEATURE_COUNT = NAMED_TYPE_ELEMENT_FEATURE_COUNT + 5;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.LookupElementImpl <em>Lookup Element</em>}' class.
@@ -514,52 +551,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_ELEMENT__NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Modal</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FORM_ELEMENT__MODAL = 1;
-
-  /**
-   * The feature id for the '<em><b>Columns</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FORM_ELEMENT__COLUMNS = 2;
-
-  /**
-   * The feature id for the '<em><b>Title</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FORM_ELEMENT__TITLE = 3;
-
-  /**
-   * The feature id for the '<em><b>Subtitle</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FORM_ELEMENT__SUBTITLE = 4;
-
-  /**
-   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FORM_ELEMENT__WIDTH_IN_PIXELS = 5;
+  int FORM_ELEMENT__NAME = NAMED_TYPE_ELEMENT__NAME;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -568,7 +560,52 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_ELEMENT__SUPER_TYPE = 6;
+  int FORM_ELEMENT__SUPER_TYPE = NAMED_TYPE_ELEMENT__SUPER_TYPE;
+
+  /**
+   * The feature id for the '<em><b>Modal</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORM_ELEMENT__MODAL = NAMED_TYPE_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Columns</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORM_ELEMENT__COLUMNS = NAMED_TYPE_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Title</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORM_ELEMENT__TITLE = NAMED_TYPE_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Subtitle</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORM_ELEMENT__SUBTITLE = NAMED_TYPE_ELEMENT_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORM_ELEMENT__WIDTH_IN_PIXELS = NAMED_TYPE_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -577,7 +614,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_ELEMENT__LOGIC = 7;
+  int FORM_ELEMENT__LOGIC = NAMED_TYPE_ELEMENT_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Fields</b></em>' containment reference list.
@@ -586,7 +623,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_ELEMENT__FIELDS = 8;
+  int FORM_ELEMENT__FIELDS = NAMED_TYPE_ELEMENT_FEATURE_COUNT + 6;
 
   /**
    * The feature id for the '<em><b>Key Strokes</b></em>' containment reference list.
@@ -595,7 +632,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_ELEMENT__KEY_STROKES = 9;
+  int FORM_ELEMENT__KEY_STROKES = NAMED_TYPE_ELEMENT_FEATURE_COUNT + 7;
 
   /**
    * The number of structural features of the '<em>Form Element</em>' class.
@@ -604,7 +641,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_ELEMENT_FEATURE_COUNT = 10;
+  int FORM_ELEMENT_FEATURE_COUNT = NAMED_TYPE_ELEMENT_FEATURE_COUNT + 8;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.FormFieldElementImpl <em>Form Field Element</em>}' class.
@@ -623,25 +660,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_FIELD_ELEMENT__NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Enabled</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FORM_FIELD_ELEMENT__ENABLED = 1;
-
-  /**
-   * The feature id for the '<em><b>Visible</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FORM_FIELD_ELEMENT__VISIBLE = 2;
+  int FORM_FIELD_ELEMENT__NAME = NAMED_TYPE_ELEMENT__NAME;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -650,7 +669,25 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_FIELD_ELEMENT__SUPER_TYPE = 3;
+  int FORM_FIELD_ELEMENT__SUPER_TYPE = NAMED_TYPE_ELEMENT__SUPER_TYPE;
+
+  /**
+   * The feature id for the '<em><b>Enabled</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORM_FIELD_ELEMENT__ENABLED = NAMED_TYPE_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORM_FIELD_ELEMENT__VISIBLE = NAMED_TYPE_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -659,7 +696,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_FIELD_ELEMENT__LOGIC = 4;
+  int FORM_FIELD_ELEMENT__LOGIC = NAMED_TYPE_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Form Field Element</em>' class.
@@ -668,7 +705,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_FIELD_ELEMENT_FEATURE_COUNT = 5;
+  int FORM_FIELD_ELEMENT_FEATURE_COUNT = NAMED_TYPE_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.CompositeFieldElementImpl <em>Composite Field Element</em>}' class.
@@ -678,7 +715,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getCompositeFieldElement()
    * @generated
    */
-  int COMPOSITE_FIELD_ELEMENT = 11;
+  int COMPOSITE_FIELD_ELEMENT = 12;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -688,6 +725,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int COMPOSITE_FIELD_ELEMENT__NAME = FORM_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPOSITE_FIELD_ELEMENT__SUPER_TYPE = FORM_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -706,15 +752,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int COMPOSITE_FIELD_ELEMENT__VISIBLE = FORM_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Super Type</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPOSITE_FIELD_ELEMENT__SUPER_TYPE = FORM_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -760,7 +797,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getSequenceBoxElement()
    * @generated
    */
-  int SEQUENCE_BOX_ELEMENT = 12;
+  int SEQUENCE_BOX_ELEMENT = 13;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -770,6 +807,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int SEQUENCE_BOX_ELEMENT__NAME = COMPOSITE_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SEQUENCE_BOX_ELEMENT__SUPER_TYPE = COMPOSITE_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -788,15 +834,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int SEQUENCE_BOX_ELEMENT__VISIBLE = COMPOSITE_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Super Type</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SEQUENCE_BOX_ELEMENT__SUPER_TYPE = COMPOSITE_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -869,7 +906,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getGroupBoxElement()
    * @generated
    */
-  int GROUP_BOX_ELEMENT = 13;
+  int GROUP_BOX_ELEMENT = 14;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -879,6 +916,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int GROUP_BOX_ELEMENT__NAME = COMPOSITE_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUP_BOX_ELEMENT__SUPER_TYPE = COMPOSITE_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -897,15 +943,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int GROUP_BOX_ELEMENT__VISIBLE = COMPOSITE_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Super Type</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GROUP_BOX_ELEMENT__SUPER_TYPE = COMPOSITE_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -1014,7 +1051,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getValueFieldElement()
    * @generated
    */
-  int VALUE_FIELD_ELEMENT = 14;
+  int VALUE_FIELD_ELEMENT = 16;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1024,6 +1061,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int VALUE_FIELD_ELEMENT__NAME = FORM_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VALUE_FIELD_ELEMENT__SUPER_TYPE = FORM_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -1042,15 +1088,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int VALUE_FIELD_ELEMENT__VISIBLE = FORM_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Super Type</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VALUE_FIELD_ELEMENT__SUPER_TYPE = FORM_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -1144,6 +1181,15 @@ public interface SamlPackage extends EPackage
   int GENERIC_VALUE_FIELD_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
 
   /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERIC_VALUE_FIELD_ELEMENT__SUPER_TYPE = VALUE_FIELD_ELEMENT__SUPER_TYPE;
+
+  /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1160,15 +1206,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int GENERIC_VALUE_FIELD_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Super Type</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GENERIC_VALUE_FIELD_ELEMENT__SUPER_TYPE = VALUE_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -1234,31 +1271,13 @@ public interface SamlPackage extends EPackage
   int GENERIC_VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS = VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
-   * The feature id for the '<em><b>Code</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GENERIC_VALUE_FIELD_ELEMENT__CODE = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
-
-  /**
    * The feature id for the '<em><b>Value Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GENERIC_VALUE_FIELD_ELEMENT__VALUE_TYPE = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Lookup</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GENERIC_VALUE_FIELD_ELEMENT__LOOKUP = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 2;
+  int GENERIC_VALUE_FIELD_ELEMENT__VALUE_TYPE = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Generic Value Field Element</em>' class.
@@ -1267,7 +1286,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 3;
+  int GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.StringElementImpl <em>String Element</em>}' class.
@@ -1277,7 +1296,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getStringElement()
    * @generated
    */
-  int STRING_ELEMENT = 16;
+  int STRING_ELEMENT = 17;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1287,6 +1306,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int STRING_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT__SUPER_TYPE = VALUE_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -1305,15 +1333,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int STRING_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Super Type</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_ELEMENT__SUPER_TYPE = VALUE_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -1422,7 +1441,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getBigDecimalElement()
    * @generated
    */
-  int BIG_DECIMAL_ELEMENT = 17;
+  int BIG_DECIMAL_ELEMENT = 18;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1432,6 +1451,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int BIG_DECIMAL_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BIG_DECIMAL_ELEMENT__SUPER_TYPE = VALUE_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -1450,15 +1478,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int BIG_DECIMAL_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Super Type</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BIG_DECIMAL_ELEMENT__SUPER_TYPE = VALUE_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -1594,7 +1613,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getLongElement()
    * @generated
    */
-  int LONG_ELEMENT = 18;
+  int LONG_ELEMENT = 19;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1604,6 +1623,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int LONG_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LONG_ELEMENT__SUPER_TYPE = VALUE_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -1622,15 +1650,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int LONG_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Super Type</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LONG_ELEMENT__SUPER_TYPE = VALUE_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -1739,7 +1758,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getDateElement()
    * @generated
    */
-  int DATE_ELEMENT = 19;
+  int DATE_ELEMENT = 20;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1749,6 +1768,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int DATE_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATE_ELEMENT__SUPER_TYPE = VALUE_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -1767,15 +1795,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int DATE_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Super Type</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DATE_ELEMENT__SUPER_TYPE = VALUE_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -1857,7 +1876,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getSmartfieldElement()
    * @generated
    */
-  int SMARTFIELD_ELEMENT = 20;
+  int SMARTFIELD_ELEMENT = 21;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1867,6 +1886,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int SMARTFIELD_ELEMENT__NAME = GENERIC_VALUE_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SMARTFIELD_ELEMENT__SUPER_TYPE = GENERIC_VALUE_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -1885,15 +1913,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int SMARTFIELD_ELEMENT__VISIBLE = GENERIC_VALUE_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Super Type</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SMARTFIELD_ELEMENT__SUPER_TYPE = GENERIC_VALUE_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -1959,15 +1978,6 @@ public interface SamlPackage extends EPackage
   int SMARTFIELD_ELEMENT__WIDTH_IN_PIXELS = GENERIC_VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
-   * The feature id for the '<em><b>Code</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SMARTFIELD_ELEMENT__CODE = GENERIC_VALUE_FIELD_ELEMENT__CODE;
-
-  /**
    * The feature id for the '<em><b>Value Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1977,13 +1987,22 @@ public interface SamlPackage extends EPackage
   int SMARTFIELD_ELEMENT__VALUE_TYPE = GENERIC_VALUE_FIELD_ELEMENT__VALUE_TYPE;
 
   /**
+   * The feature id for the '<em><b>Code</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SMARTFIELD_ELEMENT__CODE = GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Lookup</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT__LOOKUP = GENERIC_VALUE_FIELD_ELEMENT__LOOKUP;
+  int SMARTFIELD_ELEMENT__LOOKUP = GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Menus</b></em>' containment reference list.
@@ -1992,7 +2011,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT__MENUS = GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int SMARTFIELD_ELEMENT__MENUS = GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Smartfield Element</em>' class.
@@ -2001,7 +2020,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT_FEATURE_COUNT = GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+  int SMARTFIELD_ELEMENT_FEATURE_COUNT = GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.ListBoxElementImpl <em>List Box Element</em>}' class.
@@ -2011,7 +2030,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getListBoxElement()
    * @generated
    */
-  int LIST_BOX_ELEMENT = 21;
+  int LIST_BOX_ELEMENT = 22;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2021,6 +2040,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int LIST_BOX_ELEMENT__NAME = GENERIC_VALUE_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LIST_BOX_ELEMENT__SUPER_TYPE = GENERIC_VALUE_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -2039,15 +2067,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int LIST_BOX_ELEMENT__VISIBLE = GENERIC_VALUE_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Super Type</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LIST_BOX_ELEMENT__SUPER_TYPE = GENERIC_VALUE_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -2113,15 +2132,6 @@ public interface SamlPackage extends EPackage
   int LIST_BOX_ELEMENT__WIDTH_IN_PIXELS = GENERIC_VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
-   * The feature id for the '<em><b>Code</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LIST_BOX_ELEMENT__CODE = GENERIC_VALUE_FIELD_ELEMENT__CODE;
-
-  /**
    * The feature id for the '<em><b>Value Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2131,13 +2141,22 @@ public interface SamlPackage extends EPackage
   int LIST_BOX_ELEMENT__VALUE_TYPE = GENERIC_VALUE_FIELD_ELEMENT__VALUE_TYPE;
 
   /**
+   * The feature id for the '<em><b>Code</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LIST_BOX_ELEMENT__CODE = GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Lookup</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LIST_BOX_ELEMENT__LOOKUP = GENERIC_VALUE_FIELD_ELEMENT__LOOKUP;
+  int LIST_BOX_ELEMENT__LOOKUP = GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Grid Height</b></em>' attribute.
@@ -2146,7 +2165,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LIST_BOX_ELEMENT__GRID_HEIGHT = GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int LIST_BOX_ELEMENT__GRID_HEIGHT = GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>List Box Element</em>' class.
@@ -2155,7 +2174,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LIST_BOX_ELEMENT_FEATURE_COUNT = GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+  int LIST_BOX_ELEMENT_FEATURE_COUNT = GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.CustomFieldElementImpl <em>Custom Field Element</em>}' class.
@@ -2165,7 +2184,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getCustomFieldElement()
    * @generated
    */
-  int CUSTOM_FIELD_ELEMENT = 22;
+  int CUSTOM_FIELD_ELEMENT = 23;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2175,6 +2194,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int CUSTOM_FIELD_ELEMENT__NAME = FORM_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CUSTOM_FIELD_ELEMENT__SUPER_TYPE = FORM_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -2193,15 +2221,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int CUSTOM_FIELD_ELEMENT__VISIBLE = FORM_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Super Type</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CUSTOM_FIELD_ELEMENT__SUPER_TYPE = FORM_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -2274,7 +2293,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getButtonElement()
    * @generated
    */
-  int BUTTON_ELEMENT = 23;
+  int BUTTON_ELEMENT = 24;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2284,6 +2303,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int BUTTON_ELEMENT__NAME = FORM_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUTTON_ELEMENT__SUPER_TYPE = FORM_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -2302,15 +2330,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int BUTTON_ELEMENT__VISIBLE = FORM_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Super Type</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BUTTON_ELEMENT__SUPER_TYPE = FORM_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -2392,7 +2411,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getMenuElement()
    * @generated
    */
-  int MENU_ELEMENT = 24;
+  int MENU_ELEMENT = 25;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2510,7 +2529,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getTableElement()
    * @generated
    */
-  int TABLE_ELEMENT = 25;
+  int TABLE_ELEMENT = 26;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2520,6 +2539,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int TABLE_ELEMENT__NAME = FORM_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TABLE_ELEMENT__SUPER_TYPE = FORM_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -2538,15 +2566,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int TABLE_ELEMENT__VISIBLE = FORM_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Super Type</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TABLE_ELEMENT__SUPER_TYPE = FORM_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -2637,7 +2656,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getColumnElement()
    * @generated
    */
-  int COLUMN_ELEMENT = 26;
+  int COLUMN_ELEMENT = 27;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2710,7 +2729,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getKeyElement()
    * @generated
    */
-  int KEY_ELEMENT = 27;
+  int KEY_ELEMENT = 28;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2756,7 +2775,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getTabElement()
    * @generated
    */
-  int TAB_ELEMENT = 28;
+  int TAB_ELEMENT = 29;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2766,6 +2785,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int TAB_ELEMENT__NAME = COMPOSITE_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TAB_ELEMENT__SUPER_TYPE = COMPOSITE_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -2784,15 +2812,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int TAB_ELEMENT__VISIBLE = COMPOSITE_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Super Type</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TAB_ELEMENT__SUPER_TYPE = COMPOSITE_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -2847,7 +2866,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getTabBoxElement()
    * @generated
    */
-  int TAB_BOX_ELEMENT = 29;
+  int TAB_BOX_ELEMENT = 30;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2857,6 +2876,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int TAB_BOX_ELEMENT__NAME = FORM_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TAB_BOX_ELEMENT__SUPER_TYPE = FORM_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -2875,15 +2903,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int TAB_BOX_ELEMENT__VISIBLE = FORM_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Super Type</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TAB_BOX_ELEMENT__SUPER_TYPE = FORM_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -2938,7 +2957,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getCheckboxElement()
    * @generated
    */
-  int CHECKBOX_ELEMENT = 30;
+  int CHECKBOX_ELEMENT = 31;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2948,6 +2967,15 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int CHECKBOX_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHECKBOX_ELEMENT__SUPER_TYPE = VALUE_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -2966,15 +2994,6 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int CHECKBOX_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
-
-  /**
-   * The feature id for the '<em><b>Super Type</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CHECKBOX_ELEMENT__SUPER_TYPE = VALUE_FIELD_ELEMENT__SUPER_TYPE;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' containment reference list.
@@ -3047,6 +3066,405 @@ public interface SamlPackage extends EPackage
    * @ordered
    */
   int CHECKBOX_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.FileChooserElementImpl <em>File Chooser Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.FileChooserElementImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getFileChooserElement()
+   * @generated
+   */
+  int FILE_CHOOSER_ELEMENT = 32;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILE_CHOOSER_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILE_CHOOSER_ELEMENT__SUPER_TYPE = VALUE_FIELD_ELEMENT__SUPER_TYPE;
+
+  /**
+   * The feature id for the '<em><b>Enabled</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILE_CHOOSER_ELEMENT__ENABLED = VALUE_FIELD_ELEMENT__ENABLED;
+
+  /**
+   * The feature id for the '<em><b>Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILE_CHOOSER_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Logic</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILE_CHOOSER_ELEMENT__LOGIC = VALUE_FIELD_ELEMENT__LOGIC;
+
+  /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILE_CHOOSER_ELEMENT__TEXT = VALUE_FIELD_ELEMENT__TEXT;
+
+  /**
+   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILE_CHOOSER_ELEMENT__LABEL_VISIBLE = VALUE_FIELD_ELEMENT__LABEL_VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Master</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILE_CHOOSER_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
+
+  /**
+   * The feature id for the '<em><b>Mandatory</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILE_CHOOSER_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT__MANDATORY;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILE_CHOOSER_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILE_CHOOSER_ELEMENT__WIDTH_IN_PIXELS = VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
+
+  /**
+   * The feature id for the '<em><b>Maxlen</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILE_CHOOSER_ELEMENT__MAXLEN = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Mode</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILE_CHOOSER_ELEMENT__MODE = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILE_CHOOSER_ELEMENT__TYPE = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Extensions</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILE_CHOOSER_ELEMENT__EXTENSIONS = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Default Directory</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILE_CHOOSER_ELEMENT__DEFAULT_DIRECTORY = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 4;
+
+  /**
+   * The feature id for the '<em><b>Show Directory</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILE_CHOOSER_ELEMENT__SHOW_DIRECTORY = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 5;
+
+  /**
+   * The feature id for the '<em><b>Show File Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILE_CHOOSER_ELEMENT__SHOW_FILE_NAME = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 6;
+
+  /**
+   * The feature id for the '<em><b>Show File Extension</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILE_CHOOSER_ELEMENT__SHOW_FILE_EXTENSION = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 7;
+
+  /**
+   * The number of structural features of the '<em>File Chooser Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILE_CHOOSER_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 8;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.RadioGroupElementImpl <em>Radio Group Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.RadioGroupElementImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getRadioGroupElement()
+   * @generated
+   */
+  int RADIO_GROUP_ELEMENT = 33;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RADIO_GROUP_ELEMENT__NAME = GENERIC_VALUE_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RADIO_GROUP_ELEMENT__SUPER_TYPE = GENERIC_VALUE_FIELD_ELEMENT__SUPER_TYPE;
+
+  /**
+   * The feature id for the '<em><b>Enabled</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RADIO_GROUP_ELEMENT__ENABLED = GENERIC_VALUE_FIELD_ELEMENT__ENABLED;
+
+  /**
+   * The feature id for the '<em><b>Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RADIO_GROUP_ELEMENT__VISIBLE = GENERIC_VALUE_FIELD_ELEMENT__VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Logic</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RADIO_GROUP_ELEMENT__LOGIC = GENERIC_VALUE_FIELD_ELEMENT__LOGIC;
+
+  /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RADIO_GROUP_ELEMENT__TEXT = GENERIC_VALUE_FIELD_ELEMENT__TEXT;
+
+  /**
+   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RADIO_GROUP_ELEMENT__LABEL_VISIBLE = GENERIC_VALUE_FIELD_ELEMENT__LABEL_VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Master</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RADIO_GROUP_ELEMENT__MASTER = GENERIC_VALUE_FIELD_ELEMENT__MASTER;
+
+  /**
+   * The feature id for the '<em><b>Mandatory</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RADIO_GROUP_ELEMENT__MANDATORY = GENERIC_VALUE_FIELD_ELEMENT__MANDATORY;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RADIO_GROUP_ELEMENT__GRID_WIDTH = GENERIC_VALUE_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RADIO_GROUP_ELEMENT__WIDTH_IN_PIXELS = GENERIC_VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
+
+  /**
+   * The feature id for the '<em><b>Value Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RADIO_GROUP_ELEMENT__VALUE_TYPE = GENERIC_VALUE_FIELD_ELEMENT__VALUE_TYPE;
+
+  /**
+   * The feature id for the '<em><b>Options</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RADIO_GROUP_ELEMENT__OPTIONS = GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Radio Group Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RADIO_GROUP_ELEMENT_FEATURE_COUNT = GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.RadioButtonElementImpl <em>Radio Button Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.RadioButtonElementImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getRadioButtonElement()
+   * @generated
+   */
+  int RADIO_BUTTON_ELEMENT = 34;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RADIO_BUTTON_ELEMENT__NAME = NAMED_TYPE_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RADIO_BUTTON_ELEMENT__SUPER_TYPE = NAMED_TYPE_ELEMENT__SUPER_TYPE;
+
+  /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RADIO_BUTTON_ELEMENT__TEXT = NAMED_TYPE_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RADIO_BUTTON_ELEMENT__VALUE = NAMED_TYPE_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Enabled</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RADIO_BUTTON_ELEMENT__ENABLED = NAMED_TYPE_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RADIO_BUTTON_ELEMENT__VISIBLE = NAMED_TYPE_ELEMENT_FEATURE_COUNT + 3;
+
+  /**
+   * The number of structural features of the '<em>Radio Button Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RADIO_BUTTON_ELEMENT_FEATURE_COUNT = NAMED_TYPE_ELEMENT_FEATURE_COUNT + 4;
 
 
   /**
@@ -3329,17 +3747,6 @@ public interface SamlPackage extends EPackage
   EClass getCodeElement();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.CodeElement#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.eclipse.scout.saml.saml.CodeElement#getName()
-   * @see #getCodeElement()
-   * @generated
-   */
-  EAttribute getCodeElement_Name();
-
-  /**
    * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.CodeElement#getId <em>Id</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3371,17 +3778,6 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EReference getCodeElement_Text();
-
-  /**
-   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.CodeElement#getSuperType <em>Super Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Super Type</em>'.
-   * @see org.eclipse.scout.saml.saml.CodeElement#getSuperType()
-   * @see #getCodeElement()
-   * @generated
-   */
-  EReference getCodeElement_SuperType();
 
   /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.CodeElement#getLogic <em>Logic</em>}'.
@@ -3480,17 +3876,6 @@ public interface SamlPackage extends EPackage
   EClass getFormElement();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FormElement#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.eclipse.scout.saml.saml.FormElement#getName()
-   * @see #getFormElement()
-   * @generated
-   */
-  EAttribute getFormElement_Name();
-
-  /**
    * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FormElement#getModal <em>Modal</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3546,17 +3931,6 @@ public interface SamlPackage extends EPackage
   EAttribute getFormElement_WidthInPixels();
 
   /**
-   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.FormElement#getSuperType <em>Super Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Super Type</em>'.
-   * @see org.eclipse.scout.saml.saml.FormElement#getSuperType()
-   * @see #getFormElement()
-   * @generated
-   */
-  EReference getFormElement_SuperType();
-
-  /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.FormElement#getLogic <em>Logic</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3600,17 +3974,6 @@ public interface SamlPackage extends EPackage
   EClass getFormFieldElement();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FormFieldElement#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.eclipse.scout.saml.saml.FormFieldElement#getName()
-   * @see #getFormFieldElement()
-   * @generated
-   */
-  EAttribute getFormFieldElement_Name();
-
-  /**
    * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FormFieldElement#getEnabled <em>Enabled</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3633,17 +3996,6 @@ public interface SamlPackage extends EPackage
   EAttribute getFormFieldElement_Visible();
 
   /**
-   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.FormFieldElement#getSuperType <em>Super Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Super Type</em>'.
-   * @see org.eclipse.scout.saml.saml.FormFieldElement#getSuperType()
-   * @see #getFormFieldElement()
-   * @generated
-   */
-  EReference getFormFieldElement_SuperType();
-
-  /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.FormFieldElement#getLogic <em>Logic</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3653,6 +4005,38 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EReference getFormFieldElement_Logic();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.NamedTypeElement <em>Named Type Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Named Type Element</em>'.
+   * @see org.eclipse.scout.saml.saml.NamedTypeElement
+   * @generated
+   */
+  EClass getNamedTypeElement();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.NamedTypeElement#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.eclipse.scout.saml.saml.NamedTypeElement#getName()
+   * @see #getNamedTypeElement()
+   * @generated
+   */
+  EAttribute getNamedTypeElement_Name();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.NamedTypeElement#getSuperType <em>Super Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Super Type</em>'.
+   * @see org.eclipse.scout.saml.saml.NamedTypeElement#getSuperType()
+   * @see #getNamedTypeElement()
+   * @generated
+   */
+  EReference getNamedTypeElement_SuperType();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.CompositeFieldElement <em>Composite Field Element</em>}'.
@@ -3817,6 +4201,27 @@ public interface SamlPackage extends EPackage
   EAttribute getGroupBoxElement_WidthInPixels();
 
   /**
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.GenericValueFieldElement <em>Generic Value Field Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Generic Value Field Element</em>'.
+   * @see org.eclipse.scout.saml.saml.GenericValueFieldElement
+   * @generated
+   */
+  EClass getGenericValueFieldElement();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.GenericValueFieldElement#getValueType <em>Value Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value Type</em>'.
+   * @see org.eclipse.scout.saml.saml.GenericValueFieldElement#getValueType()
+   * @see #getGenericValueFieldElement()
+   * @generated
+   */
+  EAttribute getGenericValueFieldElement_ValueType();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.ValueFieldElement <em>Value Field Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3891,49 +4296,6 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EAttribute getValueFieldElement_WidthInPixels();
-
-  /**
-   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.GenericValueFieldElement <em>Generic Value Field Element</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Generic Value Field Element</em>'.
-   * @see org.eclipse.scout.saml.saml.GenericValueFieldElement
-   * @generated
-   */
-  EClass getGenericValueFieldElement();
-
-  /**
-   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.GenericValueFieldElement#getCode <em>Code</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Code</em>'.
-   * @see org.eclipse.scout.saml.saml.GenericValueFieldElement#getCode()
-   * @see #getGenericValueFieldElement()
-   * @generated
-   */
-  EReference getGenericValueFieldElement_Code();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.GenericValueFieldElement#getValueType <em>Value Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value Type</em>'.
-   * @see org.eclipse.scout.saml.saml.GenericValueFieldElement#getValueType()
-   * @see #getGenericValueFieldElement()
-   * @generated
-   */
-  EAttribute getGenericValueFieldElement_ValueType();
-
-  /**
-   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.GenericValueFieldElement#getLookup <em>Lookup</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Lookup</em>'.
-   * @see org.eclipse.scout.saml.saml.GenericValueFieldElement#getLookup()
-   * @see #getGenericValueFieldElement()
-   * @generated
-   */
-  EReference getGenericValueFieldElement_Lookup();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.StringElement <em>String Element</em>}'.
@@ -4118,6 +4480,28 @@ public interface SamlPackage extends EPackage
   EClass getSmartfieldElement();
 
   /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getCode <em>Code</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Code</em>'.
+   * @see org.eclipse.scout.saml.saml.SmartfieldElement#getCode()
+   * @see #getSmartfieldElement()
+   * @generated
+   */
+  EReference getSmartfieldElement_Code();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getLookup <em>Lookup</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Lookup</em>'.
+   * @see org.eclipse.scout.saml.saml.SmartfieldElement#getLookup()
+   * @see #getSmartfieldElement()
+   * @generated
+   */
+  EReference getSmartfieldElement_Lookup();
+
+  /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getMenus <em>Menus</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -4137,6 +4521,28 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EClass getListBoxElement();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.ListBoxElement#getCode <em>Code</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Code</em>'.
+   * @see org.eclipse.scout.saml.saml.ListBoxElement#getCode()
+   * @see #getListBoxElement()
+   * @generated
+   */
+  EReference getListBoxElement_Code();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.ListBoxElement#getLookup <em>Lookup</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Lookup</em>'.
+   * @see org.eclipse.scout.saml.saml.ListBoxElement#getLookup()
+   * @see #getListBoxElement()
+   * @generated
+   */
+  EReference getListBoxElement_Lookup();
 
   /**
    * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.ListBoxElement#getGridHeight <em>Grid Height</em>}'.
@@ -4702,6 +5108,179 @@ public interface SamlPackage extends EPackage
   EClass getCheckboxElement();
 
   /**
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.FileChooserElement <em>File Chooser Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>File Chooser Element</em>'.
+   * @see org.eclipse.scout.saml.saml.FileChooserElement
+   * @generated
+   */
+  EClass getFileChooserElement();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FileChooserElement#getMaxlen <em>Maxlen</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Maxlen</em>'.
+   * @see org.eclipse.scout.saml.saml.FileChooserElement#getMaxlen()
+   * @see #getFileChooserElement()
+   * @generated
+   */
+  EAttribute getFileChooserElement_Maxlen();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FileChooserElement#getMode <em>Mode</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Mode</em>'.
+   * @see org.eclipse.scout.saml.saml.FileChooserElement#getMode()
+   * @see #getFileChooserElement()
+   * @generated
+   */
+  EAttribute getFileChooserElement_Mode();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FileChooserElement#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see org.eclipse.scout.saml.saml.FileChooserElement#getType()
+   * @see #getFileChooserElement()
+   * @generated
+   */
+  EAttribute getFileChooserElement_Type();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FileChooserElement#getExtensions <em>Extensions</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Extensions</em>'.
+   * @see org.eclipse.scout.saml.saml.FileChooserElement#getExtensions()
+   * @see #getFileChooserElement()
+   * @generated
+   */
+  EAttribute getFileChooserElement_Extensions();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FileChooserElement#getDefaultDirectory <em>Default Directory</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Default Directory</em>'.
+   * @see org.eclipse.scout.saml.saml.FileChooserElement#getDefaultDirectory()
+   * @see #getFileChooserElement()
+   * @generated
+   */
+  EAttribute getFileChooserElement_DefaultDirectory();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FileChooserElement#getShowDirectory <em>Show Directory</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Show Directory</em>'.
+   * @see org.eclipse.scout.saml.saml.FileChooserElement#getShowDirectory()
+   * @see #getFileChooserElement()
+   * @generated
+   */
+  EAttribute getFileChooserElement_ShowDirectory();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FileChooserElement#getShowFileName <em>Show File Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Show File Name</em>'.
+   * @see org.eclipse.scout.saml.saml.FileChooserElement#getShowFileName()
+   * @see #getFileChooserElement()
+   * @generated
+   */
+  EAttribute getFileChooserElement_ShowFileName();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.FileChooserElement#getShowFileExtension <em>Show File Extension</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Show File Extension</em>'.
+   * @see org.eclipse.scout.saml.saml.FileChooserElement#getShowFileExtension()
+   * @see #getFileChooserElement()
+   * @generated
+   */
+  EAttribute getFileChooserElement_ShowFileExtension();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.RadioGroupElement <em>Radio Group Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Radio Group Element</em>'.
+   * @see org.eclipse.scout.saml.saml.RadioGroupElement
+   * @generated
+   */
+  EClass getRadioGroupElement();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.scout.saml.saml.RadioGroupElement#getOptions <em>Options</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Options</em>'.
+   * @see org.eclipse.scout.saml.saml.RadioGroupElement#getOptions()
+   * @see #getRadioGroupElement()
+   * @generated
+   */
+  EReference getRadioGroupElement_Options();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.RadioButtonElement <em>Radio Button Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Radio Button Element</em>'.
+   * @see org.eclipse.scout.saml.saml.RadioButtonElement
+   * @generated
+   */
+  EClass getRadioButtonElement();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.RadioButtonElement#getText <em>Text</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Text</em>'.
+   * @see org.eclipse.scout.saml.saml.RadioButtonElement#getText()
+   * @see #getRadioButtonElement()
+   * @generated
+   */
+  EReference getRadioButtonElement_Text();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.RadioButtonElement#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see org.eclipse.scout.saml.saml.RadioButtonElement#getValue()
+   * @see #getRadioButtonElement()
+   * @generated
+   */
+  EAttribute getRadioButtonElement_Value();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.RadioButtonElement#getEnabled <em>Enabled</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Enabled</em>'.
+   * @see org.eclipse.scout.saml.saml.RadioButtonElement#getEnabled()
+   * @see #getRadioButtonElement()
+   * @generated
+   */
+  EAttribute getRadioButtonElement_Enabled();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.RadioButtonElement#getVisible <em>Visible</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Visible</em>'.
+   * @see org.eclipse.scout.saml.saml.RadioButtonElement#getVisible()
+   * @see #getRadioButtonElement()
+   * @generated
+   */
+  EAttribute getRadioButtonElement_Visible();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -4947,14 +5526,6 @@ public interface SamlPackage extends EPackage
     EClass CODE_ELEMENT = eINSTANCE.getCodeElement();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute CODE_ELEMENT__NAME = eINSTANCE.getCodeElement_Name();
-
-    /**
      * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4977,14 +5548,6 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EReference CODE_ELEMENT__TEXT = eINSTANCE.getCodeElement_Text();
-
-    /**
-     * The meta object literal for the '<em><b>Super Type</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CODE_ELEMENT__SUPER_TYPE = eINSTANCE.getCodeElement_SuperType();
 
     /**
      * The meta object literal for the '<em><b>Logic</b></em>' containment reference list feature.
@@ -5065,14 +5628,6 @@ public interface SamlPackage extends EPackage
     EClass FORM_ELEMENT = eINSTANCE.getFormElement();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute FORM_ELEMENT__NAME = eINSTANCE.getFormElement_Name();
-
-    /**
      * The meta object literal for the '<em><b>Modal</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -5113,14 +5668,6 @@ public interface SamlPackage extends EPackage
     EAttribute FORM_ELEMENT__WIDTH_IN_PIXELS = eINSTANCE.getFormElement_WidthInPixels();
 
     /**
-     * The meta object literal for the '<em><b>Super Type</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference FORM_ELEMENT__SUPER_TYPE = eINSTANCE.getFormElement_SuperType();
-
-    /**
      * The meta object literal for the '<em><b>Logic</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -5155,14 +5702,6 @@ public interface SamlPackage extends EPackage
     EClass FORM_FIELD_ELEMENT = eINSTANCE.getFormFieldElement();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute FORM_FIELD_ELEMENT__NAME = eINSTANCE.getFormFieldElement_Name();
-
-    /**
      * The meta object literal for the '<em><b>Enabled</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -5179,20 +5718,38 @@ public interface SamlPackage extends EPackage
     EAttribute FORM_FIELD_ELEMENT__VISIBLE = eINSTANCE.getFormFieldElement_Visible();
 
     /**
-     * The meta object literal for the '<em><b>Super Type</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference FORM_FIELD_ELEMENT__SUPER_TYPE = eINSTANCE.getFormFieldElement_SuperType();
-
-    /**
      * The meta object literal for the '<em><b>Logic</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference FORM_FIELD_ELEMENT__LOGIC = eINSTANCE.getFormFieldElement_Logic();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.NamedTypeElementImpl <em>Named Type Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.NamedTypeElementImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getNamedTypeElement()
+     * @generated
+     */
+    EClass NAMED_TYPE_ELEMENT = eINSTANCE.getNamedTypeElement();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute NAMED_TYPE_ELEMENT__NAME = eINSTANCE.getNamedTypeElement_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Super Type</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference NAMED_TYPE_ELEMENT__SUPER_TYPE = eINSTANCE.getNamedTypeElement_SuperType();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.CompositeFieldElementImpl <em>Composite Field Element</em>}' class.
@@ -5321,6 +5878,24 @@ public interface SamlPackage extends EPackage
     EAttribute GROUP_BOX_ELEMENT__WIDTH_IN_PIXELS = eINSTANCE.getGroupBoxElement_WidthInPixels();
 
     /**
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.GenericValueFieldElementImpl <em>Generic Value Field Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.GenericValueFieldElementImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getGenericValueFieldElement()
+     * @generated
+     */
+    EClass GENERIC_VALUE_FIELD_ELEMENT = eINSTANCE.getGenericValueFieldElement();
+
+    /**
+     * The meta object literal for the '<em><b>Value Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GENERIC_VALUE_FIELD_ELEMENT__VALUE_TYPE = eINSTANCE.getGenericValueFieldElement_ValueType();
+
+    /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.ValueFieldElementImpl <em>Value Field Element</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -5377,40 +5952,6 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EAttribute VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS = eINSTANCE.getValueFieldElement_WidthInPixels();
-
-    /**
-     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.GenericValueFieldElementImpl <em>Generic Value Field Element</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.eclipse.scout.saml.saml.impl.GenericValueFieldElementImpl
-     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getGenericValueFieldElement()
-     * @generated
-     */
-    EClass GENERIC_VALUE_FIELD_ELEMENT = eINSTANCE.getGenericValueFieldElement();
-
-    /**
-     * The meta object literal for the '<em><b>Code</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference GENERIC_VALUE_FIELD_ELEMENT__CODE = eINSTANCE.getGenericValueFieldElement_Code();
-
-    /**
-     * The meta object literal for the '<em><b>Value Type</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute GENERIC_VALUE_FIELD_ELEMENT__VALUE_TYPE = eINSTANCE.getGenericValueFieldElement_ValueType();
-
-    /**
-     * The meta object literal for the '<em><b>Lookup</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference GENERIC_VALUE_FIELD_ELEMENT__LOOKUP = eINSTANCE.getGenericValueFieldElement_Lookup();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.StringElementImpl <em>String Element</em>}' class.
@@ -5559,6 +6100,22 @@ public interface SamlPackage extends EPackage
     EClass SMARTFIELD_ELEMENT = eINSTANCE.getSmartfieldElement();
 
     /**
+     * The meta object literal for the '<em><b>Code</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SMARTFIELD_ELEMENT__CODE = eINSTANCE.getSmartfieldElement_Code();
+
+    /**
+     * The meta object literal for the '<em><b>Lookup</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SMARTFIELD_ELEMENT__LOOKUP = eINSTANCE.getSmartfieldElement_Lookup();
+
+    /**
      * The meta object literal for the '<em><b>Menus</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -5575,6 +6132,22 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EClass LIST_BOX_ELEMENT = eINSTANCE.getListBoxElement();
+
+    /**
+     * The meta object literal for the '<em><b>Code</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LIST_BOX_ELEMENT__CODE = eINSTANCE.getListBoxElement_Code();
+
+    /**
+     * The meta object literal for the '<em><b>Lookup</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LIST_BOX_ELEMENT__LOOKUP = eINSTANCE.getListBoxElement_Lookup();
 
     /**
      * The meta object literal for the '<em><b>Grid Height</b></em>' attribute feature.
@@ -6009,6 +6582,140 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EClass CHECKBOX_ELEMENT = eINSTANCE.getCheckboxElement();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.FileChooserElementImpl <em>File Chooser Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.FileChooserElementImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getFileChooserElement()
+     * @generated
+     */
+    EClass FILE_CHOOSER_ELEMENT = eINSTANCE.getFileChooserElement();
+
+    /**
+     * The meta object literal for the '<em><b>Maxlen</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FILE_CHOOSER_ELEMENT__MAXLEN = eINSTANCE.getFileChooserElement_Maxlen();
+
+    /**
+     * The meta object literal for the '<em><b>Mode</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FILE_CHOOSER_ELEMENT__MODE = eINSTANCE.getFileChooserElement_Mode();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FILE_CHOOSER_ELEMENT__TYPE = eINSTANCE.getFileChooserElement_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Extensions</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FILE_CHOOSER_ELEMENT__EXTENSIONS = eINSTANCE.getFileChooserElement_Extensions();
+
+    /**
+     * The meta object literal for the '<em><b>Default Directory</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FILE_CHOOSER_ELEMENT__DEFAULT_DIRECTORY = eINSTANCE.getFileChooserElement_DefaultDirectory();
+
+    /**
+     * The meta object literal for the '<em><b>Show Directory</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FILE_CHOOSER_ELEMENT__SHOW_DIRECTORY = eINSTANCE.getFileChooserElement_ShowDirectory();
+
+    /**
+     * The meta object literal for the '<em><b>Show File Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FILE_CHOOSER_ELEMENT__SHOW_FILE_NAME = eINSTANCE.getFileChooserElement_ShowFileName();
+
+    /**
+     * The meta object literal for the '<em><b>Show File Extension</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FILE_CHOOSER_ELEMENT__SHOW_FILE_EXTENSION = eINSTANCE.getFileChooserElement_ShowFileExtension();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.RadioGroupElementImpl <em>Radio Group Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.RadioGroupElementImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getRadioGroupElement()
+     * @generated
+     */
+    EClass RADIO_GROUP_ELEMENT = eINSTANCE.getRadioGroupElement();
+
+    /**
+     * The meta object literal for the '<em><b>Options</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference RADIO_GROUP_ELEMENT__OPTIONS = eINSTANCE.getRadioGroupElement_Options();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.RadioButtonElementImpl <em>Radio Button Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.RadioButtonElementImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getRadioButtonElement()
+     * @generated
+     */
+    EClass RADIO_BUTTON_ELEMENT = eINSTANCE.getRadioButtonElement();
+
+    /**
+     * The meta object literal for the '<em><b>Text</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference RADIO_BUTTON_ELEMENT__TEXT = eINSTANCE.getRadioButtonElement_Text();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute RADIO_BUTTON_ELEMENT__VALUE = eINSTANCE.getRadioButtonElement_Value();
+
+    /**
+     * The meta object literal for the '<em><b>Enabled</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute RADIO_BUTTON_ELEMENT__ENABLED = eINSTANCE.getRadioButtonElement_Enabled();
+
+    /**
+     * The meta object literal for the '<em><b>Visible</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute RADIO_BUTTON_ELEMENT__VISIBLE = eINSTANCE.getRadioButtonElement_Visible();
 
   }
 

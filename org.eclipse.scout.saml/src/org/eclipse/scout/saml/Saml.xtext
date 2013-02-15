@@ -79,6 +79,7 @@ FormElement:'form' name=ID
 // UI FIELDS
 
 FormFieldElement:CompositeFieldElement | ValueFieldElement | CustomFieldElement | ButtonElement | TableElement | TabBoxElement;
+NamedTypeElement:FormFieldElement | RadioButtonElement | CodeElement | FormElement;
 
 // COMPOSITES
 CompositeFieldElement:SequenceBoxElement|GroupBoxElement|TabElement;
@@ -111,8 +112,10 @@ GroupBoxElement:'group' name=ID
 	('{' (logic+=LogicElement | fields+=FormFieldElement)* '}')?;
 
 // VALUE FIELDS
-ValueFieldElement: StringElement|BigDecimalElement|LongElement|DateElement|CheckboxElement|GenericValueFieldElement;
-GenericValueFieldElement:SmartfieldElement|ListBoxElement;
+GenericValueFieldElement:SmartfieldElement|ListBoxElement|RadioGroupElement;
+ValueFieldElement: StringElement|BigDecimalElement|LongElement|DateElement|CheckboxElement|
+	FileChooserElement|GenericValueFieldElement
+;
 
 StringElement:'string' name=ID 
 	(
@@ -319,3 +322,53 @@ CheckboxElement:'check' name=ID
 		('super_type' '=' superType=[TemplateElement])?
 	)
 	('{' logic+=LogicElement* '}')?;
+	
+FileChooserElement:'filechooser' name=ID
+	(
+		('text' '=' text=[TranslationElement|QualifiedName])? &
+		('enabled' '=' enabled=BooleanType)? &
+		('visible' '=' visible=BooleanType)? &
+		('width' '=' gridWidth=INT)? &
+		('width_pixels' '=' widthInPixels=INT)? &
+		('label_visible' '=' labelVisible=BooleanType)? &
+		('master' '=' master=[ValueFieldElement])? &
+		('mandatory' '=' mandatory=BooleanType)? &
+		('maxlen' '=' maxlen=INT)? &
+		('mode' '=' mode=('directory'|'file'))? &
+		('type' '=' type=('load'|'store'))? &
+		('extensions' '=' extensions=STRING)? &
+		('default_directory' '=' defaultDirectory=STRING)? &
+		('show_directory' '=' showDirectory=BooleanType)? &
+		('show_filename' '=' showFileName=BooleanType)? &
+		('show_extension' '=' showFileExtension=BooleanType)? &
+		('super_type' '=' superType=[TemplateElement])?
+	)
+	('{' logic+=LogicElement* '}')?;
+	
+	
+RadioGroupElement:'radio_group' name=ID
+	(
+		('text' '=' text=[TranslationElement|QualifiedName])? &
+		('enabled' '=' enabled=BooleanType)? &
+		('visible' '=' visible=BooleanType)? &
+		('width' '=' gridWidth=INT)? &
+		('width_pixels' '=' widthInPixels=INT)? &
+		('label_visible' '=' labelVisible=BooleanType)? &
+		('master' '=' master=[ValueFieldElement])? &
+		('mandatory' '=' mandatory=BooleanType)? &
+		('value_type' '=' valueType=STRING/*JvmTypeReference*/)? &
+		('super_type' '=' superType=[TemplateElement])?
+	)
+	'{' (logic+=LogicElement | options+=RadioButtonElement)+ '}';
+
+
+RadioButtonElement:'option' name=ID 
+	(
+		('text' '=' text=[TranslationElement|QualifiedName])? &
+		('value' '=' value=STRING) &
+		('enabled' '=' enabled=BooleanType)? &
+		('visible' '=' visible=BooleanType)? &
+		('super_type' '=' superType=[TemplateElement])?
+	);
+
+

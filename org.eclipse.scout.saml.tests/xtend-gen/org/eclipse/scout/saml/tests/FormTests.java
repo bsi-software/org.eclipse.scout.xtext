@@ -439,6 +439,53 @@ public class FormTests {
   }
   
   @Test
+  public void testFileChooserMode() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module a.b");
+      _builder.newLine();
+      _builder.append("form FileChooserTest {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("filechooser TestFileChooser1 mode=directory show_filename=true");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      Model _parse = this._parseHelper.parse(_builder);
+      EClass _fileChooserElement = SamlPackage.eINSTANCE.getFileChooserElement();
+      this._validationTestHelper.assertError(_parse, _fileChooserElement, SamlJavaValidator.ONLY_FOR_MODE_FILE, SamlJavaValidator.MSG_ONLY_FOR_MODE_FILE);
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("module a.b");
+      _builder_1.newLine();
+      _builder_1.append("form FileChooserTest {");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.append("filechooser TestFileChooser2 mode=directory show_extension=true");
+      _builder_1.newLine();
+      _builder_1.append("}");
+      _builder_1.newLine();
+      Model _parse_1 = this._parseHelper.parse(_builder_1);
+      EClass _fileChooserElement_1 = SamlPackage.eINSTANCE.getFileChooserElement();
+      this._validationTestHelper.assertError(_parse_1, _fileChooserElement_1, SamlJavaValidator.ONLY_FOR_MODE_FILE, SamlJavaValidator.MSG_ONLY_FOR_MODE_FILE);
+      StringConcatenation _builder_2 = new StringConcatenation();
+      _builder_2.append("module a.b");
+      _builder_2.newLine();
+      _builder_2.append("form FileChooserTest {");
+      _builder_2.newLine();
+      _builder_2.append("\t");
+      _builder_2.append("filechooser TestFileChooser3 mode=directory extensions=\"png jpg\"");
+      _builder_2.newLine();
+      _builder_2.append("}");
+      _builder_2.newLine();
+      Model _parse_2 = this._parseHelper.parse(_builder_2);
+      EClass _fileChooserElement_2 = SamlPackage.eINSTANCE.getFileChooserElement();
+      this._validationTestHelper.assertError(_parse_2, _fileChooserElement_2, SamlJavaValidator.ONLY_FOR_MODE_FILE, SamlJavaValidator.MSG_ONLY_FOR_MODE_FILE);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
   public void testOkButton() {
     try {
       StringConcatenation _builder = new StringConcatenation();

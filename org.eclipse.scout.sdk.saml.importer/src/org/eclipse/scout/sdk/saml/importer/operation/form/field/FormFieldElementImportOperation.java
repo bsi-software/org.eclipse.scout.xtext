@@ -13,8 +13,8 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.field;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IType;
-import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.GenericValueFieldElement;
+import org.eclipse.scout.saml.saml.NamedTypeElement;
 import org.eclipse.scout.sdk.operation.form.field.FormFieldNewOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
 
@@ -78,8 +78,8 @@ public class FormFieldElementImportOperation extends AbstractSamlElementImportOp
   }
 
   @Override
-  protected FormFieldElement getElement() {
-    return (FormFieldElement) super.getElement();
+  protected NamedTypeElement getElement() {
+    return (NamedTypeElement) super.getElement();
   }
 
   public String getFieldSuffix() {

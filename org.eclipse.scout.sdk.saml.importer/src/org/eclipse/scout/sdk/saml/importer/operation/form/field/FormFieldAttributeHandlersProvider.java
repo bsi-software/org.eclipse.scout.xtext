@@ -10,7 +10,10 @@
  ******************************************************************************/
 package org.eclipse.scout.sdk.saml.importer.operation.form.field;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
+import java.util.regex.Pattern;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.scout.commons.StringUtility;
@@ -19,12 +22,15 @@ import org.eclipse.scout.saml.saml.ButtonElement;
 import org.eclipse.scout.saml.saml.CodeElement;
 import org.eclipse.scout.saml.saml.CompositeFieldElement;
 import org.eclipse.scout.saml.saml.CustomFieldElement;
+import org.eclipse.scout.saml.saml.FileChooserElement;
 import org.eclipse.scout.saml.saml.FormElement;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.GroupBoxElement;
 import org.eclipse.scout.saml.saml.ListBoxElement;
 import org.eclipse.scout.saml.saml.LongElement;
 import org.eclipse.scout.saml.saml.LookupElement;
+import org.eclipse.scout.saml.saml.RadioButtonElement;
+import org.eclipse.scout.saml.saml.RadioGroupElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
 import org.eclipse.scout.saml.saml.SequenceBoxElement;
 import org.eclipse.scout.saml.saml.SmartfieldElement;
@@ -40,6 +46,7 @@ import org.eclipse.scout.sdk.saml.importer.extension.attribute.SamlAttribute;
 import org.eclipse.scout.sdk.saml.importer.extension.attribute.SamlAttributeHandler;
 import org.eclipse.scout.sdk.saml.importer.extension.element.ElementImportersExtension;
 import org.eclipse.scout.sdk.util.SdkProperties;
+import org.eclipse.scout.sdk.util.jdt.JdtUtility;
 
 /**
  * <h3>{@link FormFieldAttributeHandlersProvider}</h3> ...
@@ -53,6 +60,8 @@ public class FormFieldAttributeHandlersProvider extends AbstractAttributeHandler
   protected final static int HORIZONTAL_ALIGN_CENTER = 0;
   protected final static int HORIZONTAL_ALIGN_RIGHT = 1;
 
+  private final static Pattern REGEX_EXTENSIONS_REPLACE = Pattern.compile("\\.|\\*\\.");
+
   @SamlAttributeHandler(handles = {
       @SamlAttribute(elementType = FormElement.class, featureId = SamlPackage.FORM_ELEMENT__FIELDS),
       @SamlAttribute(elementType = CompositeFieldElement.class, featureId = SamlPackage.COMPOSITE_FIELD_ELEMENT__FIELDS),
@@ -65,6 +74,11 @@ public class FormFieldAttributeHandlersProvider extends AbstractAttributeHandler
   @SamlAttributeHandler(handles = {@SamlAttribute(elementType = TabBoxElement.class, featureId = SamlPackage.TAB_BOX_ELEMENT__TABS)})
   public void dispatchTabElements(List<TabElement> tabs) throws CoreException {
     dispatchFields(tabs);
+  }
+
+  @SamlAttributeHandler(handles = {@SamlAttribute(elementType = RadioGroupElement.class, featureId = SamlPackage.RADIO_GROUP_ELEMENT__OPTIONS)})
+  public void dispatchRadioOptionElements(List<RadioButtonElement> options) throws CoreException {
+    dispatchFields(options);
   }
 
   private void dispatchFields(List<?> fields) throws CoreException {
@@ -227,7 +241,8 @@ public class FormFieldAttributeHandlersProvider extends AbstractAttributeHandler
       @SamlAttribute(elementType = ValueFieldElement.class, featureId = SamlPackage.VALUE_FIELD_ELEMENT__TEXT),
       @SamlAttribute(elementType = CustomFieldElement.class, featureId = SamlPackage.CUSTOM_FIELD_ELEMENT__TEXT),
       @SamlAttribute(elementType = ButtonElement.class, featureId = SamlPackage.BUTTON_ELEMENT__TEXT),
-      @SamlAttribute(elementType = TableElement.class, featureId = SamlPackage.TABLE_ELEMENT__TEXT)
+      @SamlAttribute(elementType = TableElement.class, featureId = SamlPackage.TABLE_ELEMENT__TEXT),
+      @SamlAttribute(elementType = RadioButtonElement.class, featureId = SamlPackage.RADIO_BUTTON_ELEMENT__TEXT)
   })
   public void applyTextAttribute(TranslationElement a) throws CoreException, IllegalArgumentException {
     if (a != null) {
@@ -335,21 +350,30 @@ public class FormFieldAttributeHandlersProvider extends AbstractAttributeHandler
     }
   }
 
-  @SamlAttributeHandler(handles = {@SamlAttribute(elementType = FormFieldElement.class, featureId = SamlPackage.FORM_FIELD_ELEMENT__VISIBLE)})
+  @SamlAttributeHandler(handles = {
+      @SamlAttribute(elementType = FormFieldElement.class, featureId = SamlPackage.FORM_FIELD_ELEMENT__VISIBLE),
+      @SamlAttribute(elementType = RadioButtonElement.class, featureId = SamlPackage.RADIO_BUTTON_ELEMENT__VISIBLE)
+  })
   public void applyVisibleAttribute(String a) throws CoreException, IllegalArgumentException {
     if ("false".equals(a)) {
       overrideMethod("getConfiguredVisible", "return false;");
     }
   }
 
-  @SamlAttributeHandler(handles = {@SamlAttribute(elementType = FormFieldElement.class, featureId = SamlPackage.FORM_FIELD_ELEMENT__ENABLED)})
+  @SamlAttributeHandler(handles = {
+      @SamlAttribute(elementType = FormFieldElement.class, featureId = SamlPackage.FORM_FIELD_ELEMENT__ENABLED),
+      @SamlAttribute(elementType = RadioButtonElement.class, featureId = SamlPackage.RADIO_BUTTON_ELEMENT__ENABLED)
+  })
   public void applyEnabledAttribute(String a) throws CoreException, IllegalArgumentException {
     if ("false".equals(a)) {
       overrideMethod("getConfiguredEnabled", "return false;");
     }
   }
 
-  @SamlAttributeHandler(handles = {@SamlAttribute(elementType = StringElement.class, featureId = SamlPackage.STRING_ELEMENT__MAXLEN)})
+  @SamlAttributeHandler(handles = {
+      @SamlAttribute(elementType = StringElement.class, featureId = SamlPackage.STRING_ELEMENT__MAXLEN),
+      @SamlAttribute(elementType = FileChooserElement.class, featureId = SamlPackage.FILE_CHOOSER_ELEMENT__MAXLEN)
+  })
   public void applyMaxLengthAttribute(int maxlen) throws CoreException, IllegalArgumentException {
     if (maxlen != 0 && maxlen != 4000) {
       overrideMethod("getConfiguredMaxLength", "return " + maxlen + ";");
@@ -388,5 +412,101 @@ public class FormFieldAttributeHandlersProvider extends AbstractAttributeHandler
     else {
       throw new IllegalArgumentException("unknown button system type: " + type);
     }
+  }
+
+  @SamlAttributeHandler(handles = {@SamlAttribute(elementType = FileChooserElement.class, featureId = SamlPackage.FILE_CHOOSER_ELEMENT__MODE)})
+  public void applyFileChooserModeAttribute(String mode) throws CoreException, IllegalArgumentException {
+    if (StringUtility.hasText(mode)) {
+      if (mode.equals(getSamlContext().getGrammarAccess().getFileChooserElementAccess().getModeDirectoryKeyword_2_9_2_0_0().getValue())) {
+        overrideMethod("getConfiguredFolderMode", "return true;");
+      }
+    }
+  }
+
+  @SamlAttributeHandler(handles = {@SamlAttribute(elementType = FileChooserElement.class, featureId = SamlPackage.FILE_CHOOSER_ELEMENT__TYPE)})
+  public void applyFileChooserTypeAttribute(String type) throws CoreException, IllegalArgumentException {
+    if (StringUtility.hasText(type)) {
+      if (type.equals(getSamlContext().getGrammarAccess().getFileChooserElementAccess().getTypeLoadKeyword_2_10_2_0_0().getValue())) {
+        overrideMethod("getConfiguredTypeLoad", "return true;");
+      }
+    }
+  }
+
+  @SamlAttributeHandler(handles = {@SamlAttribute(elementType = FileChooserElement.class, featureId = SamlPackage.FILE_CHOOSER_ELEMENT__EXTENSIONS)})
+  public void applyFileChooserExtensionsAttribute(String exts) throws CoreException, IllegalArgumentException {
+    String[] extensions = parseExtensions(exts);
+    if (extensions != null && extensions.length > 0) {
+      StringBuilder out = new StringBuilder("return new String[]{");
+      for (int i = 0; i < extensions.length; i++) {
+        out.append(JdtUtility.toStringLiteral(extensions[i]));
+        if (i < extensions.length - 1) {
+          out.append(", ");
+        }
+      }
+      out.append("};");
+      overrideMethod("getConfiguredFileExtensions", out.toString());
+    }
+  }
+
+  private static String[] parseExtensions(String exts) {
+    if (!StringUtility.hasText(exts)) {
+      return null;
+    }
+
+    exts = REGEX_EXTENSIONS_REPLACE.matcher(exts).replaceAll(" ");
+    StringTokenizer tokenizer = new StringTokenizer(exts, ", ;\t", false);
+    ArrayList<String> extensions = new ArrayList<String>();
+    while (tokenizer.hasMoreTokens()) {
+      String token = tokenizer.nextToken();
+      if (StringUtility.hasText(token)) {
+        if ("*".equals(token)) {
+          // all extensions -> no tokens needed
+          return null;
+        }
+        extensions.add(token);
+      }
+    }
+
+    return extensions.toArray(new String[extensions.size()]);
+  }
+
+  @SamlAttributeHandler(handles = {@SamlAttribute(elementType = FileChooserElement.class, featureId = SamlPackage.FILE_CHOOSER_ELEMENT__DEFAULT_DIRECTORY)})
+  public void applyFileChooserDefaultDirAttribute(String dir) throws CoreException, IllegalArgumentException {
+    if (StringUtility.hasText(dir)) {
+      overrideMethod("getConfiguredDirectory", "return " + JdtUtility.toStringLiteral(dir) + ";");
+    }
+  }
+
+  @SamlAttributeHandler(handles = {@SamlAttribute(elementType = FileChooserElement.class, featureId = SamlPackage.FILE_CHOOSER_ELEMENT__SHOW_DIRECTORY)})
+  public void applyFileChooserShowDirAttribute(String a) throws CoreException, IllegalArgumentException {
+    if ("true".equals(a)) {
+      overrideMethod("getConfiguredShowDirectory", "return true;");
+    }
+  }
+
+  @SamlAttributeHandler(handles = {@SamlAttribute(elementType = FileChooserElement.class, featureId = SamlPackage.FILE_CHOOSER_ELEMENT__SHOW_FILE_NAME)})
+  public void applyFileChooserShowNameAttribute(String a) throws CoreException, IllegalArgumentException {
+    if ("false".equals(a)) {
+      overrideMethod("getConfiguredShowFileName", "return false;");
+    }
+  }
+
+  @SamlAttributeHandler(handles = {@SamlAttribute(elementType = FileChooserElement.class, featureId = SamlPackage.FILE_CHOOSER_ELEMENT__SHOW_FILE_EXTENSION)})
+  public void applyFileChooserShowExtAttribute(String a) throws CoreException, IllegalArgumentException {
+    if ("false".equals(a)) {
+      overrideMethod("getConfiguredShowFileExtension", "return false;");
+    }
+  }
+
+  @SamlAttributeHandler(handles = {@SamlAttribute(elementType = RadioButtonElement.class, featureId = SamlPackage.RADIO_BUTTON_ELEMENT__VALUE)})
+  public void applyRadioButtonValueAttribute(String value) throws CoreException, IllegalArgumentException {
+    if (StringUtility.hasText(value)) {
+      overrideMethod("getConfiguredRadioValue", "return " + value + ";");
+    }
+  }
+
+  @SamlAttributeHandler(handles = {@SamlAttribute(elementType = SequenceBoxElement.class, featureId = SamlPackage.SEQUENCE_BOX_ELEMENT__NAME)})
+  public void applyAutoCheckFromToAttribute(String name) throws CoreException, IllegalArgumentException {
+    overrideMethod("getConfiguredAutoCheckFromTo", "return false;");
   }
 }

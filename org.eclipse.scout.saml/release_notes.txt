@@ -111,3 +111,15 @@ Changes:
 
 
 
+Version: 1.0.0 2013-02-15
+Changed: mvi
+Changes:
+	Added:
+		Element 'filechooser'
+			Attributes: 'text', 'enabled', 'visible', 'width', 'width_pixels', 'label_visible', 'master', 'mandatory', 'maxlen', 'mode', 'type', 'extensions', 'default_directory', 'show_directory', 'show_filename', 'show_extension', 'super_type'
+		Element 'radio_group'
+			Attributes: 'text', 'enabled', 'visible', 'width', 'width_pixels' ', 'label_visible' , 'master', 'mandatory', 'value_type', 'super_type'
+		Element 'option'
+			Attributes: 'text', 'value'
+
+
