@@ -18,7 +18,6 @@ import org.eclipse.scout.sdk.operation.lookupcall.LookupCallNewOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
 import org.eclipse.scout.sdk.util.SdkProperties;
-import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
 import org.eclipse.scout.sdk.workspace.IScoutBundle;
 
 /**
@@ -88,7 +87,7 @@ public class LookupElementImportOperation extends AbstractSamlElementImportOpera
     op.setImplementationRegistrationBundle(getCurrentScoutModule().getServerBundle());
     op.setServiceImplementationBundle(getCurrentScoutModule().getServerBundle());
 
-    op.setServiceSuperTypeSignature(SignatureCache.createTypeSignature(RuntimeClasses.AbstractLookupService));
+    op.setServiceSuperTypeSignature(getSuperTypeSignature(RuntimeClasses.ILookupService, null));
     op.validate();
     op.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
 
