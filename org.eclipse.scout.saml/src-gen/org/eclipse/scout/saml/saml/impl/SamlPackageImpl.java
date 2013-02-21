@@ -798,7 +798,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFormElement_Logic()
+  public EReference getFormElement_SvcSuperType()
   {
     return (EReference)formElementEClass.getEStructuralFeatures().get(5);
   }
@@ -808,7 +808,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFormElement_Fields()
+  public EReference getFormElement_Logic()
   {
     return (EReference)formElementEClass.getEStructuralFeatures().get(6);
   }
@@ -818,9 +818,19 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFormElement_KeyStrokes()
+  public EReference getFormElement_Fields()
   {
     return (EReference)formElementEClass.getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFormElement_KeyStrokes()
+  {
+    return (EReference)formElementEClass.getEStructuralFeatures().get(8);
   }
 
   /**
@@ -2125,6 +2135,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     createEReference(formElementEClass, FORM_ELEMENT__TITLE);
     createEReference(formElementEClass, FORM_ELEMENT__SUBTITLE);
     createEAttribute(formElementEClass, FORM_ELEMENT__WIDTH_IN_PIXELS);
+    createEReference(formElementEClass, FORM_ELEMENT__SVC_SUPER_TYPE);
     createEReference(formElementEClass, FORM_ELEMENT__LOGIC);
     createEReference(formElementEClass, FORM_ELEMENT__FIELDS);
     createEReference(formElementEClass, FORM_ELEMENT__KEY_STROKES);
@@ -2383,6 +2394,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEReference(getFormElement_Title(), this.getTranslationElement(), null, "title", null, 0, 1, FormElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFormElement_Subtitle(), this.getTranslationElement(), null, "subtitle", null, 0, 1, FormElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFormElement_WidthInPixels(), ecorePackage.getEInt(), "widthInPixels", null, 0, 1, FormElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFormElement_SvcSuperType(), this.getTemplateElement(), null, "svcSuperType", null, 0, 1, FormElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFormElement_Logic(), this.getLogicElement(), null, "logic", null, 0, -1, FormElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFormElement_Fields(), this.getFormFieldElement(), null, "fields", null, 0, -1, FormElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFormElement_KeyStrokes(), this.getKeyElement(), null, "keyStrokes", null, 0, -1, FormElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

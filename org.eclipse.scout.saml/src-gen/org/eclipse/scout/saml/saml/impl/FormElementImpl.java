@@ -22,6 +22,7 @@ import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.KeyElement;
 import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
+import org.eclipse.scout.saml.saml.TemplateElement;
 import org.eclipse.scout.saml.saml.TranslationElement;
 
 /**
@@ -36,6 +37,7 @@ import org.eclipse.scout.saml.saml.TranslationElement;
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getSubtitle <em>Subtitle</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getWidthInPixels <em>Width In Pixels</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getSvcSuperType <em>Svc Super Type</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getLogic <em>Logic</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getFields <em>Fields</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.FormElementImpl#getKeyStrokes <em>Key Strokes</em>}</li>
@@ -125,6 +127,16 @@ public class FormElementImpl extends NamedTypeElementImpl implements FormElement
    * @ordered
    */
   protected int widthInPixels = WIDTH_IN_PIXELS_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getSvcSuperType() <em>Svc Super Type</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSvcSuperType()
+   * @generated
+   * @ordered
+   */
+  protected TemplateElement svcSuperType;
 
   /**
    * The cached value of the '{@link #getLogic() <em>Logic</em>}' containment reference list.
@@ -337,6 +349,49 @@ public class FormElementImpl extends NamedTypeElementImpl implements FormElement
    * <!-- end-user-doc -->
    * @generated
    */
+  public TemplateElement getSvcSuperType()
+  {
+    if (svcSuperType != null && svcSuperType.eIsProxy())
+    {
+      InternalEObject oldSvcSuperType = (InternalEObject)svcSuperType;
+      svcSuperType = (TemplateElement)eResolveProxy(oldSvcSuperType);
+      if (svcSuperType != oldSvcSuperType)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SamlPackage.FORM_ELEMENT__SVC_SUPER_TYPE, oldSvcSuperType, svcSuperType));
+      }
+    }
+    return svcSuperType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TemplateElement basicGetSvcSuperType()
+  {
+    return svcSuperType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSvcSuperType(TemplateElement newSvcSuperType)
+  {
+    TemplateElement oldSvcSuperType = svcSuperType;
+    svcSuperType = newSvcSuperType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.FORM_ELEMENT__SVC_SUPER_TYPE, oldSvcSuperType, svcSuperType));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<LogicElement> getLogic()
   {
     if (logic == null)
@@ -416,6 +471,9 @@ public class FormElementImpl extends NamedTypeElementImpl implements FormElement
         return basicGetSubtitle();
       case SamlPackage.FORM_ELEMENT__WIDTH_IN_PIXELS:
         return getWidthInPixels();
+      case SamlPackage.FORM_ELEMENT__SVC_SUPER_TYPE:
+        if (resolve) return getSvcSuperType();
+        return basicGetSvcSuperType();
       case SamlPackage.FORM_ELEMENT__LOGIC:
         return getLogic();
       case SamlPackage.FORM_ELEMENT__FIELDS:
@@ -451,6 +509,9 @@ public class FormElementImpl extends NamedTypeElementImpl implements FormElement
         return;
       case SamlPackage.FORM_ELEMENT__WIDTH_IN_PIXELS:
         setWidthInPixels((Integer)newValue);
+        return;
+      case SamlPackage.FORM_ELEMENT__SVC_SUPER_TYPE:
+        setSvcSuperType((TemplateElement)newValue);
         return;
       case SamlPackage.FORM_ELEMENT__LOGIC:
         getLogic().clear();
@@ -493,6 +554,9 @@ public class FormElementImpl extends NamedTypeElementImpl implements FormElement
       case SamlPackage.FORM_ELEMENT__WIDTH_IN_PIXELS:
         setWidthInPixels(WIDTH_IN_PIXELS_EDEFAULT);
         return;
+      case SamlPackage.FORM_ELEMENT__SVC_SUPER_TYPE:
+        setSvcSuperType((TemplateElement)null);
+        return;
       case SamlPackage.FORM_ELEMENT__LOGIC:
         getLogic().clear();
         return;
@@ -526,6 +590,8 @@ public class FormElementImpl extends NamedTypeElementImpl implements FormElement
         return subtitle != null;
       case SamlPackage.FORM_ELEMENT__WIDTH_IN_PIXELS:
         return widthInPixels != WIDTH_IN_PIXELS_EDEFAULT;
+      case SamlPackage.FORM_ELEMENT__SVC_SUPER_TYPE:
+        return svcSuperType != null;
       case SamlPackage.FORM_ELEMENT__LOGIC:
         return logic != null && !logic.isEmpty();
       case SamlPackage.FORM_ELEMENT__FIELDS:

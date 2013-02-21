@@ -174,9 +174,11 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
     // always in a service class
     IMethod method = TypeUtility.getMethod(info.getTargetType(), info.getTargetMethodName());
     if (TypeUtility.exists(method)) {
+      // method already exists: reuse
       return method;
     }
-    else {
+    else if (info.getReturnType() != null) {
+      // new service operation: complete method must be known (e.g. the return type)
       ServiceOperationNewOperation sono = new ServiceOperationNewOperation();
       sono.setMethodName(info.getTargetMethodName());
       sono.setServiceImplementations(new IType[]{info.getTargetType()});
@@ -186,6 +188,15 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
       sono.validate();
       sono.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
       return sono.getCreatedImplementationMethod();
+    }
+    else {
+      // method must be overridden
+      MethodOverrideOperation moo = new MethodOverrideOperation(info.getTargetType(), info.getTargetMethodName(), false);
+      moo.setSimpleBody("");
+      moo.setSuperTypeHierarchy(getSamlContext().getSuperTypeHierarchy(info.getTargetType()));
+      moo.validate();
+      moo.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
+      return moo.getCreatedMethod();
     }
   }
 

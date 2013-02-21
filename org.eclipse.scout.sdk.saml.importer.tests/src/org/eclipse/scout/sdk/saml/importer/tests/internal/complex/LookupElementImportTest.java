@@ -55,7 +55,7 @@ public class LookupElementImportTest extends AbstractSamlImporterTest {
     IType svc = getLookupService();
 
     IMethod[] methods = TypeUtility.getMethods(svc);
-    Assert.assertEquals(5, methods.length);
+    Assert.assertEquals(3, methods.length);
 
     testMethod(svc, "createDummyData", "100L");
 

@@ -33,7 +33,7 @@ import org.eclipse.scout.sdk.util.log.ScoutStatus;
 
 public class AttributeHandlersProvidersExtension {
 
-  public final static String[] EXCLUDED_ATTRIBUTES = new String[]{"name", "superType", "valueType"};
+  public final static String[] EXCLUDED_ATTRIBUTES = new String[]{"name", "superType", "valueType", "svcSuperType"};
 
   public final static String EXTENSION_POINT_ID = "attributeHandlersProviders";
   public final static String PROVIDER_ELEMENT_NAME = "attributeHandlersProvider";

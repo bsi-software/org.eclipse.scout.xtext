@@ -71,7 +71,8 @@ FormElement:'form' name=ID
 		('title' '=' title=[TranslationElement|QualifiedName])? &
 		('subtitle' '=' subtitle=[TranslationElement|QualifiedName])? &
 		('width_pixels' '=' widthInPixels=INT)? &
-		('super_type' '=' superType=[TemplateElement])?
+		('super_type' '=' superType=[TemplateElement])? &
+		('svc_super_type' '=' svcSuperType=[TemplateElement])?
 	)
 	('{' (logic+=LogicElement | fields+=FormFieldElement | keyStrokes+=KeyElement)* '}')?;
 

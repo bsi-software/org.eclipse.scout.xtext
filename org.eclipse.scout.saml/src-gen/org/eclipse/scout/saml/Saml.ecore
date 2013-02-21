@@ -65,6 +65,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="title" eType="#//TranslationElement"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subtitle" eType="#//TranslationElement"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="widthInPixels" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="svcSuperType" eType="#//TemplateElement"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="logic" upperBound="-1"
         eType="#//LogicElement" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="fields" upperBound="-1"

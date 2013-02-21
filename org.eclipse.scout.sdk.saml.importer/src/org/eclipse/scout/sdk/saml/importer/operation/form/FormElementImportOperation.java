@@ -198,6 +198,9 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
     op.setServiceImplementationBundle(getCurrentScoutModule().getServerBundle());
     op.setServiceImplementationName(serverSvcName);
     op.setServiceImplementationPackage(serverSvcPackage);
+    if (getElement().getSvcSuperType() != null) {
+      op.setServiceImplementationSuperTypeSignature(SignatureCache.createTypeSignature(getElement().getSvcSuperType().getDefinition()));
+    }
     op.setServiceInterfaceBundle(getCurrentScoutModule().getSharedBundle());
     op.setServiceInterfaceName(sharedIfcName);
     op.setServiceInterfacePackage(sharedIfcPackage);

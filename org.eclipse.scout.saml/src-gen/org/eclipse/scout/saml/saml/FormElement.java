@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getTitle <em>Title</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getSubtitle <em>Subtitle</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getWidthInPixels <em>Width In Pixels</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getSvcSuperType <em>Svc Super Type</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getLogic <em>Logic</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getFields <em>Fields</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.FormElement#getKeyStrokes <em>Key Strokes</em>}</li>
@@ -158,6 +159,32 @@ public interface FormElement extends NamedTypeElement
    * @generated
    */
   void setWidthInPixels(int value);
+
+  /**
+   * Returns the value of the '<em><b>Svc Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Svc Super Type</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Svc Super Type</em>' reference.
+   * @see #setSvcSuperType(TemplateElement)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getFormElement_SvcSuperType()
+   * @model
+   * @generated
+   */
+  TemplateElement getSvcSuperType();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.FormElement#getSvcSuperType <em>Svc Super Type</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Svc Super Type</em>' reference.
+   * @see #getSvcSuperType()
+   * @generated
+   */
+  void setSvcSuperType(TemplateElement value);
 
   /**
    * Returns the value of the '<em><b>Logic</b></em>' containment reference list.

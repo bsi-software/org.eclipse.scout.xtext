@@ -45,7 +45,7 @@ public class LogicAttributeHandlersProvider extends AbstractAttributeHandlersPro
       @SamlAttribute(elementType = MenuElement.class, featureId = SamlPackage.MENU_ELEMENT__LOGIC),
       @SamlAttribute(elementType = KeyElement.class, featureId = SamlPackage.KEY_ELEMENT__LOGIC)
   })
-  public void applyLookupLogics(List<LogicElement> logics) throws IllegalArgumentException, CoreException {
+  public void applyLogics(List<LogicElement> logics) throws IllegalArgumentException, CoreException {
     Collection<EventLogicsInfo> eventLogics = EventLogicsInfoFactory.create(logics);
     EventLogicsInfo classLevelInfo = null;
 

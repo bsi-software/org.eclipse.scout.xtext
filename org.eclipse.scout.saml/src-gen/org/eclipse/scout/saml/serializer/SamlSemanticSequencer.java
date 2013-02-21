@@ -1367,6 +1367,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         subtitle=[TranslationElement|QualifiedName]? 
 	 *         widthInPixels=INT? 
 	 *         superType=[TemplateElement|ID]? 
+	 *         svcSuperType=[TemplateElement|ID]? 
 	 *         (logic+=LogicElement | fields+=FormFieldElement | keyStrokes+=KeyElement)*
 	 *     )
 	 */

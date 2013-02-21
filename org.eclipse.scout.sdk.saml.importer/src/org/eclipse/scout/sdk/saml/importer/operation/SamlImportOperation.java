@@ -256,6 +256,10 @@ public class SamlImportOperation implements IOperation {
     }
 
     private void preProcess(EObject element, SamlContext context) throws CoreException {
+      if (element instanceof ModuleElement) {
+        // special case so that the preprocessors can access the current module
+        importElement(element, context);
+      }
       SamlElementPreProcessorExtension.preProcess(element, context);
       for (EObject child : element.eContents()) {
         preProcess(child, context);
@@ -271,12 +275,16 @@ public class SamlImportOperation implements IOperation {
     }
 
     @Override
-    public void visit(EObject o, SamlContext context) throws CoreException, IllegalArgumentException {
-      if (m_elementType.isAssignableFrom(o.getClass()) || o instanceof ModuleElement) {
-        IOperation rootImporter = ElementImportersExtension.getImporterFor(o, context);
-        rootImporter.validate();
-        rootImporter.run(context.getMonitor(), context.getWorkingCopyManager());
+    public void visit(EObject element, SamlContext context) throws CoreException, IllegalArgumentException {
+      if (m_elementType.isAssignableFrom(element.getClass()) || element instanceof ModuleElement) {
+        importElement(element, context);
       }
     }
+  }
+
+  private static void importElement(EObject o, SamlContext context) throws CoreException {
+    IOperation rootImporter = ElementImportersExtension.getImporterFor(o, context);
+    rootImporter.validate();
+    rootImporter.run(context.getMonitor(), context.getWorkingCopyManager());
   }
 }

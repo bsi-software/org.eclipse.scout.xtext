@@ -123,3 +123,12 @@ Changes:
 			Attributes: 'text', 'value'
 
 
+
+Version: 1.0.0 2013-02-21
+Changed: mvi
+Changes:
+	Added:
+		For 'form' element:
+			Attribute 'svc_super_type'
+
+
