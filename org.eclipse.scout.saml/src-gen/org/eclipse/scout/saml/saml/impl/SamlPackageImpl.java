@@ -478,6 +478,36 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getModuleElement_Client()
+  {
+    return (EAttribute)moduleElementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getModuleElement_Shared()
+  {
+    return (EAttribute)moduleElementEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getModuleElement_Server()
+  {
+    return (EAttribute)moduleElementEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getImportElement()
   {
     return importElementEClass;
@@ -2095,6 +2125,9 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
 
     moduleElementEClass = createEClass(MODULE_ELEMENT);
     createEAttribute(moduleElementEClass, MODULE_ELEMENT__NAME);
+    createEAttribute(moduleElementEClass, MODULE_ELEMENT__CLIENT);
+    createEAttribute(moduleElementEClass, MODULE_ELEMENT__SHARED);
+    createEAttribute(moduleElementEClass, MODULE_ELEMENT__SERVER);
 
     importElementEClass = createEClass(IMPORT_ELEMENT);
     createEAttribute(importElementEClass, IMPORT_ELEMENT__IMPORTED_NAMESPACE);
@@ -2354,6 +2387,9 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
 
     initEClass(moduleElementEClass, ModuleElement.class, "ModuleElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getModuleElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, ModuleElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getModuleElement_Client(), ecorePackage.getEString(), "client", null, 0, 1, ModuleElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getModuleElement_Shared(), ecorePackage.getEString(), "shared", null, 0, 1, ModuleElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getModuleElement_Server(), ecorePackage.getEString(), "server", null, 0, 1, ModuleElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(importElementEClass, ImportElement.class, "ImportElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getImportElement_ImportedNamespace(), ecorePackage.getEString(), "importedNamespace", null, 0, 1, ImportElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

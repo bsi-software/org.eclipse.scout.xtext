@@ -8,12 +8,11 @@ import org.eclipse.scout.nls.sdk.model.INlsEntry;
 import org.eclipse.scout.nls.sdk.model.util.Language;
 import org.eclipse.scout.nls.sdk.model.workspace.project.INlsProject;
 import org.eclipse.scout.nls.sdk.services.model.ws.NlsServiceType;
-import org.eclipse.scout.sdk.IRuntimeClasses;
+import org.eclipse.scout.sdk.extensions.runtime.classes.IRuntimeClasses;
 import org.eclipse.scout.sdk.saml.importer.tests.AbstractSamlImporterTest;
 import org.eclipse.scout.sdk.util.pde.PluginModelHelper;
 import org.eclipse.scout.sdk.util.type.TypeUtility;
 import org.eclipse.scout.sdk.workspace.IScoutBundle;
-import org.eclipse.scout.sdk.workspace.IScoutProject;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -68,10 +67,7 @@ public class TranslationElementImportTest extends AbstractSamlImporterTest {
     IScoutBundle shared = getScoutBundle(_SuiteComplexImporterTests.SHARED_BUNDLE);
     Assert.assertNotNull(shared);
 
-    IScoutProject project = shared.getScoutProject();
-    Assert.assertNotNull(project);
-
-    INlsProject nlsProject = project.getNlsProject();
+    INlsProject nlsProject = shared.getNlsProject();
     Assert.assertNotNull(nlsProject);
 
     return nlsProject;

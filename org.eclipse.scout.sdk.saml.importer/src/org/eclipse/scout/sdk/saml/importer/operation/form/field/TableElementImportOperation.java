@@ -33,7 +33,8 @@ public class TableElementImportOperation extends FormFieldElementImportOperation
     op.setGetterMethodSibling(getSamlContext().getCurrentFormContext().getSiblingFor("get" + typeName));
     op.setNlsEntry(null);
     op.setSibling(null);
-    op.setSuperTypeSignature(getSuperTypeSignature(getDefaultSuperInterfaceFqn(), getElement().getSuperType(), getGenericValueType()));
+    op.setSuperTypeSignature(getSuperTypeSignature(getDefaultSuperInterfaceFqn(), getElement().getSuperType(),
+        getCurrentScoutModule().getClient(), getGenericValueType()));
     op.setTypeName(typeName);
     op.validate();
     op.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());

@@ -506,6 +506,136 @@ ruleModuleElement returns [EObject current=null]
 	    }
 
 )
+)(
+
+(
+	{ 
+	  getUnorderedGroupHelper().enter(grammarAccess.getModuleElementAccess().getUnorderedGroup_2());
+	}
+	(
+		(
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getModuleElementAccess().getUnorderedGroup_2(), 0)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getModuleElementAccess().getUnorderedGroup_2(), 0);
+	 				}
+					({true}?=>(	otherlv_3='client' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getModuleElementAccess().getClientKeyword_2_0_0());
+    }
+	otherlv_4='=' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getModuleElementAccess().getEqualsSignKeyword_2_0_1());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getModuleElementAccess().getClientQualifiedNameParserRuleCall_2_0_2_0()); 
+	    }
+		lv_client_5_0=ruleQualifiedName		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getModuleElementRule());
+	        }
+       		set(
+       			$current, 
+       			"client",
+        		lv_client_5_0, 
+        		"QualifiedName");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getModuleElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getModuleElementAccess().getUnorderedGroup_2(), 1)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getModuleElementAccess().getUnorderedGroup_2(), 1);
+	 				}
+					({true}?=>(	otherlv_6='shared' 
+    {
+    	newLeafNode(otherlv_6, grammarAccess.getModuleElementAccess().getSharedKeyword_2_1_0());
+    }
+	otherlv_7='=' 
+    {
+    	newLeafNode(otherlv_7, grammarAccess.getModuleElementAccess().getEqualsSignKeyword_2_1_1());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getModuleElementAccess().getSharedQualifiedNameParserRuleCall_2_1_2_0()); 
+	    }
+		lv_shared_8_0=ruleQualifiedName		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getModuleElementRule());
+	        }
+       		set(
+       			$current, 
+       			"shared",
+        		lv_shared_8_0, 
+        		"QualifiedName");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getModuleElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getModuleElementAccess().getUnorderedGroup_2(), 2)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getModuleElementAccess().getUnorderedGroup_2(), 2);
+	 				}
+					({true}?=>(	otherlv_9='server' 
+    {
+    	newLeafNode(otherlv_9, grammarAccess.getModuleElementAccess().getServerKeyword_2_2_0());
+    }
+	otherlv_10='=' 
+    {
+    	newLeafNode(otherlv_10, grammarAccess.getModuleElementAccess().getEqualsSignKeyword_2_2_1());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getModuleElementAccess().getServerQualifiedNameParserRuleCall_2_2_2_0()); 
+	    }
+		lv_server_11_0=ruleQualifiedName		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getModuleElementRule());
+	        }
+       		set(
+       			$current, 
+       			"server",
+        		lv_server_11_0, 
+        		"QualifiedName");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getModuleElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  
+
+		)*	
+	)
+)
+	{ 
+	  getUnorderedGroupHelper().leave(grammarAccess.getModuleElementAccess().getUnorderedGroup_2());
+	}
+
 ))
 ;
 

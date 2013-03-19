@@ -1552,17 +1552,10 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     name=QualifiedName
+	 *     (name=QualifiedName client=QualifiedName? shared=QualifiedName? server=QualifiedName?)
 	 */
 	protected void sequence_ModuleElement(EObject context, ModuleElement semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, SamlPackage.Literals.MODULE_ELEMENT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SamlPackage.Literals.MODULE_ELEMENT__NAME));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getModuleElementAccess().getNameQualifiedNameParserRuleCall_1_0(), semanticObject.getName());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

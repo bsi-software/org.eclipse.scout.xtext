@@ -13,6 +13,7 @@ package org.eclipse.scout.sdk.saml.importer.tests.internal.complex;
 import org.eclipse.jdt.core.IField;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.Signature;
+import org.eclipse.scout.sdk.extensions.targetpackage.IDefaultTargetPackage;
 import org.eclipse.scout.sdk.saml.importer.tests.AbstractSamlImporterTest;
 import org.eclipse.scout.sdk.util.SdkProperties;
 import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
@@ -63,7 +64,7 @@ public class CodeElementImportTest extends AbstractSamlImporterTest {
     IField idField = codeType.getField("ID");
     Assert.assertTrue(TypeUtility.exists(idField));
 
-    Assert.assertEquals("Main", TypeUtility.getFieldValueAsString(idField));
+    Assert.assertEquals("Main", TypeUtility.getFieldConstant(idField));
   }
 
   @Test
@@ -87,7 +88,7 @@ public class CodeElementImportTest extends AbstractSamlImporterTest {
     IField customField = codeType.getField("CustomIntField");
     Assert.assertTrue(TypeUtility.exists(customField));
 
-    Assert.assertEquals("101", TypeUtility.getFieldValueAsString(customField));
+    Assert.assertEquals(Integer.valueOf(101), TypeUtility.getFieldConstant(customField));
   }
 
   private void testGenericType(IType owner, String expectedFqn) throws Exception {
@@ -105,7 +106,7 @@ public class CodeElementImportTest extends AbstractSamlImporterTest {
 
     String name = "Departments" + SdkProperties.SUFFIX_CODE_TYPE;
 
-    IType type = TypeUtility.getType(shared.getDefaultPackage(IScoutBundle.SHARED_SERVICES_CODE) + "." + name);
+    IType type = TypeUtility.getType(shared.getDefaultPackage(IDefaultTargetPackage.SHARED_SERVICES_CODE) + "." + name);
     Assert.assertTrue(TypeUtility.exists(type));
 
     return type;

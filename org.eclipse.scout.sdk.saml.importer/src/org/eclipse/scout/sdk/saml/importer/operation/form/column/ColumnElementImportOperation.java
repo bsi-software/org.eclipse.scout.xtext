@@ -13,7 +13,7 @@ package org.eclipse.scout.sdk.saml.importer.operation.form.column;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.scout.saml.saml.ColumnElement;
-import org.eclipse.scout.sdk.RuntimeClasses;
+import org.eclipse.scout.sdk.extensions.runtime.classes.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.TableColumnNewOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
@@ -55,16 +55,16 @@ public class ColumnElementImportOperation extends AbstractSamlElementImportOpera
   private String getColumnTypeSignature() throws IllegalArgumentException {
     String type = getElement().getType();
     if (type.equals(getSamlContext().getGrammarAccess().getColumnElementAccess().getTypeDateKeyword_2_0_2_0_0().getValue())) {
-      return RuntimeClasses.getSuperTypeSignature(RuntimeClasses.IDateColumn, getSamlContext().getRootProject());
+      return RuntimeClasses.getSuperTypeSignature(RuntimeClasses.IDateColumn, getCurrentScoutModule().getClient());
     }
     else if (type.equals(getSamlContext().getGrammarAccess().getColumnElementAccess().getTypeBigdecimalKeyword_2_0_2_0_3().getValue())) {
-      return RuntimeClasses.getSuperTypeSignature(RuntimeClasses.IBigDecimalColumn, getSamlContext().getRootProject());
+      return RuntimeClasses.getSuperTypeSignature(RuntimeClasses.IBigDecimalColumn, getCurrentScoutModule().getClient());
     }
     else if (type.equals(getSamlContext().getGrammarAccess().getColumnElementAccess().getTypeIntKeyword_2_0_2_0_2().getValue())) {
-      return RuntimeClasses.getSuperTypeSignature(RuntimeClasses.IIntegerColumn, getSamlContext().getRootProject());
+      return RuntimeClasses.getSuperTypeSignature(RuntimeClasses.IIntegerColumn, getCurrentScoutModule().getClient());
     }
     else if (type.equals(getSamlContext().getGrammarAccess().getColumnElementAccess().getTypeStringKeyword_2_0_2_0_1().getValue())) {
-      return RuntimeClasses.getSuperTypeSignature(RuntimeClasses.IStringColumn, getSamlContext().getRootProject());
+      return RuntimeClasses.getSuperTypeSignature(RuntimeClasses.IStringColumn, getCurrentScoutModule().getClient());
     }
     else {
       throw new IllegalArgumentException("unknown column type: " + type);

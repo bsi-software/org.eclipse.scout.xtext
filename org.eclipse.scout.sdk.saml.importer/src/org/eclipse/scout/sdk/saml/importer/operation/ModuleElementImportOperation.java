@@ -11,8 +11,8 @@
 package org.eclipse.scout.sdk.saml.importer.operation;
 
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.scout.saml.module.SamlModule;
 import org.eclipse.scout.saml.saml.ModuleElement;
-import org.eclipse.scout.sdk.workspace.IScoutProject;
 
 /**
  * <h3>{@link ModuleElementImportOperation}</h3> ...
@@ -31,32 +31,7 @@ public class ModuleElementImportOperation extends AbstractSamlElementImportOpera
 
   @Override
   protected void run() throws CoreException, IllegalArgumentException {
-    String moduleName = getElement().getName();
-    IScoutProject curModule = findScoutProjectRec(getSamlContext().getRootProject(), moduleName);
-    if (curModule == null) {
-      throw new IllegalArgumentException("module '" + moduleName + "' could not be found.");
-    }
-    else {
-      if (curModule.getClientBundle() == null || curModule.getSharedBundle() == null || curModule.getServerBundle() == null) {
-        throw new IllegalArgumentException("module '" + moduleName + "' is not complete. It must contain a client, server & shared bundle.");
-      }
-      else {
-        getSamlContext().setCurrentScoutModule(curModule);
-      }
-    }
-  }
-
-  private IScoutProject findScoutProjectRec(IScoutProject parent, String searchName) {
-    if (parent.getProjectName().equals(searchName)) {
-      return parent;
-    }
-    for (IScoutProject child : parent.getSubProjects()) {
-      IScoutProject result = findScoutProjectRec(child, searchName);
-      if (result != null) {
-        return result;
-      }
-    }
-    return null;
+    getSamlContext().setCurrentScoutModule(new SamlModule(getElement()));
   }
 
   @Override

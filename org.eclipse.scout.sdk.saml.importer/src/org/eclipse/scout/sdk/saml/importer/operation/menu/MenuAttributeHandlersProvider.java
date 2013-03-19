@@ -20,7 +20,7 @@ import org.eclipse.scout.saml.saml.SamlPackage;
 import org.eclipse.scout.saml.saml.SmartfieldElement;
 import org.eclipse.scout.saml.saml.TableElement;
 import org.eclipse.scout.saml.saml.TranslationElement;
-import org.eclipse.scout.sdk.RuntimeClasses;
+import org.eclipse.scout.sdk.extensions.runtime.classes.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.IOperation;
 import org.eclipse.scout.sdk.saml.importer.extension.attribute.AbstractAttributeHandlersProvider;
 import org.eclipse.scout.sdk.saml.importer.extension.attribute.SamlAttribute;

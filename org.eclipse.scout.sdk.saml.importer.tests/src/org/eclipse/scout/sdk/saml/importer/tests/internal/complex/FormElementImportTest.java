@@ -11,6 +11,7 @@
 package org.eclipse.scout.sdk.saml.importer.tests.internal.complex;
 
 import org.eclipse.jdt.core.IType;
+import org.eclipse.scout.sdk.extensions.targetpackage.IDefaultTargetPackage;
 import org.eclipse.scout.sdk.saml.importer.tests.AbstractSamlImporterTest;
 import org.eclipse.scout.sdk.util.SdkProperties;
 import org.eclipse.scout.sdk.util.type.TypeUtility;
@@ -31,7 +32,7 @@ public class FormElementImportTest extends AbstractSamlImporterTest {
   @Test
   public void testServerServiceInterfaceCreated() throws Exception {
     IScoutBundle shared = getScoutBundle(_SuiteComplexImporterTests.SHARED_BUNDLE);
-    String fqn = shared.getDefaultPackage(IScoutBundle.SHARED_SERVICES) + ".I" + FORM_NAME + SdkProperties.SUFFIX_SERVICE;
+    String fqn = shared.getDefaultPackage(IDefaultTargetPackage.SHARED_SERVICES) + ".I" + FORM_NAME + SdkProperties.SUFFIX_SERVICE;
     IType t = TypeUtility.getType(fqn);
     Assert.assertTrue(TypeUtility.exists(t));
   }
@@ -39,7 +40,7 @@ public class FormElementImportTest extends AbstractSamlImporterTest {
   @Test
   public void testClientServiceInterfaceCreated() throws Exception {
     IScoutBundle client = getScoutBundle(_SuiteComplexImporterTests.CLIENT_BUNDLE);
-    String fqn = client.getDefaultPackage(IScoutBundle.CLIENT_SERVICES) + ".I" + FORM_NAME + "Client" + SdkProperties.SUFFIX_SERVICE;
+    String fqn = client.getDefaultPackage(IDefaultTargetPackage.CLIENT_SERVICES) + ".I" + FORM_NAME + "Client" + SdkProperties.SUFFIX_SERVICE;
     IType t = TypeUtility.getType(fqn);
     Assert.assertTrue(TypeUtility.exists(t));
   }
@@ -57,7 +58,7 @@ public class FormElementImportTest extends AbstractSamlImporterTest {
   @Test
   public void testFormDataCreated() throws Exception {
     IScoutBundle shared = getScoutBundle(_SuiteComplexImporterTests.SHARED_BUNDLE);
-    String fqn = shared.getDefaultPackage(IScoutBundle.SHARED_SERVICES) + "." + FORM_NAME + SdkProperties.SUFFIX_FORM_DATA;
+    String fqn = shared.getDefaultPackage(IDefaultTargetPackage.SHARED_SERVICES) + "." + FORM_NAME + SdkProperties.SUFFIX_FORM_DATA;
     IType t = TypeUtility.getType(fqn);
     Assert.assertTrue(TypeUtility.exists(t));
   }
@@ -128,7 +129,7 @@ public class FormElementImportTest extends AbstractSamlImporterTest {
 
   private IType getFormType() throws Exception {
     IScoutBundle client = getScoutBundle(_SuiteComplexImporterTests.CLIENT_BUNDLE);
-    String fqn = client.getDefaultPackage(IScoutBundle.CLIENT_FORMS) + "." + FORM_NAME + SdkProperties.SUFFIX_FORM;
+    String fqn = client.getDefaultPackage(IDefaultTargetPackage.CLIENT_FORMS) + "." + FORM_NAME + SdkProperties.SUFFIX_FORM;
     IType t = TypeUtility.getType(fqn);
     Assert.assertTrue(TypeUtility.exists(t));
     return t;
@@ -136,7 +137,7 @@ public class FormElementImportTest extends AbstractSamlImporterTest {
 
   static IType getMainBoxType() throws Exception {
     IScoutBundle client = getScoutBundle(_SuiteComplexImporterTests.CLIENT_BUNDLE);
-    String fqn = client.getDefaultPackage(IScoutBundle.CLIENT_FORMS) + "." + FORM_NAME + SdkProperties.SUFFIX_FORM + "." + SdkProperties.TYPE_NAME_MAIN_BOX;
+    String fqn = client.getDefaultPackage(IDefaultTargetPackage.CLIENT_FORMS) + "." + FORM_NAME + SdkProperties.SUFFIX_FORM + "." + SdkProperties.TYPE_NAME_MAIN_BOX;
     IType t = TypeUtility.getType(fqn);
     Assert.assertTrue(TypeUtility.exists(t));
     return t;
@@ -144,7 +145,7 @@ public class FormElementImportTest extends AbstractSamlImporterTest {
 
   private IType getNewHandlerType() throws Exception {
     IScoutBundle client = getScoutBundle(_SuiteComplexImporterTests.CLIENT_BUNDLE);
-    String fqn = client.getDefaultPackage(IScoutBundle.CLIENT_FORMS) + "." + FORM_NAME + SdkProperties.SUFFIX_FORM + ".NewHandler";
+    String fqn = client.getDefaultPackage(IDefaultTargetPackage.CLIENT_FORMS) + "." + FORM_NAME + SdkProperties.SUFFIX_FORM + ".NewHandler";
     IType t = TypeUtility.getType(fqn);
     Assert.assertTrue(TypeUtility.exists(t));
     return t;
@@ -152,7 +153,7 @@ public class FormElementImportTest extends AbstractSamlImporterTest {
 
   static IType getClientServiceType() throws Exception {
     IScoutBundle client = getScoutBundle(_SuiteComplexImporterTests.CLIENT_BUNDLE);
-    String fqn = client.getDefaultPackage(IScoutBundle.CLIENT_SERVICES) + "." + FORM_NAME + "Client" + SdkProperties.SUFFIX_SERVICE;
+    String fqn = client.getDefaultPackage(IDefaultTargetPackage.CLIENT_SERVICES) + "." + FORM_NAME + "Client" + SdkProperties.SUFFIX_SERVICE;
     IType t = TypeUtility.getType(fqn);
     Assert.assertTrue(TypeUtility.exists(t));
     return t;
@@ -160,7 +161,7 @@ public class FormElementImportTest extends AbstractSamlImporterTest {
 
   static IType getServerServiceType() throws Exception {
     IScoutBundle server = getScoutBundle(_SuiteComplexImporterTests.SERVER_BUNDLE);
-    String fqn = server.getDefaultPackage(IScoutBundle.SERVER_SERVICES) + "." + FORM_NAME + SdkProperties.SUFFIX_SERVICE;
+    String fqn = server.getDefaultPackage(IDefaultTargetPackage.SERVER_SERVICES) + "." + FORM_NAME + SdkProperties.SUFFIX_SERVICE;
     IType t = TypeUtility.getType(fqn);
     Assert.assertTrue(TypeUtility.exists(t));
     return t;

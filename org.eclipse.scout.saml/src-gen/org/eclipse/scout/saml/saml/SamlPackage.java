@@ -167,13 +167,40 @@ public interface SamlPackage extends EPackage
   int MODULE_ELEMENT__NAME = 0;
 
   /**
+   * The feature id for the '<em><b>Client</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODULE_ELEMENT__CLIENT = 1;
+
+  /**
+   * The feature id for the '<em><b>Shared</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODULE_ELEMENT__SHARED = 2;
+
+  /**
+   * The feature id for the '<em><b>Server</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODULE_ELEMENT__SERVER = 3;
+
+  /**
    * The number of structural features of the '<em>Module Element</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODULE_ELEMENT_FEATURE_COUNT = 1;
+  int MODULE_ELEMENT_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.ImportElementImpl <em>Import Element</em>}' class.
@@ -3596,6 +3623,39 @@ public interface SamlPackage extends EPackage
   EAttribute getModuleElement_Name();
 
   /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.ModuleElement#getClient <em>Client</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Client</em>'.
+   * @see org.eclipse.scout.saml.saml.ModuleElement#getClient()
+   * @see #getModuleElement()
+   * @generated
+   */
+  EAttribute getModuleElement_Client();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.ModuleElement#getShared <em>Shared</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Shared</em>'.
+   * @see org.eclipse.scout.saml.saml.ModuleElement#getShared()
+   * @see #getModuleElement()
+   * @generated
+   */
+  EAttribute getModuleElement_Shared();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.ModuleElement#getServer <em>Server</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Server</em>'.
+   * @see org.eclipse.scout.saml.saml.ModuleElement#getServer()
+   * @see #getModuleElement()
+   * @generated
+   */
+  EAttribute getModuleElement_Server();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.ImportElement <em>Import Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -5414,6 +5474,30 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EAttribute MODULE_ELEMENT__NAME = eINSTANCE.getModuleElement_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Client</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MODULE_ELEMENT__CLIENT = eINSTANCE.getModuleElement_Client();
+
+    /**
+     * The meta object literal for the '<em><b>Shared</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MODULE_ELEMENT__SHARED = eINSTANCE.getModuleElement_Shared();
+
+    /**
+     * The meta object literal for the '<em><b>Server</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MODULE_ELEMENT__SERVER = eINSTANCE.getModuleElement_Server();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.ImportElementImpl <em>Import Element</em>}' class.

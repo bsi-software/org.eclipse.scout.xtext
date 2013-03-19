@@ -1,13 +1,12 @@
 package org.eclipse.scout.saml.validation;
 
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.pde.internal.core.PDECore;
 import org.eclipse.scout.commons.StringUtility;
+import org.eclipse.scout.saml.module.SamlModule;
 import org.eclipse.scout.saml.saml.ButtonElement;
 import org.eclipse.scout.saml.saml.CodeElement;
 import org.eclipse.scout.saml.saml.FileChooserElement;
@@ -28,8 +27,8 @@ import org.eclipse.scout.saml.saml.TemplateElement;
 import org.eclipse.scout.saml.saml.TranslationElement;
 import org.eclipse.scout.saml.saml.ValueFieldElement;
 import org.eclipse.scout.saml.services.SamlGrammarAccess;
-import org.eclipse.scout.sdk.internal.workspace.ScoutWorkspace;
-import org.eclipse.scout.sdk.workspace.IScoutProject;
+import org.eclipse.scout.sdk.workspace.IScoutBundle;
+import org.eclipse.scout.sdk.workspace.type.ScoutTypeUtility;
 import org.eclipse.xtext.validation.Check;
 
 import com.google.inject.Inject;
@@ -208,19 +207,40 @@ public class SamlJavaValidator extends AbstractSamlJavaValidator implements ISam
       // we are running as JUnit test: don't check module
       return;
     }
-    IScoutProject[] roots = ScoutWorkspace.getInstance().getRootProjects();
-    LinkedList<IScoutProject> collector = new LinkedList<IScoutProject>();
-    if (roots != null && roots.length > 0) {
-      for (IScoutProject p : roots) {
-        collectProjectsRec(p, collector);
-      }
+
+    // check if all plugins can be found
+    SamlModule m = new SamlModule(module);
+    if (m.getClient() == null || m.getShared() == null || m.getServer() == null) {
+      error(BUNDLE_NOT_FOUND, module, SamlPackage.Literals.MODULE_ELEMENT__NAME, INVALID_MODULE);
+      return;
     }
-    for (IScoutProject p : collector) {
-      if (StringUtility.hasText(module.getName()) && module.getName().equals(p.getProjectName())) {
-        return;
-      }
+
+    // check for binary projects
+    if (m.getClient().isBinary() || m.getShared().isBinary() || m.getServer().isBinary()) {
+      error(BINARY_BUNDLE_NOT_ALLOWED, module, SamlPackage.Literals.MODULE_ELEMENT__NAME, INVALID_MODULE);
+      return;
     }
-    warning(INVALID_MODULE_NOT_FOUND, module, SamlPackage.Literals.MODULE_ELEMENT__NAME, INVALID_MODULE);
+
+    // check if client & server can see the shared
+    if (!ScoutTypeUtility.isOnClasspath(m.getShared(), m.getClient())) {
+      error(CANNOT_ACCESS_SHARED, module, SamlPackage.Literals.MODULE_ELEMENT__NAME, INVALID_MODULE);
+      return;
+    }
+    if (!ScoutTypeUtility.isOnClasspath(m.getShared(), m.getServer())) {
+      error(CANNOT_ACCESS_SHARED, module, SamlPackage.Literals.MODULE_ELEMENT__NAME, INVALID_MODULE);
+      return;
+    }
+
+    // check if the types match
+    if (!IScoutBundle.TYPE_CLIENT.equals(m.getClient().getType())) {
+      error(BUNDLE_TYPES_DO_NOT_MATCH, module, SamlPackage.Literals.MODULE_ELEMENT__NAME, INVALID_MODULE);
+    }
+    if (!IScoutBundle.TYPE_SHARED.equals(m.getShared().getType())) {
+      error(BUNDLE_TYPES_DO_NOT_MATCH, module, SamlPackage.Literals.MODULE_ELEMENT__NAME, INVALID_MODULE);
+    }
+    if (!IScoutBundle.TYPE_SERVER.equals(m.getServer().getType())) {
+      error(BUNDLE_TYPES_DO_NOT_MATCH, module, SamlPackage.Literals.MODULE_ELEMENT__NAME, INVALID_MODULE);
+    }
   }
 
   @Check
@@ -242,15 +262,6 @@ public class SamlJavaValidator extends AbstractSamlJavaValidator implements ISam
       }
       if (StringUtility.hasText(fce.getExtensions())) {
         error(MSG_ONLY_FOR_MODE_FILE, fce, SamlPackage.Literals.FILE_CHOOSER_ELEMENT__EXTENSIONS, ONLY_FOR_MODE_FILE);
-      }
-    }
-  }
-
-  private void collectProjectsRec(IScoutProject p, List<IScoutProject> collector) {
-    if (p != null) {
-      collector.add(p);
-      for (IScoutProject child : p.getSubProjects()) {
-        collectProjectsRec(child, collector);
       }
     }
   }

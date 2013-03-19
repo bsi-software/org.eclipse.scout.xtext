@@ -31,7 +31,6 @@ import org.eclipse.scout.sdk.saml.importer.extension.configurator.IScoutProjectC
 import org.eclipse.scout.sdk.saml.importer.extension.element.ElementImportersExtension;
 import org.eclipse.scout.sdk.saml.importer.extension.preprocess.SamlElementPreProcessorExtension;
 import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
-import org.eclipse.scout.sdk.workspace.IScoutProject;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.util.CancelIndicator;
@@ -44,10 +43,7 @@ import com.google.inject.Injector;
 public class SamlImportOperation implements IOperation {
 
   private IProject m_samlInputProject;
-  private IScoutProject m_scoutRootProject;
-
   private SamlContext m_context;
-
   private Injector m_injector;
   private XtextResourceSet m_resourceSet;
 
@@ -58,9 +54,6 @@ public class SamlImportOperation implements IOperation {
 
   @Override
   public void validate() throws IllegalArgumentException {
-    if (getScoutRootProject() == null) {
-      throw new IllegalArgumentException("Scout project cannot be null.");
-    }
     if (getSamlInputProject() == null) {
       throw new IllegalArgumentException("The input project cannot be null.");
     }
@@ -154,7 +147,7 @@ public class SamlImportOperation implements IOperation {
     else {
       // no errors: start import
 
-      m_context = new SamlContext(monitor, workingCopyManager, getInjector(), getScoutRootProject());
+      m_context = new SamlContext(monitor, workingCopyManager, getInjector());
 
       // 1. all configurators
       for (IScoutProjectConfigurator configurator : CodeConfiguratorsExtension.getScoutProjectConfigurators()) {
@@ -207,14 +200,6 @@ public class SamlImportOperation implements IOperation {
         }
       }
     }
-  }
-
-  public IScoutProject getScoutRootProject() {
-    return m_scoutRootProject;
-  }
-
-  public void setScoutRootProject(IScoutProject scoutRootProject) {
-    m_scoutRootProject = scoutRootProject;
   }
 
   public SamlContext getSamlContext() {

@@ -19,6 +19,9 @@
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//ModuleElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//ModuleElement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//ModuleElement/client"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//ModuleElement/shared"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//ModuleElement/server"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//ImportElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//ImportElement/importedNamespace"/>

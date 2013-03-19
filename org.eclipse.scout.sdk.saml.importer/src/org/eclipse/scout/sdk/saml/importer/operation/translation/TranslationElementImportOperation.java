@@ -33,13 +33,13 @@ import org.eclipse.scout.nls.sdk.ui.action.INewLanguageContext;
 import org.eclipse.scout.saml.saml.LanguageAttribute;
 import org.eclipse.scout.saml.saml.TranslationElement;
 import org.eclipse.scout.saml.validation.ISamlValidatorConstants;
-import org.eclipse.scout.sdk.RuntimeClasses;
+import org.eclipse.scout.sdk.extensions.runtime.classes.RuntimeClasses;
 import org.eclipse.scout.sdk.saml.importer.internal.SamlImporterActivator;
 import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
 import org.eclipse.scout.sdk.util.type.ITypeFilter;
-import org.eclipse.scout.sdk.util.type.TypeFilters;
 import org.eclipse.scout.sdk.util.type.TypeUtility;
+import org.eclipse.scout.sdk.workspace.type.ScoutTypeFilters;
 
 /**
  * <h3>{@link TranslationElementImportOperation}</h3> ...
@@ -60,14 +60,14 @@ public class TranslationElementImportOperation extends AbstractSamlElementImport
 
   @Override
   protected void run() throws CoreException, IllegalArgumentException {
-    String projectName = getCurrentScoutModule().getProjectName();
+    String projectName = getCurrentScoutModule().getShared().getSymbolicName();
     IType curTxtSvc = getCurrentTextService();
     if (!TypeUtility.exists(curTxtSvc)) {
       String moduleSimpleName = getProjectSimpleName(projectName);
       if (moduleSimpleName != null) {
         CreateServiceNlsProjectOperation newTextServiceOp = new CreateServiceNlsProjectOperation();
-        newTextServiceOp.setBundle(getCurrentScoutModule().getSharedBundle());
-        newTextServiceOp.setPackageName(getCurrentScoutModule().getSharedBundle().getDefaultPackage(NlsServiceType.TEXT_SERVICE_PACKAGE_ID));
+        newTextServiceOp.setBundle(getCurrentScoutModule().getShared());
+        newTextServiceOp.setPackageName(getCurrentScoutModule().getShared().getDefaultPackage(NlsServiceType.TEXT_SERVICE_PACKAGE_ID));
         newTextServiceOp.setLanguages(new String[]{null /* default language */}); // other languages will be added as needed.
         newTextServiceOp.setServiceName(moduleSimpleName + SdkProperties.SUFFIX_TEXT_SERVICE);
         newTextServiceOp.setSuperType(TypeUtility.getType(RuntimeClasses.AbstractDynamicNlsTextProviderService));
@@ -148,7 +148,7 @@ public class TranslationElementImportOperation extends AbstractSamlElementImport
 
   private IType getCurrentTextService() throws JavaModelException {
     IType[] services = ServiceNlsProjectProvider.getRegisteredTextProviderTypes();
-    ITypeFilter filter = TypeFilters.getClassesInProject(getCurrentScoutModule().getSharedBundle().getJavaProject());
+    ITypeFilter filter = ScoutTypeFilters.getInScoutBundles(getCurrentScoutModule().getShared());
     for (IType type : services) {
       if (filter.accept(type)) {
         return type;
@@ -160,6 +160,10 @@ public class TranslationElementImportOperation extends AbstractSamlElementImport
   private static String getProjectSimpleName(String projectName) {
     if (projectName == null) {
       return null;
+    }
+    String sharedSuffix = ".shared";
+    if (projectName.endsWith(sharedSuffix)) {
+      projectName = projectName.substring(0, projectName.length() - sharedSuffix.length());
     }
     int pos = projectName.lastIndexOf('.') + 1;
     int simpleNameLen = projectName.length() - pos;

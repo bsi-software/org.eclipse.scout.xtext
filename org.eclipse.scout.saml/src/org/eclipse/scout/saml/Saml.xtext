@@ -33,7 +33,12 @@ LogicEventType: 'all'|'modify_load'|'modify_store'|'modify_discard'|'new_load'|'
 HorizontalAlignmentType:'left'|'center'|'right';	//TODO: code completion
 
 
-ModuleElement: 'module' name=QualifiedName;
+ModuleElement: 'module' name=QualifiedName
+	(
+		('client' '=' client=QualifiedName)? &
+		('shared' '=' shared=QualifiedName)? &
+		('server' '=' server=QualifiedName)?
+	);
 
 
 ImportElement: 'import' importedNamespace=QualifiedNameWithWildCard;

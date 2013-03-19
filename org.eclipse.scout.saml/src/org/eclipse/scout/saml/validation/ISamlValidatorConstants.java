@@ -53,7 +53,10 @@ public interface ISamlValidatorConstants {
   String MSG_EVENT_ONLY_INLINE = "this event logic cannot be placed inline";
 
   String INVALID_MODULE = "InvalidModuleElement";
-  String INVALID_MODULE_NOT_FOUND = "The given module could not be found in the current workspace.";
+  String BUNDLE_NOT_FOUND = "A bundle could not be found in the workspace.";
+  String BINARY_BUNDLE_NOT_ALLOWED = "Cannot import into a binary bundle.";
+  String CANNOT_ACCESS_SHARED = "The shared bundle is not on the classpath of the client or server";
+  String BUNDLE_TYPES_DO_NOT_MATCH = "The bundle has the wrong type.";
 
   String TAB_ONLY_IN_TABBOX = "TabOnlyInTabbox";
   String MSG_TAB_ONLY_IN_TABBOX = "A tab element is only allowed inside a tabbox.";

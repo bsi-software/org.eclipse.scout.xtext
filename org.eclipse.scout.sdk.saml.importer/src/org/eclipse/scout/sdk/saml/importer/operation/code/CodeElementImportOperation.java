@@ -13,7 +13,8 @@ package org.eclipse.scout.sdk.saml.importer.operation.code;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.scout.saml.saml.CodeElement;
-import org.eclipse.scout.sdk.RuntimeClasses;
+import org.eclipse.scout.sdk.extensions.runtime.classes.RuntimeClasses;
+import org.eclipse.scout.sdk.extensions.targetpackage.IDefaultTargetPackage;
 import org.eclipse.scout.sdk.operation.CodeNewOperation;
 import org.eclipse.scout.sdk.operation.CodeTypeNewOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
@@ -74,7 +75,7 @@ public class CodeElementImportOperation extends AbstractSamlElementImportOperati
 
   private IType createCode(String valueType) throws CoreException {
     String name = getElement().getName() + SdkProperties.SUFFIX_CODE;
-    String superTypeSig = getSuperTypeSignature(RuntimeClasses.ICode, getElement().getSuperType(), valueType);
+    String superTypeSig = getSuperTypeSignature(RuntimeClasses.ICode, getElement().getSuperType(), getCurrentScoutModule().getShared(), valueType);
 
     CodeNewOperation cno = new CodeNewOperation(getSamlContext().getCurrentParentType(), false);
     cno.setGenericTypeSignature(SignatureCache.createTypeSignature(valueType));
@@ -89,10 +90,10 @@ public class CodeElementImportOperation extends AbstractSamlElementImportOperati
 
   private IType createCodeType(String valueType) throws IllegalArgumentException, CoreException {
     String name = getElement().getName() + SdkProperties.SUFFIX_CODE_TYPE;
-    String superTypeSig = getSuperTypeSignature(RuntimeClasses.ICodeType, getElement().getSuperType(), valueType);
+    String superTypeSig = getSuperTypeSignature(RuntimeClasses.ICodeType, getElement().getSuperType(), getCurrentScoutModule().getShared(), valueType);
 
-    IScoutBundle sharedBundle = getCurrentScoutModule().getSharedBundle();
-    String targetPackage = sharedBundle.getDefaultPackage(IScoutBundle.SHARED_SERVICES_CODE);
+    IScoutBundle sharedBundle = getCurrentScoutModule().getShared();
+    String targetPackage = sharedBundle.getDefaultPackage(IDefaultTargetPackage.SHARED_SERVICES_CODE);
     deleteClass(sharedBundle, targetPackage, name);
 
     CodeTypeNewOperation ctno = new CodeTypeNewOperation();

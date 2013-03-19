@@ -16,10 +16,10 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.jdt.core.JavaModelException;
+import org.eclipse.scout.saml.module.SamlModule;
 import org.eclipse.scout.saml.services.SamlGrammarAccess;
 import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
 import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
-import org.eclipse.scout.sdk.workspace.IScoutProject;
 
 import com.google.inject.Injector;
 
@@ -34,18 +34,16 @@ public class SamlContext {
   private final IWorkingCopyManager m_workingCopyManager;
   private final Injector m_injector;
   private final SamlGrammarAccess m_grammarAccess;
-  private final IScoutProject m_rootProject;
   private final Stack<IType> m_parentTypeStack;
   private final SuperTypeHierarchyCache m_hierarchyCache;
 
-  private IScoutProject m_currentScoutModule;
+  private SamlModule m_currentScoutModule;
   private SamlFormContext m_currentFormContext;
 
-  public SamlContext(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, Injector injector, IScoutProject rootProject) {
+  public SamlContext(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, Injector injector) {
     m_monitor = monitor;
     m_workingCopyManager = workingCopyManager;
     m_injector = injector;
-    m_rootProject = rootProject;
     m_hierarchyCache = new SuperTypeHierarchyCache();
     m_grammarAccess = m_injector.getInstance(SamlGrammarAccess.class);
     m_parentTypeStack = new Stack<IType>();
@@ -71,11 +69,11 @@ public class SamlContext {
     return m_hierarchyCache.getSuperTypeHierarchyFor(t);
   }
 
-  public IScoutProject getCurrentScoutModule() {
+  public SamlModule getCurrentScoutModule() {
     return m_currentScoutModule;
   }
 
-  public void setCurrentScoutModule(IScoutProject currentScoutModule) {
+  public void setCurrentScoutModule(SamlModule currentScoutModule) {
     m_currentScoutModule = currentScoutModule;
   }
 
@@ -93,10 +91,6 @@ public class SamlContext {
 
   public SamlGrammarAccess getGrammarAccess() {
     return m_grammarAccess;
-  }
-
-  public IScoutProject getRootProject() {
-    return m_rootProject;
   }
 
   public SamlFormContext getCurrentFormContext() {

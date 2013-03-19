@@ -19,8 +19,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
 import org.eclipse.jdt.core.IType;
+import org.eclipse.scout.saml.module.SamlModule;
 import org.eclipse.scout.saml.saml.TemplateElement;
-import org.eclipse.scout.sdk.RuntimeClasses;
+import org.eclipse.scout.sdk.extensions.runtime.classes.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.IOperation;
 import org.eclipse.scout.sdk.operation.util.JavaElementFormatOperation;
 import org.eclipse.scout.sdk.saml.importer.event.ImportEventEmitter;
@@ -32,7 +33,6 @@ import org.eclipse.scout.sdk.util.internal.sigcache.SignatureCache;
 import org.eclipse.scout.sdk.util.type.TypeUtility;
 import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 import org.eclipse.scout.sdk.workspace.IScoutBundle;
-import org.eclipse.scout.sdk.workspace.IScoutProject;
 
 /**
  * <h3>{@link AbstractSamlElementImportOperation}</h3> ...
@@ -92,7 +92,7 @@ public abstract class AbstractSamlElementImportOperation implements IOperation {
     return "SAML Import";
   }
 
-  protected IScoutProject getCurrentScoutModule() {
+  protected SamlModule getCurrentScoutModule() {
     return getSamlContext().getCurrentScoutModule();
   }
 
@@ -111,15 +111,15 @@ public abstract class AbstractSamlElementImportOperation implements IOperation {
     formatOp.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
   }
 
-  protected String getSuperTypeSignature(String defaultSuperInterfaceFqn, TemplateElement superTypeElement) {
-    return getSuperTypeSignature(defaultSuperInterfaceFqn, superTypeElement, null);
+  protected String getSuperTypeSignature(String defaultSuperInterfaceFqn, TemplateElement superTypeElement, IScoutBundle context) {
+    return getSuperTypeSignature(defaultSuperInterfaceFqn, superTypeElement, context, null);
   }
 
-  protected String getSuperTypeSignature(String defaultSuperInterfaceFqn, TemplateElement superTypeElement, String valueType) {
+  protected String getSuperTypeSignature(String defaultSuperInterfaceFqn, TemplateElement superTypeElement, IScoutBundle context, String valueType) {
     IType superType = null;
     if (superTypeElement == null) {
       // no explicit super type is defined: use default
-      superType = RuntimeClasses.getSuperType(defaultSuperInterfaceFqn, getSamlContext().getRootProject());
+      superType = RuntimeClasses.getSuperType(defaultSuperInterfaceFqn, context);
     }
     else {
       // explicit type is used: get and validate that it exists

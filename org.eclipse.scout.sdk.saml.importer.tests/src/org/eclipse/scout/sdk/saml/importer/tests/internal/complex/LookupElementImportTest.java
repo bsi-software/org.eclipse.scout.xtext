@@ -12,6 +12,7 @@ package org.eclipse.scout.sdk.saml.importer.tests.internal.complex;
 
 import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
+import org.eclipse.scout.sdk.extensions.targetpackage.IDefaultTargetPackage;
 import org.eclipse.scout.sdk.saml.importer.tests.AbstractSamlImporterTest;
 import org.eclipse.scout.sdk.util.SdkProperties;
 import org.eclipse.scout.sdk.util.type.TypeUtility;
@@ -33,7 +34,7 @@ public class LookupElementImportTest extends AbstractSamlImporterTest {
   public void testLookupServiceInterfaceCreated() throws Exception {
     IScoutBundle shared = getScoutBundle(_SuiteComplexImporterTests.SHARED_BUNDLE);
 
-    String ifFqn = shared.getDefaultPackage(IScoutBundle.SHARED_SERVICES_LOOKUP) + ".I" + LOOKUP_NAME + SdkProperties.SUFFIX_LOOKUP_SERVICE;
+    String ifFqn = shared.getDefaultPackage(IDefaultTargetPackage.SHARED_SERVICES_LOOKUP) + ".I" + LOOKUP_NAME + SdkProperties.SUFFIX_LOOKUP_SERVICE;
     Assert.assertTrue(TypeUtility.existsType(ifFqn));
   }
 
@@ -46,7 +47,7 @@ public class LookupElementImportTest extends AbstractSamlImporterTest {
   public void testLookupCallCreated() throws Exception {
     IScoutBundle shared = getScoutBundle(_SuiteComplexImporterTests.SHARED_BUNDLE);
 
-    String lcFqn = shared.getDefaultPackage(IScoutBundle.SHARED_SERVICES_LOOKUP) + "." + LOOKUP_NAME + SdkProperties.SUFFIX_LOOKUP_CALL;
+    String lcFqn = shared.getDefaultPackage(IDefaultTargetPackage.SHARED_SERVICES_LOOKUP) + "." + LOOKUP_NAME + SdkProperties.SUFFIX_LOOKUP_CALL;
     Assert.assertTrue(TypeUtility.existsType(lcFqn));
   }
 
@@ -64,7 +65,7 @@ public class LookupElementImportTest extends AbstractSamlImporterTest {
 
   private IType getLookupService() {
     IScoutBundle server = getScoutBundle(_SuiteComplexImporterTests.SERVER_BUNDLE);
-    String svcFqn = server.getDefaultPackage(IScoutBundle.SERVER_SERVICES_LOOKUP) + "." + LOOKUP_NAME + SdkProperties.SUFFIX_LOOKUP_SERVICE;
+    String svcFqn = server.getDefaultPackage(IDefaultTargetPackage.SERVER_SERVICES_LOOKUP) + "." + LOOKUP_NAME + SdkProperties.SUFFIX_LOOKUP_SERVICE;
     IType svc = TypeUtility.getType(svcFqn);
     Assert.assertTrue(TypeUtility.exists(svc));
     return svc;

@@ -269,13 +269,33 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cModuleKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameQualifiedNameParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final UnorderedGroup cUnorderedGroup_2 = (UnorderedGroup)cGroup.eContents().get(2);
+		private final Group cGroup_2_0 = (Group)cUnorderedGroup_2.eContents().get(0);
+		private final Keyword cClientKeyword_2_0_0 = (Keyword)cGroup_2_0.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_0_1 = (Keyword)cGroup_2_0.eContents().get(1);
+		private final Assignment cClientAssignment_2_0_2 = (Assignment)cGroup_2_0.eContents().get(2);
+		private final RuleCall cClientQualifiedNameParserRuleCall_2_0_2_0 = (RuleCall)cClientAssignment_2_0_2.eContents().get(0);
+		private final Group cGroup_2_1 = (Group)cUnorderedGroup_2.eContents().get(1);
+		private final Keyword cSharedKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_1_1 = (Keyword)cGroup_2_1.eContents().get(1);
+		private final Assignment cSharedAssignment_2_1_2 = (Assignment)cGroup_2_1.eContents().get(2);
+		private final RuleCall cSharedQualifiedNameParserRuleCall_2_1_2_0 = (RuleCall)cSharedAssignment_2_1_2.eContents().get(0);
+		private final Group cGroup_2_2 = (Group)cUnorderedGroup_2.eContents().get(2);
+		private final Keyword cServerKeyword_2_2_0 = (Keyword)cGroup_2_2.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_2_1 = (Keyword)cGroup_2_2.eContents().get(1);
+		private final Assignment cServerAssignment_2_2_2 = (Assignment)cGroup_2_2.eContents().get(2);
+		private final RuleCall cServerQualifiedNameParserRuleCall_2_2_2_0 = (RuleCall)cServerAssignment_2_2_2.eContents().get(0);
 		
 		//ModuleElement:
 		//
-		//	"module" name=QualifiedName;
+		//	"module" name=QualifiedName (("client" "=" client=QualifiedName)? & ("shared" "=" shared=QualifiedName)? & ("server"
+		//
+		//	"=" server=QualifiedName)?);
 		public ParserRule getRule() { return rule; }
 
-		//"module" name=QualifiedName
+		//"module" name=QualifiedName (("client" "=" client=QualifiedName)? & ("shared" "=" shared=QualifiedName)? & ("server" "="
+		//
+		//server=QualifiedName)?)
 		public Group getGroup() { return cGroup; }
 
 		//"module"
@@ -286,6 +306,54 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 
 		//QualifiedName
 		public RuleCall getNameQualifiedNameParserRuleCall_1_0() { return cNameQualifiedNameParserRuleCall_1_0; }
+
+		//("client" "=" client=QualifiedName)? & ("shared" "=" shared=QualifiedName)? & ("server" "=" server=QualifiedName)?
+		public UnorderedGroup getUnorderedGroup_2() { return cUnorderedGroup_2; }
+
+		//("client" "=" client=QualifiedName)?
+		public Group getGroup_2_0() { return cGroup_2_0; }
+
+		//"client"
+		public Keyword getClientKeyword_2_0_0() { return cClientKeyword_2_0_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_2_0_1() { return cEqualsSignKeyword_2_0_1; }
+
+		//client=QualifiedName
+		public Assignment getClientAssignment_2_0_2() { return cClientAssignment_2_0_2; }
+
+		//QualifiedName
+		public RuleCall getClientQualifiedNameParserRuleCall_2_0_2_0() { return cClientQualifiedNameParserRuleCall_2_0_2_0; }
+
+		//("shared" "=" shared=QualifiedName)?
+		public Group getGroup_2_1() { return cGroup_2_1; }
+
+		//"shared"
+		public Keyword getSharedKeyword_2_1_0() { return cSharedKeyword_2_1_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_2_1_1() { return cEqualsSignKeyword_2_1_1; }
+
+		//shared=QualifiedName
+		public Assignment getSharedAssignment_2_1_2() { return cSharedAssignment_2_1_2; }
+
+		//QualifiedName
+		public RuleCall getSharedQualifiedNameParserRuleCall_2_1_2_0() { return cSharedQualifiedNameParserRuleCall_2_1_2_0; }
+
+		//("server" "=" server=QualifiedName)?
+		public Group getGroup_2_2() { return cGroup_2_2; }
+
+		//"server"
+		public Keyword getServerKeyword_2_2_0() { return cServerKeyword_2_2_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_2_2_1() { return cEqualsSignKeyword_2_2_1; }
+
+		//server=QualifiedName
+		public Assignment getServerAssignment_2_2_2() { return cServerAssignment_2_2_2; }
+
+		//QualifiedName
+		public RuleCall getServerQualifiedNameParserRuleCall_2_2_2_0() { return cServerQualifiedNameParserRuleCall_2_2_2_0; }
 	}
 
 	public class ImportElementElements extends AbstractParserRuleElementFinder {
@@ -6628,7 +6696,9 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 
 	//ModuleElement:
 	//
-	//	"module" name=QualifiedName;
+	//	"module" name=QualifiedName (("client" "=" client=QualifiedName)? & ("shared" "=" shared=QualifiedName)? & ("server"
+	//
+	//	"=" server=QualifiedName)?);
 	public ModuleElementElements getModuleElementAccess() {
 		return (pModuleElement != null) ? pModuleElement : (pModuleElement = new ModuleElementElements());
 	}

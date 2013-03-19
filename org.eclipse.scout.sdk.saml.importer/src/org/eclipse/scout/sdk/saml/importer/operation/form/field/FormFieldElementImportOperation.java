@@ -59,7 +59,8 @@ public class FormFieldElementImportOperation extends AbstractSamlElementImportOp
       o.setOrderNr(getOrder().doubleValue());
     }
     o.setFormType(getSamlContext().getCurrentFormContext().getFormType());
-    o.setSuperTypeSignature(getSuperTypeSignature(getDefaultSuperInterfaceFqn(), getElement().getSuperType(), getGenericValueType()));
+    o.setSuperTypeSignature(getSuperTypeSignature(getDefaultSuperInterfaceFqn(), getElement().getSuperType(),
+        getCurrentScoutModule().getClient(), getGenericValueType()));
     o.setGetterMethodSibling(getSamlContext().getCurrentFormContext().getSiblingFor("get" + typeName));
     o.setSiblingField(null);
     o.validate();

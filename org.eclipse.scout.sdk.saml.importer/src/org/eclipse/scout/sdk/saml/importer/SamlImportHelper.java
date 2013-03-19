@@ -21,13 +21,11 @@ import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.scout.sdk.internal.ScoutSdk;
-import org.eclipse.scout.sdk.internal.workspace.ScoutWorkspace;
 import org.eclipse.scout.sdk.jobs.OperationJob;
 import org.eclipse.scout.sdk.operation.form.formdata.FormDataAutoUpdater;
 import org.eclipse.scout.sdk.saml.importer.internal.SamlImporterActivator;
 import org.eclipse.scout.sdk.saml.importer.operation.SamlImportOperation;
 import org.eclipse.scout.sdk.util.jdt.JdtUtility;
-import org.eclipse.scout.sdk.workspace.IScoutProject;
 import org.eclipse.xtext.resource.XtextResourceSet;
 
 import com.google.inject.Injector;
@@ -58,11 +56,7 @@ public class SamlImportHelper {
   }
 
   private static IStatus doImport(IProject samlInputProject, Injector injector, XtextResourceSet resourceSet, final boolean sync) throws IllegalArgumentException {
-    IScoutProject[] roots = ScoutWorkspace.getInstance().getRootProjects();
     IStatus result = null;
-    if (roots == null || roots.length != 1) {
-      throw new IllegalArgumentException("the running workspace must contain exactly one scout project");
-    }
 
     final boolean origFormDataAutoUpdate = ScoutSdk.getDefault().isFormDataAutoUpdate();
     try {
@@ -72,8 +66,7 @@ public class SamlImportHelper {
       op.setSamlInputProject(samlInputProject);
       op.setInjector(injector);
       op.setResourceSet(resourceSet);
-      op.setScoutRootProject(roots[0]);
-      SamlImporterActivator.logInfo("Starting SAML import into Scout project '" + roots[0].getProjectName() + "'.");
+      SamlImporterActivator.logInfo("Starting SAML Import.");
 
       final P_WaitForWorkspaceReadyJob waitJob = new P_WaitForWorkspaceReadyJob();
       if (!sync) {

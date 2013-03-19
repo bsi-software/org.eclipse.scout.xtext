@@ -17,7 +17,7 @@ import org.eclipse.jdt.core.IType;
 import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.saml.saml.MenuElement;
 import org.eclipse.scout.saml.saml.SamlFactory;
-import org.eclipse.scout.sdk.RuntimeClasses;
+import org.eclipse.scout.sdk.extensions.runtime.classes.RuntimeClasses;
 import org.eclipse.scout.sdk.operation.MenuNewOperation;
 import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
 import org.eclipse.scout.sdk.util.SdkProperties;
@@ -56,7 +56,7 @@ public class MenuElementImportOperation extends AbstractSamlElementImportOperati
   private void createMenu() throws CoreException {
     MenuNewOperation o = new MenuNewOperation(getSamlContext().getCurrentParentType(), false);
     o.setTypeName(getElement().getName() + SdkProperties.SUFFIX_MENU);
-    o.setSuperTypeSignature(getSuperTypeSignature(RuntimeClasses.IMenu, getElement().getSuperType()));
+    o.setSuperTypeSignature(getSuperTypeSignature(RuntimeClasses.IMenu, getElement().getSuperType(), getCurrentScoutModule().getClient()));
     o.validate();
     o.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());
 

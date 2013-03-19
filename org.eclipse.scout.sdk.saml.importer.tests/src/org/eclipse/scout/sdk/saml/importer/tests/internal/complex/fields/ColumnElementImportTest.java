@@ -11,7 +11,7 @@
 package org.eclipse.scout.sdk.saml.importer.tests.internal.complex.fields;
 
 import org.eclipse.jdt.core.IType;
-import org.eclipse.scout.sdk.IRuntimeClasses;
+import org.eclipse.scout.sdk.extensions.runtime.classes.IRuntimeClasses;
 import org.eclipse.scout.sdk.saml.importer.tests.AbstractSamlFieldImporterTest;
 import org.eclipse.scout.sdk.util.SdkProperties;
 import org.eclipse.scout.sdk.util.type.TypeUtility;

@@ -132,3 +132,12 @@ Changes:
 			Attribute 'svc_super_type'
 
 
+
+Version: 1.0.0 2013-03-19
+Changed: mvi
+Changes:
+	Added:
+		For 'module' element:
+			Attribute 'client', 'shared', 'server'
+
+

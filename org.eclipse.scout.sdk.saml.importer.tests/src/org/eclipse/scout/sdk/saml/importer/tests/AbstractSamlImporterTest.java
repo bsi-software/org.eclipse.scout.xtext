@@ -44,7 +44,7 @@ public class AbstractSamlImporterTest extends AbstractScoutSdkTest {
   private static final String RESOURCES_FOLDER_NAME = "resources";
 
   protected static IScoutBundle getScoutBundle(String name) {
-    return ScoutSdkCore.getScoutWorkspace().getScoutBundle(getProject(name));
+    return ScoutSdkCore.getScoutWorkspace().getBundleGraph().getBundle(getProject(name));
   }
 
   protected void testTypeInSuperHierarchy(IType t, String toFindInHierarchyFqn) throws Exception {
