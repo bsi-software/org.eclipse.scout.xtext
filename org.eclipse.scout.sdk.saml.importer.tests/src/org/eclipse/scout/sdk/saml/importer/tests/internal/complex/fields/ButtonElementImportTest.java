@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.eclipse.scout.sdk.saml.importer.tests.internal.complex.fields;
 
+import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.scout.sdk.saml.importer.tests.AbstractSamlFieldImporterTest;
 import org.eclipse.scout.sdk.util.type.TypeUtility;
@@ -66,12 +67,21 @@ public class ButtonElementImportTest extends AbstractSamlFieldImporterTest imple
   @Test
   public void testNumAttributes2() throws Exception {
     IType field = getField(FORM_NAME, LOCATION2);
-    Assert.assertEquals(2, TypeUtility.getMethods(field).length);
+    Assert.assertEquals(3, TypeUtility.getMethods(field).length);
   }
 
   @Test
   public void testTextAttribute2() throws Exception {
     testNlsConfigMethod(getField(FORM_NAME, LOCATION2), "getConfiguredLabel", "trans.text2");
+  }
+
+  @Test
+  public void testExecClickAction() throws Exception {
+    IType button = getField(FORM_NAME, LOCATION2);
+    Assert.assertTrue(TypeUtility.exists(button));
+
+    IMethod execClickAction = TypeUtility.getMethod(button, "execClickAction");
+    Assert.assertTrue(TypeUtility.exists(execClickAction));
   }
 
   @Test

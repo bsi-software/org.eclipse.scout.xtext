@@ -12,6 +12,10 @@ logic FormLoadLogSnippet placement=server {
   "System.out.println(\"execLoad\"); return formData;"
 }
 
+logic ButtonClickSnippet placement=server {
+  "System.out.println(\"button clicked\"); return formData;"
+}
+
 template CheckBoxField definition="org.eclipse.scout.rt.client.ui.form.fields.checkbox.AbstractCheckBox"
 
 code Departments id="\"Main\"" value_type="java.lang.String" text=trans.text1 {
@@ -110,6 +114,8 @@ form ComplexFieldTest {
     }
     custom_field CheckBoxCustom super_type=CheckBoxField text=trans.text1 enabled=false visible=false label_visible=false width=3 width_pixels=44
     check TestCheckbox text=trans.text2 enabled=false visible=false width=3 width_pixels=102 label_visible=false mandatory=true
-    button TestOkButton text=trans.text2 process_button=true type=ok
+    button TestOkButton text=trans.text2 process_button=true type=ok {
+      logic exec=ButtonClickSnippet event=click
+    }
   }
 }

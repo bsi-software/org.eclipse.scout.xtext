@@ -16,6 +16,7 @@ import org.eclipse.jdt.core.Signature;
 import org.eclipse.scout.saml.saml.KeyElement;
 import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.saml.services.SamlGrammarAccess.LogicEventTypeElements;
+import org.eclipse.scout.sdk.extensions.runtime.classes.IRuntimeClasses;
 import org.eclipse.scout.sdk.operation.service.ParameterArgument;
 import org.eclipse.scout.sdk.saml.importer.extension.configurator.CodeConfiguratorsExtension;
 import org.eclipse.scout.sdk.saml.importer.extension.configurator.SourceProviderInput;
@@ -109,7 +110,7 @@ public class LogicSnippetInfoFactory {
     ret.setFormType(formContext.getFormType());
     if (!isClassLevel) {
       boolean isClientCall = placement.equals(Placement.Client) | placement.equals(Placement.Inline);
-      String sourceMethodName = getSourceMethodName(element.getEvent(), context);
+      String sourceMethodName = getSourceMethodName(element.getEvent(), context, sourceType);
       if (TypeUtility.exists(ret.getSourceType())) {
         ret.setSourceMethod(ScoutTypeUtility.getConfigurationMethod(ret.getSourceType(), sourceMethodName));
       }
@@ -154,7 +155,7 @@ public class LogicSnippetInfoFactory {
     return new ParameterArgument("ret", retTypeName);
   }
 
-  private static String getSourceMethodName(String event, SamlContext context) {
+  private static String getSourceMethodName(String event, SamlContext context, IType sourceType) {
     LogicEventTypeElements elements = context.getGrammarAccess().getLogicEventTypeAccess();
     if (event.equals(elements.getAllKeyword_0().getValue())) {
       return null;
@@ -181,7 +182,12 @@ public class LogicSnippetInfoFactory {
       return "execChangedValue";
     }
     else if (event.equals(elements.getClickKeyword_8().getValue())) {
-      return "execAction";
+      if (TypeUtility.getSuperTypeHierarchy(sourceType).contains(TypeUtility.getType(IRuntimeClasses.IButton))) {
+        return "execClickAction";
+      }
+      else {
+        return "execAction";
+      }
     }
     else if (event.equals(elements.getMaster_changedKeyword_9().getValue())) {
       return "execChangedMasterValue";
