@@ -10,8 +10,10 @@
  ******************************************************************************/
 package org.eclipse.scout.sdk.saml.importer.operation.logic;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -150,6 +152,10 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
 
   private void fillClassLevelLogic(IType target, String addSource) throws CoreException, IllegalArgumentException {
     ICompilationUnit cu = target.getCompilationUnit();
+
+    // define import defaults for simple class names
+    cu.createImport(List.class.getName(), null, getSamlContext().getMonitor());
+    cu.createImport(Date.class.getName(), null, getSamlContext().getMonitor());
 
     ISourceRange sourceRange = target.getSourceRange();
     int typeEndPos = sourceRange.getOffset() + sourceRange.getLength();
