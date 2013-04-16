@@ -23,7 +23,7 @@ import org.eclipse.scout.sdk.operation.form.field.TableFieldNewOperation;
 public class TableElementImportOperation extends FormFieldElementImportOperation {
   @Override
   protected IType createField() throws CoreException, IllegalArgumentException {
-    String typeName = getElement().getName() + getFieldSuffix();
+    String typeName = getFormFieldClassName();
     TableFieldNewOperation op = new TableFieldNewOperation(getSamlContext().getCurrentParentType());
     op.setFormatSource(false);
     if (getOrder() != null) {

@@ -132,7 +132,7 @@ public class LogicSnippetInfoFactory {
       if (!placement.equals(Placement.Server) || (TypeUtility.exists(targetInterfaceType) && TypeUtility.exists(formContext.getFormDataType()))) {
         SourceProviderInput input = new SourceProviderInput(placement, targetInterfaceType, targetMethodName,
             ret.getSourceMethod(), ret.getReturnType(), formContext.getFormDataType(), formContext.getFormType(), targetLogic);
-        ret.setSourceLogic(CodeConfiguratorsExtension.getSource(input));
+        ret.setSourceLogic(CodeConfiguratorsExtension.getLogicSource(input));
       }
     }
 

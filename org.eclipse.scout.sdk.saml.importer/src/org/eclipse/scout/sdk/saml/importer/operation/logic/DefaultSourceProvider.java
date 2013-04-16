@@ -29,7 +29,7 @@ import org.eclipse.scout.sdk.util.type.TypeUtility;
 public class DefaultSourceProvider implements ISourceProvider {
 
   @Override
-  public String getSource(SourceProviderInput input) throws CoreException {
+  public String getLogicSource(SourceProviderInput input) throws CoreException {
     ISourceFragment src = getFragment(input);
     if (src != null) {
       StringBuilder sb = new StringBuilder();
@@ -62,5 +62,28 @@ public class DefaultSourceProvider implements ISourceProvider {
 
   protected ISourceFragment getInlineSourceFragment(SourceProviderInput input) {
     return new InlineLogicFragment();
+  }
+
+  protected String getForeignCallPrefix() {
+    return "new ClientSyncJob(\"execute event\", ClientSession.get(), true) { @Override protected void runVoid(IProgressMonitor monitor) throws Throwable {";
+  }
+
+  protected String getForeignCallSuffix() {
+    return "} }.schedule();";
+  }
+
+  @Override
+  public String getEventSource(StringBuilder[] logicSnippets, LogicSnippetInfo[] infos, boolean isForeignCallPresent) throws CoreException {
+    StringBuilder sourceLogic = new StringBuilder();
+    if (isForeignCallPresent) {
+      sourceLogic.append(getForeignCallPrefix());
+    }
+    for (StringBuilder src : logicSnippets) {
+      sourceLogic.append(src);
+    }
+    if (isForeignCallPresent) {
+      sourceLogic.append(getForeignCallSuffix());
+    }
+    return sourceLogic.toString();
   }
 }

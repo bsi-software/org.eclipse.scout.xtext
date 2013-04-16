@@ -53,7 +53,7 @@ public class FormFieldElementImportOperation extends AbstractSamlElementImportOp
 
   protected IType createField() throws CoreException, IllegalArgumentException {
     FormFieldNewOperation o = new FormFieldNewOperation(getSamlContext().getCurrentParentType(), false);
-    String typeName = getElement().getName() + getFieldSuffix();
+    String typeName = getFormFieldClassName();
     o.setTypeName(typeName);
     if (getOrder() != null) {
       o.setOrderNr(getOrder().doubleValue());
@@ -81,6 +81,17 @@ public class FormFieldElementImportOperation extends AbstractSamlElementImportOp
   @Override
   protected NamedTypeElement getElement() {
     return (NamedTypeElement) super.getElement();
+  }
+
+  /**
+   * gets the class name for this form field. ensures that the suffix is appended and that the first character in the
+   * class name is upper case (is important for the formdata mapping at runtime).
+   * 
+   * @return The simple class name.
+   */
+  protected String getFormFieldClassName() {
+    String typeName = getElement().getName() + getFieldSuffix();
+    return Character.toUpperCase(typeName.charAt(0)) + typeName.substring(1);
   }
 
   public String getFieldSuffix() {

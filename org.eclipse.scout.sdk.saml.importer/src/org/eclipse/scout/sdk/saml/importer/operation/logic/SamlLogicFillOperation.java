@@ -24,6 +24,7 @@ import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.scout.sdk.operation.method.MethodOverrideOperation;
 import org.eclipse.scout.sdk.operation.method.MethodUpdateContentOperation;
 import org.eclipse.scout.sdk.operation.service.ServiceOperationNewOperation;
+import org.eclipse.scout.sdk.saml.importer.extension.configurator.CodeConfiguratorsExtension;
 import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
 import org.eclipse.scout.sdk.util.ScoutUtility;
 import org.eclipse.scout.sdk.util.log.ScoutStatus;
@@ -62,16 +63,17 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
     }
   }
 
-  private void collectSourceInfos(LogicSnippetInfo i, HashMap<IType, StringBuilder> map) {
+  private void collectSourceInfos(LogicSnippetInfo i, HashMap<IType, P_TargetLogicComposite> map) {
     if (TypeUtility.exists(i.getSourceType())) {
-      StringBuilder sb = map.get(i.getTargetType());
-      if (sb == null) {
-        sb = new StringBuilder(i.getSourceLogic());
-        map.put(i.getTargetType(), sb);
+      P_TargetLogicComposite comp = map.get(i.getTargetType());
+      if (comp == null) {
+        comp = new P_TargetLogicComposite(i);
+        comp.sb.append(i.getSourceLogic());
+        map.put(i.getTargetType(), comp);
       }
       else if (i.getTargetType() == i.getSourceType()) {
         // inline: always add because there is no call to a service which has the logic collected
-        sb.append(i.getSourceLogic());
+        comp.sb.append(i.getSourceLogic());
       }
     }
   }
@@ -82,7 +84,7 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
 
     LinkedHashMap<IType /* target type */, P_TargetLogicComposite> classLevelSources = new LinkedHashMap<IType, P_TargetLogicComposite>();
     LinkedHashMap<IType /* target type */, P_TargetLogicComposite> targetMethodSources = new LinkedHashMap<IType, P_TargetLogicComposite>();
-    LinkedHashMap<IType /* target type */, StringBuilder> sourceMethodSources = new LinkedHashMap<IType, StringBuilder>();
+    LinkedHashMap<IType /* target type */, P_TargetLogicComposite> sourceMethodSources = new LinkedHashMap<IType, P_TargetLogicComposite>();
     LogicSnippetInfo sourceLogicInfo = null;
 
     for (LogicSnippetInfo i : getLogicInfos()) {
@@ -115,18 +117,18 @@ public class SamlLogicFillOperation extends AbstractSamlElementImportOperation {
     // SOURCE METHOD: call to all target methods collected
     if (sourceLogicInfo != null) { /* class level logic has no source method */
       IMethod sourceMethod = createSourceMethod(sourceLogicInfo);
-      StringBuilder sourceLogic = new StringBuilder();
       boolean isForeignCallPresent = isForeignCallPresent();
-      if (isForeignCallPresent) {
-        sourceLogic.append("new ClientSyncJob(\"execute event\", ClientSession.get(), true) { @Override protected void runVoid(IProgressMonitor monitor) throws Throwable {");
+      P_TargetLogicComposite[] logicSnippets = sourceMethodSources.values().toArray(new P_TargetLogicComposite[sourceMethodSources.values().size()]);
+
+      LogicSnippetInfo[] infos = new LogicSnippetInfo[logicSnippets.length];
+      StringBuilder[] src = new StringBuilder[logicSnippets.length];
+      for (int i = 0; i < logicSnippets.length; i++) {
+        infos[i] = logicSnippets[i].li;
+        src[i] = logicSnippets[i].sb;
       }
-      for (StringBuilder src : sourceMethodSources.values()) {
-        sourceLogic.append(src);
-      }
-      if (isForeignCallPresent) {
-        sourceLogic.append("} }.schedule();");
-      }
-      setMethodContent(sourceMethod, sourceLogic.toString());
+
+      String srcComplete = CodeConfiguratorsExtension.getEventSource(src, infos, isForeignCallPresent);
+      setMethodContent(sourceMethod, srcComplete);
     }
   }
 

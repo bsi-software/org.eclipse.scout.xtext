@@ -20,6 +20,7 @@ import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.sdk.saml.importer.internal.SamlImporterActivator;
+import org.eclipse.scout.sdk.saml.importer.operation.logic.LogicSnippetInfo;
 import org.eclipse.scout.sdk.util.log.ScoutStatus;
 
 /**
@@ -84,10 +85,42 @@ public class CodeConfiguratorsExtension {
     return new Double(0);
   }
 
-  public static String getSource(SourceProviderInput input) throws CoreException {
+  /**
+   * Gets the source for a given event input.<br>
+   * This method is called for each logic element found.
+   * 
+   * @param input
+   *          The event information the returned source snippet should handle
+   * @return The source that handles the given input event.
+   * @throws CoreException
+   */
+  public static String getLogicSource(SourceProviderInput input) throws CoreException {
     ISourceProvider[] providers = getSourceProviders();
     for (int i = providers.length - 1; i >= 0; i--) {
-      String src = providers[i].getSource(input);
+      String src = providers[i].getLogicSource(input);
+      if (StringUtility.hasText(src)) {
+        return src;
+      }
+    }
+    throw new CoreException(new ScoutStatus("No source provider contributed any code."));
+  }
+
+  /**
+   * Gets the source for a specific event. One event (e.g. value-changed) may call multiple logics.
+   * 
+   * @param logicSnippets
+   *          the logic snippets of all logic elements that should be executed for this event.
+   * @param infos
+   *          The infos to the given logicSnippets
+   * @param isForeignCallPresent
+   *          specifies if at least one of the given logic snippets calls a different type than source type.
+   * @return The complete source
+   * @throws CoreException
+   */
+  public static String getEventSource(StringBuilder[] logicSnippets, LogicSnippetInfo[] infos, boolean isForeignCallPresent) throws CoreException {
+    ISourceProvider[] providers = getSourceProviders();
+    for (int i = providers.length - 1; i >= 0; i--) {
+      String src = providers[i].getEventSource(logicSnippets, infos, isForeignCallPresent);
       if (StringUtility.hasText(src)) {
         return src;
       }

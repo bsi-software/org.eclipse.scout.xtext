@@ -25,7 +25,7 @@ import org.eclipse.scout.sdk.workspace.IScoutBundleGraph;
  */
 public class SamlModule {
 
-  private final IScoutBundle m_client, m_shared, m_server;
+  private IScoutBundle m_client, m_shared, m_server;
 
   public SamlModule(ModuleElement module) {
     String moduleBaseName = module.getName();
@@ -36,8 +36,19 @@ public class SamlModule {
 
     IScoutBundleGraph graph = ScoutSdkCore.getScoutWorkspace().getBundleGraph();
     m_client = graph.getBundle(clientName);
+    if (m_client != null && m_client.isBinary()) {
+      m_client = null;
+    }
+
     m_shared = graph.getBundle(sharedName);
+    if (m_shared != null && m_shared.isBinary()) {
+      m_shared = null;
+    }
+
     m_server = graph.getBundle(serverName);
+    if (m_server != null && m_server.isBinary()) {
+      m_server = null;
+    }
   }
 
   private static String getBundleName(String moduleBaseName, String moduleSuffix, String specificModuleName) {
