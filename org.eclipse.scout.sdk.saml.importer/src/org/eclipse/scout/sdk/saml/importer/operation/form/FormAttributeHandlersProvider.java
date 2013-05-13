@@ -28,7 +28,7 @@ public class FormAttributeHandlersProvider extends AbstractAttributeHandlersProv
 
   @SamlAttributeHandler(handles = {@SamlAttribute(elementType = FormElement.class, featureId = SamlPackage.FORM_ELEMENT__MODAL)})
   public void applyModalAttribute(String a) throws CoreException, IllegalArgumentException {
-    if ("false".equals(a)) {
+    if (getSamlContext().getGrammarAccess().getBooleanTypeAccess().getFalseKeyword_1().getValue().equals(a)) {
       overrideMethod("getConfiguredModal", "return false;", getSamlContext().getCurrentFormContext().getFormType());
     }
   }

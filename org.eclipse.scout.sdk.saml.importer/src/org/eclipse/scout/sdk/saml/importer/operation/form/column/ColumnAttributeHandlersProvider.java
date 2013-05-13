@@ -62,7 +62,7 @@ public class ColumnAttributeHandlersProvider extends AbstractAttributeHandlersPr
 
   @SamlAttributeHandler(handles = {@SamlAttribute(elementType = ColumnElement.class, featureId = SamlPackage.COLUMN_ELEMENT__VISIBLE)})
   public void applyVisibleAttribute(String a) throws CoreException, IllegalArgumentException {
-    if ("false".equals(a)) {
+    if (getSamlContext().getGrammarAccess().getBooleanTypeAccess().getFalseKeyword_1().getValue().equals(a)) {
       overrideMethod("getConfiguredVisible", "return false;");
     }
   }
@@ -76,7 +76,7 @@ public class ColumnAttributeHandlersProvider extends AbstractAttributeHandlersPr
 
   @SamlAttributeHandler(handles = {@SamlAttribute(elementType = ColumnElement.class, featureId = SamlPackage.COLUMN_ELEMENT__DISPLAYABLE)})
   public void applyDisplayableAttribute(String a) throws CoreException, IllegalArgumentException {
-    if ("false".equals(a)) {
+    if (getSamlContext().getGrammarAccess().getBooleanTypeAccess().getFalseKeyword_1().getValue().equals(a)) {
       overrideMethod("getConfiguredDisplayable", "return false;");
     }
   }

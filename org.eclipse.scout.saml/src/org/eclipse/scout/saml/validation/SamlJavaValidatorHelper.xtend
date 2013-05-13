@@ -2,22 +2,20 @@ package org.eclipse.scout.saml.validation
 
 import com.google.inject.Inject
 import java.util.HashSet
+import java.util.List
+import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.scout.commons.holders.BooleanHolder
 import org.eclipse.scout.saml.saml.FormElement
 import org.eclipse.scout.saml.saml.FormFieldElement
-import org.eclipse.scout.saml.saml.Model
-import org.eclipse.scout.saml.saml.SamlPackage
+import org.eclipse.scout.saml.saml.MenuElement
+import org.eclipse.scout.saml.saml.NamedTypeElement
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.resource.IContainer
-import org.eclipse.xtext.resource.IContainer$Manager
 import org.eclipse.xtext.resource.IEObjectDescription
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider
 
 import static extension org.eclipse.xtext.EcoreUtil2.*
-import org.eclipse.emf.ecore.EClass
-import java.util.Set
-import java.util.List
-import org.eclipse.scout.saml.saml.MenuElement
 
 class SamlJavaValidatorHelper {
 	
@@ -28,17 +26,6 @@ class SamlJavaValidatorHelper {
 
 	@Inject
 	protected IContainer$Manager manager;
-	
-	def hasDuplicates(EObject eObject) {
-		eObject.getContainerOfType(typeof(Model)).
-			eAll.findFirst [ 
-				it.eClass.EPackage == SamlPackage::eINSTANCE &&
-				it != eObject && 
-				it.fullyQualifiedName != null &&
-				eObject.fullyQualifiedName != null && 
-				it.fullyQualifiedName.lastSegment == eObject.fullyQualifiedName.lastSegment
-			]
-	}
 	
 	def allFieldsOfForm(FormElement form) {
 		form.eAllOfType(typeof(FormFieldElement));
@@ -63,22 +50,28 @@ class SamlJavaValidatorHelper {
 		return allVisibileObjects;
 	}
 	
-	def hasGlobalDuplicate(EObject context, EClass type) {
-		hasGlobalDuplicate(context, type, false)
+	def hasGlobalDuplicate(NamedTypeElement element) {
+		return hasGlobalDuplicate(element.name, element);
 	}
 	
-	def hasGlobalDuplicate(EObject context, EClass type, boolean useFqn) {
-		context.allObjectsOfType(type).hasDuplicate(useFqn)
+	def hasGlobalDuplicate(String elementName, EObject context) {
+		return hasGlobalDuplicate(elementName, context, false);
 	}
 	
-	def hasDuplicate(Set<IEObjectDescription> d, boolean useFqn) {
-		val qualifiedNames = new HashSet<String>()
-		!d.forall [
-			if(useFqn) {
-				qualifiedNames.add(it.qualifiedName.toString)
-			} else {
-				qualifiedNames.add(it.qualifiedName.lastSegment)
+	def hasGlobalDuplicate(String elementName, EObject context, boolean useFqn) {
+		val elementFound = new BooleanHolder(false);
+		!allObjectsOfType(context, context.eClass()).forall [
+			var candidateName = it.qualifiedName.lastSegment;
+			if (useFqn) {
+				candidateName = it.qualifiedName.toString;
 			}
+			if (candidateName.equals(elementName)) {
+				if (elementFound.value) {
+					return false;
+				}
+				elementFound.setValue(true);
+			}
+			return true;
 		]
 	}
 	

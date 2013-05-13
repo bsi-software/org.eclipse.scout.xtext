@@ -22,7 +22,7 @@ import org.eclipse.scout.commons.holders.BooleanHolder;
 import org.eclipse.scout.saml.ui.internal.SamlActivator;
 import org.eclipse.scout.sdk.ScoutSdkCore;
 import org.eclipse.scout.sdk.saml.importer.SamlImportHelper;
-import org.eclipse.scout.sdk.test.AbstractScoutSdkTest;
+import org.eclipse.scout.sdk.testing.TestWorkspaceUtility;
 import org.eclipse.scout.sdk.util.ScoutSeverityManager;
 import org.eclipse.scout.sdk.util.signature.SignatureUtility;
 import org.eclipse.scout.sdk.util.type.TypeUtility;
@@ -35,16 +35,16 @@ import org.junit.Assert;
 import com.google.inject.Injector;
 
 /**
- * <h3>{@link AbstractSamlImporterTest}</h3> ...
+ * <h3>{@link AbstractSamlImporterTest}</h3>
  * 
  * @author mvi
  * @since 3.9.0 04.02.2013
  */
-public class AbstractSamlImporterTest extends AbstractScoutSdkTest {
+public class AbstractSamlImporterTest {
   private static final String RESOURCES_FOLDER_NAME = "resources";
 
   protected static IScoutBundle getScoutBundle(String name) {
-    return ScoutSdkCore.getScoutWorkspace().getBundleGraph().getBundle(getProject(name));
+    return ScoutSdkCore.getScoutWorkspace().getBundleGraph().getBundle(name);
   }
 
   protected void testTypeInSuperHierarchy(IType t, String toFindInHierarchyFqn) throws Exception {
@@ -135,7 +135,7 @@ public class AbstractSamlImporterTest extends AbstractScoutSdkTest {
     Injector injector = SamlActivator.getInstance().getInjector(SamlActivator.ORG_ECLIPSE_SCOUT_SAML_SAML);
     Assert.assertNotNull(injector);
 
-    IProject inputProject = getProject(samlInputProjectName);
+    IProject inputProject = TestWorkspaceUtility.getProject(samlInputProjectName);
     Assert.assertNotNull(inputProject);
 
     IResourceSetProvider resSetProvider = injector.getInstance(IResourceSetProvider.class);
@@ -153,7 +153,7 @@ public class AbstractSamlImporterTest extends AbstractScoutSdkTest {
       throw (Exception) t;
     }
 
-    buildWorkspace();
+    TestWorkspaceUtility.buildWorkspace();
 
     int severity = ScoutSeverityManager.getInstance().getSeverityOf(ResourcesPlugin.getWorkspace().getRoot());
     if (severity >= IMarker.SEVERITY_ERROR) {

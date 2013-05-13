@@ -85,7 +85,7 @@ public class SamlJavaValidator extends AbstractSamlJavaValidator implements ISam
       }
 
       // named logic elements must have unique name
-      if (helper.hasGlobalDuplicate(logicElement, SamlPackage.eINSTANCE.getLogicElement())) {
+      if (helper.hasGlobalDuplicate(logicElement.getName(), logicElement)) {
         error(MSG_DUPLICATE, SamlPackage.Literals.LOGIC_ELEMENT__NAME, DUPLICATE);
       }
     }
@@ -268,42 +268,35 @@ public class SamlJavaValidator extends AbstractSamlJavaValidator implements ISam
 
   @Check
   public void checkNoTranslationDuplicates(TranslationElement element) {
-    if (helper.hasGlobalDuplicate(element, SamlPackage.eINSTANCE.getTranslationElement(), true)) {
+    if (helper.hasGlobalDuplicate(element.getName(), element, true)) {
       error(MSG_DUPLICATE, element, SamlPackage.eINSTANCE.getTranslationElement_Name(), DUPLICATE);
     }
   }
 
   @Check
-  public void checkNoLogicDuplicates(LogicElement element) {
-    if (helper.hasGlobalDuplicate(element, SamlPackage.eINSTANCE.getLogicElement())) {
-      error(MSG_DUPLICATE, element, SamlPackage.eINSTANCE.getLogicElement_Name(), DUPLICATE);
-    }
-  }
-
-  @Check
   public void checkNoFormDuplicates(FormElement element) {
-    if (helper.hasGlobalDuplicate(element, SamlPackage.eINSTANCE.getFormElement())) {
+    if (helper.hasGlobalDuplicate(element)) {
       error(MSG_DUPLICATE, element, SamlPackage.eINSTANCE.getNamedTypeElement_Name(), DUPLICATE);
     }
   }
 
   @Check
   public void checkNoLookupDuplicates(LookupElement element) {
-    if (helper.hasGlobalDuplicate(element, SamlPackage.eINSTANCE.getLookupElement())) {
+    if (helper.hasGlobalDuplicate(element.getName(), element)) {
       error(MSG_DUPLICATE, element, SamlPackage.eINSTANCE.getLookupElement_Name(), DUPLICATE);
     }
   }
 
   @Check
   public void checkNoCodeDuplicates(CodeElement element) {
-    if (helper.hasGlobalDuplicate(element, SamlPackage.eINSTANCE.getCodeElement())) {
+    if (helper.hasGlobalDuplicate(element)) {
       error(MSG_DUPLICATE, element, SamlPackage.eINSTANCE.getNamedTypeElement_Name(), DUPLICATE);
     }
   }
 
   @Check
   public void checkNoTemplateDuplicates(TemplateElement element) {
-    if (helper.hasGlobalDuplicate(element, SamlPackage.eINSTANCE.getTemplateElement())) {
+    if (helper.hasGlobalDuplicate(element.getName(), element)) {
       error(MSG_DUPLICATE, element, SamlPackage.eINSTANCE.getTemplateElement_Name(), DUPLICATE);
     }
   }

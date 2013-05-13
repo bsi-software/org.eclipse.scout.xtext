@@ -31,8 +31,8 @@
 		<!--
 			The base directory pointing to the eclipse home to use to build the feature. this folder contains the "plugins" folder.
 			The following projects must be installed in this eclipse:
-			- Eclipse Scout (Runtime + SDK) >= 3.8.1.201211011400
-			- Eclipse Scout SAML >= 3.8.1.201211011400
+			- Eclipse Scout (Runtime + SDK) >= 3.9.0 M7
+			- Eclipse Scout SAML Importer >= 3.9.0
 			- Eclipse Xtext >= 2.3.1
 		-->
 		<attribute name="eclipseBaseDir" /> 

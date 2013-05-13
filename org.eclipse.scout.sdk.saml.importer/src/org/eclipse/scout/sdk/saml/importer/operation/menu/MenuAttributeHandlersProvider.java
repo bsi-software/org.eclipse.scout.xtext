@@ -82,35 +82,35 @@ public class MenuAttributeHandlersProvider extends AbstractAttributeHandlersProv
 
   @SamlAttributeHandler(handles = {@SamlAttribute(elementType = MenuElement.class, featureId = SamlPackage.MENU_ELEMENT__SINGLE_SELECT)})
   public void applySingleSelectionAction(String a) throws CoreException, IllegalArgumentException {
-    if ("false".equals(a)) {
+    if (getSamlContext().getGrammarAccess().getBooleanTypeAccess().getFalseKeyword_1().getValue().equals(a)) {
       overrideMethod("getConfiguredSingleSelectionAction", "return false;");
     }
   }
 
   @SamlAttributeHandler(handles = {@SamlAttribute(elementType = MenuElement.class, featureId = SamlPackage.MENU_ELEMENT__MULTI_SELECT)})
   public void applyMultiSelectionAction(String a) throws CoreException, IllegalArgumentException {
-    if ("true".equals(a)) {
+    if (getSamlContext().getGrammarAccess().getBooleanTypeAccess().getTrueKeyword_0().getValue().equals(a)) {
       overrideMethod("getConfiguredMultiSelectionAction", "return true;");
     }
   }
 
   @SamlAttributeHandler(handles = {@SamlAttribute(elementType = MenuElement.class, featureId = SamlPackage.MENU_ELEMENT__EMPTY_SELECT)})
   public void applyEmptySpaceAction(String a) throws CoreException, IllegalArgumentException {
-    if ("true".equals(a)) {
+    if (getSamlContext().getGrammarAccess().getBooleanTypeAccess().getTrueKeyword_0().getValue().equals(a)) {
       overrideMethod("getConfiguredEmptySpaceAction", "return true;");
     }
   }
 
   @SamlAttributeHandler(handles = {@SamlAttribute(elementType = MenuElement.class, featureId = SamlPackage.MENU_ELEMENT__ENABLED)})
   public void applyEnabledAttribute(String a) throws CoreException, IllegalArgumentException {
-    if ("false".equals(a)) {
+    if (getSamlContext().getGrammarAccess().getBooleanTypeAccess().getFalseKeyword_1().getValue().equals(a)) {
       overrideMethod("getConfiguredEnabled", "return false;");
     }
   }
 
   @SamlAttributeHandler(handles = {@SamlAttribute(elementType = MenuElement.class, featureId = SamlPackage.MENU_ELEMENT__VISIBLE)})
   public void applyVisibleAttribute(String a) throws CoreException, IllegalArgumentException {
-    if ("false".equals(a)) {
+    if (getSamlContext().getGrammarAccess().getBooleanTypeAccess().getFalseKeyword_1().getValue().equals(a)) {
       overrideMethod("getConfiguredVisible", "return false;");
     }
   }

@@ -22,6 +22,8 @@ import org.eclipse.scout.sdk.saml.importer.tests.internal.complex.fields.StringE
 import org.eclipse.scout.sdk.saml.importer.tests.internal.complex.fields.TabElementImportTest;
 import org.eclipse.scout.sdk.saml.importer.tests.internal.complex.fields.TabboxElementImportTest;
 import org.eclipse.scout.sdk.saml.importer.tests.internal.complex.fields.TableElementImportTest;
+import org.eclipse.scout.sdk.testing.TestUtility;
+import org.eclipse.scout.sdk.testing.TestWorkspaceUtility;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
@@ -43,8 +45,9 @@ public class _SuiteComplexImporterTests extends AbstractSamlImporterTest {
 
   @BeforeClass
   public static void setUpWorkspace() throws Exception {
-    setupWorkspace(Platform.getBundle(SamlImporterTestsActivator.PLUGIN_ID),
-        "complex", SHARED_BUNDLE, CLIENT_BUNDLE, SERVER_BUNDLE, SAML_INPUT_BUNDLE);
+    TestUtility.showEgitMessageBoxes(false);
+    TestWorkspaceUtility.setupWorkspace(Platform.getBundle(SamlImporterTestsActivator.PLUGIN_ID),
+        "resources/complex", SHARED_BUNDLE, CLIENT_BUNDLE, SERVER_BUNDLE, SAML_INPUT_BUNDLE);
 
     doSamlImport(SAML_INPUT_BUNDLE);
   }

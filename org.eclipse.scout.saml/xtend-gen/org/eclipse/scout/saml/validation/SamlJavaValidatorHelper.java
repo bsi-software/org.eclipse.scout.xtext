@@ -1,22 +1,18 @@
 package org.eclipse.scout.saml.validation;
 
-import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.scout.commons.holders.BooleanHolder;
 import org.eclipse.scout.saml.saml.FormElement;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.MenuElement;
-import org.eclipse.scout.saml.saml.Model;
-import org.eclipse.scout.saml.saml.SamlPackage;
+import org.eclipse.scout.saml.saml.NamedTypeElement;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.naming.QualifiedName;
@@ -28,7 +24,6 @@ import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 @SuppressWarnings("all")
 public class SamlJavaValidatorHelper {
@@ -40,55 +35,6 @@ public class SamlJavaValidatorHelper {
   
   @Inject
   protected Manager manager;
-  
-  public EObject hasDuplicates(final EObject eObject) {
-    Model _containerOfType = EcoreUtil2.<Model>getContainerOfType(eObject, Model.class);
-    TreeIterator<EObject> _eAll = EcoreUtil2.eAll(_containerOfType);
-    final Function1<EObject,Boolean> _function = new Function1<EObject,Boolean>() {
-        public Boolean apply(final EObject it) {
-          boolean _and = false;
-          boolean _and_1 = false;
-          boolean _and_2 = false;
-          boolean _and_3 = false;
-          EClass _eClass = it.eClass();
-          EPackage _ePackage = _eClass.getEPackage();
-          boolean _equals = Objects.equal(_ePackage, SamlPackage.eINSTANCE);
-          if (!_equals) {
-            _and_3 = false;
-          } else {
-            boolean _notEquals = (!Objects.equal(it, eObject));
-            _and_3 = (_equals && _notEquals);
-          }
-          if (!_and_3) {
-            _and_2 = false;
-          } else {
-            QualifiedName _fullyQualifiedName = SamlJavaValidatorHelper.this._iQualifiedNameProvider.getFullyQualifiedName(it);
-            boolean _notEquals_1 = (!Objects.equal(_fullyQualifiedName, null));
-            _and_2 = (_and_3 && _notEquals_1);
-          }
-          if (!_and_2) {
-            _and_1 = false;
-          } else {
-            QualifiedName _fullyQualifiedName_1 = SamlJavaValidatorHelper.this._iQualifiedNameProvider.getFullyQualifiedName(eObject);
-            boolean _notEquals_2 = (!Objects.equal(_fullyQualifiedName_1, null));
-            _and_1 = (_and_2 && _notEquals_2);
-          }
-          if (!_and_1) {
-            _and = false;
-          } else {
-            QualifiedName _fullyQualifiedName_2 = SamlJavaValidatorHelper.this._iQualifiedNameProvider.getFullyQualifiedName(it);
-            String _lastSegment = _fullyQualifiedName_2.getLastSegment();
-            QualifiedName _fullyQualifiedName_3 = SamlJavaValidatorHelper.this._iQualifiedNameProvider.getFullyQualifiedName(eObject);
-            String _lastSegment_1 = _fullyQualifiedName_3.getLastSegment();
-            boolean _equals_1 = Objects.equal(_lastSegment, _lastSegment_1);
-            _and = (_and_1 && _equals_1);
-          }
-          return Boolean.valueOf(_and);
-        }
-      };
-    EObject _findFirst = IteratorExtensions.<EObject>findFirst(_eAll, _function);
-    return _findFirst;
-  }
   
   public List<FormFieldElement> allFieldsOfForm(final FormElement form) {
     List<FormFieldElement> _eAllOfType = EcoreUtil2.<FormFieldElement>eAllOfType(form, FormFieldElement.class);
@@ -121,40 +67,43 @@ public class SamlJavaValidatorHelper {
     return allVisibileObjects;
   }
   
-  public boolean hasGlobalDuplicate(final EObject context, final EClass type) {
-    boolean _hasGlobalDuplicate = this.hasGlobalDuplicate(context, type, false);
-    return _hasGlobalDuplicate;
+  public boolean hasGlobalDuplicate(final NamedTypeElement element) {
+    String _name = element.getName();
+    return this.hasGlobalDuplicate(_name, element);
   }
   
-  public boolean hasGlobalDuplicate(final EObject context, final EClass type, final boolean useFqn) {
-    HashSet<IEObjectDescription> _allObjectsOfType = this.allObjectsOfType(context, type);
-    boolean _hasDuplicate = this.hasDuplicate(_allObjectsOfType, useFqn);
-    return _hasDuplicate;
+  public boolean hasGlobalDuplicate(final String elementName, final EObject context) {
+    return this.hasGlobalDuplicate(elementName, context, false);
   }
   
-  public boolean hasDuplicate(final Set<IEObjectDescription> d, final boolean useFqn) {
+  public boolean hasGlobalDuplicate(final String elementName, final EObject context, final boolean useFqn) {
     boolean _xblockexpression = false;
     {
-      HashSet<String> _hashSet = new HashSet<String>();
-      final HashSet<String> qualifiedNames = _hashSet;
+      BooleanHolder _booleanHolder = new BooleanHolder(Boolean.valueOf(false));
+      final BooleanHolder elementFound = _booleanHolder;
+      EClass _eClass = context.eClass();
+      HashSet<IEObjectDescription> _allObjectsOfType = this.allObjectsOfType(context, _eClass);
       final Function1<IEObjectDescription,Boolean> _function = new Function1<IEObjectDescription,Boolean>() {
           public Boolean apply(final IEObjectDescription it) {
-            boolean _xifexpression = false;
+            QualifiedName _qualifiedName = it.getQualifiedName();
+            String candidateName = _qualifiedName.getLastSegment();
             if (useFqn) {
-              QualifiedName _qualifiedName = it.getQualifiedName();
-              String _string = _qualifiedName.toString();
-              boolean _add = qualifiedNames.add(_string);
-              _xifexpression = _add;
-            } else {
               QualifiedName _qualifiedName_1 = it.getQualifiedName();
-              String _lastSegment = _qualifiedName_1.getLastSegment();
-              boolean _add_1 = qualifiedNames.add(_lastSegment);
-              _xifexpression = _add_1;
+              String _string = _qualifiedName_1.toString();
+              candidateName = _string;
             }
-            return Boolean.valueOf(_xifexpression);
+            boolean _equals = candidateName.equals(elementName);
+            if (_equals) {
+              Boolean _value = elementFound.getValue();
+              if ((_value).booleanValue()) {
+                return Boolean.valueOf(false);
+              }
+              elementFound.setValue(Boolean.valueOf(true));
+            }
+            return Boolean.valueOf(true);
           }
         };
-      boolean _forall = IterableExtensions.<IEObjectDescription>forall(d, _function);
+      boolean _forall = IterableExtensions.<IEObjectDescription>forall(_allObjectsOfType, _function);
       boolean _not = (!_forall);
       _xblockexpression = (_not);
     }

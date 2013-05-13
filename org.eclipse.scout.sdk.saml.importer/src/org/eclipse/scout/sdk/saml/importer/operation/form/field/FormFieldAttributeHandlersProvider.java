@@ -172,7 +172,7 @@ public class FormFieldAttributeHandlersProvider extends AbstractAttributeHandler
 
   @SamlAttributeHandler(handles = {@SamlAttribute(elementType = ButtonElement.class, featureId = SamlPackage.BUTTON_ELEMENT__PROCESS_BUTTON)})
   public void applyProcessButtonAttribute(String a) throws CoreException, IllegalArgumentException {
-    if ("false".equals(a)) {
+    if (getSamlContext().getGrammarAccess().getBooleanTypeAccess().getFalseKeyword_1().getValue().equals(a)) {
       overrideMethod("getConfiguredProcessButton", "return false;");
     }
   }
@@ -215,7 +215,7 @@ public class FormFieldAttributeHandlersProvider extends AbstractAttributeHandler
 
   @SamlAttributeHandler(handles = {@SamlAttribute(elementType = BigDecimalElement.class, featureId = SamlPackage.BIG_DECIMAL_ELEMENT__PERCENT)})
   public void applyPercentAttribute(String percent) throws CoreException, IllegalArgumentException {
-    if ("true".equals(percent)) {
+    if (getSamlContext().getGrammarAccess().getBooleanTypeAccess().getTrueKeyword_0().getValue().equals(percent)) {
       overrideMethod("getConfiguredPercent", "return true;");
     }
   }
@@ -231,7 +231,7 @@ public class FormFieldAttributeHandlersProvider extends AbstractAttributeHandler
 
   @SamlAttributeHandler(handles = {@SamlAttribute(elementType = BigDecimalElement.class, featureId = SamlPackage.BIG_DECIMAL_ELEMENT__GROUPING)})
   public void applyGroupingAttribute(String grouping) throws CoreException, IllegalArgumentException {
-    if ("false".equals(grouping)) {
+    if (getSamlContext().getGrammarAccess().getBooleanTypeAccess().getFalseKeyword_1().getValue().equals(grouping)) {
       overrideMethod("getConfiguredGroupingUsed", "return false;");
     }
   }
@@ -258,7 +258,7 @@ public class FormFieldAttributeHandlersProvider extends AbstractAttributeHandler
       @SamlAttribute(elementType = TableElement.class, featureId = SamlPackage.TABLE_ELEMENT__LABEL_VISIBLE)
   })
   public void applyLabelVisibleAttribute(String a) throws CoreException, IllegalArgumentException {
-    if ("false".equals(a)) {
+    if (getSamlContext().getGrammarAccess().getBooleanTypeAccess().getFalseKeyword_1().getValue().equals(a)) {
       overrideMethod("getConfiguredLabelVisible", "return false;");
     }
   }
@@ -310,14 +310,14 @@ public class FormFieldAttributeHandlersProvider extends AbstractAttributeHandler
 
   @SamlAttributeHandler(handles = {@SamlAttribute(elementType = ValueFieldElement.class, featureId = SamlPackage.VALUE_FIELD_ELEMENT__MANDATORY)})
   public void applyMandatoryAttribute(String a) throws CoreException, IllegalArgumentException {
-    if ("true".equals(a)) {
+    if (getSamlContext().getGrammarAccess().getBooleanTypeAccess().getTrueKeyword_0().getValue().equals(a)) {
       overrideMethod("getConfiguredMandatory", "return true;");
     }
   }
 
   @SamlAttributeHandler(handles = {@SamlAttribute(elementType = GroupBoxElement.class, featureId = SamlPackage.GROUP_BOX_ELEMENT__BORDER_VISIBLE)})
   public void applyBorderVisibleAttribute(String a) throws CoreException, IllegalArgumentException {
-    if ("false".equals(a)) {
+    if (getSamlContext().getGrammarAccess().getBooleanTypeAccess().getFalseKeyword_1().getValue().equals(a)) {
       overrideMethod("getConfiguredBorderVisible", "return false;");
     }
   }
@@ -355,7 +355,7 @@ public class FormFieldAttributeHandlersProvider extends AbstractAttributeHandler
       @SamlAttribute(elementType = RadioButtonElement.class, featureId = SamlPackage.RADIO_BUTTON_ELEMENT__VISIBLE)
   })
   public void applyVisibleAttribute(String a) throws CoreException, IllegalArgumentException {
-    if ("false".equals(a)) {
+    if (getSamlContext().getGrammarAccess().getBooleanTypeAccess().getFalseKeyword_1().getValue().equals(a)) {
       overrideMethod("getConfiguredVisible", "return false;");
     }
   }
@@ -365,7 +365,7 @@ public class FormFieldAttributeHandlersProvider extends AbstractAttributeHandler
       @SamlAttribute(elementType = RadioButtonElement.class, featureId = SamlPackage.RADIO_BUTTON_ELEMENT__ENABLED)
   })
   public void applyEnabledAttribute(String a) throws CoreException, IllegalArgumentException {
-    if ("false".equals(a)) {
+    if (getSamlContext().getGrammarAccess().getBooleanTypeAccess().getFalseKeyword_1().getValue().equals(a)) {
       overrideMethod("getConfiguredEnabled", "return false;");
     }
   }
@@ -479,21 +479,21 @@ public class FormFieldAttributeHandlersProvider extends AbstractAttributeHandler
 
   @SamlAttributeHandler(handles = {@SamlAttribute(elementType = FileChooserElement.class, featureId = SamlPackage.FILE_CHOOSER_ELEMENT__SHOW_DIRECTORY)})
   public void applyFileChooserShowDirAttribute(String a) throws CoreException, IllegalArgumentException {
-    if ("true".equals(a)) {
+    if (getSamlContext().getGrammarAccess().getBooleanTypeAccess().getTrueKeyword_0().getValue().equals(a)) {
       overrideMethod("getConfiguredShowDirectory", "return true;");
     }
   }
 
   @SamlAttributeHandler(handles = {@SamlAttribute(elementType = FileChooserElement.class, featureId = SamlPackage.FILE_CHOOSER_ELEMENT__SHOW_FILE_NAME)})
   public void applyFileChooserShowNameAttribute(String a) throws CoreException, IllegalArgumentException {
-    if ("false".equals(a)) {
+    if (getSamlContext().getGrammarAccess().getBooleanTypeAccess().getFalseKeyword_1().getValue().equals(a)) {
       overrideMethod("getConfiguredShowFileName", "return false;");
     }
   }
 
   @SamlAttributeHandler(handles = {@SamlAttribute(elementType = FileChooserElement.class, featureId = SamlPackage.FILE_CHOOSER_ELEMENT__SHOW_FILE_EXTENSION)})
   public void applyFileChooserShowExtAttribute(String a) throws CoreException, IllegalArgumentException {
-    if ("false".equals(a)) {
+    if (getSamlContext().getGrammarAccess().getBooleanTypeAccess().getFalseKeyword_1().getValue().equals(a)) {
       overrideMethod("getConfiguredShowFileExtension", "return false;");
     }
   }
