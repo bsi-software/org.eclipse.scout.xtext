@@ -73,7 +73,10 @@ public class SamlImportHelper {
         waitJob.addJobChangeListener(new JobChangeAdapter() {
           @Override
           public void done(IJobChangeEvent event) {
-            ScoutSdk.getDefault().setFormDataAutoUpdate(origFormDataAutoUpdate);
+            ScoutSdk sdkInstance = ScoutSdk.getDefault();
+            if (sdkInstance != null) {
+              ScoutSdk.getDefault().setFormDataAutoUpdate(origFormDataAutoUpdate);
+            }
           }
         });
       }

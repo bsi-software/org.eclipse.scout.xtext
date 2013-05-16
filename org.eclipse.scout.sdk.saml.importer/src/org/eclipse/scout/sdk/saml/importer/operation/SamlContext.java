@@ -10,12 +10,15 @@
  ******************************************************************************/
 package org.eclipse.scout.sdk.saml.importer.operation;
 
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Stack;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.jdt.core.JavaModelException;
+import org.eclipse.scout.nls.sdk.model.workspace.project.INlsProject;
 import org.eclipse.scout.saml.module.SamlModule;
 import org.eclipse.scout.saml.services.SamlGrammarAccess;
 import org.eclipse.scout.sdk.saml.importer.operation.form.SamlFormContext;
@@ -36,6 +39,7 @@ public class SamlContext {
   private final SamlGrammarAccess m_grammarAccess;
   private final Stack<IType> m_parentTypeStack;
   private final SuperTypeHierarchyCache m_hierarchyCache;
+  private final HashMap<String, INlsProject> m_nlsProjectsByModule;
 
   private SamlModule m_currentScoutModule;
   private SamlFormContext m_currentFormContext;
@@ -44,6 +48,7 @@ public class SamlContext {
     m_monitor = monitor;
     m_workingCopyManager = workingCopyManager;
     m_injector = injector;
+    m_nlsProjectsByModule = new HashMap<String, INlsProject>();
     m_hierarchyCache = new SuperTypeHierarchyCache();
     m_grammarAccess = m_injector.getInstance(SamlGrammarAccess.class);
     m_parentTypeStack = new Stack<IType>();
@@ -75,6 +80,22 @@ public class SamlContext {
 
   public void setCurrentScoutModule(SamlModule currentScoutModule) {
     m_currentScoutModule = currentScoutModule;
+  }
+
+  public INlsProject getCurrentModuleNlsProject() {
+    return m_nlsProjectsByModule.get(getCurrentScoutModule().getBaseName());
+  }
+
+  public void setCurrentModuleNlsProject(INlsProject p) {
+    m_nlsProjectsByModule.put(getCurrentScoutModule().getBaseName(), p);
+  }
+
+  public boolean containsCurrentNlsProject() {
+    return m_nlsProjectsByModule.containsKey(getCurrentScoutModule().getBaseName());
+  }
+
+  public Collection<INlsProject> getNlsProjects() {
+    return m_nlsProjectsByModule.values();
   }
 
   public Injector getInjector() {

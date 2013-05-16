@@ -19,6 +19,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
+import org.eclipse.scout.commons.TuningUtility;
+import org.eclipse.scout.nls.sdk.model.workspace.project.INlsProject;
 import org.eclipse.scout.saml.SamlStandaloneSetup;
 import org.eclipse.scout.saml.saml.CodeElement;
 import org.eclipse.scout.saml.saml.FormElement;
@@ -41,6 +43,8 @@ import org.eclipse.xtext.validation.Issue;
 import com.google.inject.Injector;
 
 public class SamlImportOperation implements IOperation {
+
+  private final static boolean TUNING_OUTPUT_ENABLED = true;
 
   private IProject m_samlInputProject;
   private SamlContext m_context;
@@ -101,90 +105,124 @@ public class SamlImportOperation implements IOperation {
     return samlFileCollector;
   }
 
+  private void startTimer() {
+    if (TUNING_OUTPUT_ENABLED) {
+      TuningUtility.startTimer();
+    }
+  }
+
+  private void stopTimer(String msg) {
+    if (TUNING_OUTPUT_ENABLED) {
+      TuningUtility.stopTimer(msg);
+    }
+  }
+
   @Override
   public void run(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException, IllegalArgumentException {
-    if (getInjector() == null) {
-      setInjector(new SamlStandaloneSetup().createInjectorAndDoEMFRegistration());
+    try {
+      startTimer();
+
+      startTimer();
+      if (getInjector() == null) {
+        setInjector(new SamlStandaloneSetup().createInjectorAndDoEMFRegistration());
+      }
+
+      if (getResourceSet() == null) {
+        setResourceSet(getInjector().getInstance(XtextResourceSet.class));
+      }
+
+      getResourceSet().addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
+      getResourceSet().addLoadOption(XtextResource.OPTION_ENCODING, "UTF-8");
+
+      // get all input files in the input project
+      Set<IFile> samlFiles = getSamlFiles(getSamlInputProject());
+
+      // create resources from the input files
+      ArrayList<Resource> samlResources = new ArrayList<Resource>(samlFiles.size());
+      for (IFile file : samlFiles) {
+        URI uri = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
+        Resource r = getResourceSet().getResource(uri, true);
+        samlResources.add(r);
+      }
+
+      // checking the resources for errors (do validation)
+      IResourceValidator validator = getInjector().getInstance(IResourceValidator.class);
+      ArrayList<Issue> parsingIssues = new ArrayList<Issue>();
+      for (Resource r : samlResources) {
+        parsingIssues.addAll(validator.validate(r, CheckMode.ALL, CancelIndicator.NullImpl));
+      }
+      stopTimer("Collect and validate resources");
+
+      if (parsingIssues.size() > 0) {
+        // errors found: collect messages
+        StringBuilder sb = new StringBuilder();
+        sb.append("SAML files are not valid. ");
+        sb.append(parsingIssues.size());
+        sb.append(" Error(s) have been found. Please check input files:");
+        for (Issue i : parsingIssues) {
+          sb.append("\n     ");
+          sb.append(i.getMessage());
+        }
+        throw new IllegalArgumentException(sb.toString());
+      }
+      else {
+        // no errors: start import
+        startTimer();
+        m_context = new SamlContext(monitor, workingCopyManager, getInjector());
+
+        // 1. all configurators
+        for (IScoutProjectConfigurator configurator : CodeConfiguratorsExtension.getScoutProjectConfigurators()) {
+          configurator.configure(getSamlContext());
+        }
+
+        // 2. all pre-processors
+        visitRootElements(new PreProcessVisitor());
+        if (monitor.isCanceled()) {
+          return;
+        }
+        stopTimer("Preparations (Configurators, PreProcessors)");
+
+        // 3. all translations
+        startTimer();
+        visitRootElements(new RootElementVisitor(TranslationElement.class));
+        for (INlsProject p : getSamlContext().getNlsProjects()) {
+          p.flush(getSamlContext().getMonitor());
+        }
+        stopTimer("Translations");
+        if (monitor.isCanceled()) {
+          return;
+        }
+
+        // 4. all codes
+        startTimer();
+        visitRootElements(new RootElementVisitor(CodeElement.class));
+        stopTimer("Codes");
+        if (monitor.isCanceled()) {
+          return;
+        }
+
+        // 5. all lookups
+        startTimer();
+        visitRootElements(new RootElementVisitor(LookupElement.class));
+        stopTimer("Lookukps");
+        if (monitor.isCanceled()) {
+          return;
+        }
+
+        // 6. all forms
+        startTimer();
+        visitRootElements(new RootElementVisitor(FormElement.class));
+        stopTimer("Forms");
+        if (monitor.isCanceled()) {
+          return;
+        }
+
+        ResourcesPlugin.getWorkspace().checkpoint(false);
+        stopTimer("Import Total");
+      }
     }
-
-    if (getResourceSet() == null) {
-      setResourceSet(getInjector().getInstance(XtextResourceSet.class));
-    }
-
-    getResourceSet().addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
-    getResourceSet().addLoadOption(XtextResource.OPTION_ENCODING, "UTF-8");
-
-    // get all input files in the input project
-    Set<IFile> samlFiles = getSamlFiles(getSamlInputProject());
-
-    // create resources from the input files
-    ArrayList<Resource> samlResources = new ArrayList<Resource>(samlFiles.size());
-    for (IFile file : samlFiles) {
-      URI uri = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
-      Resource r = getResourceSet().getResource(uri, true);
-      samlResources.add(r);
-    }
-
-    // checking the resources for errors (do validation)
-    IResourceValidator validator = getInjector().getInstance(IResourceValidator.class);
-    ArrayList<Issue> parsingIssues = new ArrayList<Issue>();
-    for (Resource r : samlResources) {
-      parsingIssues.addAll(validator.validate(r, CheckMode.ALL, CancelIndicator.NullImpl));
-    }
-
-    if (parsingIssues.size() > 0) {
-      // errors found: collect messages
-      StringBuilder sb = new StringBuilder();
-      sb.append("SAML files are not valid. ");
-      sb.append(parsingIssues.size());
-      sb.append(" Error(s) have been found. Please check input files:");
-      for (Issue i : parsingIssues) {
-        sb.append("\n     ");
-        sb.append(i.getMessage());
-      }
-      throw new IllegalArgumentException(sb.toString());
-    }
-    else {
-      // no errors: start import
-
-      m_context = new SamlContext(monitor, workingCopyManager, getInjector());
-
-      // 1. all configurators
-      for (IScoutProjectConfigurator configurator : CodeConfiguratorsExtension.getScoutProjectConfigurators()) {
-        configurator.configure(getSamlContext());
-      }
-
-      // 2. all pre-processors
-      visitRootElements(new PreProcessVisitor());
-      if (monitor.isCanceled()) {
-        return;
-      }
-
-      // 3. all translations
-      visitRootElements(new RootElementVisitor(TranslationElement.class));
-      if (monitor.isCanceled()) {
-        return;
-      }
-
-      // 4. all codes
-      visitRootElements(new RootElementVisitor(CodeElement.class));
-      if (monitor.isCanceled()) {
-        return;
-      }
-
-      // 5. all lookups
-      visitRootElements(new RootElementVisitor(LookupElement.class));
-      if (monitor.isCanceled()) {
-        return;
-      }
-
-      // 6. all forms
-      visitRootElements(new RootElementVisitor(FormElement.class));
-      if (monitor.isCanceled()) {
-        return;
-      }
-
-      ResourcesPlugin.getWorkspace().checkpoint(false);
+    finally {
+      TuningUtility.finishAll();
     }
   }
 
