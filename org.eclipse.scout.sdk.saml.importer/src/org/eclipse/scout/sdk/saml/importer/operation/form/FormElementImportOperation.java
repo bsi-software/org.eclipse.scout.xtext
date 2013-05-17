@@ -15,6 +15,7 @@ import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaModelException;
+import org.eclipse.scout.commons.annotations.FormData.SdkCommand;
 import org.eclipse.scout.saml.saml.FormElement;
 import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.sdk.extensions.runtime.classes.RuntimeClasses;
@@ -44,6 +45,7 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
   public final static int EVENT_OBJECT_TYPE_FORM_DATA = 8;
   public final static int EVENT_OBJECT_TYPE_MAIN_BOX = 9;
 
+  private final static String SdkCommandFqn = SdkCommand.class.getName().replace('$', '.');
   private final static String CLIENT_FORM_SERVICE_SUFFIX = "ClientService";
   private final static String SERVER_FORM_SERVICE_SUFFIX = SdkProperties.SUFFIX_SERVICE;
 
@@ -91,21 +93,27 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
     postProcessType(m_createdClientServiceImplementation);
 
     postProcessType(m_createdServerServiceInterface);
-    serverServiceImportsCorrection();
     postProcessType(m_createdServerServiceImplementation);
 
     postProcessType(m_createdForm);
     postProcessType(m_createdFormData);
+
+    importsCorrection();
   }
 
-  private void serverServiceImportsCorrection() throws JavaModelException {
+  private void importsCorrection() throws CoreException {
     //TODO Why necessary? check organize imports!
-    ICompilationUnit compilationUnit = m_createdServerServiceImplementation.getCompilationUnit();
-    String src = compilationUnit.getSource();
-    if (src.contains(m_createdFormData.getElementName())) {
-      String fqn = m_createdFormData.getFullyQualifiedName();
-      if (!src.contains("import " + fqn + ";")) {
-        compilationUnit.createImport(fqn, null, getSamlContext().getMonitor());
+    String fqn = m_createdFormData.getFullyQualifiedName();
+    addImportIfNecessary(m_createdServerServiceImplementation.getCompilationUnit(), fqn, m_createdFormData.getElementName());
+    addImportIfNecessary(m_createdForm.getCompilationUnit(), fqn, m_createdFormData.getElementName());
+    m_createdForm.getCompilationUnit().createImport(SdkCommandFqn, null, getSamlContext().getMonitor());
+  }
+
+  private void addImportIfNecessary(ICompilationUnit icu, String importFqn, String simpleName) throws JavaModelException {
+    String src = icu.getSource();
+    if (src.contains(simpleName)) {
+      if (!src.contains("import " + importFqn + ";")) {
+        icu.createImport(importFqn, null, getSamlContext().getMonitor());
       }
     }
   }
