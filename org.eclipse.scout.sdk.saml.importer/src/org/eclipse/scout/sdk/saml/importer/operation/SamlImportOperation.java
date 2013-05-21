@@ -204,7 +204,7 @@ public class SamlImportOperation implements IOperation {
         // 5. all lookups
         startTimer();
         visitRootElements(new RootElementVisitor(LookupElement.class));
-        stopTimer("Lookukps");
+        stopTimer("Lookups");
         if (monitor.isCanceled()) {
           return;
         }

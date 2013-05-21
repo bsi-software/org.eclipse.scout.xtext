@@ -59,9 +59,21 @@ public class SamlImportApplication implements IApplication {
     importProjectsIntoWorkspace();
     applyTargetPlatform();
     importSaml();
+    saveWorkspace();
 
     SamlImporterActivator.logInfo("SAML import application finished.");
     return EXIT_OK;
+  }
+
+  private void saveWorkspace() {
+    try {
+      SamlImporterActivator.logInfo("Saving Workspace.");
+      ResourcesPlugin.getWorkspace().save(true, null);
+      SamlImporterActivator.logInfo("Workspace successfully saved.");
+    }
+    catch (CoreException e) {
+      SamlImporterActivator.logWarning("Unable to save the workspace.", e);
+    }
   }
 
   private void validateInputParams() throws Exception {
