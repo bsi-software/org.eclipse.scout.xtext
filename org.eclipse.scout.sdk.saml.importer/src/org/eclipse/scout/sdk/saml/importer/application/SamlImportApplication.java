@@ -10,26 +10,25 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
-import org.eclipse.jdt.core.WorkingCopyOwner;
-import org.eclipse.jdt.internal.core.DefaultWorkingCopyOwner;
-import org.eclipse.jdt.internal.ui.JavaPlugin;
 import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.sdk.compatibility.TargetPlatformUtility;
 import org.eclipse.scout.sdk.jobs.OperationJob;
+import org.eclipse.scout.sdk.operation.util.IOrganizeImportService;
 import org.eclipse.scout.sdk.saml.importer.SamlImportHelper;
 import org.eclipse.scout.sdk.saml.importer.internal.SamlImporterActivator;
+import org.eclipse.scout.sdk.saml.importer.internal.jdt.imports.SamlOrganizeImportService;
 import org.eclipse.scout.sdk.saml.importer.operation.util.ExternalProjectImportOperation;
 import org.eclipse.scout.sdk.util.jdt.JdtUtility;
 import org.eclipse.scout.sdk.util.log.ScoutStatus;
 
 /**
+ * Eclipse Application to headlessly run a SAML import. See the 'headless' folder in this plugin for examples.
+ * 
  * @author mvi
  */
-@SuppressWarnings("restriction")
 public class SamlImportApplication implements IApplication {
 
   public final static String INPUT_PROJECT_NAME = "samlInputProjectName";
@@ -55,7 +54,7 @@ public class SamlImportApplication implements IApplication {
 
     SamlImporterActivator.logInfo("Running import with '" + getSamlInputProjectName() + "' as SAML input project.");
 
-    initJdt();
+    initOrganizeImportService();
     importProjectsIntoWorkspace();
     applyTargetPlatform();
     importSaml();
@@ -110,12 +109,8 @@ public class SamlImportApplication implements IApplication {
     }
   }
 
-  private void initJdt() throws InterruptedException {
-    SamlImporterActivator.logInfo("Waiting for JDT...");
-    InitJdtUiJob j = new InitJdtUiJob();
-    j.schedule();
-    j.join();
-    SamlImporterActivator.logInfo("JDT plugin ready.");
+  private void initOrganizeImportService() {
+    SamlImporterActivator.getContext().registerService(IOrganizeImportService.class, new SamlOrganizeImportService(), null);
   }
 
   private void importSaml() throws Exception {
@@ -194,37 +189,6 @@ public class SamlImportApplication implements IApplication {
     return ret;
   }
 
-  /**
-   * ensures the org.eclipse.jdt.ui plugin is started. the job waits until the plugin is started.
-   * after the plugin is started some cleanup tasks are performed to ensure no UI primary buffer
-   * provider is registered because no Display thread is actually running! <h3>
-   * {@link InitJdtUiJob}</h3> ...
-   * 
-   * @author mvi
-   * @since 3.8.0 01.11.2012
-   */
-  private static class InitJdtUiJob extends Job {
-    private InitJdtUiJob() {
-      super("init jdt ui plugin");
-      setSystem(true);
-    }
-
-    @Override
-    protected IStatus run(IProgressMonitor monitor) {
-      JavaPlugin.getDefault(); // trigger jdt.ui activation. bundle is started in this thread (sync).
-
-      if (DefaultWorkingCopyOwner.PRIMARY.primaryBufferProvider != null) {
-        // remove the buffer provider added by jdt.ui again because we are running headlessly but require some ui plugins (organize imports)
-        WorkingCopyOwner.setPrimaryBufferProvider(null);
-      }
-      else {
-        SamlImporterActivator.logWarning("No primary buffer provider was found. Ensure JDT is initialized. This may cause blocking issues later on.");
-      }
-
-      return Status.OK_STATUS;
-    }
-  }
-
   private static class LoadTargetPlatformJob extends Job {
     private IFile m_targetFile;
 
@@ -237,9 +201,9 @@ public class SamlImportApplication implements IApplication {
     @Override
     protected IStatus run(IProgressMonitor monitor) {
       try {
-        TargetPlatformUtility.resolveTargetPlatform(m_targetFile, true, monitor);
+        IStatus status = TargetPlatformUtility.resolveTargetPlatform(m_targetFile, true, monitor);
         JdtUtility.waitForJobFamily("LoadTargetDefinitionJob"); // refers to LoadTargetDefinitionJob.JOB_FAMILY_ID which is private
-        return Status.OK_STATUS;
+        return status;
       }
       catch (CoreException e) {
         return e.getStatus();
