@@ -22,6 +22,7 @@ import org.eclipse.scout.sdk.extensions.runtime.classes.RuntimeClasses;
 import org.eclipse.scout.sdk.extensions.targetpackage.IDefaultTargetPackage;
 import org.eclipse.scout.sdk.operation.form.FormStackNewOperation;
 import org.eclipse.scout.sdk.operation.service.ServiceNewOperation;
+import org.eclipse.scout.sdk.saml.importer.internal.SamlImporterActivator;
 import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOperation;
 import org.eclipse.scout.sdk.saml.importer.util.IItemVisitor;
 import org.eclipse.scout.sdk.saml.importer.util.SamlImportUtility;
@@ -103,10 +104,14 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
 
   private void importsCorrection() throws CoreException {
     //TODO Why necessary? check organize imports!
-    String fqn = m_createdFormData.getFullyQualifiedName();
-    addImportIfNecessary(m_createdServerServiceImplementation.getCompilationUnit(), fqn, m_createdFormData.getElementName());
-    addImportIfNecessary(m_createdForm.getCompilationUnit(), fqn, m_createdFormData.getElementName());
-    m_createdForm.getCompilationUnit().createImport(SdkCommandFqn, null, getSamlContext().getMonitor());
+    try {
+      addImportIfNecessary(m_createdServerServiceImplementation.getCompilationUnit(), m_createdFormData.getFullyQualifiedName(), m_createdFormData.getElementName());
+      addImportIfNecessary(m_createdForm.getCompilationUnit(), m_createdFormData.getFullyQualifiedName(), m_createdFormData.getElementName());
+      addImportIfNecessary(m_createdForm.getCompilationUnit(), SdkCommandFqn, SdkCommand.class.getSimpleName());
+    }
+    catch (Exception e) {
+      SamlImporterActivator.logWarning("Unable to add missing imports.", e);
+    }
   }
 
   private void addImportIfNecessary(ICompilationUnit icu, String importFqn, String simpleName) throws JavaModelException {
