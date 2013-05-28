@@ -114,10 +114,13 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
     }
   }
 
-  private void addImportIfNecessary(ICompilationUnit icu, String importFqn, String simpleName) throws JavaModelException {
+  private void addImportIfNecessary(ICompilationUnit icu, String importFqn, String simpleName) throws CoreException {
     String src = icu.getSource();
     if (src.contains(simpleName)) {
       if (!src.contains("import " + importFqn + ";")) {
+        if (!icu.isConsistent()) {
+          getSamlContext().getWorkingCopyManager().reconcile(icu, getSamlContext().getMonitor());
+        }
         icu.createImport(importFqn, null, getSamlContext().getMonitor());
       }
     }
