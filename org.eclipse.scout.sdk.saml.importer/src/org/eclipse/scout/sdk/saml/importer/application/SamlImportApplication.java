@@ -23,6 +23,7 @@ import org.eclipse.scout.sdk.saml.importer.internal.jdt.imports.SamlOrganizeImpo
 import org.eclipse.scout.sdk.saml.importer.operation.util.ExternalProjectImportOperation;
 import org.eclipse.scout.sdk.util.jdt.JdtUtility;
 import org.eclipse.scout.sdk.util.log.ScoutStatus;
+import org.osgi.framework.ServiceRegistration;
 
 /**
  * Eclipse Application to headlessly run a SAML import. See the 'headless' folder in this plugin for examples.
@@ -43,6 +44,7 @@ public class SamlImportApplication implements IApplication {
   private String m_samlInputProjectName;
   private String m_targetFilePath;
   private boolean m_importProjectsIntoWorkspace;
+  private ServiceRegistration m_orgImportSvcReg;
 
   @Override
   public Object start(IApplicationContext context) throws Exception {
@@ -110,7 +112,15 @@ public class SamlImportApplication implements IApplication {
   }
 
   private void initOrganizeImportService() {
-    SamlImporterActivator.getContext().registerService(IOrganizeImportService.class, new SamlOrganizeImportService(), null);
+    if (m_orgImportSvcReg == null) {
+      m_orgImportSvcReg = SamlImporterActivator.getContext().registerService(IOrganizeImportService.class.getName(), new SamlOrganizeImportService(), null);
+    }
+  }
+
+  private void stopOrganizeImportService() {
+    if (m_orgImportSvcReg != null) {
+      m_orgImportSvcReg.unregister();
+    }
   }
 
   private void importSaml() throws Exception {
@@ -213,6 +223,7 @@ public class SamlImportApplication implements IApplication {
 
   @Override
   public void stop() {
+    stopOrganizeImportService();
   }
 
   public String getSamlInputProjectName() {
