@@ -15,7 +15,6 @@ import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaModelException;
-import org.eclipse.scout.commons.annotations.FormData.SdkCommand;
 import org.eclipse.scout.saml.saml.FormElement;
 import org.eclipse.scout.saml.saml.LogicElement;
 import org.eclipse.scout.sdk.extensions.runtime.classes.RuntimeClasses;
@@ -46,7 +45,6 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
   public final static int EVENT_OBJECT_TYPE_FORM_DATA = 8;
   public final static int EVENT_OBJECT_TYPE_MAIN_BOX = 9;
 
-  private final static String SdkCommandFqn = SdkCommand.class.getName().replace('$', '.');
   private final static String CLIENT_FORM_SERVICE_SUFFIX = "ClientService";
   private final static String SERVER_FORM_SERVICE_SUFFIX = SdkProperties.SUFFIX_SERVICE;
 
@@ -70,6 +68,9 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
 
   @Override
   public void run() throws CoreException, IllegalArgumentException {
+    SamlImporterActivator.logDebug("FORMS - Import of form '" + getElement().getName() + "' started.");
+    long start = System.currentTimeMillis();
+
     createFormStack();
 
     processChildren(m_createdMainBox, createFormContext());
@@ -77,6 +78,8 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
     fireEvents();
 
     postProcessForm();
+
+    SamlImporterActivator.logDebug("FORMS - Import of form '" + getElement().getName() + "' finished. Duration: " + (System.currentTimeMillis() - start) + "ms.");
   }
 
   private void fireEvents() throws IllegalArgumentException, CoreException {
@@ -99,15 +102,13 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
     postProcessType(m_createdForm);
     postProcessType(m_createdFormData);
 
-    importsCorrection();
+    addImports();
   }
 
-  private void importsCorrection() throws CoreException {
+  private void addImports() throws CoreException {
     //TODO Why necessary? check organize imports!
     try {
       addImportIfNecessary(m_createdServerServiceImplementation.getCompilationUnit(), m_createdFormData.getFullyQualifiedName(), m_createdFormData.getElementName());
-      addImportIfNecessary(m_createdForm.getCompilationUnit(), m_createdFormData.getFullyQualifiedName(), m_createdFormData.getElementName());
-      addImportIfNecessary(m_createdForm.getCompilationUnit(), SdkCommandFqn, SdkCommand.class.getSimpleName());
     }
     catch (Exception e) {
       SamlImporterActivator.logWarning("Unable to add missing imports.", e);

@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
-import org.eclipse.scout.commons.TuningUtility;
 import org.eclipse.scout.nls.sdk.model.workspace.project.INlsProject;
 import org.eclipse.scout.saml.SamlStandaloneSetup;
 import org.eclipse.scout.saml.saml.CodeElement;
@@ -32,6 +31,7 @@ import org.eclipse.scout.sdk.saml.importer.extension.configurator.CodeConfigurat
 import org.eclipse.scout.sdk.saml.importer.extension.configurator.IScoutProjectConfigurator;
 import org.eclipse.scout.sdk.saml.importer.extension.element.ElementImportersExtension;
 import org.eclipse.scout.sdk.saml.importer.extension.preprocess.SamlElementPreProcessorExtension;
+import org.eclipse.scout.sdk.saml.importer.internal.SamlImporterActivator;
 import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
@@ -44,12 +44,11 @@ import com.google.inject.Injector;
 
 public class SamlImportOperation implements IOperation {
 
-  private final static boolean TUNING_OUTPUT_ENABLED = true;
-
   private IProject m_samlInputProject;
   private SamlContext m_context;
   private Injector m_injector;
   private XtextResourceSet m_resourceSet;
+  private long m_duration;
 
   @Override
   public String getOperationName() {
@@ -106,123 +105,108 @@ public class SamlImportOperation implements IOperation {
   }
 
   private void startTimer() {
-    if (TUNING_OUTPUT_ENABLED) {
-      TuningUtility.startTimer();
-    }
+    m_duration = System.currentTimeMillis();
   }
 
-  private void stopTimer(String msg) {
-    if (TUNING_OUTPUT_ENABLED) {
-      TuningUtility.stopTimer(msg);
-    }
+  private void readAndResetTimer(String msg) {
+    SamlImporterActivator.logDebug("'" + msg + "' took " + (System.currentTimeMillis() - m_duration) + "ms.");
+    startTimer();
   }
 
   @Override
   public void run(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager) throws CoreException, IllegalArgumentException {
-    try {
-      startTimer();
+    startTimer();
 
-      startTimer();
-      if (getInjector() == null) {
-        setInjector(new SamlStandaloneSetup().createInjectorAndDoEMFRegistration());
-      }
-
-      if (getResourceSet() == null) {
-        setResourceSet(getInjector().getInstance(XtextResourceSet.class));
-      }
-
-      getResourceSet().addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
-      getResourceSet().addLoadOption(XtextResource.OPTION_ENCODING, "UTF-8");
-
-      // get all input files in the input project
-      Set<IFile> samlFiles = getSamlFiles(getSamlInputProject());
-
-      // create resources from the input files
-      ArrayList<Resource> samlResources = new ArrayList<Resource>(samlFiles.size());
-      for (IFile file : samlFiles) {
-        URI uri = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
-        Resource r = getResourceSet().getResource(uri, true);
-        samlResources.add(r);
-      }
-
-      // checking the resources for errors (do validation)
-      IResourceValidator validator = getInjector().getInstance(IResourceValidator.class);
-      ArrayList<Issue> parsingIssues = new ArrayList<Issue>();
-      for (Resource r : samlResources) {
-        parsingIssues.addAll(validator.validate(r, CheckMode.ALL, CancelIndicator.NullImpl));
-      }
-      stopTimer("Collect and validate resources");
-
-      if (parsingIssues.size() > 0) {
-        // errors found: collect messages
-        StringBuilder sb = new StringBuilder();
-        sb.append("SAML files are not valid. ");
-        sb.append(parsingIssues.size());
-        sb.append(" Error(s) have been found. Please check input files:");
-        for (Issue i : parsingIssues) {
-          sb.append("\n     ");
-          sb.append(i.getMessage());
-        }
-        throw new IllegalArgumentException(sb.toString());
-      }
-      else {
-        // no errors: start import
-        startTimer();
-        m_context = new SamlContext(monitor, workingCopyManager, getInjector());
-
-        // 1. all configurators
-        for (IScoutProjectConfigurator configurator : CodeConfiguratorsExtension.getScoutProjectConfigurators()) {
-          configurator.configure(getSamlContext());
-        }
-
-        // 2. all pre-processors
-        visitRootElements(new PreProcessVisitor());
-        if (monitor.isCanceled()) {
-          return;
-        }
-        stopTimer("Preparations (Configurators, PreProcessors)");
-
-        // 3. all translations
-        startTimer();
-        visitRootElements(new RootElementVisitor(TranslationElement.class));
-        for (INlsProject p : getSamlContext().getNlsProjects()) {
-          p.flush(getSamlContext().getMonitor());
-        }
-        stopTimer("Translations");
-        if (monitor.isCanceled()) {
-          return;
-        }
-
-        // 4. all codes
-        startTimer();
-        visitRootElements(new RootElementVisitor(CodeElement.class));
-        stopTimer("Codes");
-        if (monitor.isCanceled()) {
-          return;
-        }
-
-        // 5. all lookups
-        startTimer();
-        visitRootElements(new RootElementVisitor(LookupElement.class));
-        stopTimer("Lookups");
-        if (monitor.isCanceled()) {
-          return;
-        }
-
-        // 6. all forms
-        startTimer();
-        visitRootElements(new RootElementVisitor(FormElement.class));
-        stopTimer("Forms");
-        if (monitor.isCanceled()) {
-          return;
-        }
-
-        ResourcesPlugin.getWorkspace().checkpoint(false);
-        stopTimer("Import Total");
-      }
+    if (getInjector() == null) {
+      setInjector(new SamlStandaloneSetup().createInjectorAndDoEMFRegistration());
     }
-    finally {
-      TuningUtility.finishAll();
+
+    if (getResourceSet() == null) {
+      setResourceSet(getInjector().getInstance(XtextResourceSet.class));
+    }
+
+    getResourceSet().addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
+    getResourceSet().addLoadOption(XtextResource.OPTION_ENCODING, "UTF-8");
+
+    // get all input files in the input project
+    Set<IFile> samlFiles = getSamlFiles(getSamlInputProject());
+
+    // create resources from the input files
+    ArrayList<Resource> samlResources = new ArrayList<Resource>(samlFiles.size());
+    for (IFile file : samlFiles) {
+      URI uri = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
+      Resource r = getResourceSet().getResource(uri, true);
+      samlResources.add(r);
+    }
+
+    // checking the resources for errors (do validation)
+    IResourceValidator validator = getInjector().getInstance(IResourceValidator.class);
+    ArrayList<Issue> parsingIssues = new ArrayList<Issue>();
+    for (Resource r : samlResources) {
+      parsingIssues.addAll(validator.validate(r, CheckMode.ALL, CancelIndicator.NullImpl));
+    }
+    readAndResetTimer("Collect and validate resources");
+
+    if (parsingIssues.size() > 0) {
+      // errors found: collect messages
+      StringBuilder sb = new StringBuilder();
+      sb.append("SAML files are not valid. ");
+      sb.append(parsingIssues.size());
+      sb.append(" Error(s) have been found. Please check input files:");
+      for (Issue i : parsingIssues) {
+        sb.append("\n     ");
+        sb.append(i.getMessage());
+      }
+      throw new IllegalArgumentException(sb.toString());
+    }
+    else {
+      // no errors: start import
+      m_context = new SamlContext(monitor, workingCopyManager, getInjector());
+
+      // 1. all configurators
+      for (IScoutProjectConfigurator configurator : CodeConfiguratorsExtension.getScoutProjectConfigurators()) {
+        configurator.configure(getSamlContext());
+      }
+
+      // 2. all pre-processors
+      visitRootElements(new PreProcessVisitor());
+      if (monitor.isCanceled()) {
+        return;
+      }
+      readAndResetTimer("Preparations (Configurators, PreProcessors)");
+
+      // 3. all translations
+      visitRootElements(new RootElementVisitor(TranslationElement.class));
+      for (INlsProject p : getSamlContext().getNlsProjects()) {
+        p.flush(getSamlContext().getMonitor());
+      }
+      readAndResetTimer("Translations");
+      if (monitor.isCanceled()) {
+        return;
+      }
+
+      // 4. all codes
+      visitRootElements(new RootElementVisitor(CodeElement.class));
+      readAndResetTimer("Codes");
+      if (monitor.isCanceled()) {
+        return;
+      }
+
+      // 5. all lookups
+      visitRootElements(new RootElementVisitor(LookupElement.class));
+      readAndResetTimer("Lookups");
+      if (monitor.isCanceled()) {
+        return;
+      }
+
+      // 6. all forms
+      visitRootElements(new RootElementVisitor(FormElement.class));
+      readAndResetTimer("Forms");
+      if (monitor.isCanceled()) {
+        return;
+      }
+
+      ResourcesPlugin.getWorkspace().checkpoint(false);
     }
   }
 

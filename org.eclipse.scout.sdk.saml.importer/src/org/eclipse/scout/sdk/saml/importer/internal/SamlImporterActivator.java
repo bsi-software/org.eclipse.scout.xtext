@@ -9,6 +9,9 @@ public class SamlImporterActivator extends Plugin {
   private static BundleContext context;
   private static SdkLogManager logManager;
 
+  private final static boolean DEBUG_OUTPUT_ENABLED = true;
+  private final static String DEBUG_OUTPUT_PREFIX = "DEBUG - ";
+
   public final static String PLUGIN_ID = "org.eclipse.scout.sdk.saml.importer";
 
   public static BundleContext getContext() {
@@ -25,6 +28,24 @@ public class SamlImporterActivator extends Plugin {
   public void stop(BundleContext bundleContext) throws Exception {
     context = null;
     logManager = null;
+  }
+
+  public static void logDebug(Throwable t) {
+    if (DEBUG_OUTPUT_ENABLED) {
+      logManager.logInfo(DEBUG_OUTPUT_PREFIX, t);
+    }
+  }
+
+  public static void logDebug(String message) {
+    if (DEBUG_OUTPUT_ENABLED) {
+      logManager.logInfo(DEBUG_OUTPUT_PREFIX + message);
+    }
+  }
+
+  public static void logDebug(String message, Throwable t) {
+    if (DEBUG_OUTPUT_ENABLED) {
+      logManager.logInfo(DEBUG_OUTPUT_PREFIX + message, t);
+    }
   }
 
   public static void logInfo(Throwable t) {
