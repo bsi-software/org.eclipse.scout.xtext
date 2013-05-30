@@ -30,9 +30,9 @@ public class SamlOrganizeImportService implements IOrganizeImportService {
   public void organize(ICompilationUnit cu, IProgressMonitor monitor) throws CoreException {
     @SuppressWarnings("deprecation")
     final ASTParser parser = ASTParser.newParser(AST.JLS3);
-    parser.setResolveBindings(false);
-    parser.setStatementsRecovery(false);
-    parser.setBindingsRecovery(false);
+    parser.setResolveBindings(true);
+    parser.setStatementsRecovery(true);
+    parser.setBindingsRecovery(true);
     parser.setSource(cu);
     CompilationUnit astRoot = (CompilationUnit) parser.createAST(null);
 
