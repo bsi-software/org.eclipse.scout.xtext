@@ -157,6 +157,7 @@ public class FormElementImportOperation extends AbstractSamlElementImportOperati
 
   private void createFormStack() throws CoreException {
     String baseName = getElement().getName();
+    baseName = Character.toUpperCase(baseName.charAt(0)) + baseName.substring(1);
 
     String clientFormsPackage = getCurrentScoutModule().getClient().getDefaultPackage(IDefaultTargetPackage.CLIENT_FORMS);
     String formClassName = baseName + SdkProperties.SUFFIX_FORM;

@@ -51,6 +51,18 @@ public class TranslationElementImportTest extends AbstractSamlImporterTest {
   }
 
   @Test
+  public void testEscapedNlsEntry() throws Exception {
+    INlsProject nlsProject = getNlsProject();
+
+    INlsEntry entry = nlsProject.getEntry("trans.form.text4");
+
+    Assert.assertNotNull(entry);
+    Assert.assertEquals(1, entry.getAllTranslations().size());
+
+    Assert.assertEquals("text4_default_escaped", entry.getTranslation(Language.LANGUAGE_DEFAULT));
+  }
+
+  @Test
   public void testNlsKeyExisting() throws Exception {
     INlsProject nlsProject = getNlsProject();
 

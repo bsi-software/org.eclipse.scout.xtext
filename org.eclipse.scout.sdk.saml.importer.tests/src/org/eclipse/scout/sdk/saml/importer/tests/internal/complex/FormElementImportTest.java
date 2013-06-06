@@ -28,6 +28,7 @@ import org.junit.Test;
 public class FormElementImportTest extends AbstractSamlImporterTest {
 
   public final static String FORM_NAME = "ComplexLogicTest";
+  public final static String ESCAPED_FORM_NAME = "Form";
 
   @Test
   public void testServerServiceInterfaceCreated() throws Exception {
@@ -125,6 +126,54 @@ public class FormElementImportTest extends AbstractSamlImporterTest {
 
     testMethod(handler, "execStore", FORM_NAME + "FormData formData = new " + FORM_NAME + "FormData();", "exportFormData",
         "I" + FORM_NAME + "Service.class).create(formData);", "SERVICES.getService(I" + FORM_NAME + "ClientService.class)");
+  }
+
+  @Test
+  public void testEscapedServerServiceInterfaceCreated() throws Exception {
+    IScoutBundle shared = getScoutBundle(_SuiteComplexImporterTests.SHARED_BUNDLE);
+    String fqn = shared.getDefaultPackage(IDefaultTargetPackage.SHARED_SERVICES) + ".I" + ESCAPED_FORM_NAME + SdkProperties.SUFFIX_SERVICE;
+    IType t = TypeUtility.getType(fqn);
+    Assert.assertTrue(TypeUtility.exists(t));
+  }
+
+  @Test
+  public void testEscapedClientServiceInterfaceCreated() throws Exception {
+    IScoutBundle client = getScoutBundle(_SuiteComplexImporterTests.CLIENT_BUNDLE);
+    String fqn = client.getDefaultPackage(IDefaultTargetPackage.CLIENT_SERVICES) + ".I" + ESCAPED_FORM_NAME + "Client" + SdkProperties.SUFFIX_SERVICE;
+    IType t = TypeUtility.getType(fqn);
+    Assert.assertTrue(TypeUtility.exists(t));
+  }
+
+  @Test
+  public void testEscapedServerServiceImplementationCreated() throws Exception {
+    IScoutBundle server = getScoutBundle(_SuiteComplexImporterTests.SERVER_BUNDLE);
+    String fqn = server.getDefaultPackage(IDefaultTargetPackage.SERVER_SERVICES) + "." + ESCAPED_FORM_NAME + SdkProperties.SUFFIX_SERVICE;
+    IType t = TypeUtility.getType(fqn);
+    Assert.assertTrue(TypeUtility.exists(t));
+  }
+
+  @Test
+  public void testEscapedClientServiceImplementationCreated() throws Exception {
+    IScoutBundle client = getScoutBundle(_SuiteComplexImporterTests.CLIENT_BUNDLE);
+    String fqn = client.getDefaultPackage(IDefaultTargetPackage.CLIENT_SERVICES) + "." + ESCAPED_FORM_NAME + "Client" + SdkProperties.SUFFIX_SERVICE;
+    IType t = TypeUtility.getType(fqn);
+    Assert.assertTrue(TypeUtility.exists(t));
+  }
+
+  @Test
+  public void testEscapedFormDataCreated() throws Exception {
+    IScoutBundle shared = getScoutBundle(_SuiteComplexImporterTests.SHARED_BUNDLE);
+    String fqn = shared.getDefaultPackage(IDefaultTargetPackage.SHARED_SERVICES) + "." + ESCAPED_FORM_NAME + SdkProperties.SUFFIX_FORM_DATA;
+    IType t = TypeUtility.getType(fqn);
+    Assert.assertTrue(TypeUtility.exists(t));
+  }
+
+  @Test
+  public void testEscapedFormCreated() throws Exception {
+    IScoutBundle client = getScoutBundle(_SuiteComplexImporterTests.CLIENT_BUNDLE);
+    String fqn = client.getDefaultPackage(IDefaultTargetPackage.CLIENT_FORMS) + "." + ESCAPED_FORM_NAME + SdkProperties.SUFFIX_FORM;
+    IType t = TypeUtility.getType(fqn);
+    Assert.assertTrue(TypeUtility.exists(t));
   }
 
   private IType getFormType() throws Exception {

@@ -3,8 +3,10 @@
  */
 package org.eclipse.scout.saml;
 
+import org.eclipse.scout.saml.converter.SamlConverter;
 import org.eclipse.scout.saml.generator.SamlGenerator;
 import org.eclipse.scout.saml.scoping.SamlScopeProvider;
+import org.eclipse.xtext.conversion.IValueConverterService;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.scoping.IScopeProvider;
 
@@ -20,6 +22,11 @@ public class SamlRuntimeModule extends org.eclipse.scout.saml.AbstractSamlRuntim
   @Override
   public Class<? extends IScopeProvider> bindIScopeProvider() {
     return SamlScopeProvider.class;
+  }
+
+  @Override
+  public Class<? extends IValueConverterService> bindIValueConverterService() {
+    return SamlConverter.class;
   }
 
   /*@Override

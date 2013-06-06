@@ -3,6 +3,7 @@ module org.eclipse.scout.saml.tests.complex
 translation trans.text1 default_lang="text1_default" en="text1_en" de_CH="text1_de_CH"
 translation trans.text2 default_lang="text2_default"
 translation trans.text3 default_lang="text3_default"
+translation trans.^form.text4 default_lang="text4_default_escaped"
 
 logic CodeLoadLogSnippet placement=inline {
   "System.out.println(\"execLoadCodes\");"
@@ -43,6 +44,9 @@ lookup Levels {
   logic event=all placement=server {
     "return createDummyData();"
   }
+}
+
+form ^form {
 }
 
 form ComplexLogicTest modal=false columns=3 title=trans.text1 subtitle=trans.text2 width_pixels=1000  {
