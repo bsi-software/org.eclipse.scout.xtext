@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 BSI Business Systems Integration AG.
+ * Copyright (c) 2012, 2013 BSI Business Systems Integration AG.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,10 +19,10 @@ import org.eclipse.scout.sdk.saml.importer.extension.attribute.SamlAttribute;
 import org.eclipse.scout.sdk.saml.importer.extension.attribute.SamlAttributeHandler;
 
 /**
- * <h3>{@link FormAttributeHandlersProvider}</h3> ...
+ * <h3>{@link FormAttributeHandlersProvider}</h3> Handles the attributes of a {@link FormElement}.
  * 
  * @author mvi
- * @since 3.8.0 01.02.2013
+ * @since 3.9.0 01.02.2013
  */
 public class FormAttributeHandlersProvider extends AbstractAttributeHandlersProvider {
 

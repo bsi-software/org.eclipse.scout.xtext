@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 BSI Business Systems Integration AG.
+ * Copyright (c) 2012, 2013 BSI Business Systems Integration AG.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,10 +14,10 @@ import org.eclipse.scout.sdk.saml.importer.operation.AbstractSamlElementImportOp
 import org.eclipse.scout.sdk.saml.importer.operation.SamlContext;
 
 /**
- * <h3>{@link SamlImportEvent}</h3> ...
+ * <h3>{@link SamlImportEvent}</h3>
  * 
  * @author mvi
- * @since 3.8.0 03.02.2013
+ * @since 3.9.0 03.02.2013
  */
 public class SamlImportEvent {
 
@@ -27,11 +27,25 @@ public class SamlImportEvent {
 
   private AbstractSamlElementImportOperation m_source;
   private Object m_object;
-  private int m_objectKind; // instance type (e.g. IType, IResource, etc.)
-  private int m_objectType; // sub type of object instance (e.g. ServerService, Form, FormField, etc. for ITypes)
+  private int m_objectKind;
+  private int m_objectType;
   private SamlImportEventType m_eventType;
   private SamlContext m_context;
 
+  /**
+   * @param type
+   *          The type of event.
+   * @param objectKind
+   *          instance kind (e.g. IType, IResource, etc.)
+   * @param objectType
+   *          sub type of objectKind (e.g. ServerService, Form, FormField, etc. for ITypes)
+   * @param object
+   *          The concrete Object
+   * @param source
+   *          The operation this event comes from.
+   * @param context
+   *          The corresponding SAML context.
+   */
   public SamlImportEvent(SamlImportEventType type, int objectKind, int objectType, Object object, AbstractSamlElementImportOperation source, SamlContext context) {
     m_source = source;
     m_objectKind = objectKind;

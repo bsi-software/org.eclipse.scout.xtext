@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 BSI Business Systems Integration AG.
+ * Copyright (c) 2012, 2013 BSI Business Systems Integration AG.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,10 +31,11 @@ import org.eclipse.scout.sdk.saml.importer.internal.SamlImporterActivator;
 import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 
 /**
- * <h3>{@link ExternalProjectImportOperation}</h3> ...
+ * <h3>{@link ExternalProjectImportOperation}</h3> Operation that imports all projects below a certain folder into the
+ * workspace.
  * 
  * @author mvi
- * @since 3.8.0 21.11.2012
+ * @since 3.9.0 21.11.2012
  */
 public class ExternalProjectImportOperation implements IOperation {
 

@@ -42,6 +42,12 @@ import org.eclipse.xtext.validation.Issue;
 
 import com.google.inject.Injector;
 
+/**
+ * <h3>{@link SamlImportOperation}</h3> Main SAML import operation.
+ * 
+ * @author mvi
+ * @since 3.10.0 07.06.2013
+ */
 public class SamlImportOperation implements IOperation {
 
   private IProject m_samlInputProject;

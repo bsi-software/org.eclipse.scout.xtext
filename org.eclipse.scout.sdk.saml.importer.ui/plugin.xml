@@ -11,7 +11,7 @@
          point="org.eclipse.scout.sdk.ui.contextMenuContributor">
       <contributor
             class="org.eclipse.scout.sdk.saml.importer.ui.extension.SamlImportMenuContributor"
-            page="org.eclipse.scout.sdk.ui.internal.view.outline.pages.project.BundleNodeGroupTablePage">
+            page="org.eclipse.scout.sdk.ui.internal.view.outline.pages.project.ProjectsTablePage">
       </contributor>
    </extension>
 </plugin>

@@ -9,6 +9,12 @@ import org.eclipse.scout.sdk.ui.internal.ScoutSdkUi;
 import org.eclipse.scout.sdk.ui.view.outline.pages.IPage;
 import org.eclipse.swt.widgets.Shell;
 
+/**
+ * <h3>{@link SamlImportAction}</h3> The saml import context menu
+ * 
+ * @author mvi
+ * @since 3.10.0 07.06.2013
+ */
 public class SamlImportAction extends AbstractScoutHandler {
 
   public SamlImportAction() {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 BSI Business Systems Integration AG.
+ * Copyright (c) 2012, 2013 BSI Business Systems Integration AG.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,10 +19,10 @@ import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaModelException;
 
 /**
- * <h3>{@link SamlFormContext}</h3> ...
+ * <h3>{@link SamlFormContext}</h3> Additional context information inside a form.
  * 
  * @author mvi
- * @since 3.8.0 26.09.2012
+ * @since 3.9.0 26.09.2012
  */
 public class SamlFormContext {
   private IType m_clientType;

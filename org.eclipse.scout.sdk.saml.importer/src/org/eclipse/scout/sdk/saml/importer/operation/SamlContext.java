@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 BSI Business Systems Integration AG.
+ * Copyright (c) 2012, 2013 BSI Business Systems Integration AG.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,10 +27,10 @@ import org.eclipse.scout.sdk.util.typecache.IWorkingCopyManager;
 import com.google.inject.Injector;
 
 /**
- * <h3>{@link SamlContext}</h3> ...
+ * <h3>{@link SamlContext}</h3> Context that lives during a single SAML import.
  * 
  * @author mvi
- * @since 3.8.0 26.09.2012
+ * @since 3.9.0 26.09.2012
  */
 public class SamlContext {
   private final IProgressMonitor m_monitor;

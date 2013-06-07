@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 BSI Business Systems Integration AG.
+ * Copyright (c) 2012, 2013 BSI Business Systems Integration AG.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.saml.saml.BigDecimalElement;
 import org.eclipse.scout.saml.saml.ButtonElement;
@@ -49,10 +50,10 @@ import org.eclipse.scout.sdk.util.SdkProperties;
 import org.eclipse.scout.sdk.util.jdt.JdtUtility;
 
 /**
- * <h3>{@link FormFieldAttributeHandlersProvider}</h3> ...
+ * <h3>{@link FormFieldAttributeHandlersProvider}</h3> Handles attributes of a {@link FormFieldElement}.
  * 
  * @author mvi
- * @since 3.8.0 01.02.2013
+ * @since 3.9.0 01.02.2013
  */
 public class FormFieldAttributeHandlersProvider extends AbstractAttributeHandlersProvider {
 
@@ -81,10 +82,10 @@ public class FormFieldAttributeHandlersProvider extends AbstractAttributeHandler
     dispatchFields(options);
   }
 
-  private void dispatchFields(List<?> fields) throws CoreException {
+  private void dispatchFields(List<? extends EObject> fields) throws CoreException {
     // no heap polution as we are only iterating
     double order = 10.0;
-    for (Object field : fields) {
+    for (EObject field : fields) {
       IOperation op = ElementImportersExtension.getImporterFor(field, getSamlContext(), order);
       op.validate();
       op.run(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager());

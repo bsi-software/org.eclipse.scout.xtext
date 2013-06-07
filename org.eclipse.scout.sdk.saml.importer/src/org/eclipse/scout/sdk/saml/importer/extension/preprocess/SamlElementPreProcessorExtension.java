@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 BSI Business Systems Integration AG.
+ * Copyright (c) 2012, 2013 BSI Business Systems Integration AG.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,10 +26,10 @@ import org.eclipse.scout.sdk.saml.importer.operation.SamlContext;
 import org.eclipse.scout.sdk.util.log.ScoutStatus;
 
 /**
- * <h3>{@link SamlElementPreProcessorExtension}</h3> ...
+ * <h3>{@link SamlElementPreProcessorExtension}</h3>
  * 
  * @author mvi
- * @since 3.8.0 09.01.2013
+ * @since 3.9.0 09.01.2013
  */
 public final class SamlElementPreProcessorExtension {
 
@@ -68,6 +68,13 @@ public final class SamlElementPreProcessorExtension {
     return preProcessors;
   }
 
+  /**
+   * Calls all preprocessors for the given {@link EObject}.
+   * 
+   * @param e
+   * @param context
+   * @throws CoreException
+   */
   public static void preProcess(EObject e, SamlContext context) throws CoreException {
     for (Object proc : getPreProcessors()) {
       for (Method m : proc.getClass().getDeclaredMethods()) {

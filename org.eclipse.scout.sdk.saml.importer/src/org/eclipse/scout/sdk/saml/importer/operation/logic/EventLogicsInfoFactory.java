@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 BSI Business Systems Integration AG.
+ * Copyright (c) 2012, 2013 BSI Business Systems Integration AG.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,10 +18,10 @@ import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.saml.saml.LogicElement;
 
 /**
- * <h3>{@link EventLogicsInfoFactory}</h3> ...
+ * <h3>{@link EventLogicsInfoFactory}</h3>
  * 
  * @author mvi
- * @since 3.8.0 03.02.2013
+ * @since 3.9.0 03.02.2013
  */
 public class EventLogicsInfoFactory {
   public static Collection<EventLogicsInfo> create(List<LogicElement> logics) {

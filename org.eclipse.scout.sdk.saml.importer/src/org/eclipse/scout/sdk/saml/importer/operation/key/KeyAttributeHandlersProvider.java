@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 BSI Business Systems Integration AG.
+ * Copyright (c) 2012, 2013 BSI Business Systems Integration AG.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,10 +23,10 @@ import org.eclipse.scout.sdk.saml.importer.extension.attribute.SamlAttributeHand
 import org.eclipse.scout.sdk.saml.importer.extension.element.ElementImportersExtension;
 
 /**
- * <h3>{@link KeyAttributeHandlersProvider}</h3> ...
+ * <h3>{@link KeyAttributeHandlersProvider}</h3> Handles the attributes of a {@link KeyElement}.
  * 
  * @author mvi
- * @since 3.8.0 04.02.2013
+ * @since 3.9.0 04.02.2013
  */
 public class KeyAttributeHandlersProvider extends AbstractAttributeHandlersProvider {
 

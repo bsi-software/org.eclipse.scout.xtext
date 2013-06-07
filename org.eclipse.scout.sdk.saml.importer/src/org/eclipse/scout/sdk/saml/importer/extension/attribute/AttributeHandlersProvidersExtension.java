@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 BSI Business Systems Integration AG.
+ * Copyright (c) 2012, 2013 BSI Business Systems Integration AG.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -152,6 +152,16 @@ public class AttributeHandlersProvidersExtension {
     return false;
   }
 
+  /**
+   * Goes through all attributes that are set in the given element and calls the corresponding attribute handlers (if
+   * existing).
+   * 
+   * @param element
+   *          The element for which the attributes should be imported.
+   * @param context
+   *          The saml context.
+   * @throws CoreException
+   */
   public static void applyAttributes(EObject element, SamlContext context) throws CoreException {
     EList<EStructuralFeature> eAllStructuralFeatures = element.eClass().getEAllStructuralFeatures();
     if (eAllStructuralFeatures.size() > 0) {

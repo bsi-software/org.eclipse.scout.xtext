@@ -43,6 +43,12 @@ import org.eclipse.jdt.core.search.SearchEngine;
 import org.eclipse.jdt.core.search.TypeNameMatch;
 import org.eclipse.text.edits.TextEdit;
 
+/**
+ * <h3>{@link JdtOrganizeImportsOperation}</h3> Copy of the JDT (3.8) Organize Import operation that runs without UI.
+ * 
+ * @author mvi
+ * @since 3.10.0 07.06.2013
+ */
 public class JdtOrganizeImportsOperation implements IWorkspaceRunnable {
 
   public static interface IChooseImportQuery {

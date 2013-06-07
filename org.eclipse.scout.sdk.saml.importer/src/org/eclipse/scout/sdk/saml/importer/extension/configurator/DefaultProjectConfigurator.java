@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 BSI Business Systems Integration AG.
+ * Copyright (c) 2012, 2013 BSI Business Systems Integration AG.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,10 +24,10 @@ import org.eclipse.scout.sdk.workspace.ScoutBundleFilters;
 import org.osgi.service.prefs.BackingStoreException;
 
 /**
- * <h3>{@link DefaultProjectConfigurator}</h3> ...
+ * <h3>{@link DefaultProjectConfigurator}</h3>
  * 
  * @author mvi
- * @since 3.8.0 27.12.2012
+ * @since 3.9.0 27.12.2012
  */
 public class DefaultProjectConfigurator implements IScoutProjectConfigurator {
 
@@ -36,7 +36,7 @@ public class DefaultProjectConfigurator implements IScoutProjectConfigurator {
     IScoutBundle[] roots = ScoutSdkCore.getScoutWorkspace().getBundleGraph().getBundles(ScoutBundleFilters.getRootBundlesFilter());
 
     try {
-      // client prefs
+      // default client prefs for forms
       for (IEclipsePreferences preferences : getPrefsForChildBundlesOfType(roots, IScoutBundle.TYPE_CLIENT)) {
         String key = DefaultTargetPackage.getPreferenceKey(IDefaultTargetPackage.CLIENT_FORMS);
         preferences.put(key, "ui.forms");

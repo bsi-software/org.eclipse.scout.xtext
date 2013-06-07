@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 BSI Business Systems Integration AG.
+ * Copyright (c) 2012, 2013 BSI Business Systems Integration AG.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,26 +31,70 @@ import org.eclipse.xtext.resource.XtextResourceSet;
 import com.google.inject.Injector;
 
 /**
- * <h3>{@link SamlImportHelper}</h3> ...
+ * <h3>{@link SamlImportHelper}</h3> Basic entry point for starting a SAML import.
  * 
  * @author mvi
- * @since 3.8.0 26.10.2012
+ * @since 3.9.0 26.10.2012
  */
 @SuppressWarnings("restriction")
 public class SamlImportHelper {
 
+  /**
+   * Starts the SAML import into the current workspace.<br>
+   * Important: This method should only be called if there is no workbench running! If a workbench is available, use
+   * {@link SamlImportHelper#importSamlSync(IProject, Injector, XtextResourceSet)}!<br>
+   * This methods blocks until the import and all post processing tasks have been completed.
+   * 
+   * @param samlInputProject
+   *          All .saml files in this project will be imported.
+   * @return The finish status of the import.
+   * @throws IllegalArgumentException
+   */
   public static IStatus importSamlSync(IProject samlInputProject) throws IllegalArgumentException {
     return importSamlSync(samlInputProject, null, null);
   }
 
+  /**
+   * Starts the SAML import into the current workspace.<br>
+   * This methods blocks until the import and all post processing tasks have been completed.
+   * 
+   * @param samlInputProject
+   *          All .saml files in this project will be imported.
+   * @param injector
+   *          The injector to use. Can be retrieved from the SAML UI Activator.
+   * @param resourceSet
+   *          The resource set that belongs to the given input project. Can be retrieved from a IResourceSetProvider.
+   * @return The finish status of the import.
+   * @throws IllegalArgumentException
+   */
   public static IStatus importSamlSync(IProject samlInputProject, Injector injector, XtextResourceSet resourceSet) throws IllegalArgumentException {
     return doImport(samlInputProject, injector, resourceSet, true);
   }
 
+  /**
+   * Starts the SAML import into the current workspace and immediately returns.<br>
+   * Important: This method should only be called if there is no workbench running! If a workbench is available, use
+   * {@link SamlImportHelper#importSamlAsync(IProject, Injector, XtextResourceSet)}!<br>
+   * 
+   * @param samlInputProject
+   *          All .saml files in this project will be imported.
+   * @throws IllegalArgumentException
+   */
   public static void importSamlAsync(IProject samlInputProject) throws IllegalArgumentException {
     importSamlAsync(samlInputProject, null, null);
   }
 
+  /**
+   * Starts the SAML import into the current workspace and immediately returns.
+   * 
+   * @param samlInputProject
+   *          All .saml files in this project will be imported.
+   * @param injector
+   *          The injector to use. Can be retrieved from the SAML UI Activator.
+   * @param resourceSet
+   *          The resource set that belongs to the given input project. Can be retrieved from a IResourceSetProvider.
+   * @throws IllegalArgumentException
+   */
   public static void importSamlAsync(IProject samlInputProject, Injector injector, XtextResourceSet resourceSet) throws IllegalArgumentException {
     doImport(samlInputProject, injector, resourceSet, false);
   }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 BSI Business Systems Integration AG.
+ * Copyright (c) 2012, 2013 BSI Business Systems Integration AG.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.commons.beans.FastBeanUtility;
 import org.eclipse.scout.commons.beans.FastPropertyDescriptor;
@@ -32,10 +33,10 @@ import org.eclipse.scout.sdk.saml.importer.operation.SamlContext;
 import org.eclipse.scout.sdk.util.log.ScoutStatus;
 
 /**
- * <h3>{@link ElementImportersExtension}</h3> ...
+ * <h3>{@link ElementImportersExtension}</h3>
  * 
  * @author mvi
- * @since 3.8.0 03.02.2013
+ * @since 3.9.0 03.02.2013
  */
 public final class ElementImportersExtension {
 
@@ -98,6 +99,20 @@ public final class ElementImportersExtension {
     return allOperationDefs;
   }
 
+  /**
+   * Gets the importer operation for the given input object.
+   * 
+   * @param input
+   *          Usually a SAML element ({@link EObject}. But can be any object for which an operation is registered.
+   * @param context
+   *          The current SAML import context.
+   * @param props
+   *          Optional properties that should be injected into the created operation. There must be a single (!) setter
+   *          for that datatype in the operation.
+   * @return
+   * @throws CoreException
+   *           When there is no operation for the given input.
+   */
   public final static IOperation getImporterFor(Object input, SamlContext context, Object... props) throws CoreException {
     if (input == null) {
       throw new CoreException(new ScoutStatus("Null element not allowed for operation retrieval."));
