@@ -20,6 +20,7 @@ import org.eclipse.scout.sdk.extensions.targetpackage.IDefaultTargetPackage;
 import org.eclipse.scout.sdk.saml.importer.operation.SamlContext;
 import org.eclipse.scout.sdk.util.log.ScoutStatus;
 import org.eclipse.scout.sdk.workspace.IScoutBundle;
+import org.eclipse.scout.sdk.workspace.IScoutBundleFilter;
 import org.eclipse.scout.sdk.workspace.ScoutBundleFilters;
 import org.osgi.service.prefs.BackingStoreException;
 
@@ -54,9 +55,12 @@ public class DefaultProjectConfigurator implements IScoutProjectConfigurator {
 
   private IEclipsePreferences[] getPrefsForChildBundlesOfType(IScoutBundle[] roots, String type) {
     ArrayList<IEclipsePreferences> prefsForBundles = new ArrayList<IEclipsePreferences>();
+    IScoutBundleFilter filter = ScoutBundleFilters.getMultiFilterAnd(ScoutBundleFilters.getWorkspaceBundlesFilter(), ScoutBundleFilters.getBundlesOfTypeFilter(type));
     for (IScoutBundle root : roots) {
-      for (IScoutBundle b : root.getChildBundles(ScoutBundleFilters.getBundlesOfTypeFilter(type), true)) {
-        prefsForBundles.add(b.getPreferences());
+      for (IScoutBundle b : root.getChildBundles(filter, true)) {
+        if (b.getPreferences() != null) {
+          prefsForBundles.add(b.getPreferences());
+        }
       }
     }
     return prefsForBundles.toArray(new IEclipsePreferences[prefsForBundles.size()]);
