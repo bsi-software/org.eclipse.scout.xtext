@@ -13,6 +13,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
+import org.eclipse.scout.commons.CompareUtility;
 import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.sdk.compatibility.TargetPlatformUtility;
 import org.eclipse.scout.sdk.jobs.OperationJob;
@@ -23,6 +24,7 @@ import org.eclipse.scout.sdk.saml.importer.internal.jdt.imports.SamlOrganizeImpo
 import org.eclipse.scout.sdk.saml.importer.operation.util.ExternalProjectImportOperation;
 import org.eclipse.scout.sdk.util.jdt.JdtUtility;
 import org.eclipse.scout.sdk.util.log.ScoutStatus;
+import org.osgi.framework.Bundle;
 import org.osgi.framework.ServiceRegistration;
 
 /**
@@ -88,6 +90,7 @@ public class SamlImportApplication implements IApplication {
       IFile targetFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(getTargetFilePath()));
       if (targetFile != null && targetFile.exists()) {
         SamlImporterActivator.logInfo("Resetting target platform to '" + targetFile.getFullPath().toOSString() + "'.");
+        uninstallEclipseIdePlugin();
         LoadTargetPlatformJob tpj = new LoadTargetPlatformJob(targetFile);
         tpj.schedule();
         tpj.join();
@@ -102,13 +105,46 @@ public class SamlImportApplication implements IApplication {
       }
       else {
         if (targetFile == null) {
-          throw new CoreException(new ScoutStatus("The given target file could not be found."));
+          throw new CoreException(new ScoutStatus("The given .target file could not be found."));
         }
         else {
-          throw new CoreException(new ScoutStatus("The target file '" + targetFile.getFullPath().toOSString() + "' could not be found."));
+          throw new CoreException(new ScoutStatus("The .target file '" + targetFile.getFullPath().toOSString() + "' could not be found."));
         }
       }
     }
+  }
+
+  /**
+   * When resolving a target that contains P2 updatesite locations, P2 tries to find local bundle pools in the recent
+   * workspaces. For this the plugin org.eclipse.ui.ide is accessed because this bundle stores the recent workspaces in
+   * its preferences. During loading of these preferences the pref-initializer extension is invoked which activates this
+   * bundle. If there is no UI available to the current operating system, this plugin cannot be activated because it
+   * accesses the SWT Display class in its activator. This results in an Error on systems not having a window system
+   * available.<br>
+   * To resolve this the affected bundle is uninstalled so that the pref-initializer extension is not executed. We don't
+   * want to re-use bundle pools of other recent workspaces anyway.
+   */
+  private void uninstallEclipseIdePlugin() {
+    String bundleName = "org.eclipse.ui.ide";
+    try {
+
+      Bundle uiIde = getBundle(bundleName);
+      if (uiIde != null) {
+        uiIde.uninstall();
+      }
+    }
+    catch (Throwable t) {
+      SamlImporterActivator.logWarning("Unable to uninstall '" + bundleName + "'.");
+    }
+  }
+
+  private Bundle getBundle(String symbolicName) {
+    for (Bundle b : SamlImporterActivator.getContext().getBundles()) {
+      if (CompareUtility.equals(symbolicName, b.getSymbolicName())) {
+        return b;
+      }
+    }
+    return null;
   }
 
   private void initOrganizeImportService() {
