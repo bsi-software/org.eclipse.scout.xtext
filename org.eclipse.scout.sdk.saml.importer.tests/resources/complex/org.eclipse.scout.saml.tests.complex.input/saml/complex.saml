@@ -47,6 +47,7 @@ lookup Levels {
 }
 
 form ^form {
+  
 }
 
 form ComplexLogicTest modal=false columns=3 title=trans.text1 subtitle=trans.text2 width_pixels=1000  {
@@ -86,7 +87,9 @@ form ComplexFieldTest {
   }
   group GroupTest text=trans.text2 columns=3 enabled=false visible=false label_visible=false border_visible=false border_decoration=line height=10 width=3 width_pixels=500 {
     bigdecimal BigDecimalTest text=trans.text1 enabled=false visible=false percent=true grouping=false label_visible=false mandatory=true width=2 width_pixels=333 horizontal_align=left fraction_digits=4 min=20.2 max=200.002
-    date DateTest text=trans.text2 enabled=false visible=false label_visible=false mandatory=true width=2
+    bigdecimal BigDecimal2Test format="0000.00"
+	long LongTest text=trans.text1 enabled=false visible=false label_visible=false mandatory=true width=2 width_pixels=76 horizontal_align=left min=2 max=4 format="0000"
+	date DateTest text=trans.text2 enabled=false visible=false label_visible=false mandatory=true width=2 format="dd.MM.yyyy"
     smartfield SmartFieldTest1 text=trans.text1 enabled=false visible=false label_visible=false mandatory=true code=Departments width=2 value_type="java.lang.String" 
     list TestList1 text=trans.text1 enabled=false visible=false label_visible=false mandatory=true code=Departments width=2 value_type="java.lang.String"
     button TestButton text=trans.text1 enabled=false visible=false process_button=false width=2 width_pixels=30 type=normal {

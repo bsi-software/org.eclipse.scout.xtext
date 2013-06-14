@@ -17,24 +17,24 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * <h3>{@link DateElementImportTest}</h3>
+ * <h3>{@link LongElementImportTest}</h3>
  * 
  * @author mvi
  * @since 3.9.0 05.02.2013
  */
-public class DateElementImportTest extends AbstractSamlFieldImporterTest implements IComplexFieldTestConstants {
+public class LongElementImportTest extends AbstractSamlFieldImporterTest implements IComplexFieldTestConstants {
 
-  private final static String[] LOCATION = new String[]{"GroupTest", "DateTest"};
+  private final static String[] LOCATION = new String[]{"GroupTest", "LongTest"};
 
   @Test
   public void testNumAttributes() throws Exception {
     IType field = getField(FORM_NAME, LOCATION);
-    Assert.assertEquals(7, TypeUtility.getMethods(field).length);
+    Assert.assertEquals(11, TypeUtility.getMethods(field).length);
   }
 
   @Test
   public void testTextAttribute() throws Exception {
-    testNlsConfigMethod(getField(FORM_NAME, LOCATION), "getConfiguredLabel", "trans.text2");
+    testNlsConfigMethod(getField(FORM_NAME, LOCATION), "getConfiguredLabel", "trans.text1");
   }
 
   @Test
@@ -63,7 +63,27 @@ public class DateElementImportTest extends AbstractSamlFieldImporterTest impleme
   }
 
   @Test
+  public void testWidthPixelsAttribute() throws Exception {
+    testIntConfigMethod(getField(FORM_NAME, LOCATION), "getConfiguredWidthInPixel", 76);
+  }
+
+  @Test
+  public void testHorizontalAlignAttribute() throws Exception {
+    testIntConfigMethod(getField(FORM_NAME, LOCATION), "getConfiguredHorizontalAlignment", -1);
+  }
+
+  @Test
+  public void testMinAttribute() throws Exception {
+    testLongConfigMethod(getField(FORM_NAME, LOCATION), "getConfiguredMinimumValue", 2L);
+  }
+
+  @Test
+  public void testMaxAttribute() throws Exception {
+    testLongConfigMethod(getField(FORM_NAME, LOCATION), "getConfiguredMaximumValue", 4L);
+  }
+
+  @Test
   public void testFormatAttribute() throws Exception {
-    testStringConfigMethod(getField(FORM_NAME, LOCATION), "getConfiguredFormat", "dd.MM.yyyy");
+    testStringConfigMethod(getField(FORM_NAME, LOCATION), "getConfiguredFormat", "0000");
   }
 }

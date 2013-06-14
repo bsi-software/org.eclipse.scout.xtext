@@ -3,10 +3,14 @@ package org.eclipse.scout.saml.validation;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.pde.internal.core.PDECore;
+import org.eclipse.scout.commons.CompareUtility;
 import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.saml.module.SamlModule;
+import org.eclipse.scout.saml.saml.BigDecimalElement;
 import org.eclipse.scout.saml.saml.ButtonElement;
 import org.eclipse.scout.saml.saml.CodeElement;
 import org.eclipse.scout.saml.saml.FileChooserElement;
@@ -27,6 +31,7 @@ import org.eclipse.scout.saml.saml.TemplateElement;
 import org.eclipse.scout.saml.saml.TranslationElement;
 import org.eclipse.scout.saml.saml.ValueFieldElement;
 import org.eclipse.scout.saml.services.SamlGrammarAccess;
+import org.eclipse.scout.sdk.util.resources.ResourceUtility;
 import org.eclipse.scout.sdk.workspace.IScoutBundle;
 import org.eclipse.scout.sdk.workspace.type.ScoutTypeUtility;
 import org.eclipse.xtext.validation.Check;
@@ -208,39 +213,62 @@ public class SamlJavaValidator extends AbstractSamlJavaValidator implements ISam
       return;
     }
 
-    // check if all plugins can be found
     SamlModule m = new SamlModule(module);
-    if (m.getClient() == null || m.getShared() == null || m.getServer() == null) {
-      error(BUNDLE_NOT_FOUND, module, SamlPackage.Literals.MODULE_ELEMENT__NAME, INVALID_MODULE);
+
+    // check if all plugins can be found
+    if (!checkPlugin(module, m.getClient(), m.getClientName())) {
       return;
     }
-
-    // check for binary projects
-    if (m.getClient().isBinary() || m.getShared().isBinary() || m.getServer().isBinary()) {
-      error(BINARY_BUNDLE_NOT_ALLOWED, module, SamlPackage.Literals.MODULE_ELEMENT__NAME, INVALID_MODULE);
+    if (!checkPlugin(module, m.getShared(), m.getSharedName())) {
+      return;
+    }
+    if (!checkPlugin(module, m.getServer(), m.getServerName())) {
       return;
     }
 
     // check if client & server can see the shared
     if (!ScoutTypeUtility.isOnClasspath(m.getShared(), m.getClient())) {
-      error(CANNOT_ACCESS_SHARED, module, SamlPackage.Literals.MODULE_ELEMENT__NAME, INVALID_MODULE);
+      error(String.format(CANNOT_ACCESS_SHARED, m.getSharedName(), m.getClientName()), module, SamlPackage.Literals.MODULE_ELEMENT__NAME, INVALID_MODULE, module.getName());
       return;
     }
     if (!ScoutTypeUtility.isOnClasspath(m.getShared(), m.getServer())) {
-      error(CANNOT_ACCESS_SHARED, module, SamlPackage.Literals.MODULE_ELEMENT__NAME, INVALID_MODULE);
+      error(String.format(CANNOT_ACCESS_SHARED, m.getSharedName(), m.getServerName()), module, SamlPackage.Literals.MODULE_ELEMENT__NAME, INVALID_MODULE, module.getName());
       return;
     }
 
     // check if the types match
     if (!IScoutBundle.TYPE_CLIENT.equals(m.getClient().getType())) {
-      error(BUNDLE_TYPES_DO_NOT_MATCH, module, SamlPackage.Literals.MODULE_ELEMENT__NAME, INVALID_MODULE);
+      error(String.format(BUNDLE_TYPES_DO_NOT_MATCH, m.getClientName(), IScoutBundle.TYPE_CLIENT, m.getClient().getType()), module, SamlPackage.Literals.MODULE_ELEMENT__NAME, INVALID_MODULE, module.getName());
     }
     if (!IScoutBundle.TYPE_SHARED.equals(m.getShared().getType())) {
-      error(BUNDLE_TYPES_DO_NOT_MATCH, module, SamlPackage.Literals.MODULE_ELEMENT__NAME, INVALID_MODULE);
+      error(String.format(BUNDLE_TYPES_DO_NOT_MATCH, m.getSharedName(), IScoutBundle.TYPE_SHARED, m.getShared().getType()), module, SamlPackage.Literals.MODULE_ELEMENT__NAME, INVALID_MODULE, module.getName());
     }
     if (!IScoutBundle.TYPE_SERVER.equals(m.getServer().getType())) {
-      error(BUNDLE_TYPES_DO_NOT_MATCH, module, SamlPackage.Literals.MODULE_ELEMENT__NAME, INVALID_MODULE);
+      error(String.format(BUNDLE_TYPES_DO_NOT_MATCH, m.getServerName(), IScoutBundle.TYPE_SERVER, m.getServer().getType()), module, SamlPackage.Literals.MODULE_ELEMENT__NAME, INVALID_MODULE, module.getName());
     }
+  }
+
+  private boolean checkPlugin(ModuleElement module, IScoutBundle bundle, String bundleName) {
+    if (bundle == null) {
+      // check if the project is in the workspace (for better error message)
+      IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(bundleName);
+      if (ResourceUtility.exists(project)) {
+        // there is a project in the workspace but there is no scout bundle in the graph
+        error(String.format(BUNDLE_NOT_A_SCOUT_BUNDLE, bundleName), module, SamlPackage.Literals.MODULE_ELEMENT__NAME, INVALID_MODULE, module.getName());
+        return false;
+      }
+
+      error(String.format(BUNDLE_NOT_FOUND, bundleName), module, SamlPackage.Literals.MODULE_ELEMENT__NAME, INVALID_MODULE, module.getName());
+      return false;
+    }
+
+    // check for binary projects
+    if (bundle.isBinary()) {
+      error(String.format(BINARY_BUNDLE_NOT_ALLOWED, bundleName), module, SamlPackage.Literals.MODULE_ELEMENT__NAME, INVALID_MODULE, module.getName());
+      return false;
+    }
+
+    return true;
   }
 
   @Check
@@ -298,6 +326,20 @@ public class SamlJavaValidator extends AbstractSamlJavaValidator implements ISam
   public void checkNoTemplateDuplicates(TemplateElement element) {
     if (helper.hasGlobalDuplicate(element.getName(), element)) {
       error(MSG_DUPLICATE, element, SamlPackage.eINSTANCE.getTemplateElement_Name(), DUPLICATE);
+    }
+  }
+
+  @Check
+  public void checkBigDecimalFormatAttributes(BigDecimalElement element) {
+    if (element.getFormat() != null) {
+      if (element.getFractionDigits() != 0) {
+        error(MSG_FORMAT_CONFLICTING, element, SamlPackage.eINSTANCE.getBigDecimalElement_FractionDigits(), FORMAT_CONFLICTING);
+      }
+
+      String falseKeyWord = grammar.getBooleanTypeAccess().getFalseKeyword_1().getValue();
+      if (CompareUtility.equals(falseKeyWord, element.getGrouping())) {
+        error(MSG_FORMAT_CONFLICTING, element, SamlPackage.eINSTANCE.getBigDecimalElement_Grouping(), FORMAT_CONFLICTING);
+      }
     }
   }
 }

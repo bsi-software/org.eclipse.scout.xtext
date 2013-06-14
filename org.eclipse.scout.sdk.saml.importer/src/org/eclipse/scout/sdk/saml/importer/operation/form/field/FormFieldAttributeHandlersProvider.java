@@ -23,6 +23,7 @@ import org.eclipse.scout.saml.saml.ButtonElement;
 import org.eclipse.scout.saml.saml.CodeElement;
 import org.eclipse.scout.saml.saml.CompositeFieldElement;
 import org.eclipse.scout.saml.saml.CustomFieldElement;
+import org.eclipse.scout.saml.saml.DateElement;
 import org.eclipse.scout.saml.saml.FileChooserElement;
 import org.eclipse.scout.saml.saml.FormElement;
 import org.eclipse.scout.saml.saml.FormFieldElement;
@@ -509,5 +510,14 @@ public class FormFieldAttributeHandlersProvider extends AbstractAttributeHandler
   @SamlAttributeHandler(handles = {@SamlAttribute(elementType = SequenceBoxElement.class, featureId = SamlPackage.SEQUENCE_BOX_ELEMENT__NAME)})
   public void applyAutoCheckFromToAttribute(String name) throws CoreException, IllegalArgumentException {
     overrideMethod("getConfiguredAutoCheckFromTo", "return false;");
+  }
+
+  @SamlAttributeHandler(handles = {
+      @SamlAttribute(elementType = BigDecimalElement.class, featureId = SamlPackage.BIG_DECIMAL_ELEMENT__FORMAT),
+      @SamlAttribute(elementType = DateElement.class, featureId = SamlPackage.DATE_ELEMENT__FORMAT),
+      @SamlAttribute(elementType = LongElement.class, featureId = SamlPackage.LONG_ELEMENT__FORMAT)
+  })
+  public void applyFormatAttribute(String format) throws CoreException, IllegalArgumentException {
+    overrideMethod("getConfiguredFormat", "return " + JdtUtility.toStringLiteral(format) + ";");
   }
 }

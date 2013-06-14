@@ -147,3 +147,13 @@ Changed: mvi
 Changes:
 	Added:
 		Support for escaping qualified names used in 'translation' and 'module'.
+
+
+
+
+Version 1.0.0 2013-06-14
+Changed: mvi
+Changes:
+	Added:
+		For 'date', 'long', 'bigdecimal':
+			Attribute 'format'

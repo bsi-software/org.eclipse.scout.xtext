@@ -21,6 +21,7 @@ import org.eclipse.scout.saml.saml.SamlPackage;
  *   <li>{@link org.eclipse.scout.saml.saml.impl.LongElementImpl#getHorizontalAlign <em>Horizontal Align</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.LongElementImpl#getMin <em>Min</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.LongElementImpl#getMax <em>Max</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.LongElementImpl#getFormat <em>Format</em>}</li>
  * </ul>
  * </p>
  *
@@ -87,6 +88,26 @@ public class LongElementImpl extends ValueFieldElementImpl implements LongElemen
    * @ordered
    */
   protected int max = MAX_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getFormat() <em>Format</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFormat()
+   * @generated
+   * @ordered
+   */
+  protected static final String FORMAT_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getFormat() <em>Format</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFormat()
+   * @generated
+   * @ordered
+   */
+  protected String format = FORMAT_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -183,6 +204,29 @@ public class LongElementImpl extends ValueFieldElementImpl implements LongElemen
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getFormat()
+  {
+    return format;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setFormat(String newFormat)
+  {
+    String oldFormat = format;
+    format = newFormat;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.LONG_ELEMENT__FORMAT, oldFormat, format));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -194,6 +238,8 @@ public class LongElementImpl extends ValueFieldElementImpl implements LongElemen
         return getMin();
       case SamlPackage.LONG_ELEMENT__MAX:
         return getMax();
+      case SamlPackage.LONG_ELEMENT__FORMAT:
+        return getFormat();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -216,6 +262,9 @@ public class LongElementImpl extends ValueFieldElementImpl implements LongElemen
         return;
       case SamlPackage.LONG_ELEMENT__MAX:
         setMax((Integer)newValue);
+        return;
+      case SamlPackage.LONG_ELEMENT__FORMAT:
+        setFormat((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -240,6 +289,9 @@ public class LongElementImpl extends ValueFieldElementImpl implements LongElemen
       case SamlPackage.LONG_ELEMENT__MAX:
         setMax(MAX_EDEFAULT);
         return;
+      case SamlPackage.LONG_ELEMENT__FORMAT:
+        setFormat(FORMAT_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -260,6 +312,8 @@ public class LongElementImpl extends ValueFieldElementImpl implements LongElemen
         return min != MIN_EDEFAULT;
       case SamlPackage.LONG_ELEMENT__MAX:
         return max != MAX_EDEFAULT;
+      case SamlPackage.LONG_ELEMENT__FORMAT:
+        return FORMAT_EDEFAULT == null ? format != null : !FORMAT_EDEFAULT.equals(format);
     }
     return super.eIsSet(featureID);
   }
@@ -281,6 +335,8 @@ public class LongElementImpl extends ValueFieldElementImpl implements LongElemen
     result.append(min);
     result.append(", max: ");
     result.append(max);
+    result.append(", format: ");
+    result.append(format);
     result.append(')');
     return result.toString();
   }

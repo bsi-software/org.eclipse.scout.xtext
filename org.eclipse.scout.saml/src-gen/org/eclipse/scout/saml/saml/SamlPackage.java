@@ -1633,13 +1633,22 @@ public interface SamlPackage extends EPackage
   int BIG_DECIMAL_ELEMENT__MAX = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 5;
 
   /**
+   * The feature id for the '<em><b>Format</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BIG_DECIMAL_ELEMENT__FORMAT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 6;
+
+  /**
    * The number of structural features of the '<em>Big Decimal Element</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BIG_DECIMAL_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 6;
+  int BIG_DECIMAL_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 7;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.LongElementImpl <em>Long Element</em>}' class.
@@ -1778,13 +1787,22 @@ public interface SamlPackage extends EPackage
   int LONG_ELEMENT__MAX = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 2;
 
   /**
+   * The feature id for the '<em><b>Format</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LONG_ELEMENT__FORMAT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 3;
+
+  /**
    * The number of structural features of the '<em>Long Element</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LONG_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 3;
+  int LONG_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.DateElementImpl <em>Date Element</em>}' class.
@@ -1896,13 +1914,22 @@ public interface SamlPackage extends EPackage
   int DATE_ELEMENT__WIDTH_IN_PIXELS = VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
+   * The feature id for the '<em><b>Format</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATE_ELEMENT__FORMAT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
    * The number of structural features of the '<em>Date Element</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DATE_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int DATE_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.SmartfieldElementImpl <em>Smartfield Element</em>}' class.
@@ -4497,6 +4524,17 @@ public interface SamlPackage extends EPackage
   EAttribute getBigDecimalElement_Max();
 
   /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.BigDecimalElement#getFormat <em>Format</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Format</em>'.
+   * @see org.eclipse.scout.saml.saml.BigDecimalElement#getFormat()
+   * @see #getBigDecimalElement()
+   * @generated
+   */
+  EAttribute getBigDecimalElement_Format();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.LongElement <em>Long Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -4540,6 +4578,17 @@ public interface SamlPackage extends EPackage
   EAttribute getLongElement_Max();
 
   /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.LongElement#getFormat <em>Format</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Format</em>'.
+   * @see org.eclipse.scout.saml.saml.LongElement#getFormat()
+   * @see #getLongElement()
+   * @generated
+   */
+  EAttribute getLongElement_Format();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.DateElement <em>Date Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -4548,6 +4597,17 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EClass getDateElement();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.DateElement#getFormat <em>Format</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Format</em>'.
+   * @see org.eclipse.scout.saml.saml.DateElement#getFormat()
+   * @see #getDateElement()
+   * @generated
+   */
+  EAttribute getDateElement_Format();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.SmartfieldElement <em>Smartfield Element</em>}'.
@@ -6158,6 +6218,14 @@ public interface SamlPackage extends EPackage
     EAttribute BIG_DECIMAL_ELEMENT__MAX = eINSTANCE.getBigDecimalElement_Max();
 
     /**
+     * The meta object literal for the '<em><b>Format</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BIG_DECIMAL_ELEMENT__FORMAT = eINSTANCE.getBigDecimalElement_Format();
+
+    /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.LongElementImpl <em>Long Element</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -6192,6 +6260,14 @@ public interface SamlPackage extends EPackage
     EAttribute LONG_ELEMENT__MAX = eINSTANCE.getLongElement_Max();
 
     /**
+     * The meta object literal for the '<em><b>Format</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LONG_ELEMENT__FORMAT = eINSTANCE.getLongElement_Format();
+
+    /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.DateElementImpl <em>Date Element</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -6200,6 +6276,14 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EClass DATE_ELEMENT = eINSTANCE.getDateElement();
+
+    /**
+     * The meta object literal for the '<em><b>Format</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DATE_ELEMENT__FORMAT = eINSTANCE.getDateElement_Format();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.SmartfieldElementImpl <em>Smartfield Element</em>}' class.

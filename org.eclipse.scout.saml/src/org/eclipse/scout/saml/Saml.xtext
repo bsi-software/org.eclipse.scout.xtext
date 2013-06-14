@@ -119,9 +119,9 @@ GroupBoxElement:'group' name=ID
 
 // VALUE FIELDS
 GenericValueFieldElement:SmartfieldElement|ListBoxElement|RadioGroupElement;
+
 ValueFieldElement: StringElement|BigDecimalElement|LongElement|DateElement|CheckboxElement|
-	FileChooserElement|GenericValueFieldElement
-;
+	FileChooserElement|GenericValueFieldElement;
 
 StringElement:'string' name=ID 
 	(
@@ -157,6 +157,7 @@ BigDecimalElement:'bigdecimal' name=ID
 		('fraction_digits' '=' fractionDigits=INT)? &
 		('min' '=' min=Number)? &
 		('max' '=' max=Number)? &
+		('format' '=' format=STRING)? &
 		('super_type' '=' superType=[TemplateElement])?
 	)
 	('{' logic+=LogicElement* '}')?;
@@ -174,6 +175,7 @@ LongElement:'long' name=ID
 		('horizontal_align' '=' horizontalAlign=HorizontalAlignmentType)? &
 		('min' '=' min=INT)? &
 		('max' '=' max=INT)? &
+		('format' '=' format=STRING)? &
 		('super_type' '=' superType=[TemplateElement])?
 	)
 	('{' logic+=LogicElement* '}')?;
@@ -188,6 +190,7 @@ DateElement:'date' name=ID
 		('mandatory' '=' mandatory=BooleanType)? &
 		('width' '=' gridWidth=INT)? &
 		('width_pixels' '=' widthInPixels=INT)? &
+		('format' '=' format=STRING)? &
 		('super_type' '=' superType=[TemplateElement])?
 	)
 	('{' logic+=LogicElement* '}')?;

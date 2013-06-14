@@ -25,6 +25,7 @@ import org.junit.Test;
 public class BigdecimalElementImportTest extends AbstractSamlFieldImporterTest implements IComplexFieldTestConstants {
 
   private final static String[] LOCATION = new String[]{"GroupTest", "BigDecimalTest"};
+  private final static String[] LOCATION2 = new String[]{"GroupTest", "BigDecimal2Test"};
 
   @Test
   public void testNumAttributes() throws Exception {
@@ -97,5 +98,16 @@ public class BigdecimalElementImportTest extends AbstractSamlFieldImporterTest i
   @Test
   public void testMaxAttribute() throws Exception {
     testDoubleConfigMethod(getField(FORM_NAME, LOCATION), "getConfiguredMaxValue", 200.002);
+  }
+
+  @Test
+  public void testNumAttributes2() throws Exception {
+    IType field = getField(FORM_NAME, LOCATION2);
+    Assert.assertEquals(1, TypeUtility.getMethods(field).length);
+  }
+
+  @Test
+  public void testFormatAttribute() throws Exception {
+    testStringConfigMethod(getField(FORM_NAME, LOCATION2), "getConfiguredFormat", "0000.00");
   }
 }

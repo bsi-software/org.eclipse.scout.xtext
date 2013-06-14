@@ -53,14 +53,18 @@ public interface ISamlValidatorConstants {
   String MSG_EVENT_ONLY_INLINE = "this event logic cannot be placed inline";
 
   String INVALID_MODULE = "InvalidModuleElement";
-  String BUNDLE_NOT_FOUND = "Bundle could not be found in the workspace.";
-  String BINARY_BUNDLE_NOT_ALLOWED = "Cannot import into a binary bundle.";
-  String CANNOT_ACCESS_SHARED = "The shared bundle is not on the classpath of the client or server";
-  String BUNDLE_TYPES_DO_NOT_MATCH = "The bundle has the wrong type.";
+  String BUNDLE_NOT_FOUND = "Bundle '%s' could not be found in the workspace.";
+  String BUNDLE_NOT_A_SCOUT_BUNDLE = "The bundle '%s' is not a scout bundle. Check the project natures and manifest (manifest may not resolve because of a wrong target).";
+  String BINARY_BUNDLE_NOT_ALLOWED = "Cannot import into the binary bundle '%s'.";
+  String CANNOT_ACCESS_SHARED = "The shared bundle '%s' is not on the classpath of '%s'.";
+  String BUNDLE_TYPES_DO_NOT_MATCH = "The bundle '%s' has the wrong type (expected: '%s', found: '%s').";
 
   String TAB_ONLY_IN_TABBOX = "TabOnlyInTabbox";
   String MSG_TAB_ONLY_IN_TABBOX = "A tab element is only allowed inside a tabbox.";
 
   String ONLY_FOR_MODE_FILE = "OnlyForModeFile";
   String MSG_ONLY_FOR_MODE_FILE = "This attribute can only be set if the filechooser is in mode 'file'.";
+
+  String FORMAT_CONFLICTING = "FormatConflicting";
+  String MSG_FORMAT_CONFLICTING = "Decimal formatting attributes cannot be specified when the 'format' attribute is used.";
 }

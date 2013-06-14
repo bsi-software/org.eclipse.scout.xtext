@@ -508,4 +508,80 @@ public class FormTests {
       throw Exceptions.sneakyThrow(_e);
     }
   }
+  
+  @Test
+  public void testBigDecimalFormats() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module a.b");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("form TabTest01 {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("bigdecimal TestOk format=\"0000\"");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      Model _parse = this._parseHelper.parse(_builder);
+      this._validationTestHelper.assertNoErrors(_parse);
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("module a.b");
+      _builder_1.newLine();
+      _builder_1.newLine();
+      _builder_1.append("form TabTest01 {");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.append("bigdecimal TestOk grouping=false fraction_digits=2");
+      _builder_1.newLine();
+      _builder_1.append("}");
+      _builder_1.newLine();
+      Model _parse_1 = this._parseHelper.parse(_builder_1);
+      this._validationTestHelper.assertNoErrors(_parse_1);
+      StringConcatenation _builder_2 = new StringConcatenation();
+      _builder_2.append("module a.b");
+      _builder_2.newLine();
+      _builder_2.newLine();
+      _builder_2.append("form TabTest01 {");
+      _builder_2.newLine();
+      _builder_2.append("\t");
+      _builder_2.append("bigdecimal TestOk format=\"0000\" grouping=false");
+      _builder_2.newLine();
+      _builder_2.append("}");
+      _builder_2.newLine();
+      Model _parse_2 = this._parseHelper.parse(_builder_2);
+      EClass _bigDecimalElement = SamlPackage.eINSTANCE.getBigDecimalElement();
+      this._validationTestHelper.assertError(_parse_2, _bigDecimalElement, SamlJavaValidator.FORMAT_CONFLICTING, SamlJavaValidator.MSG_FORMAT_CONFLICTING);
+      StringConcatenation _builder_3 = new StringConcatenation();
+      _builder_3.append("module a.b");
+      _builder_3.newLine();
+      _builder_3.newLine();
+      _builder_3.append("form TabTest01 {");
+      _builder_3.newLine();
+      _builder_3.append("\t");
+      _builder_3.append("bigdecimal TestOk format=\"0000\" fraction_digits=2");
+      _builder_3.newLine();
+      _builder_3.append("}");
+      _builder_3.newLine();
+      Model _parse_3 = this._parseHelper.parse(_builder_3);
+      EClass _bigDecimalElement_1 = SamlPackage.eINSTANCE.getBigDecimalElement();
+      this._validationTestHelper.assertError(_parse_3, _bigDecimalElement_1, SamlJavaValidator.FORMAT_CONFLICTING, SamlJavaValidator.MSG_FORMAT_CONFLICTING);
+      StringConcatenation _builder_4 = new StringConcatenation();
+      _builder_4.append("module a.b");
+      _builder_4.newLine();
+      _builder_4.newLine();
+      _builder_4.append("form TabTest01 {");
+      _builder_4.newLine();
+      _builder_4.append("\t");
+      _builder_4.append("bigdecimal TestOk format=\"0000\" grouping=false  fraction_digits=2");
+      _builder_4.newLine();
+      _builder_4.append("}");
+      _builder_4.newLine();
+      Model _parse_4 = this._parseHelper.parse(_builder_4);
+      EClass _bigDecimalElement_2 = SamlPackage.eINSTANCE.getBigDecimalElement();
+      this._validationTestHelper.assertError(_parse_4, _bigDecimalElement_2, SamlJavaValidator.FORMAT_CONFLICTING, SamlJavaValidator.MSG_FORMAT_CONFLICTING);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
 }

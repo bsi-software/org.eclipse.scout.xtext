@@ -25,31 +25,21 @@ import org.eclipse.scout.sdk.workspace.IScoutBundleGraph;
  */
 public class SamlModule {
 
-  private IScoutBundle m_client, m_shared, m_server;
+  private final IScoutBundle m_client, m_shared, m_server;
   private final String m_baseName;
+  private final String m_clientName, m_sharedName, m_serverName;
 
   public SamlModule(ModuleElement module) {
     m_baseName = module.getName();
 
-    String clientName = getBundleName(getBaseName(), "client", module.getClient());
-    String sharedName = getBundleName(getBaseName(), "shared", module.getShared());
-    String serverName = getBundleName(getBaseName(), "server", module.getServer());
+    m_clientName = getBundleName(getBaseName(), "client", module.getClient());
+    m_sharedName = getBundleName(getBaseName(), "shared", module.getShared());
+    m_serverName = getBundleName(getBaseName(), "server", module.getServer());
 
     IScoutBundleGraph graph = ScoutSdkCore.getScoutWorkspace().getBundleGraph();
-    m_client = graph.getBundle(clientName);
-    if (m_client != null && m_client.isBinary()) {
-      m_client = null;
-    }
-
-    m_shared = graph.getBundle(sharedName);
-    if (m_shared != null && m_shared.isBinary()) {
-      m_shared = null;
-    }
-
-    m_server = graph.getBundle(serverName);
-    if (m_server != null && m_server.isBinary()) {
-      m_server = null;
-    }
+    m_client = graph.getBundle(getClientName());
+    m_shared = graph.getBundle(getSharedName());
+    m_server = graph.getBundle(getServerName());
   }
 
   private static String getBundleName(String moduleBaseName, String moduleSuffix, String specificModuleName) {
@@ -73,5 +63,17 @@ public class SamlModule {
 
   public String getBaseName() {
     return m_baseName;
+  }
+
+  public String getClientName() {
+    return m_clientName;
+  }
+
+  public String getSharedName() {
+    return m_sharedName;
+  }
+
+  public String getServerName() {
+    return m_serverName;
   }
 }

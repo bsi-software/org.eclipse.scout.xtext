@@ -106,6 +106,17 @@ public class AbstractSamlImporterTest {
     Assert.assertEquals(expected, val, 0.000000001);
   }
 
+  protected void testLongConfigMethod(IType owner, String name, Long expected) throws Exception {
+    IMethod m = TypeUtility.getMethod(owner, name);
+    Assert.assertTrue(TypeUtility.exists(m));
+
+    String val = PropertyMethodSourceUtility.getMethodReturnValue(m);
+    Assert.assertNotNull(val);
+
+    Long intVal = PropertyMethodSourceUtility.parseReturnParameterLong(val, m, owner.newSupertypeHierarchy(null));
+    Assert.assertEquals(expected, intVal);
+  }
+
   protected void testIntConfigMethod(IType owner, String name, int expected) throws Exception {
     IMethod m = TypeUtility.getMethod(owner, name);
     Assert.assertTrue(TypeUtility.exists(m));

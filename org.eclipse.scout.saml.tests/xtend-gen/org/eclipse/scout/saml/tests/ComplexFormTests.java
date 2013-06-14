@@ -238,7 +238,13 @@ public class ComplexFormTests {
       _builder.append("bigdecimal BigDecimalTest text=trans.text1 enabled=false visible=false percent=true grouping=false label_visible=false mandatory=true width=2 width_pixels=333 horizontal_align=left fraction_digits=4 min=20.2 max=200.002");
       _builder.newLine();
       _builder.append("    ");
-      _builder.append("date DateTest text=trans.text2 enabled=false visible=false label_visible=false mandatory=true width=2");
+      _builder.append("bigdecimal BigDecimal2Test format=\"0000.00\"");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("long LongTest text=trans.text1 enabled=false visible=false label_visible=false mandatory=true width=2 width_pixels=76 horizontal_align=left min=2 max=4 format=\"0000\"");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("date DateTest text=trans.text2 enabled=false visible=false label_visible=false mandatory=true width=2 format=\"dd.MM.yyyy\"");
       _builder.newLine();
       _builder.append("    ");
       _builder.append("smartfield SmartFieldTest1 text=trans.text1 enabled=false visible=false label_visible=false mandatory=true code=Departments width=2 value_type=\"java.lang.String\" ");

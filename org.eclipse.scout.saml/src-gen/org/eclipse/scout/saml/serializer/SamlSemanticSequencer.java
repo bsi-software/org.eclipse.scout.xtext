@@ -1199,6 +1199,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         fractionDigits=INT? 
 	 *         min=Number? 
 	 *         max=Number? 
+	 *         format=STRING? 
 	 *         superType=[TemplateElement|ID]? 
 	 *         logic+=LogicElement*
 	 *     )
@@ -1319,6 +1320,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         mandatory=BooleanType? 
 	 *         gridWidth=INT? 
 	 *         widthInPixels=INT? 
+	 *         format=STRING? 
 	 *         superType=[TemplateElement|ID]? 
 	 *         logic+=LogicElement*
 	 *     )
@@ -1492,6 +1494,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         horizontalAlign=HorizontalAlignmentType? 
 	 *         min=INT? 
 	 *         max=INT? 
+	 *         format=STRING? 
 	 *         superType=[TemplateElement|ID]? 
 	 *         logic+=LogicElement*
 	 *     )

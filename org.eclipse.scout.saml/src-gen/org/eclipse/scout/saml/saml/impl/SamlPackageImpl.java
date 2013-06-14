@@ -1288,6 +1288,16 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getBigDecimalElement_Format()
+  {
+    return (EAttribute)bigDecimalElementEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getLongElement()
   {
     return longElementEClass;
@@ -1328,9 +1338,29 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getLongElement_Format()
+  {
+    return (EAttribute)longElementEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getDateElement()
   {
     return dateElementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDateElement_Format()
+  {
+    return (EAttribute)dateElementEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -2223,13 +2253,16 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     createEAttribute(bigDecimalElementEClass, BIG_DECIMAL_ELEMENT__FRACTION_DIGITS);
     createEAttribute(bigDecimalElementEClass, BIG_DECIMAL_ELEMENT__MIN);
     createEAttribute(bigDecimalElementEClass, BIG_DECIMAL_ELEMENT__MAX);
+    createEAttribute(bigDecimalElementEClass, BIG_DECIMAL_ELEMENT__FORMAT);
 
     longElementEClass = createEClass(LONG_ELEMENT);
     createEAttribute(longElementEClass, LONG_ELEMENT__HORIZONTAL_ALIGN);
     createEAttribute(longElementEClass, LONG_ELEMENT__MIN);
     createEAttribute(longElementEClass, LONG_ELEMENT__MAX);
+    createEAttribute(longElementEClass, LONG_ELEMENT__FORMAT);
 
     dateElementEClass = createEClass(DATE_ELEMENT);
+    createEAttribute(dateElementEClass, DATE_ELEMENT__FORMAT);
 
     smartfieldElementEClass = createEClass(SMARTFIELD_ELEMENT);
     createEReference(smartfieldElementEClass, SMARTFIELD_ELEMENT__CODE);
@@ -2485,13 +2518,16 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEAttribute(getBigDecimalElement_FractionDigits(), ecorePackage.getEInt(), "fractionDigits", null, 0, 1, BigDecimalElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getBigDecimalElement_Min(), ecorePackage.getEString(), "min", null, 0, 1, BigDecimalElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getBigDecimalElement_Max(), ecorePackage.getEString(), "max", null, 0, 1, BigDecimalElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getBigDecimalElement_Format(), ecorePackage.getEString(), "format", null, 0, 1, BigDecimalElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(longElementEClass, LongElement.class, "LongElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLongElement_HorizontalAlign(), ecorePackage.getEString(), "horizontalAlign", null, 0, 1, LongElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getLongElement_Min(), ecorePackage.getEInt(), "min", null, 0, 1, LongElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getLongElement_Max(), ecorePackage.getEInt(), "max", null, 0, 1, LongElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLongElement_Format(), ecorePackage.getEString(), "format", null, 0, 1, LongElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(dateElementEClass, DateElement.class, "DateElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDateElement_Format(), ecorePackage.getEString(), "format", null, 0, 1, DateElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(smartfieldElementEClass, SmartfieldElement.class, "SmartfieldElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSmartfieldElement_Code(), this.getCodeElement(), null, "code", null, 0, 1, SmartfieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -117,13 +117,17 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//BigDecimalElement/fractionDigits"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//BigDecimalElement/min"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//BigDecimalElement/max"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//BigDecimalElement/format"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//LongElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LongElement/horizontalAlign"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LongElement/min"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LongElement/max"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LongElement/format"/>
     </genClasses>
-    <genClasses ecoreClass="Saml.ecore#//DateElement"/>
+    <genClasses ecoreClass="Saml.ecore#//DateElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//DateElement/format"/>
+    </genClasses>
     <genClasses ecoreClass="Saml.ecore#//SmartfieldElement">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartfieldElement/code"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartfieldElement/lookup"/>

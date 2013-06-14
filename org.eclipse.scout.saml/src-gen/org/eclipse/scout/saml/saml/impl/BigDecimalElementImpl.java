@@ -24,6 +24,7 @@ import org.eclipse.scout.saml.saml.SamlPackage;
  *   <li>{@link org.eclipse.scout.saml.saml.impl.BigDecimalElementImpl#getFractionDigits <em>Fraction Digits</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.BigDecimalElementImpl#getMin <em>Min</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.BigDecimalElementImpl#getMax <em>Max</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.BigDecimalElementImpl#getFormat <em>Format</em>}</li>
  * </ul>
  * </p>
  *
@@ -150,6 +151,26 @@ public class BigDecimalElementImpl extends ValueFieldElementImpl implements BigD
    * @ordered
    */
   protected String max = MAX_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getFormat() <em>Format</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFormat()
+   * @generated
+   * @ordered
+   */
+  protected static final String FORMAT_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getFormat() <em>Format</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFormat()
+   * @generated
+   * @ordered
+   */
+  protected String format = FORMAT_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -315,6 +336,29 @@ public class BigDecimalElementImpl extends ValueFieldElementImpl implements BigD
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getFormat()
+  {
+    return format;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setFormat(String newFormat)
+  {
+    String oldFormat = format;
+    format = newFormat;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.BIG_DECIMAL_ELEMENT__FORMAT, oldFormat, format));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -332,6 +376,8 @@ public class BigDecimalElementImpl extends ValueFieldElementImpl implements BigD
         return getMin();
       case SamlPackage.BIG_DECIMAL_ELEMENT__MAX:
         return getMax();
+      case SamlPackage.BIG_DECIMAL_ELEMENT__FORMAT:
+        return getFormat();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -363,6 +409,9 @@ public class BigDecimalElementImpl extends ValueFieldElementImpl implements BigD
         return;
       case SamlPackage.BIG_DECIMAL_ELEMENT__MAX:
         setMax((String)newValue);
+        return;
+      case SamlPackage.BIG_DECIMAL_ELEMENT__FORMAT:
+        setFormat((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -396,6 +445,9 @@ public class BigDecimalElementImpl extends ValueFieldElementImpl implements BigD
       case SamlPackage.BIG_DECIMAL_ELEMENT__MAX:
         setMax(MAX_EDEFAULT);
         return;
+      case SamlPackage.BIG_DECIMAL_ELEMENT__FORMAT:
+        setFormat(FORMAT_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -422,6 +474,8 @@ public class BigDecimalElementImpl extends ValueFieldElementImpl implements BigD
         return MIN_EDEFAULT == null ? min != null : !MIN_EDEFAULT.equals(min);
       case SamlPackage.BIG_DECIMAL_ELEMENT__MAX:
         return MAX_EDEFAULT == null ? max != null : !MAX_EDEFAULT.equals(max);
+      case SamlPackage.BIG_DECIMAL_ELEMENT__FORMAT:
+        return FORMAT_EDEFAULT == null ? format != null : !FORMAT_EDEFAULT.equals(format);
     }
     return super.eIsSet(featureID);
   }
@@ -449,6 +503,8 @@ public class BigDecimalElementImpl extends ValueFieldElementImpl implements BigD
     result.append(min);
     result.append(", max: ");
     result.append(max);
+    result.append(", format: ");
+    result.append(format);
     result.append(')');
     return result.toString();
   }

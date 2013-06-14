@@ -251,4 +251,48 @@ class FormTests {
 		}
 		'''.parse.assertNoErrors
 	}
+	
+	@Test
+	def void testBigDecimalFormats() {
+		'''
+		module a.b
+		
+		form TabTest01 {
+			bigdecimal TestOk format="0000"
+		}
+		'''.parse.assertNoErrors
+		
+		'''
+		module a.b
+		
+		form TabTest01 {
+			bigdecimal TestOk grouping=false fraction_digits=2
+		}
+		'''.parse.assertNoErrors
+		
+		'''
+		module a.b
+		
+		form TabTest01 {
+			bigdecimal TestOk format="0000" grouping=false
+		}
+		'''.parse.assertError(SamlPackage::eINSTANCE.bigDecimalElement, SamlJavaValidator::FORMAT_CONFLICTING, SamlJavaValidator::MSG_FORMAT_CONFLICTING)
+		
+		'''
+		module a.b
+		
+		form TabTest01 {
+			bigdecimal TestOk format="0000" fraction_digits=2
+		}
+		'''.parse.assertError(SamlPackage::eINSTANCE.bigDecimalElement, SamlJavaValidator::FORMAT_CONFLICTING, SamlJavaValidator::MSG_FORMAT_CONFLICTING)
+		
+		'''
+		module a.b
+		
+		form TabTest01 {
+			bigdecimal TestOk format="0000" grouping=false  fraction_digits=2
+		}
+		'''.parse.assertError(SamlPackage::eINSTANCE.bigDecimalElement, SamlJavaValidator::FORMAT_CONFLICTING, SamlJavaValidator::MSG_FORMAT_CONFLICTING)
+		
+	}
 }
