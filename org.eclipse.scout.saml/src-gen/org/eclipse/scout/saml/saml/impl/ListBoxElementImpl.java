@@ -1,4 +1,8 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
+
  */
 package org.eclipse.scout.saml.saml.impl;
 

@@ -1,4 +1,8 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
+
  */
 package org.eclipse.scout.saml.saml.impl;
 
@@ -24,6 +28,7 @@ import org.eclipse.scout.saml.saml.GenericValueFieldElement;
 import org.eclipse.scout.saml.saml.GroupBoxElement;
 import org.eclipse.scout.saml.saml.ImportElement;
 import org.eclipse.scout.saml.saml.KeyElement;
+import org.eclipse.scout.saml.saml.LabelElement;
 import org.eclipse.scout.saml.saml.LanguageAttribute;
 import org.eclipse.scout.saml.saml.ListBoxElement;
 import org.eclipse.scout.saml.saml.LogicElement;
@@ -180,6 +185,13 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * @generated
    */
   private EClass stringElementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass labelElementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1188,7 +1200,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getStringElement_Maxlen()
+  public EAttribute getStringElement_WrapText()
   {
     return (EAttribute)stringElementEClass.getEStructuralFeatures().get(0);
   }
@@ -1198,7 +1210,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getStringElement_GridHeight()
+  public EAttribute getStringElement_Uppercase()
   {
     return (EAttribute)stringElementEClass.getEStructuralFeatures().get(1);
   }
@@ -1208,9 +1220,79 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getStringElement_HorizontalAlign()
+  public EAttribute getStringElement_MaskInput()
   {
     return (EAttribute)stringElementEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getStringElement_Maxlen()
+  {
+    return (EAttribute)stringElementEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getStringElement_GridHeight()
+  {
+    return (EAttribute)stringElementEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getStringElement_HorizontalAlign()
+  {
+    return (EAttribute)stringElementEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getLabelElement()
+  {
+    return labelElementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getLabelElement_WrapText()
+  {
+    return (EAttribute)labelElementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getLabelElement_GridHeight()
+  {
+    return (EAttribute)labelElementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getLabelElement_HorizontalAlign()
+  {
+    return (EAttribute)labelElementEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1378,9 +1460,9 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSmartfieldElement_Code()
+  public EAttribute getSmartfieldElement_MaxRowCount()
   {
-    return (EReference)smartfieldElementEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)smartfieldElementEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1388,7 +1470,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSmartfieldElement_Lookup()
+  public EReference getSmartfieldElement_Code()
   {
     return (EReference)smartfieldElementEClass.getEStructuralFeatures().get(1);
   }
@@ -1398,9 +1480,19 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSmartfieldElement_Menus()
+  public EReference getSmartfieldElement_Lookup()
   {
     return (EReference)smartfieldElementEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSmartfieldElement_Menus()
+  {
+    return (EReference)smartfieldElementEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -2242,9 +2334,17 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     createEAttribute(valueFieldElementEClass, VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS);
 
     stringElementEClass = createEClass(STRING_ELEMENT);
+    createEAttribute(stringElementEClass, STRING_ELEMENT__WRAP_TEXT);
+    createEAttribute(stringElementEClass, STRING_ELEMENT__UPPERCASE);
+    createEAttribute(stringElementEClass, STRING_ELEMENT__MASK_INPUT);
     createEAttribute(stringElementEClass, STRING_ELEMENT__MAXLEN);
     createEAttribute(stringElementEClass, STRING_ELEMENT__GRID_HEIGHT);
     createEAttribute(stringElementEClass, STRING_ELEMENT__HORIZONTAL_ALIGN);
+
+    labelElementEClass = createEClass(LABEL_ELEMENT);
+    createEAttribute(labelElementEClass, LABEL_ELEMENT__WRAP_TEXT);
+    createEAttribute(labelElementEClass, LABEL_ELEMENT__GRID_HEIGHT);
+    createEAttribute(labelElementEClass, LABEL_ELEMENT__HORIZONTAL_ALIGN);
 
     bigDecimalElementEClass = createEClass(BIG_DECIMAL_ELEMENT);
     createEAttribute(bigDecimalElementEClass, BIG_DECIMAL_ELEMENT__PERCENT);
@@ -2265,6 +2365,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     createEAttribute(dateElementEClass, DATE_ELEMENT__FORMAT);
 
     smartfieldElementEClass = createEClass(SMARTFIELD_ELEMENT);
+    createEAttribute(smartfieldElementEClass, SMARTFIELD_ELEMENT__MAX_ROW_COUNT);
     createEReference(smartfieldElementEClass, SMARTFIELD_ELEMENT__CODE);
     createEReference(smartfieldElementEClass, SMARTFIELD_ELEMENT__LOOKUP);
     createEReference(smartfieldElementEClass, SMARTFIELD_ELEMENT__MENUS);
@@ -2392,6 +2493,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     genericValueFieldElementEClass.getESuperTypes().add(this.getValueFieldElement());
     valueFieldElementEClass.getESuperTypes().add(this.getFormFieldElement());
     stringElementEClass.getESuperTypes().add(this.getValueFieldElement());
+    labelElementEClass.getESuperTypes().add(this.getValueFieldElement());
     bigDecimalElementEClass.getESuperTypes().add(this.getValueFieldElement());
     longElementEClass.getESuperTypes().add(this.getValueFieldElement());
     dateElementEClass.getESuperTypes().add(this.getValueFieldElement());
@@ -2507,9 +2609,17 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEAttribute(getValueFieldElement_WidthInPixels(), ecorePackage.getEInt(), "widthInPixels", null, 0, 1, ValueFieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(stringElementEClass, StringElement.class, "StringElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getStringElement_WrapText(), ecorePackage.getEString(), "wrapText", null, 0, 1, StringElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getStringElement_Uppercase(), ecorePackage.getEString(), "uppercase", null, 0, 1, StringElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getStringElement_MaskInput(), ecorePackage.getEString(), "maskInput", null, 0, 1, StringElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getStringElement_Maxlen(), ecorePackage.getEInt(), "maxlen", null, 0, 1, StringElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getStringElement_GridHeight(), ecorePackage.getEInt(), "gridHeight", null, 0, 1, StringElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getStringElement_HorizontalAlign(), ecorePackage.getEString(), "horizontalAlign", null, 0, 1, StringElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(labelElementEClass, LabelElement.class, "LabelElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getLabelElement_WrapText(), ecorePackage.getEString(), "wrapText", null, 0, 1, LabelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLabelElement_GridHeight(), ecorePackage.getEInt(), "gridHeight", null, 0, 1, LabelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLabelElement_HorizontalAlign(), ecorePackage.getEString(), "horizontalAlign", null, 0, 1, LabelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(bigDecimalElementEClass, BigDecimalElement.class, "BigDecimalElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getBigDecimalElement_Percent(), ecorePackage.getEString(), "percent", null, 0, 1, BigDecimalElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2530,6 +2640,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEAttribute(getDateElement_Format(), ecorePackage.getEString(), "format", null, 0, 1, DateElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(smartfieldElementEClass, SmartfieldElement.class, "SmartfieldElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSmartfieldElement_MaxRowCount(), ecorePackage.getEInt(), "maxRowCount", null, 0, 1, SmartfieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSmartfieldElement_Code(), this.getCodeElement(), null, "code", null, 0, 1, SmartfieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSmartfieldElement_Lookup(), this.getLookupElement(), null, "lookup", null, 0, 1, SmartfieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSmartfieldElement_Menus(), this.getMenuElement(), null, "menus", null, 0, -1, SmartfieldElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

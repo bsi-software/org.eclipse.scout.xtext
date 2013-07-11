@@ -83,7 +83,10 @@ form ComplexLogicTest modal=false columns=3 title=trans.text1 subtitle=trans.tex
 form ComplexFieldTest {
   sequence SequenceTest text=trans.text1 enabled=false visible=false label_visible=false width=2 width_pixels=600 {
     string StringAreaTest text=trans.text1 enabled=false visible=false label_visible=false master=StringTest mandatory=true maxlen=64 height=4 width=2 width_pixels=100 horizontal_align=right
-    string StringTest text=trans.text2 enabled=false visible=false label_visible=false mandatory=true maxlen=128 height=1 width=2 width_pixels=200 horizontal_align=center
+    string StringTest text=trans.text2 enabled=false visible=false label_visible=false mandatory=true maxlen=128 height=1 width=2 width_pixels=200 horizontal_align=center uppercase=true
+  	string StringWrapped text=trans.text2 enabled=true visible=true label_visible=true wrap_text=true height=4
+	string StringInputMasked text=trans.text2 enabled=true visible=true label_visible=true mask_input=true
+	label LabelTest text=trans.text2 enabled=true visible=true wrap_text=false
   }
   group GroupTest text=trans.text2 columns=3 enabled=false visible=false label_visible=false border_visible=false border_decoration=line height=10 width=3 width_pixels=500 {
     bigdecimal BigDecimalTest text=trans.text1 enabled=false visible=false percent=true grouping=false label_visible=false mandatory=true width=2 width_pixels=333 horizontal_align=left fraction_digits=4 min=20.2 max=200.002

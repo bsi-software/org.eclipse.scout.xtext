@@ -1,4 +1,8 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
+
  */
 package org.eclipse.scout.saml.saml.impl;
 
@@ -82,6 +86,7 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
       case SamlPackage.GENERIC_VALUE_FIELD_ELEMENT: return createGenericValueFieldElement();
       case SamlPackage.VALUE_FIELD_ELEMENT: return createValueFieldElement();
       case SamlPackage.STRING_ELEMENT: return createStringElement();
+      case SamlPackage.LABEL_ELEMENT: return createLabelElement();
       case SamlPackage.BIG_DECIMAL_ELEMENT: return createBigDecimalElement();
       case SamlPackage.LONG_ELEMENT: return createLongElement();
       case SamlPackage.DATE_ELEMENT: return createDateElement();
@@ -300,6 +305,17 @@ public class SamlFactoryImpl extends EFactoryImpl implements SamlFactory
   {
     StringElementImpl stringElement = new StringElementImpl();
     return stringElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LabelElement createLabelElement()
+  {
+    LabelElementImpl labelElement = new LabelElementImpl();
+    return labelElement;
   }
 
   /**

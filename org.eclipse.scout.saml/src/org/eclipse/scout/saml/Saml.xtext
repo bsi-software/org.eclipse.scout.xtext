@@ -121,12 +121,15 @@ GroupBoxElement:'group' name=ID
 GenericValueFieldElement:SmartfieldElement|ListBoxElement|RadioGroupElement;
 
 ValueFieldElement: StringElement|BigDecimalElement|LongElement|DateElement|CheckboxElement|
-	FileChooserElement|GenericValueFieldElement;
+	FileChooserElement|LabelElement|GenericValueFieldElement;
 
 StringElement:'string' name=ID 
 	(
 		('text' '=' text=[TranslationElement|QualifiedName])? &
+		('wrap_text' '=' wrapText=BooleanType)? &
 		('enabled' '=' enabled=BooleanType)? &
+		('uppercase' '=' uppercase=BooleanType)? &
+		('mask_input' '=' maskInput=BooleanType)? & 
 		('visible' '=' visible=BooleanType)? &
 		('label_visible' '=' labelVisible=BooleanType)? &
 		('master' '=' master=[ValueFieldElement])? &
@@ -140,7 +143,23 @@ StringElement:'string' name=ID
 	)
 	('{' logic+=LogicElement* '}')?;
 
-
+LabelElement:'label' name=ID 
+	(
+		('text' '=' text=[TranslationElement|QualifiedName])? &
+		('wrap_text' '=' wrapText=BooleanType)? &
+		('enabled' '=' enabled=BooleanType)? &
+		('visible' '=' visible=BooleanType)? &
+		('label_visible' '=' labelVisible=BooleanType)? &
+		('master' '=' master=[ValueFieldElement])? &
+		('mandatory' '=' mandatory=BooleanType)? &
+		('height' '=' gridHeight=INT)? &
+		('width' '=' gridWidth=INT)? &
+		('width_pixels' '=' widthInPixels=INT)? &
+		('horizontal_align' '=' horizontalAlign=HorizontalAlignmentType)? &
+		('super_type' '=' superType=[TemplateElement])?
+	)
+	('{' logic+=LogicElement* '}')?;
+	
 BigDecimalElement:'bigdecimal' name=ID 
 	(
 		('text' '=' text=[TranslationElement|QualifiedName])? &
@@ -203,6 +222,7 @@ SmartfieldElement:'smartfield' name=ID
 		('label_visible' '=' labelVisible=BooleanType)? &
 		('master' '=' master=[ValueFieldElement])? &
 		('mandatory' '=' mandatory=BooleanType)? &
+		('max_row_count' '=' maxRowCount=INT)? & 
 		('code' '=' code=[CodeElement])? &
 		('value_type' '=' valueType=STRING/*JvmTypeReference*/)? &
 		('lookup' '=' lookup=[LookupElement])? &

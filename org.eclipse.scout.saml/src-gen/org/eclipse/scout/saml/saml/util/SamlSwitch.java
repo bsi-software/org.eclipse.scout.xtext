@@ -1,11 +1,15 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
+
  */
 package org.eclipse.scout.saml.saml.util;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
+import java.util.List;
 
-import org.eclipse.emf.ecore.util.Switch;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.scout.saml.saml.*;
 
@@ -22,7 +26,7 @@ import org.eclipse.scout.saml.saml.*;
  * @see org.eclipse.scout.saml.saml.SamlPackage
  * @generated
  */
-public class SamlSwitch<T> extends Switch<T>
+public class SamlSwitch<T>
 {
   /**
    * The cached model package
@@ -47,17 +51,15 @@ public class SamlSwitch<T> extends Switch<T>
   }
 
   /**
-   * Checks whether this is a switch for the given package.
+   * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @parameter ePackage the package in question.
-   * @return whether this is a switch for the given package.
+   * @return the first non-null result returned by a <code>caseXXX</code> call.
    * @generated
    */
-  @Override
-  protected boolean isSwitchFor(EPackage ePackage)
+  public T doSwitch(EObject theEObject)
   {
-    return ePackage == modelPackage;
+    return doSwitch(theEObject.eClass(), theEObject);
   }
 
   /**
@@ -67,7 +69,29 @@ public class SamlSwitch<T> extends Switch<T>
    * @return the first non-null result returned by a <code>caseXXX</code> call.
    * @generated
    */
-  @Override
+  protected T doSwitch(EClass theEClass, EObject theEObject)
+  {
+    if (theEClass.eContainer() == modelPackage)
+    {
+      return doSwitch(theEClass.getClassifierID(), theEObject);
+    }
+    else
+    {
+      List<EClass> eSuperTypes = theEClass.getESuperTypes();
+      return
+        eSuperTypes.isEmpty() ?
+          defaultCase(theEObject) :
+          doSwitch(eSuperTypes.get(0), theEObject);
+    }
+  }
+
+  /**
+   * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the first non-null result returned by a <code>caseXXX</code> call.
+   * @generated
+   */
   protected T doSwitch(int classifierID, EObject theEObject)
   {
     switch (classifierID)
@@ -214,6 +238,16 @@ public class SamlSwitch<T> extends Switch<T>
         if (result == null) result = caseValueFieldElement(stringElement);
         if (result == null) result = caseFormFieldElement(stringElement);
         if (result == null) result = caseNamedTypeElement(stringElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SamlPackage.LABEL_ELEMENT:
+      {
+        LabelElement labelElement = (LabelElement)theEObject;
+        T result = caseLabelElement(labelElement);
+        if (result == null) result = caseValueFieldElement(labelElement);
+        if (result == null) result = caseFormFieldElement(labelElement);
+        if (result == null) result = caseNamedTypeElement(labelElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -668,6 +702,22 @@ public class SamlSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Label Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Label Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLabelElement(LabelElement object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Big Decimal Element</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -950,7 +1000,6 @@ public class SamlSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject)
    * @generated
    */
-  @Override
   public T defaultCase(EObject object)
   {
     return null;

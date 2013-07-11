@@ -1,4 +1,8 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
+
  */
 package org.eclipse.scout.saml.saml.impl;
 
@@ -30,6 +34,7 @@ import org.eclipse.scout.saml.saml.SmartfieldElement;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.SmartfieldElementImpl#getMaxRowCount <em>Max Row Count</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.SmartfieldElementImpl#getCode <em>Code</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.SmartfieldElementImpl#getLookup <em>Lookup</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.SmartfieldElementImpl#getMenus <em>Menus</em>}</li>
@@ -40,6 +45,26 @@ import org.eclipse.scout.saml.saml.SmartfieldElement;
  */
 public class SmartfieldElementImpl extends GenericValueFieldElementImpl implements SmartfieldElement
 {
+  /**
+   * The default value of the '{@link #getMaxRowCount() <em>Max Row Count</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMaxRowCount()
+   * @generated
+   * @ordered
+   */
+  protected static final int MAX_ROW_COUNT_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getMaxRowCount() <em>Max Row Count</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMaxRowCount()
+   * @generated
+   * @ordered
+   */
+  protected int maxRowCount = MAX_ROW_COUNT_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getCode() <em>Code</em>}' reference.
    * <!-- begin-user-doc -->
@@ -89,6 +114,29 @@ public class SmartfieldElementImpl extends GenericValueFieldElementImpl implemen
   protected EClass eStaticClass()
   {
     return SamlPackage.Literals.SMARTFIELD_ELEMENT;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public int getMaxRowCount()
+  {
+    return maxRowCount;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setMaxRowCount(int newMaxRowCount)
+  {
+    int oldMaxRowCount = maxRowCount;
+    maxRowCount = newMaxRowCount;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.SMARTFIELD_ELEMENT__MAX_ROW_COUNT, oldMaxRowCount, maxRowCount));
   }
 
   /**
@@ -217,6 +265,8 @@ public class SmartfieldElementImpl extends GenericValueFieldElementImpl implemen
   {
     switch (featureID)
     {
+      case SamlPackage.SMARTFIELD_ELEMENT__MAX_ROW_COUNT:
+        return getMaxRowCount();
       case SamlPackage.SMARTFIELD_ELEMENT__CODE:
         if (resolve) return getCode();
         return basicGetCode();
@@ -240,6 +290,9 @@ public class SmartfieldElementImpl extends GenericValueFieldElementImpl implemen
   {
     switch (featureID)
     {
+      case SamlPackage.SMARTFIELD_ELEMENT__MAX_ROW_COUNT:
+        setMaxRowCount((Integer)newValue);
+        return;
       case SamlPackage.SMARTFIELD_ELEMENT__CODE:
         setCode((CodeElement)newValue);
         return;
@@ -264,6 +317,9 @@ public class SmartfieldElementImpl extends GenericValueFieldElementImpl implemen
   {
     switch (featureID)
     {
+      case SamlPackage.SMARTFIELD_ELEMENT__MAX_ROW_COUNT:
+        setMaxRowCount(MAX_ROW_COUNT_EDEFAULT);
+        return;
       case SamlPackage.SMARTFIELD_ELEMENT__CODE:
         setCode((CodeElement)null);
         return;
@@ -287,6 +343,8 @@ public class SmartfieldElementImpl extends GenericValueFieldElementImpl implemen
   {
     switch (featureID)
     {
+      case SamlPackage.SMARTFIELD_ELEMENT__MAX_ROW_COUNT:
+        return maxRowCount != MAX_ROW_COUNT_EDEFAULT;
       case SamlPackage.SMARTFIELD_ELEMENT__CODE:
         return code != null;
       case SamlPackage.SMARTFIELD_ELEMENT__LOOKUP:
@@ -295,6 +353,23 @@ public class SmartfieldElementImpl extends GenericValueFieldElementImpl implemen
         return menus != null && !menus.isEmpty();
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (maxRowCount: ");
+    result.append(maxRowCount);
+    result.append(')');
+    return result.toString();
   }
 
 } //SmartfieldElementImpl

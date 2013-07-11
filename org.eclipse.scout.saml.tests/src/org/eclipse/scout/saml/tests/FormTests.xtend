@@ -295,4 +295,17 @@ class FormTests {
 		'''.parse.assertError(SamlPackage::eINSTANCE.bigDecimalElement, SamlJavaValidator::FORMAT_CONFLICTING, SamlJavaValidator::MSG_FORMAT_CONFLICTING)
 		
 	}
+	
+	@Test
+	def void testLabel() {
+		'''
+		module a.b
+		
+		translation texts.label01 de="aa"
+		
+		form LabelTest columns=1 {
+			label MyLabel text=texts.label01 enabled=true visible=true width=3 width_pixels=100 label_visible=false wrap_text=true
+		}
+		'''.parse.assertNoErrors
+	}
 }

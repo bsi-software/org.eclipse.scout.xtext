@@ -1,4 +1,8 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
+
  */
 package org.eclipse.scout.saml.saml;
 
@@ -12,6 +16,7 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.scout.saml.saml.SmartfieldElement#getMaxRowCount <em>Max Row Count</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.SmartfieldElement#getCode <em>Code</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.SmartfieldElement#getLookup <em>Lookup</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.SmartfieldElement#getMenus <em>Menus</em>}</li>
@@ -24,6 +29,32 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface SmartfieldElement extends GenericValueFieldElement
 {
+  /**
+   * Returns the value of the '<em><b>Max Row Count</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Max Row Count</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Max Row Count</em>' attribute.
+   * @see #setMaxRowCount(int)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getSmartfieldElement_MaxRowCount()
+   * @model
+   * @generated
+   */
+  int getMaxRowCount();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getMaxRowCount <em>Max Row Count</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Max Row Count</em>' attribute.
+   * @see #getMaxRowCount()
+   * @generated
+   */
+  void setMaxRowCount(int value);
+
   /**
    * Returns the value of the '<em><b>Code</b></em>' reference.
    * <!-- begin-user-doc -->

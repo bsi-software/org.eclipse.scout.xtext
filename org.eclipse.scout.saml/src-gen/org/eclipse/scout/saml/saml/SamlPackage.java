@@ -1,4 +1,8 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
+
  */
 package org.eclipse.scout.saml.saml;
 
@@ -1434,13 +1438,40 @@ public interface SamlPackage extends EPackage
   int STRING_ELEMENT__WIDTH_IN_PIXELS = VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
 
   /**
+   * The feature id for the '<em><b>Wrap Text</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT__WRAP_TEXT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Uppercase</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT__UPPERCASE = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Mask Input</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT__MASK_INPUT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
    * The feature id for the '<em><b>Maxlen</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int STRING_ELEMENT__MAXLEN = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int STRING_ELEMENT__MAXLEN = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Grid Height</b></em>' attribute.
@@ -1449,7 +1480,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STRING_ELEMENT__GRID_HEIGHT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+  int STRING_ELEMENT__GRID_HEIGHT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Horizontal Align</b></em>' attribute.
@@ -1458,7 +1489,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STRING_ELEMENT__HORIZONTAL_ALIGN = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 2;
+  int STRING_ELEMENT__HORIZONTAL_ALIGN = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 5;
 
   /**
    * The number of structural features of the '<em>String Element</em>' class.
@@ -1467,7 +1498,152 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STRING_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 3;
+  int STRING_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 6;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.LabelElementImpl <em>Label Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.scout.saml.saml.impl.LabelElementImpl
+   * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getLabelElement()
+   * @generated
+   */
+  int LABEL_ELEMENT = 18;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LABEL_ELEMENT__NAME = VALUE_FIELD_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Super Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LABEL_ELEMENT__SUPER_TYPE = VALUE_FIELD_ELEMENT__SUPER_TYPE;
+
+  /**
+   * The feature id for the '<em><b>Enabled</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LABEL_ELEMENT__ENABLED = VALUE_FIELD_ELEMENT__ENABLED;
+
+  /**
+   * The feature id for the '<em><b>Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LABEL_ELEMENT__VISIBLE = VALUE_FIELD_ELEMENT__VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Logic</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LABEL_ELEMENT__LOGIC = VALUE_FIELD_ELEMENT__LOGIC;
+
+  /**
+   * The feature id for the '<em><b>Text</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LABEL_ELEMENT__TEXT = VALUE_FIELD_ELEMENT__TEXT;
+
+  /**
+   * The feature id for the '<em><b>Label Visible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LABEL_ELEMENT__LABEL_VISIBLE = VALUE_FIELD_ELEMENT__LABEL_VISIBLE;
+
+  /**
+   * The feature id for the '<em><b>Master</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LABEL_ELEMENT__MASTER = VALUE_FIELD_ELEMENT__MASTER;
+
+  /**
+   * The feature id for the '<em><b>Mandatory</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LABEL_ELEMENT__MANDATORY = VALUE_FIELD_ELEMENT__MANDATORY;
+
+  /**
+   * The feature id for the '<em><b>Grid Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LABEL_ELEMENT__GRID_WIDTH = VALUE_FIELD_ELEMENT__GRID_WIDTH;
+
+  /**
+   * The feature id for the '<em><b>Width In Pixels</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LABEL_ELEMENT__WIDTH_IN_PIXELS = VALUE_FIELD_ELEMENT__WIDTH_IN_PIXELS;
+
+  /**
+   * The feature id for the '<em><b>Wrap Text</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LABEL_ELEMENT__WRAP_TEXT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Grid Height</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LABEL_ELEMENT__GRID_HEIGHT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Horizontal Align</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LABEL_ELEMENT__HORIZONTAL_ALIGN = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Label Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LABEL_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.BigDecimalElementImpl <em>Big Decimal Element</em>}' class.
@@ -1477,7 +1653,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getBigDecimalElement()
    * @generated
    */
-  int BIG_DECIMAL_ELEMENT = 18;
+  int BIG_DECIMAL_ELEMENT = 19;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1658,7 +1834,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getLongElement()
    * @generated
    */
-  int LONG_ELEMENT = 19;
+  int LONG_ELEMENT = 20;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1812,7 +1988,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getDateElement()
    * @generated
    */
-  int DATE_ELEMENT = 20;
+  int DATE_ELEMENT = 21;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1939,7 +2115,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getSmartfieldElement()
    * @generated
    */
-  int SMARTFIELD_ELEMENT = 21;
+  int SMARTFIELD_ELEMENT = 22;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2050,13 +2226,22 @@ public interface SamlPackage extends EPackage
   int SMARTFIELD_ELEMENT__VALUE_TYPE = GENERIC_VALUE_FIELD_ELEMENT__VALUE_TYPE;
 
   /**
+   * The feature id for the '<em><b>Max Row Count</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SMARTFIELD_ELEMENT__MAX_ROW_COUNT = GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Code</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT__CODE = GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT + 0;
+  int SMARTFIELD_ELEMENT__CODE = GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Lookup</b></em>' reference.
@@ -2065,7 +2250,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT__LOOKUP = GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT + 1;
+  int SMARTFIELD_ELEMENT__LOOKUP = GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Menus</b></em>' containment reference list.
@@ -2074,7 +2259,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT__MENUS = GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT + 2;
+  int SMARTFIELD_ELEMENT__MENUS = GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>Smartfield Element</em>' class.
@@ -2083,7 +2268,7 @@ public interface SamlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SMARTFIELD_ELEMENT_FEATURE_COUNT = GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT + 3;
+  int SMARTFIELD_ELEMENT_FEATURE_COUNT = GENERIC_VALUE_FIELD_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.ListBoxElementImpl <em>List Box Element</em>}' class.
@@ -2093,7 +2278,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getListBoxElement()
    * @generated
    */
-  int LIST_BOX_ELEMENT = 22;
+  int LIST_BOX_ELEMENT = 23;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2247,7 +2432,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getCustomFieldElement()
    * @generated
    */
-  int CUSTOM_FIELD_ELEMENT = 23;
+  int CUSTOM_FIELD_ELEMENT = 24;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2356,7 +2541,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getButtonElement()
    * @generated
    */
-  int BUTTON_ELEMENT = 24;
+  int BUTTON_ELEMENT = 25;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2474,7 +2659,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getMenuElement()
    * @generated
    */
-  int MENU_ELEMENT = 25;
+  int MENU_ELEMENT = 26;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2592,7 +2777,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getTableElement()
    * @generated
    */
-  int TABLE_ELEMENT = 26;
+  int TABLE_ELEMENT = 27;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2719,7 +2904,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getColumnElement()
    * @generated
    */
-  int COLUMN_ELEMENT = 27;
+  int COLUMN_ELEMENT = 28;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2792,7 +2977,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getKeyElement()
    * @generated
    */
-  int KEY_ELEMENT = 28;
+  int KEY_ELEMENT = 29;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2838,7 +3023,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getTabElement()
    * @generated
    */
-  int TAB_ELEMENT = 29;
+  int TAB_ELEMENT = 30;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2929,7 +3114,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getTabBoxElement()
    * @generated
    */
-  int TAB_BOX_ELEMENT = 30;
+  int TAB_BOX_ELEMENT = 31;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3020,7 +3205,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getCheckboxElement()
    * @generated
    */
-  int CHECKBOX_ELEMENT = 31;
+  int CHECKBOX_ELEMENT = 32;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3138,7 +3323,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getFileChooserElement()
    * @generated
    */
-  int FILE_CHOOSER_ELEMENT = 32;
+  int FILE_CHOOSER_ELEMENT = 33;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3328,7 +3513,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getRadioGroupElement()
    * @generated
    */
-  int RADIO_GROUP_ELEMENT = 33;
+  int RADIO_GROUP_ELEMENT = 34;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3464,7 +3649,7 @@ public interface SamlPackage extends EPackage
    * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getRadioButtonElement()
    * @generated
    */
-  int RADIO_BUTTON_ELEMENT = 34;
+  int RADIO_BUTTON_ELEMENT = 35;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4415,6 +4600,39 @@ public interface SamlPackage extends EPackage
   EClass getStringElement();
 
   /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.StringElement#getWrapText <em>Wrap Text</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Wrap Text</em>'.
+   * @see org.eclipse.scout.saml.saml.StringElement#getWrapText()
+   * @see #getStringElement()
+   * @generated
+   */
+  EAttribute getStringElement_WrapText();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.StringElement#getUppercase <em>Uppercase</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Uppercase</em>'.
+   * @see org.eclipse.scout.saml.saml.StringElement#getUppercase()
+   * @see #getStringElement()
+   * @generated
+   */
+  EAttribute getStringElement_Uppercase();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.StringElement#getMaskInput <em>Mask Input</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Mask Input</em>'.
+   * @see org.eclipse.scout.saml.saml.StringElement#getMaskInput()
+   * @see #getStringElement()
+   * @generated
+   */
+  EAttribute getStringElement_MaskInput();
+
+  /**
    * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.StringElement#getMaxlen <em>Maxlen</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -4446,6 +4664,49 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EAttribute getStringElement_HorizontalAlign();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.LabelElement <em>Label Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Label Element</em>'.
+   * @see org.eclipse.scout.saml.saml.LabelElement
+   * @generated
+   */
+  EClass getLabelElement();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.LabelElement#getWrapText <em>Wrap Text</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Wrap Text</em>'.
+   * @see org.eclipse.scout.saml.saml.LabelElement#getWrapText()
+   * @see #getLabelElement()
+   * @generated
+   */
+  EAttribute getLabelElement_WrapText();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.LabelElement#getGridHeight <em>Grid Height</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Grid Height</em>'.
+   * @see org.eclipse.scout.saml.saml.LabelElement#getGridHeight()
+   * @see #getLabelElement()
+   * @generated
+   */
+  EAttribute getLabelElement_GridHeight();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.LabelElement#getHorizontalAlign <em>Horizontal Align</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Horizontal Align</em>'.
+   * @see org.eclipse.scout.saml.saml.LabelElement#getHorizontalAlign()
+   * @see #getLabelElement()
+   * @generated
+   */
+  EAttribute getLabelElement_HorizontalAlign();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.BigDecimalElement <em>Big Decimal Element</em>}'.
@@ -4618,6 +4879,17 @@ public interface SamlPackage extends EPackage
    * @generated
    */
   EClass getSmartfieldElement();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getMaxRowCount <em>Max Row Count</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Max Row Count</em>'.
+   * @see org.eclipse.scout.saml.saml.SmartfieldElement#getMaxRowCount()
+   * @see #getSmartfieldElement()
+   * @generated
+   */
+  EAttribute getSmartfieldElement_MaxRowCount();
 
   /**
    * Returns the meta object for the reference '{@link org.eclipse.scout.saml.saml.SmartfieldElement#getCode <em>Code</em>}'.
@@ -6136,6 +6408,30 @@ public interface SamlPackage extends EPackage
     EClass STRING_ELEMENT = eINSTANCE.getStringElement();
 
     /**
+     * The meta object literal for the '<em><b>Wrap Text</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STRING_ELEMENT__WRAP_TEXT = eINSTANCE.getStringElement_WrapText();
+
+    /**
+     * The meta object literal for the '<em><b>Uppercase</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STRING_ELEMENT__UPPERCASE = eINSTANCE.getStringElement_Uppercase();
+
+    /**
+     * The meta object literal for the '<em><b>Mask Input</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STRING_ELEMENT__MASK_INPUT = eINSTANCE.getStringElement_MaskInput();
+
+    /**
      * The meta object literal for the '<em><b>Maxlen</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -6158,6 +6454,40 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EAttribute STRING_ELEMENT__HORIZONTAL_ALIGN = eINSTANCE.getStringElement_HorizontalAlign();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.LabelElementImpl <em>Label Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.scout.saml.saml.impl.LabelElementImpl
+     * @see org.eclipse.scout.saml.saml.impl.SamlPackageImpl#getLabelElement()
+     * @generated
+     */
+    EClass LABEL_ELEMENT = eINSTANCE.getLabelElement();
+
+    /**
+     * The meta object literal for the '<em><b>Wrap Text</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LABEL_ELEMENT__WRAP_TEXT = eINSTANCE.getLabelElement_WrapText();
+
+    /**
+     * The meta object literal for the '<em><b>Grid Height</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LABEL_ELEMENT__GRID_HEIGHT = eINSTANCE.getLabelElement_GridHeight();
+
+    /**
+     * The meta object literal for the '<em><b>Horizontal Align</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LABEL_ELEMENT__HORIZONTAL_ALIGN = eINSTANCE.getLabelElement_HorizontalAlign();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.BigDecimalElementImpl <em>Big Decimal Element</em>}' class.
@@ -6294,6 +6624,14 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EClass SMARTFIELD_ELEMENT = eINSTANCE.getSmartfieldElement();
+
+    /**
+     * The meta object literal for the '<em><b>Max Row Count</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SMARTFIELD_ELEMENT__MAX_ROW_COUNT = eINSTANCE.getSmartfieldElement_MaxRowCount();
 
     /**
      * The meta object literal for the '<em><b>Code</b></em>' reference feature.

@@ -93,7 +93,7 @@ public class StringElementImportTest extends AbstractSamlFieldImporterTest imple
   @Test
   public void testNumAttributes2() throws Exception {
     IType field = getField(FORM_NAME, LOCATION2);
-    Assert.assertEquals(9, TypeUtility.getMethods(field).length);
+    Assert.assertEquals(10, TypeUtility.getMethods(field).length);
   }
 
   @Test
@@ -139,5 +139,10 @@ public class StringElementImportTest extends AbstractSamlFieldImporterTest imple
   @Test
   public void testHorizontalAlignAttribute2() throws Exception {
     testIntConfigMethod(getField(FORM_NAME, LOCATION2), "getConfiguredHorizontalAlignment", 0);
+  }
+
+  @Test
+  public void testUpper() throws Exception {
+    testBoolConfigMethod(getField(FORM_NAME, LOCATION2), "getConfiguredFormatUpper", true);
   }
 }

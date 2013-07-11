@@ -1,4 +1,8 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
+
  */
 package org.eclipse.scout.saml.saml.util;
 
@@ -163,6 +167,11 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
       public Adapter caseStringElement(StringElement object)
       {
         return createStringElementAdapter();
+      }
+      @Override
+      public Adapter caseLabelElement(LabelElement object)
+      {
+        return createLabelElementAdapter();
       }
       @Override
       public Adapter caseBigDecimalElement(BigDecimalElement object)
@@ -537,6 +546,21 @@ public class SamlAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createStringElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.scout.saml.saml.LabelElement <em>Label Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.scout.saml.saml.LabelElement
+   * @generated
+   */
+  public Adapter createLabelElementAdapter()
   {
     return null;
   }

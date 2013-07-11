@@ -15,6 +15,7 @@ import org.eclipse.scout.saml.saml.FormElement;
 import org.eclipse.scout.saml.saml.GroupBoxElement;
 import org.eclipse.scout.saml.saml.ImportElement;
 import org.eclipse.scout.saml.saml.KeyElement;
+import org.eclipse.scout.saml.saml.LabelElement;
 import org.eclipse.scout.saml.saml.LanguageAttribute;
 import org.eclipse.scout.saml.saml.ListBoxElement;
 import org.eclipse.scout.saml.saml.LogicElement;
@@ -181,6 +182,15 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 			case SamlPackage.KEY_ELEMENT:
 				if(context == grammarAccess.getKeyElementRule()) {
 					sequence_KeyElement(context, (KeyElement) semanticObject); 
+					return; 
+				}
+				else break;
+			case SamlPackage.LABEL_ELEMENT:
+				if(context == grammarAccess.getFormFieldElementRule() ||
+				   context == grammarAccess.getLabelElementRule() ||
+				   context == grammarAccess.getNamedTypeElementRule() ||
+				   context == grammarAccess.getValueFieldElementRule()) {
+					sequence_LabelElement(context, (LabelElement) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1428,6 +1438,30 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     (
+	 *         name=ID 
+	 *         text=[TranslationElement|QualifiedName]? 
+	 *         wrapText=BooleanType? 
+	 *         enabled=BooleanType? 
+	 *         visible=BooleanType? 
+	 *         labelVisible=BooleanType? 
+	 *         master=[ValueFieldElement|ID]? 
+	 *         mandatory=BooleanType? 
+	 *         gridHeight=INT? 
+	 *         gridWidth=INT? 
+	 *         widthInPixels=INT? 
+	 *         horizontalAlign=HorizontalAlignmentType? 
+	 *         superType=[TemplateElement|ID]? 
+	 *         logic+=LogicElement*
+	 *     )
+	 */
+	protected void sequence_LabelElement(EObject context, LabelElement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (lang=ID text=STRING)
 	 */
 	protected void sequence_LanguageAttribute(EObject context, LanguageAttribute semanticObject) {
@@ -1629,6 +1663,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         labelVisible=BooleanType? 
 	 *         master=[ValueFieldElement|ID]? 
 	 *         mandatory=BooleanType? 
+	 *         maxRowCount=INT? 
 	 *         code=[CodeElement|ID]? 
 	 *         valueType=STRING? 
 	 *         lookup=[LookupElement|ID]? 
@@ -1648,7 +1683,10 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *     (
 	 *         name=ID 
 	 *         text=[TranslationElement|QualifiedName]? 
+	 *         wrapText=BooleanType? 
 	 *         enabled=BooleanType? 
+	 *         uppercase=BooleanType? 
+	 *         maskInput=BooleanType? 
 	 *         visible=BooleanType? 
 	 *         labelVisible=BooleanType? 
 	 *         master=[ValueFieldElement|ID]? 

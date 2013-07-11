@@ -226,7 +226,16 @@ public class ComplexFormTests {
       _builder.append("string StringAreaTest text=trans.text1 enabled=false visible=false label_visible=false master=StringTest mandatory=true maxlen=64 height=4 width=2 width_pixels=100 horizontal_align=right");
       _builder.newLine();
       _builder.append("    ");
-      _builder.append("string StringTest text=trans.text2 enabled=false visible=false label_visible=false mandatory=true maxlen=128 height=1 width=2 width_pixels=200 horizontal_align=center");
+      _builder.append("string StringTest text=trans.text2 enabled=false visible=false label_visible=false mandatory=true maxlen=128 height=1 width=2 width_pixels=200 horizontal_align=center uppercase=true");
+      _builder.newLine();
+      _builder.append("  \t");
+      _builder.append("string StringWrapped text=trans.text2 enabled=true visible=true label_visible=true wrap_text=true height=4");
+      _builder.newLine();
+      _builder.append("  \t");
+      _builder.append("string StringInputMasked text=trans.text2 enabled=true visible=true label_visible=true mask_input=true");
+      _builder.newLine();
+      _builder.append("  \t");
+      _builder.append("label LabelTest text=trans.text2 enabled=true visible=true wrap_text=true");
       _builder.newLine();
       _builder.append("  ");
       _builder.append("}");
