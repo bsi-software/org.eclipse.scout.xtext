@@ -1,4 +1,8 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
+
  */
 package org.eclipse.scout.saml.saml.impl;
 
@@ -18,6 +22,9 @@ import org.eclipse.scout.saml.saml.StringElement;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.StringElementImpl#getWrapText <em>Wrap Text</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.StringElementImpl#getUppercase <em>Uppercase</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.StringElementImpl#getMaskInput <em>Mask Input</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.StringElementImpl#getMaxlen <em>Maxlen</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.StringElementImpl#getGridHeight <em>Grid Height</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.StringElementImpl#getHorizontalAlign <em>Horizontal Align</em>}</li>
@@ -29,6 +36,66 @@ import org.eclipse.scout.saml.saml.StringElement;
  */
 public class StringElementImpl extends ValueFieldElementImpl implements StringElement
 {
+  /**
+   * The default value of the '{@link #getWrapText() <em>Wrap Text</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getWrapText()
+   * @generated
+   * @ordered
+   */
+  protected static final String WRAP_TEXT_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getWrapText() <em>Wrap Text</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getWrapText()
+   * @generated
+   * @ordered
+   */
+  protected String wrapText = WRAP_TEXT_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getUppercase() <em>Uppercase</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getUppercase()
+   * @generated
+   * @ordered
+   */
+  protected static final String UPPERCASE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getUppercase() <em>Uppercase</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getUppercase()
+   * @generated
+   * @ordered
+   */
+  protected String uppercase = UPPERCASE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getMaskInput() <em>Mask Input</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMaskInput()
+   * @generated
+   * @ordered
+   */
+  protected static final String MASK_INPUT_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getMaskInput() <em>Mask Input</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMaskInput()
+   * @generated
+   * @ordered
+   */
+  protected String maskInput = MASK_INPUT_EDEFAULT;
+
   /**
    * The default value of the '{@link #getMaxlen() <em>Maxlen</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -135,6 +202,75 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getWrapText()
+  {
+    return wrapText;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setWrapText(String newWrapText)
+  {
+    String oldWrapText = wrapText;
+    wrapText = newWrapText;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.STRING_ELEMENT__WRAP_TEXT, oldWrapText, wrapText));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getUppercase()
+  {
+    return uppercase;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setUppercase(String newUppercase)
+  {
+    String oldUppercase = uppercase;
+    uppercase = newUppercase;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.STRING_ELEMENT__UPPERCASE, oldUppercase, uppercase));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getMaskInput()
+  {
+    return maskInput;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setMaskInput(String newMaskInput)
+  {
+    String oldMaskInput = maskInput;
+    maskInput = newMaskInput;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.STRING_ELEMENT__MASK_INPUT, oldMaskInput, maskInput));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public int getMaxlen()
   {
     return maxlen;
@@ -232,6 +368,12 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
   {
     switch (featureID)
     {
+      case SamlPackage.STRING_ELEMENT__WRAP_TEXT:
+        return getWrapText();
+      case SamlPackage.STRING_ELEMENT__UPPERCASE:
+        return getUppercase();
+      case SamlPackage.STRING_ELEMENT__MASK_INPUT:
+        return getMaskInput();
       case SamlPackage.STRING_ELEMENT__MAXLEN:
         return getMaxlen();
       case SamlPackage.STRING_ELEMENT__GRID_HEIGHT:
@@ -254,6 +396,15 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
   {
     switch (featureID)
     {
+      case SamlPackage.STRING_ELEMENT__WRAP_TEXT:
+        setWrapText((String)newValue);
+        return;
+      case SamlPackage.STRING_ELEMENT__UPPERCASE:
+        setUppercase((String)newValue);
+        return;
+      case SamlPackage.STRING_ELEMENT__MASK_INPUT:
+        setMaskInput((String)newValue);
+        return;
       case SamlPackage.STRING_ELEMENT__MAXLEN:
         setMaxlen((Integer)newValue);
         return;
@@ -280,6 +431,15 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
   {
     switch (featureID)
     {
+      case SamlPackage.STRING_ELEMENT__WRAP_TEXT:
+        setWrapText(WRAP_TEXT_EDEFAULT);
+        return;
+      case SamlPackage.STRING_ELEMENT__UPPERCASE:
+        setUppercase(UPPERCASE_EDEFAULT);
+        return;
+      case SamlPackage.STRING_ELEMENT__MASK_INPUT:
+        setMaskInput(MASK_INPUT_EDEFAULT);
+        return;
       case SamlPackage.STRING_ELEMENT__MAXLEN:
         setMaxlen(MAXLEN_EDEFAULT);
         return;
@@ -306,6 +466,12 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
   {
     switch (featureID)
     {
+      case SamlPackage.STRING_ELEMENT__WRAP_TEXT:
+        return WRAP_TEXT_EDEFAULT == null ? wrapText != null : !WRAP_TEXT_EDEFAULT.equals(wrapText);
+      case SamlPackage.STRING_ELEMENT__UPPERCASE:
+        return UPPERCASE_EDEFAULT == null ? uppercase != null : !UPPERCASE_EDEFAULT.equals(uppercase);
+      case SamlPackage.STRING_ELEMENT__MASK_INPUT:
+        return MASK_INPUT_EDEFAULT == null ? maskInput != null : !MASK_INPUT_EDEFAULT.equals(maskInput);
       case SamlPackage.STRING_ELEMENT__MAXLEN:
         return maxlen != MAXLEN_EDEFAULT;
       case SamlPackage.STRING_ELEMENT__GRID_HEIGHT:
@@ -329,7 +495,13 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (maxlen: ");
+    result.append(" (wrapText: ");
+    result.append(wrapText);
+    result.append(", uppercase: ");
+    result.append(uppercase);
+    result.append(", maskInput: ");
+    result.append(maskInput);
+    result.append(", maxlen: ");
     result.append(maxlen);
     result.append(", gridHeight: ");
     result.append(gridHeight);

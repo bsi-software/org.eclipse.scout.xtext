@@ -29,6 +29,7 @@ import org.eclipse.scout.saml.saml.FileChooserElement;
 import org.eclipse.scout.saml.saml.FormElement;
 import org.eclipse.scout.saml.saml.FormFieldElement;
 import org.eclipse.scout.saml.saml.GroupBoxElement;
+import org.eclipse.scout.saml.saml.LabelElement;
 import org.eclipse.scout.saml.saml.ListBoxElement;
 import org.eclipse.scout.saml.saml.LongElement;
 import org.eclipse.scout.saml.saml.LookupElement;
@@ -128,7 +129,10 @@ public class FormFieldAttributeHandlersProvider extends AbstractAttributeHandler
     }
   }
 
-  @SamlAttributeHandler(handles = {@SamlAttribute(elementType = StringElement.class, featureId = SamlPackage.STRING_ELEMENT__HORIZONTAL_ALIGN)})
+  @SamlAttributeHandler(handles = {
+      @SamlAttribute(elementType = StringElement.class, featureId = SamlPackage.STRING_ELEMENT__HORIZONTAL_ALIGN),
+      @SamlAttribute(elementType = LabelElement.class, featureId = SamlPackage.LABEL_ELEMENT__HORIZONTAL_ALIGN)
+  })
   public void applyHorizontalTextAlignAttribute(String align) throws CoreException, IllegalArgumentException {
     applyHorizontalAlignAttribute(align, HORIZONTAL_ALIGN_LEFT);
   }
@@ -295,6 +299,31 @@ public class FormFieldAttributeHandlersProvider extends AbstractAttributeHandler
     applyGridHeightAttribute(height);
     if (height > 1) {
       overrideMethod("getConfiguredMultilineText", "return true;");
+    }
+  }
+
+  // TODO: Check
+  @SamlAttributeHandler(handles = {@SamlAttribute(elementType = StringElement.class, featureId = SamlPackage.STRING_ELEMENT__UPPERCASE)})
+  public void applyStringUpperAttribute(String a) throws CoreException, IllegalArgumentException {
+    if (getSamlContext().getGrammarAccess().getBooleanTypeAccess().getTrueKeyword_0().getValue().equals(a)) {
+      overrideMethod("getConfiguredFormatUpper", "return true;");
+    }
+  }
+
+  @SamlAttributeHandler(handles = {@SamlAttribute(elementType = StringElement.class, featureId = SamlPackage.STRING_ELEMENT__MASK_INPUT)})
+  public void applyStringMaskInputAttribute(String a) throws CoreException, IllegalArgumentException {
+    if (getSamlContext().getGrammarAccess().getBooleanTypeAccess().getTrueKeyword_0().getValue().equals(a)) {
+      overrideMethod("getConfiguredInputMasked", "return true;");
+    }
+  }
+
+  @SamlAttributeHandler(handles = {
+      @SamlAttribute(elementType = LabelElement.class, featureId = SamlPackage.LABEL_ELEMENT__WRAP_TEXT),
+      @SamlAttribute(elementType = StringElement.class, featureId = SamlPackage.STRING_ELEMENT__WRAP_TEXT)
+  })
+  public void applyWrapTextAttribute(String a) throws CoreException, IllegalArgumentException {
+    if (getSamlContext().getGrammarAccess().getBooleanTypeAccess().getTrueKeyword_0().getValue().equals(a)) {
+      overrideMethod("getConfiguredWrapText", "return true;");
     }
   }
 

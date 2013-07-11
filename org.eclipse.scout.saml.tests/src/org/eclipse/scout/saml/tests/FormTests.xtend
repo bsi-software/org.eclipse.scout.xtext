@@ -313,4 +313,17 @@ class FormTests {
 		}
 		'''.parse.assertError(SamlPackage::eINSTANCE.stringElement, SamlJavaValidator::INVALID_REGEX, String::format(SamlJavaValidator::MSG_INVALID_REGEX, "[0-9]{A}"))
 	}
+	
+	@Test
+	def void testLabel() {
+		'''
+		module a.b
+		
+		translation texts.label01 de="aa"
+		
+		form LabelTest columns=1 {
+			label MyLabel text=texts.label01 enabled=true visible=true width=3 width_pixels=100 label_visible=false wrap_text=true
+		}
+		'''.parse.assertNoErrors
+	}
 }

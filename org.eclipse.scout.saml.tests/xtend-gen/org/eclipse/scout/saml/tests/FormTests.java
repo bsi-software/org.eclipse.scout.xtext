@@ -586,6 +586,30 @@ public class FormTests {
   }
   
   @Test
+  public void testLabel() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module a.b");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("translation texts.label01 de=\"aa\"");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("form LabelTest columns=1 {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("label MyLabel text=texts.label01 enabled=true visible=true width=3 width_pixels=100 label_visible=false wrap_text=true");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      Model _parse = this._parseHelper.parse(_builder);
+      this._validationTestHelper.assertNoErrors(_parse);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
   public void testStringFieldRegexValidation() {
     try {
       StringConcatenation _builder = new StringConcatenation();

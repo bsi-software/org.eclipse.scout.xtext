@@ -4,7 +4,7 @@
     editorDirectory="/org.eclipse.scout.saml.editor/src" modelPluginID="org.eclipse.scout.saml"
     forceOverwrite="true" modelName="Saml" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="org.eclipse.scout.saml.edit"
-    editorPluginID="org.eclipse.scout.saml.editor" runtimeVersion="2.8">
+    editorPluginID="org.eclipse.scout.saml.editor" runtimeVersion="2.5">
   <genPackages prefix="Saml" basePackage="org.eclipse.scout.saml" disposableProviderFactory="true"
       ecorePackage="Saml.ecore#/">
     <genClasses ecoreClass="Saml.ecore#//Model">
@@ -106,10 +106,18 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//ValueFieldElement/widthInPixels"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//StringElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//StringElement/wrapText"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//StringElement/uppercase"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//StringElement/maskInput"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//StringElement/maxlen"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//StringElement/gridHeight"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//StringElement/horizontalAlign"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//StringElement/regexValidation"/>
+    </genClasses>
+    <genClasses ecoreClass="Saml.ecore#//LabelElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LabelElement/wrapText"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LabelElement/gridHeight"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LabelElement/horizontalAlign"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//BigDecimalElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//BigDecimalElement/percent"/>
@@ -130,6 +138,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//DateElement/format"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//SmartfieldElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//SmartfieldElement/maxRowCount"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartfieldElement/code"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartfieldElement/lookup"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Saml.ecore#//SmartfieldElement/menus"/>

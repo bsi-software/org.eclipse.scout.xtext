@@ -1,4 +1,8 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
+
  */
 package org.eclipse.scout.saml.saml;
 
@@ -183,6 +187,15 @@ public interface SamlFactory extends EFactory
    * @generated
    */
   StringElement createStringElement();
+
+  /**
+   * Returns a new object of class '<em>Label Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Label Element</em>'.
+   * @generated
+   */
+  LabelElement createLabelElement();
 
   /**
    * Returns a new object of class '<em>Big Decimal Element</em>'.
