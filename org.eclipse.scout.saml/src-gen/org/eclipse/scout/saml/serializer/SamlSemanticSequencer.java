@@ -1659,6 +1659,7 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         widthInPixels=INT? 
 	 *         horizontalAlign=HorizontalAlignmentType? 
 	 *         superType=[TemplateElement|ID]? 
+	 *         regexValidation=STRING? 
 	 *         logic+=LogicElement*
 	 *     )
 	 */

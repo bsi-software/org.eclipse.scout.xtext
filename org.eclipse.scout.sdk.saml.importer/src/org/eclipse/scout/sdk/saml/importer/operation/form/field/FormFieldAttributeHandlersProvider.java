@@ -17,6 +17,7 @@ import java.util.regex.Pattern;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jdt.core.Flags;
 import org.eclipse.scout.commons.StringUtility;
 import org.eclipse.scout.saml.saml.BigDecimalElement;
 import org.eclipse.scout.saml.saml.ButtonElement;
@@ -61,6 +62,8 @@ public class FormFieldAttributeHandlersProvider extends AbstractAttributeHandler
   protected final static int HORIZONTAL_ALIGN_LEFT = -1;
   protected final static int HORIZONTAL_ALIGN_CENTER = 0;
   protected final static int HORIZONTAL_ALIGN_RIGHT = 1;
+  protected final static String RETURN_TYPE_STRING = "Ljava.lang.String;";
+  protected final static int METHOD_FLAG_PROTECTED = Flags.AccProtected;
 
   private final static Pattern REGEX_EXTENSIONS_REPLACE = Pattern.compile("\\.|\\*\\.");
 
@@ -519,5 +522,10 @@ public class FormFieldAttributeHandlersProvider extends AbstractAttributeHandler
   })
   public void applyFormatAttribute(String format) throws CoreException, IllegalArgumentException {
     overrideMethod("getConfiguredFormat", "return " + JdtUtility.toStringLiteral(format) + ";");
+  }
+
+  @SamlAttributeHandler(handles = {@SamlAttribute(elementType = StringElement.class, featureId = SamlPackage.STRING_ELEMENT__REGEX_VALIDATION)})
+  public void applyRegexValidationAttribute(String regex) throws CoreException, IllegalArgumentException {
+    createMethod("getRegexValidation", METHOD_FLAG_PROTECTED, "return " + JdtUtility.toStringLiteral(regex) + ";", null, null, RETURN_TYPE_STRING);
   }
 }

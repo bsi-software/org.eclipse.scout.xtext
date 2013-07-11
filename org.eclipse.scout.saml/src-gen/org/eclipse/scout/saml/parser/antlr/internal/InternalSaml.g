@@ -422,6 +422,13 @@ ruleLogicEventType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRule
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getLogicEventTypeAccess().getLoadKeyword_13()); 
     }
+
+    |
+	kw='validate_value' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getLogicEventTypeAccess().getValidate_valueKeyword_14()); 
+    }
 )
     ;
 
@@ -3462,6 +3469,44 @@ ruleStringElement returns [EObject current=null]
 	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getStringElementAccess().getUnorderedGroup_2());
 	 				}
  				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getStringElementAccess().getUnorderedGroup_2(), 12)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getStringElementAccess().getUnorderedGroup_2(), 12);
+	 				}
+					({true}?=>(	otherlv_39='regex_validation' 
+    {
+    	newLeafNode(otherlv_39, grammarAccess.getStringElementAccess().getRegex_validationKeyword_2_12_0());
+    }
+	otherlv_40='=' 
+    {
+    	newLeafNode(otherlv_40, grammarAccess.getStringElementAccess().getEqualsSignKeyword_2_12_1());
+    }
+(
+(
+		lv_regexValidation_41_0=RULE_STRING
+		{
+			newLeafNode(lv_regexValidation_41_0, grammarAccess.getStringElementAccess().getRegexValidationSTRINGTerminalRuleCall_2_12_2_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getStringElementRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"regexValidation",
+        		lv_regexValidation_41_0, 
+        		"STRING");
+	    }
+
+)
+)))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getStringElementAccess().getUnorderedGroup_2());
+	 				}
+ 				)
 			)  
 
 		)*	
@@ -3471,31 +3516,31 @@ ruleStringElement returns [EObject current=null]
 	  getUnorderedGroupHelper().leave(grammarAccess.getStringElementAccess().getUnorderedGroup_2());
 	}
 
-)(	otherlv_39='{' 
+)(	otherlv_42='{' 
     {
-    	newLeafNode(otherlv_39, grammarAccess.getStringElementAccess().getLeftCurlyBracketKeyword_3_0());
+    	newLeafNode(otherlv_42, grammarAccess.getStringElementAccess().getLeftCurlyBracketKeyword_3_0());
     }
 (
 (
 		{ 
 	        newCompositeNode(grammarAccess.getStringElementAccess().getLogicLogicElementParserRuleCall_3_1_0()); 
 	    }
-		lv_logic_40_0=ruleLogicElement		{
+		lv_logic_43_0=ruleLogicElement		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getStringElementRule());
 	        }
        		add(
        			$current, 
        			"logic",
-        		lv_logic_40_0, 
+        		lv_logic_43_0, 
         		"LogicElement");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)*	otherlv_41='}' 
+)*	otherlv_44='}' 
     {
-    	newLeafNode(otherlv_41, grammarAccess.getStringElementAccess().getRightCurlyBracketKeyword_3_2());
+    	newLeafNode(otherlv_44, grammarAccess.getStringElementAccess().getRightCurlyBracketKeyword_3_2());
     }
 )?)
 ;

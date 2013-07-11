@@ -39,6 +39,10 @@ class ComplexFormTests {
 		  "System.out.println(\"execLoad\"); return formData;"
 		}
 		
+		logic RegexValidationSnippet placement=inline {
+			"if (rawValue != null && !rawValue.matches([A-Z0-9])) { throw new VetoException(ScoutTexts.get(\"InvalidValueMessageX\", rawValue)); } return rawValue;"
+		}
+		
 		template CheckBoxField definition="org.eclipse.scout.rt.client.ui.form.fields.checkbox.AbstractCheckBox"
 		
 		code Departments id="\"Main\"" value_type="java.lang.String" text=trans.text1 {
@@ -112,6 +116,15 @@ class ComplexFormTests {
 		    list TestList1 text=trans.text1 enabled=false visible=false label_visible=false mandatory=true code=Departments width=2 value_type="java.lang.String"
 		    button TestButton text=trans.text1 enabled=false visible=false process_button=false width=2 width_pixels=30 type=normal {
 		      menu MenuTest1 text=trans.text1 enabled=true visible=true single_select=true multi_select=false empty_select=true type=cancel
+		    }
+		    string StringRegex text=trans.text1 mandatory=true regex_validation="[0-9]{1}"
+		    string StringNamedValidationLogic text=trans.text1 mandatory=false {
+		      logic event=validate_value exec=RegexValidationSnippet
+		    }
+		    string StringAnonymousValidationLogic text=trans.text1 mandatory=false {
+		      logic event=validate_value placement=inline {
+		        "if (rawValue != null && !rawValue.matches([A-Z0-9])) { throw new VetoException(ScoutTexts.get(\"InvalidValueMessageX\", rawValue)); } return rawValue;"
+		      }
 		    }
 		    table TestTable text=trans.text1 enabled=false visible=false label_visible=false height=6 width=3 width_pixels=700 {
 		      menu MenuTest2 text=trans.text1 enabled=true visible=true single_select=false multi_select=true empty_select=true type=separator

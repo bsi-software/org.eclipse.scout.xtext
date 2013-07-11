@@ -26,6 +26,7 @@ public class StringElementImportTest extends AbstractSamlFieldImporterTest imple
 
   private final static String[] LOCATION1 = new String[]{"SequenceTest", "StringAreaTest"};
   private final static String[] LOCATION2 = new String[]{"SequenceTest", "StringTest"};
+  private final static String[] LOCATION_REGEX = new String[]{"SequenceTest", "StringRegexTest"};
 
   @Test
   public void testNumAttributes1() throws Exception {
@@ -139,5 +140,10 @@ public class StringElementImportTest extends AbstractSamlFieldImporterTest imple
   @Test
   public void testHorizontalAlignAttribute2() throws Exception {
     testIntConfigMethod(getField(FORM_NAME, LOCATION2), "getConfiguredHorizontalAlignment", 0);
+  }
+
+  @Test
+  public void testRegexValidationAttribute() throws Exception {
+    testMethod(getField(FORM_NAME, LOCATION_REGEX), "execValidateValue", "!rawValue.matches(getRegexValidation())", "throw new VetoException", "return rawValue");
   }
 }

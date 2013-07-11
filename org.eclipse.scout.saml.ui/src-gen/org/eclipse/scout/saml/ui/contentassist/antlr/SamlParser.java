@@ -164,6 +164,7 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getStringElementAccess().getGroup_2_9(), "rule__StringElement__Group_2_9__0");
 					put(grammarAccess.getStringElementAccess().getGroup_2_10(), "rule__StringElement__Group_2_10__0");
 					put(grammarAccess.getStringElementAccess().getGroup_2_11(), "rule__StringElement__Group_2_11__0");
+					put(grammarAccess.getStringElementAccess().getGroup_2_12(), "rule__StringElement__Group_2_12__0");
 					put(grammarAccess.getStringElementAccess().getGroup_3(), "rule__StringElement__Group_3__0");
 					put(grammarAccess.getBigDecimalElementAccess().getGroup(), "rule__BigDecimalElement__Group__0");
 					put(grammarAccess.getBigDecimalElementAccess().getGroup_2_0(), "rule__BigDecimalElement__Group_2_0__0");
@@ -568,6 +569,7 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getStringElementAccess().getWidthInPixelsAssignment_2_9_2(), "rule__StringElement__WidthInPixelsAssignment_2_9_2");
 					put(grammarAccess.getStringElementAccess().getHorizontalAlignAssignment_2_10_2(), "rule__StringElement__HorizontalAlignAssignment_2_10_2");
 					put(grammarAccess.getStringElementAccess().getSuperTypeAssignment_2_11_2(), "rule__StringElement__SuperTypeAssignment_2_11_2");
+					put(grammarAccess.getStringElementAccess().getRegexValidationAssignment_2_12_2(), "rule__StringElement__RegexValidationAssignment_2_12_2");
 					put(grammarAccess.getStringElementAccess().getLogicAssignment_3_1(), "rule__StringElement__LogicAssignment_3_1");
 					put(grammarAccess.getBigDecimalElementAccess().getNameAssignment_1(), "rule__BigDecimalElement__NameAssignment_1");
 					put(grammarAccess.getBigDecimalElementAccess().getTextAssignment_2_0_2(), "rule__BigDecimalElement__TextAssignment_2_0_2");

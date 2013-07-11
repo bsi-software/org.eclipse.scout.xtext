@@ -67,4 +67,7 @@ public interface ISamlValidatorConstants {
 
   String FORMAT_CONFLICTING = "FormatConflicting";
   String MSG_FORMAT_CONFLICTING = "Decimal formatting attributes cannot be specified when the 'format' attribute is used.";
+
+  String INVALID_REGEX = "InvalidRegex";
+  String MSG_INVALID_REGEX = "The regex '%s' cannot be compiled into a pattern.";
 }

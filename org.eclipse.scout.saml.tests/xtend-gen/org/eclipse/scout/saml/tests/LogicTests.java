@@ -423,4 +423,64 @@ public class LogicTests {
       throw Exceptions.sneakyThrow(_e);
     }
   }
+  
+  @Test
+  public void testRegexValidationLogic() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module a.b");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("form MyTest {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("string MyString  {");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("logic event=validate_value placement=inline {");
+      _builder.newLine();
+      _builder.append("\t\t\t");
+      _builder.append("\"[0-9]{1}\"");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      Model _parse = this._parseHelper.parse(_builder);
+      this._validationTestHelper.assertNoErrors(_parse);
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("module a.b");
+      _builder_1.newLine();
+      _builder_1.newLine();
+      _builder_1.append("logic RegexValidationCode placement=inline {");
+      _builder_1.newLine();
+      _builder_1.append("    ");
+      _builder_1.append("\"[0-9]{1}\"");
+      _builder_1.newLine();
+      _builder_1.append("}");
+      _builder_1.newLine();
+      _builder_1.newLine();
+      _builder_1.append("form MyTest {");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.append("string MyString  {");
+      _builder_1.newLine();
+      _builder_1.append("\t\t");
+      _builder_1.append("logic event=validate_value exec=RegexValidationCode");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.append("}");
+      _builder_1.newLine();
+      _builder_1.append("}");
+      _builder_1.newLine();
+      Model _parse_1 = this._parseHelper.parse(_builder_1);
+      this._validationTestHelper.assertNoErrors(_parse_1);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
 }

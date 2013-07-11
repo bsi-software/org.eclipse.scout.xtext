@@ -1461,13 +1461,22 @@ public interface SamlPackage extends EPackage
   int STRING_ELEMENT__HORIZONTAL_ALIGN = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 2;
 
   /**
+   * The feature id for the '<em><b>Regex Validation</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_ELEMENT__REGEX_VALIDATION = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 3;
+
+  /**
    * The number of structural features of the '<em>String Element</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int STRING_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 3;
+  int STRING_ELEMENT_FEATURE_COUNT = VALUE_FIELD_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link org.eclipse.scout.saml.saml.impl.BigDecimalElementImpl <em>Big Decimal Element</em>}' class.
@@ -4448,6 +4457,17 @@ public interface SamlPackage extends EPackage
   EAttribute getStringElement_HorizontalAlign();
 
   /**
+   * Returns the meta object for the attribute '{@link org.eclipse.scout.saml.saml.StringElement#getRegexValidation <em>Regex Validation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Regex Validation</em>'.
+   * @see org.eclipse.scout.saml.saml.StringElement#getRegexValidation()
+   * @see #getStringElement()
+   * @generated
+   */
+  EAttribute getStringElement_RegexValidation();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.scout.saml.saml.BigDecimalElement <em>Big Decimal Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -6158,6 +6178,14 @@ public interface SamlPackage extends EPackage
      * @generated
      */
     EAttribute STRING_ELEMENT__HORIZONTAL_ALIGN = eINSTANCE.getStringElement_HorizontalAlign();
+
+    /**
+     * The meta object literal for the '<em><b>Regex Validation</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STRING_ELEMENT__REGEX_VALIDATION = eINSTANCE.getStringElement_RegexValidation();
 
     /**
      * The meta object literal for the '{@link org.eclipse.scout.saml.saml.impl.BigDecimalElementImpl <em>Big Decimal Element</em>}' class.

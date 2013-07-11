@@ -28,7 +28,7 @@ QualifiedNameWithWildCard: QualifiedName  ('.' '*')?;
 BooleanType: 'true'|'false';	//TODO: code completion
 
 //TODO: code completion depending on element we are on
-LogicEventType: 'all'|'modify_load'|'modify_store'|'modify_discard'|'new_load'|'new_store'|'new_discard'|'changed'|'click'|'master_changed'|'init'|'format_value'|'activated'|'load';
+LogicEventType: 'all'|'modify_load'|'modify_store'|'modify_discard'|'new_load'|'new_store'|'new_discard'|'changed'|'click'|'master_changed'|'init'|'format_value'|'activated'|'load'|'validate_value';
 
 HorizontalAlignmentType:'left'|'center'|'right';	//TODO: code completion
 
@@ -136,7 +136,8 @@ StringElement:'string' name=ID
 		('width' '=' gridWidth=INT)? &
 		('width_pixels' '=' widthInPixels=INT)? &
 		('horizontal_align' '=' horizontalAlign=HorizontalAlignmentType)? &
-		('super_type' '=' superType=[TemplateElement])?
+		('super_type' '=' superType=[TemplateElement])? &
+		('regex_validation' '=' regexValidation=STRING)?
 	)
 	('{' logic+=LogicElement* '}')?;
 

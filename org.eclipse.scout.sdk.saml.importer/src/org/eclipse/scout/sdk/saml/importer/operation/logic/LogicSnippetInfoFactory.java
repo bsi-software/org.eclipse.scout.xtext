@@ -204,6 +204,9 @@ public class LogicSnippetInfoFactory {
     else if (event.equals(elements.getLoadKeyword_13().getValue())) {
       return "execLoadCodes";
     }
+    else if (event.equals(elements.getValidate_valueKeyword_14().getValue())) {
+      return "execValidateValue";
+    }
     else {
       throw new IllegalArgumentException("Unknown logic type: " + event);
     }
@@ -313,6 +316,9 @@ public class LogicSnippetInfoFactory {
     }
     else if (event.equals(elements.getLoadKeyword_13().getValue())) {
       return getSourceElementPrefix(sourceType) + "Loaded";
+    }
+    else if (event.equals(elements.getValidate_valueKeyword_14().getValue())) {
+      return getSourceElementPrefix(sourceType) + "Validated";
     }
     else {
       throw new IllegalArgumentException("Unknown logic type: " + event);

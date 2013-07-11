@@ -21,6 +21,7 @@ import org.eclipse.scout.saml.saml.StringElement;
  *   <li>{@link org.eclipse.scout.saml.saml.impl.StringElementImpl#getMaxlen <em>Maxlen</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.StringElementImpl#getGridHeight <em>Grid Height</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.StringElementImpl#getHorizontalAlign <em>Horizontal Align</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.impl.StringElementImpl#getRegexValidation <em>Regex Validation</em>}</li>
  * </ul>
  * </p>
  *
@@ -87,6 +88,26 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
    * @ordered
    */
   protected String horizontalAlign = HORIZONTAL_ALIGN_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getRegexValidation() <em>Regex Validation</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRegexValidation()
+   * @generated
+   * @ordered
+   */
+  protected static final String REGEX_VALIDATION_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getRegexValidation() <em>Regex Validation</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRegexValidation()
+   * @generated
+   * @ordered
+   */
+  protected String regexValidation = REGEX_VALIDATION_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -183,6 +204,29 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getRegexValidation()
+  {
+    return regexValidation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRegexValidation(String newRegexValidation)
+  {
+    String oldRegexValidation = regexValidation;
+    regexValidation = newRegexValidation;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.STRING_ELEMENT__REGEX_VALIDATION, oldRegexValidation, regexValidation));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -194,6 +238,8 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
         return getGridHeight();
       case SamlPackage.STRING_ELEMENT__HORIZONTAL_ALIGN:
         return getHorizontalAlign();
+      case SamlPackage.STRING_ELEMENT__REGEX_VALIDATION:
+        return getRegexValidation();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -216,6 +262,9 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
         return;
       case SamlPackage.STRING_ELEMENT__HORIZONTAL_ALIGN:
         setHorizontalAlign((String)newValue);
+        return;
+      case SamlPackage.STRING_ELEMENT__REGEX_VALIDATION:
+        setRegexValidation((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -240,6 +289,9 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
       case SamlPackage.STRING_ELEMENT__HORIZONTAL_ALIGN:
         setHorizontalAlign(HORIZONTAL_ALIGN_EDEFAULT);
         return;
+      case SamlPackage.STRING_ELEMENT__REGEX_VALIDATION:
+        setRegexValidation(REGEX_VALIDATION_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -260,6 +312,8 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
         return gridHeight != GRID_HEIGHT_EDEFAULT;
       case SamlPackage.STRING_ELEMENT__HORIZONTAL_ALIGN:
         return HORIZONTAL_ALIGN_EDEFAULT == null ? horizontalAlign != null : !HORIZONTAL_ALIGN_EDEFAULT.equals(horizontalAlign);
+      case SamlPackage.STRING_ELEMENT__REGEX_VALIDATION:
+        return REGEX_VALIDATION_EDEFAULT == null ? regexValidation != null : !REGEX_VALIDATION_EDEFAULT.equals(regexValidation);
     }
     return super.eIsSet(featureID);
   }
@@ -281,6 +335,8 @@ public class StringElementImpl extends ValueFieldElementImpl implements StringEl
     result.append(gridHeight);
     result.append(", horizontalAlign: ");
     result.append(horizontalAlign);
+    result.append(", regexValidation: ");
+    result.append(regexValidation);
     result.append(')');
     return result.toString();
   }

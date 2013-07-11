@@ -303,5 +303,11 @@
          </property>
       </importer>
    </extension>
+   <extension
+         point="org.eclipse.scout.sdk.saml.importer.elementPreProcessors">
+      <preProcessor
+            class="org.eclipse.scout.sdk.saml.importer.preprocess.SamlStringElementPreProcessor">
+      </preProcessor>
+   </extension>
 
 </plugin>

@@ -120,7 +120,8 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cAsteriskKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
 		
 		//// TYPES
-		// QualifiedNameWithWildCard:
+		//
+		//QualifiedNameWithWildCard:
 		//
 		//	QualifiedName ("." "*")?;
 		public ParserRule getRule() { return rule; }
@@ -148,7 +149,8 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cFalseKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
 		
 		////TODO: code completion
-		// BooleanType:
+		//
+		//BooleanType:
 		//
 		//	"true" | "false";
 		public ParserRule getRule() { return rule; }
@@ -180,18 +182,20 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cFormat_valueKeyword_11 = (Keyword)cAlternatives.eContents().get(11);
 		private final Keyword cActivatedKeyword_12 = (Keyword)cAlternatives.eContents().get(12);
 		private final Keyword cLoadKeyword_13 = (Keyword)cAlternatives.eContents().get(13);
+		private final Keyword cValidate_valueKeyword_14 = (Keyword)cAlternatives.eContents().get(14);
 		
 		////TODO: code completion depending on element we are on
-		// LogicEventType:
+		//
+		//LogicEventType:
 		//
 		//	"all" | "modify_load" | "modify_store" | "modify_discard" | "new_load" | "new_store" | "new_discard" | "changed" |
 		//
-		//	"click" | "master_changed" | "init" | "format_value" | "activated" | "load";
+		//	"click" | "master_changed" | "init" | "format_value" | "activated" | "load" | "validate_value";
 		public ParserRule getRule() { return rule; }
 
 		//"all" | "modify_load" | "modify_store" | "modify_discard" | "new_load" | "new_store" | "new_discard" | "changed" |
 		//
-		//"click" | "master_changed" | "init" | "format_value" | "activated" | "load"
+		//"click" | "master_changed" | "init" | "format_value" | "activated" | "load" | "validate_value"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//"all"
@@ -235,6 +239,9 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"load"
 		public Keyword getLoadKeyword_13() { return cLoadKeyword_13; }
+
+		//"validate_value"
+		public Keyword getValidate_valueKeyword_14() { return cValidate_valueKeyword_14; }
 	}
 
 	public class HorizontalAlignmentTypeElements extends AbstractParserRuleElementFinder {
@@ -245,7 +252,8 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
 		
 		////TODO: code completion
-		// HorizontalAlignmentType:
+		//
+		//HorizontalAlignmentType:
 		//
 		//	"left" | "center" | "right";
 		public ParserRule getRule() { return rule; }
@@ -481,7 +489,8 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_4_2 = (Keyword)cGroup_4.eContents().get(2);
 		
 		////TODO: code completion for placement, event
-		// LogicElement:
+		//
+		//LogicElement:
 		//
 		//	{LogicElement} "logic" name=ID? (("event" "=" event=LogicEventType)? & ("placement" "=" placement=("client" |
 		//
@@ -1082,7 +1091,8 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTabBoxElementParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
 		
 		//// UI FIELDS
-		// FormFieldElement:
+		//
+		//FormFieldElement:
 		//
 		//	CompositeFieldElement | ValueFieldElement | CustomFieldElement | ButtonElement | TableElement | TabBoxElement;
 		public ParserRule getRule() { return rule; }
@@ -1146,7 +1156,8 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTabElementParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//// COMPOSITES
-		// CompositeFieldElement:
+		//
+		//CompositeFieldElement:
 		//
 		//	SequenceBoxElement | GroupBoxElement | TabElement;
 		public ParserRule getRule() { return rule; }
@@ -1730,7 +1741,8 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRadioGroupElementParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//// VALUE FIELDS
-		// GenericValueFieldElement:
+		//
+		//GenericValueFieldElement:
 		//
 		//	SmartfieldElement | ListBoxElement | RadioGroupElement;
 		public ParserRule getRule() { return rule; }
@@ -1863,6 +1875,11 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cSuperTypeAssignment_2_11_2 = (Assignment)cGroup_2_11.eContents().get(2);
 		private final CrossReference cSuperTypeTemplateElementCrossReference_2_11_2_0 = (CrossReference)cSuperTypeAssignment_2_11_2.eContents().get(0);
 		private final RuleCall cSuperTypeTemplateElementIDTerminalRuleCall_2_11_2_0_1 = (RuleCall)cSuperTypeTemplateElementCrossReference_2_11_2_0.eContents().get(1);
+		private final Group cGroup_2_12 = (Group)cUnorderedGroup_2.eContents().get(12);
+		private final Keyword cRegex_validationKeyword_2_12_0 = (Keyword)cGroup_2_12.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_12_1 = (Keyword)cGroup_2_12.eContents().get(1);
+		private final Assignment cRegexValidationAssignment_2_12_2 = (Assignment)cGroup_2_12.eContents().get(2);
+		private final RuleCall cRegexValidationSTRINGTerminalRuleCall_2_12_2_0 = (RuleCall)cRegexValidationAssignment_2_12_2.eContents().get(0);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Keyword cLeftCurlyBracketKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Assignment cLogicAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
@@ -1879,9 +1896,9 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//
 		//	gridHeight=INT)? & ("width" "=" gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? & ("horizontal_align" "="
 		//
-		//	horizontalAlign=HorizontalAlignmentType)? & ("super_type" "=" superType=[TemplateElement])?) ("{"
+		//	horizontalAlign=HorizontalAlignmentType)? & ("super_type" "=" superType=[TemplateElement])? & ("regex_validation" "="
 		//
-		//	logic+=LogicElement* "}")?;
+		//	regexValidation=STRING)?) ("{" logic+=LogicElement* "}")?;
 		public ParserRule getRule() { return rule; }
 
 		//"string" name=ID (("text" "=" text=[TranslationElement|QualifiedName])? & ("enabled" "=" enabled=BooleanType)? &
@@ -1892,9 +1909,9 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//
 		//gridHeight=INT)? & ("width" "=" gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? & ("horizontal_align" "="
 		//
-		//horizontalAlign=HorizontalAlignmentType)? & ("super_type" "=" superType=[TemplateElement])?) ("{" logic+=LogicElement*
+		//horizontalAlign=HorizontalAlignmentType)? & ("super_type" "=" superType=[TemplateElement])? & ("regex_validation" "="
 		//
-		//"}")?
+		//regexValidation=STRING)?) ("{" logic+=LogicElement* "}")?
 		public Group getGroup() { return cGroup; }
 
 		//"string"
@@ -1914,7 +1931,9 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//
 		//gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? & ("horizontal_align" "="
 		//
-		//horizontalAlign=HorizontalAlignmentType)? & ("super_type" "=" superType=[TemplateElement])?
+		//horizontalAlign=HorizontalAlignmentType)? & ("super_type" "=" superType=[TemplateElement])? & ("regex_validation" "="
+		//
+		//regexValidation=STRING)?
 		public UnorderedGroup getUnorderedGroup_2() { return cUnorderedGroup_2; }
 
 		//("text" "=" text=[TranslationElement|QualifiedName])?
@@ -2105,6 +2124,21 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 
 		//ID
 		public RuleCall getSuperTypeTemplateElementIDTerminalRuleCall_2_11_2_0_1() { return cSuperTypeTemplateElementIDTerminalRuleCall_2_11_2_0_1; }
+
+		//("regex_validation" "=" regexValidation=STRING)?
+		public Group getGroup_2_12() { return cGroup_2_12; }
+
+		//"regex_validation"
+		public Keyword getRegex_validationKeyword_2_12_0() { return cRegex_validationKeyword_2_12_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_2_12_1() { return cEqualsSignKeyword_2_12_1; }
+
+		//regexValidation=STRING
+		public Assignment getRegexValidationAssignment_2_12_2() { return cRegexValidationAssignment_2_12_2; }
+
+		//STRING
+		public RuleCall getRegexValidationSTRINGTerminalRuleCall_2_12_2_0() { return cRegexValidationSTRINGTerminalRuleCall_2_12_2_0; }
 
 		//("{" logic+=LogicElement* "}")?
 		public Group getGroup_3() { return cGroup_3; }
@@ -3931,7 +3965,8 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
 		
 		//// CUSTOM FIELDS
-		// CustomFieldElement:
+		//
+		//CustomFieldElement:
 		//
 		//	"custom_field" name=ID ("super_type" "=" superType=[TemplateElement] & ("text" "="
 		//
@@ -4168,7 +4203,8 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
 		
 		//// BUTTONS
-		// ButtonElement:
+		//
+		//ButtonElement:
 		//
 		//	"button" name=ID (("text" "=" text=[TranslationElement|QualifiedName])? & ("enabled" "=" enabled=BooleanType)? &
 		//
@@ -4441,7 +4477,8 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
 		
 		//// MENUS
-		// MenuElement:
+		//
+		//MenuElement:
 		//
 		//	"menu" name=ID (("enabled" "=" enabled=BooleanType)? & ("visible" "=" visible=BooleanType)? & ("single_select" "="
 		//
@@ -6707,7 +6744,8 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// TYPES
-	// QualifiedNameWithWildCard:
+	//
+	//QualifiedNameWithWildCard:
 	//
 	//	QualifiedName ("." "*")?;
 	public QualifiedNameWithWildCardElements getQualifiedNameWithWildCardAccess() {
@@ -6719,7 +6757,8 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	////TODO: code completion
-	// BooleanType:
+	//
+	//BooleanType:
 	//
 	//	"true" | "false";
 	public BooleanTypeElements getBooleanTypeAccess() {
@@ -6731,11 +6770,12 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	////TODO: code completion depending on element we are on
-	// LogicEventType:
+	//
+	//LogicEventType:
 	//
 	//	"all" | "modify_load" | "modify_store" | "modify_discard" | "new_load" | "new_store" | "new_discard" | "changed" |
 	//
-	//	"click" | "master_changed" | "init" | "format_value" | "activated" | "load";
+	//	"click" | "master_changed" | "init" | "format_value" | "activated" | "load" | "validate_value";
 	public LogicEventTypeElements getLogicEventTypeAccess() {
 		return (pLogicEventType != null) ? pLogicEventType : (pLogicEventType = new LogicEventTypeElements());
 	}
@@ -6745,7 +6785,8 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	////TODO: code completion
-	// HorizontalAlignmentType:
+	//
+	//HorizontalAlignmentType:
 	//
 	//	"left" | "center" | "right";
 	public HorizontalAlignmentTypeElements getHorizontalAlignmentTypeAccess() {
@@ -6803,7 +6844,8 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	////TODO: code completion for placement, event
-	// LogicElement:
+	//
+	//LogicElement:
 	//
 	//	{LogicElement} "logic" name=ID? (("event" "=" event=LogicEventType)? & ("placement" "=" placement=("client" |
 	//
@@ -6873,7 +6915,8 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// UI FIELDS
-	// FormFieldElement:
+	//
+	//FormFieldElement:
 	//
 	//	CompositeFieldElement | ValueFieldElement | CustomFieldElement | ButtonElement | TableElement | TabBoxElement;
 	public FormFieldElementElements getFormFieldElementAccess() {
@@ -6896,7 +6939,8 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// COMPOSITES
-	// CompositeFieldElement:
+	//
+	//CompositeFieldElement:
 	//
 	//	SequenceBoxElement | GroupBoxElement | TabElement;
 	public CompositeFieldElementElements getCompositeFieldElementAccess() {
@@ -6946,7 +6990,8 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// VALUE FIELDS
-	// GenericValueFieldElement:
+	//
+	//GenericValueFieldElement:
 	//
 	//	SmartfieldElement | ListBoxElement | RadioGroupElement;
 	public GenericValueFieldElementElements getGenericValueFieldElementAccess() {
@@ -6980,9 +7025,9 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	//	gridHeight=INT)? & ("width" "=" gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? & ("horizontal_align" "="
 	//
-	//	horizontalAlign=HorizontalAlignmentType)? & ("super_type" "=" superType=[TemplateElement])?) ("{"
+	//	horizontalAlign=HorizontalAlignmentType)? & ("super_type" "=" superType=[TemplateElement])? & ("regex_validation" "="
 	//
-	//	logic+=LogicElement* "}")?;
+	//	regexValidation=STRING)?) ("{" logic+=LogicElement* "}")?;
 	public StringElementElements getStringElementAccess() {
 		return (pStringElement != null) ? pStringElement : (pStringElement = new StringElementElements());
 	}
@@ -7097,7 +7142,8 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// CUSTOM FIELDS
-	// CustomFieldElement:
+	//
+	//CustomFieldElement:
 	//
 	//	"custom_field" name=ID ("super_type" "=" superType=[TemplateElement] & ("text" "="
 	//
@@ -7115,7 +7161,8 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// BUTTONS
-	// ButtonElement:
+	//
+	//ButtonElement:
 	//
 	//	"button" name=ID (("text" "=" text=[TranslationElement|QualifiedName])? & ("enabled" "=" enabled=BooleanType)? &
 	//
@@ -7135,7 +7182,8 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// MENUS
-	// MenuElement:
+	//
+	//MenuElement:
 	//
 	//	"menu" name=ID (("enabled" "=" enabled=BooleanType)? & ("visible" "=" visible=BooleanType)? & ("single_select" "="
 	//

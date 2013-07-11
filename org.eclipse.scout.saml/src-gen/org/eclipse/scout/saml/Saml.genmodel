@@ -109,6 +109,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//StringElement/maxlen"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//StringElement/gridHeight"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//StringElement/horizontalAlign"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//StringElement/regexValidation"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//BigDecimalElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//BigDecimalElement/percent"/>

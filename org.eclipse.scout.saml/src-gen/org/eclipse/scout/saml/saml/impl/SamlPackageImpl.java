@@ -1218,6 +1218,16 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getStringElement_RegexValidation()
+  {
+    return (EAttribute)stringElementEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getBigDecimalElement()
   {
     return bigDecimalElementEClass;
@@ -2245,6 +2255,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     createEAttribute(stringElementEClass, STRING_ELEMENT__MAXLEN);
     createEAttribute(stringElementEClass, STRING_ELEMENT__GRID_HEIGHT);
     createEAttribute(stringElementEClass, STRING_ELEMENT__HORIZONTAL_ALIGN);
+    createEAttribute(stringElementEClass, STRING_ELEMENT__REGEX_VALIDATION);
 
     bigDecimalElementEClass = createEClass(BIG_DECIMAL_ELEMENT);
     createEAttribute(bigDecimalElementEClass, BIG_DECIMAL_ELEMENT__PERCENT);
@@ -2510,6 +2521,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEAttribute(getStringElement_Maxlen(), ecorePackage.getEInt(), "maxlen", null, 0, 1, StringElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getStringElement_GridHeight(), ecorePackage.getEInt(), "gridHeight", null, 0, 1, StringElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getStringElement_HorizontalAlign(), ecorePackage.getEString(), "horizontalAlign", null, 0, 1, StringElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getStringElement_RegexValidation(), ecorePackage.getEString(), "regexValidation", null, 0, 1, StringElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(bigDecimalElementEClass, BigDecimalElement.class, "BigDecimalElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getBigDecimalElement_Percent(), ecorePackage.getEString(), "percent", null, 0, 1, BigDecimalElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
