@@ -586,6 +586,42 @@ public class FormTests {
   }
   
   @Test
+  public void testStringFieldRegexValidation() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module a.b");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("form RegexValidationTest {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("string ValidRegex regex_validation=\"[0-9]{1}\"");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      Model _parse = this._parseHelper.parse(_builder);
+      this._validationTestHelper.assertNoErrors(_parse);
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("module a.b");
+      _builder_1.newLine();
+      _builder_1.newLine();
+      _builder_1.append("form RegexValidationTest {");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.append("string InvalidRegex regex_validation=\"[0-9]{A}\"");
+      _builder_1.newLine();
+      _builder_1.append("}");
+      _builder_1.newLine();
+      Model _parse_1 = this._parseHelper.parse(_builder_1);
+      EClass _stringElement = SamlPackage.eINSTANCE.getStringElement();
+      String _format = String.format(SamlJavaValidator.MSG_INVALID_REGEX, "[0-9]{A}");
+      this._validationTestHelper.assertError(_parse_1, _stringElement, SamlJavaValidator.INVALID_REGEX, _format);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
   public void testLabel() {
     try {
       StringConcatenation _builder = new StringConcatenation();

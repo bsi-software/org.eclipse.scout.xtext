@@ -3130,6 +3130,14 @@ rule__LogicEventType__Alternatives
 { after(grammarAccess.getLogicEventTypeAccess().getLoadKeyword_13()); }
 )
 
+    |(
+{ before(grammarAccess.getLogicEventTypeAccess().getValidate_valueKeyword_14()); }
+
+	'validate_value' 
+
+{ after(grammarAccess.getLogicEventTypeAccess().getValidate_valueKeyword_14()); }
+)
+
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -11708,6 +11716,102 @@ rule__StringElement__Group_2_14__2__Impl
 { before(grammarAccess.getStringElementAccess().getSuperTypeAssignment_2_14_2()); }
 (rule__StringElement__SuperTypeAssignment_2_14_2)
 { after(grammarAccess.getStringElementAccess().getSuperTypeAssignment_2_14_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
+rule__StringElement__Group_2_15__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__StringElement__Group_2_15__0__Impl
+	rule__StringElement__Group_2_15__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__StringElement__Group_2_15__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getStringElementAccess().getRegex_validationKeyword_2_15_0()); }
+
+	'regex_validation' 
+
+{ after(grammarAccess.getStringElementAccess().getRegex_validationKeyword_2_15_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__StringElement__Group_2_15__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__StringElement__Group_2_15__1__Impl
+	rule__StringElement__Group_2_15__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__StringElement__Group_2_15__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getStringElementAccess().getEqualsSignKeyword_2_15_1()); }
+
+	'=' 
+
+{ after(grammarAccess.getStringElementAccess().getEqualsSignKeyword_2_15_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__StringElement__Group_2_15__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__StringElement__Group_2_15__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__StringElement__Group_2_15__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getStringElementAccess().getRegexValidationAssignment_2_15_2()); }
+(rule__StringElement__RegexValidationAssignment_2_15_2)
+{ after(grammarAccess.getStringElementAccess().getRegexValidationAssignment_2_15_2()); }
 )
 
 ;
@@ -43475,6 +43579,23 @@ rule__StringElement__UnorderedGroup_2__Impl
 						{ after(grammarAccess.getStringElementAccess().getGroup_2_14()); }
 					)
  				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getStringElementAccess().getUnorderedGroup_2(), 15)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getStringElementAccess().getUnorderedGroup_2(), 15);
+	 				}
+	 				{
+	 				  selected = true;
+	 				}
+					(
+					
+						{ before(grammarAccess.getStringElementAccess().getGroup_2_15()); }
+						(rule__StringElement__Group_2_15__0)
+						{ after(grammarAccess.getStringElementAccess().getGroup_2_15()); }
+					)
+ 				)
 			)  
 
 		)
@@ -43674,10 +43795,25 @@ rule__StringElement__UnorderedGroup_2__14
     }
 :
 	rule__StringElement__UnorderedGroup_2__Impl
+	rule__StringElement__UnorderedGroup_2__15?
 ;
 finally {
 	restoreStackSize(stackSize);
 }
+
+
+rule__StringElement__UnorderedGroup_2__15
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__StringElement__UnorderedGroup_2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
 
 
 
@@ -50816,6 +50952,21 @@ rule__StringElement__SuperTypeAssignment_2_14_2
 	RULE_ID{ after(grammarAccess.getStringElementAccess().getSuperTypeTemplateElementIDTerminalRuleCall_2_14_2_0_1()); }
 )
 { after(grammarAccess.getStringElementAccess().getSuperTypeTemplateElementCrossReference_2_14_2_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__StringElement__RegexValidationAssignment_2_15_2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getStringElementAccess().getRegexValidationSTRINGTerminalRuleCall_2_15_2_0()); }
+	RULE_STRING{ after(grammarAccess.getStringElementAccess().getRegexValidationSTRINGTerminalRuleCall_2_15_2_0()); }
 )
 
 ;

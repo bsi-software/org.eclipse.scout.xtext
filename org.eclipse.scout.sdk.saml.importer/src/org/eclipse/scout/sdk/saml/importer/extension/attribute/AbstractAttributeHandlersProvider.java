@@ -15,6 +15,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.scout.saml.saml.TranslationElement;
+import org.eclipse.scout.sdk.operation.method.MethodCreateOperation;
 import org.eclipse.scout.sdk.operation.method.MethodOverrideOperation;
 import org.eclipse.scout.sdk.saml.importer.internal.SamlImporterActivator;
 import org.eclipse.scout.sdk.saml.importer.operation.SamlContext;
@@ -50,6 +51,24 @@ public abstract class AbstractAttributeHandlersProvider implements IAttributeHan
     MethodOverrideOperation op = new MethodOverrideOperation(targetType, methodName, false);
     op.setSimpleBody(body);
     op.setSuperTypeHierarchy(hierarchy);
+    op.validate();
+    op.run(monitor, workingCopyManager);
+  }
+
+  protected void createMethod(String methodName, int methodFlags, String body, String[] parameterSignatures, String[] parameterNames, String returnType) throws CoreException, IllegalArgumentException {
+    createMethod(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager(), methodName, methodFlags, body, parameterSignatures, parameterNames, returnType, getSamlContext().getCurrentParentType());
+  }
+
+  protected void createMethod(String methodName, int methodFlags, String body, String[] parameterSignatures, String[] parameterNames, String returnType, IType targetType) throws CoreException, IllegalArgumentException {
+    createMethod(getSamlContext().getMonitor(), getSamlContext().getWorkingCopyManager(), methodName, methodFlags, body, parameterSignatures, parameterNames, returnType, targetType);
+  }
+
+  public static void createMethod(IProgressMonitor monitor, IWorkingCopyManager workingCopyManager, String methodName, int methodFlags, String body, String[] parameterSignatures, String[] parameterNames, String returnType, IType targetType) throws CoreException, IllegalArgumentException {
+    MethodCreateOperation op = new MethodCreateOperation(targetType, methodName, body);
+    op.setMethodFlags(methodFlags);
+    op.setReturnTypeSignature(returnType);
+    op.setParameterSignatures(parameterSignatures);
+    op.setParameterNames(parameterNames);
     op.validate();
     op.run(monitor, workingCopyManager);
   }

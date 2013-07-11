@@ -224,4 +224,33 @@ class LogicTests {
 		}
 		'''.parse(resourceSet).assertError(SamlPackage::eINSTANCE.logicElement, SamlJavaValidator::INVALID_LOGIC_ELEMENT, SamlJavaValidator::MSG_ONLY_NAMED_LOGIC_ON_TOP_LEVEL)
 	}
+	
+	@Test
+	def void testRegexValidationLogic() {
+		'''
+		module a.b
+		
+		form MyTest {
+			string MyString  {
+				logic event=validate_value placement=inline {
+					"[0-9]{1}"
+				}
+			}
+		}
+		'''.parse.assertNoErrors
+		
+		'''
+		module a.b
+		
+		logic RegexValidationCode placement=inline {
+		    "[0-9]{1}"
+		}
+		
+		form MyTest {
+			string MyString  {
+				logic event=validate_value exec=RegexValidationCode
+			}
+		}
+		'''.parse.assertNoErrors
+	}
 }

@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
-
  */
 package org.eclipse.scout.saml.saml.impl;
 
@@ -1260,6 +1256,16 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getStringElement_RegexValidation()
+  {
+    return (EAttribute)stringElementEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getLabelElement()
   {
     return labelElementEClass;
@@ -2340,6 +2346,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     createEAttribute(stringElementEClass, STRING_ELEMENT__MAXLEN);
     createEAttribute(stringElementEClass, STRING_ELEMENT__GRID_HEIGHT);
     createEAttribute(stringElementEClass, STRING_ELEMENT__HORIZONTAL_ALIGN);
+    createEAttribute(stringElementEClass, STRING_ELEMENT__REGEX_VALIDATION);
 
     labelElementEClass = createEClass(LABEL_ELEMENT);
     createEAttribute(labelElementEClass, LABEL_ELEMENT__WRAP_TEXT);
@@ -2615,6 +2622,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
     initEAttribute(getStringElement_Maxlen(), ecorePackage.getEInt(), "maxlen", null, 0, 1, StringElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getStringElement_GridHeight(), ecorePackage.getEInt(), "gridHeight", null, 0, 1, StringElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getStringElement_HorizontalAlign(), ecorePackage.getEString(), "horizontalAlign", null, 0, 1, StringElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getStringElement_RegexValidation(), ecorePackage.getEString(), "regexValidation", null, 0, 1, StringElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(labelElementEClass, LabelElement.class, "LabelElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLabelElement_WrapText(), ecorePackage.getEString(), "wrapText", null, 0, 1, LabelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

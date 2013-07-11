@@ -2,6 +2,8 @@ package org.eclipse.scout.saml.validation;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -24,6 +26,7 @@ import org.eclipse.scout.saml.saml.MenuElement;
 import org.eclipse.scout.saml.saml.Model;
 import org.eclipse.scout.saml.saml.ModuleElement;
 import org.eclipse.scout.saml.saml.SamlPackage;
+import org.eclipse.scout.saml.saml.StringElement;
 import org.eclipse.scout.saml.saml.TabBoxElement;
 import org.eclipse.scout.saml.saml.TabElement;
 import org.eclipse.scout.saml.saml.TableElement;
@@ -142,7 +145,8 @@ public class SamlJavaValidator extends AbstractSamlJavaValidator implements ISam
       return newSet(grammar.getLogicEventTypeAccess().getChangedKeyword_7().getValue(),
           grammar.getLogicEventTypeAccess().getFormat_valueKeyword_11().getValue(),
           grammar.getLogicEventTypeAccess().getMaster_changedKeyword_9().getValue(),
-          grammar.getLogicEventTypeAccess().getInitKeyword_10().getValue());
+          grammar.getLogicEventTypeAccess().getInitKeyword_10().getValue(),
+          grammar.getLogicEventTypeAccess().getValidate_valueKeyword_14().getValue());
     }
     else if (container instanceof FormFieldElement) {
       return newSet(grammar.getLogicEventTypeAccess().getInitKeyword_10().getValue());
@@ -342,4 +346,18 @@ public class SamlJavaValidator extends AbstractSamlJavaValidator implements ISam
       }
     }
   }
+
+  @Check
+  public void checkValidStringFieldRegexValidation(StringElement element) {
+    if (element.getRegexValidation() != null) {
+      // check if the given regex can be compiled
+      try {
+        Pattern.compile(element.getRegexValidation());
+      }
+      catch (PatternSyntaxException e) {
+        error(String.format(MSG_INVALID_REGEX, element.getRegexValidation()), element, SamlPackage.eINSTANCE.getStringElement_RegexValidation(), INVALID_REGEX);
+      }
+    }
+  }
+
 }

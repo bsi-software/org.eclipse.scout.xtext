@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
-
  */
 package org.eclipse.scout.saml.saml;
 
@@ -21,6 +17,7 @@ package org.eclipse.scout.saml.saml;
  *   <li>{@link org.eclipse.scout.saml.saml.StringElement#getMaxlen <em>Maxlen</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.StringElement#getGridHeight <em>Grid Height</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.StringElement#getHorizontalAlign <em>Horizontal Align</em>}</li>
+ *   <li>{@link org.eclipse.scout.saml.saml.StringElement#getRegexValidation <em>Regex Validation</em>}</li>
  * </ul>
  * </p>
  *
@@ -185,5 +182,31 @@ public interface StringElement extends ValueFieldElement
    * @generated
    */
   void setHorizontalAlign(String value);
+
+  /**
+   * Returns the value of the '<em><b>Regex Validation</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Regex Validation</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Regex Validation</em>' attribute.
+   * @see #setRegexValidation(String)
+   * @see org.eclipse.scout.saml.saml.SamlPackage#getStringElement_RegexValidation()
+   * @model
+   * @generated
+   */
+  String getRegexValidation();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.scout.saml.saml.StringElement#getRegexValidation <em>Regex Validation</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Regex Validation</em>' attribute.
+   * @see #getRegexValidation()
+   * @generated
+   */
+  void setRegexValidation(String value);
 
 } // StringElement

@@ -167,6 +167,7 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getStringElementAccess().getGroup_2_12(), "rule__StringElement__Group_2_12__0");
 					put(grammarAccess.getStringElementAccess().getGroup_2_13(), "rule__StringElement__Group_2_13__0");
 					put(grammarAccess.getStringElementAccess().getGroup_2_14(), "rule__StringElement__Group_2_14__0");
+					put(grammarAccess.getStringElementAccess().getGroup_2_15(), "rule__StringElement__Group_2_15__0");
 					put(grammarAccess.getStringElementAccess().getGroup_3(), "rule__StringElement__Group_3__0");
 					put(grammarAccess.getLabelElementAccess().getGroup(), "rule__LabelElement__Group__0");
 					put(grammarAccess.getLabelElementAccess().getGroup_2_0(), "rule__LabelElement__Group_2_0__0");
@@ -589,6 +590,7 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getStringElementAccess().getWidthInPixelsAssignment_2_12_2(), "rule__StringElement__WidthInPixelsAssignment_2_12_2");
 					put(grammarAccess.getStringElementAccess().getHorizontalAlignAssignment_2_13_2(), "rule__StringElement__HorizontalAlignAssignment_2_13_2");
 					put(grammarAccess.getStringElementAccess().getSuperTypeAssignment_2_14_2(), "rule__StringElement__SuperTypeAssignment_2_14_2");
+					put(grammarAccess.getStringElementAccess().getRegexValidationAssignment_2_15_2(), "rule__StringElement__RegexValidationAssignment_2_15_2");
 					put(grammarAccess.getStringElementAccess().getLogicAssignment_3_1(), "rule__StringElement__LogicAssignment_3_1");
 					put(grammarAccess.getLabelElementAccess().getNameAssignment_1(), "rule__LabelElement__NameAssignment_1");
 					put(grammarAccess.getLabelElementAccess().getTextAssignment_2_0_2(), "rule__LabelElement__TextAssignment_2_0_2");

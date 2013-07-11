@@ -293,7 +293,25 @@ class FormTests {
 			bigdecimal TestOk format="0000" grouping=false  fraction_digits=2
 		}
 		'''.parse.assertError(SamlPackage::eINSTANCE.bigDecimalElement, SamlJavaValidator::FORMAT_CONFLICTING, SamlJavaValidator::MSG_FORMAT_CONFLICTING)
+	}
+	
+	@Test
+	def void testStringFieldRegexValidation() {
+		'''
+		module a.b
 		
+		form RegexValidationTest {
+			string ValidRegex regex_validation="[0-9]{1}"
+		}
+		'''.parse.assertNoErrors
+		
+		'''
+		module a.b
+		
+		form RegexValidationTest {
+			string InvalidRegex regex_validation="[0-9]{A}"
+		}
+		'''.parse.assertError(SamlPackage::eINSTANCE.stringElement, SamlJavaValidator::INVALID_REGEX, String::format(SamlJavaValidator::MSG_INVALID_REGEX, "[0-9]{A}"))
 	}
 	
 	@Test
