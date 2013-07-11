@@ -291,7 +291,7 @@ public class ComplexFormTests {
       _builder.append("date DateTest text=trans.text2 enabled=false visible=false label_visible=false mandatory=true width=2 format=\"dd.MM.yyyy\"");
       _builder.newLine();
       _builder.append("    ");
-      _builder.append("smartfield SmartFieldTest1 text=trans.text1 enabled=false visible=false label_visible=false mandatory=true code=Departments width=2 value_type=\"java.lang.String\" ");
+      _builder.append("smartfield SmartFieldTest1 text=trans.text1 enabled=false visible=false label_visible=false mandatory=true code=Departments width=2 value_type=\"java.lang.String\" max_row_count=5");
       _builder.newLine();
       _builder.append("    ");
       _builder.append("list TestList1 text=trans.text1 enabled=false visible=false label_visible=false mandatory=true code=Departments width=2 value_type=\"java.lang.String\"");

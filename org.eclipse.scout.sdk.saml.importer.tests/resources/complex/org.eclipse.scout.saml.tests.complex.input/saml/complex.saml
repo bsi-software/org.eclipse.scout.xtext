@@ -106,7 +106,7 @@ form ComplexFieldTest {
     bigdecimal BigDecimal2Test format="0000.00"
 	long LongTest text=trans.text1 enabled=false visible=false label_visible=false mandatory=true width=2 width_pixels=76 horizontal_align=left min=2 max=4 format="0000"
 	date DateTest text=trans.text2 enabled=false visible=false label_visible=false mandatory=true width=2 format="dd.MM.yyyy"
-    smartfield SmartFieldTest1 text=trans.text1 enabled=false visible=false label_visible=false mandatory=true code=Departments width=2 value_type="java.lang.String" 
+    smartfield SmartFieldTest1 text=trans.text1 enabled=false visible=false label_visible=false mandatory=true code=Departments width=2 value_type="java.lang.String" max_row_count=5
     list TestList1 text=trans.text1 enabled=false visible=false label_visible=false mandatory=true code=Departments width=2 value_type="java.lang.String"
     button TestButton text=trans.text1 enabled=false visible=false process_button=false width=2 width_pixels=30 type=normal {
       menu MenuTest1 text=trans.text1 enabled=true visible=true single_select=true multi_select=false empty_select=true type=cancel

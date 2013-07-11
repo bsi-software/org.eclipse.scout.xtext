@@ -30,7 +30,7 @@ public class SmartfieldElementImportTest extends AbstractSamlFieldImporterTest i
   @Test
   public void testNumAttributes1() throws Exception {
     IType field = getField(FORM_NAME, LOCATION1);
-    Assert.assertEquals(7, TypeUtility.getMethods(field).length);
+    Assert.assertEquals(8, TypeUtility.getMethods(field).length);
   }
 
   @Test
@@ -71,6 +71,11 @@ public class SmartfieldElementImportTest extends AbstractSamlFieldImporterTest i
   @Test
   public void testGenericType1() throws Exception {
     testHasGenericArgument(getField(FORM_NAME, LOCATION1), String.class.getSimpleName());
+  }
+
+  @Test
+  public void testMaxRowCountAttribute1() throws Exception {
+    testIntConfigMethod(getField(FORM_NAME, LOCATION1), "getConfiguredBrowseMaxRowCount", 5);
   }
 
   @Test

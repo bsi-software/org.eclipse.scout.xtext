@@ -557,4 +557,11 @@ public class FormFieldAttributeHandlersProvider extends AbstractAttributeHandler
   public void applyRegexValidationAttribute(String regex) throws CoreException, IllegalArgumentException {
     createMethod("getRegexValidation", METHOD_FLAG_PROTECTED, "return " + JdtUtility.toStringLiteral(regex) + ";", null, null, RETURN_TYPE_STRING);
   }
+
+  @SamlAttributeHandler(handles = {@SamlAttribute(elementType = SmartfieldElement.class, featureId = SamlPackage.SMARTFIELD_ELEMENT__MAX_ROW_COUNT)})
+  public void applyMaxRowCountAttribute(int maxRowCount) throws CoreException, IllegalArgumentException {
+    if (maxRowCount > 0) {
+      overrideMethod("getConfiguredBrowseMaxRowCount", "return " + maxRowCount + ";");
+    }
+  }
 }
