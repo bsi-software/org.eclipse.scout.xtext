@@ -109,6 +109,15 @@ class ComplexFormTests {
 		  	string StringWrapped text=trans.text2 enabled=true visible=true label_visible=true wrap_text=true height=4
 		  	string StringInputMasked text=trans.text2 enabled=true visible=true label_visible=true mask_input=true
 		  	label LabelTest text=trans.text2 enabled=true visible=true wrap_text=true
+		    string StringRegex text=trans.text1 mandatory=true regex_validation="[0-9]{1}"
+		    string StringNamedValidationLogic text=trans.text1 mandatory=false {
+		      logic event=validate_value exec=RegexValidationSnippet
+		    }
+		    string StringAnonymousValidationLogic text=trans.text1 mandatory=false {
+		      logic event=validate_value placement=inline {
+		        "if (rawValue != null && !rawValue.matches([A-Z0-9])) { throw new VetoException(ScoutTexts.get(\"InvalidValueMessageX\", rawValue)); } return rawValue;"
+		      }
+		    }		  	
 		  }
 		  group GroupTest text=trans.text2 columns=3 enabled=false visible=false label_visible=false border_visible=false border_decoration=line height=10 width=3 width_pixels=500 {
 		    bigdecimal BigDecimalTest text=trans.text1 enabled=false visible=false percent=true grouping=false label_visible=false mandatory=true width=2 width_pixels=333 horizontal_align=left fraction_digits=4 min=20.2 max=200.002
@@ -119,15 +128,6 @@ class ComplexFormTests {
 		    list TestList1 text=trans.text1 enabled=false visible=false label_visible=false mandatory=true code=Departments width=2 value_type="java.lang.String"
 		    button TestButton text=trans.text1 enabled=false visible=false process_button=false width=2 width_pixels=30 type=normal {
 		      menu MenuTest1 text=trans.text1 enabled=true visible=true single_select=true multi_select=false empty_select=true type=cancel
-		    }
-		    string StringRegex text=trans.text1 mandatory=true regex_validation="[0-9]{1}"
-		    string StringNamedValidationLogic text=trans.text1 mandatory=false {
-		      logic event=validate_value exec=RegexValidationSnippet
-		    }
-		    string StringAnonymousValidationLogic text=trans.text1 mandatory=false {
-		      logic event=validate_value placement=inline {
-		        "if (rawValue != null && !rawValue.matches([A-Z0-9])) { throw new VetoException(ScoutTexts.get(\"InvalidValueMessageX\", rawValue)); } return rawValue;"
-		      }
 		    }
 		    table TestTable text=trans.text1 enabled=false visible=false label_visible=false height=6 width=3 width_pixels=700 {
 		      menu MenuTest2 text=trans.text1 enabled=true visible=true single_select=false multi_select=true empty_select=true type=separator

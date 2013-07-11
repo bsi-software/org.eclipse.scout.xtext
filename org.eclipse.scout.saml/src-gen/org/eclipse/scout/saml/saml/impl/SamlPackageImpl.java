@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
-
  */
 package org.eclipse.scout.saml.saml.impl;
 
@@ -1230,11 +1226,7 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-<<<<<<< HEAD
-  public EAttribute getStringElement_RegexValidation()
-=======
   public EAttribute getStringElement_Maxlen()
->>>>>>> origin/develop
   {
     return (EAttribute)stringElementEClass.getEStructuralFeatures().get(3);
   }
@@ -1244,8 +1236,6 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-<<<<<<< HEAD
-=======
   public EAttribute getStringElement_GridHeight()
   {
     return (EAttribute)stringElementEClass.getEStructuralFeatures().get(4);
@@ -1259,6 +1249,16 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
   public EAttribute getStringElement_HorizontalAlign()
   {
     return (EAttribute)stringElementEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getStringElement_RegexValidation()
+  {
+    return (EAttribute)stringElementEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -1306,7 +1306,6 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
->>>>>>> origin/develop
   public EClass getBigDecimalElement()
   {
     return bigDecimalElementEClass;
