@@ -157,3 +157,29 @@ Changes:
 	Added:
 		For 'date', 'long', 'bigdecimal':
 			Attribute 'format'
+
+
+			
+Version 1.0.0 2013-07-11
+Changed: kle
+Changes:
+	Added:
+		Element 'label'
+			Attributes: 'text', 'enabled', 'visible', 'label_visible', 'master', 'mandatory', 'width', 'width_pixels', 'horizontal_align', 'super_type'
+		For 'string', 'label':
+			Attribute 'wrap_text'
+		For 'smartfield':
+			Attribute 'max_row_count'
+		For 'string':
+			Attributes 'uppercase', 'mask_input'
+			
+
+
+Version 1.0.0 2013-07-11
+Changed: kle
+Changes:
+	Added:
+		For 'string':
+			Attribute 'regex_validation'
+		For 'event' attribute below 'form' element:
+			Options: 'validate_value'

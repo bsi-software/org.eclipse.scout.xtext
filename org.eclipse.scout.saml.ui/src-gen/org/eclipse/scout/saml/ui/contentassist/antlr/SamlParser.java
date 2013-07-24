@@ -181,7 +181,6 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLabelElementAccess().getGroup_2_8(), "rule__LabelElement__Group_2_8__0");
 					put(grammarAccess.getLabelElementAccess().getGroup_2_9(), "rule__LabelElement__Group_2_9__0");
 					put(grammarAccess.getLabelElementAccess().getGroup_2_10(), "rule__LabelElement__Group_2_10__0");
-					put(grammarAccess.getLabelElementAccess().getGroup_2_11(), "rule__LabelElement__Group_2_11__0");
 					put(grammarAccess.getLabelElementAccess().getGroup_3(), "rule__LabelElement__Group_3__0");
 					put(grammarAccess.getBigDecimalElementAccess().getGroup(), "rule__BigDecimalElement__Group__0");
 					put(grammarAccess.getBigDecimalElementAccess().getGroup_2_0(), "rule__BigDecimalElement__Group_2_0__0");
@@ -600,11 +599,10 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLabelElementAccess().getLabelVisibleAssignment_2_4_2(), "rule__LabelElement__LabelVisibleAssignment_2_4_2");
 					put(grammarAccess.getLabelElementAccess().getMasterAssignment_2_5_2(), "rule__LabelElement__MasterAssignment_2_5_2");
 					put(grammarAccess.getLabelElementAccess().getMandatoryAssignment_2_6_2(), "rule__LabelElement__MandatoryAssignment_2_6_2");
-					put(grammarAccess.getLabelElementAccess().getGridHeightAssignment_2_7_2(), "rule__LabelElement__GridHeightAssignment_2_7_2");
-					put(grammarAccess.getLabelElementAccess().getGridWidthAssignment_2_8_2(), "rule__LabelElement__GridWidthAssignment_2_8_2");
-					put(grammarAccess.getLabelElementAccess().getWidthInPixelsAssignment_2_9_2(), "rule__LabelElement__WidthInPixelsAssignment_2_9_2");
-					put(grammarAccess.getLabelElementAccess().getHorizontalAlignAssignment_2_10_2(), "rule__LabelElement__HorizontalAlignAssignment_2_10_2");
-					put(grammarAccess.getLabelElementAccess().getSuperTypeAssignment_2_11_2(), "rule__LabelElement__SuperTypeAssignment_2_11_2");
+					put(grammarAccess.getLabelElementAccess().getGridWidthAssignment_2_7_2(), "rule__LabelElement__GridWidthAssignment_2_7_2");
+					put(grammarAccess.getLabelElementAccess().getWidthInPixelsAssignment_2_8_2(), "rule__LabelElement__WidthInPixelsAssignment_2_8_2");
+					put(grammarAccess.getLabelElementAccess().getHorizontalAlignAssignment_2_9_2(), "rule__LabelElement__HorizontalAlignAssignment_2_9_2");
+					put(grammarAccess.getLabelElementAccess().getSuperTypeAssignment_2_10_2(), "rule__LabelElement__SuperTypeAssignment_2_10_2");
 					put(grammarAccess.getLabelElementAccess().getLogicAssignment_3_1(), "rule__LabelElement__LogicAssignment_3_1");
 					put(grammarAccess.getBigDecimalElementAccess().getNameAssignment_1(), "rule__BigDecimalElement__NameAssignment_1");
 					put(grammarAccess.getBigDecimalElementAccess().getTextAssignment_2_0_2(), "rule__BigDecimalElement__TextAssignment_2_0_2");

@@ -19,7 +19,6 @@ import org.eclipse.scout.saml.saml.SamlPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.LabelElementImpl#getWrapText <em>Wrap Text</em>}</li>
- *   <li>{@link org.eclipse.scout.saml.saml.impl.LabelElementImpl#getGridHeight <em>Grid Height</em>}</li>
  *   <li>{@link org.eclipse.scout.saml.saml.impl.LabelElementImpl#getHorizontalAlign <em>Horizontal Align</em>}</li>
  * </ul>
  * </p>
@@ -47,26 +46,6 @@ public class LabelElementImpl extends ValueFieldElementImpl implements LabelElem
    * @ordered
    */
   protected String wrapText = WRAP_TEXT_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getGridHeight() <em>Grid Height</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getGridHeight()
-   * @generated
-   * @ordered
-   */
-  protected static final int GRID_HEIGHT_EDEFAULT = 0;
-
-  /**
-   * The cached value of the '{@link #getGridHeight() <em>Grid Height</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getGridHeight()
-   * @generated
-   * @ordered
-   */
-  protected int gridHeight = GRID_HEIGHT_EDEFAULT;
 
   /**
    * The default value of the '{@link #getHorizontalAlign() <em>Horizontal Align</em>}' attribute.
@@ -137,29 +116,6 @@ public class LabelElementImpl extends ValueFieldElementImpl implements LabelElem
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getGridHeight()
-  {
-    return gridHeight;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setGridHeight(int newGridHeight)
-  {
-    int oldGridHeight = gridHeight;
-    gridHeight = newGridHeight;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.LABEL_ELEMENT__GRID_HEIGHT, oldGridHeight, gridHeight));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public String getHorizontalAlign()
   {
     return horizontalAlign;
@@ -190,8 +146,6 @@ public class LabelElementImpl extends ValueFieldElementImpl implements LabelElem
     {
       case SamlPackage.LABEL_ELEMENT__WRAP_TEXT:
         return getWrapText();
-      case SamlPackage.LABEL_ELEMENT__GRID_HEIGHT:
-        return getGridHeight();
       case SamlPackage.LABEL_ELEMENT__HORIZONTAL_ALIGN:
         return getHorizontalAlign();
     }
@@ -210,9 +164,6 @@ public class LabelElementImpl extends ValueFieldElementImpl implements LabelElem
     {
       case SamlPackage.LABEL_ELEMENT__WRAP_TEXT:
         setWrapText((String)newValue);
-        return;
-      case SamlPackage.LABEL_ELEMENT__GRID_HEIGHT:
-        setGridHeight((Integer)newValue);
         return;
       case SamlPackage.LABEL_ELEMENT__HORIZONTAL_ALIGN:
         setHorizontalAlign((String)newValue);
@@ -234,9 +185,6 @@ public class LabelElementImpl extends ValueFieldElementImpl implements LabelElem
       case SamlPackage.LABEL_ELEMENT__WRAP_TEXT:
         setWrapText(WRAP_TEXT_EDEFAULT);
         return;
-      case SamlPackage.LABEL_ELEMENT__GRID_HEIGHT:
-        setGridHeight(GRID_HEIGHT_EDEFAULT);
-        return;
       case SamlPackage.LABEL_ELEMENT__HORIZONTAL_ALIGN:
         setHorizontalAlign(HORIZONTAL_ALIGN_EDEFAULT);
         return;
@@ -256,8 +204,6 @@ public class LabelElementImpl extends ValueFieldElementImpl implements LabelElem
     {
       case SamlPackage.LABEL_ELEMENT__WRAP_TEXT:
         return WRAP_TEXT_EDEFAULT == null ? wrapText != null : !WRAP_TEXT_EDEFAULT.equals(wrapText);
-      case SamlPackage.LABEL_ELEMENT__GRID_HEIGHT:
-        return gridHeight != GRID_HEIGHT_EDEFAULT;
       case SamlPackage.LABEL_ELEMENT__HORIZONTAL_ALIGN:
         return HORIZONTAL_ALIGN_EDEFAULT == null ? horizontalAlign != null : !HORIZONTAL_ALIGN_EDEFAULT.equals(horizontalAlign);
     }
@@ -277,8 +223,6 @@ public class LabelElementImpl extends ValueFieldElementImpl implements LabelElem
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (wrapText: ");
     result.append(wrapText);
-    result.append(", gridHeight: ");
-    result.append(gridHeight);
     result.append(", horizontalAlign: ");
     result.append(horizontalAlign);
     result.append(')');

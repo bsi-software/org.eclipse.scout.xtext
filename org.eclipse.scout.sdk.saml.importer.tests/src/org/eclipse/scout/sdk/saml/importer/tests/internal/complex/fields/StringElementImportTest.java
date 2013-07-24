@@ -26,7 +26,11 @@ public class StringElementImportTest extends AbstractSamlFieldImporterTest imple
 
   private final static String[] LOCATION1 = new String[]{"SequenceTest", "StringAreaTest"};
   private final static String[] LOCATION2 = new String[]{"SequenceTest", "StringTest"};
+  private final static String[] LOCATION_WRAPPED = new String[]{"SequenceTest", "StringWrapped"};
+  private final static String[] LOCATION_INPUTMASKED = new String[]{"SequenceTest", "StringInputMasked"};
   private final static String[] LOCATION_REGEX = new String[]{"SequenceTest", "StringRegexTest"};
+  private final static String[] LOCATION_NAMED_REGEX = new String[]{"SequenceTest", "StringNamedValidationLogic"};
+  private final static String[] LOCATION_UNNAMED_REGEX = new String[]{"SequenceTest", "StringAnonymousValidationLogic"};
 
   @Test
   public void testNumAttributes1() throws Exception {
@@ -143,12 +147,95 @@ public class StringElementImportTest extends AbstractSamlFieldImporterTest imple
   }
 
   @Test
-  public void testUpper() throws Exception {
+  public void testUppercaseAttribute2() throws Exception {
     testBoolConfigMethod(getField(FORM_NAME, LOCATION2), "getConfiguredFormatUpper", true);
   }
-  
+
   @Test
-  public void testRegexValidationAttribute() throws Exception {
-    testMethod(getField(FORM_NAME, LOCATION_REGEX), "execValidateValue", "!rawValue.matches(getRegexValidation())", "throw new VetoException", "return rawValue");
+  public void testNumAttributesStringWrapped() throws Exception {
+    IType field = getField(FORM_NAME, LOCATION_WRAPPED);
+    Assert.assertEquals(4, TypeUtility.getMethods(field).length);
+  }
+
+  @Test
+  public void testTextAttributeStringWrapped() throws Exception {
+    testNlsConfigMethod(getField(FORM_NAME, LOCATION_WRAPPED), "getConfiguredLabel", "trans.text2");
+  }
+
+  @Test
+  public void testWrapTextAttributeStringWrapped() throws Exception {
+    testBoolConfigMethod(getField(FORM_NAME, LOCATION_WRAPPED), "getConfiguredWrapText", true);
+  }
+
+  @Test
+  public void testHeightAttributeStringWrapped() throws Exception {
+    testIntConfigMethod(getField(FORM_NAME, LOCATION_WRAPPED), "getConfiguredGridH", 4);
+    testBoolConfigMethod(getField(FORM_NAME, LOCATION_WRAPPED), "getConfiguredMultilineText", true);
+  }
+
+  @Test
+  public void testNumAttributesStringInputMasked() throws Exception {
+    IType field = getField(FORM_NAME, LOCATION_INPUTMASKED);
+    Assert.assertEquals(2, TypeUtility.getMethods(field).length);
+  }
+
+  @Test
+  public void testTextAttributeStringInputMasked() throws Exception {
+    testNlsConfigMethod(getField(FORM_NAME, LOCATION_INPUTMASKED), "getConfiguredLabel", "trans.text2");
+  }
+
+  @Test
+  public void testMaskInputStringInputMasked() throws Exception {
+    testBoolConfigMethod(getField(FORM_NAME, LOCATION_INPUTMASKED), "getConfiguredInputMasked", true);
+  }
+
+  @Test
+  public void testNumAttributesStringRegexTest() throws Exception {
+    IType field = getField(FORM_NAME, LOCATION_REGEX);
+    Assert.assertEquals(4, TypeUtility.getMethods(field).length);
+  }
+
+  @Test
+  public void testTextAttributeStringRegexTest() throws Exception {
+    testNlsConfigMethod(getField(FORM_NAME, LOCATION_REGEX), "getConfiguredLabel", "trans.text1");
+  }
+
+  @Test
+  public void testMandatoryAttributeStringRegexTest() throws Exception {
+    testBoolConfigMethod(getField(FORM_NAME, LOCATION_REGEX), "getConfiguredMandatory", true);
+  }
+
+  @Test
+  public void testNumAttributesStringNamedValidationLogic() throws Exception {
+    IType field = getField(FORM_NAME, LOCATION_NAMED_REGEX);
+    Assert.assertEquals(2, TypeUtility.getMethods(field).length);
+  }
+
+  @Test
+  public void testTextAttributeStringNamedValidationLogic() throws Exception {
+    testNlsConfigMethod(getField(FORM_NAME, LOCATION_NAMED_REGEX), "getConfiguredLabel", "trans.text1");
+  }
+
+  @Test
+  public void testRegexValidationAttributeStringNamedValidationLogic() throws Exception {
+    // creates two methods: execValidateValue and getRegexValidation
+    testMethod(getField(FORM_NAME, LOCATION_NAMED_REGEX), "execValidateValue", "!rawValue.matches(\"[a-z0-9]\")", "throw new VetoException", "return rawValue");
+  }
+
+  @Test
+  public void testNumAttributeseStringAnonymousValidationLogic() throws Exception {
+    IType field = getField(FORM_NAME, LOCATION_UNNAMED_REGEX);
+    Assert.assertEquals(2, TypeUtility.getMethods(field).length);
+  }
+
+  @Test
+  public void testTextAttributeeStringAnonymousValidationLogic() throws Exception {
+    testNlsConfigMethod(getField(FORM_NAME, LOCATION_UNNAMED_REGEX), "getConfiguredLabel", "trans.text1");
+  }
+
+  @Test
+  public void testRegexValidationAttributeStringAnonymousValidationLogic() throws Exception {
+    // creates two methods: execValidateValue and getRegexValidation
+    testMethod(getField(FORM_NAME, LOCATION_UNNAMED_REGEX), "execValidateValue", "!rawValue.matches(\"[A-Z0-9]\")", "throw new VetoException", "return rawValue");
   }
 }

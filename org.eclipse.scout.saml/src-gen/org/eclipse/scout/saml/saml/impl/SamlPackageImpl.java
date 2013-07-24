@@ -1286,19 +1286,9 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getLabelElement_GridHeight()
-  {
-    return (EAttribute)labelElementEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EAttribute getLabelElement_HorizontalAlign()
   {
-    return (EAttribute)labelElementEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)labelElementEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -2350,7 +2340,6 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
 
     labelElementEClass = createEClass(LABEL_ELEMENT);
     createEAttribute(labelElementEClass, LABEL_ELEMENT__WRAP_TEXT);
-    createEAttribute(labelElementEClass, LABEL_ELEMENT__GRID_HEIGHT);
     createEAttribute(labelElementEClass, LABEL_ELEMENT__HORIZONTAL_ALIGN);
 
     bigDecimalElementEClass = createEClass(BIG_DECIMAL_ELEMENT);
@@ -2626,7 +2615,6 @@ public class SamlPackageImpl extends EPackageImpl implements SamlPackage
 
     initEClass(labelElementEClass, LabelElement.class, "LabelElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLabelElement_WrapText(), ecorePackage.getEString(), "wrapText", null, 0, 1, LabelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getLabelElement_GridHeight(), ecorePackage.getEInt(), "gridHeight", null, 0, 1, LabelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getLabelElement_HorizontalAlign(), ecorePackage.getEString(), "horizontalAlign", null, 0, 1, LabelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(bigDecimalElementEClass, BigDecimalElement.class, "BigDecimalElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

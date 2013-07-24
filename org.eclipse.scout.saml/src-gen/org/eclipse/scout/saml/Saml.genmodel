@@ -116,7 +116,6 @@
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//LabelElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LabelElement/wrapText"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LabelElement/gridHeight"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Saml.ecore#//LabelElement/horizontalAlign"/>
     </genClasses>
     <genClasses ecoreClass="Saml.ecore#//BigDecimalElement">

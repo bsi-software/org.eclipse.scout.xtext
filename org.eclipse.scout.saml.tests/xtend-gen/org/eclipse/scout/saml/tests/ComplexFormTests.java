@@ -242,8 +242,11 @@ public class ComplexFormTests {
       _builder.append("  \t");
       _builder.append("string StringInputMasked text=trans.text2 enabled=true visible=true label_visible=true mask_input=true");
       _builder.newLine();
-      _builder.append("  \t");
-      _builder.append("label LabelTest text=trans.text2 enabled=true visible=true wrap_text=true");
+      _builder.append("\t");
+      _builder.append("label LabelTest1 text=trans.text1 enabled=true visible=true wrap_text=false");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("label LabelTest2 text=trans.text2 enabled=false visible=false label_visible=false mandatory=true master=LabelTest1 width=2 width_pixels=200 horizontal_align=center wrap_text=true");
       _builder.newLine();
       _builder.append("    ");
       _builder.append("string StringRegex text=trans.text1 mandatory=true regex_validation=\"[0-9]{1}\"");

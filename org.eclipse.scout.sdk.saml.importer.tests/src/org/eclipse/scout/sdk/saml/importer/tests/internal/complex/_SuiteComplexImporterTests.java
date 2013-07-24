@@ -12,6 +12,7 @@ import org.eclipse.scout.sdk.saml.importer.tests.internal.complex.fields.CustomF
 import org.eclipse.scout.sdk.saml.importer.tests.internal.complex.fields.DateElementImportTest;
 import org.eclipse.scout.sdk.saml.importer.tests.internal.complex.fields.FileChooserElementImportTest;
 import org.eclipse.scout.sdk.saml.importer.tests.internal.complex.fields.GroupElementImportTest;
+import org.eclipse.scout.sdk.saml.importer.tests.internal.complex.fields.LabelElementImportTest;
 import org.eclipse.scout.sdk.saml.importer.tests.internal.complex.fields.ListElementImportTest;
 import org.eclipse.scout.sdk.saml.importer.tests.internal.complex.fields.LongElementImportTest;
 import org.eclipse.scout.sdk.saml.importer.tests.internal.complex.fields.MenuElementImportTest;
@@ -36,7 +37,7 @@ import org.junit.runners.Suite.SuiteClasses;
     BigdecimalElementImportTest.class, ButtonElementImportTest.class, ColumnElementImportTest.class, DateElementImportTest.class, GroupElementImportTest.class,
     ListElementImportTest.class, MenuElementImportTest.class, SequenceBoxElementImportTest.class, SmartfieldElementImportTest.class, StringElementImportTest.class,
     TabboxElementImportTest.class, TabElementImportTest.class, TableElementImportTest.class, CustomFieldElementImportTest.class, CheckboxElementImportTest.class,
-    RadioGroupElementImportTest.class, RadioButtonElementImportTest.class, FileChooserElementImportTest.class, LongElementImportTest.class})
+    RadioGroupElementImportTest.class, RadioButtonElementImportTest.class, FileChooserElementImportTest.class, LongElementImportTest.class, LabelElementImportTest.class})
 public class _SuiteComplexImporterTests extends AbstractSamlImporterTest {
 
   public final static String SHARED_BUNDLE = "org.eclipse.scout.saml.tests.complex.shared";

@@ -1447,7 +1447,6 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         labelVisible=BooleanType? 
 	 *         master=[ValueFieldElement|ID]? 
 	 *         mandatory=BooleanType? 
-	 *         gridHeight=INT? 
 	 *         gridWidth=INT? 
 	 *         widthInPixels=INT? 
 	 *         horizontalAlign=HorizontalAlignmentType? 
