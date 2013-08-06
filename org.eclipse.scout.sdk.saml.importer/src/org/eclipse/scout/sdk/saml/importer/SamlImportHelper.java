@@ -22,7 +22,7 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.scout.sdk.internal.ScoutSdk;
 import org.eclipse.scout.sdk.jobs.OperationJob;
-import org.eclipse.scout.sdk.operation.form.formdata.FormDataAutoUpdater;
+import org.eclipse.scout.sdk.operation.data.AutoUpdateManager;
 import org.eclipse.scout.sdk.saml.importer.internal.SamlImporterActivator;
 import org.eclipse.scout.sdk.saml.importer.operation.SamlImportOperation;
 import org.eclipse.scout.sdk.util.jdt.JdtUtility;
@@ -102,9 +102,9 @@ public class SamlImportHelper {
   private static IStatus doImport(IProject samlInputProject, Injector injector, XtextResourceSet resourceSet, final boolean sync) throws IllegalArgumentException {
     IStatus result = null;
 
-    final boolean origFormDataAutoUpdate = ScoutSdk.getDefault().isFormDataAutoUpdate();
+    final boolean origFormDataAutoUpdate = ScoutSdk.getDefault().isAutoUpdateEnabled();
     try {
-      ScoutSdk.getDefault().setFormDataAutoUpdate(true);
+      ScoutSdk.getDefault().setAutoUpdateEnabled(true);
 
       final SamlImportOperation op = new SamlImportOperation();
       op.setSamlInputProject(samlInputProject);
@@ -119,7 +119,7 @@ public class SamlImportHelper {
           public void done(IJobChangeEvent event) {
             ScoutSdk sdkInstance = ScoutSdk.getDefault();
             if (sdkInstance != null) {
-              ScoutSdk.getDefault().setFormDataAutoUpdate(origFormDataAutoUpdate);
+              ScoutSdk.getDefault().setAutoUpdateEnabled(origFormDataAutoUpdate);
             }
           }
         });
@@ -157,7 +157,7 @@ public class SamlImportHelper {
     }
     finally {
       if (sync) {
-        ScoutSdk.getDefault().setFormDataAutoUpdate(origFormDataAutoUpdate);
+        ScoutSdk.getDefault().setAutoUpdateEnabled(origFormDataAutoUpdate);
       }
     }
     return result;
@@ -234,7 +234,7 @@ public class SamlImportHelper {
       }
 
       JdtUtility.waitForSilentWorkspace();
-      JdtUtility.waitForJobFamily(FormDataAutoUpdater.AUTO_UPDATE_JOB_FAMILY); // may be triggered again after refresh of workspace.
+      JdtUtility.waitForJobFamily(AutoUpdateManager.AUTO_UPDATE_JOB_FAMILY); // may be triggered again after refresh of workspace.
 
       return Status.OK_STATUS;
     }
@@ -255,7 +255,7 @@ public class SamlImportHelper {
     }
 
     private boolean isFormDataJob(Job j) {
-      return j.belongsTo(FormDataAutoUpdater.AUTO_UPDATE_JOB_FAMILY);
+      return j.belongsTo(AutoUpdateManager.AUTO_UPDATE_JOB_FAMILY);
     }
 
     @Override
