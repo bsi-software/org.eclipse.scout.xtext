@@ -8,6 +8,8 @@ import org.eclipse.scout.saml.saml.Model;
 import org.eclipse.scout.saml.saml.SamlPackage;
 import org.eclipse.scout.saml.validation.SamlJavaValidator;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.diagnostics.Diagnostic;
+import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.junit4.util.ParseHelper;
@@ -29,6 +31,10 @@ public class FormTests {
   
   @Inject
   private Provider<XtextResourceSet> resourceSetProvider;
+  
+  private final static String BIGDECIMAL_CONVERSION_ERROR_MESSAGE = "Could not convert empty string to BigDecimal";
+  
+  private final static String LONG_CONVERSION_ERROR_MESSAGE = "Could not convert empty string to Long";
   
   @Test
   public void testFormFieldUniqueness() {
@@ -640,6 +646,132 @@ public class FormTests {
       _builder.newLine();
       Model _parse = this._parseHelper.parse(_builder);
       this._validationTestHelper.assertNoErrors(_parse);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testBigDecimalMinMaxValue() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module a.b");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("form BigDecimalTestOk {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("bigdecimal BigDecimalTest min=-10000.0123 max=20000.456");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      Model _parse = this._parseHelper.parse(_builder);
+      this._validationTestHelper.assertNoErrors(_parse);
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("module a.b");
+      _builder_1.newLine();
+      _builder_1.newLine();
+      _builder_1.append("form BigDecimalTestMissingMaxValue {");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.append("bigdecimal BigDecimalTest min=-10000.13 max=");
+      _builder_1.newLine();
+      _builder_1.append("}");
+      _builder_1.newLine();
+      Model _parse_1 = this._parseHelper.parse(_builder_1);
+      EClass _bigDecimalElement = SamlPackage.eINSTANCE.getBigDecimalElement();
+      this._validationTestHelper.assertIssue(_parse_1, _bigDecimalElement, Diagnostic.SYNTAX_DIAGNOSTIC, Severity.ERROR, FormTests.BIGDECIMAL_CONVERSION_ERROR_MESSAGE);
+      StringConcatenation _builder_2 = new StringConcatenation();
+      _builder_2.append("module a.b");
+      _builder_2.newLine();
+      _builder_2.newLine();
+      _builder_2.append("form BigDecimalTestMissingMinValue {");
+      _builder_2.newLine();
+      _builder_2.append("\t");
+      _builder_2.append("bigdecimal BigDecimalTest max=0.89 min=");
+      _builder_2.newLine();
+      _builder_2.append("}");
+      _builder_2.newLine();
+      Model _parse_2 = this._parseHelper.parse(_builder_2);
+      EClass _bigDecimalElement_1 = SamlPackage.eINSTANCE.getBigDecimalElement();
+      this._validationTestHelper.assertIssue(_parse_2, _bigDecimalElement_1, Diagnostic.SYNTAX_DIAGNOSTIC, Severity.ERROR, FormTests.BIGDECIMAL_CONVERSION_ERROR_MESSAGE);
+      StringConcatenation _builder_3 = new StringConcatenation();
+      _builder_3.append("module a.b");
+      _builder_3.newLine();
+      _builder_3.newLine();
+      _builder_3.append("form BigDecimalTestMissingMinMaxValues {");
+      _builder_3.newLine();
+      _builder_3.append("\t");
+      _builder_3.append("bigdecimal BigDecimalTest max= min=");
+      _builder_3.newLine();
+      _builder_3.append("}");
+      _builder_3.newLine();
+      Model _parse_3 = this._parseHelper.parse(_builder_3);
+      EClass _bigDecimalElement_2 = SamlPackage.eINSTANCE.getBigDecimalElement();
+      this._validationTestHelper.assertIssue(_parse_3, _bigDecimalElement_2, Diagnostic.SYNTAX_DIAGNOSTIC, Severity.ERROR, FormTests.BIGDECIMAL_CONVERSION_ERROR_MESSAGE);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testLongMinMaxValue() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module a.b");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("form LongTestOk {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("long LongTest min=-10000 max=20000");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      Model _parse = this._parseHelper.parse(_builder);
+      this._validationTestHelper.assertNoErrors(_parse);
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("module a.b");
+      _builder_1.newLine();
+      _builder_1.newLine();
+      _builder_1.append("form LongTestMissingMaxValue {");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.append("long LongTest min=-10000 max=");
+      _builder_1.newLine();
+      _builder_1.append("}");
+      _builder_1.newLine();
+      Model _parse_1 = this._parseHelper.parse(_builder_1);
+      EClass _longElement = SamlPackage.eINSTANCE.getLongElement();
+      this._validationTestHelper.assertIssue(_parse_1, _longElement, Diagnostic.SYNTAX_DIAGNOSTIC, Severity.ERROR, FormTests.LONG_CONVERSION_ERROR_MESSAGE);
+      StringConcatenation _builder_2 = new StringConcatenation();
+      _builder_2.append("module a.b");
+      _builder_2.newLine();
+      _builder_2.newLine();
+      _builder_2.append("form LongTestMissingMinValue {");
+      _builder_2.newLine();
+      _builder_2.append("\t");
+      _builder_2.append("long LongTest max=10000 min=");
+      _builder_2.newLine();
+      _builder_2.append("}");
+      _builder_2.newLine();
+      Model _parse_2 = this._parseHelper.parse(_builder_2);
+      EClass _longElement_1 = SamlPackage.eINSTANCE.getLongElement();
+      this._validationTestHelper.assertIssue(_parse_2, _longElement_1, Diagnostic.SYNTAX_DIAGNOSTIC, Severity.ERROR, FormTests.LONG_CONVERSION_ERROR_MESSAGE);
+      StringConcatenation _builder_3 = new StringConcatenation();
+      _builder_3.append("module a.b");
+      _builder_3.newLine();
+      _builder_3.newLine();
+      _builder_3.append("form LongTestMissingMinMaxValues {");
+      _builder_3.newLine();
+      _builder_3.append("\t");
+      _builder_3.append("long LongTest max= min=");
+      _builder_3.newLine();
+      _builder_3.append("}");
+      _builder_3.newLine();
+      Model _parse_3 = this._parseHelper.parse(_builder_3);
+      EClass _longElement_2 = SamlPackage.eINSTANCE.getLongElement();
+      this._validationTestHelper.assertIssue(_parse_3, _longElement_2, Diagnostic.SYNTAX_DIAGNOSTIC, Severity.ERROR, FormTests.LONG_CONVERSION_ERROR_MESSAGE);
     } catch (Exception _e) {
       throw Exceptions.sneakyThrow(_e);
     }

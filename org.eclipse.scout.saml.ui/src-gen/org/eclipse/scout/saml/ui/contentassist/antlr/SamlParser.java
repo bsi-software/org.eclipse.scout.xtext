@@ -100,6 +100,9 @@ public class SamlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
 					put(grammarAccess.getQualifiedNameWithWildCardAccess().getGroup(), "rule__QualifiedNameWithWildCard__Group__0");
 					put(grammarAccess.getQualifiedNameWithWildCardAccess().getGroup_1(), "rule__QualifiedNameWithWildCard__Group_1__0");
+					put(grammarAccess.getBigDecimalTypeAccess().getGroup(), "rule__BigDecimalType__Group__0");
+					put(grammarAccess.getBigDecimalTypeAccess().getGroup_2(), "rule__BigDecimalType__Group_2__0");
+					put(grammarAccess.getLongTypeAccess().getGroup(), "rule__LongType__Group__0");
 					put(grammarAccess.getModuleElementAccess().getGroup(), "rule__ModuleElement__Group__0");
 					put(grammarAccess.getModuleElementAccess().getGroup_2_0(), "rule__ModuleElement__Group_2_0__0");
 					put(grammarAccess.getModuleElementAccess().getGroup_2_1(), "rule__ModuleElement__Group_2_1__0");

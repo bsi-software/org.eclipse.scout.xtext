@@ -59,12 +59,12 @@ public interface LongElement extends ValueFieldElement
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Min</em>' attribute.
-   * @see #setMin(int)
+   * @see #setMin(long)
    * @see org.eclipse.scout.saml.saml.SamlPackage#getLongElement_Min()
    * @model
    * @generated
    */
-  int getMin();
+  long getMin();
 
   /**
    * Sets the value of the '{@link org.eclipse.scout.saml.saml.LongElement#getMin <em>Min</em>}' attribute.
@@ -74,7 +74,7 @@ public interface LongElement extends ValueFieldElement
    * @see #getMin()
    * @generated
    */
-  void setMin(int value);
+  void setMin(long value);
 
   /**
    * Returns the value of the '<em><b>Max</b></em>' attribute.
@@ -85,12 +85,12 @@ public interface LongElement extends ValueFieldElement
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Max</em>' attribute.
-   * @see #setMax(int)
+   * @see #setMax(long)
    * @see org.eclipse.scout.saml.saml.SamlPackage#getLongElement_Max()
    * @model
    * @generated
    */
-  int getMax();
+  long getMax();
 
   /**
    * Sets the value of the '{@link org.eclipse.scout.saml.saml.LongElement#getMax <em>Max</em>}' attribute.
@@ -100,7 +100,7 @@ public interface LongElement extends ValueFieldElement
    * @see #getMax()
    * @generated
    */
-  void setMax(int value);
+  void setMax(long value);
 
   /**
    * Returns the value of the '<em><b>Format</b></em>' attribute.

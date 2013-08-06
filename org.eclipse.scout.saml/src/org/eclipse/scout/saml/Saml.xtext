@@ -4,6 +4,7 @@ generate saml "http://www.eclipse.org/scout/saml/Saml"
 
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 Model:
 	module=ModuleElement
@@ -26,6 +27,13 @@ Model:
 // TYPES
 QualifiedNameWithWildCard: QualifiedName  ('.' '*')?;
 BooleanType: 'true'|'false';	//TODO: code completion
+
+// Data Type Rules
+BigDecimalType returns ecore::EBigDecimal:
+	'-'? INT ('.' INT)?;
+
+LongType returns ecore::ELong:
+	'-'? INT;
 
 //TODO: code completion depending on element we are on
 LogicEventType: 'all'|'modify_load'|'modify_store'|'modify_discard'|'new_load'|'new_store'|'new_discard'|'changed'|'click'|'master_changed'|'init'|'format_value'|'activated'|'load'|'validate_value';
@@ -66,7 +74,6 @@ LookupElement:'lookup' name=ID '{' logic+=LogicElement* '}';
 
 
 TemplateElement:'template' name=ID 'definition' '=' definition=STRING/*JvmTypeReference*/;
-
 
 
 FormElement:'form' name=ID
@@ -174,8 +181,8 @@ BigDecimalElement:'bigdecimal' name=ID
 		('width_pixels' '=' widthInPixels=INT)? &
 		('horizontal_align' '=' horizontalAlign=HorizontalAlignmentType)? &
 		('fraction_digits' '=' fractionDigits=INT)? &
-		('min' '=' min=Number)? &
-		('max' '=' max=Number)? &
+		('min' '=' min=BigDecimalType)? &
+		('max' '=' max=BigDecimalType)? &
 		('format' '=' format=STRING)? &
 		('super_type' '=' superType=[TemplateElement])?
 	)
@@ -192,8 +199,8 @@ LongElement:'long' name=ID
 		('width' '=' gridWidth=INT)? &
 		('width_pixels' '=' widthInPixels=INT)? &
 		('horizontal_align' '=' horizontalAlign=HorizontalAlignmentType)? &
-		('min' '=' min=INT)? &
-		('max' '=' max=INT)? &
+		('min' '=' min=LongType)? &
+		('max' '=' max=LongType)? &
 		('format' '=' format=STRING)? &
 		('super_type' '=' superType=[TemplateElement])?
 	)

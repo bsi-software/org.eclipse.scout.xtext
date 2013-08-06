@@ -10,6 +10,8 @@ import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
 import org.eclipse.xtext.junit4.validation.ValidationTestHelper
 import org.eclipse.xtext.resource.XtextResourceSet
+import org.eclipse.xtext.diagnostics.Diagnostic
+import org.eclipse.xtext.diagnostics.Severity
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.eclipse.xtext.junit4.InjectWith
@@ -21,6 +23,9 @@ class FormTests {
 	@Inject extension ValidationTestHelper
 	
 	@Inject private Provider<XtextResourceSet> resourceSetProvider;
+	
+	static val BIGDECIMAL_CONVERSION_ERROR_MESSAGE = 'Could not convert empty string to BigDecimal'
+	static val LONG_CONVERSION_ERROR_MESSAGE = 'Could not convert empty string to Long'
 
 	@Test
 	def void testFormFieldUniqueness() {
@@ -326,4 +331,74 @@ class FormTests {
 		}
 		'''.parse.assertNoErrors
 	}
+	
+	@Test
+	def void testBigDecimalMinMaxValue() {
+		'''
+		module a.b
+		
+		form BigDecimalTestOk {
+			bigdecimal BigDecimalTest min=-10000.0123 max=20000.456
+		}
+		'''.parse.assertNoErrors
+		
+		'''
+		module a.b
+		
+		form BigDecimalTestMissingMaxValue {
+			bigdecimal BigDecimalTest min=-10000.13 max=
+		}
+		'''.parse.assertIssue(SamlPackage::eINSTANCE.bigDecimalElement, Diagnostic::SYNTAX_DIAGNOSTIC, Severity::ERROR, BIGDECIMAL_CONVERSION_ERROR_MESSAGE)
+		
+		'''
+		module a.b
+		
+		form BigDecimalTestMissingMinValue {
+			bigdecimal BigDecimalTest max=0.89 min=
+		}
+		'''.parse.assertIssue(SamlPackage::eINSTANCE.bigDecimalElement, Diagnostic::SYNTAX_DIAGNOSTIC, Severity::ERROR, BIGDECIMAL_CONVERSION_ERROR_MESSAGE)
+		
+				'''
+		module a.b
+		
+		form BigDecimalTestMissingMinMaxValues {
+			bigdecimal BigDecimalTest max= min=
+		}
+		'''.parse.assertIssue(SamlPackage::eINSTANCE.bigDecimalElement, Diagnostic::SYNTAX_DIAGNOSTIC, Severity::ERROR, BIGDECIMAL_CONVERSION_ERROR_MESSAGE)
+	}
+	
+	@Test
+	def void testLongMinMaxValue() {
+		'''
+		module a.b
+		
+		form LongTestOk {
+			long LongTest min=-10000 max=20000
+		}
+		'''.parse.assertNoErrors
+		
+		'''
+		module a.b
+		
+		form LongTestMissingMaxValue {
+			long LongTest min=-10000 max=
+		}
+		'''.parse.assertIssue(SamlPackage::eINSTANCE.longElement, Diagnostic::SYNTAX_DIAGNOSTIC, Severity::ERROR, LONG_CONVERSION_ERROR_MESSAGE)
+		
+		'''
+		module a.b
+		
+		form LongTestMissingMinValue {
+			long LongTest max=10000 min=
+		}
+		'''.parse.assertIssue(SamlPackage::eINSTANCE.longElement, Diagnostic::SYNTAX_DIAGNOSTIC, Severity::ERROR, LONG_CONVERSION_ERROR_MESSAGE)
+		
+		'''
+		module a.b
+		
+		form LongTestMissingMinMaxValues {
+			long LongTest max= min=
+		}
+		'''.parse.assertIssue(SamlPackage::eINSTANCE.longElement, Diagnostic::SYNTAX_DIAGNOSTIC, Severity::ERROR, LONG_CONVERSION_ERROR_MESSAGE)
+	}	
 }

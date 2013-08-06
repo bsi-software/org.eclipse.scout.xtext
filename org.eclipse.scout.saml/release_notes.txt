@@ -183,3 +183,13 @@ Changes:
 			Attribute 'regex_validation'
 		For 'event' attribute below 'form' element:
 			Options: 'validate_value'
+			
+Version 1.0.0 2013-08-06
+Changed: kle
+Changes:
+	Added:
+		For 'bigdecimal':
+			New data type rule 'BigDecimalType' for min / max attributes.
+		For 'long':
+			New data type rule 'LongType' for min / max attributes.
+		

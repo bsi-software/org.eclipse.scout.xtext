@@ -26,6 +26,10 @@ public class BigdecimalElementImportTest extends AbstractSamlFieldImporterTest i
 
   private final static String[] LOCATION = new String[]{"GroupTest", "BigDecimalTest"};
   private final static String[] LOCATION2 = new String[]{"GroupTest", "BigDecimal2Test"};
+  private final static String[] LOCATION3 = new String[]{"GroupTest", "BigDecimal3Test"};
+  private final static String[] LOCATION4 = new String[]{"GroupTest", "BigDecimal4Test"};
+  private final static String[] LOCATION5 = new String[]{"GroupTest", "BigDecimal5Test"};
+  private final static String[] LOCATION6 = new String[]{"GroupTest", "BigDecimal6Test"};
 
   @Test
   public void testNumAttributes() throws Exception {
@@ -109,5 +113,69 @@ public class BigdecimalElementImportTest extends AbstractSamlFieldImporterTest i
   @Test
   public void testFormatAttribute() throws Exception {
     testStringConfigMethod(getField(FORM_NAME, LOCATION2), "getConfiguredFormat", "0000.00");
+  }
+
+  @Test
+  public void testNumAttributes3() throws Exception {
+    IType field = getField(FORM_NAME, LOCATION3);
+    Assert.assertEquals(2, TypeUtility.getMethods(field).length);
+  }
+
+  @Test
+  public void testMinAttribute3() throws Exception {
+    testDoubleConfigMethod(getField(FORM_NAME, LOCATION3), "getConfiguredMinValue", -100.011);
+  }
+
+  @Test
+  public void testMaxAttribute3() throws Exception {
+    testDoubleConfigMethod(getField(FORM_NAME, LOCATION3), "getConfiguredMaxValue", 300.855);
+  }
+
+  @Test
+  public void testNumAttributes4() throws Exception {
+    IType field = getField(FORM_NAME, LOCATION4);
+    Assert.assertEquals(2, TypeUtility.getMethods(field).length);
+  }
+
+  @Test
+  public void testMinAttribute4() throws Exception {
+    testDoubleConfigMethod(getField(FORM_NAME, LOCATION4), "getConfiguredMinValue", -200);
+  }
+
+  @Test
+  public void testMaxAttribute4() throws Exception {
+    testDoubleConfigMethod(getField(FORM_NAME, LOCATION4), "getConfiguredMaxValue", 400);
+  }
+
+  @Test
+  public void testNumAttributes5() throws Exception {
+    IType field = getField(FORM_NAME, LOCATION5);
+    Assert.assertEquals(2, TypeUtility.getMethods(field).length);
+  }
+
+  @Test
+  public void testMinAttribute5() throws Exception {
+    testDoubleConfigMethod(getField(FORM_NAME, LOCATION5), "getConfiguredMinValue", -400.0);
+  }
+
+  @Test
+  public void testMaxAttribute5() throws Exception {
+    testDoubleConfigMethod(getField(FORM_NAME, LOCATION5), "getConfiguredMaxValue", 1200.00);
+  }
+
+  @Test
+  public void testNumAttributes6() throws Exception {
+    IType field = getField(FORM_NAME, LOCATION6);
+    Assert.assertEquals(2, TypeUtility.getMethods(field).length);
+  }
+
+  @Test
+  public void testMinAttribute6() throws Exception {
+    testDoubleConfigMethod(getField(FORM_NAME, LOCATION6), "getConfiguredMinValue", -0.8794);
+  }
+
+  @Test
+  public void testMaxAttribute6() throws Exception {
+    testDoubleConfigMethod(getField(FORM_NAME, LOCATION6), "getConfiguredMaxValue", 0.9643);
   }
 }

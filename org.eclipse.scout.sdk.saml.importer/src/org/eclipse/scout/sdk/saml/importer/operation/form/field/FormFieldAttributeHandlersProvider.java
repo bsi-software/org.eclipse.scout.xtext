@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.eclipse.scout.sdk.saml.importer.operation.form.field;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -197,29 +198,31 @@ public class FormFieldAttributeHandlersProvider extends AbstractAttributeHandler
   }
 
   @SamlAttributeHandler(handles = {@SamlAttribute(elementType = BigDecimalElement.class, featureId = SamlPackage.BIG_DECIMAL_ELEMENT__MAX)})
-  public void applyDecimalMaxAttribute(String max) throws CoreException, IllegalArgumentException {
-    Double maxVal = parseDouble(max);
-    if (maxVal != null) {
-      overrideMethod("getConfiguredMaxValue", "return " + maxVal + ";");
+  public void applyDecimalMaxAttribute(BigDecimal max) throws CoreException, IllegalArgumentException {
+    if (max != null) {
+      overrideMethod("getConfiguredMaxValue", "return " + max.doubleValue() + ";");
     }
   }
 
   @SamlAttributeHandler(handles = {@SamlAttribute(elementType = BigDecimalElement.class, featureId = SamlPackage.BIG_DECIMAL_ELEMENT__MIN)})
-  public void applyDecimalMinAttribute(String min) throws CoreException, IllegalArgumentException {
-    Double minVal = parseDouble(min);
-    if (minVal != null) {
-      overrideMethod("getConfiguredMinValue", "return " + minVal + ";");
+  public void applyDecimalMinAttribute(BigDecimal min) throws CoreException, IllegalArgumentException {
+    if (min != null) {
+      overrideMethod("getConfiguredMinValue", "return " + min.doubleValue() + ";");
     }
   }
 
   @SamlAttributeHandler(handles = {@SamlAttribute(elementType = LongElement.class, featureId = SamlPackage.LONG_ELEMENT__MAX)})
-  public void applyLongMaxAttribute(int max) throws CoreException, IllegalArgumentException {
-    overrideMethod("getConfiguredMaximumValue", "return " + max + "L;");
+  public void applyLongMaxAttribute(Long max) throws CoreException, IllegalArgumentException {
+    if (max != null) {
+      overrideMethod("getConfiguredMaximumValue", "return " + max + "L;");
+    }
   }
 
   @SamlAttributeHandler(handles = {@SamlAttribute(elementType = LongElement.class, featureId = SamlPackage.LONG_ELEMENT__MIN)})
-  public void applyLongMinAttribute(int min) throws CoreException, IllegalArgumentException {
-    overrideMethod("getConfiguredMinimumValue", "return " + min + "L;");
+  public void applyLongMinAttribute(Long min) throws CoreException, IllegalArgumentException {
+    if (min != null) {
+      overrideMethod("getConfiguredMinimumValue", "return " + min + "L;");
+    }
   }
 
   @SamlAttributeHandler(handles = {@SamlAttribute(elementType = BigDecimalElement.class, featureId = SamlPackage.BIG_DECIMAL_ELEMENT__PERCENT)})

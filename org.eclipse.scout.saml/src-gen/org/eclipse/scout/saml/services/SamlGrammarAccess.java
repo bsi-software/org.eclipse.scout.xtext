@@ -165,6 +165,62 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getFalseKeyword_1() { return cFalseKeyword_1; }
 	}
 
+	public class BigDecimalTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BigDecimalType");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cHyphenMinusKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final RuleCall cINTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cFullStopKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final RuleCall cINTTerminalRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
+		
+		//// Data Type Rules
+		//
+		//BigDecimalType returns ecore::EBigDecimal:
+		//
+		//	"-"? INT ("." INT)?;
+		public ParserRule getRule() { return rule; }
+
+		//"-"? INT ("." INT)?
+		public Group getGroup() { return cGroup; }
+
+		//"-"?
+		public Keyword getHyphenMinusKeyword_0() { return cHyphenMinusKeyword_0; }
+
+		//INT
+		public RuleCall getINTTerminalRuleCall_1() { return cINTTerminalRuleCall_1; }
+
+		//("." INT)?
+		public Group getGroup_2() { return cGroup_2; }
+
+		//"."
+		public Keyword getFullStopKeyword_2_0() { return cFullStopKeyword_2_0; }
+
+		//INT
+		public RuleCall getINTTerminalRuleCall_2_1() { return cINTTerminalRuleCall_2_1; }
+	}
+
+	public class LongTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "LongType");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cHyphenMinusKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final RuleCall cINTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		
+		//LongType returns ecore::ELong:
+		//
+		//	"-"? INT;
+		public ParserRule getRule() { return rule; }
+
+		//"-"? INT
+		public Group getGroup() { return cGroup; }
+
+		//"-"?
+		public Keyword getHyphenMinusKeyword_0() { return cHyphenMinusKeyword_0; }
+
+		//INT
+		public RuleCall getINTTerminalRuleCall_1() { return cINTTerminalRuleCall_1; }
+	}
+
 	public class LogicEventTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "LogicEventType");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -2608,12 +2664,12 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cMinKeyword_2_12_0 = (Keyword)cGroup_2_12.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_12_1 = (Keyword)cGroup_2_12.eContents().get(1);
 		private final Assignment cMinAssignment_2_12_2 = (Assignment)cGroup_2_12.eContents().get(2);
-		private final RuleCall cMinNumberParserRuleCall_2_12_2_0 = (RuleCall)cMinAssignment_2_12_2.eContents().get(0);
+		private final RuleCall cMinBigDecimalTypeParserRuleCall_2_12_2_0 = (RuleCall)cMinAssignment_2_12_2.eContents().get(0);
 		private final Group cGroup_2_13 = (Group)cUnorderedGroup_2.eContents().get(13);
 		private final Keyword cMaxKeyword_2_13_0 = (Keyword)cGroup_2_13.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_13_1 = (Keyword)cGroup_2_13.eContents().get(1);
 		private final Assignment cMaxAssignment_2_13_2 = (Assignment)cGroup_2_13.eContents().get(2);
-		private final RuleCall cMaxNumberParserRuleCall_2_13_2_0 = (RuleCall)cMaxAssignment_2_13_2.eContents().get(0);
+		private final RuleCall cMaxBigDecimalTypeParserRuleCall_2_13_2_0 = (RuleCall)cMaxAssignment_2_13_2.eContents().get(0);
 		private final Group cGroup_2_14 = (Group)cUnorderedGroup_2.eContents().get(14);
 		private final Keyword cFormatKeyword_2_14_0 = (Keyword)cGroup_2_14.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_14_1 = (Keyword)cGroup_2_14.eContents().get(1);
@@ -2643,7 +2699,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//
 		//	("horizontal_align" "=" horizontalAlign=HorizontalAlignmentType)? & ("fraction_digits" "=" fractionDigits=INT)? &
 		//
-		//	("min" "=" min=Number)? & ("max" "=" max=Number)? & ("format" "=" format=STRING)? & ("super_type" "="
+		//	("min" "=" min=BigDecimalType)? & ("max" "=" max=BigDecimalType)? & ("format" "=" format=STRING)? & ("super_type" "="
 		//
 		//	superType=[TemplateElement])?) ("{" logic+=LogicElement* "}")?;
 		public ParserRule getRule() { return rule; }
@@ -2656,11 +2712,11 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//
 		//mandatory=BooleanType)? & ("width" "=" gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? & ("horizontal_align"
 		//
-		//"=" horizontalAlign=HorizontalAlignmentType)? & ("fraction_digits" "=" fractionDigits=INT)? & ("min" "=" min=Number)?
+		//"=" horizontalAlign=HorizontalAlignmentType)? & ("fraction_digits" "=" fractionDigits=INT)? & ("min" "="
 		//
-		//& ("max" "=" max=Number)? & ("format" "=" format=STRING)? & ("super_type" "=" superType=[TemplateElement])?) ("{"
+		//min=BigDecimalType)? & ("max" "=" max=BigDecimalType)? & ("format" "=" format=STRING)? & ("super_type" "="
 		//
-		//logic+=LogicElement* "}")?
+		//superType=[TemplateElement])?) ("{" logic+=LogicElement* "}")?
 		public Group getGroup() { return cGroup; }
 
 		//"bigdecimal"
@@ -2680,9 +2736,11 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//
 		//mandatory=BooleanType)? & ("width" "=" gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? & ("horizontal_align"
 		//
-		//"=" horizontalAlign=HorizontalAlignmentType)? & ("fraction_digits" "=" fractionDigits=INT)? & ("min" "=" min=Number)?
+		//"=" horizontalAlign=HorizontalAlignmentType)? & ("fraction_digits" "=" fractionDigits=INT)? & ("min" "="
 		//
-		//& ("max" "=" max=Number)? & ("format" "=" format=STRING)? & ("super_type" "=" superType=[TemplateElement])?
+		//min=BigDecimalType)? & ("max" "=" max=BigDecimalType)? & ("format" "=" format=STRING)? & ("super_type" "="
+		//
+		//superType=[TemplateElement])?
 		public UnorderedGroup getUnorderedGroup_2() { return cUnorderedGroup_2; }
 
 		//("text" "=" text=[TranslationElement|QualifiedName])?
@@ -2871,7 +2929,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//INT
 		public RuleCall getFractionDigitsINTTerminalRuleCall_2_11_2_0() { return cFractionDigitsINTTerminalRuleCall_2_11_2_0; }
 
-		//("min" "=" min=Number)?
+		//("min" "=" min=BigDecimalType)?
 		public Group getGroup_2_12() { return cGroup_2_12; }
 
 		//"min"
@@ -2880,13 +2938,13 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//"="
 		public Keyword getEqualsSignKeyword_2_12_1() { return cEqualsSignKeyword_2_12_1; }
 
-		//min=Number
+		//min=BigDecimalType
 		public Assignment getMinAssignment_2_12_2() { return cMinAssignment_2_12_2; }
 
-		//Number
-		public RuleCall getMinNumberParserRuleCall_2_12_2_0() { return cMinNumberParserRuleCall_2_12_2_0; }
+		//BigDecimalType
+		public RuleCall getMinBigDecimalTypeParserRuleCall_2_12_2_0() { return cMinBigDecimalTypeParserRuleCall_2_12_2_0; }
 
-		//("max" "=" max=Number)?
+		//("max" "=" max=BigDecimalType)?
 		public Group getGroup_2_13() { return cGroup_2_13; }
 
 		//"max"
@@ -2895,11 +2953,11 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//"="
 		public Keyword getEqualsSignKeyword_2_13_1() { return cEqualsSignKeyword_2_13_1; }
 
-		//max=Number
+		//max=BigDecimalType
 		public Assignment getMaxAssignment_2_13_2() { return cMaxAssignment_2_13_2; }
 
-		//Number
-		public RuleCall getMaxNumberParserRuleCall_2_13_2_0() { return cMaxNumberParserRuleCall_2_13_2_0; }
+		//BigDecimalType
+		public RuleCall getMaxBigDecimalTypeParserRuleCall_2_13_2_0() { return cMaxBigDecimalTypeParserRuleCall_2_13_2_0; }
 
 		//("format" "=" format=STRING)?
 		public Group getGroup_2_14() { return cGroup_2_14; }
@@ -3008,12 +3066,12 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cMinKeyword_2_9_0 = (Keyword)cGroup_2_9.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_9_1 = (Keyword)cGroup_2_9.eContents().get(1);
 		private final Assignment cMinAssignment_2_9_2 = (Assignment)cGroup_2_9.eContents().get(2);
-		private final RuleCall cMinINTTerminalRuleCall_2_9_2_0 = (RuleCall)cMinAssignment_2_9_2.eContents().get(0);
+		private final RuleCall cMinLongTypeParserRuleCall_2_9_2_0 = (RuleCall)cMinAssignment_2_9_2.eContents().get(0);
 		private final Group cGroup_2_10 = (Group)cUnorderedGroup_2.eContents().get(10);
 		private final Keyword cMaxKeyword_2_10_0 = (Keyword)cGroup_2_10.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_10_1 = (Keyword)cGroup_2_10.eContents().get(1);
 		private final Assignment cMaxAssignment_2_10_2 = (Assignment)cGroup_2_10.eContents().get(2);
-		private final RuleCall cMaxINTTerminalRuleCall_2_10_2_0 = (RuleCall)cMaxAssignment_2_10_2.eContents().get(0);
+		private final RuleCall cMaxLongTypeParserRuleCall_2_10_2_0 = (RuleCall)cMaxAssignment_2_10_2.eContents().get(0);
 		private final Group cGroup_2_11 = (Group)cUnorderedGroup_2.eContents().get(11);
 		private final Keyword cFormatKeyword_2_11_0 = (Keyword)cGroup_2_11.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2_11_1 = (Keyword)cGroup_2_11.eContents().get(1);
@@ -3041,7 +3099,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//
 		//	("width_pixels" "=" widthInPixels=INT)? & ("horizontal_align" "=" horizontalAlign=HorizontalAlignmentType)? & ("min"
 		//
-		//	"=" min=INT)? & ("max" "=" max=INT)? & ("format" "=" format=STRING)? & ("super_type" "="
+		//	"=" min=LongType)? & ("max" "=" max=LongType)? & ("format" "=" format=STRING)? & ("super_type" "="
 		//
 		//	superType=[TemplateElement])?) ("{" logic+=LogicElement* "}")?;
 		public ParserRule getRule() { return rule; }
@@ -3054,7 +3112,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//
 		//("width_pixels" "=" widthInPixels=INT)? & ("horizontal_align" "=" horizontalAlign=HorizontalAlignmentType)? & ("min"
 		//
-		//"=" min=INT)? & ("max" "=" max=INT)? & ("format" "=" format=STRING)? & ("super_type" "="
+		//"=" min=LongType)? & ("max" "=" max=LongType)? & ("format" "=" format=STRING)? & ("super_type" "="
 		//
 		//superType=[TemplateElement])?) ("{" logic+=LogicElement* "}")?
 		public Group getGroup() { return cGroup; }
@@ -3074,9 +3132,9 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//
 		//("mandatory" "=" mandatory=BooleanType)? & ("width" "=" gridWidth=INT)? & ("width_pixels" "=" widthInPixels=INT)? &
 		//
-		//("horizontal_align" "=" horizontalAlign=HorizontalAlignmentType)? & ("min" "=" min=INT)? & ("max" "=" max=INT)? &
+		//("horizontal_align" "=" horizontalAlign=HorizontalAlignmentType)? & ("min" "=" min=LongType)? & ("max" "="
 		//
-		//("format" "=" format=STRING)? & ("super_type" "=" superType=[TemplateElement])?
+		//max=LongType)? & ("format" "=" format=STRING)? & ("super_type" "=" superType=[TemplateElement])?
 		public UnorderedGroup getUnorderedGroup_2() { return cUnorderedGroup_2; }
 
 		//("text" "=" text=[TranslationElement|QualifiedName])?
@@ -3220,7 +3278,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//HorizontalAlignmentType
 		public RuleCall getHorizontalAlignHorizontalAlignmentTypeParserRuleCall_2_8_2_0() { return cHorizontalAlignHorizontalAlignmentTypeParserRuleCall_2_8_2_0; }
 
-		//("min" "=" min=INT)?
+		//("min" "=" min=LongType)?
 		public Group getGroup_2_9() { return cGroup_2_9; }
 
 		//"min"
@@ -3229,13 +3287,13 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//"="
 		public Keyword getEqualsSignKeyword_2_9_1() { return cEqualsSignKeyword_2_9_1; }
 
-		//min=INT
+		//min=LongType
 		public Assignment getMinAssignment_2_9_2() { return cMinAssignment_2_9_2; }
 
-		//INT
-		public RuleCall getMinINTTerminalRuleCall_2_9_2_0() { return cMinINTTerminalRuleCall_2_9_2_0; }
+		//LongType
+		public RuleCall getMinLongTypeParserRuleCall_2_9_2_0() { return cMinLongTypeParserRuleCall_2_9_2_0; }
 
-		//("max" "=" max=INT)?
+		//("max" "=" max=LongType)?
 		public Group getGroup_2_10() { return cGroup_2_10; }
 
 		//"max"
@@ -3244,11 +3302,11 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 		//"="
 		public Keyword getEqualsSignKeyword_2_10_1() { return cEqualsSignKeyword_2_10_1; }
 
-		//max=INT
+		//max=LongType
 		public Assignment getMaxAssignment_2_10_2() { return cMaxAssignment_2_10_2; }
 
-		//INT
-		public RuleCall getMaxINTTerminalRuleCall_2_10_2_0() { return cMaxINTTerminalRuleCall_2_10_2_0; }
+		//LongType
+		public RuleCall getMaxLongTypeParserRuleCall_2_10_2_0() { return cMaxLongTypeParserRuleCall_2_10_2_0; }
 
 		//("format" "=" format=STRING)?
 		public Group getGroup_2_11() { return cGroup_2_11; }
@@ -7054,6 +7112,8 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	private ModelElements pModel;
 	private QualifiedNameWithWildCardElements pQualifiedNameWithWildCard;
 	private BooleanTypeElements pBooleanType;
+	private BigDecimalTypeElements pBigDecimalType;
+	private LongTypeElements pLongType;
 	private LogicEventTypeElements pLogicEventType;
 	private HorizontalAlignmentTypeElements pHorizontalAlignmentType;
 	private ModuleElementElements pModuleElement;
@@ -7169,6 +7229,30 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getBooleanTypeRule() {
 		return getBooleanTypeAccess().getRule();
+	}
+
+	//// Data Type Rules
+	//
+	//BigDecimalType returns ecore::EBigDecimal:
+	//
+	//	"-"? INT ("." INT)?;
+	public BigDecimalTypeElements getBigDecimalTypeAccess() {
+		return (pBigDecimalType != null) ? pBigDecimalType : (pBigDecimalType = new BigDecimalTypeElements());
+	}
+	
+	public ParserRule getBigDecimalTypeRule() {
+		return getBigDecimalTypeAccess().getRule();
+	}
+
+	//LongType returns ecore::ELong:
+	//
+	//	"-"? INT;
+	public LongTypeElements getLongTypeAccess() {
+		return (pLongType != null) ? pLongType : (pLongType = new LongTypeElements());
+	}
+	
+	public ParserRule getLongTypeRule() {
+		return getLongTypeAccess().getRule();
 	}
 
 	////TODO: code completion depending on element we are on
@@ -7473,7 +7557,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	//	("horizontal_align" "=" horizontalAlign=HorizontalAlignmentType)? & ("fraction_digits" "=" fractionDigits=INT)? &
 	//
-	//	("min" "=" min=Number)? & ("max" "=" max=Number)? & ("format" "=" format=STRING)? & ("super_type" "="
+	//	("min" "=" min=BigDecimalType)? & ("max" "=" max=BigDecimalType)? & ("format" "=" format=STRING)? & ("super_type" "="
 	//
 	//	superType=[TemplateElement])?) ("{" logic+=LogicElement* "}")?;
 	public BigDecimalElementElements getBigDecimalElementAccess() {
@@ -7494,7 +7578,7 @@ public class SamlGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	//	("width_pixels" "=" widthInPixels=INT)? & ("horizontal_align" "=" horizontalAlign=HorizontalAlignmentType)? & ("min"
 	//
-	//	"=" min=INT)? & ("max" "=" max=INT)? & ("format" "=" format=STRING)? & ("super_type" "="
+	//	"=" min=LongType)? & ("max" "=" max=LongType)? & ("format" "=" format=STRING)? & ("super_type" "="
 	//
 	//	superType=[TemplateElement])?) ("{" logic+=LogicElement* "}")?;
 	public LongElementElements getLongElementAccess() {

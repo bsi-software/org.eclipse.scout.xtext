@@ -1207,8 +1207,8 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         widthInPixels=INT? 
 	 *         horizontalAlign=HorizontalAlignmentType? 
 	 *         fractionDigits=INT? 
-	 *         min=Number? 
-	 *         max=Number? 
+	 *         min=BigDecimalType? 
+	 *         max=BigDecimalType? 
 	 *         format=STRING? 
 	 *         superType=[TemplateElement|ID]? 
 	 *         logic+=LogicElement*
@@ -1525,8 +1525,8 @@ public class SamlSemanticSequencer extends XbaseSemanticSequencer {
 	 *         gridWidth=INT? 
 	 *         widthInPixels=INT? 
 	 *         horizontalAlign=HorizontalAlignmentType? 
-	 *         min=INT? 
-	 *         max=INT? 
+	 *         min=LongType? 
+	 *         max=LongType? 
 	 *         format=STRING? 
 	 *         superType=[TemplateElement|ID]? 
 	 *         logic+=LogicElement*

@@ -123,7 +123,14 @@ class ComplexFormTests {
 		  group GroupTest text=trans.text2 columns=3 enabled=false visible=false label_visible=false border_visible=false border_decoration=line height=10 width=3 width_pixels=500 {
 		    bigdecimal BigDecimalTest text=trans.text1 enabled=false visible=false percent=true grouping=false label_visible=false mandatory=true width=2 width_pixels=333 horizontal_align=left fraction_digits=4 min=20.2 max=200.002
 		    bigdecimal BigDecimal2Test format="0000.00"
+		    bigdecimal BigDecimal3Test min=-100.011 max=300.855
+		    bigdecimal BigDecimal4Test min=-200 max=400
+		    bigdecimal BigDecimal5Test min=-400.0 max=1200.00
+		    bigdecimal BigDecimal6Test min=-0.8794 max=0.9643
 		    long LongTest text=trans.text1 enabled=false visible=false label_visible=false mandatory=true width=2 width_pixels=76 horizontal_align=left min=2 max=4 format="0000"
+			long Long2Test min=-1000 max=3000
+			long Long3Test min=-9000 max=-1000
+			long Long4Test min=10000 max=100000
 		    date DateTest text=trans.text2 enabled=false visible=false label_visible=false mandatory=true width=2 format="dd.MM.yyyy"
 		    smartfield SmartFieldTest1 text=trans.text1 enabled=false visible=false label_visible=false mandatory=true code=Departments width=2 value_type="java.lang.String" max_row_count=5
 		    list TestList1 text=trans.text1 enabled=false visible=false label_visible=false mandatory=true code=Departments width=2 value_type="java.lang.String"

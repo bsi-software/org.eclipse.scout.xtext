@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.eclipse.scout.saml.converter;
 
+import java.math.BigDecimal;
 import java.util.regex.Pattern;
 
 import org.eclipse.xtext.GrammarUtil;
@@ -18,6 +19,8 @@ import org.eclipse.xtext.conversion.ValueConverter;
 import org.eclipse.xtext.conversion.ValueConverterException;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.xbase.conversion.XbaseValueConverterService;
+
+import com.google.common.base.Strings;
 
 /**
  * <h3>{@link SamlConverter}</h3>
@@ -52,5 +55,57 @@ public class SamlConverter extends XbaseValueConverterService {
   @ValueConverter(rule = "QualifiedName")
   public IValueConverter<String> QualifiedName() {
     return QUALIFIED_NAME_CONVERTER;
+  }
+
+  private final IValueConverter<BigDecimal> BIGDECIMAL_TYPE_CONVERTER = new IValueConverter<BigDecimal>() {
+    @Override
+    public String toString(BigDecimal value) {
+      return value.toString();
+    }
+
+    @Override
+    public BigDecimal toValue(String string, INode node) throws ValueConverterException {
+      if (Strings.isNullOrEmpty(string)) {
+        throw new ValueConverterException("Could not convert empty string to BigDecimal.", node, null);
+      }
+
+      try {
+        return new BigDecimal(string);
+      }
+      catch (NumberFormatException e) {
+        throw new ValueConverterException("Could not convert '" + string + "' to BigDecimal.", node, e);
+      }
+    }
+  };
+
+  @ValueConverter(rule = "BigDecimalType")
+  public IValueConverter<BigDecimal> BigDecimalType() {
+    return BIGDECIMAL_TYPE_CONVERTER;
+  }
+
+  private final IValueConverter<Long> LONG_TYPE_CONVERTER = new IValueConverter<Long>() {
+    @Override
+    public String toString(Long value) {
+      return value.toString();
+    }
+
+    @Override
+    public Long toValue(String string, INode node) throws ValueConverterException {
+      if (Strings.isNullOrEmpty(string)) {
+        throw new ValueConverterException("Could not convert empty string to Long.", node, null);
+      }
+
+      try {
+        return Long.parseLong(string);
+      }
+      catch (NumberFormatException e) {
+        throw new ValueConverterException("Could not convert '" + string + "' to Long.", node, e);
+      }
+    }
+  };
+
+  @ValueConverter(rule = "LongType")
+  public IValueConverter<Long> LongType() {
+    return LONG_TYPE_CONVERTER;
   }
 }

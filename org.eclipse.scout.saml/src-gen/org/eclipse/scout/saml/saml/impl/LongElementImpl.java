@@ -57,7 +57,7 @@ public class LongElementImpl extends ValueFieldElementImpl implements LongElemen
    * @generated
    * @ordered
    */
-  protected static final int MIN_EDEFAULT = 0;
+  protected static final long MIN_EDEFAULT = 0L;
 
   /**
    * The cached value of the '{@link #getMin() <em>Min</em>}' attribute.
@@ -67,7 +67,7 @@ public class LongElementImpl extends ValueFieldElementImpl implements LongElemen
    * @generated
    * @ordered
    */
-  protected int min = MIN_EDEFAULT;
+  protected long min = MIN_EDEFAULT;
 
   /**
    * The default value of the '{@link #getMax() <em>Max</em>}' attribute.
@@ -77,7 +77,7 @@ public class LongElementImpl extends ValueFieldElementImpl implements LongElemen
    * @generated
    * @ordered
    */
-  protected static final int MAX_EDEFAULT = 0;
+  protected static final long MAX_EDEFAULT = 0L;
 
   /**
    * The cached value of the '{@link #getMax() <em>Max</em>}' attribute.
@@ -87,7 +87,7 @@ public class LongElementImpl extends ValueFieldElementImpl implements LongElemen
    * @generated
    * @ordered
    */
-  protected int max = MAX_EDEFAULT;
+  protected long max = MAX_EDEFAULT;
 
   /**
    * The default value of the '{@link #getFormat() <em>Format</em>}' attribute.
@@ -158,7 +158,7 @@ public class LongElementImpl extends ValueFieldElementImpl implements LongElemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getMin()
+  public long getMin()
   {
     return min;
   }
@@ -168,9 +168,9 @@ public class LongElementImpl extends ValueFieldElementImpl implements LongElemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setMin(int newMin)
+  public void setMin(long newMin)
   {
-    int oldMin = min;
+    long oldMin = min;
     min = newMin;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.LONG_ELEMENT__MIN, oldMin, min));
@@ -181,7 +181,7 @@ public class LongElementImpl extends ValueFieldElementImpl implements LongElemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getMax()
+  public long getMax()
   {
     return max;
   }
@@ -191,9 +191,9 @@ public class LongElementImpl extends ValueFieldElementImpl implements LongElemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setMax(int newMax)
+  public void setMax(long newMax)
   {
-    int oldMax = max;
+    long oldMax = max;
     max = newMax;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.LONG_ELEMENT__MAX, oldMax, max));
@@ -258,10 +258,10 @@ public class LongElementImpl extends ValueFieldElementImpl implements LongElemen
         setHorizontalAlign((String)newValue);
         return;
       case SamlPackage.LONG_ELEMENT__MIN:
-        setMin((Integer)newValue);
+        setMin((Long)newValue);
         return;
       case SamlPackage.LONG_ELEMENT__MAX:
-        setMax((Integer)newValue);
+        setMax((Long)newValue);
         return;
       case SamlPackage.LONG_ELEMENT__FORMAT:
         setFormat((String)newValue);

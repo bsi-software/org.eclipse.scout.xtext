@@ -311,6 +311,87 @@ ruleBooleanType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleTok
 
 
 
+// Entry rule entryRuleBigDecimalType
+entryRuleBigDecimalType returns [String current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getBigDecimalTypeRule()); } 
+	 iv_ruleBigDecimalType=ruleBigDecimalType 
+	 { $current=$iv_ruleBigDecimalType.current.getText(); }  
+	 EOF 
+;
+
+// Rule BigDecimalType
+ruleBigDecimalType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+	kw='-' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getBigDecimalTypeAccess().getHyphenMinusKeyword_0()); 
+    }
+)?    this_INT_1=RULE_INT    {
+		$current.merge(this_INT_1);
+    }
+
+    { 
+    newLeafNode(this_INT_1, grammarAccess.getBigDecimalTypeAccess().getINTTerminalRuleCall_1()); 
+    }
+(
+	kw='.' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getBigDecimalTypeAccess().getFullStopKeyword_2_0()); 
+    }
+    this_INT_3=RULE_INT    {
+		$current.merge(this_INT_3);
+    }
+
+    { 
+    newLeafNode(this_INT_3, grammarAccess.getBigDecimalTypeAccess().getINTTerminalRuleCall_2_1()); 
+    }
+)?)
+    ;
+
+
+
+
+
+// Entry rule entryRuleLongType
+entryRuleLongType returns [String current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getLongTypeRule()); } 
+	 iv_ruleLongType=ruleLongType 
+	 { $current=$iv_ruleLongType.current.getText(); }  
+	 EOF 
+;
+
+// Rule LongType
+ruleLongType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+	kw='-' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getLongTypeAccess().getHyphenMinusKeyword_0()); 
+    }
+)?    this_INT_1=RULE_INT    {
+		$current.merge(this_INT_1);
+    }
+
+    { 
+    newLeafNode(this_INT_1, grammarAccess.getLongTypeAccess().getINTTerminalRuleCall_1()); 
+    }
+)
+    ;
+
+
+
+
+
 // Entry rule entryRuleLogicEventType
 entryRuleLogicEventType returns [String current=null] 
 	:
@@ -4672,9 +4753,9 @@ ruleBigDecimalElement returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getBigDecimalElementAccess().getMinNumberParserRuleCall_2_12_2_0()); 
+	        newCompositeNode(grammarAccess.getBigDecimalElementAccess().getMinBigDecimalTypeParserRuleCall_2_12_2_0()); 
 	    }
-		lv_min_41_0=ruleNumber		{
+		lv_min_41_0=ruleBigDecimalType		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getBigDecimalElementRule());
 	        }
@@ -4682,7 +4763,7 @@ ruleBigDecimalElement returns [EObject current=null]
        			$current, 
        			"min",
         		lv_min_41_0, 
-        		"Number");
+        		"BigDecimalType");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -4710,9 +4791,9 @@ ruleBigDecimalElement returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getBigDecimalElementAccess().getMaxNumberParserRuleCall_2_13_2_0()); 
+	        newCompositeNode(grammarAccess.getBigDecimalElementAccess().getMaxBigDecimalTypeParserRuleCall_2_13_2_0()); 
 	    }
-		lv_max_44_0=ruleNumber		{
+		lv_max_44_0=ruleBigDecimalType		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getBigDecimalElementRule());
 	        }
@@ -4720,7 +4801,7 @@ ruleBigDecimalElement returns [EObject current=null]
        			$current, 
        			"max",
         		lv_max_44_0, 
-        		"Number");
+        		"BigDecimalType");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -5237,19 +5318,19 @@ ruleLongElement returns [EObject current=null]
     }
 (
 (
-		lv_min_32_0=RULE_INT
-		{
-			newLeafNode(lv_min_32_0, grammarAccess.getLongElementAccess().getMinINTTerminalRuleCall_2_9_2_0()); 
-		}
-		{
+		{ 
+	        newCompositeNode(grammarAccess.getLongElementAccess().getMinLongTypeParserRuleCall_2_9_2_0()); 
+	    }
+		lv_min_32_0=ruleLongType		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getLongElementRule());
+	            $current = createModelElementForParent(grammarAccess.getLongElementRule());
 	        }
-       		setWithLastConsumed(
+       		set(
        			$current, 
        			"min",
         		lv_min_32_0, 
-        		"INT");
+        		"LongType");
+	        afterParserOrEnumRuleCall();
 	    }
 
 )
@@ -5275,19 +5356,19 @@ ruleLongElement returns [EObject current=null]
     }
 (
 (
-		lv_max_35_0=RULE_INT
-		{
-			newLeafNode(lv_max_35_0, grammarAccess.getLongElementAccess().getMaxINTTerminalRuleCall_2_10_2_0()); 
-		}
-		{
+		{ 
+	        newCompositeNode(grammarAccess.getLongElementAccess().getMaxLongTypeParserRuleCall_2_10_2_0()); 
+	    }
+		lv_max_35_0=ruleLongType		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getLongElementRule());
+	            $current = createModelElementForParent(grammarAccess.getLongElementRule());
 	        }
-       		setWithLastConsumed(
+       		set(
        			$current, 
        			"max",
         		lv_max_35_0, 
-        		"INT");
+        		"LongType");
+	        afterParserOrEnumRuleCall();
 	    }
 
 )

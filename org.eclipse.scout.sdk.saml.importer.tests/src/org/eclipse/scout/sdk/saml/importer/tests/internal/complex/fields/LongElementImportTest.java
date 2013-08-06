@@ -25,6 +25,9 @@ import org.junit.Test;
 public class LongElementImportTest extends AbstractSamlFieldImporterTest implements IComplexFieldTestConstants {
 
   private final static String[] LOCATION = new String[]{"GroupTest", "LongTest"};
+  private final static String[] LOCATION_2 = new String[]{"GroupTest", "Long2Test"};
+  private final static String[] LOCATION_3 = new String[]{"GroupTest", "Long3Test"};
+  private final static String[] LOCATION_4 = new String[]{"GroupTest", "Long4Test"};
 
   @Test
   public void testNumAttributes() throws Exception {
@@ -85,5 +88,53 @@ public class LongElementImportTest extends AbstractSamlFieldImporterTest impleme
   @Test
   public void testFormatAttribute() throws Exception {
     testStringConfigMethod(getField(FORM_NAME, LOCATION), "getConfiguredFormat", "0000");
+  }
+
+  @Test
+  public void testNumAttributes2() throws Exception {
+    IType field = getField(FORM_NAME, LOCATION_2);
+    Assert.assertEquals(2, TypeUtility.getMethods(field).length);
+  }
+
+  @Test
+  public void testMinAttribute2() throws Exception {
+    testLongConfigMethod(getField(FORM_NAME, LOCATION_2), "getConfiguredMinimumValue", -1000L);
+  }
+
+  @Test
+  public void testMaxAttribute2() throws Exception {
+    testLongConfigMethod(getField(FORM_NAME, LOCATION_2), "getConfiguredMaximumValue", 3000L);
+  }
+
+  @Test
+  public void testNumAttributes3() throws Exception {
+    IType field = getField(FORM_NAME, LOCATION_3);
+    Assert.assertEquals(2, TypeUtility.getMethods(field).length);
+  }
+
+  @Test
+  public void testMinAttribute3() throws Exception {
+    testLongConfigMethod(getField(FORM_NAME, LOCATION_3), "getConfiguredMinimumValue", -9000L);
+  }
+
+  @Test
+  public void testMaxAttribute3() throws Exception {
+    testLongConfigMethod(getField(FORM_NAME, LOCATION_3), "getConfiguredMaximumValue", -1000L);
+  }
+
+  @Test
+  public void testNumAttributes4() throws Exception {
+    IType field = getField(FORM_NAME, LOCATION_4);
+    Assert.assertEquals(2, TypeUtility.getMethods(field).length);
+  }
+
+  @Test
+  public void testMinAttribute4() throws Exception {
+    testLongConfigMethod(getField(FORM_NAME, LOCATION_4), "getConfiguredMinimumValue", 10000L);
+  }
+
+  @Test
+  public void testMaxAttribute4() throws Exception {
+    testLongConfigMethod(getField(FORM_NAME, LOCATION_4), "getConfiguredMaximumValue", 100000L);
   }
 }

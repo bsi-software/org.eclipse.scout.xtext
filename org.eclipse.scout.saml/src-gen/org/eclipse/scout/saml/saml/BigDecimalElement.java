@@ -2,6 +2,7 @@
  */
 package org.eclipse.scout.saml.saml;
 
+import java.math.BigDecimal;
 
 /**
  * <!-- begin-user-doc -->
@@ -140,12 +141,12 @@ public interface BigDecimalElement extends ValueFieldElement
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Min</em>' attribute.
-   * @see #setMin(String)
+   * @see #setMin(BigDecimal)
    * @see org.eclipse.scout.saml.saml.SamlPackage#getBigDecimalElement_Min()
    * @model
    * @generated
    */
-  String getMin();
+  BigDecimal getMin();
 
   /**
    * Sets the value of the '{@link org.eclipse.scout.saml.saml.BigDecimalElement#getMin <em>Min</em>}' attribute.
@@ -155,7 +156,7 @@ public interface BigDecimalElement extends ValueFieldElement
    * @see #getMin()
    * @generated
    */
-  void setMin(String value);
+  void setMin(BigDecimal value);
 
   /**
    * Returns the value of the '<em><b>Max</b></em>' attribute.
@@ -166,12 +167,12 @@ public interface BigDecimalElement extends ValueFieldElement
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Max</em>' attribute.
-   * @see #setMax(String)
+   * @see #setMax(BigDecimal)
    * @see org.eclipse.scout.saml.saml.SamlPackage#getBigDecimalElement_Max()
    * @model
    * @generated
    */
-  String getMax();
+  BigDecimal getMax();
 
   /**
    * Sets the value of the '{@link org.eclipse.scout.saml.saml.BigDecimalElement#getMax <em>Max</em>}' attribute.
@@ -181,7 +182,7 @@ public interface BigDecimalElement extends ValueFieldElement
    * @see #getMax()
    * @generated
    */
-  void setMax(String value);
+  void setMax(BigDecimal value);
 
   /**
    * Returns the value of the '<em><b>Format</b></em>' attribute.

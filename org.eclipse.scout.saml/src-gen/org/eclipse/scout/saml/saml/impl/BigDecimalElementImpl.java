@@ -2,6 +2,8 @@
  */
 package org.eclipse.scout.saml.saml.impl;
 
+import java.math.BigDecimal;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -120,7 +122,7 @@ public class BigDecimalElementImpl extends ValueFieldElementImpl implements BigD
    * @generated
    * @ordered
    */
-  protected static final String MIN_EDEFAULT = null;
+  protected static final BigDecimal MIN_EDEFAULT = null;
 
   /**
    * The cached value of the '{@link #getMin() <em>Min</em>}' attribute.
@@ -130,7 +132,7 @@ public class BigDecimalElementImpl extends ValueFieldElementImpl implements BigD
    * @generated
    * @ordered
    */
-  protected String min = MIN_EDEFAULT;
+  protected BigDecimal min = MIN_EDEFAULT;
 
   /**
    * The default value of the '{@link #getMax() <em>Max</em>}' attribute.
@@ -140,7 +142,7 @@ public class BigDecimalElementImpl extends ValueFieldElementImpl implements BigD
    * @generated
    * @ordered
    */
-  protected static final String MAX_EDEFAULT = null;
+  protected static final BigDecimal MAX_EDEFAULT = null;
 
   /**
    * The cached value of the '{@link #getMax() <em>Max</em>}' attribute.
@@ -150,7 +152,7 @@ public class BigDecimalElementImpl extends ValueFieldElementImpl implements BigD
    * @generated
    * @ordered
    */
-  protected String max = MAX_EDEFAULT;
+  protected BigDecimal max = MAX_EDEFAULT;
 
   /**
    * The default value of the '{@link #getFormat() <em>Format</em>}' attribute.
@@ -290,7 +292,7 @@ public class BigDecimalElementImpl extends ValueFieldElementImpl implements BigD
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getMin()
+  public BigDecimal getMin()
   {
     return min;
   }
@@ -300,9 +302,9 @@ public class BigDecimalElementImpl extends ValueFieldElementImpl implements BigD
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setMin(String newMin)
+  public void setMin(BigDecimal newMin)
   {
-    String oldMin = min;
+    BigDecimal oldMin = min;
     min = newMin;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.BIG_DECIMAL_ELEMENT__MIN, oldMin, min));
@@ -313,7 +315,7 @@ public class BigDecimalElementImpl extends ValueFieldElementImpl implements BigD
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getMax()
+  public BigDecimal getMax()
   {
     return max;
   }
@@ -323,9 +325,9 @@ public class BigDecimalElementImpl extends ValueFieldElementImpl implements BigD
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setMax(String newMax)
+  public void setMax(BigDecimal newMax)
   {
-    String oldMax = max;
+    BigDecimal oldMax = max;
     max = newMax;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, SamlPackage.BIG_DECIMAL_ELEMENT__MAX, oldMax, max));
@@ -405,10 +407,10 @@ public class BigDecimalElementImpl extends ValueFieldElementImpl implements BigD
         setFractionDigits((Integer)newValue);
         return;
       case SamlPackage.BIG_DECIMAL_ELEMENT__MIN:
-        setMin((String)newValue);
+        setMin((BigDecimal)newValue);
         return;
       case SamlPackage.BIG_DECIMAL_ELEMENT__MAX:
-        setMax((String)newValue);
+        setMax((BigDecimal)newValue);
         return;
       case SamlPackage.BIG_DECIMAL_ELEMENT__FORMAT:
         setFormat((String)newValue);
