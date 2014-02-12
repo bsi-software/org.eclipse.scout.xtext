@@ -7,9 +7,10 @@
     <package 
        uri = "http://www.eclipse.org/scout/saml/Saml" 
        class = "org.eclipse.scout.saml.saml.SamlPackage"
-       genModel = "org/eclipse/scout/saml/Saml.genmodel" /> 
+       genModel = "model/generated/Saml.genmodel" /> 
 	
   </extension>
+
 
 
 

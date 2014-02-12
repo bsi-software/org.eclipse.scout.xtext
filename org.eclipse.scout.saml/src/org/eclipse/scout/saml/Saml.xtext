@@ -24,7 +24,7 @@ Model:
 
 
 // TYPES
-QualifiedNameWithWildCard: QualifiedName  ('.' '*')?;
+QualifiedNameWithOptionalWildCard: QualifiedName  ('.' '*')?;
 BooleanType: 'true'|'false';	//TODO: code completion
 
 //TODO: code completion depending on element we are on
@@ -41,7 +41,7 @@ ModuleElement: 'module' name=QualifiedName
 	);
 
 
-ImportElement: 'import' importedNamespace=QualifiedNameWithWildCard;
+ImportElement: 'import' importedNamespace=QualifiedNameWithOptionalWildCard;
 
 
 TranslationElement:'translation' name=QualifiedName (translations+=LanguageAttribute)+;
